@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aziz Saif — 37+ Years Building Businesses Across the GCC</title>
+<meta name="description" content="Aziz Saif — VP Operations, Managing Partner & AI Business Builder. 37+ years scaling retail, franchise & trade businesses across UAE, Oman, KSA, Bahrain, Qatar & Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0a1628;
+  --navy-light: #111d35;
+  --navy-mid: #162544;
+  --gold: #c9a84c;
+  --gold-light: #e0c675;
+  --gold-dark: #a8872e;
+  --white: #f5f2eb;
+  --white-pure: #ffffff;
+  --gray: #8e99a9;
+  --gray-light: #c5ccd6;
+  --blue-accent: #3a7bd5;
+  --red-accent: #d63031;
+  --section-pad: clamp(60px, 10vw, 120px);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ─── PRELOADER ─── */
+.preloader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-ring {
+  width: 60px; height: 60px;
+  border: 3px solid var(--navy-mid);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 18px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
+}
+.nav.scrolled {
+  background: rgba(10, 22, 40, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 40px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--gold);
+  text-decoration: none; letter-spacing: 0.5px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--gray-light); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
+.hamburger span { width: 24px; height: 2px; background: var(--gold); transition: 0.3s; display: block; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 40px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(58,123,213,0.05) 0%, transparent 50%);
+}
+.hero-grid {
+  max-width: 1300px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: center; position: relative; z-index: 1;
+}
+.hero-content { animation: fadeUp 1s ease 0.3s both; }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 8px 20px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+}
+.hero-tag .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 24px;
+}
+.hero h1 .gold { color: var(--gold); }
+.hero h1 .italic { font-style: italic; font-weight: 400; }
+
+.hero-desc {
+  font-size: 1.1rem; color: var(--gray-light);
+  max-width: 520px; margin-bottom: 40px; line-height: 1.8;
+}
+
+.hero-stats {
+  display: flex; gap: 40px; margin-bottom: 40px;
+  padding-top: 32px; border-top: 1px solid rgba(201,168,76,0.15);
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; font-weight: 700; color: var(--gold);
+  line-height: 1;
+}
+.hero-stat-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; }
+
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--navy); padding: 16px 36px;
+  border-radius: 8px; font-weight: 700;
+  font-size: 0.9rem; text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.3); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent;
+  border: 1.5px solid rgba(201,168,76,0.4);
+  color: var(--gold); padding: 16px 36px;
+  border-radius: 8px; font-weight: 600;
+  font-size: 0.9rem; text-decoration: none;
+  transition: all 0.3s; cursor: pointer;
+}
+.btn-outline:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+.hero-image {
+  display: flex; justify-content: center; align-items: center;
+  animation: fadeUp 1s ease 0.5s both;
+}
+.hero-photo-wrap {
+  position: relative; width: 380px; height: 380px;
+}
+.hero-photo-wrap::before {
+  content: ''; position: absolute;
+  inset: -12px; border-radius: 50%;
+  border: 2px solid rgba(201,168,76,0.2);
+  animation: rotateRing 20s linear infinite;
+}
+.hero-photo-wrap::after {
+  content: ''; position: absolute;
+  inset: -24px; border-radius: 50%;
+  border: 1px dashed rgba(201,168,76,0.1);
+  animation: rotateRing 30s linear infinite reverse;
+}
+@keyframes rotateRing { to { transform: rotate(360deg); } }
+
+.hero-photo {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--gold);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ─── SECTION SHARED ─── */
+section { padding: var(--section-pad) 40px; position: relative; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.section-label .line { width: 40px; height: 1px; background: var(--gold); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 20px;
+}
+.section-subtitle {
+  font-size: 1.05rem; color: var(--gray);
+  max-width: 600px; margin-bottom: 50px;
+}
+
+/* ─── STORY / ABOUT ─── */
+.story { background: var(--navy); }
+.story-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.story-text p {
+  color: var(--gray-light); margin-bottom: 20px;
+  font-size: 1.05rem;
+}
+.story-text .highlight-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--gold);
+  font-style: italic; line-height: 1.6;
+  border-left: 3px solid var(--gold);
+  padding-left: 24px; margin: 32px 0;
+}
+.story-markers {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; margin-top: 32px;
+}
+.story-marker {
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 12px; padding: 24px;
+}
+.story-marker-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.story-marker-text { font-size: 0.8rem; color: var(--gray); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+.story-visual { position: relative; }
+.story-card {
+  background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 20px; padding: 40px;
+  position: relative; overflow: hidden;
+}
+.story-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%);
+}
+.story-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; margin-bottom: 20px;
+  color: var(--gold);
+}
+.story-card ul { list-style: none; }
+.story-card li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: var(--gray-light); font-size: 0.95rem;
+  display: flex; align-items: center; gap: 12px;
+}
+.story-card li::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--gold); border-radius: 50%; flex-shrink: 0;
+}
+.story-markets {
+  margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px;
+}
+.market-tag {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 6px 16px; border-radius: 100px;
+  font-size: 0.75rem; color: var(--gold);
+  font-weight: 600; letter-spacing: 0.5px;
+}
+
+/* ─── TIMELINE ─── */
+.timeline { background: var(--navy-light); }
+.timeline-track { position: relative; padding-left: 60px; }
+.timeline-track::before {
+  content: ''; position: absolute;
+  left: 20px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+}
+.timeline-item {
+  position: relative; margin-bottom: 50px;
+  opacity: 0; transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.timeline-item.visible { opacity: 1; transform: translateY(0); }
+.timeline-dot {
+  position: absolute; left: -48px; top: 8px;
+  width: 18px; height: 18px;
+  background: var(--gold); border-radius: 50%;
+  border: 4px solid var(--navy-light);
+  z-index: 1;
+}
+.timeline-item.active .timeline-dot {
+  box-shadow: 0 0 0 6px rgba(201,168,76,0.2);
+}
+.timeline-year {
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--gold); letter-spacing: 2px;
+  margin-bottom: 8px; text-transform: uppercase;
+}
+.timeline-card {
+  background: var(--navy-mid);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 16px; padding: 32px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.timeline-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateX(8px);
+}
+.timeline-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; margin-bottom: 4px;
+}
+.timeline-card .role {
+  color: var(--gold); font-size: 0.85rem;
+  font-weight: 600; margin-bottom: 12px;
+}
+.timeline-card p {
+  color: var(--gray); font-size: 0.92rem;
+  line-height: 1.7;
+}
+.timeline-card .badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(201,168,76,0.1);
+  padding: 4px 14px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 700; color: var(--gold);
+  letter-spacing: 1px; margin-top: 14px;
+  text-transform: uppercase;
+}
+.badge.active-badge { background: rgba(39,174,96,0.15); color: #27ae60; }
+
+/* ─── SERVICES ─── */
+.services { background: var(--navy); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.service-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 16px; padding: 36px;
+  transition: all 0.4s; cursor: default;
+  position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.service-icon {
+  width: 52px; height: 52px;
+  background: rgba(201,168,76,0.1);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 20px;
+}
+.service-card h3 {
+  font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 10px;
+}
+.service-card p {
+  color: var(--gray); font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ─── AI TOOLS ─── */
+.ai-tools { background: var(--navy-light); }
+.tools-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.tool-card {
+  background: var(--navy-mid);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 14px; padding: 28px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.tool-card:hover {
+  border-color: rgba(201,168,76,0.25);
+  transform: translateY(-3px);
+}
+.tool-card .tool-emoji { font-size: 2rem; margin-bottom: 12px; }
+.tool-card h4 { font-size: 0.95rem; margin-bottom: 6px; }
+.tool-card p { font-size: 0.78rem; color: var(--gray); }
+
+/* ─── BUSINESS SETUP ─── */
+.setup { background: var(--navy); }
+.setup-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.setup-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 14px; padding: 28px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.setup-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  transform: translateY(-3px);
+}
+.setup-card .setup-emoji { font-size: 2rem; margin-bottom: 12px; }
+.setup-card h4 { font-size: 0.92rem; margin-bottom: 6px; }
+.setup-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+
+/* ─── CONSULTING ─── */
+.consulting { background: var(--navy-light); }
+.consulting-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.consult-card {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 16px; padding: 40px;
+  position: relative; overflow: hidden;
+  transition: all 0.4s;
+}
+.consult-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.consult-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; margin-bottom: 12px;
+  color: var(--gold);
+}
+.consult-card p { color: var(--gray); font-size: 0.9rem; line-height: 1.7; }
+
+/* ─── PROCESS ─── */
+.process { background: var(--navy); }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; position: relative;
+}
+.process-steps::before {
+  content: ''; position: absolute;
+  top: 50px; left: 12%; right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.1));
+  z-index: 0;
+}
+.step {
+  text-align: center; position: relative; z-index: 1;
+}
+.step-num {
+  width: 70px; height: 70px; margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--navy);
+  box-shadow: 0 8px 25px rgba(201,168,76,0.3);
+}
+.step h4 { font-size: 1rem; margin-bottom: 8px; }
+.step p { font-size: 0.82rem; color: var(--gray); max-width: 220px; margin: 0 auto; }
+
+/* ─── PORTFOLIO / WEBSITES BUILT ─── */
+.portfolio { background: var(--navy-light); }
+.portfolio-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.portfolio-card {
+  background: var(--navy-mid);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 14px; padding: 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.portfolio-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateY(-3px);
+}
+.portfolio-card h4 {
+  font-size: 0.9rem; margin-bottom: 4px;
+  color: var(--gold);
+}
+.portfolio-card p { font-size: 0.78rem; color: var(--gray); }
+
+/* ─── CTA BANNER ─── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+  padding: var(--section-pad) 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.06), transparent 70%);
+}
+.cta-banner .section-inner { position: relative; z-index: 1; }
+.cta-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 16px;
+}
+.cta-banner p {
+  color: var(--gray-light); font-size: 1.1rem;
+  max-width: 600px; margin: 0 auto 36px;
+}
+.cta-banner .btn-primary { font-size: 1rem; padding: 18px 44px; }
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 40px 30px;
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 40px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--gold); margin-bottom: 16px;
+}
+.footer-desc { color: var(--gray); font-size: 0.88rem; line-height: 1.7; max-width: 320px; }
+.footer h4 {
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 10px; }
+.footer a {
+  color: var(--gray); text-decoration: none;
+  font-size: 0.88rem; transition: color 0.3s;
+}
+.footer a:hover { color: var(--gold); }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { color: var(--gray); font-size: 0.8rem; }
+.footer-quranic {
+  font-style: italic; color: var(--gold);
+  font-size: 0.82rem; opacity: 0.7;
+}
+
+/* ─── WHATSAPP FLOATING BUTTON ─── */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 900;
+  width: 60px; height: 60px;
+  background: #25d366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  animation: whatsappPulse 2s infinite;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+.whatsapp-float svg { width: 32px; height: 32px; fill: #fff; }
+.whatsapp-tooltip {
+  position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+  background: #fff; color: #333; padding: 8px 16px;
+  border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.whatsapp-tooltip::after {
+  content: ''; position: absolute; right: -6px; top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent; border-left-color: #fff;
+}
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+@keyframes whatsappPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 24px rgba(37,211,102,0.15); }
+}
+
+/* ─── AI CHATBOT ─── */
+.chatbot-btn {
+  position: fixed; bottom: 96px; right: 24px; z-index: 900;
+  width: 54px; height: 54px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 50%; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(201,168,76,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.chatbot-btn:hover { transform: scale(1.1); }
+.chatbot-btn svg { width: 26px; height: 26px; fill: var(--navy); }
+
+.chatbot-window {
+  position: fixed; bottom: 160px; right: 24px; z-index: 901;
+  width: 380px; max-height: 520px;
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  display: none; flex-direction: column;
+  overflow: hidden;
+}
+.chatbot-window.open { display: flex; }
+.chatbot-header {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.chatbot-header-info { display: flex; align-items: center; gap: 10px; }
+.chatbot-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy); display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  color: var(--gold); font-size: 0.8rem;
+}
+.chatbot-header h4 { font-size: 0.9rem; color: var(--navy); margin: 0; }
+.chatbot-header p { font-size: 0.7rem; color: rgba(10,22,40,0.6); margin: 0; }
+.chatbot-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.3rem; color: var(--navy); font-weight: 700;
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+}
+.chatbot-messages {
+  flex: 1; padding: 16px; overflow-y: auto;
+  max-height: 340px; display: flex; flex-direction: column; gap: 12px;
+}
+.chat-msg {
+  max-width: 85%; padding: 10px 16px;
+  border-radius: 16px; font-size: 0.85rem;
+  line-height: 1.5; animation: fadeUp 0.3s ease;
+}
+.chat-msg.bot {
+  background: var(--navy-mid); color: var(--gray-light);
+  align-self: flex-start; border-bottom-left-radius: 4px;
+}
+.chat-msg.user {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--navy); align-self: flex-end;
+  border-bottom-right-radius: 4px; font-weight: 500;
+}
+.chat-options {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-self: flex-start;
+}
+.chat-option-btn {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold); padding: 6px 14px;
+  border-radius: 100px; font-size: 0.78rem;
+  cursor: pointer; transition: all 0.3s;
+  font-weight: 600;
+}
+.chat-option-btn:hover { background: rgba(201,168,76,0.2); }
+.chatbot-input {
+  display: flex; gap: 8px; padding: 12px 16px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.chatbot-input input {
+  flex: 1; background: var(--navy-mid);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 100px; padding: 10px 16px;
+  color: var(--white); font-size: 0.85rem;
+  outline: none; font-family: inherit;
+}
+.chatbot-input input::placeholder { color: var(--gray); }
+.chatbot-input input:focus { border-color: var(--gold); }
+.chatbot-input button {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border: none; border-radius: 50%;
+  width: 40px; height: 40px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.chatbot-input button svg { width: 18px; height: 18px; fill: var(--navy); }
+
+/* ─── PORTFOLIO LINKS ─── */
+.portfolio-card a {
+  text-decoration: none; color: inherit;
+  display: block;
+}
+.portfolio-card a h4 { color: var(--gold); transition: color 0.3s; }
+.portfolio-card a:hover h4 { color: var(--gold-light); }
+.portfolio-link-icon {
+  font-size: 0.7rem; color: var(--gray);
+  margin-top: 8px; opacity: 0;
+  transition: opacity 0.3s;
+}
+.portfolio-card:hover .portfolio-link-icon { opacity: 1; }
+
+/* ─── TOOL LINKS ─── */
+a.tool-card { text-decoration: none; color: inherit; display: block; }
+
+@media (max-width: 480px) {
+  .chatbot-window { width: calc(100vw - 32px); right: 16px; bottom: 140px; }
+  .whatsapp-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+  .chatbot-btn { bottom: 80px; right: 16px; width: 48px; height: 48px; }
+}
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-content { order: 2; }
+  .hero-image { order: 1; }
+  .hero-desc { margin: 0 auto 40px; }
+  .hero-stats { justify-content: center; }
+  .hero-ctas { justify-content: center; }
+  .hero-photo-wrap { width: 280px; height: 280px; }
+  .story-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .setup-grid { grid-template-columns: repeat(2, 1fr); }
+  .consulting-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .process-steps::before { display: none; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 14px 20px; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,22,40,0.98);
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 24px;
+  }
+  .nav-links.open { display: flex; z-index: 999; }
+  .nav-links a { font-size: 1.1rem; }
+  .hamburger { display: flex; z-index: 1001; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  section { padding: 60px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 2rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .setup-grid { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-photo-wrap { width: 220px; height: 220px; }
+  .story-markers { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .setup-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-ring"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Aziz Saif</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story" onclick="closeMenu()">Story</a></li>
+    <li><a href="#journey" onclick="closeMenu()">Journey</a></li>
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#ai-tools" onclick="closeMenu()">AI Tools</a></li>
+    <li><a href="#setup" onclick="closeMenu()">Business Setup</a></li>
+    <li><a href="#process" onclick="closeMenu()">Process</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="dot"></span> Dubai, UAE &mdash; Since 1987</div>
+      <h1>Building <span class="gold">Businesses</span> That <span class="italic">Last.</span></h1>
+      <p class="hero-desc">From a single retail store to 60+ locations across the GCC &mdash; now helping businesses implement AI to work smarter, scale faster, and operate with excellence. <em>In sha Allah.</em></p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">37+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Countries</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">60+</div>
+          <div class="hero-stat-label">Stores Scaled</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">7+</div>
+          <div class="hero-stat-label">Sectors</div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#services" class="btn-primary">Explore Services &darr;</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-photo-wrap">
+        <img src="photo.jpg" alt="Aziz Saif — Business Strategist" class="hero-photo" onerror="this.onerror=null; this.style.display='none'; var d=document.createElement('div'); d.className='hero-photo'; d.style.cssText='display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#162544,#c9a84c);width:100%;height:100%;'; d.innerHTML='<span style=&quot;font-family:Playfair Display,serif;font-size:5rem;font-weight:700;color:#0a1628&quot;>AS</span>'; this.parentNode.appendChild(d);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / ABOUT -->
+<section class="story" id="story">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <div class="section-label"><span class="line"></span> My Story</div>
+        <h2 class="section-title">From One Store to an Empire Across the Gulf</h2>
+        <p>My journey began in 1987 with Sana Fashions &mdash; a single retail store that grew into 35 locations across 5 GCC countries. For over three decades, I have lived and breathed retail operations, franchise scaling, supply chain management, and multi-location business development.</p>
+        <p>I've built and operated businesses across Retail, Franchise, Trade, Wholesale, Shipping, and Services in the UAE, Oman, KSA, Bahrain, Qatar, and Bangladesh. From negotiating mall leases in Riyadh to onboarding franchise partners in Muscat, every challenge sharpened my instinct for what works.</p>
+        <div class="highlight-quote">"Implement in Hours. Not Days. In sha Allah."</div>
+        <p>Today, I combine 37+ years of real-world business expertise with AI automation to help SMEs get set up, scale smartly, and operate without the bloat. No IT team needed. No months of training. Just guided tools, set up once, handed over completely.</p>
+        <div class="story-markers">
+          <div class="story-marker">
+            <div class="story-marker-num">35</div>
+            <div class="story-marker-text">Sana Fashion Stores</div>
+          </div>
+          <div class="story-marker">
+            <div class="story-marker-num">15</div>
+            <div class="story-marker-text">YOYOSO KSA Stores</div>
+          </div>
+          <div class="story-marker">
+            <div class="story-marker-num">10</div>
+            <div class="story-marker-text">Gulf Crystal Stores</div>
+          </div>
+          <div class="story-marker">
+            <div class="story-marker-num">10+</div>
+            <div class="story-marker-text">Websites Built with AI</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-visual reveal">
+        <div class="story-card">
+          <h3>Core Expertise</h3>
+          <ul>
+            <li>Retail Scaling &amp; Multi-Location Operations</li>
+            <li>Franchise Development &amp; Onboarding</li>
+            <li>B2B Sourcing, Procurement &amp; Supply Chain</li>
+            <li>AI Business Automation &amp; Integration</li>
+            <li>Investor Pitch Decks &amp; Feasibility Studies</li>
+            <li>eCommerce Launches &amp; Digital Transformation</li>
+            <li>Accounting, Bookkeeping &amp; Financial Reports</li>
+          </ul>
+          <div class="story-markets">
+            <span class="market-tag">UAE</span>
+            <span class="market-tag">KSA</span>
+            <span class="market-tag">Oman</span>
+            <span class="market-tag">Bahrain</span>
+            <span class="market-tag">Qatar</span>
+            <span class="market-tag">India</span>
+            <span class="market-tag">Bangladesh</span>
+            <span class="market-tag">Canada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section class="timeline" id="journey">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> Career Journey</div>
+    <h2 class="section-title reveal">A Timeline of Building &amp; Scaling</h2>
+    <p class="section-subtitle reveal">Every chapter added a new dimension &mdash; from fashion retail to franchise mastery to AI-powered services.</p>
+    <div class="timeline-track">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1987 &mdash; 2017 &middot; 30 Years</div>
+        <div class="timeline-card">
+          <h3>Sana Fashions &mdash; GCC</h3>
+          <div class="role">Vice President Operations &amp; Head of Inventory Control</div>
+          <p>30 years building one of the GCC's leading fashion retail chains &mdash; 35 stores across UAE, KSA, Oman, Bahrain &amp; Qatar. Full VP Operations: supply chain, stock management, merchandising, multi-location team leadership &amp; retail scaling expertise.</p>
+          <span class="badge">35 Stores &middot; 5 Countries</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2017 &mdash; Present</div>
+        <div class="timeline-card">
+          <h3>Global Pioneer General Trading FZE &mdash; RAK</h3>
+          <div class="role">Founder / Partner</div>
+          <p>RAK Free Zone &mdash; B2B sourcing, procurement &amp; supply across UAE &amp; GCC. Leading eCommerce launches and managing A-Z UAE operations for overseas partners.</p>
+          <span class="badge active-badge">Active</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2017 &mdash; 2022</div>
+        <div class="timeline-card">
+          <h3>Gulf Crystal International &mdash; Oman</h3>
+          <div class="role">Managing Partner &amp; Business Development</div>
+          <p>Set up &amp; operated 10 retail stores across the Sultanate of Oman. Site selection, fit-outs, staffing, inventory systems, and daily operations management.</p>
+          <span class="badge">10 Stores &middot; Oman</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2019 &mdash; 2024</div>
+        <div class="timeline-card">
+          <h3>YOYOSO &mdash; Saudi Arabia</h3>
+          <div class="role">Master Franchise &middot; Business Development &middot; 15 KSA Mall Locations</div>
+          <p>Launched 15 stores in top Saudi malls. Managed mall negotiations, franchisee onboarding, supply chain logistics, and full brand compliance across the Kingdom.</p>
+          <span class="badge">15 Mall Stores &middot; KSA</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2023 &mdash; Present</div>
+        <div class="timeline-card">
+          <h3>Men's Grooming Salons &mdash; UAE</h3>
+          <div class="role">Setup &amp; Operations</div>
+          <p>Set up &amp; operating men's grooming salons in UAE &mdash; staff commissions, P&amp;L management, and customer experience as a live proof-of-concept for AI automation.</p>
+          <span class="badge active-badge">Active &middot; AI-Powered</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> What I Offer</div>
+    <h2 class="section-title reveal">AI-Powered Business Services</h2>
+    <p class="section-subtitle reveal">Simple AI prompts remove all your repetitive daily work. No IT team. No coding. No months of training. Just guided tools &mdash; set up once, handed over completely.</p>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#127760;</div>
+        <h3>Website Build &amp; AI Integration</h3>
+        <p>Full website live in hours with AI &mdash; lead capture, chatbot, CRM sync &amp; auto-response. Built and handed over completely.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#128202;</div>
+        <h3>Accounts Audit &amp; Clean-Up</h3>
+        <p>Full audit of QuickBooks / Tally / Zoho. Gap report, reconciliation &amp; accurate books delivered fast.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#128203;</div>
+        <h3>Business SOP Development</h3>
+        <p>Every process documented &mdash; HR, ops, finance, sales. Your team follows clear SOPs. No more guesswork.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#128269;</div>
+        <h3>Business Gap Feasibility</h3>
+        <p>Full feasibility &mdash; where your business loses time &amp; money. Prioritised with clear AI-powered fixes.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#129302;</div>
+        <h3>AI Agents &mdash; Zero Manual Entry</h3>
+        <p>Invoices, P&amp;Ls, emails, leads &mdash; all handled by AI automatically. QuickBooks, Zoho, Tally fully automated.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#128232;</div>
+        <h3>Auto Lead Gen &amp; Email</h3>
+        <p>100+ personalised outreach emails per day &mdash; AI finds prospects, writes and follows up. Zero manual effort, automated.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#128241;</div>
+        <h3>LinkedIn Auto-Posting</h3>
+        <p>AI writes, schedules &amp; auto-posts regular LinkedIn updates with images &amp; hashtags. Your brand stays active daily.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#128196;</div>
+        <h3>Scope, Contract &amp; Go-Live</h3>
+        <p>Full feasibility report + signed scope of work &mdash; clear deliverables, timelines. Go live without losing valuable time.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">&#127775;</div>
+        <h3>Angel Investor Pitch Decks</h3>
+        <p>Investor-grade pitch packs, financial models &amp; due diligence reports &mdash; built for angel &amp; VC funding rounds.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<section class="ai-tools" id="ai-tools">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> AI Toolkit</div>
+    <h2 class="section-title reveal">Tools I Use &amp; Trust</h2>
+    <p class="section-subtitle reveal">All simple. All guided. All proven in real business environments.</p>
+    <div class="tools-grid">
+      <a href="https://manus.ai" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#129504;</div>
+        <h4>Manus.ai</h4>
+        <p>AI agent &middot; Full task automation &amp; workflow</p>
+      </a>
+      <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#128221;</div>
+        <h4>Claude.ai</h4>
+        <p>Reports, VBAs, pitch decks, PDFs &amp; analysis</p>
+      </a>
+      <a href="https://minimax.io" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#127916;</div>
+        <h4>Minimax.ai</h4>
+        <p>Video &middot; Image creation &middot; AI content</p>
+      </a>
+      <a href="https://apollo.io" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#127919;</div>
+        <h4>Apollo.ai</h4>
+        <p>Lead generation &middot; Prospect outreach &middot; CRM</p>
+      </a>
+      <a href="https://gamma.app" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#127912;</div>
+        <h4>Gamma</h4>
+        <p>Presentations &middot; Pitch decks &middot; Slide design</p>
+      </a>
+      <a href="https://perplexity.ai" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#128270;</div>
+        <h4>Perplexity</h4>
+        <p>AI research &middot; Market intelligence &middot; Insights</p>
+      </a>
+      <a href="https://stackbirds.xyz" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#9881;&#65039;</div>
+        <h4>Stackbirds.xyz</h4>
+        <p>Browser automation &middot; Zero manual data entry</p>
+      </a>
+      <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20which%20AI%20tools%20do%20you%20recommend%20for%20my%20business%3F" target="_blank" rel="noopener" class="tool-card reveal">
+        <div class="tool-emoji">&#128279;</div>
+        <h4>+ More</h4>
+        <p>Zapier &middot; Buffer &middot; Wix &middot; QuickBooks &middot; Zoho</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS SETUP A-Z -->
+<section class="setup" id="setup">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> Business Setup A-Z</div>
+    <h2 class="section-title reveal">Full Business Setup &mdash; UAE</h2>
+    <p class="section-subtitle reveal">Everything you need to start, run, and grow a business in the UAE. End-to-end, handled for you.</p>
+    <div class="setup-grid">
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#128196;</div>
+        <h4>Trade Licence</h4>
+        <p>Mainland, Free Zone &amp; offshore &mdash; full application &amp; setup handled</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#127974;</div>
+        <h4>Bank Account</h4>
+        <p>Corporate/UAE bank account &mdash; right bank, fast-tracked opening</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#128178;</div>
+        <h4>VAT &amp; Corporate Tax</h4>
+        <p>Registration, quarterly VAT returns &amp; annual CT filing &amp; submission</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#128230;</div>
+        <h4>Inventory &amp; Procurement</h4>
+        <p>Supplier sourcing, purchase orders, stock control &amp; management</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#128101;</div>
+        <h4>HR &amp; Recruitment</h4>
+        <p>Staff hiring, contracts, visa processing &amp; payroll structure setup</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#128200;</div>
+        <h4>Accounting &amp; Bookkeeping</h4>
+        <p>QuickBooks / Zoho / Tally &mdash; P&amp;L, month-end &amp; management reports</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#128188;</div>
+        <h4>Day-to-Day Management</h4>
+        <p>Full business operations managed on your behalf &mdash; completely</p>
+      </div>
+      <div class="setup-card reveal">
+        <div class="setup-emoji">&#129309;</div>
+        <h4>Buy &amp; Sell Business</h4>
+        <p>UAE business valuation, due diligence, buyer/seller matching &amp; deal structure</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTING -->
+<section class="consulting" id="consulting">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> Consulting Expertise</div>
+    <h2 class="section-title reveal">Deep-Domain Advisory</h2>
+    <p class="section-subtitle reveal">Battle-tested consulting backed by three decades of hands-on operations.</p>
+    <div class="consulting-grid">
+      <div class="consult-card reveal">
+        <h3>Retail Scaling Consultancy</h3>
+        <p>Sana Fashions proven path: 1 store to multi-location across GCC. Site selection, CAPEX, margin control, team structure &amp; brand ops.</p>
+      </div>
+      <div class="consult-card reveal">
+        <h3>Franchise Feasibility</h3>
+        <p>Master franchise setup, KSA / Oman / GCC rollout models, franchisee onboarding &amp; brand compliance &mdash; based on real experience.</p>
+      </div>
+      <div class="consult-card reveal">
+        <h3>eCommerce for Partners</h3>
+        <p>Amazon.ae, Noon, Trading marketplace launch or own AI-built store. A-Z UAE ops managed for overseas suppliers &amp; partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> How We Work Together</div>
+    <h2 class="section-title reveal">4 Simple Steps</h2>
+    <p class="section-subtitle reveal">From first call to full handover &mdash; clarity at every stage.</p>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Free Discovery</h4>
+        <p>1-hr audit of your workflow, accounts &amp; gaps. Full feasibility report prepared.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Scope + Contract</h4>
+        <p>Signed scope of work &amp; contract &mdash; clear deliverables, timelines. Zero ambiguity.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Build in Hours</h4>
+        <p>Website, CRM, AI automation, accounts &amp; SOPs &mdash; live fast. In sha Allah.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Train &amp; Handover</h4>
+        <p>Your team runs it all. Full guidelines, 30-day support. You own 100%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="section-inner">
+    <div class="section-label reveal"><span class="line"></span> Websites Built with AI</div>
+    <h2 class="section-title reveal">Live Sites I Built &mdash; In Hours</h2>
+    <p class="section-subtitle reveal">Real businesses, real websites, built and deployed using AI tools.</p>
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener">
+          <h4>azizsaif.xyz</h4>
+          <p>My Personal Institute</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://maroten.com" target="_blank" rel="noopener">
+          <h4>maroten.com</h4>
+          <p>Trading Company</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://globalpioneer.xyz" target="_blank" rel="noopener">
+          <h4>globalpioneer.xyz</h4>
+          <p>Trading FZE &middot; RAK</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://kakalbrothers.xyz" target="_blank" rel="noopener">
+          <h4>kakalbrothers.xyz</h4>
+          <p>Trading &amp; Sourcing</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://sanaconsulting.xyz" target="_blank" rel="noopener">
+          <h4>sanaconsulting.xyz</h4>
+          <p>Business Consulting</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://rishmitahealing.xyz" target="_blank" rel="noopener">
+          <h4>rishmitahealing.xyz</h4>
+          <p>Wellness &amp; Healing</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://cookaatjoy.xyz" target="_blank" rel="noopener">
+          <h4>cookaatjoy.xyz</h4>
+          <p>Food Tech &middot; Angel Pitch</p>
+          <div class="portfolio-link-icon">Visit Site &#8599;</div>
+        </a>
+      </div>
+      <div class="portfolio-card reveal">
+        <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%20need%20a%20website%20built%20with%20AI" target="_blank" rel="noopener">
+          <h4>Your Website</h4>
+          <p>Ready in Hours &mdash; In sha Allah</p>
+          <div class="portfolio-link-icon">Get Started &#8599;</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="contact">
+  <div class="section-inner">
+    <div class="section-label"><span class="line"></span> Let's Talk</div>
+    <h2>Trust the AI Process.<br>I Am Here to Help.</h2>
+    <p>Retail Scaling &middot; Buy &amp; Sell &middot; Setup A-Z &middot; Franchise &middot; Trade &middot; eCommerce &middot; AI Automation &mdash; Dubai &amp; GCC</p>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+        <a href="mailto:aziz@azizsaif.com" class="btn-primary">&#9993; aziz@azizsaif.com</a>
+        <a href="https://wa.me/971556492370" class="btn-outline" target="_blank" rel="noopener">&#128222; +971 55 649 2370</a>
+      </div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener" style="color:var(--gold); font-size:0.88rem; text-decoration:none;">&#127760; azizsaif.xyz</a>
+        <a href="https://www.linkedin.com/in/azizakbar" target="_blank" rel="noopener" style="color:var(--gold); font-size:0.88rem; text-decoration:none;">&#128101; LinkedIn</a>
+      </div>
+      <p style="font-size:0.85rem; color:var(--gray); margin-top:8px;">&#128205; Falcon Tower, Riggat Al Buteena, Deira, Dubai, UAE</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Aziz Saif</div>
+      <p class="footer-desc">VP Operations &middot; Managing Partner &middot; AI Business Builder. 37+ years building, scaling &amp; automating businesses across the GCC.</p>
+      <p class="footer-desc" style="margin-top:16px; font-size:0.82rem;">Global Pioneer General Trading FZE<br>RAK, United Arab Emirates</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">AI Integration</a></li>
+        <li><a href="#services">Accounts Audit</a></li>
+        <li><a href="#services">Business SOPs</a></li>
+        <li><a href="#services">Investor Pitches</a></li>
+        <li><a href="#services">Lead Generation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Business Setup</h4>
+      <ul>
+        <li><a href="#setup">Trade Licence</a></li>
+        <li><a href="#setup">VAT &amp; Tax</a></li>
+        <li><a href="#setup">HR &amp; Recruitment</a></li>
+        <li><a href="#setup">Buy &amp; Sell</a></li>
+        <li><a href="#consulting">Franchise Advisory</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:aziz@azizsaif.com">aziz@azizsaif.com</a></li>
+        <li><a href="https://wa.me/971556492370">+971 55 649 2370</a></li>
+        <li><a href="https://azizsaif.xyz" target="_blank" rel="noopener">azizsaif.xyz</a></li>
+        <li><a href="https://www.linkedin.com/in/azizakbar" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Aziz Saif. All rights reserved.</p>
+    <p class="footer-quranic">We build every system with Itqan &mdash; excellence in work.</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20business%20opportunity." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="whatsapp-tooltip">Chat with Aziz</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- AI CHATBOT -->
+<button class="chatbot-btn" id="chatbotBtn" aria-label="AI Assistant">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+</button>
+
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <div class="chatbot-header-info">
+      <div class="chatbot-avatar">AS</div>
+      <div>
+        <h4>Aziz Saif AI Assistant</h4>
+        <p>Typically replies instantly</p>
+      </div>
+    </div>
+    <button class="chatbot-close" id="chatbotClose">&times;</button>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="chat-msg bot">Assalamu Alaikum! I'm Aziz's AI assistant. How can I help you today?</div>
+    <div class="chat-options" id="chatOptions">
+      <button class="chat-option-btn" data-q="services">What services do you offer?</button>
+      <button class="chat-option-btn" data-q="pricing">How much does it cost?</button>
+      <button class="chat-option-btn" data-q="setup">Business setup in UAE</button>
+      <button class="chat-option-btn" data-q="ai">How does AI automation work?</button>
+      <button class="chat-option-btn" data-q="contact">I want to talk to Aziz</button>
+    </div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off">
+    <button id="chatSend" aria-label="Send">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// Preloader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 600);
+});
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+function closeMenu() {
+  hamburger.classList.remove('open');
+  navLinks.classList.remove('open');
+}
+
+// ─── AI CHATBOT ───
+const chatbotBtn = document.getElementById('chatbotBtn');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+
+chatbotBtn.addEventListener('click', () => {
+  chatbotWindow.classList.toggle('open');
+  if (chatbotWindow.classList.contains('open')) chatInput.focus();
+});
+chatbotClose.addEventListener('click', () => chatbotWindow.classList.remove('open'));
+
+const botResponses = {
+  services: "Aziz offers 9 core AI-powered services:\n\n1. Website Build & AI Integration\n2. Accounts Audit & Clean-Up\n3. Business SOP Development\n4. Business Gap Feasibility\n5. AI Agents (Zero Manual Entry)\n6. Auto Lead Gen & Email\n7. LinkedIn Auto-Posting\n8. Scope, Contract & Go-Live\n9. Angel Investor Pitch Decks\n\nWould you like details on any specific service?",
+  pricing: "Pricing depends on the scope. Aziz offers a FREE 1-hour discovery call to audit your workflow, accounts & gaps. After that, you get a clear scope of work with fixed pricing.\n\nNo hidden fees. No surprises. In sha Allah.\n\nWant to book your free discovery call?",
+  setup: "Aziz handles full A-Z business setup in the UAE:\n\n- Trade Licence (Mainland, Free Zone, Offshore)\n- Bank Account opening\n- VAT & Corporate Tax registration\n- Inventory & Procurement\n- HR & Recruitment\n- Accounting & Bookkeeping\n- Day-to-Day Management\n- Buy & Sell Business\n\nAll handled end-to-end. Would you like to get started?",
+  ai: "AI automation removes your repetitive daily work:\n\n- 80% less manual work\n- AI runs 24/7, never stops\n- 3x faster lead response\n- No IT team or coding needed\n\nSimple AI prompts handle invoices, emails, leads, CRM updates, LinkedIn posts & more. Set up once, handed over completely. You own it 100%.\n\nWant to see a live demo?",
+  contact: "You can reach Aziz directly:\n\nWhatsApp: +971 55 649 2370\nEmail: aziz@azizsaif.com\nWebsite: azizsaif.xyz\nLinkedIn: Aziz Akbar\n\nOr click the green WhatsApp button to start a conversation right now!",
+  default: "Great question! For detailed answers, I'd recommend speaking directly with Aziz. You can:\n\n- WhatsApp: +971 55 649 2370\n- Email: aziz@azizsaif.com\n- Book a FREE discovery call\n\nHe typically responds within a few hours. In sha Allah."
+};
+
+function addMessage(text, isUser) {
+  const msg = document.createElement('div');
+  msg.className = 'chat-msg ' + (isUser ? 'user' : 'bot');
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function handleUserMessage(text, key) {
+  addMessage(text, true);
+  const opts = document.getElementById('chatOptions');
+  if (opts) opts.remove();
+  setTimeout(() => {
+    const response = botResponses[key] || botResponses.default;
+    addMessage(response, false);
+    if (key === 'contact' || key === 'default') {
+      setTimeout(() => {
+        const wa = document.createElement('div');
+        wa.style.cssText = 'align-self:flex-start;margin-top:4px;';
+        wa.innerHTML = '<a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#25d366;color:#fff;padding:8px 16px;border-radius:100px;font-size:0.8rem;font-weight:600;text-decoration:none;">WhatsApp Aziz Now</a>';
+        chatMessages.appendChild(wa);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
+    }
+  }, 600);
+}
+
+document.querySelectorAll('.chat-option-btn').forEach(btn => {
+  btn.addEventListener('click', () => handleUserMessage(btn.textContent, btn.dataset.q));
+});
+
+function sendChat() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  chatInput.value = '';
+  const lower = text.toLowerCase();
+  let key = 'default';
+  if (lower.match(/service|offer|what.*do|help/)) key = 'services';
+  else if (lower.match(/price|cost|how much|fee|charge/)) key = 'pricing';
+  else if (lower.match(/setup|licence|license|trade|uae|start.*business|bank/)) key = 'setup';
+  else if (lower.match(/ai|automat|bot|lead|crm|manual/)) key = 'ai';
+  else if (lower.match(/contact|talk|call|whatsapp|email|phone|reach/)) key = 'contact';
+  handleUserMessage(text, key);
+}
+chatSend.addEventListener('click', sendChat);
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal, .timeline-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
