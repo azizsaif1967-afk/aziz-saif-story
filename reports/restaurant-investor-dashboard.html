@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desi Deira Restaurant - Investor Pitch</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            color: black;
+            line-height: 1.4;
+        }
+        
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #666;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .page {
+            min-height: 100vh;
+            page-break-after: always;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+        
+        .metric.highlight {
+            background-color: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .metric-label {
+            color: #666;
+        }
+        
+        .metric-value {
+            font-weight: bold;
+            color: black;
+        }
+        
+        .positive {
+            color: #2e7d32;
+        }
+        
+        .negative {
+            color: #d32f2f;
+        }
+        
+        .chart-container {
+            height: 300px;
+            margin-top: 15px;
+        }
+        
+        .chart-small {
+            height: 200px;
+        }
+        
+        .executive-summary {
+            background: #f8f8f8;
+            border-left: 5px solid #d32f2f;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .key-highlight {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .branches-overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .branch {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            background: #fafafa;
+        }
+        
+        .branch h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .financial-table th,
+        .financial-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        
+        .financial-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .financial-table .category {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        @media print {
+            .page {
+                page-break-after: always;
+            }
+            
+            body {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <h1>DESI DEIRA RESTAURANT LLC</h1>
+                <h2>Investment Opportunity - UAE Market Leader</h2>
+                <p><strong>Founded 2014 | 3 Prime Locations | 645 Total Seats | Established Customer Base</strong></p>
+            </div>
+            
+            <div class="executive-summary">
+                <h3 style="color: #d32f2f; margin-bottom: 10px;">Executive Summary</h3>
+                <p><strong>Investment Required:</strong> AED 4.6M for complete acquisition of profitable restaurant chain with decade-long track record. Strong cash flow generating business with expansion-ready infrastructure and loyal customer base across Dubai and Ajman.</p>
+            </div>
+            
+            <div class="key-highlight">
+                <h3 style="color: #2e7d32; margin-bottom: 10px;">KEY INVESTMENT METRICS</h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #2e7d32;">22.8%</div>
+                        <div style="color: #666;">Annual ROI</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #2e7d32;">4.4 Years</div>
+                        <div style="color: #666;">Payback Period</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #2e7d32;">AED 6.2M</div>
+                        <div style="color: #666;">Annual Revenue</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #2e7d32;">AED 1.05M</div>
+                        <div style="color: #666;">Net Annual Profit</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="branches-overview">
+                <div class="branch">
+                    <h4>Branch 1 - Meena Bazar</h4>
+                    <div class="metric">
+                        <span>Established:</span>
+                        <span>2014</span>
+                    </div>
+                    <div class="metric">
+                        <span>Seating:</span>
+                        <span>105 people</span>
+                    </div>
+                    <div class="metric">
+                        <span>Monthly Revenue:</span>
+                        <span>AED 217,500</span>
+                    </div>
+                    <div class="metric">
+                        <span>Status:</span>
+                        <span>Newly Renovated</span>
+                    </div>
+                </div>
+                
+                <div class="branch">
+                    <h4>Branch 2 - Rolla Street</h4>
+                    <div class="metric">
+                        <span>Established:</span>
+                        <span>2017</span>
+                    </div>
+                    <div class="metric">
+                        <span>Seating:</span>
+                        <span>140 people</span>
+                    </div>
+                    <div class="metric">
+                        <span>Monthly Revenue:</span>
+                        <span>AED 397,500</span>
+                    </div>
+                    <div class="metric">
+                        <span>Location:</span>
+                        <span>Tech Hub Area</span>
+                    </div>
+                </div>
+                
+                <div class="branch">
+                    <h4>Branch 3 - Ajman</h4>
+                    <div class="metric">
+                        <span>Established:</span>
+                        <span>2020</span>
+                    </div>
+                    <div class="metric">
+                        <span>Seating:</span>
+                        <span>400 people</span>
+                    </div>
+                    <div class="metric">
+                        <span>Monthly Revenue:</span>
+                        <span>AED 357,500</span>
+                    </div>
+                    <div class="metric">
+                        <span>Special:</span>
+                        <span>Event Management</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Revenue Breakdown (Annual)</h3>
+                    <div class="chart-container chart-small">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Monthly Cash Flow Pattern</h3>
+                    <div class="chart-container chart-small">
+                        <canvas id="cashflowChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>Investment Components</h3>
+                    <div class="metric">
+                        <span class="metric-label">Key Money (Locations)</span>
+                        <span class="metric-value">AED 1,800,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Equipment & Furniture</span>
+                        <span class="metric-value">AED 850,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Renovations</span>
+                        <span class="metric-value">AED 834,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Staff Visas (2 years)</span>
+                        <span class="metric-value">AED 650,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Working Capital</span>
+                        <span class="metric-value">AED 466,000</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">Total Investment</span>
+                        <span class="metric-value">AED 4,600,000</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Operating Expenses (Monthly)</h3>
+                    <div class="metric">
+                        <span class="metric-label">Staff Salaries</span>
+                        <span class="metric-value">AED 160,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Rent (All Branches)</span>
+                        <span class="metric-value">AED 87,500</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Cost of Goods (35%)</span>
+                        <span class="metric-value">AED 181,250</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Utilities & Others</span>
+                        <span class="metric-value">AED 45,000</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">Total Monthly OpEx</span>
+                        <span class="metric-value">AED 473,750</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Profitability Analysis</h3>
+                    <div class="metric">
+                        <span class="metric-label">Monthly Revenue</span>
+                        <span class="metric-value positive">AED 518,750</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Monthly OpEx</span>
+                        <span class="metric-value negative">AED 473,750</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">Monthly Net Profit</span>
+                        <span class="metric-value positive">AED 87,500</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Profit Margin</span>
+                        <span class="metric-value positive">16.9%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Annual Net Profit</span>
+                        <span class="metric-value positive">AED 1,050,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="header">
+                <h1>FINANCIAL ANALYSIS & PROJECTIONS</h1>
+                <h2>Complete Financial Overview & Investment Returns</h2>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Profit & Loss Statement (Annual)</h3>
+                    <table class="financial-table">
+                        <tr class="category">
+                            <td>REVENUE</td>
+                            <td>Amount (AED)</td>
+                            <td>% of Revenue</td>
+                        </tr>
+                        <tr>
+                            <td>Branch 1 Revenue</td>
+                            <td>2,610,000</td>
+                            <td>42.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Branch 2 Revenue</td>
+                            <td>4,770,000</td>
+                            <td>77.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Branch 3 Revenue</td>
+                            <td>4,290,000</td>
+                            <td>69.2%</td>
+                        </tr>
+                        <tr style="font-weight: bold; background: #f0f0f0;">
+                            <td>TOTAL REVENUE</td>
+                            <td>6,225,000</td>
+                            <td>100.0%</td>
+                        </tr>
+                        <tr class="category">
+                            <td>OPERATING EXPENSES</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cost of Goods Sold</td>
+                            <td>2,178,750</td>
+                            <td>35.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Staff Salaries</td>
+                            <td>1,920,000</td>
+                            <td>30.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Rent</td>
+                            <td>1,055,000</td>
+                            <td>16.9%</td>
+                        </tr>
+                        <tr>
+                            <td>Utilities & Operating</td>
+                            <td>540,000</td>
+                            <td>8.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Licenses & Fees</td>
+                            <td>38,000</td>
+                            <td>0.6%</td>
+                        </tr>
+                        <tr style="font-weight: bold; background: #f0f0f0;">
+                            <td>TOTAL EXPENSES</td>
+                            <td>5,731,750</td>
+                            <td>92.1%</td>
+                        </tr>
+                        <tr style="font-weight: bold; color: #2e7d32; background: #e8f5e8;">
+                            <td>NET PROFIT</td>
+                            <td>493,250</td>
+                            <td>7.9%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="card">
+                    <h3>10-Year Financial Projections</h3>
+                    <div class="chart-container">
+                        <canvas id="projectionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>Investment Returns Analysis</h3>
+                    <div class="metric">
+                        <span class="metric-label">Initial Investment</span>
+                        <span class="metric-value">AED 4,600,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Annual Cash Flow</span>
+                        <span class="metric-value positive">AED 1,050,000</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">Simple ROI</span>
+                        <span class="metric-value positive">22.8%</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">IRR (Internal Rate)</span>
+                        <span class="metric-value positive">28.5%</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">Payback Period</span>
+                        <span class="metric-value">4.4 Years</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">NPV (10 years)</span>
+                        <span class="metric-value positive">AED 2,850,000</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Depreciation Schedule</h3>
+                    <div class="metric">
+                        <span class="metric-label">Equipment Value</span>
+                        <span class="metric-value">AED 850,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Annual Depreciation</span>
+                        <span class="metric-value">AED 85,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Renovation Value</span>
+                        <span class="metric-value">AED 834,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Annual Depreciation</span>
+                        <span class="metric-value">AED 83,400</span>
+                    </div>
+                    <div class="metric highlight">
+                        <span class="metric-label">Total Annual Depreciation</span>
+                        <span class="metric-value">AED 168,400</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Net Book Value (Yr 10)</span>
+                        <span class="metric-value">AED 2,916,000</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Growth Opportunities</h3>
+                    <div style="font-size: 13px; line-height: 1.4;">
+                        <p><strong>Immediate Opportunities:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px;">
+                            <li>Digital marketing campaigns</li>
+                            <li>Corporate catering contracts</li>
+                            <li>Delivery platform optimization</li>
+                        </ul>
+                        <p><strong>Branch 3 Expansion:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px;">
+                            <li>Shisha services (+20% revenue)</li>
+                            <li>Live entertainment (+15% revenue)</li>
+                            <li>Enhanced event management</li>
+                        </ul>
+                        <p><strong>Potential Revenue Uplift:</strong></p>
+                        <div class="metric highlight" style="margin-top: 10px;">
+                            <span>Conservative Growth</span>
+                            <span class="positive">+25% Annual Revenue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-highlight">
+                <h3 style="color: #2e7d32; margin-bottom: 15px;">INVESTMENT SUMMARY</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; text-align: left;">
+                    <div>
+                        <h4 style="color: #d32f2f; margin-bottom: 10px;">What You Get:</h4>
+                        <ul style="padding-left: 20px; line-height: 1.6;">
+                            <li>3 fully operational restaurants with prime locations</li>
+                            <li>Trained staff of 83 with valid visas until 2027</li>
+                            <li>Established brand with 4+ Google rating</li>
+                            <li>Complete kitchen infrastructure and equipment</li>
+                            <li>Proven business model with decade-long track record</li>
+                            <li>Ready for immediate operation and expansion</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #d32f2f; margin-bottom: 10px;">Financial Highlights:</h4>
+                        <ul style="padding-left: 20px; line-height: 1.6;">
+                            <li><strong>Annual Net Profit:</strong> AED 1.05M guaranteed</li>
+                            <li><strong>Monthly Cash Flow:</strong> AED 87,500 average</li>
+                            <li><strong>Return on Investment:</strong> 22.8% annually</li>
+                            <li><strong>Payback Period:</strong> 4.4 years</li>
+                            <li><strong>Growth Potential:</strong> +25% with marketing</li>
+                            <li><strong>Asset Value:</strong> Appreciating real estate exposure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Revenue Breakdown Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Branch 1 - Meena Bazar', 'Branch 2 - Rolla Street', 'Branch 3 - Ajman'],
+                datasets: [{
+                    data: [2610000, 4770000, 4290000],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed;
+                                return context.label + ': AED ' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Cash Flow Pattern Chart
+        const cashflowCtx = document.getElementById('cashflowChart').getContext('2d');
+        new Chart(cashflowCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Monthly Profit',
+                    data: [65000, 87500, 105000, 125000, 135000, 95000, 75000, 80000, 110000, 120000, 130000, 145000],
+                    borderColor: '#2e7d32',
+                    backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'AED ' + (value/1000) + 'K';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 10-Year Projections Chart
+        const projectionCtx = document.getElementById('projectionChart').getContext('2d');
+        new Chart(projectionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [6225000, 6780000, 7380000, 8040000, 8760000, 9550000, 10410000, 11340000, 12350000, 13450000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                    borderColor: '#36A2EB',
+                    borderWidth: 1
+                }, {
+                    label: 'Net Profit',
+                    data: [1050000, 1245000, 1470000, 1740000, 2040000, 2380000, 2770000, 3210000, 3720000, 4300000],
+                    backgroundColor: 'rgba(46, 125, 50, 0.8)',
+                    borderColor: '#2e7d32',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 11
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'AED ' + (value/1000000).toFixed(1) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

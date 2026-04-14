@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARK Naturals - Investment Opportunity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            color: #000;
+            line-height: 1.4;
+        }
+        
+        .pitch-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 8px solid #000;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .pitch-container::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 4px solid #dc2626;
+            z-index: -1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .company-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #dc2626;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: #666;
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 15px;
+            height: calc(100vh - 200px);
+        }
+        
+        .card {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+        }
+        
+        .card-header {
+            background: #f5f5f5;
+            color: #000;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 8px 12px;
+            margin: -15px -15px 12px -15px;
+            border-radius: 6px 6px 0 0;
+            border-bottom: 2px solid #000;
+        }
+        
+        .highlight {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        .metric {
+            text-align: center;
+            margin: 8px 0;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc2626;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .progress-bar {
+            background: #e5e5e5;
+            height: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #dc2626;
+            border-radius: 4px;
+        }
+        
+        .market-size {
+            grid-column: 1 / 2;
+            grid-row: 1;
+        }
+        
+        .competitive-advantage {
+            grid-column: 2 / 3;
+            grid-row: 1;
+        }
+        
+        .revenue-projections {
+            grid-column: 3 / 4;
+            grid-row: 1;
+        }
+        
+        .customer-segments {
+            grid-column: 1 / 2;
+            grid-row: 2;
+        }
+        
+        .growth-strategy {
+            grid-column: 2 / 3;
+            grid-row: 2;
+        }
+        
+        .key-metrics {
+            grid-column: 3 / 4;
+            grid-row: 2;
+        }
+        
+        .investment-ask {
+            grid-column: 1 / 4;
+            grid-row: 3;
+            text-align: center;
+        }
+        
+        .segment-bar {
+            display: flex;
+            margin: 8px 0;
+            align-items: center;
+        }
+        
+        .segment-label {
+            font-size: 11px;
+            width: 80px;
+            text-align: right;
+            margin-right: 8px;
+        }
+        
+        .segment-visual {
+            flex: 1;
+            height: 12px;
+            border-radius: 6px;
+            position: relative;
+        }
+        
+        .segment-health { background: #dc2626; }
+        .segment-eco { background: #059669; }
+        .segment-luxury { background: #7c3aed; }
+        
+        .strategy-item {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            font-size: 11px;
+        }
+        
+        .strategy-icon {
+            width: 12px;
+            height: 12px;
+            background: #dc2626;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .investment-highlight {
+            background: #dc2626;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .roi-showcase {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        
+        .roi-item {
+            text-align: center;
+        }
+        
+        .chart-container {
+            height: 60px;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+        
+        .chart-bar {
+            width: 25px;
+            background: #dc2626;
+            border-radius: 2px 2px 0 0;
+            position: relative;
+        }
+        
+        .chart-bar1 { height: 20px; }
+        .chart-bar2 { height: 35px; }
+        .chart-bar3 { height: 55px; }
+        
+        .year-label {
+            font-size: 10px;
+            margin-top: 2px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="pitch-container">
+        <div class="header">
+            <div class="company-name">ARK NATURALS</div>
+            <div class="tagline">Premium Handcrafted Terracotta Cookware • UAE's Sustainable Kitchen Revolution</div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <!-- Market Opportunity -->
+            <div class="card market-size">
+                <div class="card-header">🎯 MARKET OPPORTUNITY</div>
+                <div class="metric">
+                    <div class="metric-value">AED 547M</div>
+                    <div class="metric-label">UAE Cookware Market 2024</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">AED 721M</div>
+                    <div class="metric-label">Projected 2032</div>
+                </div>
+                <div style="font-size: 11px; margin-top: 10px;">
+                    ✓ <span class="highlight">68% GCC consumers</span> prefer sustainable brands<br>
+                    ✓ <span class="highlight">15-20% premium</span> willingness for eco-products<br>
+                    ✓ <span class="highlight">8.8% CAGR</span> ceramic cookware growth
+                </div>
+            </div>
+            
+            <!-- Competitive Advantage -->
+            <div class="card competitive-advantage">
+                <div class="card-header">⚡ COMPETITIVE EDGE</div>
+                <div style="font-size: 11px;">
+                    <div style="margin: 8px 0;"><strong>🏺 100% Natural Terracotta</strong><br>Chemical-free, handcrafted by UAE artisans</div>
+                    <div style="margin: 8px 0;"><strong>💰 Smart Positioning</strong><br>AED 122 avg vs AED 894 luxury imports</div>
+                    <div style="margin: 8px 0;"><strong>🌱 Health + Sustainability</strong><br>Non-toxic, alkaline properties, eco-friendly</div>
+                    <div style="margin: 8px 0;"><strong>🎨 Authentic Heritage</strong><br>Supporting local artisan community</div>
+                </div>
+                <div class="highlight" style="text-align: center; margin-top: 10px; font-size: 12px; font-weight: bold;">
+                    PREMIUM QUALITY AT 86% LESS COST THAN LUXURY BRANDS
+                </div>
+            </div>
+            
+            <!-- Revenue Projections -->
+            <div class="card revenue-projections">
+                <div class="card-header">📈 REVENUE GROWTH</div>
+                <div class="chart-container">
+                    <div style="text-align: center;">
+                        <div class="chart-bar chart-bar1"></div>
+                        <div class="year-label">Y1</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="chart-bar chart-bar2"></div>
+                        <div class="year-label">Y2</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="chart-bar chart-bar3"></div>
+                        <div class="year-label">Y3</div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" style="font-size: 16px;">AED 2-3M → 15M</div>
+                    <div class="metric-label">3-Year Revenue Target</div>
+                </div>
+                <div style="font-size: 11px; text-align: center; margin-top: 8px;">
+                    <div>Year 1: <span class="highlight">AED 2-3M</span></div>
+                    <div>Year 2: <span class="highlight">AED 5-7M</span></div>
+                    <div>Year 3: <span class="highlight">AED 10-15M</span></div>
+                </div>
+            </div>
+            
+            <!-- Customer Segments -->
+            <div class="card customer-segments">
+                <div class="card-header">👥 TARGET CUSTOMERS</div>
+                <div class="segment-bar">
+                    <div class="segment-label">Health Families</div>
+                    <div class="segment-visual segment-health" style="width: 35%;"></div>
+                    <div style="font-size: 10px; margin-left: 5px;">35%</div>
+                </div>
+                <div class="segment-bar">
+                    <div class="segment-label">Eco Millennials</div>
+                    <div class="segment-visual segment-eco" style="width: 25%;"></div>
+                    <div style="font-size: 10px; margin-left: 5px;">25%</div>
+                </div>
+                <div class="segment-bar">
+                    <div class="segment-label">Luxury Enthusiasts</div>
+                    <div class="segment-visual segment-luxury" style="width: 20%;"></div>
+                    <div style="font-size: 10px; margin-left: 5px;">20%</div>
+                </div>
+                <div style="font-size: 11px; margin-top: 12px;">
+                    <div><strong>178,000 households</strong> potential market</div>
+                    <div><span class="highlight">AED 1.6M revenue</span> at 5% penetration</div>
+                    <div>Customer LTV: <span class="highlight">AED 300-500</span></div>
+                </div>
+            </div>
+            
+            <!-- Growth Strategy -->
+            <div class="card growth-strategy">
+                <div class="card-header">🚀 GROWTH STRATEGY</div>
+                <div class="strategy-item">
+                    <div class="strategy-icon"></div>
+                    <div><strong>E-commerce Direct:</strong> Website + Social Media</div>
+                </div>
+                <div class="strategy-item">
+                    <div class="strategy-icon"></div>
+                    <div><strong>Marketplace:</strong> Amazon UAE, Noon integration</div>
+                </div>
+                <div class="strategy-item">
+                    <div class="strategy-icon"></div>
+                    <div><strong>B2B:</strong> Restaurants, hotels, corporate gifts</div>
+                </div>
+                <div class="strategy-item">
+                    <div class="strategy-icon"></div>
+                    <div><strong>Premium Retail:</strong> Dubai Mall, MOE positioning</div>
+                </div>
+                <div class="strategy-item">
+                    <div class="strategy-icon"></div>
+                    <div><strong>Influencers:</strong> Food bloggers, wellness advocates</div>
+                </div>
+                <div style="background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                    <strong>Phase 1-3 Rollout:</strong> Digital → B2B → Premium Retail
+                </div>
+            </div>
+            
+            <!-- Key Metrics -->
+            <div class="card key-metrics">
+                <div class="card-header">📊 SUCCESS METRICS</div>
+                <div class="metric" style="margin: 6px 0;">
+                    <div class="metric-value" style="font-size: 20px;">25%</div>
+                    <div class="metric-label">Monthly Traffic Growth</div>
+                </div>
+                <div class="metric" style="margin: 6px 0;">
+                    <div class="metric-value" style="font-size: 20px;">5%</div>
+                    <div class="metric-label">Social Engagement Rate</div>
+                </div>
+                <div class="metric" style="margin: 6px 0;">
+                    <div class="metric-value" style="font-size: 20px;">50</div>
+                    <div class="metric-label">B2B Accounts/Year</div>
+                </div>
+                <div style="font-size: 11px; text-align: center; margin-top: 10px;">
+                    <div>Current Price Range: <span class="highlight">AED 30-594</span></div>
+                    <div>Average Order: <span class="highlight">AED 122.50</span></div>
+                </div>
+            </div>
+            
+            <!-- Investment Ask -->
+            <div class="card investment-ask">
+                <div class="card-header">💰 INVESTMENT OPPORTUNITY</div>
+                <div class="investment-highlight">
+                    <div style="font-size: 24px; font-weight: bold; margin-bottom: 8px;">
+                        SEEKING STRATEGIC PARTNER FOR UAE'S PREMIUM COOKWARE REVOLUTION
+                    </div>
+                    <div style="font-size: 14px;">
+                        Capitalize on AED 721M market growth • Support sustainable local manufacturing • Premium positioning opportunity
+                    </div>
+                </div>
+                
+                <div class="roi-showcase">
+                    <div class="roi-item">
+                        <div style="font-size: 18px; font-weight: bold; color: #dc2626;">5X</div>
+                        <div style="font-size: 12px;">Revenue Multiple<br>3-Year Target</div>
+                    </div>
+                    <div class="roi-item">
+                        <div style="font-size: 18px; font-weight: bold; color: #059669;">68%</div>
+                        <div style="font-size: 12px;">Market Demand<br>for Sustainability</div>
+                    </div>
+                    <div class="roi-item">
+                        <div style="font-size: 18px; font-weight: bold; color: #7c3aed;">86%</div>
+                        <div style="font-size: 12px;">Cost Advantage<br>vs Luxury Brands</div>
+                    </div>
+                    <div class="roi-item">
+                        <div style="font-size: 18px; font-weight: bold; color: #dc2626;">178K</div>
+                        <div style="font-size: 12px;">Target Household<br>Market Size</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px; font-size: 12px; color: #666;">
+                    Ready to scale • Proven product-market fit • Multi-channel distribution strategy • Strong ESG positioning
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNI Two-Page Pitch - Aziz Saif</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #d4a574 0%, #c69c6d 25%, #b8956b 50%, #a88c5f 75%, #9a7f53 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            line-height: 1.4;
+        }
+        
+        .pitch-container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, rgba(196, 156, 109, 0.9) 0%, rgba(154, 127, 83, 0.9) 100%);
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 8px;
+        }
+        
+        .header .subtitle {
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .header .regions {
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .bni-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .stats-header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #8b6f3f;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #c69c6d, #8b6f3f);
+            border-radius: 2px;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        .step-mini {
+            flex: 1;
+            text-align: center;
+            padding: 15px 8px;
+            background: linear-gradient(135deg, rgba(248, 246, 243, 0.8) 0%, rgba(242, 238, 232, 0.8) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .step-mini:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 111, 63, 0.15);
+        }
+        
+        .step-number-mini {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #c69c6d 0%, #8b6f3f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 8px;
+        }
+        
+        .step-title-mini {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6b5235;
+            margin-bottom: 5px;
+        }
+        
+        .step-desc-mini {
+            font-size: 0.7rem;
+            color: #8b7355;
+            line-height: 1.3;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .service-card-mini {
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.9) 0%, rgba(244, 240, 235, 0.9) 100%);
+            padding: 15px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card-mini::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #c69c6d, #8b6f3f);
+        }
+        
+        .service-card-mini:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 111, 63, 0.12);
+        }
+        
+        .service-title-mini {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6b5235;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .service-icon-mini {
+            font-size: 1rem;
+        }
+        
+        .service-list-mini {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-list-mini li {
+            padding: 2px 0;
+            color: #8b7355;
+            position: relative;
+            padding-left: 12px;
+            font-weight: 400;
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+        
+        .service-list-mini li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #c69c6d;
+            font-weight: bold;
+        }
+        
+        .quotes-section {
+            margin: 15px 0;
+        }
+        
+        .quote-mini {
+            background: linear-gradient(135deg, rgba(196, 156, 109, 0.1) 0%, rgba(154, 127, 83, 0.1) 100%);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 8px;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+        }
+        
+        .quote-text {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #6b5235;
+            font-weight: 500;
+        }
+        
+        .journey-section {
+            margin: 20px 0;
+        }
+        
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .journey-card {
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.9) 0%, rgba(244, 240, 235, 0.9) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .journey-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 111, 63, 0.12);
+        }
+        
+        .journey-years {
+            font-size: 0.7rem;
+            color: #8b7355;
+            margin-bottom: 5px;
+        }
+        
+        .journey-company {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6b5235;
+            margin-bottom: 5px;
+        }
+        
+        .journey-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8b6f3f;
+            margin-bottom: 3px;
+        }
+        
+        .journey-desc {
+            font-size: 0.7rem;
+            color: #8b7355;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .expertise-card {
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.9) 0%, rgba(244, 240, 235, 0.9) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #c69c6d, #8b6f3f);
+        }
+        
+        .expertise-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b5235;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .expertise-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .expertise-list li {
+            padding: 3px 0;
+            color: #8b7355;
+            position: relative;
+            padding-left: 15px;
+            font-weight: 400;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .expertise-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #c69c6d;
+            font-weight: bold;
+        }
+        
+        .brands-section {
+            margin: 20px 0;
+        }
+        
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .brand-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .brand-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 111, 63, 0.1);
+        }
+        
+        .brand-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #6b5235;
+        }
+        
+        .target-section {
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.9) 0%, rgba(244, 240, 235, 0.9) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(196, 156, 109, 0.2);
+            margin: 15px 0;
+        }
+        
+        .target-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b5235;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .target-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .target-tag {
+            background: linear-gradient(135deg, #c69c6d, #8b6f3f);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #8b6f3f 0%, #6b5235 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+        
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-icon {
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            font-weight: 500;
+            word-break: break-all;
+            line-height: 1.2;
+        }
+        
+        .page-break {
+            page-break-before: always;
+            height: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .main-content {
+                padding: 20px 15px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stat-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .step-mini {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-align: left;
+                padding: 10px;
+            }
+            
+            .step-number-mini {
+                margin: 0;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .pitch-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            
+            .page {
+                min-height: 100vh;
+                page-break-after: always;
+            }
+            
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pitch-container">
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <h1>AZIZ SAIF</h1>
+                <h2>Strategic Business Consultant | Retail & Franchise Expert</h2>
+                <div class="subtitle">From School Dropout to VP Operations & Business Entrepreneur</div>
+                <div class="regions">Operating Across 9 Regions: UAE • KSA • Oman • Kuwait • Bahrain • Qatar • Egypt • Africa • Iraq</div>
+                <div class="bni-badge">
+                    🏆 Proud Member BNI Gems - No. 1 Chapter in UAE
+                </div>
+                <div class="stats-header">
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">60+</div>
+                        <div class="stat-label">Stores Managed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">9</div>
+                        <div class="stat-label">Countries/Regions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">M+</div>
+                        <div class="stat-label">Inventory Managed</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="section-title">Strategic Process</h2>
+                <div class="process-steps">
+                    <div class="step-mini">
+                        <div class="step-number-mini">1</div>
+                        <div class="step-title-mini">Analysis First</div>
+                        <div class="step-desc-mini">Market research & assessment</div>
+                    </div>
+                    <div class="step-mini">
+                        <div class="step-number-mini">2</div>
+                        <div class="step-title-mini">Strategy</div>
+                        <div class="step-desc-mini">Tailored roadmap development</div>
+                    </div>
+                    <div class="step-mini">
+                        <div class="step-number-mini">3</div>
+                        <div class="step-title-mini">Design</div>
+                        <div class="step-desc-mini">Scalable system build</div>
+                    </div>
+                    <div class="step-mini">
+                        <div class="step-number-mini">4</div>
+                        <div class="step-title-mini">Execute</div>
+                        <div class="step-desc-mini">Hands-on delivery</div>
+                    </div>
+                    <div class="step-mini">
+                        <div class="step-number-mini">5</div>
+                        <div class="step-title-mini">Results</div>
+                        <div class="step-desc-mini">Profitable growth</div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Complete A-Z Solutions</h2>
+                <div class="services-grid">
+                    <div class="service-card-mini">
+                        <h3 class="service-title-mini">
+                            <span class="service-icon-mini">🏪</span>
+                            Retail & Franchise
+                        </h3>
+                        <ul class="service-list-mini">
+                            <li>Store optimization & layout</li>
+                            <li>Master franchise setup</li>
+                            <li>Operations management</li>
+                            <li>Mall positioning strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card-mini">
+                        <h3 class="service-title-mini">
+                            <span class="service-icon-mini">📦</span>
+                            Sourcing & Trade
+                        </h3>
+                        <ul class="service-list-mini">
+                            <li>Global sourcing solutions</li>
+                            <li>Factory connections</li>
+                            <li>Supply chain optimization</li>
+                            <li>B2B manufacturing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card-mini">
+                        <h3 class="service-title-mini">
+                            <span class="service-icon-mini">💻</span>
+                            Digital & E-commerce
+                        </h3>
+                        <ul class="service-list-mini">
+                            <li>Online platform setup</li>
+                            <li>Marketplace entry</li>
+                            <li>Digital transformation</li>
+                            <li>ERP implementation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card-mini">
+                        <h3 class="service-title-mini">
+                            <span class="service-icon-mini">🎨</span>
+                            Brand Development
+                        </h3>
+                        <ul class="service-list-mini">
+                            <li>Fashion brand creation</li>
+                            <li>Product design to delivery</li>
+                            <li>Market positioning</li>
+                            <li>Brand strategy</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card-mini">
+                        <h3 class="service-title-mini">
+                            <span class="service-icon-mini">💼</span>
+                            Business Consulting
+                        </h3>
+                        <ul class="service-list-mini">
+                            <li>Startup guidance</li>
+                            <li>Business revival</li>
+                            <li>Investment advisory</li>
+                            <li>Strategic planning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card-mini">
+                        <h3 class="service-title-mini">
+                            <span class="service-icon-mini">💰</span>
+                            Investment & Growth
+                        </h3>
+                        <ul class="service-list-mini">
+                            <li>OPM Strategy</li>
+                            <li>Franchise models</li>
+                            <li>Revenue optimization</li>
+                            <li>Market expansion</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="quotes-section">
+                    <div class="quote-mini">
+                        <p class="quote-text">"I humbly serve others, not to seek attention, but with a sincere heart to help them grow"</p>
+                    </div>
+                    <div class="quote-mini">
+                        <p class="quote-text">"Turn dead inventory into living profit - that's the art of retail mastery"</p>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Success Journey</h2>
+                <div class="journey-grid">
+                    <div class="journey-card">
+                        <div class="journey-years">1987-2017</div>
+                        <div class="journey-company">SANA FASHIONS</div>
+                        <div class="journey-number">35</div>
+                        <div class="journey-desc">Stores Managed</div>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-years">2018-2023</div>
+                        <div class="journey-company">LE PEARL OMAN</div>
+                        <div class="journey-number">10</div>
+                        <div class="journey-desc">Store Expansion</div>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-years">2019-2022</div>
+                        <div class="journey-company">YOYOSO KSA</div>
+                        <div class="journey-number">15</div>
+                        <div class="journey-desc">Franchise Success</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="header">
+                <h1>AZIZ SAIF</h1>
+                <h2>Your Business Partner, Not Just a Consultant</h2>
+                <div class="subtitle">"With skin in the game - When you win, I win"</div>
+                <div class="regions">UAE • KSA • Oman</div>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="section-title">Core Expertise & Competencies</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>🎯</span>
+                            Strategic Planning & Analysis
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>Business rollout & feasibility studies</li>
+                            <li>Financial model development</li>
+                            <li>Gap analysis & competitor research</li>
+                            <li>Market positioning & opportunity mapping</li>
+                            <li>Regional market entry strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>🏭</span>
+                            Operations & Manufacturing
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>B2B manufacturing solutions</li>
+                            <li>Resource planning & optimization</li>
+                            <li>Business evaluation & setup</li>
+                            <li>Operational efficiency improvement</li>
+                            <li>Logistics & supply chain management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>🌍</span>
+                            Global Expansion & Sourcing
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>Global expansion strategies</li>
+                            <li>International sourcing networks</li>
+                            <li>Cross-border trade facilitation</li>
+                            <li>Multi-region operations management</li>
+                            <li>Cultural adaptation & localization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>📊</span>
+                            Business Development & Strategy
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>Strategy planning & documentation</li>
+                            <li>Business remodeling & restructuring</li>
+                            <li>Finding opportunities & partnerships</li>
+                            <li>Investment advisory & capital raising</li>
+                            <li>Performance optimization & scaling</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Current Focus: Empowering Investors & SMEs</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>🛍️</span>
+                            Retail Fashion Launch
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>End-to-end setup & scaling</li>
+                            <li>Store design & customer experience</li>
+                            <li>Inventory management & optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>🛒</span>
+                            Online Marketplace Entry
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>Digital transformation strategies</li>
+                            <li>E-commerce platform optimization</li>
+                            <li>Online brand positioning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>🏢</span>
+                            Mall Positioning
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>Premium location strategies</li>
+                            <li>Lease negotiation & optimization</li>
+                            <li>Foot traffic analysis & conversion</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <h3 class="expertise-title">
+                            <span>⚡</span>
+                            Franchise Models
+                        </h3>
+                        <ul class="expertise-list">
+                            <li>Fast-track expansion systems</li>
+                            <li>Master franchise development</li>
+                            <li>Franchise partner support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Trusted Partner Brands</h2>
+                <div class="brands-grid">
+                    <div class="brand-item">
+                        <div class="brand-name">YOYOSO</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Le Pearl</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Noon</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Amazon</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Alibaba</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Minoti</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Dirkje</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Kokosnoho</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Charlie Choe</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Supercart FZE</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">DJ Dutchjeans</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-name">Quimby</div>
+                    </div>
+                </div>
+                
+                <div class="quotes-section">
+                    <div class="quote-mini">
+                        <p class="quote-text">"I put my skin in the game and roll up my sleeves - I'm your business partner."</p>
+                    </div>
+                    <div class="quote-mini">
+                        <p class="quote-text">"Your success is my success - I invest my time, expertise, and commitment in every project"</p>
+                    </div>
+                </div>
+                
+                <div class="target-section">
+                    <h3 class="target-title">Looking to Connect With</h3>
+                    <div class="target-list">
+                        <span class="target-tag">Retail Investors</span>
+                        <span class="target-tag">SME Businesses</span>
+                        <span class="target-tag">Fashion Entrepreneurs</span>
+                        <span class="target-tag">E-commerce Startups</span>
+                        <span class="target-tag">Franchise Seekers</span>
+                        <span class="target-tag">Manufacturing Partners</span>
+                        <span class="target-tag">Real Estate Developers</span>
+                        <span class="target-tag">Technology Companies</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-section">
+                <h3 class="contact-title">AZIZ = A-Z Business Solutions</h3>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:azizsaif@azizsaif.com" class="contact-text">azizsaif@azizsaif.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <a href="tel:+971556492370" class="contact-text">+971 55 649 2370</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💬</span>
+                        <a href="https://wa.me/971556492370" class="contact-text">WhatsApp</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💼</span>
+                        <a href="https://www.linkedin.com/in/aziz-akbar-853698225/" class="contact-text">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <a href="https://maps.google.com/maps?q=253+Dubai+Textile+City+Dubai" class="contact-text">253 Dubai Textile City</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🗺️</span>
+                        <a href="https://maps.google.com/maps?q=253+Dubai+Textile+City+Dubai" class="contact-text">View on Map</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARK NATURALS | Complete Investment Dashboard | Fahd Khatri</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+        
+        .dashboard {
+            width: 100%;
+            min-width: 1400px;
+            padding: 30px;
+            background: #ffffff;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 3px solid #000000;
+            background: #ffffff;
+        }
+        
+        .company-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000000;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: #666666;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .founder-info {
+            font-size: 14px;
+            color: #000000;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            background: #ffffff;
+            border: 2px solid #000000;
+            padding: 15px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #666666;
+            padding-bottom: 5px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 10px 8px;
+            border: 2px solid #666666;
+            background: #f9f9f9;
+        }
+        
+        .metric-label {
+            font-size: 10px;
+            color: #666666;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .metric-value {
+            font-size: 18px;
+            color: #000000;
+            font-weight: 800;
+        }
+        
+        .metric-suffix {
+            font-size: 9px;
+            color: #666666;
+            font-weight: 500;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 10px;
+        }
+        
+        th {
+            background: #000000;
+            color: #ffffff;
+            padding: 6px 4px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+        
+        td {
+            border: 1px solid #666666;
+            padding: 4px;
+            text-align: right;
+            font-weight: 500;
+            font-size: 9px;
+        }
+        
+        .text-left {
+            text-align: left !important;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .highlight-row {
+            background: #f0f0f0 !important;
+            font-weight: 700;
+        }
+        
+        .positive {
+            color: #000000;
+            font-weight: 700;
+        }
+        
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 120px;
+            margin: 10px 0;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: end;
+            height: 100px;
+            gap: 3px;
+            padding: 0 5px;
+        }
+        
+        .bar {
+            flex: 1;
+            background: #666666;
+            min-height: 10px;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 8px;
+            font-weight: 600;
+        }
+        
+        .bar.positive {
+            background: #000000;
+        }
+        
+        .bar-label {
+            font-size: 8px;
+            text-align: center;
+            margin-top: 3px;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .key-points {
+            background: #f9f9f9;
+            border: 2px solid #000000;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .key-points h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .key-points ul {
+            font-size: 9px;
+            color: #000000;
+            font-weight: 500;
+            padding-left: 12px;
+        }
+        
+        .key-points li {
+            margin-bottom: 3px;
+        }
+        
+        .contact-section {
+            background: #000000;
+            color: #ffffff;
+            padding: 12px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .contact-title {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        
+        .contact-details {
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .disclaimer {
+            text-align: center;
+            font-size: 8px;
+            color: #666666;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #666666;
+        }
+        
+        @media print {
+            .dashboard {
+                min-width: auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <div class="company-title">ARK NATURALS</div>
+            <div class="tagline">Premium Natural Products Kiosk Investment Opportunity</div>
+            <div class="founder-info">Founded & Led by Fahd Khatri | Strategic UAE Market Entry</div>
+        </div>
+
+        <div class="key-points">
+            <h4>Investment Highlights & Business Model</h4>
+            <ul>
+                <li><strong>Investment Required:</strong> 130,000 AED | <strong>Monthly Net Profit:</strong> 6,361 AED | <strong>Annual ROI:</strong> 58.6% | <strong>Payback:</strong> 20.4 months</li>
+                <li><strong>Revenue Model:</strong> Kiosk retail only - NO online sales rights (handled exclusively by arknaturals.ae)</li>
+                <li><strong>Market Opportunity:</strong> UAE natural products growing 12% annually, first-mover kiosk advantage</li>
+                <li><strong>Safety Margin:</strong> 78% above breakeven | Daily target: 2,000 AED vs breakeven: 1,114 AED</li>
+            </ul>
+        </div>
+
+        <div class="main-grid">
+            <!-- KEY METRICS -->
+            <div class="section">
+                <div class="section-title">Key Investment Metrics</div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Investment</div>
+                        <div class="metric-value">130K</div>
+                        <div class="metric-suffix">AED</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Monthly Profit</div>
+                        <div class="metric-value">6,361</div>
+                        <div class="metric-suffix">AED</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Annual ROI</div>
+                        <div class="metric-value">58.6%</div>
+                        <div class="metric-suffix">Year 1</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">IRR</div>
+                        <div class="metric-value">47.8%</div>
+                        <div class="metric-suffix">Internal</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Payback</div>
+                        <div class="metric-value">20.4</div>
+                        <div class="metric-suffix">Months</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Safety</div>
+                        <div class="metric-value">78%</div>
+                        <div class="metric-suffix">Margin</div>
+                    </div>
+                </div>
+
+                <div class="section-title">Investment Breakdown</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Component</th>
+                            <th>Amount</th>
+                            <th>%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Kiosk Equipment</td>
+                            <td>50,000</td>
+                            <td>38.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Initial Inventory</td>
+                            <td>50,000</td>
+                            <td>38.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Franchise Fees</td>
+                            <td>25,000</td>
+                            <td>19.2%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Design & Setup</td>
+                            <td>5,000</td>
+                            <td>3.8%</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left"><strong>TOTAL</strong></td>
+                            <td><strong>130,000</strong></td>
+                            <td><strong>100%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PROFIT & LOSS -->
+            <div class="section">
+                <div class="section-title">Monthly P&L & Expense Analysis</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Item</th>
+                            <th>Amount</th>
+                            <th>% Rev</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td class="text-left"><strong>REVENUE</strong></td>
+                            <td><strong>60,000</strong></td>
+                            <td><strong>100.0%</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Cost of Goods Sold</td>
+                            <td>(30,000)</td>
+                            <td>(50.0%)</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left"><strong>GROSS PROFIT</strong></td>
+                            <td><strong>30,000</strong></td>
+                            <td><strong>50.0%</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Staff Salaries (2×3000)</td>
+                            <td>(6,000)</td>
+                            <td>(10.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Staff Visa Costs</td>
+                            <td>(542)</td>
+                            <td>(0.9%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Staff Incentive (1%)</td>
+                            <td>(600)</td>
+                            <td>(1.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Management Fees (5%)</td>
+                            <td>(3,000)</td>
+                            <td>(5.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Logistics (5%)</td>
+                            <td>(3,000)</td>
+                            <td>(5.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Marketing (3%)</td>
+                            <td>(1,800)</td>
+                            <td>(3.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Rent</td>
+                            <td>(2,500)</td>
+                            <td>(4.2%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Credit Card (2%)</td>
+                            <td>(1,200)</td>
+                            <td>(2.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Damages (5%)</td>
+                            <td>(3,000)</td>
+                            <td>(5.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Shopping Bags (0.25%)</td>
+                            <td>(150)</td>
+                            <td>(0.3%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Gift Packing (0.25%)</td>
+                            <td>(150)</td>
+                            <td>(0.3%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Utilities</td>
+                            <td>(300)</td>
+                            <td>(0.5%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Depreciation</td>
+                            <td>(625)</td>
+                            <td>(1.0%)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Corporate Tax (9%)</td>
+                            <td>(712)</td>
+                            <td>(1.2%)</td>
+                        </tr>
+                        <tr class="highlight-row positive">
+                            <td class="text-left"><strong>NET PROFIT</strong></td>
+                            <td><strong>6,361</strong></td>
+                            <td><strong>10.6%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BREAKEVEN & CASH FLOW -->
+            <div class="section">
+                <div class="section-title">Breakeven & Cash Flow</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Analysis</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Fixed Costs/Month</td>
+                            <td>9,967</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Variable Cost %</td>
+                            <td>70.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Breakeven Revenue</td>
+                            <td>33,412</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Breakeven Daily</td>
+                            <td>1,114</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left"><strong>Safety Margin</strong></td>
+                            <td><strong>78%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-title">12-Month Cash Flow</div>
+                <div class="chart-container">
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 20px;">
+                            <span>Q1</span>
+                        </div>
+                        <div class="bar positive" style="height: 35px;">
+                            <span>Q2</span>
+                        </div>
+                        <div class="bar positive" style="height: 50px;">
+                            <span>Q3</span>
+                        </div>
+                        <div class="bar positive" style="height: 65px;">
+                            <span>Q4</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; font-size: 8px; font-weight: 600;">
+                        <span>(111K)</span>
+                        <span>(92K)</span>
+                        <span>(73K)</span>
+                        <span>(54K)</span>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Period</th>
+                            <th>Cash Flow</th>
+                            <th>Cumulative</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Initial Investment</td>
+                            <td>(130,000)</td>
+                            <td>(130,000)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Month 6</td>
+                            <td>6,361</td>
+                            <td>(91,834)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Month 12</td>
+                            <td>6,361</td>
+                            <td>(53,668)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Month 18</td>
+                            <td>6,679</td>
+                            <td>(6,934)</td>
+                        </tr>
+                        <tr class="highlight-row positive">
+                            <td class="text-left"><strong>Month 21 (Payback)</strong></td>
+                            <td><strong>6,679</strong></td>
+                            <td><strong>13,103</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bottom-grid">
+            <!-- BALANCE SHEET & 3-YEAR PROJECTION -->
+            <div class="section">
+                <div class="section-title">Balance Sheet (Year 1 End)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Assets</th>
+                            <th>Amount</th>
+                            <th class="text-left">Liabilities</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Cash</td>
+                            <td>76,332</td>
+                            <td class="text-left">Payables</td>
+                            <td>5,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Inventory</td>
+                            <td>50,000</td>
+                            <td class="text-left">Tax Payable</td>
+                            <td>712</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Equipment (Net)</td>
+                            <td>42,500</td>
+                            <td class="text-left">Equity</td>
+                            <td>130,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Other Assets</td>
+                            <td>25,000</td>
+                            <td class="text-left">Retained Earnings</td>
+                            <td>58,120</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left"><strong>TOTAL</strong></td>
+                            <td><strong>193,832</strong></td>
+                            <td class="text-left"><strong>TOTAL</strong></td>
+                            <td><strong>193,832</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-title">3-Year Financial Projection</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Item</th>
+                            <th>Year 1</th>
+                            <th>Year 2</th>
+                            <th>Year 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Revenue</td>
+                            <td>720,000</td>
+                            <td>756,000</td>
+                            <td>793,800</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Gross Profit</td>
+                            <td>360,000</td>
+                            <td>378,000</td>
+                            <td>396,900</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Operating Exp.</td>
+                            <td>(283,668)</td>
+                            <td>(297,851)</td>
+                            <td>(312,744)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">EBIT</td>
+                            <td>76,332</td>
+                            <td>80,149</td>
+                            <td>84,156</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Corp Tax (9%)</td>
+                            <td>(6,870)</td>
+                            <td>(7,213)</td>
+                            <td>(7,574)</td>
+                        </tr>
+                        <tr class="highlight-row positive">
+                            <td class="text-left"><strong>Net Profit</strong></td>
+                            <td><strong>69,462</strong></td>
+                            <td><strong>72,936</strong></td>
+                            <td><strong>76,582</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Profit Margin</td>
+                            <td>9.6%</td>
+                            <td>9.6%</td>
+                            <td>9.6%</td>
+                        </tr>
+                        <tr class="highlight-row positive">
+                            <td class="text-left"><strong>Cumulative</strong></td>
+                            <td><strong>69,462</strong></td>
+                            <td><strong>142,398</strong></td>
+                            <td><strong>218,980</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- COMPETITIVE ADVANTAGES & RISKS -->
+            <div class="section">
+                <div class="section-title">Investment Advantages & Key Points</div>
+                <ul style="font-size: 10px; color: #000000; font-weight: 500; padding-left: 15px; margin-bottom: 15px;">
+                    <li><strong>First-Mover:</strong> Pioneer in UAE natural products kiosk format</li>
+                    <li><strong>Experienced Leadership:</strong> Fahd Khatri with proven track record</li>
+                    <li><strong>Strong Margins:</strong> 50% gross profit, 9.6% net profit sustainable</li>
+                    <li><strong>Low Risk:</strong> 78% safety margin above breakeven requirements</li>
+                    <li><strong>No E-commerce Rights:</strong> Franchise focused on kiosk retail only</li>
+                    <li><strong>Scalable Model:</strong> Clear path to multiple location expansion</li>
+                    <li><strong>Market Growth:</strong> UAE natural products sector growing 12% annually</li>
+                </ul>
+
+                <div class="section-title">Updated Cost Structure</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">New Cost Elements</th>
+                            <th>Monthly</th>
+                            <th>% Rev</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Staff Visa (6.5K/2yrs/2 staff)</td>
+                            <td>542</td>
+                            <td>0.9%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Staff Incentive (1% on target)</td>
+                            <td>600</td>
+                            <td>1.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Shopping Bags (0.25%)</td>
+                            <td>150</td>
+                            <td>0.25%</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Gift Packing (0.25%)</td>
+                            <td>150</td>
+                            <td>0.25%</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left"><strong>Total New Costs</strong></td>
+                            <td><strong>1,442</strong></td>
+                            <td><strong>2.4%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-title">Performance vs Industry</div>
+                <div class="chart-container">
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 40px;">
+                            <span style="writing-mode: vertical-lr; font-size: 7px;">Market Avg</span>
+                        </div>
+                        <div class="bar positive" style="height: 80px;">
+                            <span style="writing-mode: vertical-lr; font-size: 7px;">Ark Naturals</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; font-size: 8px; font-weight: 600;">
+                        <span>25% ROI</span>
+                        <span>58.6% ROI</span>
+                    </div>
+                </div>
+
+                <div class="section-title">Risk Mitigation</div>
+                <ul style="font-size: 9px; color: #000000; font-weight: 500; padding-left: 15px;">
+                    <li><strong>Conservative Projections:</strong> 78% safety margin built in</li>
+                    <li><strong>Diversified Revenue:</strong> Multiple natural product categories</li>
+                    <li><strong>Prime Locations:</strong> High-traffic mall positioning strategy</li>
+                    <li><strong>Operational Support:</strong> Comprehensive franchise support system</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-title">Investment Opportunity - Ready to Partner</div>
+            <div class="contact-details">
+                FAHD KHATRI - FOUNDER & CEO | EMAIL: fahd@arknaturals.ae | PHONE: +971-XX-XXXX-XXX<br>
+                Complete Due Diligence Package Available | Site Visits Arranged | Immediate Partnership Opportunities
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            © 2025 ARK NATURALS | CONFIDENTIAL INVESTMENT PROPOSAL | All staff benefits included in salary | Franchise excludes online sales rights (handled by arknaturals.ae) | VAT 5% charged to customers
+        </div>
+    </div>
+</body>
+</html>

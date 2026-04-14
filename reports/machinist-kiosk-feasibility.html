@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk in Mall Model - Feasibility Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 5px solid #e53e3e;
+        }
+
+        .section h3 {
+            color: #e53e3e;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .financial-table th {
+            background: #e53e3e;
+            color: white;
+            padding: 8px;
+            text-align: left;
+            font-size: 10px;
+        }
+
+        .financial-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .financial-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .positive {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: #dc3545;
+        }
+
+        .investment-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            font-size: 12px;
+        }
+
+        .franchise-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .feature:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-info h4 {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .contact-info p {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .scenario-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .scenario-card {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 11px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .scenario-card h5 {
+            color: #e53e3e;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .scenario-card.moderate {
+            border-color: #28a745;
+            background: #f8fff8;
+        }
+
+        .cash-flow-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 11px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .staff-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>Kiosk in Mall Model</h1>
+            <p>Premium Retail Kiosk Feasibility Study - Top Malls Research Analysis</p>
+        </div>
+
+        <div class="content">
+            <!-- Key Metrics Dashboard -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">294,800</div>
+                    <div class="metric-label">Investment Required (AED)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">115,230</div>
+                    <div class="metric-label">Monthly Net Profit (AED)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">46.9%</div>
+                    <div class="metric-label">Annual ROI</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2.6</div>
+                    <div class="metric-label">Payback (Years)</div>
+                </div>
+            </div>
+
+            <div class="sections-grid">
+                <!-- Monthly P&L - Moderate Scenario -->
+                <div class="section">
+                    <h3>Monthly P&L Analysis (Moderate Scenario)</h3>
+                    <table class="financial-table">
+                        <tr><th>Item</th><th>AED</th><th>%</th></tr>
+                        <tr><td>Revenue</td><td class="positive">165,000</td><td>100.0%</td></tr>
+                        <tr><td>Cost of Goods Sold</td><td class="negative">(41,250)</td><td>25.0%</td></tr>
+                        <tr><td><strong>Gross Profit</strong></td><td class="positive"><strong>123,750</strong></td><td><strong>75.0%</strong></td></tr>
+                        <tr><td>Rent</td><td class="negative">(20,000)</td><td>12.1%</td></tr>
+                        <tr><td>Staff Costs</td><td class="negative">(7,000)</td><td>4.2%</td></tr>
+                        <tr><td>Utilities & Services</td><td class="negative">(2,350)</td><td>1.4%</td></tr>
+                        <tr><td>Inventory Replenishment</td><td class="negative">(15,000)</td><td>9.1%</td></tr>
+                        <tr><td>Marketing & Operations</td><td class="negative">(3,000)</td><td>1.8%</td></tr>
+                        <tr><td>Other Operating Costs</td><td class="negative">(1,170)</td><td>0.7%</td></tr>
+                        <tr><td style="background: #e53e3e; color: white;"><strong>NET PROFIT</strong></td><td style="background: #e53e3e; color: white;" class="positive"><strong>115,230</strong></td><td style="background: #e53e3e; color: white;"><strong>69.8%</strong></td></tr>
+                    </table>
+                    <div style="margin-top: 10px; font-size: 11px;">
+                        <strong>Daily Target:</strong> 5,500 AED (25 customers × 220 AED average)
+                    </div>
+                </div>
+
+                <!-- Investment Breakdown -->
+                <div class="section">
+                    <h3>Initial Investment Breakdown</h3>
+                    <div class="investment-breakdown">
+                        <div class="breakdown-item">
+                            <span>Initial Inventory</span>
+                            <span>125,000 AED</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Kiosk Design & Construction</span>
+                            <span>75,000 AED</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Working Capital & Marketing</span>
+                            <span>40,000 AED</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Contingency Reserve</span>
+                            <span>26,800 AED</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Licensing & Permits</span>
+                            <span>15,000 AED</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Equipment & Systems</span>
+                            <span>8,000 AED</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>POS & Security Systems</span>
+                            <span>5,000 AED</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 11px; background: white; padding: 8px; border-radius: 5px;">
+                        <strong>Kiosk Specifications:</strong> Luxury 5x5m kiosk with premium finishes, LED lighting, and secure display systems
+                    </div>
+                </div>
+
+                <!-- Performance Scenarios -->
+                <div class="section">
+                    <h3>Performance Scenarios Analysis</h3>
+                    <div class="scenario-cards">
+                        <div class="scenario-card">
+                            <h5>Conservative</h5>
+                            <div>15 customers/day</div>
+                            <div>AED 180 avg sale</div>
+                            <div style="margin-top: 5px;"><strong>Revenue:</strong> 81,000</div>
+                            <div><strong>Net Profit:</strong> 31,230</div>
+                            <div><strong>Margin:</strong> 38.6%</div>
+                        </div>
+                        <div class="scenario-card moderate">
+                            <h5>Moderate ✓</h5>
+                            <div>25 customers/day</div>
+                            <div>AED 220 avg sale</div>
+                            <div style="margin-top: 5px;"><strong>Revenue:</strong> 165,000</div>
+                            <div><strong>Net Profit:</strong> 115,230</div>
+                            <div><strong>Margin:</strong> 69.8%</div>
+                        </div>
+                        <div class="scenario-card">
+                            <h5>Optimistic</h5>
+                            <div>40 customers/day</div>
+                            <div>AED 280 avg sale</div>
+                            <div style="margin-top: 5px;"><strong>Revenue:</strong> 336,000</div>
+                            <div><strong>Net Profit:</strong> 284,000</div>
+                            <div><strong>Margin:</strong> 84.5%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operational Cost Analysis -->
+                <div class="section">
+                    <h3>Mall Location Comparison</h3>
+                    <table class="financial-table">
+                        <tr><th>Location</th><th>Monthly Costs</th><th>Rent Range</th></tr>
+                        <tr><td>Mall of Emirates</td><td>47,620 AED</td><td>18,000 AED</td></tr>
+                        <tr><td>Dubai Mall</td><td>51,920 AED</td><td>22,000 AED</td></tr>
+                    </table>
+                    
+                    <div style="margin-top: 15px;">
+                        <h4 style="font-size: 12px; margin-bottom: 8px; color: #e53e3e;">Staffing Structure</h4>
+                        <div class="staff-item">
+                            <span>Manager/Senior Sales Consultant</span>
+                            <span>4,500 AED + Commission</span>
+                        </div>
+                        <div class="staff-item">
+                            <span>Sales Associate</span>
+                            <span>2,500 AED + Commission</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-Year Financial Projections -->
+                <div class="section">
+                    <h3>3-Year Financial Projections</h3>
+                    <table class="financial-table">
+                        <tr><th>Financial Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
+                        <tr><td>Revenue</td><td>1,980,000</td><td>2,079,000</td><td>2,182,950</td></tr>
+                        <tr><td>Gross Profit</td><td>1,485,000</td><td>1,559,250</td><td>1,637,213</td></tr>
+                        <tr><td>Net Profit</td><td class="positive">1,382,760</td><td class="positive">1,451,898</td><td class="positive">1,524,493</td></tr>
+                        <tr><td>Profit Margin</td><td>69.8%</td><td>69.8%</td><td>69.8%</td></tr>
+                        <tr><td>Cumulative Profit</td><td class="positive">1,382,760</td><td class="positive">2,834,658</td><td class="positive">4,359,151</td></tr>
+                    </table>
+                    
+                    <div style="margin-top: 10px; font-size: 11px; text-align: center; background: #28a745; color: white; padding: 8px; border-radius: 5px;">
+                        <strong>ROI Recovery: 2.6 Years | 3-Year Total ROI: 1,379%</strong>
+                    </div>
+                </div>
+
+                <!-- Market Analysis & Features -->
+                <div class="section">
+                    <h3>Market Analysis & Key Features</h3>
+                    <div class="franchise-features">
+                        <div class="feature">Premium positioning in high-traffic malls</div>
+                        <div class="feature">Luxury 5x5m kiosk with premium finishes</div>
+                        <div class="feature">Strong tourist and expat customer base</div>
+                        <div class="feature">75% gross profit margins maintained</div>
+                        <div class="feature">Flexible product mix optimization</div>
+                        <div class="feature">Professional POS and security systems</div>
+                        <div class="feature">Experienced retail management support</div>
+                        <div class="feature">Scalable to multiple mall locations</div>
+                        <div class="feature">Market rent: 12-13% of revenue</div>
+                        <div class="feature">Commission-based staff incentives</div>
+                        <div class="feature">Comprehensive operational guidelines</div>
+                        <div class="feature">Proven retail kiosk business model</div>
+                    </div>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: white; border-radius: 8px; font-size: 11px;">
+                        <strong>Product Portfolio:</strong> Diverse high-margin retail products with focus on premium brands, specialty items, and customer preferences in UAE market
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h4>RETAIL RESEARCH CONSULTANCY</h4>
+                <p>📧 research@kioskmodel.ae | 📱 +971 XX XXX XXXX</p>
+                <p>Comprehensive Feasibility Analysis | Location Assessment | Investment Evaluation Services</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

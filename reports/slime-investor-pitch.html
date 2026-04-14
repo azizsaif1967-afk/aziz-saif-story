@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slime Business Investor Pitch - Gulf Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 30px;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            font-weight: 400;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            margin: 20px 0 15px 0;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .product-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .financial-table th {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .financial-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .financial-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .financial-table tr:hover {
+            background: #e3f2fd;
+        }
+        
+        .highlight-box {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .flow-step {
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            position: relative;
+        }
+        
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: #3498db;
+        }
+        
+        .flow-step:last-child::after {
+            display: none;
+        }
+        
+        .tech-integration {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .profit-summary {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .expenses-breakdown {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .expense-category {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            .flow-step::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                transform: translateX(50%);
+            }
+            
+            .expenses-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SLIME BUSINESS INVESTMENT PROPOSAL</h1>
+            <p>Gulf Market Entry Strategy | AED 3.675M Revenue Target | 24-Month ROI Plan</p>
+        </div>
+        
+        <div class="content">
+            <!-- Executive Summary -->
+            <div class="section">
+                <h2>1. Executive Summary</h2>
+                <div class="metric-row">
+                    <div class="metric">
+                        <div class="metric-value">AED 3.675M</div>
+                        <div class="metric-label">Revenue Target (24M)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">AED 2.11M</div>
+                        <div class="metric-label">Total Investment</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">175%</div>
+                        <div class="metric-label">Projected ROI</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">9.2%</div>
+                        <div class="metric-label">Market CAGR</div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Investment Opportunity</h3>
+                    <p>Enter the rapidly growing Gulf slime market with a proven product line, innovative social commerce strategy, and clear path to profitability. Our business model combines low-cost Chinese manufacturing with premium Gulf market positioning, targeting the AED 5.88B regional toy market.</p>
+                </div>
+            </div>
+
+            <!-- Business Concept Flow -->
+            <div class="section">
+                <h2>2. Business Concept & Flow</h2>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <h4>💡 IDEA</h4>
+                        <p>Safe, compliant slime products for Gulf market</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>🏭 SOURCING</h4>
+                        <p>Chinese supplier with G-Mark certification</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>📱 MARKETING</h4>
+                        <p>Instagram + WhatsApp direct sales</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>💰 PROFIT</h4>
+                        <p>300-400% markup to retail</p>
+                    </div>
+                </div>
+                
+                <h3>Core Value Proposition</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4>Market Gap</h4>
+                        <ul>
+                            <li>Limited local slime variety in Gulf market</li>
+                            <li>High pricing from existing brands (AED 70-93)</li>
+                            <li>Safety concerns with unregulated products</li>
+                            <li>Lack of social commerce integration</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Our Solution</h4>
+                        <ul>
+                            <li>6 diverse, safe slime products</li>
+                            <li>Competitive pricing (AED 25-50)</li>
+                            <li>G-Mark certified compliance</li>
+                            <li>Instagram-to-WhatsApp sales funnel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Showcase -->
+            <div class="section">
+                <h2>3. Product Portfolio</h2>
+                <div class="product-showcase">
+                    <div class="product-card">
+                        <div class="product-image">🎮</div>
+                        <h4>Fidget Slime Set</h4>
+                        <p><strong>Cost:</strong> AED 7.83<br>
+                        <strong>Retail:</strong> AED 23-39<br>
+                        <strong>Margin:</strong> 200-400%</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">✨</div>
+                        <h4>Bling Putty Set</h4>
+                        <p><strong>Cost:</strong> AED 8.23<br>
+                        <strong>Retail:</strong> AED 25-41<br>
+                        <strong>Margin:</strong> 200-400%</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">💎</div>
+                        <h4>Diamond Ring Putty</h4>
+                        <p><strong>Cost:</strong> AED 2.50<br>
+                        <strong>Retail:</strong> AED 7-12<br>
+                        <strong>Margin:</strong> 200-400%</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🍦</div>
+                        <h4>Ice Cream Slime</h4>
+                        <p><strong>Cost:</strong> AED 3.45<br>
+                        <strong>Retail:</strong> AED 10-17<br>
+                        <strong>Margin:</strong> 200-400%</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🦗</div>
+                        <h4>Amber Putty with Insects</h4>
+                        <p><strong>Cost:</strong> AED 2.35<br>
+                        <strong>Retail:</strong> AED 7-12<br>
+                        <strong>Margin:</strong> 200-400%</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🌌</div>
+                        <h4>Galaxy Slime</h4>
+                        <p><strong>Cost:</strong> AED 3.09<br>
+                        <strong>Retail:</strong> AED 9-15<br>
+                        <strong>Margin:</strong> 200-400%</p>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>Safety & Compliance</h4>
+                    <p>All products require G-Mark certification for GCC markets. Our supplier provides compliant ingredients (Polyvinyl Alcohol, Xanthan Gum, Glycerin) that meet safety standards. Investment includes AED 55,125 for certification processes.</p>
+                </div>
+            </div>
+
+            <!-- Market Analysis -->
+            <div class="section">
+                <h2>4. Market Feasibility Analysis</h2>
+                
+                <h3>Gulf Countries Toy Market Size (AED)</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Market Size 2024</th>
+                            <th>Growth Rate</th>
+                            <th>Market Size 2030</th>
+                            <th>Our Target Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saudi Arabia</td>
+                            <td>AED 3.38B</td>
+                            <td>13.21%</td>
+                            <td>AED 4.17B</td>
+                            <td>0.1%</td>
+                        </tr>
+                        <tr>
+                            <td>UAE</td>
+                            <td>AED 2.39B</td>
+                            <td>8.5%</td>
+                            <td>AED 3.88B</td>
+                            <td>0.15%</td>
+                        </tr>
+                        <tr>
+                            <td>Qatar</td>
+                            <td>AED 1.03B</td>
+                            <td>5.3%</td>
+                            <td>AED 1.40B</td>
+                            <td>0.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Kuwait</td>
+                            <td>AED 735M</td>
+                            <td>6.0%</td>
+                            <td>AED 1.04B</td>
+                            <td>0.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Oman</td>
+                            <td>AED 551M</td>
+                            <td>5.8%</td>
+                            <td>AED 765M</td>
+                            <td>0.05%</td>
+                        </tr>
+                        <tr>
+                            <td>Bahrain</td>
+                            <td>AED 441M</td>
+                            <td>5.5%</td>
+                            <td>AED 598M</td>
+                            <td>0.05%</td>
+                        </tr>
+                        <tr style="background: #e8f5e8; font-weight: bold;">
+                            <td>TOTAL MARKET</td>
+                            <td>AED 8.54B</td>
+                            <td>9.2%</td>
+                            <td>AED 11.87B</td>
+                            <td>0.12%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4>Market Drivers</h4>
+                        <ul>
+                            <li>Growing disposable income in Gulf states</li>
+                            <li>Large young population (40% under 25)</li>
+                            <li>Increasing e-commerce adoption</li>
+                            <li>Social media influence on purchasing</li>
+                            <li>Educational toy market growth</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Competitive Landscape</h4>
+                        <ul>
+                            <li><strong>Hamad Slime:</strong> Local Dubai brand, limited variety</li>
+                            <li><strong>Gooru Slime:</strong> UAE-made, premium pricing</li>
+                            <li><strong>Virgin Megastore:</strong> International brands, high prices</li>
+                            <li><strong>Noon.com:</strong> E-commerce platform, mixed quality</li>
+                            <li><strong>Gap:</strong> Limited social commerce integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Strategy -->
+            <div class="section">
+                <h2>5. Instagram-WhatsApp Marketing Strategy</h2>
+                
+                <div class="tech-integration">
+                    <h3>Social Commerce Technology Integration</h3>
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <h4>📱 Instagram Reels</h4>
+                            <p>ASMR slime videos<br>Product demonstrations<br>User-generated content</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>💬 WhatsApp Direct</h4>
+                            <p>Instant customer service<br>Order processing<br>Payment coordination</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>🛒 Real-time Inventory</h4>
+                            <p>Live stock updates<br>Automated alerts<br>Order fulfillment</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>📊 Analytics</h4>
+                            <p>Conversion tracking<br>Customer insights<br>ROI optimization</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Marketing Budget Allocation (5% of Revenue = AED 183,750)</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Marketing Channel</th>
+                            <th>Monthly Budget (AED)</th>
+                            <th>Annual Budget (AED)</th>
+                            <th>% of Marketing</th>
+                            <th>Expected ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Instagram Advertising</td>
+                            <td>7,350</td>
+                            <td>88,200</td>
+                            <td>48%</td>
+                            <td>4:1</td>
+                        </tr>
+                        <tr>
+                            <td>Influencer Partnerships</td>
+                            <td>4,590</td>
+                            <td>55,080</td>
+                            <td>30%</td>
+                            <td>6:1</td>
+                        </tr>
+                        <tr>
+                            <td>Content Creation</td>
+                            <td>1,840</td>
+                            <td>22,080</td>
+                            <td>12%</td>
+                            <td>3:1</td>
+                        </tr>
+                        <tr>
+                            <td>WhatsApp Business Tools</td>
+                            <td>920</td>
+                            <td>11,040</td>
+                            <td>6%</td>
+                            <td>8:1</td>
+                        </tr>
+                        <tr>
+                            <td>E-commerce Integration</td>
+                            <td>735</td>
+                            <td>8,820</td>
+                            <td>4%</td>
+                            <td>5:1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box">
+                    <h4>Technology Infrastructure</h4>
+                    <p><strong>Instagram Business Integration:</strong> Automated DM responses linking to WhatsApp<br>
+                    <strong>WhatsApp Business API:</strong> Catalog integration with real-time inventory<br>
+                    <strong>E-commerce Backend:</strong> Shopify/WooCommerce with WhatsApp integration<br>
+                    <strong>Analytics Dashboard:</strong> Instagram Insights + WhatsApp Business + Google Analytics</p>
+                </div>
+            </div>
+
+            <!-- Financial Projections -->
+            <div class="section page-break">
+                <h2>6. Complete Financial Model (AED)</h2>
+                
+                <h3>Revenue Projection - 24 Months to AED 3.675M</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Quarter</th>
+                            <th>Units Sold</th>
+                            <th>Avg Price (AED)</th>
+                            <th>Revenue (AED)</th>
+                            <th>Cumulative (AED)</th>
+                            <th>Growth %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q1 2025</td>
+                            <td>5,420</td>
+                            <td>27</td>
+                            <td>146,340</td>
+                            <td>146,340</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Q2 2025</td>
+                            <td>12,250</td>
+                            <td>29</td>
+                            <td>355,250</td>
+                            <td>501,590</td>
+                            <td>143%</td>
+                        </tr>
+                        <tr>
+                            <td>Q3 2025</td>
+                            <td>22,100</td>
+                            <td>31</td>
+                            <td>685,100</td>
+                            <td>1,186,690</td>
+                            <td>93%</td>
+                        </tr>
+                        <tr>
+                            <td>Q4 2025</td>
+                            <td>35,500</td>
+                            <td>33</td>
+                            <td>1,171,500</td>
+                            <td>2,358,190</td>
+                            <td>71%</td>
+                        </tr>
+                        <tr>
+                            <td>Q1 2026</td>
+                            <td>25,200</td>
+                            <td>35</td>
+                            <td>882,000</td>
+                            <td>3,240,190</td>
+                            <td>-25%</td>
+                        </tr>
+                        <tr>
+                            <td>Q2 2026</td>
+                            <td>12,450</td>
+                            <td>35</td>
+                            <td>435,750</td>
+                            <td>3,675,940</td>
+                            <td>-51%</td>
+                        </tr>
+                        <tr style="background: #e8f5e8; font-weight: bold;">
+                            <td>TOTAL</td>
+                            <td>112,920</td>
+                            <td>32.5</td>
+                            <td>3,675,940</td>
+                            <td>3,675,940</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Complete P&L Statement (Annual - AED)</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Line Item</th>
+                            <th>Amount (AED)</th>
+                            <th>% of Revenue</th>
+                            <th>Monthly (AED)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #e8f5e8; font-weight: bold;">
+                            <td>GROSS REVENUE</td>
+                            <td>3,675,940</td>
+                            <td>100.0%</td>
+                            <td>306,328</td>
+                            <td>Target revenue (112,920 units)</td>
+                        </tr>
+                        <tr>
+                            <td>Returns & Refunds</td>
+                            <td>(73,519)</td>
+                            <td>-2.0%</td>
+                            <td>(6,127)</td>
+                            <td>Industry standard return rate</td>
+                        </tr>
+                        <tr style="background: #f0f8ff; font-weight: bold;">
+                            <td>NET REVENUE</td>
+                            <td>3,602,421</td>
+                            <td>98.0%</td>
+                            <td>300,202</td>
+                            <td>Revenue after returns</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="background: #34495e; color: white; font-weight: bold;">COST OF GOODS SOLD</td>
+                        </tr>
+                        <tr>
+                            <td>Product Cost (FOB China)</td>
+                            <td>(756,507)</td>
+                            <td>-21.0%</td>
+                            <td>(63,042)</td>
+                            <td>Average AED 6.70 per unit</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping & Logistics</td>
+                            <td>(180,121)</td>
+                            <td>-5.0%</td>
+                            <td>(15,010)</td>
+                            <td>Sea freight + local delivery</td>
+                        </tr>
+                        <tr>
+                            <td>Import Duties & Customs</td>
+                            <td>(108,073)</td>
+                            <td>-3.0%</td>
+                            <td>(9,006)</td>
+                            <td>GCC import duties</td>
+                        </tr>
+                        <tr>
+                            <td>G-Mark Certification</td>
+                            <td>(18,012)</td>
+                            <td>-0.5%</td>
+                            <td>(1,501)</td>
+                            <td>Compliance costs</td>
+                        </tr>
+                        <tr>
+                            <td>Warehousing & Storage</td>
+                            <td>(54,036)</td>
+                            <td>-1.5%</td>
+                            <td>(4,503)</td>
+                            <td>Dubai warehouse costs</td>
+                        </tr>
+                        <tr style="background: #f0f8ff; font-weight: bold;">
+                            <td>TOTAL COGS</td>
+                            <td>(1,116,749)</td>
+                            <td>-31.0%</td>
+                            <td>(93,062)</td>
+                            <td>All direct product costs</td>
+                        </tr>
+                        <tr style="background: #e8f5e8; font-weight: bold;">
+                            <td>GROSS PROFIT</td>
+                            <td>2,485,672</td>
+                            <td>69.0%</td>
+                            <td>207,139</td>
+                            <td>Strong margin for growth</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="background: #34495e; color: white; font-weight: bold;">OPERATING EXPENSES</td>
+                        </tr>
+                        <tr>
+                            <td>Marketing & Advertising</td>
+                            <td>(183,797)</td>
+                            <td>-5.1%</td>
+                            <td>(15,316)</td>
+                            <td>Instagram, influencers, content</td>
+                        </tr>
+                        <tr>
+                            <td>Salaries & Benefits</td>
+                            <td>(330,234)</td>
+                            <td>-9.2%</td>
+                            <td>(27,520)</td>
+                            <td>4 full-time employees</td>
+                        </tr>
+                        <tr>
+                            <td>Office Rent & Utilities</td>
+                            <td>(88,063)</td>
+                            <td>-2.4%</td>
+                            <td>(7,339)</td>
+                            <td>Dubai office space</td>
+                        </tr>
+                        <tr>
+                            <td>Technology & Software</td>
+                            <td>(44,031)</td>
+                            <td>-1.2%</td>
+                            <td>(3,669)</td>
+                            <td>E-commerce, CRM, analytics</td>
+                        </tr>
+                        <tr>
+                            <td>Professional Services</td>
+                            <td>(66,047)</td>
+                            <td>-1.8%</td>
+                            <td>(5,504)</td>
+                            <td>Legal, accounting, consulting</td>
+                        </tr>
+                        <tr>
+                            <td>Insurance & Licenses</td>
+                            <td>(22,016)</td>
+                            <td>-0.6%</td>
+                            <td>(1,835)</td>
+                            <td>Business insurance, licenses</td>
+                        </tr>
+                        <tr>
+                            <td>WhatsApp Business API</td>
+                            <td>(11,008)</td>
+                            <td>-0.3%</td>
+                            <td>(917)</td>
+                            <td>WhatsApp Business charges</td>
+                        </tr>
+                        <tr>
+                            <td>Payment Processing</td>
+                            <td>(110,078)</td>
+                            <td>-3.1%</td>
+                            <td>(9,173)</td>
+                            <td>Credit card, mobile payments</td>
+                        </tr>
+                        <tr>
+                            <td>Other Operating Expenses</td>
+                            <td>(36,694)</td>
+                            <td>-1.0%</td>
+                            <td>(3,058)</td>
+                            <td>Miscellaneous business costs</td>
+                        </tr>
+                        <tr style="background: #f0f8ff; font-weight: bold;">
+                            <td>TOTAL OPERATING EXPENSES</td>
+                            <td>(891,968)</td>
+                            <td>-24.8%</td>
+                            <td>(74,331)</td>
+                            <td>All operational costs</td>
+                        </tr>
+                        <tr style="background: #e8f5e8; font-weight: bold;">
+                            <td>EBITDA</td>
+                            <td>1,593,704</td>
+                            <td>44.2%</td>
+                            <td>132,809</td>
+                            <td>Earnings before interest, tax, depreciation</td>
+                        </tr>
+                        <tr>
+                            <td>Depreciation & Amortization</td>
+                            <td>(36,694)</td>
+                            <td>-1.0%</td>
+                            <td>(3,058)</td>
+                            <td>Equipment, software amortization</td>
+                        </tr>
+                        <tr>
+                            <td>Interest Expense</td>
+                            <td>(22,016)</td>
+                            <td>-0.6%</td>
+                            <td>(1,835)</td>
+                            <td>Working capital financing</td>
+                        </tr>
+                        <tr style="background: #f0f8ff; font-weight: bold;">
+                            <td>PROFIT BEFORE TAX</td>
+                            <td>1,534,994</td>
+                            <td>42.6%</td>
+                            <td>127,916</td>
+                            <td>Pre-tax profit</td>
+                        </tr>
+                        <tr>
+                            <td>Corporate Tax (9% UAE)</td>
+                            <td>(138,149)</td>
+                            <td>-3.8%</td>
+                            <td>(11,512)</td>
+                            <td>UAE corporate tax rate</td>
+                        </tr>
+                        <tr style="background: #27ae60; color: white; font-weight: bold;">
+                            <td>NET PROFIT</td>
+                            <td>1,396,845</td>
+                            <td>38.8%</td>
+                            <td>116,404</td>
+                            <td>Final profit after all costs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cash Flow Analysis -->
+            <div class="section">
+                <h2>7. Cash Flow & Investment Requirements</h2>
+                
+                <h3>Initial Investment Breakdown (AED)</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Investment Category</th>
+                            <th>Amount (AED)</th>
+                            <th>% of Total</th>
+                            <th>Timing</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Initial Inventory (6 months)</td>
+                            <td>550,125</td>
+                            <td>26.1%</td>
+                            <td>Month 1-2</td>
+                            <td>First orders from supplier</td>
+                        </tr>
+                        <tr>
+                            <td>Working Capital</td>
+                            <td>367,594</td>
+                            <td>17.4%</td>
+                            <td>Month 1</td>
+                            <td>3 months operating expenses</td>
+                        </tr>
+                        <tr>
+                            <td>Technology Setup</td>
+                            <td>183,797</td>
+                            <td>8.7%</td>
+                            <td>Month 1</td>
+                            <td>E-commerce, WhatsApp integration</td>
+                        </tr>
+                        <tr>
+                            <td>Marketing Launch</td>
+                            <td>146,338</td>
+                            <td>6.9%</td>
+                            <td>Month 1-3</td>
+                            <td>Initial marketing campaigns</td>
+                        </tr>
+                        <tr>
+                            <td>Office Setup & Equipment</td>
+                            <td>110,078</td>
+                            <td>5.2%</td>
+                            <td>Month 1</td>
+                            <td>Dubai office, warehouse setup</td>
+                        </tr>
+                        <tr>
+                            <td>Legal & Compliance</td>
+                            <td>73,519</td>
+                            <td>3.5%</td>
+                            <td>Month 1-2</td>
+                            <td>Business registration, G-Mark</td>
+                        </tr>
+                        <tr>
+                            <td>Professional Services</td>
+                            <td>55,125</td>
+                            <td>2.6%</td>
+                            <td>Month 1</td>
+                            <td>Accountant, lawyer, consultant</td>
+                        </tr>
+                        <tr>
+                            <td>Insurance & Bonds</td>
+                            <td>36,759</td>
+                            <td>1.7%</td>
+                            <td>Month 1</td>
+                            <td>Business insurance, trade bonds</td>
+                        </tr>
+                        <tr>
+                            <td>Contingency (10%)</td>
+                            <td>183,797</td>
+                            <td>8.7%</td>
+                            <td>As needed</td>
+                            <td>Unexpected costs buffer</td>
+                        </tr>
+                        <tr style="background: #e8f5e8; font-weight: bold;">
+                            <td>TOTAL INITIAL INVESTMENT</td>
+                            <td>1,707,132</td>
+                            <td>80.8%</td>
+                            <td>Month 1-3</td>
+                            <td>Total upfront capital needed</td>
+                        </tr>
+                        <tr>
+                            <td>Additional Working Capital (Y2)</td>
+                            <td>404,625</td>
+                            <td>19.2%</td>
+                            <td>Month 6-12</td>
+                            <td>Growth capital requirements</td>
+                        </tr>
+                        <tr style="background: #27ae60; color: white; font-weight: bold;">
+                            <td>TOTAL INVESTMENT (24M)</td>
+                            <td>2,111,757</td>
+                            <td>100.0%</td>
+                            <td>24 months</td>
+                            <td>Complete investment requirement</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="profit-summary">
+                    <h3>Investment Returns Summary</h3>
+                    <div class="metric-row">
+                        <div class="metric">
+                            <div class="metric-value" style="color: white;">AED 2.11M</div>
+                            <div class="metric-label" style="color: #ecf0f1;">Total Investment</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" style="color: white;">AED 1.40M</div>
+                            <div class="metric-label" style="color: #ecf0f1;">Annual Net Profit</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" style="color: white;">66%</div>
+                            <div class="metric-label" style="color: #ecf0f1;">Annual ROI</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" style="color: white;">18 Months</div>
+                            <div class="metric-label" style="color: #ecf0f1;">Payback Period</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis -->
+            <div class="section">
+                <h2>8. Risk Analysis & Mitigation</h2>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4>🚨 High Risk Factors</h4>
+                        <ul>
+                            <li><strong>Regulatory Changes:</strong> GCC safety standards updates</li>
+                            <li><strong>Supply Chain:</strong> China shipping delays/costs</li>
+                            <li><strong>Competition:</strong> Large toy companies entering market</li>
+                            <li><strong>Economic:</strong> Gulf economic slowdown impact</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>🛡️ Mitigation Strategies</h4>
+                        <ul>
+                            <li><strong>Diversify suppliers</strong> - India, Turkey alternatives</li>
+                            <li><strong>6-month inventory</strong> buffer maintained</li>
+                            <li><strong>Strong brand building</strong> and customer loyalty</li>
+                            <li><strong>Flexible pricing</strong> model for economic changes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>Break-even Analysis</h4>
+                    <p><strong>Monthly Break-even:</strong> AED 74,331 (operating expenses)<br>
+                    <strong>Units needed:</strong> 2,322 units/month at AED 32 average price<br>
+                    <strong>Daily sales target:</strong> 77 units/day to break even<br>
+                    <strong>Safety margin:</strong> Target is 6.7x break-even volume</p>
+                </div>
+            </div>
+
+            <!-- Implementation Timeline -->
+            <div class="section">
+                <h2>9. Implementation Roadmap</h2>
+                
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Timeline</th>
+                            <th>Key Activities</th>
+                            <th>Investment (AED)</th>
+                            <th>Revenue Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Phase 1: Foundation</strong></td>
+                            <td>Months 1-3</td>
+                            <td>
+                                • Business registration & G-Mark certification<br>
+                                • Initial inventory procurement<br>
+                                • Technology platform setup<br>
+                                • Instagram/WhatsApp integration<br>
+                                • Team hiring & training
+                            </td>
+                            <td>918,450</td>
+                            <td>AED 146,340</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 2: Launch</strong></td>
+                            <td>Months 4-6</td>
+                            <td>
+                                • Product launch on major platforms<br>
+                                • Instagram marketing campaigns<br>
+                                • Influencer partnerships<br>
+                                • WhatsApp customer service<br>
+                                • Retail distribution setup
+                            </td>
+                            <td>275,535</td>
+                            <td>AED 355,250</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 3: Scale</strong></td>
+                            <td>Months 7-12</td>
+                            <td>
+                                • Multi-channel distribution<br>
+                                • Inventory expansion<br>
+                                • Regional market entry<br>
+                                • Advanced analytics implementation<br>
+                                • Product line extensions
+                            </td>
+                            <td>550,125</td>
+                            <td>AED 1,856,600</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 4: Expansion</strong></td>
+                            <td>Months 13-24</td>
+                            <td>
+                                • GCC-wide distribution<br>
+                                • Product diversification<br>
+                                • Wholesale partnerships<br>
+                                • International expansion prep<br>
+                                • IPO/Exit preparation
+                            </td>
+                            <td>367,647</td>
+                            <td>AED 1,317,750</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="section">
+                <h2>10. Investment Conclusion</h2>
+                
+                <div class="profit-summary">
+                    <h3>Why Invest in Our Slime Business?</h3>
+                    <div class="grid">
+                        <div class="card" style="background: white; color: #333;">
+                            <h4>🎯 Proven Market</h4>
+                            <p>AED 8.54B Gulf toy market growing at 9.2% annually with limited slime competition</p>
+                        </div>
+                        <div class="card" style="background: white; color: #333;">
+                            <h4>💰 High Margins</h4>
+                            <p>300-400% gross margins with 38.8% net profit margin at scale</p>
+                        </div>
+                        <div class="card" style="background: white; color: #333;">
+                            <h4>🚀 Scalable Model</h4>
+                            <p>Instagram-to-WhatsApp sales funnel with real-time inventory management</p>
+                        </div>
+                        <div class="card" style="background: white; color: #333;">
+                            <h4>📈 Quick ROI</h4>
+                            <p>66% annual ROI with 18-month payback period</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Next Steps</h3>
+                    <ol>
+                        <li><strong>Secure Investment:</strong> AED 2.11M total funding commitment</li>
+                        <li><strong>Legal Setup:</strong> 30 days for business registration and compliance</li>
+                        <li><strong>Supplier Agreement:</strong> 45 days for initial inventory order</li>
+                        <li><strong>Technology Development:</strong> 60 days for platform integration</li>
+                        <li><strong>Market Launch:</strong> 90 days to first sales</li>
+                    </ol>
+                </div>
+                
+                <div class="profit-summary">
+                    <h2>Ready to Build the Gulf's Leading Slime Brand?</h2>
+                    <p style="font-size: 1.2em;">Contact us to discuss investment terms and partnership opportunities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

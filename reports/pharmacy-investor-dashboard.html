@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Pharmacy Market - Investment Opportunity</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .metric-growth {
+            font-size: 0.9em;
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .chart-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .chart-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .competitive-landscape {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .competitive-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .pharmacy-chains {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .chain-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .chain-card:hover {
+            transform: scale(1.05);
+        }
+
+        .chain-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .chain-stores {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .chain-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .insights-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .insight-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .insight-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .insight-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .insight-highlight {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+            margin: 10px 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-text {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .investment-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .factor-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .factor-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .canvas-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .chart-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>UAE Pharmacy Market</h1>
+            <p>A $8.15B Investment Opportunity by 2030 | 11.2% CAGR Growth Potential</p>
+        </div>
+
+        <!-- Key Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">$4.31B</div>
+                <div class="metric-label">Pharmacy Market (2024)</div>
+                <div class="metric-growth">→ $8.15B by 2030 (11.2% CAGR)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$8.72B</div>
+                <div class="metric-label">Health Insurance Market</div>
+                <div class="metric-growth">→ $14.9B by 2033 (6.1% CAGR)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$5.02B</div>
+                <div class="metric-label">Generic Drugs Market</div>
+                <div class="metric-growth">→ $7.24B by 2030 (6.25% CAGR)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">15.2%</div>
+                <div class="metric-label">E-Pharmacy CAGR</div>
+                <div class="metric-growth">Fastest growing segment</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">3M+</div>
+                <div class="metric-label">New Insured Residents</div>
+                <div class="metric-growth">Jan 2025 mandate</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">65%</div>
+                <div class="metric-label">Distributor Consolidation</div>
+                <div class="metric-growth">Top 3 players control market</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-title">Market Growth Projection</div>
+                <div class="canvas-container">
+                    <canvas id="marketGrowthChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Population by Emirates</div>
+                <div class="canvas-container">
+                    <canvas id="populationChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Landscape -->
+        <div class="competitive-landscape">
+            <div class="competitive-title">Pharmacy Chain Market Leaders & Emerging Players</div>
+            <div class="pharmacy-chains">
+                <div class="chain-card">
+                    <div class="chain-name">Life Pharmacy</div>
+                    <div class="chain-stores">425+</div>
+                    <div class="chain-label">Market Leader • 10M+ annual customers</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Aster Pharmacy</div>
+                    <div class="chain-stores">150+</div>
+                    <div class="chain-label">Hospital-based + Mall locations</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">BinSina Pharmacy</div>
+                    <div class="chain-stores">150+</div>
+                    <div class="chain-label">First chain (1965) • 24/7 locations</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Supercare</div>
+                    <div class="chain-stores">50+</div>
+                    <div class="chain-label">Premium mall presence</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Boots Pharmacy</div>
+                    <div class="chain-stores">Multiple</div>
+                    <div class="chain-label">International brand</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Al Manara</div>
+                    <div class="chain-stores">All Emirates</div>
+                    <div class="chain-label">Wide insurance acceptance</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Thumbay Pharmacy</div>
+                    <div class="chain-stores">Expanding</div>
+                    <div class="chain-label">Healthcare group division</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Medicina</div>
+                    <div class="chain-stores">Multiple</div>
+                    <div class="chain-label">Strong UAE presence</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Segments Chart -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-title">Market Segments Forecast (USD Billion)</div>
+                <div class="canvas-container">
+                    <canvas id="segmentChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Health Insurance Market by Emirates</div>
+                <div class="canvas-container">
+                    <canvas id="insuranceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alternative Market Projections -->
+        <div class="competitive-landscape">
+            <div class="competitive-title">Market Projections: Multiple Scenarios</div>
+            <div class="pharmacy-chains">
+                <div class="chain-card">
+                    <div class="chain-name">Pharmacy Market</div>
+                    <div class="chain-stores">$4.31B → $8.15B</div>
+                    <div class="chain-label">2024-2030 | 11.2% CAGR</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Alternative Projection</div>
+                    <div class="chain-stores">$8.62B → $10.4B</div>
+                    <div class="chain-label">2024-2032 | 2.38% CAGR</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Pharmaceutical Market</div>
+                    <div class="chain-stores">$4.15B → $8.02B</div>
+                    <div class="chain-label">2024-2033 | 7.30% CAGR</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Generic Drugs</div>
+                    <div class="chain-stores">$5.02B → $7.24B</div>
+                    <div class="chain-label">2024-2030 | 6.25% CAGR</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Health Insurance</div>
+                    <div class="chain-stores">$8.72B → $14.9B</div>
+                    <div class="chain-label">2024-2033 | 6.1% CAGR</div>
+                </div>
+                <div class="chain-card">
+                    <div class="chain-name">Branded Generics</div>
+                    <div class="chain-stores">$1.4B → $2.3B</div>
+                    <div class="chain-label">2021-2030 | 5.8% CAGR</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insights -->
+        <div class="insights-section">
+            <div class="insight-card">
+                <div class="insight-title">🚀 Multiple Growth Catalysts</div>
+                <div class="insight-content">
+                    <div class="insight-highlight">
+                        <strong>Mandatory Insurance Expansion:</strong> AED 320 ($87) annual coverage now required across all emirates, adding 3M+ insured residents
+                    </div>
+                    <p><strong>Demographic Boom:</strong> Population projected to reach 15.37M by 2050 (+44% growth)</p>
+                    <p><strong>Disease Prevalence:</strong> 12.3% diabetes rate driving chronic medication demand</p>
+                    <p><strong>E-Pharmacy Surge:</strong> 15.2% CAGR in digital pharmacy segment</p>
+                    <p><strong>Medical Tourism:</strong> UAE positioned as regional healthcare hub</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-title">💰 Market Segments & Opportunities</div>
+                <div class="insight-content">
+                    <div class="insight-highlight">
+                        <strong>Generic Drugs:</strong> $5.02B market growing to $7.24B by 2030 (6.25% CAGR)
+                    </div>
+                    <p><strong>Branded Generics:</strong> $1.4B segment reaching $2.3B by 2030 (5.8% CAGR)</p>
+                    <p><strong>Biosimilars:</strong> Fastest-growing generic segment, Abu Dhabi leads</p>
+                    <p><strong>Anti-hypertensives:</strong> Largest segment at 14.29% revenue share</p>
+                    <p><strong>Quality Assurance:</strong> Local generics meet USP standards</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-title">🏥 Insurance Market by Emirates</div>
+                <div class="insight-content">
+                    <p><strong>Dubai:</strong> 65.02% revenue share, early mandatory coverage (2016)</p>
+                    <div class="insight-highlight">
+                        <strong>Abu Dhabi:</strong> 98% insurance penetration via Thiqa plan
+                    </div>
+                    <p><strong>Northern Emirates:</strong> 5.12% CAGR growth potential</p>
+                    <p><strong>Market Size:</strong> $8.72B growing to $14.9B by 2033</p>
+                    <p><strong>Population Distribution:</strong> Dubai (3.94M), Abu Dhabi (3.79M), Sharjah (1.8M)</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-title">⚠️ Challenges for Independent Pharmacies</div>
+                <div class="insight-content">
+                    <div class="insight-highlight">
+                        <strong>Regulatory Compliance:</strong> UAE Federal Law No. 8 of 2019 requires continuous operation, patient counseling areas, storage compliance
+                    </div>
+                    <p><strong>Operational Errors:</strong> 32.1% wrong drug errors, 24.7% near-expiry issues</p>
+                    <p><strong>Technology Gap:</strong> Limited inventory management and forecasting systems</p>
+                    <p><strong>Insurance Integration:</strong> Difficulty connecting with multiple providers</p>
+                    <p><strong>Supply Chain:</strong> Limited negotiating power vs. large chains</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-title">🔧 Technology Solutions & Innovation</div>
+                <div class="insight-content">
+                    <p><strong>ERP Systems:</strong> RealSoft integrates with OpenJet, Malaffi, HAAD, DHA, EHA</p>
+                    <div class="insight-highlight">
+                        <strong>Robotic Pharmacies:</strong> Emirates Health Services implementing smart dispensing systems
+                    </div>
+                    <p><strong>POS Solutions:</strong> BizModo offers real-time inventory, barcode scanning</p>
+                    <p><strong>AI Integration:</strong> Drug safety monitoring and clinical trials support</p>
+                    <p><strong>Multi-language Support:</strong> Essential for diverse UAE population</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-title">📊 Market Consolidation Trends</div>
+                <div class="insight-content">
+                    <div class="insight-highlight">
+                        <strong>Distribution Consolidation:</strong> Top 3 distributors increased from 54% to 65% market share since 2014
+                    </div>
+                    <p><strong>Chain Dominance:</strong> Top 4 chains control 775+ stores combined</p>
+                    <p><strong>Government Vision:</strong> Dubai Industrial Strategy 2030, Abu Dhabi Vision 2030</p>
+                    <p><strong>Manufacturing Push:</strong> Reducing import dependency, local production growth</p>
+                    <p><strong>M&A Activity:</strong> Fragmented market ripe for consolidation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Factors -->
+        <div class="cta-section">
+            <div class="cta-title">Investment Thesis</div>
+            <div class="cta-text">UAE pharmacy market presents a compelling multi-billion dollar growth story with regulatory tailwinds, demographic expansion, technology disruption, and consolidation opportunities creating multiple value creation vectors across organized and unorganized sectors</div>
+            
+            <div class="investment-factors">
+                <div class="factor-item">
+                    <div class="factor-icon">📈</div>
+                    <h3>Exceptional Growth</h3>
+                    <p>11.2% CAGR pharmacy market | 15.2% CAGR e-pharmacy</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">🏥</div>
+                    <h3>Regulatory Catalyst</h3>
+                    <p>Mandatory $87 insurance coverage | 3M+ new insured</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">🔄</div>
+                    <h3>Consolidation Play</h3>
+                    <p>Fragmented independents vs. organized chains</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">💻</div>
+                    <h3>Tech Disruption</h3>
+                    <p>AI, robotics, ERP solutions revolutionizing operations</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">🌍</div>
+                    <h3>Regional Gateway</h3>
+                    <p>Medical tourism hub | Dubai Vision 2030</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">💊</div>
+                    <h3>Generic Opportunity</h3>
+                    <p>$5B+ generics market | Quality equivalence proven</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">📊</div>
+                    <h3>Market Intelligence</h3>
+                    <p>32.1% error rates in independents | Efficiency gaps</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">🏗️</div>
+                    <h3>Infrastructure Boom</h3>
+                    <p>Government + private healthcare investments</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px;">
+                <h3 style="color: white; margin-bottom: 20px; text-align: center;">Key Risk Factors & Mitigation</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; color: white;">
+                    <div>
+                        <strong>Regulatory Compliance:</strong> UAE Federal Law No. 8 requires continuous operation, patient counseling areas, storage compliance
+                    </div>
+                    <div>
+                        <strong>Competition Intensity:</strong> Top 4 chains control 775+ stores, distribution consolidation at 65%
+                    </div>
+                    <div>
+                        <strong>Technology Investment:</strong> Independent pharmacies need ERP/POS upgrades for competitiveness
+                    </div>
+                    <div>
+                        <strong>Insurance Integration:</strong> Complex multi-emirate landscape requires sophisticated systems
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Market Growth Chart - Enhanced with multiple segments
+        const ctx1 = document.getElementById('marketGrowthChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: 'Pharmacy Market (USD Billion)',
+                    data: [4.31, 4.79, 5.33, 5.93, 6.60, 7.34, 8.15],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Generic Drugs Market (USD Billion)',
+                    data: [5.02, 5.33, 5.66, 6.01, 6.38, 6.77, 7.24],
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Health Insurance Market (USD Billion)',
+                    data: [8.72, 9.25, 9.81, 10.40, 11.03, 11.69, 12.40],
+                    borderColor: '#2ecc71',
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Branded Generics (USD Billion)',
+                    data: [1.4, 1.48, 1.57, 1.66, 1.76, 1.86, 1.97],
+                    borderColor: '#f39c12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Value (USD Billion)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Population Chart
+        const ctx2 = document.getElementById('populationChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Dubai', 'Abu Dhabi', 'Sharjah', 'Others'],
+                datasets: [{
+                    data: [3.94, 3.79, 1.80, 1.82],
+                    backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#f39c12'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Market Segments Chart - Updated with forecast data
+        const ctx3 = document.getElementById('segmentChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['Pharmacy Retail', 'Generic Drugs', 'Health Insurance', 'Branded Generics'],
+                datasets: [{
+                    label: '2024 (USD Billion)',
+                    data: [4.31, 5.02, 8.72, 1.4],
+                    backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#f39c12'],
+                    borderRadius: 8
+                }, {
+                    label: '2030 Projection (USD Billion)',
+                    data: [8.15, 7.24, 14.9, 2.3],
+                    backgroundColor: ['rgba(231, 76, 60, 0.6)', 'rgba(52, 152, 219, 0.6)', 'rgba(46, 204, 113, 0.6)', 'rgba(243, 156, 18, 0.6)'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Value (USD Billion)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Insurance Market Chart
+        const ctx4 = document.getElementById('insuranceChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['Dubai', 'Abu Dhabi', 'Northern Emirates'],
+                datasets: [{
+                    label: 'Market Share (%)',
+                    data: [65.02, 25, 9.98],
+                    backgroundColor: ['#667eea', '#764ba2', '#f093fb'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Market Share (%)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -173,14 +173,19 @@ section{padding:var(--section-pad) 48px}
 .service-cell p{font-size:.8rem;color:var(--gray-500);line-height:1.7}
 
 /* CREATIONS GRID */
-.creations-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.creation-card{background:var(--white);border:1px solid var(--gray-100);overflow:hidden;transition:all .3s}
-.creation-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.06)}
-.creation-thumb{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:2.4rem;position:relative}
-.creation-thumb .tag{position:absolute;top:8px;right:8px;font-size:.58rem;font-weight:700;padding:3px 8px;background:var(--primary);color:var(--accent);letter-spacing:.5px}
-.creation-body{padding:16px 18px}
-.creation-body h4{font-size:.84rem;font-weight:700;color:var(--primary);margin-bottom:3px}
-.creation-body p{font-size:.72rem;color:var(--gray-500)}
+/* REPORT GRID */
+.report-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.rfilt{background:var(--gray-50);border:1px solid var(--gray-200);padding:6px 16px;font-size:.72rem;font-weight:600;color:var(--gray-600);cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.rfilt:hover{border-color:var(--accent);color:var(--primary)}
+.rfilt.active{background:var(--primary);color:var(--accent);border-color:var(--primary)}
+.report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.report-card{display:flex;gap:16px;padding:20px;background:var(--white);border:1px solid var(--gray-100);text-decoration:none;transition:all .3s;align-items:flex-start}
+.report-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.06)}
+.report-card.hidden{display:none}
+.rpt-icon{min-width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--white);flex-shrink:0}
+.rpt-body h4{font-size:.82rem;font-weight:700;color:var(--primary);margin-bottom:4px;line-height:1.3}
+.rpt-body p{font-size:.72rem;color:var(--gray-500);line-height:1.5;margin-bottom:6px}
+.rpt-tag{display:inline-block;font-size:.56rem;font-weight:700;padding:2px 6px;background:var(--gray-50);color:var(--accent-dark);letter-spacing:.5px;margin-right:4px}
 
 /* STACKBIRDS */
 .stackbirds-section{background:var(--primary);color:var(--white);padding:var(--section-pad) 48px}
@@ -222,16 +227,35 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 .process-step p{font-size:.76rem;color:var(--gray-500);max-width:200px;margin:0 auto}
 
 /* PORTFOLIO */
-.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.portfolio-card{background:var(--white);border:1px solid var(--gray-100);overflow:hidden;transition:all .3s}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.portfolio-card{background:var(--white);border:1px solid var(--gray-100);overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
 .portfolio-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.06)}
-.portfolio-card-thumb{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:2rem}
-.portfolio-card-body{padding:16px;text-align:center}
-.portfolio-card-body h4{font-size:.84rem;margin-bottom:2px;color:var(--primary)}
-.portfolio-card-body p{font-size:.72rem;color:var(--gray-500)}
-.portfolio-card-body .plink{font-size:.65rem;color:var(--gray-400);margin-top:4px;opacity:0;transition:opacity .3s}
-.portfolio-card:hover .plink{opacity:1}
-.portfolio-card a{text-decoration:none;color:inherit;display:block}
+.portfolio-card-thumb{aspect-ratio:16/10;overflow:hidden;position:relative;background:#f0f2f5}
+.portfolio-card-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}
+.portfolio-card:hover .portfolio-card-thumb img{transform:scale(1.03)}
+.portfolio-card-thumb .thumb-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:linear-gradient(135deg,var(--primary),#1a2d4a)}
+.portfolio-card-body{padding:16px 18px;text-align:left;flex:1;display:flex;flex-direction:column}
+.portfolio-card-body h4{font-size:.88rem;margin-bottom:4px;color:var(--primary)}
+.portfolio-card-body .portfolio-desc{font-size:.76rem;color:var(--gray-500);line-height:1.5;margin-bottom:8px;flex:1}
+.portfolio-links{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap}
+.plink-built,.plink-orig{font-size:.7rem;font-weight:600;text-decoration:none;padding:4px 10px;transition:all .3s;display:inline-block}
+.plink-built{color:var(--white);background:var(--primary)}
+.plink-built:hover{background:var(--accent);color:var(--primary)}
+.plink-orig{color:var(--accent);border:1px solid var(--accent)}
+.plink-orig:hover{background:var(--accent);color:var(--white)}
+.portfolio-card a{text-decoration:none;color:inherit;display:flex;flex-direction:column;height:100%}
+
+/* CATALOGUE GALLERY */
+.catalogue-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.catalogue-item{cursor:pointer;overflow:hidden;border:1px solid var(--gray-100);transition:all .3s;position:relative}
+.catalogue-item:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.catalogue-item img{width:100%;display:block;transition:transform .4s}
+.catalogue-item:hover img{transform:scale(1.03)}
+.catalogue-item .cat-overlay{position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(10,22,40,.7));opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:12px}
+.catalogue-item:hover .cat-overlay{opacity:1}
+.catalogue-item .cat-overlay p{color:var(--white);font-size:.72rem;font-weight:600}
+.catalogue-item .cat-zoom{position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(201,168,76,.9);display:flex;align-items:center;justify-content:center;font-size:.7rem;opacity:0;transition:opacity .3s}
+.catalogue-item:hover .cat-zoom{opacity:1}
 
 /* CTA */
 .cta-banner{background:var(--primary);padding:var(--section-pad) 48px;text-align:center;color:var(--white);position:relative;overflow:hidden}
@@ -292,7 +316,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 @media(max-width:1024px){
   .nav-top{padding:0 24px}section,.gallery-section,.stackbirds-section{padding:var(--section-pad) 24px}
   .hero-carousel{height:450px}.stats-inner{padding:0 24px}
-  .cases-grid,.gallery-grid,.creations-grid,.portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid{grid-template-columns:repeat(2,1fr)}
   .company-hero{grid-template-columns:1fr}.company-hero-img{height:300px}
   .sb-grid{grid-template-columns:1fr}.sb-steps{grid-template-columns:1fr}
   .services-grid{grid-template-columns:repeat(2,1fr)}.tools-grid,.setup-grid{grid-template-columns:repeat(2,1fr)}
@@ -310,7 +334,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 }
 @media(max-width:480px){
   section,.gallery-section{padding:40px 16px}
-  .cases-grid,.gallery-grid,.creations-grid,.portfolio-grid,.tools-grid,.setup-grid,.process-row{grid-template-columns:1fr}
+  .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid,.tools-grid,.setup-grid,.process-row{grid-template-columns:1fr}
   .stores-row{grid-template-columns:1fr 1fr}.stats-inner{grid-template-columns:1fr}
   .chatbot-window{width:calc(100vw - 24px);right:12px;bottom:120px}
   .hero-carousel{height:320px}
@@ -333,6 +357,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
       <li><a href="#yoyoso-section" onclick="closeMenu()">YOYOSO</a></li>
       <li><a href="#sana-section" onclick="closeMenu()">Sana Fashions</a></li>
       <li><a href="#services" onclick="closeMenu()">AI Services</a></li>
+      <li><a href="#ai-creations" onclick="closeMenu()">Reports</a></li>
       <li><a href="#stackbirds" onclick="closeMenu()">Stackbirds</a></li>
       <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
@@ -489,7 +514,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   <div class="gallery-inner">
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> Global Pioneer FZE</div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/gp-logo.jpg" alt="GP" style="height:28px;vertical-align:middle;margin-right:6px"> Global Pioneer FZE</div>
         <h2 class="section-title">Company Brochure &amp; Catalogue</h2>
         <p class="section-subtitle">Your Success Partner in the Middle East &mdash; Est. 2017, RAK Free Zone. Business development, B2B sourcing, retail showrooms &amp; franchise services.</p>
       </div>
@@ -513,12 +538,46 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   </div>
 </div>
 
+<!-- ===== GLOBAL PIONEER - CATALOGUE ===== -->
+<div class="gallery-section" style="background:var(--white)">
+  <div class="gallery-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/gp-logo.jpg" alt="Global Pioneer" style="height:32px;vertical-align:middle;margin-right:8px"> Global Pioneer</div>
+        <h2 class="section-title">Company Brochure</h2>
+        <p class="section-subtitle">Full company profile brochure &mdash; business development, retail, B2B sourcing, store design, and franchising across the Middle East.</p>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#128218; 16 Pages</span>
+      </div>
+    </div>
+    <div class="catalogue-grid" id="gpCatalogue">
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',0)"><img src="gp-catalogue/page-01.jpg" alt="GP Cover" loading="lazy"><div class="cat-overlay"><p>Cover</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',1)"><img src="gp-catalogue/page-02.jpg" alt="GP Page 2" loading="lazy"><div class="cat-overlay"><p>About Us</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',2)"><img src="gp-catalogue/page-03.jpg" alt="GP Page 3" loading="lazy"><div class="cat-overlay"><p>Our Vision</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',3)"><img src="gp-catalogue/page-04.jpg" alt="GP Page 4" loading="lazy"><div class="cat-overlay"><p>Business Dev</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',4)"><img src="gp-catalogue/page-05.jpg" alt="GP Page 5" loading="lazy"><div class="cat-overlay"><p>Services</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',5)"><img src="gp-catalogue/page-06.jpg" alt="GP Page 6" loading="lazy"><div class="cat-overlay"><p>Retail</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',6)"><img src="gp-catalogue/page-07.jpg" alt="GP Page 7" loading="lazy"><div class="cat-overlay"><p>Brands</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',7)"><img src="gp-catalogue/page-08.jpg" alt="GP Page 8" loading="lazy"><div class="cat-overlay"><p>Sourcing</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',8)"><img src="gp-catalogue/page-09.jpg" alt="GP Page 9" loading="lazy"><div class="cat-overlay"><p>Wholesale</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',9)"><img src="gp-catalogue/page-10.jpg" alt="GP Page 10" loading="lazy"><div class="cat-overlay"><p>Store Design</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',10)"><img src="gp-catalogue/page-11.jpg" alt="GP Page 11" loading="lazy"><div class="cat-overlay"><p>Franchising</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',11)"><img src="gp-catalogue/page-12.jpg" alt="GP Page 12" loading="lazy"><div class="cat-overlay"><p>Partners</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',12)"><img src="gp-catalogue/page-13.jpg" alt="GP Page 13" loading="lazy"><div class="cat-overlay"><p>Operations</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',13)"><img src="gp-catalogue/page-14.jpg" alt="GP Page 14" loading="lazy"><div class="cat-overlay"><p>Track Record</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',14)"><img src="gp-catalogue/page-15.jpg" alt="GP Page 15" loading="lazy"><div class="cat-overlay"><p>Contact</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('gpCatalogue',15)"><img src="gp-catalogue/page-16.jpg" alt="GP Page 16" loading="lazy"><div class="cat-overlay"><p>Back Cover</p></div><div class="cat-zoom">&#128269;</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== LE PEARL - GALLERY ===== -->
 <div class="gallery-section white-bg" id="lepearl-section">
   <div class="gallery-inner">
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> Le Pearl Fashion</div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl" style="height:28px;vertical-align:middle;margin-right:6px"> Le Pearl Fashion</div>
         <h2 class="section-title">Store &amp; Product Gallery</h2>
         <p class="section-subtitle">"Quality Fashion, Trending Style, Affordable Price" &mdash; 10+ stores across Oman &amp; UAE. Kids, Men &amp; Women.</p>
       </div>
@@ -571,12 +630,46 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   </div>
 </div>
 
+<!-- ===== LE PEARL - CATALOGUE ===== -->
+<div class="gallery-section">
+  <div class="gallery-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl" style="height:32px;vertical-align:middle;margin-right:8px"> Le Pearl Fashion</div>
+        <h2 class="section-title">Brand Brochure</h2>
+        <p class="section-subtitle">Le Pearl Fashion company profile &mdash; store locations, collections, brand partnerships, and expansion across Oman, UAE &amp; KSA.</p>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--white);padding:4px 12px;border:1px solid var(--gray-100)">&#128218; 16 Pages</span>
+      </div>
+    </div>
+    <div class="catalogue-grid" id="lpCatalogue">
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',0)"><img src="lepearl-catalogue/page-01.jpg" alt="Le Pearl Cover" loading="lazy"><div class="cat-overlay"><p>Cover</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',1)"><img src="lepearl-catalogue/page-02.jpg" alt="Le Pearl Page 2" loading="lazy"><div class="cat-overlay"><p>About Le Pearl</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',2)"><img src="lepearl-catalogue/page-03.jpg" alt="Le Pearl Page 3" loading="lazy"><div class="cat-overlay"><p>Brand Story</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',3)"><img src="lepearl-catalogue/page-04.jpg" alt="Le Pearl Page 4" loading="lazy"><div class="cat-overlay"><p>Collections</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',4)"><img src="lepearl-catalogue/page-05.jpg" alt="Le Pearl Page 5" loading="lazy"><div class="cat-overlay"><p>Men's Range</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',5)"><img src="lepearl-catalogue/page-06.jpg" alt="Le Pearl Page 6" loading="lazy"><div class="cat-overlay"><p>Women's Range</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',6)"><img src="lepearl-catalogue/page-07.jpg" alt="Le Pearl Page 7" loading="lazy"><div class="cat-overlay"><p>Kids Range</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',7)"><img src="lepearl-catalogue/page-08.jpg" alt="Le Pearl Page 8" loading="lazy"><div class="cat-overlay"><p>Stores</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',8)"><img src="lepearl-catalogue/page-09.jpg" alt="Le Pearl Page 9" loading="lazy"><div class="cat-overlay"><p>Store Interiors</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',9)"><img src="lepearl-catalogue/page-10.jpg" alt="Le Pearl Page 10" loading="lazy"><div class="cat-overlay"><p>Brand Partners</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',10)"><img src="lepearl-catalogue/page-11.jpg" alt="Le Pearl Page 11" loading="lazy"><div class="cat-overlay"><p>Growth Journey</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',11)"><img src="lepearl-catalogue/page-12.jpg" alt="Le Pearl Page 12" loading="lazy"><div class="cat-overlay"><p>Expansion</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',12)"><img src="lepearl-catalogue/page-13.jpg" alt="Le Pearl Page 13" loading="lazy"><div class="cat-overlay"><p>Marketing</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',13)"><img src="lepearl-catalogue/page-14.jpg" alt="Le Pearl Page 14" loading="lazy"><div class="cat-overlay"><p>Milestones</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',14)"><img src="lepearl-catalogue/page-15.jpg" alt="Le Pearl Page 15" loading="lazy"><div class="cat-overlay"><p>Contact</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('lpCatalogue',15)"><img src="lepearl-catalogue/page-16.jpg" alt="Le Pearl Page 16" loading="lazy"><div class="cat-overlay"><p>Back Cover</p></div><div class="cat-zoom">&#128269;</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== YOYOSO - GALLERY ===== -->
 <div class="gallery-section" id="yoyoso-section">
   <div class="gallery-inner">
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> YOYOSO KSA</div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="height:28px;vertical-align:middle;margin-right:6px"> YOYOSO KSA</div>
         <h2 class="section-title">Store Display &amp; Design Concept</h2>
         <p class="section-subtitle">"Aesthetics Life Designer Brand" &mdash; Master Franchise, Saudi Arabia. 15 mall stores, 5,000+ lifestyle products.</p>
       </div>
@@ -625,12 +718,50 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   </div>
 </div>
 
+<!-- ===== YOYOSO FRANCHISE CATALOGUE ===== -->
+<div class="gallery-section" style="background:var(--white)">
+  <div class="gallery-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="height:32px;vertical-align:middle;margin-right:8px"> YOYOSO Franchise</div>
+        <h2 class="section-title">Franchise Catalogue</h2>
+        <p class="section-subtitle">Complete franchise investment guide designed by Savitha &mdash; brand overview, store concepts, product categories, investment model &amp; ROI projections for YOYOSO Saudi Arabia.</p>
+      </div>
+      <div style="text-align:right">
+        <div style="display:flex;gap:16px;margin-bottom:8px">
+          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#128218; 16 Pages</span>
+          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#127978; Franchise Model</span>
+          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#127480;&#127462; KSA Market</span>
+        </div>
+      </div>
+    </div>
+    <div class="catalogue-grid" id="yoCatalogue">
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',0)"><img src="yoyoso-catalogue/page-01.jpg" alt="YOYOSO Catalogue Cover" loading="lazy"><div class="cat-overlay"><p>Cover</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',1)"><img src="yoyoso-catalogue/page-02.jpg" alt="YOYOSO Brand Introduction" loading="lazy"><div class="cat-overlay"><p>Brand Introduction</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',2)"><img src="yoyoso-catalogue/page-03.jpg" alt="YOYOSO Brand Story" loading="lazy"><div class="cat-overlay"><p>Brand Story</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',3)"><img src="yoyoso-catalogue/page-04.jpg" alt="YOYOSO Global Presence" loading="lazy"><div class="cat-overlay"><p>Global Presence</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',4)"><img src="yoyoso-catalogue/page-05.jpg" alt="YOYOSO Product Categories" loading="lazy"><div class="cat-overlay"><p>Product Categories</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',5)"><img src="yoyoso-catalogue/page-06.jpg" alt="YOYOSO Store Concept" loading="lazy"><div class="cat-overlay"><p>Store Concept</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',6)"><img src="yoyoso-catalogue/page-07.jpg" alt="YOYOSO Store Layout" loading="lazy"><div class="cat-overlay"><p>Store Layout</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',7)"><img src="yoyoso-catalogue/page-08.jpg" alt="YOYOSO Investment Model" loading="lazy"><div class="cat-overlay"><p>Investment Model</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',8)"><img src="yoyoso-catalogue/page-09.jpg" alt="YOYOSO Franchise Benefits" loading="lazy"><div class="cat-overlay"><p>Franchise Benefits</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',9)"><img src="yoyoso-catalogue/page-10.jpg" alt="YOYOSO Revenue Projections" loading="lazy"><div class="cat-overlay"><p>Revenue Projections</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',10)"><img src="yoyoso-catalogue/page-11.jpg" alt="YOYOSO Support System" loading="lazy"><div class="cat-overlay"><p>Support System</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',11)"><img src="yoyoso-catalogue/page-12.jpg" alt="YOYOSO Training Program" loading="lazy"><div class="cat-overlay"><p>Training Program</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',12)"><img src="yoyoso-catalogue/page-13.jpg" alt="YOYOSO Marketing" loading="lazy"><div class="cat-overlay"><p>Marketing Strategy</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',13)"><img src="yoyoso-catalogue/page-14.jpg" alt="YOYOSO Operations" loading="lazy"><div class="cat-overlay"><p>Operations Guide</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',14)"><img src="yoyoso-catalogue/page-15.jpg" alt="YOYOSO Partnership" loading="lazy"><div class="cat-overlay"><p>Partnership Terms</p></div><div class="cat-zoom">&#128269;</div></div>
+      <div class="catalogue-item" onclick="openLightbox('yoCatalogue',15)"><img src="yoyoso-catalogue/page-16.jpg" alt="YOYOSO Contact" loading="lazy"><div class="cat-overlay"><p>Contact &amp; Next Steps</p></div><div class="cat-zoom">&#128269;</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== SANA FASHIONS ===== -->
 <section id="sana-section" style="background:var(--white)">
   <div class="section-inner">
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> Sana Fashions</div>
+        <div class="section-label"><span class="line"></span> <img src="brand-logos/sana-logo.jpg" alt="Sana" style="height:28px;vertical-align:middle;margin-right:6px"> Sana Fashions</div>
         <h2 class="section-title">GCC Retail Chain &mdash; 35 Stores, 5 Countries</h2>
         <p class="section-subtitle">VP Operations &mdash; One of the First Employees. 30 years building the chain from a single store to 35 locations.</p>
       </div>
@@ -687,26 +818,158 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   </div>
 </section>
 
-<!-- AI CREATIONS & REPORTS -->
+<!-- INDUSTRY EXPERTISE & AI REPORTS -->
 <section id="ai-creations" style="background:var(--white)">
   <div class="section-inner">
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> AI Creations &amp; Reports</div>
-        <h2 class="section-title">Feasibility Studies, Reports &amp; AI Deliverables</h2>
-        <p class="section-subtitle">Real AI-powered work delivered for businesses &mdash; industry reports, financial models, SOPs, and automation systems.</p>
+        <div class="section-label"><span class="line"></span> Industry Expertise</div>
+        <h2 class="section-title">27+ AI-Built Feasibility Studies &amp; Reports</h2>
+        <p class="section-subtitle">Real deliverables built with AI across 20+ industries &mdash; feasibility reports, investor pitches, SOPs, dashboards &amp; financial models. Click any card to view the full report.</p>
       </div>
     </div>
-    <div class="creations-grid reveal">
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)">&#128202;<span class="tag">CLAUDE</span></div><div class="creation-body"><h4>Financial Models &amp; P&amp;L</h4><p>Automated accounting reports</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#c9a84c,#a8872e)">&#127912;<span class="tag">GAMMA</span></div><div class="creation-body"><h4>Investor Pitch Decks</h4><p>Angel &amp; VC presentations</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#e74c3c,#c0392b)">&#128196;<span class="tag">FEASIBILITY</span></div><div class="creation-body"><h4>Industry Feasibility Studies</h4><p>Market entry &amp; gap analysis</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#2ecc71,#27ae60)">&#127760;<span class="tag">WEBSITES</span></div><div class="creation-body"><h4>10+ Live AI Websites</h4><p>Deployed in hours</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)">&#128203;<span class="tag">SOPs</span></div><div class="creation-body"><h4>Business SOPs &amp; Manuals</h4><p>Complete operations docs</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#e67e22,#d35400)">&#128232;<span class="tag">APOLLO</span></div><div class="creation-body"><h4>Lead Gen Campaigns</h4><p>100+ emails daily, automated</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#1abc9c,#16a085)">&#128200;<span class="tag">REPORTS</span></div><div class="creation-body"><h4>Industry Reports</h4><p>Salon, retail, F&amp;B, trade</p></div></div>
-      <div class="creation-card"><div class="creation-thumb" style="background:linear-gradient(135deg,#34495e,#2c3e50)">&#128221;<span class="tag">VBA</span></div><div class="creation-body"><h4>Excel &amp; VBA Automation</h4><p>Custom macros &amp; data tools</p></div></div>
+
+    <!-- Industry Filter Tabs -->
+    <div class="report-filters reveal" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px">
+      <button class="rfilt active" onclick="filterReports('all')">All Industries</button>
+      <button class="rfilt" onclick="filterReports('retail')">Retail &amp; Fashion</button>
+      <button class="rfilt" onclick="filterReports('fnb')">F&amp;B &amp; Restaurant</button>
+      <button class="rfilt" onclick="filterReports('salon')">Salon &amp; Grooming</button>
+      <button class="rfilt" onclick="filterReports('franchise')">Franchise &amp; Kiosk</button>
+      <button class="rfilt" onclick="filterReports('health')">Health &amp; Pharma</button>
+      <button class="rfilt" onclick="filterReports('ecomm')">E-Commerce</button>
+      <button class="rfilt" onclick="filterReports('realestate')">Real Estate</button>
+      <button class="rfilt" onclick="filterReports('other')">Other Industries</button>
     </div>
+
+    <div class="report-grid reveal">
+
+      <!-- RETAIL & FASHION -->
+      <a href="reports/retail-consultancy-guide.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#c9a84c,#a8872e)">&#128717;</div>
+        <div class="rpt-body"><h4>Retail Consultancy Guide</h4><p>Comprehensive retail operations, improvement strategies &amp; AI automation playbook for UAE &amp; Oman markets.</p><span class="rpt-tag">RETAIL</span><span class="rpt-tag">CONSULTANCY</span></div>
+      </a>
+      <a href="reports/retail-crisis-guide-uae-oman.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#e74c3c,#c0392b)">&#128680;</div>
+        <div class="rpt-body"><h4>Retail Chain Crisis Guide</h4><p>UAE &amp; Oman retail crisis intervention &mdash; distressed store turnaround, stock liquidation &amp; recovery plan.</p><span class="rpt-tag">RETAIL</span><span class="rpt-tag">TURNAROUND</span></div>
+      </a>
+      <a href="reports/retail-sop-checklist.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)">&#128203;</div>
+        <div class="rpt-body"><h4>Retail Operations SOP</h4><p>Complete retail SOP checklist &mdash; store opening, inventory, staff, compliance &amp; daily operations.</p><span class="rpt-tag">SOP</span><span class="rpt-tag">RETAIL</span></div>
+      </a>
+      <a href="reports/fashion-retail-succession.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#e91e63,#c2185b)">&#128090;</div>
+        <div class="rpt-body"><h4>Fashion Store &mdash; Owner Retiring</h4><p>Succession planning for a fashion retail chain &mdash; valuation, buyer outreach, handover &amp; transition roadmap.</p><span class="rpt-tag">FASHION</span><span class="rpt-tag">EXIT</span></div>
+      </a>
+      <a href="reports/fashion-ai-automation.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#ff6f00,#e65100)">&#129302;</div>
+        <div class="rpt-body"><h4>Fashion AI Automation Guide</h4><p>Complete AI toolkit for fashion retail &mdash; inventory forecasting, trend analysis, automated marketing &amp; content.</p><span class="rpt-tag">AI</span><span class="rpt-tag">FASHION</span></div>
+      </a>
+      <a href="reports/africa-retail-expansion.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#2e7d32,#1b5e20)">&#127757;</div>
+        <div class="rpt-body"><h4>Africa Retail Expansion</h4><p>Ghana &amp; West Africa retail market entry &mdash; garment supply chain, store feasibility &amp; partnership analysis.</p><span class="rpt-tag">AFRICA</span><span class="rpt-tag">RETAIL</span></div>
+      </a>
+      <a href="reports/garment-factory-pitch.html" target="_blank" class="report-card" data-cat="retail">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#5d4037,#3e2723)">&#129526;</div>
+        <div class="rpt-body"><h4>Garment Factory Investor Pitch</h4><p>Manufacturing unit feasibility &mdash; production capacity, supply chain, ROI &amp; investor presentation.</p><span class="rpt-tag">MANUFACTURING</span><span class="rpt-tag">PITCH</span></div>
+      </a>
+
+      <!-- F&B & RESTAURANT -->
+      <a href="reports/restaurant-investor-dashboard.html" target="_blank" class="report-card" data-cat="fnb">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#d32f2f,#b71c1c)">&#127869;</div>
+        <div class="rpt-body"><h4>Restaurant Investor Dashboard</h4><p>Full restaurant investment analysis &mdash; P&amp;L, break-even, location scoring &amp; competitive benchmarking.</p><span class="rpt-tag">RESTAURANT</span><span class="rpt-tag">DASHBOARD</span></div>
+      </a>
+      <a href="reports/restaurant-buy-sell-pitch.html" target="_blank" class="report-card" data-cat="fnb">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#ff8f00,#ef6c00)">&#129309;</div>
+        <div class="rpt-body"><h4>Restaurant Buy &amp; Sell Pitch</h4><p>Business transfer framework &mdash; valuation, due diligence, licence transfer &amp; deal structuring.</p><span class="rpt-tag">RESTAURANT</span><span class="rpt-tag">BUY/SELL</span></div>
+      </a>
+      <a href="reports/supermarket-acquisition-analysis.html" target="_blank" class="report-card" data-cat="fnb">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#1565c0,#0d47a1)">&#128722;</div>
+        <div class="rpt-body"><h4>Supermarket Acquisition Analysis</h4><p>Distressed supermarket due diligence &mdash; stock audit, licence review, staff retention &amp; turnaround plan.</p><span class="rpt-tag">SUPERMARKET</span><span class="rpt-tag">ACQUISITION</span></div>
+      </a>
+
+      <!-- SALON & GROOMING -->
+      <a href="reports/barbershop-feasibility.html" target="_blank" class="report-card" data-cat="salon">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#00695c,#004d40)">&#9986;</div>
+        <div class="rpt-body"><h4>Barbershop Feasibility &mdash; Dubai</h4><p>Men's salon market entry &mdash; location analysis, fit-out costs, revenue model &amp; break-even timeline.</p><span class="rpt-tag">SALON</span><span class="rpt-tag">FEASIBILITY</span></div>
+      </a>
+      <a href="reports/salon-pitch-deck.html" target="_blank" class="report-card" data-cat="salon">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#4a148c,#311b92)">&#128136;</div>
+        <div class="rpt-body"><h4>Salon Investor Pitch Deck</h4><p>Ladies &amp; gents salon investment opportunity &mdash; financial projections, staffing model &amp; ROI analysis.</p><span class="rpt-tag">SALON</span><span class="rpt-tag">PITCH</span></div>
+      </a>
+      <a href="reports/barber-improvement-plan.html" target="_blank" class="report-card" data-cat="salon">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#37474f,#263238)">&#128200;</div>
+        <div class="rpt-body"><h4>Barber Shop Improvement Plan</h4><p>Operations turnaround &mdash; service menu redesign, staff KPIs, marketing strategy &amp; revenue optimisation.</p><span class="rpt-tag">SALON</span><span class="rpt-tag">TURNAROUND</span></div>
+      </a>
+
+      <!-- FRANCHISE & KIOSK -->
+      <a href="reports/perfume-kiosk-pitch.html" target="_blank" class="report-card" data-cat="franchise">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#b8860b,#8b6914)">&#127798;</div>
+        <div class="rpt-body"><h4>Khadlaj Perfumes &mdash; Kiosk Pitch</h4><p>Perfume kiosk franchise &mdash; Dubai Duty Free analysis, competitive intel &amp; investor pitch deck.</p><span class="rpt-tag">KHADLAJ</span><span class="rpt-tag">KIOSK</span></div>
+      </a>
+      <a href="reports/naturals-kiosk-franchise.html" target="_blank" class="report-card" data-cat="franchise">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#2e7d32,#1b5e20)">&#127807;</div>
+        <div class="rpt-body"><h4>Ark Naturals &mdash; Kiosk Franchise</h4><p>Premium cookware kiosk franchise &mdash; Abu Dhabi investment, product range &amp; financial model.</p><span class="rpt-tag">ARK</span><span class="rpt-tag">FRANCHISE</span></div>
+      </a>
+      <a href="reports/machinist-kiosk-feasibility.html" target="_blank" class="report-card" data-cat="franchise">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#455a64,#263238)">&#9881;</div>
+        <div class="rpt-body"><h4>Machinist Kiosk &mdash; City Walk</h4><p>Franchise kiosk feasibility for premium locations &mdash; fit-out, footfall analysis &amp; revenue projection.</p><span class="rpt-tag">MACHINIST</span><span class="rpt-tag">KIOSK</span></div>
+      </a>
+      <a href="reports/kiosk-financial-model.html" target="_blank" class="report-card" data-cat="franchise">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#1565c0,#0d47a1)">&#128202;</div>
+        <div class="rpt-body"><h4>Kiosk Financial Model</h4><p>Universal kiosk P&amp;L template &mdash; rent, staff, COGS, break-even &amp; 3-year cash flow projection.</p><span class="rpt-tag">KIOSK</span><span class="rpt-tag">FINANCIAL</span></div>
+      </a>
+
+      <!-- HEALTH & PHARMA -->
+      <a href="reports/pharmacy-investor-dashboard.html" target="_blank" class="report-card" data-cat="health">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#00838f,#006064)">&#128138;</div>
+        <div class="rpt-body"><h4>Pharmacy Dark Store &mdash; UAE</h4><p>Pharmacy investor dashboard &mdash; UAE market size, dark store model, regulatory framework &amp; cash flow.</p><span class="rpt-tag">PHARMACY</span><span class="rpt-tag">INVESTOR</span></div>
+      </a>
+      <a href="reports/mental-health-platform-canada.html" target="_blank" class="report-card" data-cat="health">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#7b1fa2,#4a148c)">&#129504;</div>
+        <div class="rpt-body"><h4>Mental Health Platform &mdash; Canada</h4><p>Teletherapy platform feasibility &mdash; Canadian market entry, regulatory compliance &amp; revenue model.</p><span class="rpt-tag">HEALTH</span><span class="rpt-tag">CANADA</span></div>
+      </a>
+
+      <!-- E-COMMERCE -->
+      <a href="reports/slime-ecommerce-feasibility.html" target="_blank" class="report-card" data-cat="ecomm">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#7cb342,#558b2f)">&#127922;</div>
+        <div class="rpt-body"><h4>Slime E-Commerce &mdash; UAE Kids</h4><p>Kids slime product feasibility &mdash; UAE e-commerce market, supplier sourcing &amp; D2C fulfilment model.</p><span class="rpt-tag">ECOMM</span><span class="rpt-tag">FEASIBILITY</span></div>
+      </a>
+      <a href="reports/slime-investor-pitch.html" target="_blank" class="report-card" data-cat="ecomm">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#43a047,#2e7d32)">&#128176;</div>
+        <div class="rpt-body"><h4>Slime Brand &mdash; Investor Pitch</h4><p>Investor presentation for kids slime brand &mdash; market size, competitive edge &amp; funding ask.</p><span class="rpt-tag">ECOMM</span><span class="rpt-tag">PITCH</span></div>
+      </a>
+      <a href="reports/led-ecommerce-strategy.html" target="_blank" class="report-card" data-cat="ecomm">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#fbc02d,#f9a825)">&#128161;</div>
+        <div class="rpt-body"><h4>LED Lighting &mdash; E-Commerce</h4><p>LED product e-commerce strategy &mdash; UAE market, social media campaigns &amp; lead generation automation.</p><span class="rpt-tag">LED</span><span class="rpt-tag">ECOMM</span></div>
+      </a>
+
+      <!-- REAL ESTATE -->
+      <a href="reports/real-estate-holiday-homes.html" target="_blank" class="report-card" data-cat="realestate">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#0277bd,#01579b)">&#127968;</div>
+        <div class="rpt-body"><h4>Holiday Homes &mdash; Investment Pitch</h4><p>Dubai short-term rental feasibility &mdash; DTCM compliance, ROI projection &amp; property comparison.</p><span class="rpt-tag">REAL ESTATE</span><span class="rpt-tag">HOLIDAY HOMES</span></div>
+      </a>
+
+      <!-- OTHER INDUSTRIES -->
+      <a href="reports/accountancy-audit-firm.html" target="_blank" class="report-card" data-cat="other">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)">&#128209;</div>
+        <div class="rpt-body"><h4>Accountancy &amp; Audit Firm</h4><p>UAE audit firm setup &mdash; ADGM/DIFC licensing, service portfolio, pricing model &amp; client acquisition.</p><span class="rpt-tag">AUDIT</span><span class="rpt-tag">SETUP</span></div>
+      </a>
+      <a href="reports/printing-press-acquisition.html" target="_blank" class="report-card" data-cat="other">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#6d4c41,#4e342e)">&#128424;</div>
+        <div class="rpt-body"><h4>Printing Press &mdash; On Sale</h4><p>28-year-old gift printing business acquisition &mdash; asset valuation, client book &amp; growth strategy.</p><span class="rpt-tag">PRINTING</span><span class="rpt-tag">ACQUISITION</span></div>
+      </a>
+      <a href="reports/aviation-investment-feasibility.html" target="_blank" class="report-card" data-cat="other">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#0d47a1,#1a237e)">&#9992;</div>
+        <div class="rpt-body"><h4>Aviation Investment Feasibility</h4><p>Aviation group investor pitch &mdash; valuation, market positioning &amp; strategic growth roadmap.</p><span class="rpt-tag">AVIATION</span><span class="rpt-tag">PITCH</span></div>
+      </a>
+      <a href="reports/canada-startup-program.html" target="_blank" class="report-card" data-cat="other">
+        <div class="rpt-icon" style="background:linear-gradient(135deg,#d32f2f,#c62828)">&#127464;&#127462;</div>
+        <div class="rpt-body"><h4>Canada Startup Visa Program</h4><p>$225K startup visa pathway &mdash; eligibility, business plan requirements &amp; immigration roadmap.</p><span class="rpt-tag">CANADA</span><span class="rpt-tag">STARTUP</span></div>
+      </a>
+
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:32px;font-size:.82rem;color:var(--gray-500)">All reports are AI-generated using Claude, Gamma, Perplexity &amp; custom automation. Company names redacted for confidentiality where applicable.</p>
   </div>
 </section>
 
@@ -798,14 +1061,25 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   <div class="section-inner">
     <div class="section-header reveal"><div><div class="section-label"><span class="line"></span> Websites Built</div><h2 class="section-title">Live Sites &mdash; Deployed in Hours</h2></div></div>
     <div class="portfolio-grid reveal">
-      <div class="portfolio-card"><a href="https://globalpioneer.xyz" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#0a1628,#1a2d4a)">&#127975;</div><div class="portfolio-card-body"><h4>globalpioneer.xyz</h4><p>Trading FZE</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://azizsaif.xyz" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#c9a84c,#a8872e)">&#127760;</div><div class="portfolio-card-body"><h4>azizsaif.xyz</h4><p>Personal Institute</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://maroten.com" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)">&#128230;</div><div class="portfolio-card-body"><h4>maroten.com</h4><p>Trading Company</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://kakalbrothers.xyz" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#e67e22,#d35400)">&#128188;</div><div class="portfolio-card-body"><h4>kakalbrothers.xyz</h4><p>Trading &amp; Sourcing</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://sanaconsulting.xyz" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#8e44ad,#6c3483)">&#127919;</div><div class="portfolio-card-body"><h4>sanaconsulting.xyz</h4><p>Business Consulting</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://rishmitahealing.xyz" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#2ecc71,#27ae60)">&#128156;</div><div class="portfolio-card-body"><h4>rishmitahealing.xyz</h4><p>Wellness &amp; Healing</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://cookaatjoy.xyz" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#e74c3c,#c0392b)">&#127860;</div><div class="portfolio-card-body"><h4>cookaatjoy.xyz</h4><p>Food Tech</p><div class="plink">Visit &#8599;</div></div></a></div>
-      <div class="portfolio-card"><a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%20need%20a%20website" target="_blank"><div class="portfolio-card-thumb" style="background:linear-gradient(135deg,#c9a84c,#0a1628)">&#10024;</div><div class="portfolio-card-body"><h4>Your Website</h4><p>Ready in Hours</p><div class="plink">Get Started &#8599;</div></div></a></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/globalpioneer.jpg" alt="Global Pioneer FZE" onerror="this.parentElement.innerHTML='<div class=thumb-fallback style=display:flex;background:linear-gradient(135deg,#0a1628,#1a2d4a)><span style=color:#c9a84c;font-family:Playfair\ Display,serif;font-size:1.6rem;font-weight:700>GP</span></div>'" loading="lazy"></div><div class="portfolio-card-body"><h4>globalpioneer.xyz</h4><p class="portfolio-desc">Business development &amp; retail partnerships across the Middle East. Trading FZE specializing in FMCG, fashion, and lifestyle brands.</p><div class="portfolio-links"><a href="https://globalpioneer.xyz" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/azizsaif.jpg" alt="Aziz Saif Blog" loading="lazy"></div><div class="portfolio-card-body"><h4>azizsaif.xyz</h4><p class="portfolio-desc">Personal blog &amp; thought leadership covering business strategy, technology, history, and GCC market insights.</p><div class="portfolio-links"><a href="https://azizsaif.xyz" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/maroten.jpg" alt="Maroten HVAC" loading="lazy"></div><div class="portfolio-card-body"><h4>maroten.com</h4><p class="portfolio-desc">HVAC solutions, fire safety &amp; MEP engineering company. Full website with service pages, partner showcase, and WhatsApp integration.</p><div class="portfolio-links"><a href="https://maroten.com" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/kakalbrothers.jpg" alt="Kakal Brothers" onerror="this.parentElement.innerHTML='<div class=thumb-fallback style=display:flex;background:linear-gradient(135deg,#e67e22,#d35400)><span style=color:#fff;font-family:Playfair\ Display,serif;font-size:1.4rem;font-weight:700>KAKAL</span></div>'" loading="lazy"></div><div class="portfolio-card-body"><h4>kakalbrothers.xyz</h4><p class="portfolio-desc">Premium brass handles &amp; hardware manufacturer since 1960. India-based with global export to Middle East, Europe, and Africa.</p><div class="portfolio-links"><a href="https://kakalbrothers.xyz" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/sanaconsult.jpg" alt="Sana Consult" loading="lazy"></div><div class="portfolio-card-body"><h4>sanaconsult.xyz</h4><p class="portfolio-desc">Child &amp; Youth Care consultation &mdash; therapy assistance, program planning, behavioral support, and family consultation. Burlington, Ontario.</p><div class="portfolio-links"><a href="https://sanaconsult.xyz" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/rishmitahealing.jpg" alt="Rishmita Healing" loading="lazy"></div><div class="portfolio-card-body"><h4>rishmitahealing.xyz</h4><p class="portfolio-desc">Counselling psychologist website with services, approaches, testimonials, pricing, blog, and WhatsApp booking integration.</p><div class="portfolio-links"><a href="https://rishmitahealing.xyz" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/tarkashuae.jpg" alt="Tarkash UAE" loading="lazy"></div><div class="portfolio-card-body"><h4>tarkashuae.com</h4><p class="portfolio-desc">HR recruitment &amp; consultancy firm. Full website with services, careers, blog, client showcase, FAQ, and free consultation booking.</p><div class="portfolio-links"><a href="https://tarkashuae.com" target="_blank" class="plink-built">View Build &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/homeland-ae.jpg" alt="Homeland Real Estate" loading="lazy"></div><div class="portfolio-card-body"><h4>homeland-ae.xyz</h4><p class="portfolio-desc">Real estate management platform &mdash; warehouses, shops, flats, labour accommodations. AI-built with Manus, Plausible analytics &amp; Cloudfront CDN.</p><div class="portfolio-links"><a href="https://homeland-ae.xyz" target="_blank" class="plink-built">View Build &#8599;</a><a href="https://homeland-ae.com" target="_blank" class="plink-orig">Original Site &#8599;</a></div></div></div>
+      <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/eatcookjoy.jpg" alt="EatCookJoy Investor Pitch" loading="lazy"></div><div class="portfolio-card-body"><h4>eatcookjoy.xyz</h4><p class="portfolio-desc">AI-powered meal planning &amp; chef-enabled food support. Investor pitch deck website &mdash; $1.2M ARR, 100K+ servings, 92% retention.</p><div class="portfolio-links"><a href="https://eatcookjoy.xyz" target="_blank" class="plink-built">View Build &#8599;</a><a href="https://eatcookjoy.com" target="_blank" class="plink-orig">Original Site &#8599;</a></div></div></div>
+      <div class="portfolio-card"><a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%20need%20a%20website" target="_blank"><div class="portfolio-card-thumb"><div class="thumb-fallback" style="display:flex;background:linear-gradient(135deg,#c9a84c,#0a1628)"><span style="color:#fff;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:1px">YOUR SITE?</span></div></div><div class="portfolio-card-body"><h4>Need a Website?</h4><p class="portfolio-desc">Get a professional website deployed in hours &mdash; not weeks. Full design, development, hosting &amp; AI integration included.</p><div class="plink-built" style="text-align:center">Get Started &#8599;</div></div></a></div>
+    </div>
+    <!-- LAUNCHING SOON -->
+    <div style="margin-top:48px" class="reveal">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:20px;text-align:center">Launching in UAE &amp; Gulf Soon <span style="font-weight:400;color:var(--gray-500)">In sha Allah</span></h3>
+      <div class="portfolio-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="portfolio-card" style="border:2px dashed var(--accent)"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/stackbirds.jpg" alt="Stackbirds" loading="lazy"></div><div class="portfolio-card-body"><h4>stackbirds.xyz</h4><p class="portfolio-desc">World's first self-trained AI agent. Automate workflows in under 10 minutes &mdash; no coding, no prompts. Just show the bird once.</p><div class="portfolio-links"><a href="https://stackbirds.xyz" target="_blank" class="plink-built">Preview &#8599;</a></div></div></div>
+        <div class="portfolio-card" style="border:2px dashed var(--accent)"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/eatcookjoy-com.jpg" alt="EatCookJoy" loading="lazy"></div><div class="portfolio-card-body"><h4>eatcookjoy.com</h4><p class="portfolio-desc">AI-powered meal planning, grocery coordination &amp; chef-enabled food support. Bringing the joy of cooking to every home.</p><div class="portfolio-links"><a href="https://eatcookjoy.com" target="_blank" class="plink-built">Preview &#8599;</a></div></div></div>
+        <div class="portfolio-card" style="border:2px dashed var(--accent)"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/snellito.jpg" alt="Snellito" loading="lazy"></div><div class="portfolio-card-body"><h4>snellito</h4><p class="portfolio-desc">Recipe extraction platform &mdash; paste URLs, TikToks, screenshots, or voice notes into clean, structured recipes you can scale and shop for.</p><div class="portfolio-links"><a href="https://snellito-web.vercel.app/" target="_blank" class="plink-built">Preview &#8599;</a></div></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -814,17 +1088,19 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <section class="cta-banner" id="contact">
   <div class="section-inner">
     <div class="section-label" style="color:var(--accent);justify-content:center"><span class="line"></span> Let's Talk</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:12px;color:var(--white)">Trust the AI Process. I Am Here to Help.</h2>
-    <p style="color:rgba(255,255,255,.6);font-size:.95rem;max-width:580px;margin:0 auto 28px">Retail &middot; Buy &amp; Sell &middot; Setup A-Z &middot; Franchise &middot; Trade &middot; eCommerce &middot; AI &mdash; Dubai &amp; GCC</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:12px;color:var(--white)">Trust the AI Process. I Am Here to Help Today.</h2>
+    <p style="color:rgba(255,255,255,.75);font-size:.95rem;max-width:680px;margin:0 auto 8px">Retail &middot; Buy &amp; Sell &middot; Setup A-Z &middot; Franchise &middot; Trade &middot; eCommerce &middot; AI &mdash; Dubai &amp; GCC</p>
+    <p style="color:rgba(255,255,255,.5);font-size:.82rem;max-width:640px;margin:0 auto 28px;line-height:1.6;font-style:italic">Backed by a trusted network of channel partners and reputed companies &mdash; I serve as your single point of contact, so you can focus on growth while we handle the execution.</p>
+    <p style="color:var(--accent);font-size:.88rem;font-weight:600;margin-bottom:22px">Let me show you how AI can transform your business &mdash; for free.</p>
     <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
       <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
-        <a href="mailto:aziz@azizsaif.com" class="btn-primary">&#9993; aziz@azizsaif.com</a>
-        <a href="https://wa.me/971556492370" class="btn-outline" target="_blank">&#128222; +971 55 649 2370</a>
+        <a href="https://calendly.com/aziz-azizsaif/30min" class="btn-primary" target="_blank" style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Book Free Discovery Call</a>
+        <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%20want%20to%20discuss%20a%20project" class="btn-outline" target="_blank" style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg> WhatsApp Chat</a>
       </div>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
-        <a href="https://azizsaif.xyz" target="_blank" style="color:var(--accent);font-size:.82rem;text-decoration:none">&#127760; azizsaif.xyz</a>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+        <a href="mailto:aziz@azizsaif.com" style="color:var(--accent);font-size:.82rem;text-decoration:none">&#9993; aziz@azizsaif.com</a>
+        <a href="https://wa.me/971556492370" target="_blank" style="color:var(--accent);font-size:.82rem;text-decoration:none">&#128222; +971 55 649 2370</a>
         <a href="https://www.linkedin.com/in/azizakbar" target="_blank" style="color:var(--accent);font-size:.82rem;text-decoration:none">&#128101; LinkedIn</a>
-        <a href="https://stackbirds.xyz" target="_blank" style="color:var(--accent);font-size:.82rem;text-decoration:none">&#9881;&#65039; Stackbirds</a>
       </div>
       <p style="font-size:.8rem;color:rgba(255,255,255,.4)">&#128205; Falcon Tower, Riggat Al Buteena, Deira, Dubai, UAE</p>
     </div>
@@ -905,7 +1181,7 @@ setInterval(()=>goToSlide(currentSlide+1),5000);
 let lbImages=[];let lbIndex=0;
 function openLightbox(galleryId,idx){
   const gallery=document.getElementById(galleryId);
-  lbImages=Array.from(gallery.querySelectorAll('.gallery-item img'));
+  lbImages=Array.from(gallery.querySelectorAll('.gallery-item img, .catalogue-item img'));
   lbIndex=idx;showLightboxImage();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow='hidden';
@@ -920,6 +1196,15 @@ function lightboxNext(){lbIndex=(lbIndex+1)%lbImages.length;showLightboxImage()}
 function lightboxPrev(){lbIndex=(lbIndex-1+lbImages.length)%lbImages.length;showLightboxImage()}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox()});
 document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')lightboxNext();if(e.key==='ArrowLeft')lightboxPrev()});
+
+// REPORT FILTER
+function filterReports(cat){
+  document.querySelectorAll('.rfilt').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(cat==='all'?'all':cat)));
+  document.querySelectorAll('.report-card').forEach(c=>{
+    if(cat==='all'){c.classList.remove('hidden')}
+    else{c.classList.toggle('hidden',c.dataset.cat!==cat)}
+  });
+}
 
 // CHATBOT
 const chatbotBtn=document.getElementById('chatbotBtn'),chatbotWindow=document.getElementById('chatbotWindow'),chatbotClose=document.getElementById('chatbotClose'),chatMessages=document.getElementById('chatMessages'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend');

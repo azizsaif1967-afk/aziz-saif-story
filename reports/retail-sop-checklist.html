@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Retail Fashion Transformation Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .checklist-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .store-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        
+        .info-input {
+            padding: 8px 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        
+        .section {
+            margin: 25px 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .section-header {
+            padding: 20px 25px;
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-icon {
+            font-size: 1.4em;
+            margin-right: 12px;
+        }
+        
+        .locations { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .customer { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .display { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .virtual { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .inventory { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .backstore { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .systems { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        .standards { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .environment { background: linear-gradient(135deg, #8e44ad, #7d3c98); }
+        .categories { background: linear-gradient(135deg, #16a085, #138d75); }
+        .fittings { background: linear-gradient(135deg, #c0392b, #a93226); }
+        .branding { background: linear-gradient(135deg, #d68910, #b7950b); }
+        .ecommerce { background: linear-gradient(135deg, #2980b9, #1f618d); }
+        .marketplace { background: linear-gradient(135deg, #27ae60, #1e8449); }
+        .digital { background: linear-gradient(135deg, #8e44ad, #6c3483); }
+        
+        .section-content {
+            padding: 0;
+        }
+        
+        .checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table-header {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .table-header th {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 2px solid #ecf0f1;
+            font-size: 0.9em;
+        }
+        
+        .table-header th:first-child {
+            width: 50px;
+            text-align: center;
+        }
+        
+        .table-header th:nth-child(2) {
+            width: 45%;
+        }
+        
+        .table-header th:nth-child(3) {
+            width: 120px;
+            text-align: center;
+        }
+        
+        .table-header th:last-child {
+            width: 35%;
+        }
+        
+        .checklist-row {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background-color 0.2s ease;
+        }
+        
+        .checklist-row:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .checklist-row td {
+            padding: 12px;
+            vertical-align: top;
+            font-size: 0.9em;
+        }
+        
+        .checkbox-cell {
+            text-align: center;
+            width: 50px;
+        }
+        
+        .custom-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #bdc3c7;
+            border-radius: 3px;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .custom-checkbox:hover {
+            border-color: #3498db;
+        }
+        
+        .custom-checkbox.checked {
+            background: #2ecc71;
+            border-color: #2ecc71;
+        }
+        
+        .custom-checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .item-description {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .priority-cell {
+            text-align: center;
+        }
+        
+        .priority-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+            display: inline-block;
+        }
+        
+        .priority-high {
+            background: #e74c3c;
+        }
+        
+        .priority-medium {
+            background: #f39c12;
+        }
+        
+        .priority-low {
+            background: #2ecc71;
+        }
+        
+        .remarks-input {
+            width: 100%;
+            min-height: 35px;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.85em;
+            resize: vertical;
+            background: #fafafa;
+        }
+        
+        .remarks-input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+        }
+        
+        .subsection {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            margin: 0;
+            font-weight: bold;
+            color: #2c3e50;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.9em;
+        }
+        
+        .completion-tracker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            border-left: 4px solid #2ecc71;
+            z-index: 1000;
+            min-width: 200px;
+        }
+        
+        .tracker-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        .progress-text {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            text-align: center;
+        }
+        
+        .action-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .action-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .print-header {
+            display: none;
+        }
+        
+        @media print {
+            .completion-tracker,
+            .action-buttons {
+                display: none;
+            }
+            
+            .print-header {
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+                padding: 15px;
+                border: 2px solid #333;
+            }
+            
+            .section {
+                break-inside: avoid;
+                margin: 15px 0;
+            }
+            
+            .checklist-row {
+                break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .checklist-container {
+                padding: 10px;
+            }
+            
+            .completion-tracker {
+                position: static;
+                margin-bottom: 20px;
+            }
+            
+            .action-buttons {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin: 20px 0;
+            }
+            
+            .table-header th,
+            .checklist-row td {
+                padding: 8px 6px;
+                font-size: 0.8em;
+            }
+            
+            .remarks-input {
+                min-height: 30px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="checklist-container">
+        <div class="print-header">
+            <h2>RETAIL FASHION TRANSFORMATION ASSESSMENT CHECKLIST</h2>
+            <p>Consultant Assessment Date: _____________ | Store: _____________</p>
+        </div>
+        
+        <div class="header">
+            <h1>🏪 Retail Fashion Transformation Checklist</h1>
+            <p>Complete Assessment Tool for Fashion Retail Consultants</p>
+        </div>
+        
+        <div class="store-info">
+            <div class="info-field">
+                <label class="info-label">Store Name</label>
+                <input type="text" class="info-input" placeholder="Enter store name">
+            </div>
+            <div class="info-field">
+                <label class="info-label">Location</label>
+                <input type="text" class="info-input" placeholder="City, Area">
+            </div>
+            <div class="info-field">
+                <label class="info-label">Store Size (sq ft)</label>
+                <input type="text" class="info-input" placeholder="Store area">
+            </div>
+            <div class="info-field">
+                <label class="info-label">Assessment Date</label>
+                <input type="date" class="info-input">
+            </div>
+            <div class="info-field">
+                <label class="info-label">Consultant Name</label>
+                <input type="text" class="info-input" placeholder="Your name">
+            </div>
+            <div class="info-field">
+                <label class="info-label">Store Manager</label>
+                <input type="text" class="info-input" placeholder="Manager name">
+            </div>
+        </div>
+        
+        <div class="completion-tracker">
+            <div class="tracker-title">Assessment Progress</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% Complete (0/0 items)</div>
+        </div>
+        
+        <!-- 1. RETAIL LOCATIONS -->
+        <div class="section">
+            <div class="section-header locations">
+                <span class="section-icon">📍</span>
+                Retail Locations Assessment
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Location & Accessibility</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Store location has high visibility from main road</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Adequate parking facilities available</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Easy access for customers with disabilities</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Store entrance is welcoming and clearly marked</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Foot traffic area assessment completed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Security & Safety</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">CCTV cameras installed and functional</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Electronic Article Surveillance (EAS) system in place</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Emergency exits clearly marked and accessible</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Fire safety equipment present and maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 2. CUSTOMER FEEDBACK -->
+        <div class="section">
+            <div class="section-header customer">
+                <span class="section-icon">💬</span>
+                Customer Feedback Systems
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Feedback Collection Methods</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Digital feedback kiosk or tablet available</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">QR codes for online feedback forms displayed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Staff trained to request feedback from customers</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Customer complaints register maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Feedback Analysis & Action</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Regular analysis of customer feedback conducted</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Action plans developed based on feedback</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Customer satisfaction scores tracked monthly</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 3. DISPLAY ACTION PLAN -->
+        <div class="section">
+            <div class="section-header display">
+                <span class="section-icon">🎨</span>
+                Display Action Plan
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Window Display</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Window displays changed regularly (minimum monthly)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Window displays reflect current season/trends</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Window lighting is adequate and attractive</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Price tags visible and clearly displayed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">In-Store Displays</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Featured products prominently displayed at entrance</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Seasonal collections have dedicated display areas</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Cross-merchandising implemented (accessories with outfits)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Sale and promotional items clearly marked</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Display planogram exists and is followed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 4. VIRTUAL MERCHANDISE -->
+        <div class="section">
+            <div class="section-header virtual">
+                <span class="section-icon">📱</span>
+                Virtual Merchandise & Digital Experience
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Virtual Try-On Technology</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Virtual try-on mirrors or AR technology available</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Mobile app with virtual try-on features</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Digital Product Information</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">QR codes on products link to detailed information</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Digital displays show styling suggestions</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Interactive product catalogs available on tablets</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Online-Offline Integration</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Click and collect service available</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">In-store pickup for online orders implemented</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Endless aisle - ability to order items not in stock</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 5. INVENTORY MANAGEMENT -->
+        <div class="section">
+            <div class="section-header inventory">
+                <span class="section-icon">📦</span>
+                Inventory Management
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Inventory Tracking System</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Computerized inventory management system in use</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">RFID or barcode system implemented</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Real-time inventory tracking across all stores</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Automated reorder points set for key items</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Stock Management</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Regular stock counts conducted (minimum monthly)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Dead stock identification and management process</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Size ratio planning implemented for apparel</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Inventory turnover rates monitored and optimized</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 6. BACK STORE MANAGEMENT -->
+        <div class="section">
+            <div class="section-header backstore">
+                <span class="section-icon">🏪</span>
+                Back Store Management
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Storage Organization</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Back store area is clean and organized</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Proper shelving and storage systems in place</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Items properly labeled and categorized</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Climate control for seasonal storage maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Receiving & Processing</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Goods receiving process documented and followed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Quality control checks performed on incoming goods</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Items processed to sales floor within 24 hours</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Staff break room and facilities properly maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 7. INTER-STORE TRANSFERS -->
+        <div class="section">
+            <div class="section-header systems">
+                <span class="section-icon">🔄</span>
+                Inter-Store Transfers
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Transfer Process</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Formal inter-store transfer process established</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Digital system for requesting transfers between stores</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Transfer documentation and tracking maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Regular analysis of transfer patterns and optimization</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Communication & Coordination</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Clear communication channels between stores</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Delivery schedule and logistics coordinated</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Customer notification system for transferred items</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 8. ERP AND POS SYSTEMS -->
+        <div class="section">
+            <div class="section-header systems">
+                <span class="section-icon">💻</span>
+                ERP and POS Systems
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">POS System Functionality</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Modern POS system with touch screen interface</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Multiple payment options supported (card, cash, mobile)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Customer loyalty program integrated with POS</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Real-time inventory updates when sales processed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">ERP Integration</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">ERP system integrates all store operations</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Financial reporting automated through system</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Customer relationship management (CRM) integrated</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Cloud-based system with remote access capability</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 9. DISPLAY STANDARDS -->
+        <div class="section">
+            <div class="section-header standards">
+                <span class="section-icon">📐</span>
+                Display Standards
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Visual Merchandising Standards</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Written visual merchandising guidelines exist</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Consistent brand colors and themes maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Height and spacing standards for displays followed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Signage and pricing displays standardized</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Product Presentation</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Garments properly steamed and wrinkle-free</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Size range displayed from smallest to largest</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Color coordination and grouping maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Security tags properly attached and concealed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 10. STAFF STANDARDS -->
+        <div class="section">
+            <div class="section-header standards">
+                <span class="section-icon">👥</span>
+                Staff Standards
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Appearance & Uniform Standards</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Staff dress code/uniform policy enforced</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Name tags/ID badges worn by all staff</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Personal grooming standards maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Customer Service Standards</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Greeting customers within 30 seconds of entry</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Product knowledge training completed regularly</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Upselling and cross-selling techniques used</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Multiple language capabilities when needed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Training & Development</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">New employee onboarding program exists</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Regular performance reviews conducted</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Sales training and workshops provided</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 11. LIGHTING, FLOORING & LAYOUT -->
+        <div class="section">
+            <div class="section-header environment">
+                <span class="section-icon">💡</span>
+                Lighting, Flooring & Layout
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Lighting Assessment</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Adequate lighting levels throughout store (minimum 500 lux)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Accent lighting for featured products and displays</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Fitting room lighting is flattering and adequate</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Energy-efficient LED lighting systems installed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Flooring & Store Layout</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Flooring is clean, well-maintained, and appropriate</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Clear customer flow path from entrance to back</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Adequate aisle width for comfortable browsing</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Strategic placement of impulse purchase items</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Ambiance & Environment</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Appropriate background music playing</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Temperature and air conditioning comfortable</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Pleasant scent/fragrance present (not overwhelming)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 12. CATEGORY & OPTION PLAN -->
+        <div class="section">
+            <div class="section-header categories">
+                <span class="section-icon">📋</span>
+                Category & Option Plan
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Category Management</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Clear category divisions (Men's, Women's, Kids, Accessories)</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Logical subcategory organization within each section</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Appropriate space allocation per category based on sales</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Seasonal adjustments in category layouts planned</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Product Options & Variety</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Adequate size range available for each item</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Color options displayed effectively</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Price point variety to appeal to different budgets</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Regular introduction of new styles and trends</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 13. SHOP FITTINGS & DISPLAY -->
+        <div class="section">
+            <div class="section-header fittings">
+                <span class="section-icon">🛠️</span>
+                Shop Fittings & Display Equipment
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Display Equipment Condition</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Clothing racks are sturdy and in good condition</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Shelving units stable and properly maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Mannequins in good condition and properly dressed</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Display cases clean and well-lit</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Fitting Rooms</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Adequate number of fitting rooms for store size</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Fitting rooms clean and well-maintained</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Proper mirrors and hooks in each fitting room</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Seating area available for companions</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="subsection">
+                            <td colspan="4">Checkout Area</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Checkout counter appropriate height and size</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Impulse purchase items displayed near checkout</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Queue management system in place for busy periods</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-low">LOW</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 14. SHOPPING BAGS DESIGN -->
+        <div class="section">
+            <div class="section-header branding">
+                <span class="section-icon">🛍️</span>
+                Shopping Bags & Packaging Design
+            </div>
+            <div class="section-content">
+                <table class="checklist-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>✓</th>
+                            <th>Assessment Item</th>
+                            <th>Priority</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="subsection">
+                            <td colspan="4">Brand Representation</td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Shopping bags feature consistent brand logo and colors</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-high">HIGH</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">Contact information and store locations printed on bags</td>
+                            <td class="priority-cell">
+                                <span class="priority-badge priority-medium">MEDIUM</span>
+                            </td>
+                            <td>
+                                <textarea class="remarks-input" placeholder="Enter observations..."></textarea>
+                            </td>
+                        </tr>
+                        <tr class="checklist-row">
+                            <td class="checkbox-cell">
+                                <div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+                            </td>
+                            <td class="item-description">High-quality materials that reflect brand positioning</td>

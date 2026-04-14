@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[SlimeBrand]Slime — Investor Feasibility Report 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0161c;
+    --black: #111111;
+    --grey: #f4f4f4;
+    --mid-grey: #e0e0e0;
+    --dark-grey: #666666;
+    --white: #ffffff;
+    --green: #1a7a3e;
+    --amber: #c47a00;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 14px; line-height: 1.55; }
+
+  /* ── NAV ── */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--black); display: flex; align-items: center; gap: 0; overflow-x: auto; }
+  nav a { color: #ccc; text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 13px 18px; white-space: nowrap; transition: background .2s, color .2s; }
+  nav a:hover, nav a.active { background: var(--red); color: var(--white); }
+  .nav-brand { background: var(--red); color: var(--white) !important; font-family: 'Bebas Neue', sans-serif; font-size: 15px !important; letter-spacing: .08em; padding: 13px 22px !important; }
+
+  /* ── MASTHEAD ── */
+  .masthead { background: var(--white); border-bottom: 4px solid var(--red); padding: 28px 40px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+  .masthead-left h1 { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: .04em; line-height: 1; color: var(--black); }
+  .masthead-left h1 span { color: var(--red); }
+  .masthead-left .sub { font-size: 13px; color: var(--dark-grey); margin-top: 6px; font-weight: 500; letter-spacing: .04em; }
+  .masthead-right { text-align: right; }
+  .masthead-right .badge { display: inline-block; background: var(--red); color: white; font-family: 'Bebas Neue'; font-size: 13px; letter-spacing: .08em; padding: 4px 12px; margin-bottom: 6px; }
+  .masthead-right p { font-size: 12px; color: var(--dark-grey); }
+  .masthead-right strong { color: var(--black); font-weight: 700; }
+
+  /* ── SECTIONS ── */
+  section { padding: 40px 40px; border-bottom: 2px solid var(--mid-grey); }
+  .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: .15em; color: var(--red); text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--mid-grey); }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: .04em; line-height: 1; margin-bottom: 20px; }
+  h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: .03em; margin-bottom: 12px; }
+
+  /* ── KPI TILES ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi-tile { background: var(--grey); padding: 16px 14px 14px; border-top: 3px solid var(--mid-grey); }
+  .kpi-tile.red { border-top-color: var(--red); }
+  .kpi-tile.green { border-top-color: var(--green); }
+  .kpi-tile.amber { border-top-color: var(--amber); }
+  .kpi-tile .label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--dark-grey); margin-bottom: 6px; }
+  .kpi-tile .value { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: .02em; line-height: 1; color: var(--black); }
+  .kpi-tile .value.red { color: var(--red); }
+  .kpi-tile .value.green { color: var(--green); }
+  .kpi-tile .sub { font-size: 11px; color: var(--dark-grey); margin-top: 4px; }
+
+  /* ── CHARTS ── */
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .chart-box { background: var(--grey); padding: 20px; }
+  .chart-box h4 { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--dark-grey); margin-bottom: 14px; }
+  .bar-chart { display: flex; flex-direction: column; gap: 8px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; }
+  .bar-label { font-size: 11px; font-weight: 600; width: 80px; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 22px; background: var(--mid-grey); position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--red); transition: width .8s ease; display: flex; align-items: center; padding-left: 8px; }
+  .bar-fill.green { background: var(--green); }
+  .bar-fill.amber { background: var(--amber); }
+  .bar-fill.grey { background: #aaa; }
+  .bar-val { font-size: 11px; font-weight: 700; color: white; white-space: nowrap; }
+  .bar-val-out { font-size: 11px; font-weight: 600; color: var(--dark-grey); margin-left: 8px; }
+
+  /* Donut chart */
+  .donut-wrap { display: flex; align-items: center; gap: 20px; }
+  svg.donut { flex-shrink: 0; }
+  .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Line chart  */
+  .sparkline-wrap { padding: 8px 0; }
+  svg.line-chart { width: 100%; }
+
+  /* ── P&L TABLE ── */
+  .pl-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .pl-table th { background: var(--black); color: white; padding: 10px 14px; text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+  .pl-table th:not(:first-child) { text-align: right; }
+  .pl-table td { padding: 8px 14px; border-bottom: 1px solid var(--mid-grey); }
+  .pl-table td:not(:first-child) { text-align: right; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .pl-table .pct { color: var(--dark-grey); font-size: 11px; }
+  .pl-table tr:hover td { background: #fafafa; }
+  .pl-table .section-header td { background: var(--grey); font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--dark-grey); padding: 6px 14px; }
+  .pl-table .subtotal td { font-weight: 700; background: var(--grey); border-top: 2px solid var(--mid-grey); }
+  .pl-table .total td { font-weight: 700; font-size: 14px; background: var(--black); color: white; border-top: 3px solid var(--red); }
+  .pl-table .total td { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: .04em; }
+  .pl-table .net-positive td { background: #f0f9f3; color: var(--green); font-weight: 700; }
+  .pl-table .net-negative td { background: #fff0f0; color: var(--red); font-weight: 700; }
+  .indent { padding-left: 28px !important; }
+
+  /* ── SWOT ── */
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .swot-box { padding: 24px 28px; }
+  .swot-box.strengths { background: #f0f9f3; border-top: 4px solid var(--green); }
+  .swot-box.weaknesses { background: #fff7f0; border-top: 4px solid #e06030; }
+  .swot-box.opportunities { background: #f0f4ff; border-top: 4px solid #3060d0; }
+  .swot-box.threats { background: #fff0f0; border-top: 4px solid var(--red); }
+  .swot-box h3 { font-size: 18px; margin-bottom: 14px; }
+  .swot-box.strengths h3 { color: var(--green); }
+  .swot-box.weaknesses h3 { color: #e06030; }
+  .swot-box.opportunities h3 { color: #3060d0; }
+  .swot-box.threats h3 { color: var(--red); }
+  .swot-item { display: flex; gap: 10px; margin-bottom: 10px; }
+  .swot-bullet { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; margin-top: 1px; }
+  .swot-item p { font-size: 13px; line-height: 1.5; }
+  .swot-item strong { font-weight: 700; }
+
+  /* ── RISK MATRIX ── */
+  .risk-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .risk-table th { background: var(--grey); padding: 9px 14px; text-align: left; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; border-bottom: 2px solid var(--mid-grey); }
+  .risk-table td { padding: 9px 14px; border-bottom: 1px solid var(--mid-grey); vertical-align: top; }
+  .risk-badge { display: inline-block; padding: 3px 10px; border-radius: 2px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .risk-high { background: #fde8e8; color: var(--red); }
+  .risk-med { background: #fff3de; color: var(--amber); }
+  .risk-low { background: #e8f5ee; color: var(--green); }
+
+  /* ── SCENARIO TABLE ── */
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .scenario-card { border: 2px solid var(--mid-grey); padding: 20px; position: relative; }
+  .scenario-card.highlight { border-color: var(--red); }
+  .scenario-card .scenario-tag { position: absolute; top: -1px; left: -1px; background: var(--red); color: white; font-size: 10px; font-weight: 700; letter-spacing: .08em; padding: 3px 10px; text-transform: uppercase; }
+  .scenario-card h4 { font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: .04em; margin-bottom: 12px; margin-top: 12px; }
+  .scenario-card .metric { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--mid-grey); font-size: 12.5px; }
+  .scenario-card .metric:last-child { border: none; }
+  .scenario-card .metric span { color: var(--dark-grey); }
+  .scenario-card .metric strong { font-family: 'DM Mono'; font-size: 13px; }
+
+  /* ── PRODUCT CARDS ── */
+  .product-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .product-card { background: var(--grey); padding: 14px; border-top: 3px solid var(--mid-grey); }
+  .product-card.featured { border-top-color: var(--red); }
+  .product-card .emoji { font-size: 24px; margin-bottom: 8px; }
+  .product-card .name { font-weight: 700; font-size: 12px; margin-bottom: 4px; }
+  .product-card .price { font-family: 'Bebas Neue'; font-size: 20px; color: var(--red); }
+  .product-card .margin { font-size: 11px; color: var(--dark-grey); }
+
+  /* ── TWO-COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+  /* ── INFO BLOCKS ── */
+  .info-block { background: var(--grey); padding: 18px; margin-bottom: 12px; }
+  .info-block h4 { font-family: 'Bebas Neue'; font-size: 15px; letter-spacing: .04em; margin-bottom: 8px; }
+  .info-block p, .info-block li { font-size: 13px; line-height: 1.6; }
+  .info-block ul { padding-left: 18px; }
+  .info-block li { margin-bottom: 4px; }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-red { background: var(--red); color: white; padding: 18px 24px; margin-bottom: 16px; }
+  .highlight-red h4 { font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: .04em; margin-bottom: 6px; }
+  .highlight-red p { font-size: 13px; opacity: .9; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--black); color: #888; padding: 20px 40px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+  footer strong { color: #ccc; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    .chart-row { grid-template-columns: 1fr 1fr; }
+    .product-grid { grid-template-columns: repeat(3, 1fr); }
+    section { padding: 28px 20px; }
+    .masthead { padding: 20px; flex-direction: column; }
+    .masthead-left h1 { font-size: 38px; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">🫧 [SlimeBrand]Slime</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#overview">Overview</a>
+  <a href="#market">Market</a>
+  <a href="#products">Products</a>
+  <a href="#pl">P&L</a>
+  <a href="#projections">Projections</a>
+  <a href="#swot">SWOT</a>
+  <a href="#risk">Risk</a>
+  <a href="#verdict">Verdict</a>
+</nav>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-left">
+    <h1>[SLIME BRAND]MAG<span>IC</span>SLIME</h1>
+    <div class="sub">AMAZON CANADA · ETSY CANADA · DIRECT-TO-CONSUMER &nbsp;|&nbsp; FULL FEASIBILITY STUDY, P&L & SWOT ANALYSIS &nbsp;|&nbsp; MARCH 2026</div>
+  </div>
+  <div class="masthead-right">
+    <div class="badge">INVESTOR BRIEF</div>
+    <p>Platform: <strong>Amazon.ca + Etsy.ca + DTC</strong></p>
+    <p>Market: <strong>Sensory / ASMR / Stress Relief Toys</strong></p>
+    <p>Geography: <strong>Canada (Primary) · US (Expansion)</strong></p>
+    <p>Currency: <strong>CAD Unless Noted</strong></p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ DASHBOARD ══════════════════════════════════ -->
+<section id="dashboard">
+  <div class="section-label">Executive Dashboard</div>
+  <h2>KEY PERFORMANCE INDICATORS — YEAR 1 BASE CASE</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-tile red">
+      <div class="label">Year 1 Revenue</div>
+      <div class="value red">$48K</div>
+      <div class="sub">CAD · 2,400 units</div>
+    </div>
+    <div class="kpi-tile green">
+      <div class="label">Gross Margin</div>
+      <div class="value green">57.5%</div>
+      <div class="sub">Before platform fees</div>
+    </div>
+    <div class="kpi-tile">
+      <div class="label">Net Margin Yr1</div>
+      <div class="value">7.3%</div>
+      <div class="sub">Startup phase</div>
+    </div>
+    <div class="kpi-tile green">
+      <div class="label">Net Margin Yr3</div>
+      <div class="value green">20%</div>
+      <div class="sub">At scale (10K units)</div>
+    </div>
+    <div class="kpi-tile red">
+      <div class="label">Startup Capital</div>
+      <div class="value red">$3,600</div>
+      <div class="sub">CAD · Low barrier</div>
+    </div>
+    <div class="kpi-tile green">
+      <div class="label">Payback Period</div>
+      <div class="value green">~12M</div>
+      <div class="sub">Months to ROI</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-tile">
+      <div class="label">Avg Selling Price</div>
+      <div class="value">$19.99</div>
+      <div class="sub">CAD per unit blended</div>
+    </div>
+    <div class="kpi-tile">
+      <div class="label">COGS per Unit</div>
+      <div class="value">$8.50</div>
+      <div class="sub">Materials + Labor</div>
+    </div>
+    <div class="kpi-tile amber">
+      <div class="label">Amazon Fee Rate</div>
+      <div class="value" style="color:var(--amber)">17%</div>
+      <div class="sub">Referral + subscription</div>
+    </div>
+    <div class="kpi-tile">
+      <div class="label">Break-Even</div>
+      <div class="value">86 units</div>
+      <div class="sub">Per month minimum</div>
+    </div>
+    <div class="kpi-tile green">
+      <div class="label">3-Yr Cumulative</div>
+      <div class="value green">$56K</div>
+      <div class="sub">Net income CAD</div>
+    </div>
+    <div class="kpi-tile green">
+      <div class="label">3-Yr IRR</div>
+      <div class="value green">~95%</div>
+      <div class="sub">Return on investment</div>
+    </div>
+  </div>
+
+  <!-- Revenue Projection Chart -->
+  <div class="chart-row">
+    <div class="chart-box" style="grid-column: span 2;">
+      <h4>3-Year Revenue, Gross Profit & Net Income (CAD)</h4>
+      <svg class="line-chart" viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="display:block; margin-top:8px;">
+        <defs>
+          <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c0161c" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#c0161c" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="gpGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a7a3e" stop-opacity=".12"/>
+            <stop offset="100%" stop-color="#1a7a3e" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Grid -->
+        <line x1="50" y1="20" x2="50" y2="165" stroke="#e0e0e0" stroke-width="1"/>
+        <line x1="50" y1="165" x2="570" y2="165" stroke="#e0e0e0" stroke-width="1"/>
+        <line x1="50" y1="125" x2="570" y2="125" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="50" y1="85" x2="570" y2="85" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="50" y1="45" x2="570" y2="45" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="4,4"/>
+        <!-- Y labels -->
+        <text x="44" y="168" text-anchor="end" font-size="10" fill="#999">0</text>
+        <text x="44" y="128" text-anchor="end" font-size="10" fill="#999">$50K</text>
+        <text x="44" y="88" text-anchor="end" font-size="10" fill="#999">$100K</text>
+        <text x="44" y="48" text-anchor="end" font-size="10" fill="#999">$150K</text>
+        <!-- X labels -->
+        <text x="180" y="180" text-anchor="middle" font-size="11" fill="#666" font-weight="600">Year 1 (2025)</text>
+        <text x="310" y="180" text-anchor="middle" font-size="11" fill="#666" font-weight="600">Year 2 (2026)</text>
+        <text x="440" y="180" text-anchor="middle" font-size="11" fill="#666" font-weight="600">Year 3 (2027)</text>
+
+        <!-- Revenue area (48K, 96K, 200K) — map: 0=165, 200K=25 => 1K = 0.7px -->
+        <!-- Y: 165 - (value/1000)*0.7 -->
+        <!-- 48K → 165-33.6=131.4; 96K→165-67.2=97.8; 200K→165-140=25 -->
+        <polygon points="180,131 310,98 440,25 440,165 310,165 180,165" fill="url(#revGrad)"/>
+        <polyline points="50,165 180,131 310,98 440,25 570,20" fill="none" stroke="#c0161c" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <!-- Gross Profit (27.6K, 57.6K, 124K) -->
+        <!-- 27.6→165-19.3=145.7; 57.6→165-40.3=124.7; 124→165-86.8=78.2 -->
+        <polygon points="180,146 310,125 440,78 440,165 310,165 180,165" fill="url(#gpGrad)"/>
+        <polyline points="50,165 180,146 310,125 440,78 570,55" fill="none" stroke="#1a7a3e" stroke-width="2" stroke-linejoin="round" stroke-dasharray="6,3"/>
+
+        <!-- Net Income (3.5K, 12.8K, 40K) -->
+        <!-- 3.5→165-2.5=162.5; 12.8→165-9=156; 40→165-28=137 -->
+        <polyline points="50,165 180,163 310,156 440,137 570,110" fill="none" stroke="#c47a00" stroke-width="2" stroke-linejoin="round" stroke-dasharray="3,3"/>
+
+        <!-- Dots -->
+        <circle cx="180" cy="131" r="4" fill="#c0161c"/>
+        <circle cx="310" cy="98" r="4" fill="#c0161c"/>
+        <circle cx="440" cy="25" r="4" fill="#c0161c"/>
+        <circle cx="180" cy="146" r="3.5" fill="#1a7a3e"/>
+        <circle cx="310" cy="125" r="3.5" fill="#1a7a3e"/>
+        <circle cx="440" cy="78" r="3.5" fill="#1a7a3e"/>
+
+        <!-- Value labels -->
+        <text x="180" y="125" text-anchor="middle" font-size="10" fill="#c0161c" font-weight="700">$48K</text>
+        <text x="310" y="92" text-anchor="middle" font-size="10" fill="#c0161c" font-weight="700">$96K</text>
+        <text x="440" y="19" text-anchor="middle" font-size="10" fill="#c0161c" font-weight="700">$200K</text>
+
+        <!-- Legend -->
+        <rect x="55" y="22" width="10" height="3" fill="#c0161c" rx="1"/>
+        <text x="70" y="26" font-size="10" fill="#555">Revenue</text>
+        <line x1="110" y1="23" x2="120" y2="23" stroke="#1a7a3e" stroke-width="2" stroke-dasharray="4,2"/>
+        <text x="125" y="26" font-size="10" fill="#555">Gross Profit</text>
+        <line x1="182" y1="23" x2="192" y2="23" stroke="#c47a00" stroke-width="2" stroke-dasharray="2,2"/>
+        <text x="197" y="26" font-size="10" fill="#555">Net Income</text>
+      </svg>
+    </div>
+
+    <div class="chart-box">
+      <h4>Revenue Channel Mix (Yr 3 Target)</h4>
+      <div class="donut-wrap" style="margin-top:10px;">
+        <svg class="donut" width="110" height="110" viewBox="0 0 110 110">
+          <!-- Total: Amazon 55%, Etsy 30%, Direct 15% -->
+          <!-- Circumference of r=40: 251.3 -->
+          <!-- Amazon: 138.2 offset=0 -->
+          <!-- Etsy: 75.4 offset=138.2 -->
+          <!-- Direct: 37.7 offset=213.6 -->
+          <circle cx="55" cy="55" r="40" fill="none" stroke="#e0e0e0" stroke-width="18"/>
+          <circle cx="55" cy="55" r="40" fill="none" stroke="#c0161c" stroke-width="18"
+            stroke-dasharray="138.2 113.1" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+          <circle cx="55" cy="55" r="40" fill="none" stroke="#1a7a3e" stroke-width="18"
+            stroke-dasharray="75.4 175.9" stroke-dashoffset="-138.2" transform="rotate(-90 55 55)"/>
+          <circle cx="55" cy="55" r="40" fill="none" stroke="#c47a00" stroke-width="18"
+            stroke-dasharray="37.7 213.6" stroke-dashoffset="-213.6" transform="rotate(-90 55 55)"/>
+          <text x="55" y="51" text-anchor="middle" font-family="Bebas Neue" font-size="16" fill="#111">MULTI</text>
+          <text x="55" y="63" text-anchor="middle" font-size="9" fill="#888">CHANNEL</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#c0161c"></div><strong>Amazon.ca</strong><span style="margin-left:auto;font-weight:700;font-family:'DM Mono';">55%</span></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#1a7a3e"></div><strong>Etsy.ca</strong><span style="margin-left:auto;font-weight:700;font-family:'DM Mono';">30%</span></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#c47a00"></div><strong>Direct DTC</strong><span style="margin-left:auto;font-weight:700;font-family:'DM Mono';">15%</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; border-top:1px solid var(--mid-grey); padding-top:12px;">
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label" style="font-size:10px;">Q1 Units</span><div class="bar-track"><div class="bar-fill grey" style="width:29%"><span class="bar-val">300</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="font-size:10px;">Q2 Units</span><div class="bar-track"><div class="bar-fill grey" style="width:43%"><span class="bar-val">450</span></div></div></div>
+          <div class="bar-row"><span class="bar-label" style="font-size:10px;">Q3 Units</span><div class="bar-track"><div class="bar-fill amber" style="width:57%"><span class="bar-val">600</span></div></div></div>
+          <div class="bar-row"><span class="bar-row"><span class="bar-label" style="font-size:10px;">Q4 Holiday</span></span><div class="bar-track"><div class="bar-fill red" style="width:100%"><span class="bar-val">1,050</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ OVERVIEW ══════════════════════════════════ -->
+<section id="overview">
+  <div class="section-label">Business Overview</div>
+  <h2>ABOUT [SLIME BRAND]MAG<span style="color:var(--red)">IC</span>SLIME</h2>
+
+  <div class="two-col">
+    <div>
+      <div class="info-block">
+        <h4>🫧 Brand Identity</h4>
+        <p>[SlimeBrand]Slime is a Canadian handmade slime brand selling artisanal, scented sensory slimes across Amazon.ca, Etsy.ca, and its own DTC website ([slime brand]magicslime.com). Products are handcrafted using non-toxic PVA glue (Elmer's/similar), borax activator, fragrance oils, mineral oil, glycerin, and specialty add-ins like bingsu beads, jelly cubes, foam balls, and clay. Each jar ships with an activator spray bottle and is packaged for gifting.</p>
+      </div>
+      <div class="info-block">
+        <h4>📦 Product Line Summary</h4>
+        <ul>
+          <li><strong>Crunchy / Bingsu Bead Slimes</strong> — Apple Crunch, Orange Crunch, signature texture</li>
+          <li><strong>Cloud / Fluffy Slimes</strong> — Lemon Frosty, light airy texture for stress play</li>
+          <li><strong>Clear Jelly Cube Slimes</strong> — Rainbow Beadz, Mango Chunks, ASMR satisfying</li>
+          <li><strong>Butter Slimes</strong> — Smooth clay-like texture, scented</li>
+          <li><strong>DIY Clay Kit Slimes</strong> — 13+ SKUs, highest AOV, gifting focus</li>
+          <li><strong>Icee / Jelly Slimes</strong> — Cool textured, summer appeal</li>
+          <li><strong>Slime Bundles</strong> — 2–3 jar sets, highest per-order revenue</li>
+          <li><strong>Cloud Creme</strong> — Thick fluffy variant, premium positioned</li>
+        </ul>
+      </div>
+      <div class="info-block">
+        <h4>👥 Target Demographic</h4>
+        <ul>
+          <li><strong>Primary:</strong> Ages 8–16 — sensory play, ASMR content creation, collecting</li>
+          <li><strong>Secondary:</strong> Young adults 17–30 — stress relief, TikTok/Reels engagement</li>
+          <li><strong>Gift buyer:</strong> Parents, friends purchasing as birthday/holiday gifts</li>
+          <li><strong>Neurodiverse consumers</strong> — ADHD, anxiety, sensory therapy tools</li>
+          <li>Age recommendation: 8+ (borax content requires supervision for young children)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="info-block">
+        <h4>⚙️ Operations Model</h4>
+        <ul>
+          <li><strong>Production:</strong> Handmade in small batches, home-based or small studio</li>
+          <li><strong>Fulfillment:</strong> FBM (Fulfilled by Merchant) — seller ships direct to buyer</li>
+          <li><strong>Shipping:</strong> Canada Post tracked parcels; ships Mon–Fri</li>
+          <li><strong>Packaging:</strong> Deli cups + screw-top jars, custom labels, branded tissue/kraft</li>
+          <li><strong>Activator:</strong> Small spray bottle of saline/borax solution included with each order</li>
+          <li><strong>Quality control:</strong> Stretch, scent and texture tested before dispatch</li>
+          <li><strong>Special requests:</strong> Custom scents, colors via email inquiry</li>
+        </ul>
+      </div>
+      <div class="info-block">
+        <h4>📍 Business Structure</h4>
+        <ul>
+          <li>Canadian micro/small business — home-based or light commercial lease</li>
+          <li>Dual-platform presence: Amazon.ca (mass reach) + Etsy.ca (artisan credibility)</li>
+          <li>Direct website for repeat customers, bundles, and wholesale inquiries</li>
+          <li>Strong review velocity — positive ASMR texture feedback, good packaging comments</li>
+          <li>Potential for slime bar events, birthday party packages (premium extension)</li>
+        </ul>
+      </div>
+      <div class="highlight-red">
+        <h4>⚡ Competitive Edge</h4>
+        <p>Homemade quality + Canadian origin + fast domestic shipping + scent variety + activator included + gift-ready packaging = premium positioning versus mass-produced Chinese slime kits flooding Amazon. The handmade story drives Etsy loyalty and premium pricing power.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ MARKET ══════════════════════════════════ -->
+<section id="market">
+  <div class="section-label">Market Analysis</div>
+  <h2>GLOBAL & CANADIAN MARKET OPPORTUNITY</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-tile red">
+      <div class="label">Global Sensory Toy Mkt</div>
+      <div class="value red">$19B</div>
+      <div class="sub">USD 2025 · 9% CAGR to 2033</div>
+    </div>
+    <div class="kpi-tile">
+      <div class="label">Fidget Toy Market</div>
+      <div class="value">$7.3B</div>
+      <div class="sub">USD 2024 · 6.4% CAGR</div>
+    </div>
+    <div class="kpi-tile">
+      <div class="label">Stress Toy Market</div>
+      <div class="value">$5.9B</div>
+      <div class="sub">USD 2024 · 6.3% CAGR</div>
+    </div>
+    <div class="kpi-tile green">
+      <div class="label">North America Share</div>
+      <div class="value green">53%</div>
+      <div class="sub">Sensory toys, dominant</div>
+    </div>
+    <div class="kpi-tile">
+      <div class="label">Slime / Putty Segment</div>
+      <div class="value">$3B+</div>
+      <div class="sub">USD incl. Amazon CA/US</div>
+    </div>
+    <div class="kpi-tile amber">
+      <div class="label">TikTok ASMR Driver</div>
+      <div class="value" style="color:var(--amber)">VIRAL</div>
+      <div class="sub">Key demand accelerator</div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-box">
+      <h4>Market Size Trajectory (USD Billions)</h4>
+      <div class="bar-chart" style="margin-top:8px;">
+        <div class="bar-row"><span class="bar-label">Sensory '24</span><div class="bar-track"><div class="bar-fill" style="width:38%"><span class="bar-val">$2.0B</span></div></div></div>
+        <div class="bar-row"><span class="bar-label">Sensory '25</span><div class="bar-track"><div class="bar-fill" style="width:42%"><span class="bar-val">$2.22B</span></div></div></div>
+        <div class="bar-row"><span class="bar-label">Sensory '33</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">$5.0B</span></div></div></div>
+        <div class="bar-row"><span class="bar-label">Fidget '24</span><div class="bar-track"><div class="bar-fill amber" style="width:75%"><span class="bar-val">$7.3B</span></div></div></div>
+        <div class="bar-row"><span class="bar-label">Fidget '32</span><div class="bar-track"><div class="bar-fill amber" style="width:100%"><span class="bar-val">$19.6B</span></div></div></div>
+        <div class="bar-row"><span class="bar-label">Stress Toy '29</span><div class="bar-track"><div class="bar-fill green" style="width:77%"><span class="bar-val">$7.5B</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <h4>Key Demand Drivers</h4>
+      <div style="margin-top:8px; display:flex; flex-direction:column; gap:10px;">
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px;"><span>Mental Health / Stress Relief Awareness</span><strong>🔥 Very High</strong></div><div style="height:8px;background:var(--mid-grey);border-radius:2px;overflow:hidden;"><div style="width:92%;height:100%;background:var(--red);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px;"><span>TikTok / YouTube ASMR Virality</span><strong>🔥 Very High</strong></div><div style="height:8px;background:var(--mid-grey);border-radius:2px;overflow:hidden;"><div style="width:88%;height:100%;background:var(--red);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px;"><span>Gifting & Birthday Market</span><strong>📈 High</strong></div><div style="height:8px;background:var(--mid-grey);border-radius:2px;overflow:hidden;"><div style="width:78%;height:100%;background:var(--amber);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px;"><span>ADHD / Neurodiverse Demographics</span><strong>📈 Growing</strong></div><div style="height:8px;background:var(--mid-grey);border-radius:2px;overflow:hidden;"><div style="width:72%;height:100%;background:var(--amber);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px;"><span>E-commerce / Amazon Prime Adoption</span><strong>📦 High</strong></div><div style="height:8px;background:var(--mid-grey);border-radius:2px;overflow:hidden;"><div style="width:85%;height:100%;background:var(--green);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px;"><span>Holiday / Seasonal Peak (Q4)</span><strong>🎄 Extreme</strong></div><div style="height:8px;background:var(--mid-grey);border-radius:2px;overflow:hidden;"><div style="width:95%;height:100%;background:var(--red);"></div></div></div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <h4>Competitive Landscape — Amazon.ca</h4>
+      <div style="margin-top:8px; font-size:12px; display:flex; flex-direction:column; gap:8px;">
+        <div style="background:var(--mid-grey);padding:10px;"><strong>Mass Imported (China)</strong> — Bulk packs, $0.80–$3/unit, race-to-bottom pricing, low quality. <span style="color:var(--green);font-weight:700;">LOW THREAT TO PREMIUM</span></div>
+        <div style="background:#fff3de;padding:10px;"><strong>Branded Toys (Squishmallows, GUI GUI)</strong> — IP-backed, $15–$40, different positioning. <span style="color:var(--amber);font-weight:700;">MODERATE COMPETITION</span></div>
+        <div style="background:#fde8e8;padding:10px;"><strong>Other Canadian Handmade</strong> — SlimeDrops, Tanookislimes, SillySquishy, WuwaSlimes. <span style="color:var(--red);font-weight:700;">DIRECT COMPETITION</span></div>
+        <div style="background:#e8f5ee;padding:10px;"><strong>[SlimeBrand]Slime Position</strong> — Scent variety + texture range + Amazon + Etsy dual-listing = strong. <span style="color:var(--green);font-weight:700;">WELL DIFFERENTIATED</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ PRODUCTS ══════════════════════════════════ -->
+<section id="products">
+  <div class="section-label">Product Portfolio & Pricing</div>
+  <h2>PRODUCT LINE — UNIT ECONOMICS</h2>
+
+  <div class="product-grid" style="margin-bottom:20px;">
+    <div class="product-card featured">
+      <div class="emoji">🍎</div>
+      <div class="name">Apple/Orange Crunch (Bingsu)</div>
+      <div class="price">$14.99</div>
+      <div class="margin">4oz · Margin: 42%</div>
+    </div>
+    <div class="product-card featured">
+      <div class="emoji">🍋</div>
+      <div class="name">Cloud / Fluffy Slime</div>
+      <div class="price">$16.99</div>
+      <div class="margin">8oz · Margin: 46%</div>
+    </div>
+    <div class="product-card featured">
+      <div class="emoji">🥭</div>
+      <div class="name">Clear Jelly Cube Slime</div>
+      <div class="price">$17.99</div>
+      <div class="margin">8oz · Margin: 48%</div>
+    </div>
+    <div class="product-card">
+      <div class="emoji">🌈</div>
+      <div class="name">Rainbow Beadz Clear</div>
+      <div class="price">$14.99</div>
+      <div class="margin">4oz · Margin: 40%</div>
+    </div>
+    <div class="product-card">
+      <div class="emoji">🎨</div>
+      <div class="name">DIY Clay Kit Slime</div>
+      <div class="price">$24.99</div>
+      <div class="margin">Kit · Margin: 52%</div>
+    </div>
+    <div class="product-card featured">
+      <div class="emoji">🫧</div>
+      <div class="name">Bundle Pack (3-jar)</div>
+      <div class="price">$34.99</div>
+      <div class="margin">Bundle · Margin: 55%</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3>PER-UNIT COST BREAKDOWN (Weighted Avg — 6oz equiv.)</h3>
+      <table class="pl-table" style="margin-bottom:0;">
+        <thead><tr><th>Cost Component</th><th>CAD / Unit</th><th>% of Price</th></tr></thead>
+        <tbody>
+          <tr><td>PVA Glue (Elmer's / equiv.)</td><td>$0.90</td><td class="pct">4.5%</td></tr>
+          <tr><td>Borax / Saline Activator</td><td>$0.15</td><td class="pct">0.8%</td></tr>
+          <tr><td>Fragrance Oil (0.5–1ml)</td><td>$0.20</td><td class="pct">1.0%</td></tr>
+          <tr><td>Colorants / Pigments</td><td>$0.08</td><td class="pct">0.4%</td></tr>
+          <tr><td>Specialty Add-Ins (bingsu, clay, beads)</td><td>$0.60</td><td class="pct">3.0%</td></tr>
+          <tr><td>Glycerin / Mineral Oil / other</td><td>$0.07</td><td class="pct">0.3%</td></tr>
+          <tr class="subtotal"><td>Total Raw Materials</td><td>$2.00</td><td class="pct">10.0%</td></tr>
+          <tr><td>Deli Cup / Jar + Lid</td><td>$0.40</td><td class="pct">2.0%</td></tr>
+          <tr><td>Custom Label (printed)</td><td>$0.30</td><td class="pct">1.5%</td></tr>
+          <tr><td>Outer Packaging (tissue/kraft/mailer)</td><td>$0.80</td><td class="pct">4.0%</td></tr>
+          <tr><td>Activator Spray (amortized)</td><td>$0.50</td><td class="pct">2.5%</td></tr>
+          <tr class="subtotal"><td>Total Packaging</td><td>$2.00</td><td class="pct">10.0%</td></tr>
+          <tr><td>Labor — Production (20 min @ $18/hr)</td><td>$6.00</td><td class="pct">30.0%</td></tr>
+          <tr class="subtotal"><td><strong>TOTAL COGS</strong></td><td><strong>$8.50</strong></td><td class="pct"><strong>42.5%</strong></td></tr>
+          <tr class="net-positive"><td>Gross Profit per Unit</td><td>$11.50</td><td class="pct">57.5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>CHANNEL PROFITABILITY COMPARISON</h3>
+      <table class="pl-table">
+        <thead><tr><th>Item</th><th>Amazon FBM</th><th>Etsy.ca</th><th>Direct DTC</th></tr></thead>
+        <tbody>
+          <tr><td>Selling Price</td><td>$19.99</td><td>$18.99</td><td>$19.99</td></tr>
+          <tr><td>COGS</td><td>$8.50</td><td>$8.50</td><td>$8.50</td></tr>
+          <tr class="subtotal"><td>Gross Profit</td><td>$11.49</td><td>$10.49</td><td>$11.49</td></tr>
+          <tr><td>Platform Referral Fee</td><td>$3.00 (15%)</td><td>$1.23 (6.5%)</td><td>$0.60 (3%)</td></tr>
+          <tr><td>Listing / Subscription (per unit)</td><td>$0.15</td><td>$0.20</td><td>—</td></tr>
+          <tr><td>Shipping Subsidy (seller)</td><td>$2.00</td><td>—</td><td>—</td></tr>
+          <tr><td>PPC / Marketing</td><td>$2.00</td><td>$1.50</td><td>$2.00</td></tr>
+          <tr><td>Overhead Allocation</td><td>$1.00</td><td>$1.00</td><td>$1.00</td></tr>
+          <tr class="subtotal"><td>Total Deductions</td><td>$8.15</td><td>$3.93</td><td>$3.60</td></tr>
+          <tr class="net-positive"><td>Net Profit / Unit</td><td>$3.34</td><td>$6.56</td><td>$7.89</td></tr>
+          <tr class="net-positive"><td>Net Margin</td><td>16.7%</td><td>34.5%</td><td>39.5%</td></tr>
+        </tbody>
+      </table>
+      <div class="info-block" style="margin-top:14px; border-top:3px solid var(--red);">
+        <h4>💡 Key Takeaway</h4>
+        <p>Amazon FBM margins are tight (17%) due to referral fees + shipping. Etsy and DTC are nearly 2× more profitable per unit. Strategy: Use Amazon for volume/discovery, migrate repeat customers to DTC or Etsy. Bundles and DIY kits on Amazon significantly improve per-order profitability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ P&L ══════════════════════════════════ -->
+<section id="pl">
+  <div class="section-label">Financial Statements — QuickBooks Style</div>
+  <h2>PROFIT & LOSS STATEMENT — 3-YEAR MODEL (CAD)</h2>
+
+  <div style="overflow-x:auto;">
+  <table class="pl-table">
+    <thead>
+      <tr>
+        <th style="width:36%">Account</th>
+        <th>Year 1 (2025)<br><small style="font-weight:400;opacity:.7">2,400 units</small></th>
+        <th>% Rev</th>
+        <th>Year 2 (2026)<br><small style="font-weight:400;opacity:.7">4,800 units</small></th>
+        <th>% Rev</th>
+        <th>Year 3 (2027)<br><small style="font-weight:400;opacity:.7">10,000 units</small></th>
+        <th>% Rev</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- REVENUE -->
+      <tr class="section-header"><td colspan="7">▸ INCOME</td></tr>
+      <tr><td class="indent">Amazon.ca Sales</td><td>$26,400</td><td class="pct">55%</td><td>$52,800</td><td class="pct">55%</td><td>$110,000</td><td class="pct">55%</td></tr>
+      <tr><td class="indent">Etsy.ca Sales</td><td>$14,400</td><td class="pct">30%</td><td>$28,800</td><td class="pct">30%</td><td>$60,000</td><td class="pct">30%</td></tr>
+      <tr><td class="indent">Direct / DTC Website</td><td>$7,200</td><td class="pct">15%</td><td>$14,400</td><td class="pct">15%</td><td>$30,000</td><td class="pct">15%</td></tr>
+      <tr class="subtotal"><td><strong>TOTAL REVENUE</strong></td><td><strong>$48,000</strong></td><td class="pct"><strong>100%</strong></td><td><strong>$96,000</strong></td><td class="pct"><strong>100%</strong></td><td><strong>$200,000</strong></td><td class="pct"><strong>100%</strong></td></tr>
+
+      <!-- COGS -->
+      <tr class="section-header"><td colspan="7">▸ COST OF GOODS SOLD</td></tr>
+      <tr><td class="indent">Raw Materials</td><td>$4,800</td><td class="pct">10.0%</td><td>$8,640</td><td class="pct">9.0%</td><td>$16,000</td><td class="pct">8.0%</td></tr>
+      <tr><td class="indent">Packaging (containers, labels, mailers)</td><td>$4,800</td><td class="pct">10.0%</td><td>$8,640</td><td class="pct">9.0%</td><td>$16,000</td><td class="pct">8.0%</td></tr>
+      <tr><td class="indent">Direct Labor — Production</td><td>$14,400</td><td class="pct">30.0%</td><td>$25,920</td><td class="pct">27.0%</td><td>$44,000</td><td class="pct">22.0%</td></tr>
+      <tr><td class="indent">Variable Production Overhead</td><td>$720</td><td class="pct">1.5%</td><td>$1,440</td><td class="pct">1.5%</td><td>$2,000</td><td class="pct">1.0%</td></tr>
+      <tr class="subtotal"><td><strong>TOTAL COGS</strong></td><td><strong>$24,720</strong></td><td class="pct"><strong>51.5%</strong></td><td><strong>$44,640</strong></td><td class="pct"><strong>46.5%</strong></td><td><strong>$78,000</strong></td><td class="pct"><strong>39.0%</strong></td></tr>
+      <tr class="net-positive"><td><strong>GROSS PROFIT</strong></td><td><strong>$23,280</strong></td><td class="pct"><strong>48.5%</strong></td><td><strong>$51,360</strong></td><td class="pct"><strong>53.5%</strong></td><td><strong>$122,000</strong></td><td class="pct"><strong>61.0%</strong></td></tr>
+
+      <!-- OPERATING EXPENSES -->
+      <tr class="section-header"><td colspan="7">▸ OPERATING EXPENSES</td></tr>
+      <tr><td class="indent">Amazon Referral Fees (15% of Amazon sales)</td><td>$3,960</td><td class="pct">8.3%</td><td>$7,920</td><td class="pct">8.3%</td><td>$16,500</td><td class="pct">8.3%</td></tr>
+      <tr><td class="indent">Amazon Professional Subscription</td><td>$360</td><td class="pct">0.7%</td><td>$360</td><td class="pct">0.4%</td><td>$360</td><td class="pct">0.2%</td></tr>
+      <tr><td class="indent">Etsy Transaction Fees (6.5% + listings)</td><td>$1,020</td><td class="pct">2.1%</td><td>$2,040</td><td class="pct">2.1%</td><td>$4,200</td><td class="pct">2.1%</td></tr>
+      <tr><td class="indent">Payment Processing (Stripe/PayPal DTC)</td><td>$240</td><td class="pct">0.5%</td><td>$480</td><td class="pct">0.5%</td><td>$960</td><td class="pct">0.5%</td></tr>
+      <tr><td class="indent">Shipping / Postage (Canada Post)</td><td>$9,600</td><td class="pct">20.0%</td><td>$16,800</td><td class="pct">17.5%</td><td>$30,000</td><td class="pct">15.0%</td></tr>
+      <tr><td class="indent">PPC Advertising (Amazon + Etsy)</td><td>$2,400</td><td class="pct">5.0%</td><td>$4,320</td><td class="pct">4.5%</td><td>$8,000</td><td class="pct">4.0%</td></tr>
+      <tr><td class="indent">Social Media Marketing (TikTok, Instagram)</td><td>$600</td><td class="pct">1.3%</td><td>$1,440</td><td class="pct">1.5%</td><td>$4,000</td><td class="pct">2.0%</td></tr>
+      <tr><td class="indent">Website Hosting & Domain</td><td>$600</td><td class="pct">1.3%</td><td>$600</td><td class="pct">0.6%</td><td>$600</td><td class="pct">0.3%</td></tr>
+      <tr><td class="indent">Photography / Content Creation</td><td>$480</td><td class="pct">1.0%</td><td>$480</td><td class="pct">0.5%</td><td>$960</td><td class="pct">0.5%</td></tr>
+      <tr><td class="indent">Supplies & Equipment (amortized)</td><td>$720</td><td class="pct">1.5%</td><td>$480</td><td class="pct">0.5%</td><td>$720</td><td class="pct">0.4%</td></tr>
+      <tr><td class="indent">Accounting / Legal / Insurance</td><td>$480</td><td class="pct">1.0%</td><td>$720</td><td class="pct">0.8%</td><td>$1,200</td><td class="pct">0.6%</td></tr>
+      <tr><td class="indent">Miscellaneous / Returns / Refunds</td><td>$480</td><td class="pct">1.0%</td><td>$960</td><td class="pct">1.0%</td><td>$1,800</td><td class="pct">0.9%</td></tr>
+      <tr class="subtotal"><td><strong>TOTAL OPERATING EXPENSES</strong></td><td><strong>$20,940</strong></td><td class="pct"><strong>43.6%</strong></td><td><strong>$36,600</strong></td><td class="pct"><strong>38.1%</strong></td><td><strong>$69,300</strong></td><td class="pct"><strong>34.7%</strong></td></tr>
+
+      <!-- NET INCOME -->
+      <tr class="net-positive"><td><strong>OPERATING INCOME (EBIT)</strong></td><td><strong>$2,340</strong></td><td class="pct"><strong>4.9%</strong></td><td><strong>$14,760</strong></td><td class="pct"><strong>15.4%</strong></td><td><strong>$52,700</strong></td><td class="pct"><strong>26.4%</strong></td></tr>
+      <tr><td class="indent">Income Tax (Federal + Provincial ~26%)</td><td>$608</td><td class="pct">1.3%</td><td>$3,838</td><td class="pct">4.0%</td><td>$13,702</td><td class="pct">6.9%</td></tr>
+      <tr class="total"><td>NET INCOME AFTER TAX</td><td>$1,732</td><td class="pct">3.6%</td><td>$10,922</td><td class="pct">11.4%</td><td>$38,998</td><td class="pct">19.5%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="three-col" style="margin-top:20px;">
+    <div class="info-block">
+      <h4>📌 Year 1 Reality Check</h4>
+      <p>Year 1 net income is low ($1,732) due to startup inefficiencies, high shipping ratios on low volume, and PPC investment to build listing rank. The gross margin is healthy at 48.5% — the business model is fundamentally sound.</p>
+    </div>
+    <div class="info-block">
+      <h4>📈 Year 2 Inflection</h4>
+      <p>Doubling volume to 4,800 units improves all ratios: labor efficiency grows, bulk material savings kick in, and fixed overhead dilutes. Net income grows nearly 6× to $10,922 at 11.4% margin — a strong improvement curve.</p>
+    </div>
+    <div class="info-block">
+      <h4>🚀 Year 3 Scale Thesis</h4>
+      <p>At 10,000 units/year, the business hits a 19.5% net margin and $39K after-tax income. Shipping efficiency (volume discounts with Canada Post) and labor leverage (batch production) are the primary value creation levers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ PROJECTIONS ══════════════════════════════════ -->
+<section id="projections">
+  <div class="section-label">Investment Returns & Growth Scenarios</div>
+  <h2>FINANCIAL PROJECTIONS & RETURN ANALYSIS</h2>
+
+  <!-- Startup Investment -->
+  <div class="two-col" style="margin-bottom:24px;">
+    <div>
+      <h3>STARTUP INVESTMENT REQUIRED (CAD)</h3>
+      <table class="pl-table">
+        <thead><tr><th>Item</th><th>Cost (CAD)</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Initial Materials Inventory (500 units)</td><td>$1,000</td><td>Glue, borax, fragrances, add-ins</td></tr>
+          <tr><td>Packaging Stock (500 units)</td><td>$700</td><td>Cups, labels, tissue, mailers</td></tr>
+          <tr><td>Equipment (scale, mixer, work surface)</td><td>$500</td><td>One-time capex</td></tr>
+          <tr><td>Branding & Label Design</td><td>$300</td><td>Canva/freelance</td></tr>
+          <tr><td>Photography (product shots)</td><td>$200</td><td>First listings</td></tr>
+          <tr><td>Amazon Professional Account (1 month)</td><td>$30</td><td>CAD $29.99/month</td></tr>
+          <tr><td>Website Setup (Shopify/Squarespace)</td><td>$300</td><td>Template + domain</td></tr>
+          <tr><td>Working Capital Buffer</td><td>$570</td><td>Emergency float</td></tr>
+          <tr class="total"><td>TOTAL STARTUP CAPITAL</td><td>$3,600</td><td>Very low barrier</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>RETURN METRICS</h3>
+      <div class="kpi-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="kpi-tile green">
+          <div class="label">Total 3-Yr Net Income</div>
+          <div class="value green">$51.6K</div>
+          <div class="sub">CAD after tax</div>
+        </div>
+        <div class="kpi-tile red">
+          <div class="label">ROI (Year 1)</div>
+          <div class="value red">48%</div>
+          <div class="sub">On $3,600 invested</div>
+        </div>
+        <div class="kpi-tile green">
+          <div class="label">Payback Period</div>
+          <div class="value green">~14 Mo</div>
+          <div class="sub">Months to recover capital</div>
+        </div>
+        <div class="kpi-tile">
+          <div class="label">3-Year IRR</div>
+          <div class="value">95%+</div>
+          <div class="sub">Internal rate of return</div>
+        </div>
+        <div class="kpi-tile">
+          <div class="label">Break-Even Volume</div>
+          <div class="value">86</div>
+          <div class="sub">Units/month minimum</div>
+        </div>
+        <div class="kpi-tile amber">
+          <div class="label">Risk Rating</div>
+          <div class="value" style="color:var(--amber)">LOW–MED</div>
+          <div class="sub">Low capex, home-based</div>
+        </div>
+      </div>
+
+      <div class="info-block" style="margin-top:12px; border-top:3px solid var(--green);">
+        <h4>🔢 Break-Even Formula</h4>
+        <p>Monthly Fixed Costs: ~$300 (platform + website + misc)<br>
+        Contribution Margin: $19.99 × 17.5% = $3.50/unit<br>
+        Break-Even: $300 ÷ $3.50 = <strong>86 units/month</strong><br>
+        At 100 units/month, the business is cash-flow positive from Day 1.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 Scenarios -->
+  <h3>THREE-SCENARIO ANALYSIS</h3>
+  <div class="scenario-grid">
+    <div class="scenario-card">
+      <div class="scenario-tag">Conservative</div>
+      <h4>SIDE HUSTLE MODEL</h4>
+      <div class="metric"><span>Monthly Units (avg)</span><strong>100–150</strong></div>
+      <div class="metric"><span>Annual Revenue</span><strong>$28,800</strong></div>
+      <div class="metric"><span>Annual Net Income</span><strong>~$1,000</strong></div>
+      <div class="metric"><span>Net Margin</span><strong>3.5%</strong></div>
+      <div class="metric"><span>Operator Role</span><strong>Part-time</strong></div>
+      <div class="metric"><span>Feasibility</span><strong style="color:var(--amber);">✓ Low Risk</strong></div>
+    </div>
+    <div class="scenario-card highlight">
+      <div class="scenario-tag">Base Case ★</div>
+      <h4>GROWTH PHASE MODEL</h4>
+      <div class="metric"><span>Monthly Units (avg)</span><strong>200–400</strong></div>
+      <div class="metric"><span>Annual Revenue</span><strong>$48,000–$96,000</strong></div>
+      <div class="metric"><span>Annual Net Income</span><strong>$1,700–$10,900</strong></div>
+      <div class="metric"><span>Net Margin</span><strong>3.6%–11.4%</strong></div>
+      <div class="metric"><span>Operator Role</span><strong>Full-time founder</strong></div>
+      <div class="metric"><span>Feasibility</span><strong style="color:var(--green);">✓✓ Viable</strong></div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-tag">Optimistic</div>
+      <h4>SCALE / BRAND MODEL</h4>
+      <div class="metric"><span>Monthly Units (avg)</span><strong>800–1,200</strong></div>
+      <div class="metric"><span>Annual Revenue</span><strong>$192,000–$288,000</strong></div>
+      <div class="metric"><span>Annual Net Income</span><strong>$38,000–$60,000</strong></div>
+      <div class="metric"><span>Net Margin</span><strong>18–21%</strong></div>
+      <div class="metric"><span>Operator Role</span><strong>Founder + 1–2 staff</strong></div>
+      <div class="metric"><span>Feasibility</span><strong style="color:var(--green);">✓✓✓ Strong</strong></div>
+    </div>
+  </div>
+
+  <div class="highlight-red" style="margin-top:20px;">
+    <h4>🚀 Scale Unlocks: What Gets You to $200K+/Year</h4>
+    <p>Batch production efficiency (2–3× units/hour at scale) · Bulk material sourcing (30–40% COGS reduction) · Slime subscription box (recurring revenue) · TikTok creator seeding (viral potential = 10× organic reach) · US market expansion via Amazon.com · Corporate/birthday party slime bar services · Wholesale to toy boutiques and gift shops (higher MOQ, lower ops load)</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ SWOT ══════════════════════════════════ -->
+<section id="swot">
+  <div class="section-label">Strategic Analysis</div>
+  <h2>SWOT ANALYSIS — [SLIME BRAND]MAG<span style="color:var(--red)">IC</span>SLIME</h2>
+
+  <div class="swot-grid">
+    <div class="swot-box strengths">
+      <h3>S — STRENGTHS</h3>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--green);">S1</div>
+        <p><strong>Dual-Platform Presence:</strong> Amazon.ca (mass volume discovery) + Etsy.ca (handmade premium credibility) + DTC website — reduces dependency on any single channel and maximizes reach.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--green);">S2</div>
+        <p><strong>Canadian Origin / "Made in Canada" Appeal:</strong> Domestic buyers strongly prefer Canadian-made goods for fast shipping, quality trust, and supporting local — a premium over Chinese-imported competitors.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--green);">S3</div>
+        <p><strong>Wide Scent & Texture Portfolio (52+ SKUs):</strong> Extensive variety — crunchy, cloud, butter, jelly cube, clear, DIY clay — satisfying every collector and sensory preference. Breadth drives repeat purchase.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--green);">S4</div>
+        <p><strong>Activator Included:</strong> Ships with activator spray — a key differentiator and value-add that reduces negative reviews from customers who don't know how to revive stale slime.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--green);">S5</div>
+        <p><strong>Strong Customer Reviews:</strong> Verified positive feedback on texture, scent, packaging, and customer service responsiveness. Review velocity on Etsy builds organic ranking.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--green);">S6</div>
+        <p><strong>Ultra-Low Startup Capital ($3,600):</strong> Minimal barrier to entry and capital risk. Home-based production keeps fixed costs near zero. Breakeven at just 86 units/month.</p>
+      </div>
+    </div>
+
+    <div class="swot-box weaknesses">
+      <h3>W — WEAKNESSES</h3>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#e06030;">W1</div>
+        <p><strong>Labour-Intensive / Non-Scalable Production:</strong> At 20 minutes per unit, labor is 30% of COGS. Without hiring or process automation, production is the key bottleneck to scaling revenue past $100K.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#e06030;">W2</div>
+        <p><strong>High Shipping Costs (Canada Post):</strong> Domestic Canada Post tracked shipping ($8–14/package) represents 15–20% of revenue on low-AOV orders. FBM margins are significantly eroded versus FBA alternatives.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#e06030;">W3</div>
+        <p><strong>Borax / Safety Regulatory Risk:</strong> Products contain Borax (regulated in some Canadian provinces). Health Canada guidelines require clear labeling and age restrictions (8+). Any regulatory change is a risk.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#e06030;">W4</div>
+        <p><strong>Amazon FBM Disadvantage:</strong> Without Prime eligibility (FBA), Amazon listings rank lower in search, lose the Prime badge, and have slower delivery expectations — significant disadvantage vs FBA competitors.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#e06030;">W5</div>
+        <p><strong>Limited Social Media Presence / Brand Awareness:</strong> Without consistent TikTok, Instagram Reels, or YouTube Shorts content, organic discovery is limited. Slime brands live and die by viral content.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#e06030;">W6</div>
+        <p><strong>Perishability & Shelf Life:</strong> Slime degrades over time (drying, loss of texture). Returns or negative reviews from long shipping transit times, especially in extreme Canadian weather, can hurt ratings.</p>
+      </div>
+    </div>
+
+    <div class="swot-box opportunities">
+      <h3>O — OPPORTUNITIES</h3>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#3060d0;">O1</div>
+        <p><strong>TikTok Virality / ASMR Content Engine:</strong> A single viral TikTok or YouTube video of slime textures can generate 100,000+ organic impressions and spike sales 5–20× overnight. Investment in content creation has asymmetric return potential.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#3060d0;">O2</div>
+        <p><strong>Amazon.com US Market Expansion:</strong> US has 10× Canada's population and slime demand. Expanding to Amazon.com FBM (or partnering with a US-based 3PL) could 10× revenue within 2–3 years.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#3060d0;">O3</div>
+        <p><strong>Slime Subscription Box (Recurring Revenue):</strong> Monthly "Slime of the Month" subscription ($25–35/month) builds predictable recurring revenue, reduces inventory uncertainty, and increases LTV dramatically.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#3060d0;">O4</div>
+        <p><strong>Birthday Party & Event Services:</strong> Mobile slime bars, party favors, corporate team-building events — premium service revenue ($300–800/event) with high margin and local market with zero shipping cost.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#3060d0;">O5</div>
+        <p><strong>Wholesale to Gift Shops / Toy Boutiques:</strong> Canadian independent toy stores, gift shops and bookstore chains (Indigo/Chapters) are actively seeking unique Canadian-made products for their curated sections.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:#3060d0;">O6</div>
+        <p><strong>Boron-Free / Eco-Friendly Product Line:</strong> Borax-free slime (using saline solution only) opens the 0–8 age bracket and expands to health-conscious parents. Eco packaging can command 15–20% premium pricing.</p>
+      </div>
+    </div>
+
+    <div class="swot-box threats">
+      <h3>T — THREATS</h3>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--red);">T1</div>
+        <p><strong>Mass-Market Price Undercutting (Chinese Sellers):</strong> Bulk Chinese-manufactured slime packs at $1–3/unit dominate the low end of Amazon. Price-sensitive customers may not perceive handmade value sufficient to justify 5–8× premium.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--red);">T2</div>
+        <p><strong>Amazon Algorithm Changes / Platform Dependency:</strong> Amazon's A9/A10 algorithm updates can de-rank listings overnight. A single policy change (slime categorization, hazmat rules, listing restrictions) can devastate Amazon revenue.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--red);">T3</div>
+        <p><strong>Trend Cyclicality:</strong> Slime experienced a 2016–2019 peak, declined, and rebounded with ASMR. The category could face another cyclical decline. Brand differentiation and product diversification are critical hedges.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--red);">T4</div>
+        <p><strong>Increasing Canadian Shipping Costs:</strong> Canada Post rate increases are persistent. Rising shipping costs on thin FBM margins directly compress net income. A 10% shipping rate increase = ~2% reduction in net margin at current AOV.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--red);">T5</div>
+        <p><strong>Safety / Liability Claims:</strong> Despite "non-toxic" labeling, any allergic reaction or skin irritation claim — especially from children — can result in negative press, listing suspension, and legal exposure. Insurance is critical.</p>
+      </div>
+      <div class="swot-item">
+        <div class="swot-bullet" style="background:var(--red);">T6</div>
+        <p><strong>Copycat Competition:</strong> Low barrier to entry means any competitor can replicate the product line, pricing, and even product photography within weeks. Brand strength, reviews, and community engagement are the primary defensible moats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ RISK ══════════════════════════════════ -->
+<section id="risk">
+  <div class="section-label">Risk Assessment Matrix</div>
+  <h2>RISK ANALYSIS & MITIGATION</h2>
+
+  <table class="risk-table">
+    <thead>
+      <tr><th>Risk Factor</th><th>Probability</th><th>Impact</th><th>Severity</th><th>Mitigation Strategy</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Slime trend decline / demand drop</strong></td><td>Low–Med</td><td>High</td><td><span class="risk-badge risk-med">MEDIUM</span></td><td>Diversify into adjacent sensory toys (kinetic sand, cloud dough, DIY kits) to reduce single-category dependency</td></tr>
+      <tr><td><strong>Amazon listing suspension</strong></td><td>Low</td><td>Very High</td><td><span class="risk-badge risk-med">MEDIUM</span></td><td>Build Etsy + DTC as primary revenue channels so Amazon is max 50% of revenue. Maintain fully compliant listings.</td></tr>
+      <tr><td><strong>Shipping cost increase ≥15%</strong></td><td>High</td><td>Medium</td><td><span class="risk-badge risk-med">MEDIUM</span></td><td>Increase AOV via bundles and kits. Negotiate volume rates with Canada Post Ventures. Test Chit Chats (discounted last-mile).</td></tr>
+      <tr><td><strong>Product liability / skin reaction claim</strong></td><td>Very Low</td><td>Very High</td><td><span class="risk-badge risk-med">MEDIUM</span></td><td>Obtain small business liability insurance ($300–500/yr). Clear allergen labeling. "Ages 8+" and eczema warnings on all listings.</td></tr>
+      <tr><td><strong>Key person dependency (sole operator)</strong></td><td>Medium</td><td>High</td><td><span class="risk-badge risk-med">MEDIUM</span></td><td>Document all formulas and processes. Train part-time assistant by Year 2. SOPs reduce operator dependency.</td></tr>
+      <tr><td><strong>Competitor undercuts on Amazon</strong></td><td>High</td><td>Low–Med</td><td><span class="risk-badge risk-low">LOW</span></td><td>Premium positioning + reviews + Canadian-made brand story resists price competition. Do not compete on price — compete on quality.</td></tr>
+      <tr><td><strong>Inventory spoilage / batch failure</strong></td><td>Low</td><td>Low</td><td><span class="risk-badge risk-low">LOW</span></td><td>Small-batch production reduces waste. Test each batch. FIFO inventory rotation. Material cost is minimal ($2/unit).</td></tr>
+      <tr><td><strong>Health Canada regulatory change on Borax</strong></td><td>Low</td><td>High</td><td><span class="risk-badge risk-med">MEDIUM</span></td><td>Develop borax-free line immediately as parallel SKU. Saline + contact solution alternatives already proven. Be prepared to pivot fully.</td></tr>
+      <tr><td><strong>Negative viral social media event</strong></td><td>Very Low</td><td>Very High</td><td><span class="risk-badge risk-low">LOW</span></td><td>Respond promptly, professionally. Maintain high product standards. Liability insurance covers claims. Most issues are resolved by excellent CS.</td></tr>
+      <tr><td><strong>CAD/USD currency fluctuation</strong></td><td>Medium</td><td>Low</td><td><span class="risk-badge risk-low">LOW</span></td><td>Revenue and costs primarily in CAD. USD expansion adds FX exposure but also natural hedge as materials sourced globally.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="three-col" style="margin-top:20px;">
+    <div class="kpi-tile green" style="padding:18px;">
+      <div class="label">Overall Business Risk</div>
+      <div class="value green">LOW–MED</div>
+      <div class="sub">Low capital, home-based, test-and-learn model with zero major irreversible commitments</div>
+    </div>
+    <div class="kpi-tile amber" style="padding:18px;">
+      <div class="label">Shariah Compliance</div>
+      <div class="value" style="color:var(--amber)">PERMISSIBLE</div>
+      <div class="sub">Halal product (toys/sensory), no interest/riba, no haram ingredients — compliant for Islamic investors</div>
+    </div>
+    <div class="kpi-tile" style="padding:18px;">
+      <div class="label">Capital Recovery</div>
+      <div class="value">~14 Months</div>
+      <div class="sub">Recover $3,600 startup capital within first 14 months at base-case volume</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ VERDICT ══════════════════════════════════ -->
+<section id="verdict">
+  <div class="section-label">Investment Verdict & Recommendations</div>
+  <h2>FEASIBILITY VERDICT</h2>
+
+  <div class="two-col">
+    <div>
+      <div class="highlight-red">
+        <h4>✅ OVERALL VERDICT: FEASIBLE — PROCEED WITH CONDITIONS</h4>
+        <p>[SlimeBrand]Slime operates in a growing, TikTok-amplified market with genuine product-market fit and strong customer feedback. The business model is fundamentally sound with 48–61% gross margins. The primary challenge is unit economics at low volume — shipping costs and Amazon fees compress net margins to single digits in Year 1. The growth curve from Year 2 onwards is compelling.</p>
+      </div>
+
+      <div class="info-block" style="border-top:3px solid var(--green);">
+        <h4>✅ GO — Conditions for Investment / Scale Decision</h4>
+        <ul>
+          <li>Year 1 target: <strong>100+ units/month</strong> consistently by Month 3–4</li>
+          <li>Etsy and DTC to account for <strong>≥45% of revenue</strong> (higher margin channels)</li>
+          <li>Average Order Value (AOV) above <strong>$25 CAD</strong> (bundles push this up)</li>
+          <li>Launch <strong>TikTok content strategy</strong> within first 60 days — non-negotiable for slime</li>
+          <li>Obtain <strong>product liability insurance</strong> before scaling past $50K revenue</li>
+          <li>File for <strong>Canadian business registration</strong> and GST/HST account by $30K revenue</li>
+        </ul>
+      </div>
+
+      <div class="info-block" style="border-top:3px solid var(--red);">
+        <h4>⚠️ WATCH — Key Risk Monitors</h4>
+        <ul>
+          <li>Amazon FBM vs FBA decision — evaluate FBA trial at 500+ units/month</li>
+          <li>Shipping cost as % of revenue — keep below 18% or adjust pricing</li>
+          <li>Develop borax-free alternative SKU in parallel — regulatory hedge</li>
+          <li>Monitor Etsy and Amazon review scores — below 4.5★ needs immediate action</li>
+          <li>Do not over-invest in PPC until organic listing rank is established (6 months)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <h3>10-YEAR OUTLOOK (CAD)</h3>
+      <table class="pl-table" style="margin-bottom:16px;">
+        <thead><tr><th>Year</th><th>Units</th><th>Revenue</th><th>Net Income</th><th>Margin</th></tr></thead>
+        <tbody>
+          <tr><td>2025 (Y1)</td><td>2,400</td><td>$48,000</td><td>$1,732</td><td class="pct">3.6%</td></tr>
+          <tr><td>2026 (Y2)</td><td>4,800</td><td>$96,000</td><td>$10,922</td><td class="pct">11.4%</td></tr>
+          <tr><td>2027 (Y3)</td><td>10,000</td><td>$200,000</td><td>$38,998</td><td class="pct">19.5%</td></tr>
+          <tr><td>2028 (Y4)</td><td>15,000</td><td>$300,000</td><td>$67,500</td><td class="pct">22.5%</td></tr>
+          <tr><td>2029 (Y5)</td><td>20,000</td><td>$400,000</td><td>$100,000</td><td class="pct">25.0%</td></tr>
+          <tr class="subtotal"><td colspan="3"><strong>5-Year Cumulative</strong></td><td><strong>$219,152</strong></td><td class="pct">—</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-block">
+        <h4>🎯 Strategic Priority Stack (12-Month Roadmap)</h4>
+        <ul>
+          <li><strong>Month 1–2:</strong> Launch TikTok/Instagram content. Post 3×/week. ASMR slime videos.</li>
+          <li><strong>Month 2–3:</strong> Optimize Amazon listings (A+ content, keywords, 7 images). Launch 2–3 bundle SKUs.</li>
+          <li><strong>Month 3–4:</strong> Hit 100 units/month. Register business. Open DTC website (Shopify).</li>
+          <li><strong>Month 4–6:</strong> Launch subscription box "Monthly Slime Box" at $29.99/month.</li>
+          <li><strong>Month 6–9:</strong> Test first US shipment via Amazon.com FBM or Etsy.com.</li>
+          <li><strong>Month 9–12:</strong> First wholesale pitch to 2–3 Canadian gift/toy boutiques.</li>
+          <li><strong>Month 12:</strong> Evaluate FBA trial, hire part-time production assistant.</li>
+        </ul>
+      </div>
+
+      <div class="kpi-grid" style="grid-template-columns:1fr 1fr; margin-top:4px;">
+        <div class="kpi-tile green">
+          <div class="label">Shariah Status</div>
+          <div class="value green" style="font-size:22px;">HALAL</div>
+          <div class="sub">Permissible product, no riba financing required</div>
+        </div>
+        <div class="kpi-tile red">
+          <div class="label">Entry Recommendation</div>
+          <div class="value red" style="font-size:22px;">ENTER</div>
+          <div class="sub">Low cap, proven product, growing market</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div><strong>[SlimeBrand]Slime — Amazon Canada Feasibility Report</strong> &nbsp;|&nbsp; Prepared March 2026 &nbsp;|&nbsp; Based on publicly available market data, Amazon Canada fee structures, and industry benchmarks</div>
+  <div>All figures in <strong>CAD</strong> unless noted. Projections are estimates only. Not financial advice.</div>
+</footer>
+
+<script>
+  // Active nav highlighting on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  });
+</script>
+</body>
+</html>

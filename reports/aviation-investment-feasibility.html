@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Aviation Group] - Investor Pitch Deck 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+        
+        /* Title Slide */
+        .title-slide {
+            background: linear-gradient(135deg, rgba(139,35,50,0.95) 0%, rgba(167,52,57,0.95) 100%),
+                        url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDQwIEwgNDAgMCBMIDQwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+');
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+        
+        .[aviation group]-header {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+        
+        .[aviation group]-header span {
+            font-weight: 600;
+        }
+        
+        .alliance-badge {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-size: 14px;
+            text-align: right;
+            opacity: 0.9;
+        }
+        
+        .main-title-container {
+            text-align: center;
+            max-width: 1000px;
+        }
+        
+        .main-title {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 60px;
+        }
+        
+        .key-metrics-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 40px 60px;
+        }
+        
+        .investment-amount {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .metric-item {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Content Slides */
+        .content-slide {
+            padding: 60px;
+        }
+        
+        .slide-header {
+            border-bottom: 3px solid #8B2332;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .slide-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        /* Cards */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .content-grid.three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .info-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            box-shadow: 0 10px 30px rgba(139,35,50,0.15);
+            border-color: #8B2332;
+        }
+        
+        .card-header {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8B2332;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .card-icon {
+            font-size: 28px;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #8B2332 0%, #A73439 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+        
+        .highlight-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        /* Financial Table */
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .financial-table th {
+            background: #8B2332;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .financial-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .financial-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .financial-table .highlight-row {
+            background: #FFF0F0;
+        }
+        
+        .financial-table .total-row {
+            background: #2C3E50;
+            color: white;
+            font-weight: 700;
+        }
+        
+        /* Charts */
+        .chart-container {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        .chart-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 250px;
+            gap: 15px;
+        }
+        
+        .bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .bar {
+            width: 100%;
+            background: linear-gradient(to top, #8B2332, #A73439);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+        }
+        
+        .bar:hover {
+            background: linear-gradient(to top, #A73439, #B84547);
+            transform: translateY(-5px);
+        }
+        
+        .bar-value {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .bar-label {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        
+        /* Value Cards */
+        .value-card {
+            background: white;
+            border-left: 5px solid #8B2332;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .value-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #8B2332;
+            margin-bottom: 8px;
+        }
+        
+        .value-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .value-detail {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        /* List Styles */
+        .check-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .check-list li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 35px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .check-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8B2332;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        /* Footer */
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 40px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Special Boxes */
+        .growth-driver-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .growth-driver-card:hover {
+            box-shadow: 0 10px 30px rgba(139,35,50,0.2);
+            border-color: #8B2332;
+        }
+        
+        .driver-header {
+            background: linear-gradient(135deg, #8B2332 0%, #A73439 100%);
+            color: white;
+            padding: 25px;
+        }
+        
+        .driver-content {
+            padding: 25px;
+            background: #f9f9f9;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #8B2332 0%, #A73439 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide title-slide">
+        <div class="[aviation group]-header">
+            <span>[Aviation Group]</span> [Principal]
+        </div>
+        <div class="alliance-badge">
+            Proud Member of<br>
+            [Aviation Group]GlobalAlliance
+        </div>
+        
+        <div class="main-title-container">
+            <h1 class="main-title">Investment Opportunity 2025</h1>
+            <p class="subtitle">Two Companies | One Vision | Global Excellence</p>
+            
+            <div class="key-metrics-box">
+                <div class="investment-amount">$20.2M Valuation</div>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-value">$4.04M</div>
+                        <div class="metric-label">Investment Ask</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">20%</div>
+                        <div class="metric-label">Equity Stake</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">25.9x</div>
+                        <div class="metric-label">10-Year Multiple</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">2,490%</div>
+                        <div class="metric-label">10-Year ROI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 2: Executive Summary -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Executive Summary</h2>
+            <p class="slide-subtitle">48 years of excellence, positioned for exponential growth</p>
+        </div>
+        
+        <div class="highlight-box">
+            <h3 class="highlight-title">Investment Highlights</h3>
+            <div class="metrics-grid">
+                <div class="metric-item" style="text-align: left;">
+                    <div class="metric-value">$457.8B</div>
+                    <div class="metric-label">Global Market by 2033</div>
+                </div>
+                <div class="metric-item" style="text-align: left;">
+                    <div class="metric-value">30-40%</div>
+                    <div class="metric-label">Annual Growth Target</div>
+                </div>
+                <div class="metric-item" style="text-align: left;">
+                    <div class="metric-value">0.3% → 4%</div>
+                    <div class="metric-label">Market Share Path</div>
+                </div>
+                <div class="metric-item" style="text-align: left;">
+                    <div class="metric-value">$104.8M</div>
+                    <div class="metric-label">10-Year Exit Value</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">🏢</span>
+                    Company Overview
+                </h3>
+                <ul class="check-list">
+                    <li><strong>Established 1976:</strong> 48 years UAE leadership</li>
+                    <li><strong>Dual Structure:</strong> Audit + Advisory companies</li>
+                    <li><strong>ADGM Approved:</strong> Premium market access</li>
+                    <li><strong>Global Network:</strong> 300+ locations, 95 countries</li>
+                    <li><strong>Award Winner:</strong> Inclusive Firm of Year 2024</li>
+                    <li><strong>Team Size:</strong> 6 partners, 50+ professionals</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">💡</span>
+                    Why Invest Now
+                </h3>
+                <ul class="check-list">
+                    <li><strong>Corporate Tax:</strong> Creating $3.2B service market</li>
+                    <li><strong>Digital Wave:</strong> $842B transformation market</li>
+                    <li><strong>ESG Mandate:</strong> Mandatory reporting 2025</li>
+                    <li><strong>Technology Edge:</strong> AI & automation leadership</li>
+                    <li><strong>Perfect Timing:</strong> 400,000+ businesses need compliance</li>
+                    <li><strong>Premium Position:</strong> ADGM high-value segment</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            [Aviation Group] - ADGM Registered Auditor | Member of [Aviation Group] Global Alliance
+        </div>
+    </div>
+    
+    <!-- Slide 3: Market Opportunity -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Global Market Opportunity</h2>
+            <p class="slide-subtitle">Multi-billion dollar markets with exceptional growth trajectories</p>
+        </div>
+        
+        <div class="content-grid three-col">
+            <div class="value-card">
+                <div class="value-number">$239.4B</div>
+                <div class="value-label">Global Audit 2024</div>
+                <div class="value-detail">→ $457.8B by 2033 (7.5% CAGR)</div>
+            </div>
+            <div class="value-card">
+                <div class="value-number">$173.6B</div>
+                <div class="value-label">Financial Audit 2024</div>
+                <div class="value-detail">→ $277.9B by 2032 (6.5% CAGR)</div>
+            </div>
+            <div class="value-card">
+                <div class="value-number">$663.6M</div>
+                <div class="value-label">UAE Market 2024</div>
+                <div class="value-detail">→ $918.6M by 2030 (5.6% CAGR)</div>
+            </div>
+        </div>
+        
+        <div class="highlight-box" style="margin-top: 40px;">
+            <h3 class="highlight-title">UAE Market Share Analysis & Path to 1%</h3>
+            <div class="content-grid three-col">
+                <div style="text-align: center;">
+                    <div style="font-size: 48px; font-weight: 700; margin-bottom: 10px;">0.305%</div>
+                    <div style="font-size: 14px; opacity: 0.9;">Current Share (2024)</div>
+                    <div style="font-size: 18px; margin-top: 8px;">$2.02M Revenue</div>
+                </div>
+                <div style="text-align: center; display: flex; align-items: center; justify-content: center;">
+                    <div>
+                        <div style="font-size: 36px;">→</div>
+                        <div style="font-size: 24px; font-weight: 600;">40% Growth</div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 48px; font-weight: 700; margin-bottom: 10px;">1.00%</div>
+                    <div style="font-size: 14px; opacity: 0.9;">Target Share (2030)</div>
+                    <div style="font-size: 18px; margin-top: 8px;">$9.19M Revenue</div>
+                </div>
+            </div>
+            <p style="margin-top: 30px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+                <strong>Strategic Investment Target:</strong> Achieving 1% of UAE market requires $4.04M capital to scale operations, expand ADGM presence, accelerate technology adoption, and capture high-growth segments in taxation, digital transformation, and ESG services.
+            </p>
+        </div>
+        
+        <div class="slide-footer">
+            [Aviation Group] - ADGM Registered Auditor | Member of [Aviation Group] Global Alliance
+        </div>
+    </div>
+    
+    <!-- Slide 4: Growth Catalysts -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Four Growth Catalysts</h2>
+            <p class="slide-subtitle">High-growth drivers creating exceptional opportunity</p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="growth-driver-card">
+                <div class="driver-header">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">⚡ Digital Transformation</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 28px; font-weight: 700;">$842B</div>
+                            <div style="font-size: 12px; opacity: 0.9;">by 2030</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 28px; font-weight: 700;">16.5%</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CAGR</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="driver-content">
+                    <p style="margin-bottom: 15px;"><strong>Key Drivers:</strong></p>
+                    <ul style="font-size: 14px; line-height: 1.8;">
+                        <li>• AI & Automation adoption</li>
+                        <li>• Cloud Migration services</li>
+                        <li>• Data Analytics platforms</li>
+                        <li>• Cybersecurity solutions</li>
+                    </ul>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 13px; color: #666;">
+                        <strong>Market:</strong> UAE digital economy $140B by 2031
+                    </p>
+                </div>
+            </div>
+            
+            <div class="growth-driver-card">
+                <div class="driver-header">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">💰 Taxation Services</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 28px; font-weight: 700;">$3.2B</div>
+                            <div style="font-size: 12px; opacity: 0.9;">UAE by 2028</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 28px; font-weight: 700;">24.3%</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CAGR</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="driver-content">
+                    <p style="margin-bottom: 15px;"><strong>Key Drivers:</strong></p>
+                    <ul style="font-size: 14px; line-height: 1.8;">
+                        <li>• 9% Corporate Tax implementation</li>
+                        <li>• VAT Compliance services</li>
+                        <li>• International Tax planning</li>
+                        <li>• Transfer Pricing documentation</li>
+                    </ul>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 13px; color: #666;">
+                        <strong>Impact:</strong> 400,000+ businesses requiring compliance
+                    </p>
+                </div>
+            </div>
+            
+            <div class="growth-driver-card">
+                <div class="driver-header">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">🌱 ESG & Sustainability</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 28px; font-weight: 700;">$1.1B</div>
+                            <div style="font-size: 12px; opacity: 0.9;">by 2027</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 28px; font-weight: 700;">12.8%</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CAGR</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="driver-content">
+                    <p style="margin-bottom: 15px;"><strong>Key Drivers:</strong></p>
+                    <ul style="font-size: 14px; line-height: 1.8;">
+                        <li>• Mandatory ESG reporting 2025</li>
+                        <li>• Climate disclosure requirements</li>
+                        <li>• Governance frameworks</li>
+                        <li>• Social impact measurement</li>
+                    </ul>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 13px; color: #666;">
+                        <strong>Gap:</strong> 68% of UAE companies lack ESG readiness
+                    </p>
+                </div>
+            </div>
+            
+            <div class="growth-driver-card">
+                <div class="driver-header">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">🚀 UAE Diversification</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 28px; font-weight: 700;">$650B</div>
+                            <div style="font-size: 12px; opacity: 0.9;">Non-oil GDP</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 28px; font-weight: 700;">8.2%</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CAGR</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="driver-content">
+                    <p style="margin-bottom: 15px;"><strong>Key Drivers:</strong></p>
+                    <ul style="font-size: 14px; line-height: 1.8;">
+                        <li>• Fintech sector 8x growth by 2030</li>
+                        <li>• 40+ free zones expansion</li>
+                        <li>• FDI inflows $24B annually</li>
+                        <li>• Tourism & hospitality boom</li>
+                    </ul>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 13px; color: #666;">
+                        <strong>Target:</strong> Non-oil GDP $650B by 2031
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            [Aviation Group] - ADGM Registered Auditor | Member of [Aviation Group] Global Alliance
+        </div>
+    </div>
+    
+    <!-- Slide 5: 10-Year Projections -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <h2 class="slide-title">10-Year Financial Projections</h2>
+            <p class="slide-subtitle">Path to $524M valuation with 40% annual growth</p>
+        </div>
+        
+        <table class="financial-table">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Revenue</th>
+                    <th>Growth %</th>
+                    <th>Market Share</th>
+                    <th>Valuation (10x)</th>
+                    <th>20% Equity Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><strong>2025</strong></td>
+                    <td><strong>$2.02M</strong></td>
+                    <td>Base Year</td>
+                    <td>0.305%</td>
+                    <td><strong>$20.2M</strong></td>
+                    <td><strong>$4.04M</strong></td>
+                </tr>
+                <tr>
+                    <td>2026</td>
+                    <td>$2.63M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+30%</td>
+                    <td>0.380%</td>
+                    <td>$26.3M</td>
+                    <td>$5.26M</td>
+                </tr>
+                <tr>
+                    <td>2027</td>
+                    <td>$3.55M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+35%</td>
+                    <td>0.487%</td>
+                    <td>$35.5M</td>
+                    <td>$7.10M</td>
+                </tr>
+                <tr>
+                    <td>2028</td>
+                    <td>$4.97M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td>0.625%</td>
+                    <td>$49.7M</td>
+                    <td>$9.94M</td>
+                </tr>
+                <tr>
+                    <td>2029</td>
+                    <td>$6.96M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td>0.825%</td>
+                    <td>$69.6M</td>
+                    <td>$13.92M</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>2030</strong></td>
+                    <td><strong>$9.74M</strong></td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td><strong>1.061%</strong></td>
+                    <td><strong>$97.4M</strong></td>
+                    <td><strong>$19.48M</strong></td>
+                </tr>
+                <tr>
+                    <td>2031</td>
+                    <td>$13.64M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td>1.385%</td>
+                    <td>$136.4M</td>
+                    <td>$27.28M</td>
+                </tr>
+                <tr>
+                    <td>2032</td>
+                    <td>$19.10M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td>1.800%</td>
+                    <td>$191.0M</td>
+                    <td>$38.20M</td>
+                </tr>
+                <tr>
+                    <td>2033</td>
+                    <td>$26.74M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td>2.340%</td>
+                    <td>$267.4M</td>
+                    <td>$53.48M</td>
+                </tr>
+                <tr>
+                    <td>2034</td>
+                    <td>$37.44M</td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td>3.042%</td>
+                    <td>$374.4M</td>
+                    <td>$74.88M</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>2035</strong></td>
+                    <td><strong>$52.41M</strong></td>
+                    <td style="color: #22c55e; font-weight: 600;">+40%</td>
+                    <td><strong>3.955%</strong></td>
+                    <td><strong>$524.1M</strong></td>
+                    <td><strong>$104.82M</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="content-grid three-col" style="margin-top: 40px;">
+            <div class="value-card">
+                <div class="value-number">4.8x</div>
+                <div class="value-label">5-Year Return</div>
+                <div class="value-detail">$19.48M value by 2030</div>
+            </div>
+            <div class="value-card">
+                <div class="value-number">25.9x</div>
+                <div class="value-label">10-Year Multiple</div>
+                <div class="value-detail">$104.82M value by 2035</div>
+            </div>
+            <div class="value-card" style="border-left-color: #fbbf24;">
+                <div class="value-number" style="color: #f59e0b;">2,490%</div>
+                <div class="value-label">10-Year ROI</div>
+                <div class="value-detail">Exceptional returns</div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            [Aviation Group] - ADGM Registered Auditor | Member of [Aviation Group] Global Alliance
+        </div>
+    </div>
+    
+    <!-- Slide 6: Use of Funds -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Strategic Use of Funds</h2>
+            <p class="slide-subtitle">$4.04M investment allocation for maximum impact</p>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Investment Allocation</div>
+            <div class="bar-chart">
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 75%; background: #8B2332;">
+                        <span class="bar-value">30%</span>
+                    </div>
+                    <div class="bar-label">Technology<br>$1.21M</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 62.5%; background: #A73439;">
+                        <span class="bar-value">25%</span>
+                    </div>
+                    <div class="bar-label">Team<br>$1.01M</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 50%; background: #B84547;">
+                        <span class="bar-value">20%</span>
+                    </div>
+                    <div class="bar-label">ADGM<br>$808K</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 37.5%; background: #C95658;">
+                        <span class="bar-value">15%</span>
+                    </div>
+                    <div class="bar-label">Regional<br>$606K</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 25%; background: #DA6769;">
+                        <span class="bar-value">10%</span>
+                    </div>
+                    <div class="bar-label">Marketing<br>$404K</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-grid" style="margin-top: 40px;">
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">💻</span>
+                    Technology & Innovation (30%)
+                </h3>
+                <ul style="font-size: 14px; line-height: 1.8;">
+                    <li>• AI & automation audit platforms</li>
+                    <li>• Cloud infrastructure scaling</li>
+                    <li>• Data analytics & BI tools</li>
+                    <li>• Cybersecurity systems</li>
+                    <li>• Blockchain advisory capabilities</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">👥</span>
+                    Team Expansion (25%)
+                </h3>
+                <ul style="font-size: 14px; line-height: 1.8;">
+                    <li>• 30+ professionals recruitment</li>
+                    <li>• Technology specialists</li>
+                    <li>• Tax & ESG experts</li>
+                    <li>• Training & certification programs</li>
+                    <li>• International talent acquisition</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">🏢</span>
+                    ADGM Development (20%)
+                </h3>
+                <ul style="font-size: 14px; line-height: 1.8;">
+                    <li>• Dedicated ADGM team</li>
+                    <li>• Premium office infrastructure</li>
+                    <li>• Business development campaigns</li>
+                    <li>• Regulatory compliance systems</li>
+                    <li>• Quality assurance programs</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">🌍</span>
+                    Regional & Marketing (25%)
+                </h3>
+                <ul style="font-size: 14px; line-height: 1.8;">
+                    <li>• GCC market entry (Saudi, Oman)</li>
+                    <li>• International office setup</li>
+                    <li>• Brand elevation programs</li>
+                    <li>• Thought leadership initiatives</li>
+                    <li>• Digital marketing & SEO</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            [Aviation Group] - ADGM Registered Auditor | Member of [Aviation Group] Global Alliance
+        </div>
+    </div>
+    
+    <!-- Slide 7: Investment Summary -->
+    <div class="slide content-slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Investment Opportunity Summary</h2>
+            <p class="slide-subtitle">Join us in building the future of professional services</p>
+        </div>
+        
+        <div class="cta-section">
+            <h3 class="cta-title">Your Investment Journey</h3>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-value">$4.04M</div>
+                    <div class="metric-label" style="color: white;">Initial Investment</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">20%</div>
+                    <div class="metric-label" style="color: white;">Equity Stake</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">$19.48M</div>
+                    <div class="metric-label" style="color: white;">5-Year Value</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">$104.82M</div>
+                    <div class="metric-label" style="color: white;">10-Year Value</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">✅</span>
+                    Why This Investment
+                </h3>
+                <ul class="check-list">
+                    <li><strong>Proven Track:</strong> 48 years, 8,000+ projects</li>
+                    <li><strong>Perfect Timing:</strong> Corporate tax opportunity</li>
+                    <li><strong>Premium Access:</strong> ADGM high-value market</li>
+                    <li><strong>Technology Edge:</strong> AI & automation leader</li>
+                    <li><strong>Global Network:</strong> 300+ locations worldwide</li>
+                    <li><strong>Award Winner:</strong> Industry recognition</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="card-header">
+                    <span class="card-icon">📈</span>
+                    Value Creation Drivers
+                </h3>
+                <ul class="check-list">
+                    <li>Market share: 0.3% → 4%+ expansion</li>
+                    <li>Revenue growth: 30-40% annually</li>
+                    <li>Technology platform scaling</li>
+                    <li>ADGM premium client penetration</li>
+                    <li>Cross-selling dual company synergy</li>
+                    <li>GCC regional expansion</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="background: #f5f5f5; padding: 40px; border-radius: 16px; margin-top: 40px; text-align: center;">
+            <h3 style="font-size: 32px; color: #8B2332; margin-bottom: 20px;">Ready to Partner?</h3>
+            <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+                Join us in building the leading professional services firm in the UAE and GCC region
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 600px; margin: 0 auto;">
+                <div style="text-align: left;">
+                    <p><strong>Email:</strong> adgm@[aviation group]uae.com</p>
+                    <p><strong>Phone:</strong> +971 2 622 2300</p>
+                </div>
+                <div style="text-align: left;">
+                    <p><strong>Address:</strong> DD 2507, Level 25</p>
+                    <p>Al Sila Tower, ADGM Square, Abu Dhabi</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            [Aviation Group] - ADGM Registered Auditor | Member of [Aviation Group] Global Alliance
+        </div>
+    </div>
+</body>
+</html>

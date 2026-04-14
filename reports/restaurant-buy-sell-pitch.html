@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Business Transfer Service - Investor Pitch</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            page-break-after: always;
+            background: white;
+            margin-bottom: 2px;
+        }
+        
+        .slide-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: move 20s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2a5298;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 1.4em;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .info-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-card:hover {
+            border-color: #2a5298;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #2a5298;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            top: 25px;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .process-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .process-step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50px;
+            font-size: 2em;
+            color: #2a5298;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .fee-structure {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .fee-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+        
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .metric-label {
+            font-size: 1.1em;
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .checklist {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            color: #4CAF50;
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        
+        .wisdom-quote {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.3em;
+            font-style: italic;
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 15px 40px rgba(30, 60, 114, 0.3);
+        }
+        
+        .wisdom-quote::before,
+        .wisdom-quote::after {
+            content: '"';
+            font-size: 3em;
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .wisdom-quote::before {
+            top: 10px;
+            left: 20px;
+        }
+        
+        .wisdom-quote::after {
+            bottom: 10px;
+            right: 20px;
+        }
+        
+        .contract-info {
+            background: white;
+            border: 3px solid #2a5298;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 700px;
+            text-align: center;
+        }
+        
+        .signature-line {
+            border-top: 2px solid #333;
+            width: 300px;
+            margin: 40px auto 10px;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding-left: 80px; }
+            .timeline::before { left: 30px; }
+            .timeline-item::before { left: 20px !important; }
+            .process-step::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide slide-header">
+        <div style="position: relative; z-index: 1;">
+            <h1>Restaurant Business Transfer Service</h1>
+            <p class="subtitle">Professional Investor Pitch Deck</p>
+            <div class="highlight-box" style="max-width: 600px; margin: 40px auto;">
+                <h3 style="color: white; margin-bottom: 15px;">Seamless Business Transitions in Dubai</h3>
+                <p style="font-size: 1.2em;">End-to-End Transfer Solutions with Risk-Sharing Model</p>
+            </div>
+            <div style="margin-top: 60px;">
+                <p style="font-size: 1.1em; margin-bottom: 10px;"><strong>Service Provider:</strong> Aziz Saif</p>
+                <p style="font-size: 1.1em; margin-bottom: 10px;"><strong>Company:</strong> Global Pioneer General Trading</p>
+                <p style="font-size: 1.1em; margin-bottom: 10px;"><strong>Client:</strong> Mr. Muhammad Amjad, Jeddah</p>
+                <p style="font-size: 1.1em;"><strong>Contract Period:</strong> October 1 - December 1, 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Executive Dashboard -->
+    <div class="slide">
+        <h2>Executive Dashboard</h2>
+        <div class="dashboard">
+            <div class="metric-card">
+                <div class="metric-value">5%</div>
+                <div class="metric-label">Total Service Fee</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">4-8</div>
+                <div class="metric-label">Weeks Timeline</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">0%</div>
+                <div class="metric-label">Risk if Deal Fails</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">30+</div>
+                <div class="metric-label">Years Experience</div>
+            </div>
+        </div>
+        
+        <div class="highlight-box" style="margin-top: 40px; max-width: 800px;">
+            <h3 style="color: white;">Unique Value Proposition</h3>
+            <p>"We absorb the 2.5% service cost if the deal doesn't complete - Your success is our success"</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Service Process Flow -->
+    <div class="slide">
+        <h2>End-to-End Service Process</h2>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="circle">1</div>
+                <h3>Documentation</h3>
+                <p>License verification, permits, legal review</p>
+            </div>
+            <div class="process-step">
+                <div class="circle">2</div>
+                <h3>Due Diligence</h3>
+                <p>Financial audit, compliance check, risk assessment</p>
+            </div>
+            <div class="process-step">
+                <div class="circle">3</div>
+                <h3>Valuation</h3>
+                <p>5 methodologies for accurate business value</p>
+            </div>
+            <div class="process-step">
+                <div class="circle">4</div>
+                <h3>Transfer</h3>
+                <p>Legal handover, approvals, training</p>
+            </div>
+        </div>
+        
+        <div class="info-card" style="max-width: 600px; margin: 40px auto;">
+            <div class="icon">🏪</div>
+            <h3>On-Ground Verification</h3>
+            <p>1 week working alongside current owner to verify all operational aspects</p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Timeline & Milestones -->
+    <div class="slide">
+        <h2>Project Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Week 1-2</h3>
+                <p><strong>Initial Assessment</strong></p>
+                <p>Documentation collection, preliminary valuation, legal review</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Week 3-4</h3>
+                <p><strong>Due Diligence</strong></p>
+                <p>Financial audit, compliance check, operational assessment</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Week 5-6</h3>
+                <p><strong>Transfer Process</strong></p>
+                <p>Legal agreements, government approvals, license transfers</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Week 7-8</h3>
+                <p><strong>Final Handover</strong></p>
+                <p>Asset transfer, training, 30-day support begins</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Fee Structure -->
+    <div class="slide">
+        <h2>Transparent Fee Structure</h2>
+        <div class="fee-structure">
+            <h3 style="text-align: center; margin-bottom: 30px;">Example: AED 500,000 Deal</h3>
+            
+            <div class="fee-item">
+                <span><strong>Advance Payment (Upon Engagement)</strong></span>
+                <span style="color: #2a5298; font-weight: bold;">AED 12,500 (2.5%)</span>
+            </div>
+            <div class="fee-item">
+                <span><strong>Completion Payment (Upon Success)</strong></span>
+                <span style="color: #2a5298; font-weight: bold;">AED 12,500 (2.5%)</span>
+            </div>
+            <div class="fee-item" style="background: #f0f0f0; margin: 20px -20px; padding: 20px;">
+                <span><strong>Total Consultant Fee</strong></span>
+                <span style="color: #1e3c72; font-weight: bold; font-size: 1.2em;">AED 25,000 (5%)</span>
+            </div>
+            
+            <div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid #e0e0e0;">
+                <h4 style="color: #666; margin-bottom: 15px;">Additional Government Fees (Estimated)</h4>
+                <p style="color: #888;">Trade License Transfer: AED 10,000-20,000</p>
+                <p style="color: #888;">Food License: AED 10,000-12,000</p>
+                <p style="color: #888;">Other Approvals: AED 8,000-23,000</p>
+                <p style="color: #666; font-weight: bold; margin-top: 15px;">Total: AED 28,000-55,000</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Service Scope Infographic -->
+    <div class="slide">
+        <h2>Comprehensive Service Scope</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon">📋</div>
+                <h3>Documentation</h3>
+                <ul style="text-align: left; list-style: none;">
+                    <li>✓ Trade License Transfer</li>
+                    <li>✓ Food Establishment License</li>
+                    <li>✓ Municipality Permits</li>
+                    <li>✓ Lease Agreement Review</li>
+                    <li>✓ Insurance Transfers</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="icon">🔍</div>
+                <h3>Due Diligence</h3>
+                <ul style="text-align: left; list-style: none;">
+                    <li>✓ 3-5 Year Financial Audit</li>
+                    <li>✓ Debt & Liability Check</li>
+                    <li>✓ Tax Compliance</li>
+                    <li>✓ Employee Contracts</li>
+                    <li>✓ Equipment Assessment</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="icon">💰</div>
+                <h3>Business Valuation</h3>
+                <ul style="text-align: left; list-style: none;">
+                    <li>✓ Asset-Based Method</li>
+                    <li>✓ Income Approach</li>
+                    <li>✓ Market Comparison</li>
+                    <li>✓ Cash Flow Analysis</li>
+                    <li>✓ Future Earnings</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="icon">🤝</div>
+                <h3>Legal Transfer</h3>
+                <ul style="text-align: left; list-style: none;">
+                    <li>✓ Share Transfer Agreement</li>
+                    <li>✓ DED Approvals</li>
+                    <li>✓ Municipality Clearances</li>
+                    <li>✓ Visa Transfers</li>
+                    <li>✓ 30-Day Support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Risk Mitigation -->
+    <div class="slide">
+        <h2>Comprehensive Risk Mitigation</h2>
+        <div class="checklist">
+            <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <strong>Legal Compliance</strong>
+                    <p>Full UAE law compliance, municipality regulations, labor law adherence</p>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <strong>Financial Protection</strong>
+                    <p>Hidden liability identification, debt verification, cash flow analysis</p>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <strong>Operational Security</strong>
+                    <p>Staff retention planning, supplier relationship transfer, equipment assessment</p>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <strong>Market Analysis</strong>
+                    <p>Competitive landscape review, growth potential assessment, location analysis</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wisdom-quote">
+            <p>With three decades of experience in Dubai's business landscape, we don't just transfer businesses - we ensure legacies continue to thrive under new ownership.</p>
+        </div>
+    </div>
+
+    <!-- Slide 8: Contract Agreement -->
+    <div class="slide">
+        <h2>Service Agreement Summary</h2>
+        <div class="contract-info">
+            <h3>Contract Details</h3>
+            <p style="margin: 20px 0;"><strong>Service Period:</strong> October 1, 2025 - December 1, 2025</p>
+            <p style="margin: 20px 0;"><strong>Deal Value:</strong> AED 500,000</p>
+            <p style="margin: 20px 0;"><strong>Service Fee:</strong> 5% (AED 25,000)</p>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 30px 0;">
+                <h4 style="color: #2a5298; margin-bottom: 15px;">Payment Schedule</h4>
+                <p><strong>Upon Signing:</strong> AED 12,500 (2.5%)</p>
+                <p><strong>Upon Completion:</strong> AED 12,500 (2.5%)</p>
+                <p style="color: #d32f2f; margin-top: 15px;"><strong>Risk Guarantee:</strong> If deal fails, consultant absorbs the 2.5% advance</p>
+            </div>
+            
+            <div style="text-align: left; margin-top: 40px;">
+                <p><strong>Service Provider:</strong></p>
+                <div class="signature-line"></div>
+                <p>Aziz Saif<br>Global Pioneer General Trading</p>
+                
+                <p style="margin-top: 30px;"><strong>Client:</strong></p>
+                <div class="signature-line"></div>
+                <p>Mr. Muhammad Amjad</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Contact & Next Steps -->
+    <div class="slide">
+        <h2>Ready to Proceed?</h2>
+        <div class="highlight-box" style="max-width: 700px;">
+            <h3 style="color: white;">Next Steps</h3>
+            <div style="text-align: left; margin-top: 20px;">
+                <p style="margin: 10px 0;">1. Initial consultation within 48 hours</p>
+                <p style="margin: 10px 0;">2. Service agreement execution</p>
+                <p style="margin: 10px 0;">3. Advance payment processing</p>
+                <p style="margin: 10px 0;">4. Project kickoff with dedicated team</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; text-align: center;">
+            <h3>Contact Information</h3>
+            <p style="font-size: 1.2em; margin: 10px 0;"><strong>Aziz Saif</strong></p>
+            <p>Dubai Business Consultant (SME)</p>
+            <p>Global Pioneer General Trading</p>
+            <p style="margin-top: 20px;">Email: aziz@azizsai.com</p>
+            <p>Location: Dubai, United Arab Emirates</p>
+        </div>
+        
+        <div class="wisdom-quote" style="margin-top: 40px;">
+            <p>Trust the expertise of three decades. Your business transfer isn't just a transaction - it's a carefully orchestrated transition ensuring continuity, compliance, and success.</p>
+        </div>
+    </div>
+
+</body>
+</html>

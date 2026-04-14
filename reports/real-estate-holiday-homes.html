@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Tower Name] Property Investment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .pitch-deck {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 4px solid #2a5298;
+        }
+
+        .section h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .investment-breakdown {
+            grid-column: 1 / -1;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            background: #e3f2fd;
+            margin: 10px -15px -15px -15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .cost-label {
+            font-weight: 500;
+        }
+
+        .cost-amount {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .roi-highlight {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .roi-percentage {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .roi-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .highlights {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .highlight-icon {
+            width: 30px;
+            height: 30px;
+            background: #ff9800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .roi-percentage {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pitch-deck">
+        <div class="header">
+            <h1>[TOWER NAME]</h1>
+            <div class="subtitle">Premium Property Investment Opportunity</div>
+        </div>
+
+        <div class="content">
+            <div class="section investment-breakdown">
+                <h2>💰 Investment Breakdown</h2>
+                <div class="cost-item">
+                    <span class="cost-label">Purchase Price</span>
+                    <span class="cost-amount">AED 1,050,000</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">Agent Commission (2%)</span>
+                    <span class="cost-amount">AED 21,000</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">DED Fees (4%)</span>
+                    <span class="cost-amount">AED 42,000</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">Title Deed Fees</span>
+                    <span class="cost-amount">AED 4,200</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">Entry of Books (1% + 5% VAT)</span>
+                    <span class="cost-amount">AED 8,500</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">TOTAL INVESTMENT</span>
+                    <span class="cost-amount">AED 1,125,700</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📊 Key Financial Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">AED 85,000</div>
+                        <div class="metric-label">Annual Rental Income</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">AED 7,083</div>
+                        <div class="metric-label">Monthly Rental Income</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">6.7%</div>
+                        <div class="metric-label">Additional Costs Ratio</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">13.2</div>
+                        <div class="metric-label">Years to Break Even</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section highlights">
+                <h2>✨ Investment Highlights</h2>
+                <div class="highlight-item">
+                    <div class="highlight-icon">1</div>
+                    <div>Prime location in established Dubai tower</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">2</div>
+                    <div>Stable rental yield in competitive market</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">3</div>
+                    <div>Strong potential for capital appreciation</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">4</div>
+                    <div>Established rental market with proven demand</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="roi-highlight">
+            <div class="roi-percentage">7.55%</div>
+            <div class="roi-label">Annual Return on Investment</div>
+            <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">
+                Based on 2024-2025 rental income of AED 85,000
+            </div>
+        </div>
+
+        <div class="footer">
+            Investment Analysis | [Tower Name] Property | ROI: 7.55% | Total Investment: AED 1,125,700
+        </div>
+    </div>
+</body>
+</html>

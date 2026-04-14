@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Startup Visa - Complete One Page Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.3;
+            padding: 15px;
+        }
+        
+        .one-page {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 3px solid #000000;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .header .subtitle {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 8px;
+        }
+        
+        .flag {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 15px;
+            background: #ffffff;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #000000;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 5px;
+        }
+        
+        .investment-highlight {
+            background: #f5f5f5;
+            border: 3px solid #000000;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .investment-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+        
+        .investment-details {
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+        
+        .deposit-box {
+            background: #000000;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .deposit-amount {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background: #f8f8f8;
+        }
+        
+        .stat-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000000;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            color: #666666;
+            margin-top: 3px;
+        }
+        
+        .timeline-compact {
+            margin: 15px 0;
+        }
+        
+        .timeline-item-compact {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background: #f8f8f8;
+        }
+        
+        .timeline-number-compact {
+            width: 25px;
+            height: 25px;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content-compact {
+            flex: 1;
+        }
+        
+        .timeline-title-compact {
+            font-size: 11px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 2px;
+        }
+        
+        .timeline-duration-compact {
+            background: #e5e5e5;
+            color: #000000;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .requirements-compact {
+            margin: 10px 0;
+        }
+        
+        .req-item {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            font-size: 11px;
+        }
+        
+        .req-icon {
+            width: 18px;
+            height: 18px;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        
+        .warning-icon {
+            background: #666666;
+        }
+        
+        .preferences-compact {
+            margin: 10px 0;
+        }
+        
+        .pref-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        
+        .pref-bar {
+            width: 60px;
+            height: 12px;
+            background: #e5e5e5;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-left: 8px;
+        }
+        
+        .pref-fill {
+            height: 100%;
+            background: #000000;
+        }
+        
+        .process-flow-compact {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin: 15px 0;
+        }
+        
+        .process-step-compact {
+            background: #f5f5f5;
+            border: 1px solid #000000;
+            color: #000000;
+            padding: 8px 4px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 9px;
+            text-align: center;
+        }
+        
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .takeaway-item {
+            background: #f5f5f5;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .takeaway-title {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000000;
+        }
+        
+        .takeaway-desc {
+            font-size: 9px;
+            color: #666666;
+        }
+        
+        .bottom-section {
+            margin-top: 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .cta-compact {
+            background: #000000;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .cta-subtitle {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .cta-timeline {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .one-page {
+                box-shadow: none;
+                margin: 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="one-page">
+        <!-- Header -->
+        <div class="header">
+            <div class="flag">🇨🇦</div>
+            <h1>CANADA STARTUP VISA</h1>
+            <div class="subtitle">Premium Investment Immigration Program</div>
+            <div style="font-size: 12px; color: #666;">Opening Global Doors - Go Where You Are Valued Most</div>
+        </div>
+        
+        <!-- Main Content Grid -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <div>
+                <!-- Investment Section -->
+                <div class="section">
+                    <div class="section-title">Investment Requirements (USD)</div>
+                    <div class="investment-highlight">
+                        <div class="investment-amount">$225,000</div>
+                        <div style="font-weight: bold; font-size: 14px; margin-bottom: 5px;">Angel Investor Route</div>
+                        <div class="investment-details">Complete investment including all service charges through designated angel investor groups</div>
+                    </div>
+                    
+                    <div class="deposit-box">
+                        <div style="font-size: 12px;">SECURE YOUR INVESTMENT SEAT</div>
+                        <div class="deposit-amount">10% DEPOSIT REQUIRED</div>
+                        <div style="font-size: 10px;">Non-refundable deposit goes towards angel investor group to book your seat</div>
+                    </div>
+                </div>
+                
+                <!-- Key Statistics -->
+                <div class="section">
+                    <div class="section-title">Key Statistics</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">18-24</span>
+                            <div class="stat-label">Months to PR</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <div class="stat-label">Years to Citizenship</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10%+</span>
+                            <div class="stat-label">Ownership</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Factors -->
+                <div class="section">
+                    <div class="section-title">Success Factors</div>
+                    <div class="requirements-compact">
+                        <div style="font-size: 12px; font-weight: bold; margin-bottom: 8px;">Required ✓</div>
+                        <div class="req-item">
+                            <div class="req-icon">✓</div>
+                            Strong Business Plan
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon">✓</div>
+                            Language Proficiency
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon">✓</div>
+                            Letter of Support
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon">✓</div>
+                            Clean Background
+                        </div>
+                        
+                        <div style="font-size: 12px; font-weight: bold; margin: 8px 0; color: #666;">Important ⚠</div>
+                        <div class="req-item">
+                            <div class="req-icon warning-icon">!</div>
+                            Maintain 10%+ Ownership
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon warning-icon">!</div>
+                            Establish in Canada
+                        </div>
+                        <div class="req-item">
+                            <div class="req-icon warning-icon">!</div>
+                            10% Non-refundable Deposit
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div>
+                <!-- Timeline -->
+                <div class="section">
+                    <div class="section-title">Immigration Process Timeline</div>
+                    <div class="timeline-compact">
+                        <div class="timeline-item-compact">
+                            <div class="timeline-number-compact">1</div>
+                            <div class="timeline-content-compact">
+                                <div class="timeline-title-compact">Business Plan & CV Review</div>
+                                <div class="timeline-duration-compact">1-2 Months</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item-compact">
+                            <div class="timeline-number-compact">2</div>
+                            <div class="timeline-content-compact">
+                                <div class="timeline-title-compact">Letter of Support (Investor)</div>
+                                <div class="timeline-duration-compact">6-10 Months</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item-compact">
+                            <div class="timeline-number-compact">3</div>
+                            <div class="timeline-content-compact">
+                                <div class="timeline-title-compact">PR Application Process</div>
+                                <div class="timeline-duration-compact">8-12 Months</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; font-weight: bold; font-size: 14px; margin-top: 10px; padding: 8px; background: #f5f5f5; border-radius: 5px;">
+                        Total: 12-18 Months to PR
+                    </div>
+                </div>
+                
+                <!-- Investment Preferences -->
+                <div class="section">
+                    <div class="section-title">Investment Preferences</div>
+                    <div class="preferences-compact">
+                        <div class="pref-item">
+                            <span style="font-weight: bold;">Technology Startups</span>
+                            <div style="display: flex; align-items: center;">
+                                <div class="pref-bar">
+                                    <div class="pref-fill" style="width: 90%;"></div>
+                                </div>
+                                <span style="margin-left: 8px; font-weight: bold;">45%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pref-item">
+                            <span style="font-weight: bold;">Healthcare Innovation</span>
+                            <div style="display: flex; align-items: center;">
+                                <div class="pref-bar">
+                                    <div class="pref-fill" style="width: 50%;"></div>
+                                </div>
+                                <span style="margin-left: 8px; font-weight: bold;">25%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pref-item">
+                            <span style="font-weight: bold;">Clean Energy</span>
+                            <div style="display: flex; align-items: center;">
+                                <div class="pref-bar">
+                                    <div class="pref-fill" style="width: 40%;"></div>
+                                </div>
+                                <span style="margin-left: 8px; font-weight: bold;">20%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pref-item">
+                            <span style="font-weight: bold;">Other Sectors</span>
+                            <div style="display: flex; align-items: center;">
+                                <div class="pref-bar">
+                                    <div class="pref-fill" style="width: 20%;"></div>
+                                </div>
+                                <span style="margin-left: 8px; font-weight: bold;">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Key Takeaways -->
+                <div class="section">
+                    <div class="section-title">Key Takeaways</div>
+                    <div class="takeaways-grid">
+                        <div class="takeaway-item">
+                            <div class="takeaway-title">Proven Business Model</div>
+                            <div class="takeaway-desc">Clear revenue path</div>
+                        </div>
+                        <div class="takeaway-item">
+                            <div class="takeaway-title">Experienced Team</div>
+                            <div class="takeaway-desc">Ready to execute</div>
+                        </div>
+                        <div class="takeaway-item">
+                            <div class="takeaway-title">Job Creation</div>
+                            <div class="takeaway-desc">Economic contribution</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Process Flow -->
+        <div class="section bottom-section">
+            <div class="section-title">7-Step Process Flow</div>
+            <div class="process-flow-compact">
+                <div class="process-step-compact">Consultant</div>
+                <div class="process-step-compact">Business Plan</div>
+                <div class="process-step-compact">Investor</div>
+                <div class="process-step-compact">Application</div>
+                <div class="process-step-compact">Processing</div>
+                <div class="process-step-compact">Landing</div>
+                <div class="process-step-compact">Citizenship</div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="cta-compact">
+            <div class="cta-title">Ready for Your Canadian Journey?</div>
+            <div class="cta-subtitle">Secure your investment position today with a 10% non-refundable deposit</div>
+            <div class="cta-timeline">Total Timeline: 18-24 Months to Permanent Residence</div>
+            <div style="font-size: 11px;">From business plan development to landing as a Canadian permanent resident</div>
+        </div>
+    </div>
+</body>
+</html>

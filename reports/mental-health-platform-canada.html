@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Mental Health Platform] AI — Investor Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0161c;
+    --red-light: #e8191f;
+    --red-muted: #f5e0e1;
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --mid: #555;
+    --light: #888;
+    --border: #e2e2e2;
+    --bg: #ffffff;
+    --bg2: #fafafa;
+    --bg3: #f4f4f4;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--black); }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:999;
+    background:rgba(255,255,255,0.97);
+    border-bottom:2px solid var(--black);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 32px; height:56px;
+    backdrop-filter:blur(8px);
+  }
+  .nav-brand { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:900; letter-spacing:-0.02em; }
+  .nav-brand span { color:var(--red); }
+  .nav-links { display:flex; gap:6px; flex-wrap:wrap; }
+  .nav-links a {
+    font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--black); text-decoration:none; padding:5px 10px; border-radius:3px;
+    transition:all 0.2s;
+  }
+  .nav-links a:hover { background:var(--red); color:#fff; }
+
+  /* SECTIONS */
+  section { padding: 90px 48px 72px; max-width:1200px; margin:0 auto; }
+  .section-full { max-width:100%; padding:90px 48px 72px; }
+
+  /* HERO */
+  #hero {
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:80px; border-bottom:2px solid var(--black);
+    position:relative; overflow:hidden; max-width:100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 59px, var(--border) 60px),
+                repeating-linear-gradient(90deg, transparent, transparent 59px, var(--border) 60px);
+  }
+  .hero-inner { max-width:1200px; margin:0 auto; width:100%; padding:0 48px; }
+  .hero-tag {
+    display:inline-block; background:var(--red); color:#fff;
+    font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em;
+    padding:5px 14px; margin-bottom:28px; border-radius:2px;
+  }
+  .hero-title {
+    font-family:'Playfair Display',serif; font-size:clamp(3rem,7vw,6rem); font-weight:900;
+    line-height:0.95; letter-spacing:-0.04em; margin-bottom:32px;
+  }
+  .hero-title .red { color:var(--red); }
+  .hero-sub {
+    font-size:1.1rem; font-weight:400; color:var(--mid); max-width:580px;
+    line-height:1.7; margin-bottom:48px;
+  }
+  .hero-metrics {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--black);
+    max-width:780px;
+  }
+  .metric-box {
+    padding:20px 24px; border-right:2px solid var(--black); text-align:left;
+  }
+  .metric-box:last-child { border-right:none; }
+  .metric-val { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; line-height:1; }
+  .metric-val.red { color:var(--red); }
+  .metric-label { font-size:0.65rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--light); margin-top:6px; }
+  .hero-corner {
+    position:absolute; right:48px; bottom:48px; font-size:0.65rem;
+    font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--light);
+    writing-mode:vertical-rl;
+  }
+
+  /* SECTION HEADERS */
+  .section-head { margin-bottom:48px; }
+  .section-num {
+    font-family:'DM Mono',monospace; font-size:0.7rem; font-weight:500;
+    color:var(--red); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:10px;
+  }
+  .section-title {
+    font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem);
+    font-weight:900; letter-spacing:-0.03em; line-height:1.05;
+  }
+  .section-sub { font-size:0.95rem; color:var(--mid); margin-top:12px; max-width:560px; line-height:1.7; }
+  .red-line { width:56px; height:4px; background:var(--red); margin:20px 0; }
+
+  /* GRID LAYOUTS */
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+
+  /* CARDS */
+  .card {
+    border:2px solid var(--black); padding:28px; background:var(--bg);
+    position:relative; transition:all 0.25s;
+  }
+  .card:hover { background:var(--black); color:#fff; }
+  .card:hover .card-label, .card:hover .card-sub { color:#aaa; }
+  .card-icon { font-size:1.8rem; margin-bottom:16px; }
+  .card-title { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:10px; }
+  .card-sub { font-size:0.82rem; color:var(--mid); line-height:1.65; }
+  .card-label { font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--red); margin-bottom:8px; }
+
+  /* RED ACCENT CARD */
+  .card-red { background:var(--red); color:#fff; border-color:var(--red); }
+  .card-red .card-sub { color:rgba(255,255,255,0.75); }
+  .card-red .card-label { color:rgba(255,255,255,0.6); }
+  .card-red:hover { background:var(--dark); border-color:var(--dark); }
+
+  /* DARK CARD */
+  .card-dark { background:var(--black); color:#fff; border-color:var(--black); }
+  .card-dark .card-sub { color:#aaa; }
+  .card-dark .card-label { color:var(--red); }
+
+  /* STAT ROW */
+  .stat-row {
+    display:flex; align-items:baseline; gap:12px; margin:20px 0;
+    padding:20px 0; border-bottom:1px solid var(--border);
+  }
+  .stat-row:last-child { border-bottom:none; }
+  .stat-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; color:var(--red); min-width:110px; }
+  .stat-desc { font-size:0.88rem; color:var(--mid); line-height:1.6; }
+
+  /* COMPETITOR TABLE */
+  .comp-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+  .comp-table th {
+    background:var(--black); color:#fff; padding:12px 16px; text-align:left;
+    font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+  }
+  .comp-table td { padding:12px 16px; border-bottom:1px solid var(--border); vertical-align:middle; }
+  .comp-table tr:nth-child(even) td { background:var(--bg2); }
+  .comp-table tr.our-row td { background:var(--red); color:#fff; font-weight:600; }
+  .check { color:#22c55e; font-size:1rem; }
+  .cross { color:#ef4444; font-size:1rem; }
+  .partial { color:#f59e0b; font-size:0.9rem; }
+
+  /* TECH STACK */
+  .tech-item {
+    display:flex; align-items:flex-start; gap:20px; padding:20px 24px;
+    border:2px solid var(--border); margin-bottom:12px; border-left:4px solid var(--red);
+    transition:all 0.2s;
+  }
+  .tech-item:hover { border-color:var(--black); border-left-color:var(--red); }
+  .tech-num { font-family:'DM Mono',monospace; font-size:1.5rem; font-weight:500; color:var(--red); min-width:40px; }
+  .tech-name { font-weight:700; font-size:0.95rem; margin-bottom:4px; }
+  .tech-desc { font-size:0.8rem; color:var(--mid); line-height:1.6; }
+  .tech-tag {
+    display:inline-block; font-size:0.6rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.1em; padding:3px 8px; border:1px solid var(--black); border-radius:2px;
+    margin-right:6px; margin-top:8px;
+  }
+  .tag-free { border-color:#22c55e; color:#22c55e; }
+  .tag-paid { border-color:var(--red); color:var(--red); }
+  .tag-open { border-color:#3b82f6; color:#3b82f6; }
+
+  /* ONBOARDING STEPS */
+  .step-flow { display:flex; flex-direction:column; gap:0; }
+  .step {
+    display:flex; gap:0; align-items:stretch;
+    border-left:4px solid var(--border); margin-left:24px;
+    position:relative; padding:0 0 32px 32px;
+  }
+  .step:last-child { border-color:transparent; padding-bottom:0; }
+  .step-dot {
+    position:absolute; left:-12px; top:0;
+    width:22px; height:22px; border-radius:50%;
+    background:var(--black); display:flex; align-items:center; justify-content:center;
+    font-size:0.6rem; font-weight:700; color:#fff; border:3px solid var(--bg);
+    box-shadow:0 0 0 2px var(--black);
+  }
+  .step-dot.active { background:var(--red); box-shadow:0 0 0 2px var(--red); }
+  .step-content { flex:1; }
+  .step-label { font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--red); margin-bottom:6px; }
+  .step-title { font-weight:700; font-size:1rem; margin-bottom:6px; }
+  .step-desc { font-size:0.82rem; color:var(--mid); line-height:1.65; }
+
+  /* FINANCIALS */
+  .fin-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+  .fin-table th {
+    background:var(--black); color:#fff; padding:10px 14px; text-align:right;
+    font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+  }
+  .fin-table th:first-child { text-align:left; }
+  .fin-table td { padding:10px 14px; border-bottom:1px solid var(--border); text-align:right; }
+  .fin-table td:first-child { text-align:left; font-weight:600; }
+  .fin-table tr.total-row td { background:var(--black); color:#fff; font-weight:700; }
+  .fin-table tr.gross-row td { background:var(--bg3); font-weight:600; }
+  .fin-table tr.red-row td { background:var(--red-muted); color:var(--red); font-weight:700; }
+  .pct { color:var(--light); font-size:0.75rem; }
+
+  /* INVESTMENT ASK */
+  .ask-block {
+    background:var(--black); color:#fff; padding:48px;
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+  }
+  .ask-amount { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,5rem); font-weight:900; color:var(--red); line-height:1; }
+  .ask-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#aaa; margin-bottom:12px; }
+  .use-item { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size:0.88rem; }
+  .use-item:last-child { border-bottom:none; }
+  .use-bar { height:4px; background:var(--red); border-radius:2px; margin-top:4px; }
+
+  /* ROADMAP */
+  .roadmap { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--black); }
+  .rm-phase { padding:28px 24px; border-right:2px solid var(--black); }
+  .rm-phase:last-child { border-right:none; }
+  .rm-q { font-family:'DM Mono',monospace; font-size:0.7rem; font-weight:500; color:var(--red); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.1em; }
+  .rm-title { font-weight:700; font-size:0.95rem; margin-bottom:12px; }
+  .rm-items { list-style:none; }
+  .rm-items li { font-size:0.78rem; color:var(--mid); padding:4px 0; border-bottom:1px solid var(--border); }
+  .rm-items li::before { content:"→ "; color:var(--red); font-weight:700; }
+  .rm-items li:last-child { border-bottom:none; }
+  .rm-active { background:var(--black); color:#fff; }
+  .rm-active .rm-q { color:var(--red); }
+  .rm-active .rm-items li { color:#ccc; border-color:rgba(255,255,255,0.1); }
+
+  /* BAR CHART */
+  .bar-chart { display:flex; align-items:flex-end; gap:16px; height:180px; margin:24px 0; }
+  .bar-col { display:flex; flex-direction:column; align-items:center; flex:1; gap:8px; }
+  .bar { width:100%; background:var(--black); border-radius:2px 2px 0 0; transition:height 0.6s; position:relative; }
+  .bar.red { background:var(--red); }
+  .bar-val { font-family:'DM Mono',monospace; font-size:0.68rem; font-weight:500; color:var(--black); }
+  .bar-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--light); text-align:center; }
+
+  /* FUNNEL */
+  .funnel { display:flex; flex-direction:column; gap:8px; max-width:480px; }
+  .funnel-step { display:flex; align-items:center; gap:16px; }
+  .funnel-bar-wrap { flex:1; background:var(--bg3); border-radius:2px; height:36px; position:relative; overflow:hidden; }
+  .funnel-fill { height:100%; background:var(--black); display:flex; align-items:center; padding:0 14px; transition:width 0.8s; }
+  .funnel-fill.red { background:var(--red); }
+  .funnel-text { font-size:0.75rem; font-weight:600; color:#fff; }
+  .funnel-label { font-size:0.72rem; color:var(--mid); min-width:110px; text-align:right; }
+
+  /* DIVIDER */
+  .divider { border:none; border-top:2px solid var(--black); margin:0; }
+
+  /* BADGES */
+  .badge {
+    display:inline-block; font-size:0.62rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.1em; padding:4px 10px; border-radius:2px; margin:3px;
+  }
+  .badge-black { background:var(--black); color:#fff; }
+  .badge-red { background:var(--red); color:#fff; }
+  .badge-outline { border:1.5px solid var(--black); color:var(--black); }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    border-left:6px solid var(--red); padding:16px 20px;
+    background:var(--red-muted); margin:16px 0;
+  }
+  .highlight-box p { font-size:0.88rem; color:var(--black); line-height:1.65; }
+  .highlight-box strong { color:var(--red); }
+
+  /* FOOTER */
+  footer {
+    background:var(--black); color:#fff; padding:40px 48px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  footer .brand { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:900; }
+  footer .brand span { color:var(--red); }
+  footer p { font-size:0.75rem; color:#666; margin-top:6px; }
+
+  @media(max-width:768px){
+    .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
+    .hero-metrics { grid-template-columns:repeat(2,1fr); }
+    .metric-box:nth-child(2) { border-right:none; }
+    .roadmap { grid-template-columns:1fr 1fr; }
+    .ask-block { grid-template-columns:1fr; }
+    nav { padding:0 16px; }
+    .nav-links { display:none; }
+    section { padding:72px 20px 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Mind<span>Bridge</span> AI</div>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#market">Market</a>
+    <a href="#competition">Competition</a>
+    <a href="#solution">Solution</a>
+    <a href="#tech">Tech Stack</a>
+    <a href="#onboarding">Onboarding</a>
+    <a href="#financials">Financials</a>
+    <a href="#investment">Investment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Confidential Investor Deck · Canada · 2026</div>
+    <h1 class="hero-title">
+      Canada's First<br><span class="red">AI-Native</span><br>Mental Health<br>Social Platform
+    </h1>
+    <p class="hero-sub">
+      [Mental Health Platform] AI is a zero-therapist, fully automated social + AI-chat mental health platform built for Canada — delivering 24/7 peer support and clinical-grade AI conversation at a fraction of traditional therapy costs. Zero IT staff. One founder. Fully AI-built.
+    </p>
+    <div class="hero-metrics">
+      <div class="metric-box">
+        <div class="metric-val red">$716M</div>
+        <div class="metric-label">Canada Market 2030</div>
+      </div>
+      <div class="metric-box" style="border-right:2px solid var(--black)">
+        <div class="metric-val">14.6%</div>
+        <div class="metric-label">CAGR 2025–2030</div>
+      </div>
+      <div class="metric-box" style="border-right:2px solid var(--black)">
+        <div class="metric-val red">1 in 5</div>
+        <div class="metric-label">Canadians Affected</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">$0</div>
+        <div class="metric-label">IT Dev Cost</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-corner">[Mental Health Platform] AI · Canada · 2026</div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-head">
+    <div class="section-num">01 — The Problem</div>
+    <h2 class="section-title">Canada's Mental Health<br>System Is Broken</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">Long wait times, high costs, and stigma keep millions of Canadians from getting help. The gap between need and access has never been wider.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card card-red">
+      <div class="card-label">Access Gap</div>
+      <div class="card-title">5 Million+ Canadians</div>
+      <p class="card-sub">Cannot access mental health services annually due to wait times averaging 16–28 weeks for a psychiatrist referral through the public system.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Cost Barrier</div>
+      <div class="card-title">$150–$250 / Session</div>
+      <p class="card-sub">Private therapy in Canada costs $150–$250 per session with no OHIP/provincial coverage for most Canadians outside hospital settings.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Youth Crisis</div>
+      <div class="card-title">75% Onset Under 24</div>
+      <p class="card-sub">75% of mental health challenges begin before age 24 — the generation most comfortable with apps and AI-driven chat, yet most underserved by the current system.</p>
+    </div>
+  </div>
+  <div style="margin-top:24px;">
+    <div class="stat-row">
+      <div class="stat-num">$51B</div>
+      <div class="stat-desc">Annual economic cost of mental illness to Canada (CMHA 2023) — lost productivity, absenteeism, and healthcare burden, growing 8% year on year.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-num">67%</div>
+      <div class="stat-desc">Canadians who say they would use a digital mental health tool if it were private, affordable, and available instantly — with no appointment needed.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-num">$240M</div>
+      <div class="stat-desc">Canadian federal government invested in digital mental health platforms (AbilitiCBT, MindBeacon, Wellness Together Canada) — validating the digital-first approach.</div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- MARKET -->
+<section id="market">
+  <div class="section-head">
+    <div class="section-num">02 — Market Opportunity</div>
+    <h2 class="section-title">A $716M Market<br>Growing at 14.6% CAGR</h2>
+    <div class="red-line"></div>
+  </div>
+  <div class="grid-2" style="gap:48px;">
+    <div>
+      <div class="stat-row">
+        <div class="stat-num">$305M</div>
+        <div class="stat-desc"><strong>Canada mental health app revenue 2024</strong> — 4.1% of the $7.48B global market. Canada holds the <strong>highest CAGR</strong> in North America for this segment.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">$716M</div>
+        <div class="stat-desc"><strong>Projected Canada market size by 2030</strong> — doubling in 6 years, driven by post-pandemic awareness, employer EAP mandates, and government digital health investment.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">$22.7B</div>
+        <div class="stat-desc"><strong>Global mental health apps market 2030</strong> at 18% CAGR — North America retains 47% share. AI/ML personalization is the fastest-growing technology sub-segment.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">38.9M</div>
+        <div class="stat-desc"><strong>Total Canadian population</strong> — with 8.7M+ (22%) experiencing a mental health condition annually. Our TAM is 12M smartphone-active adults aged 16–45.</div>
+      </div>
+    </div>
+    <div>
+      <div style="background:var(--bg3); border:2px solid var(--black); padding:28px;">
+        <div class="section-num" style="margin-bottom:16px;">Market Size Chart (CAD$M)</div>
+        <div class="bar-chart" style="align-items:flex-end;">
+          <div class="bar-col">
+            <div class="bar-val">$305M</div>
+            <div class="bar" style="height:70px;"></div>
+            <div class="bar-label">2024</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">$349M</div>
+            <div class="bar" style="height:80px;"></div>
+            <div class="bar-label">2025</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">$400M</div>
+            <div class="bar" style="height:92px;"></div>
+            <div class="bar-label">2026</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">$458M</div>
+            <div class="bar" style="height:105px;"></div>
+            <div class="bar-label">2027</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">$525M</div>
+            <div class="bar" style="height:121px;"></div>
+            <div class="bar-label">2028</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">$620M</div>
+            <div class="bar red" style="height:143px;"></div>
+            <div class="bar-label">2029</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">$716M</div>
+            <div class="bar red" style="height:165px;"></div>
+            <div class="bar-label">2030</div>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:0;">
+          <p><strong>Our SAM (Year 1–3):</strong> We target the self-pay digital wellness segment (18–45 yrs, English-speaking provinces: ON, BC, AB, QC) — estimated $82M addressable, growing 18% YoY.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <div class="section-num" style="margin-bottom:16px;">Three Target Segments</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-label">Primary · B2C</div>
+        <div class="card-title">🧑‍💻 Digital-First Adults 18–35</div>
+        <p class="card-sub">Students, young professionals, immigrants, LGBTQ+ community. High social media engagement. Prefer anonymous AI chat over in-person therapy. Freemium → Premium conversion model.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Secondary · B2B</div>
+        <div class="card-title">🏢 SME Employer Wellness</div>
+        <p class="card-sub">Canadian SMEs (10–250 staff) mandated to provide EAP support. Platform licensed per employee at $3–5/month. Dialogue Health Technologies proved this model with enterprise clients in 2024.</p>
+      </div>
+      <div class="card card-red">
+        <div class="card-label">Tertiary · B2G</div>
+        <div class="card-title">🏥 Gov & University Programs</div>
+        <p class="card-sub">Government-funded community mental health programs and university student wellness contracts. AbilitiCBT and Wellness Together Canada opened this procurement channel. White-label licensing play.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- COMPETITION -->
+<section id="competition">
+  <div class="section-head">
+    <div class="section-num">03 — Competitive Landscape</div>
+    <h2 class="section-title">Who's in Canada<br>& Where We Win</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">The Canadian mental health app market is dominated by US imports with no Canadian-first social layer, no AI self-help chat, and no zero-human-cost operating model.</p>
+  </div>
+  <div style="overflow-x:auto; margin-bottom:32px;">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Origin</th>
+          <th>AI Chat</th>
+          <th>Social Layer</th>
+          <th>Canada-First</th>
+          <th>No Therapist Needed</th>
+          <th>Free Tier</th>
+          <th>Price/Mo</th>
+          <th>Self-Build (No IT)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="our-row">
+          <td>🔴 [Mental Health Platform] AI (US)</td>
+          <td>🇨🇦 Canada</td>
+          <td><span class="check">✓</span> Full LLM</td>
+          <td><span class="check">✓</span> Social Feed</td>
+          <td><span class="check">✓</span> Built for CA</td>
+          <td><span class="check">✓</span> 100% AI</td>
+          <td><span class="check">✓</span></td>
+          <td>$9.99</td>
+          <td><span class="check">✓</span> No-code</td>
+        </tr>
+        <tr>
+          <td>BetterHelp</td>
+          <td>🇺🇸 USA</td>
+          <td><span class="cross">✗</span> Human only</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span> Needs therapist</td>
+          <td><span class="cross">✗</span></td>
+          <td>$240–$360</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Calm</td>
+          <td>🇺🇸 USA</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="partial">◐</span> Meditation only</td>
+          <td><span class="partial">◐</span> Limited</td>
+          <td>$14.99</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Headspace</td>
+          <td>🇺🇸 USA</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="partial">◐</span> Mindfulness only</td>
+          <td><span class="partial">◐</span> Trial</td>
+          <td>$12.99</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Woebot</td>
+          <td>🇺🇸 USA</td>
+          <td><span class="check">✓</span> CBT Bot</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>$19.99</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Wysa</td>
+          <td>🇬🇧 UK</td>
+          <td><span class="check">✓</span> LLM Chat</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">◐</span> Limited</td>
+          <td>$15.99</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Dialogue (CA)</td>
+          <td>🇨🇦 Canada</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span> B2B enterprise</td>
+          <td><span class="cross">✗</span></td>
+          <td>B2B only</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>MindShift (ANXBC)</td>
+          <td>🇨🇦 Canada</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">◐</span> Anxiety only</td>
+          <td><span class="check">✓</span> Free</td>
+          <td>$0 (funded)</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>7 Cups</td>
+          <td>🇺🇸 USA</td>
+          <td><span class="partial">◐</span> Limited</td>
+          <td><span class="check">✓</span> Listener</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="partial">◐</span> Volunteer-based</td>
+          <td><span class="check">✓</span></td>
+          <td>$12.95</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-3" style="margin-top:8px;">
+    <div class="card card-dark">
+      <div class="card-label">Unfair Advantage #1</div>
+      <div class="card-title">Canada-Native Community</div>
+      <p class="card-sub">First platform with a Canadian social identity layer — French/English bilingual, provincial health resource links, Canadian cultural context baked into AI responses.</p>
+    </div>
+    <div class="card card-dark">
+      <div class="card-label">Unfair Advantage #2</div>
+      <div class="card-title">Zero Human Cost Model</div>
+      <p class="card-sub">No therapists. No support staff. No IT team. 100% AI-driven client handling means 85%+ gross margins from day one — impossible for therapy-platform competitors to match.</p>
+    </div>
+    <div class="card card-dark">
+      <div class="card-label">Unfair Advantage #3</div>
+      <div class="card-title">Social + AI Hybrid</div>
+      <p class="card-sub">Competitors are either social (7 Cups) OR AI chat (Woebot/Wysa) — never both. [Mental Health Platform] is the first to combine a peer social feed with a real-time AI therapeutic chat in one app.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="section-head">
+    <div class="section-num">04 — Product & Solution</div>
+    <h2 class="section-title">[Mental Health Platform] AI:<br>What It Does</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">A 3-surface platform: public-facing web app, native mobile app (iOS + Android), and an AI-powered admin panel — all built with no-code + AI tools with zero IT headcount.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:32px;">
+    <div>
+      <div class="section-num" style="margin-bottom:16px;">Core Product Features</div>
+      <div class="grid-2" style="gap:12px;">
+        <div class="card" style="padding:20px;">
+          <div class="card-label">Feature 01</div>
+          <div class="card-title" style="font-size:0.95rem;">🤖 AI Chat Companion</div>
+          <p class="card-sub">24/7 real-time LLM-powered chat using CBT & DBT frameworks. Users can vent, track moods, get coping strategies — no human therapist required. Powered by Claude/GPT-4o API.</p>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div class="card-label">Feature 02</div>
+          <div class="card-title" style="font-size:0.95rem;">🌐 Peer Social Feed</div>
+          <p class="card-sub">Anonymous or named posts, community groups (anxiety, depression, grief, addiction), reactions, comments — moderated entirely by AI content safety filters in real time.</p>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div class="card-label">Feature 03</div>
+          <div class="card-title" style="font-size:0.95rem;">📊 Mood Tracking</div>
+          <p class="card-sub">Daily check-in with PHQ-2/GAD-2 micro-assessments. AI generates weekly insight reports and personalized coping plans. Gamified streaks drive retention.</p>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div class="card-label">Feature 04</div>
+          <div class="card-title" style="font-size:0.95rem;">🚨 Crisis Detection</div>
+          <p class="card-sub">AI sentiment analysis detects crisis language. Automatically surfaces Canadian crisis resources (Crisis Services Canada: 1-833-456-4566), no human moderator required.</p>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div class="card-label">Feature 05</div>
+          <div class="card-title" style="font-size:0.95rem;">🏆 Guided Programs</div>
+          <p class="card-sub">Structured 4–8 week self-help programs (Stress Reduction, Sleep Hygiene, Social Anxiety). AI adapts program pacing based on user engagement signals.</p>
+        </div>
+        <div class="card card-red" style="padding:20px;">
+          <div class="card-label">Feature 06</div>
+          <div class="card-title" style="font-size:0.95rem;">🔒 Canadian Privacy First</div>
+          <p class="card-sub">PIPEDA-compliant data storage. Canadian servers only (AWS ca-central-1). No data sold to third parties. Anonymous mode with no email required for onboarding.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-num" style="margin-bottom:16px;">Revenue Model</div>
+      <div style="border:2px solid var(--black);">
+        <div style="background:var(--black); color:#fff; padding:16px 20px; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em;">4-Stream Revenue Model</div>
+        <div style="padding:0 20px;">
+          <div class="use-item">
+            <div>
+              <div style="font-weight:700; font-size:0.88rem;">Freemium → Premium (B2C)</div>
+              <div style="font-size:0.75rem; color:var(--mid);">$9.99/mo · $79.99/yr · Unlimited AI Chat + Programs</div>
+              <div class="use-bar" style="width:75%;"></div>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.85rem; font-weight:600;">45%</div>
+          </div>
+          <div class="use-item">
+            <div>
+              <div style="font-weight:700; font-size:0.88rem;">Employer Wellness (B2B)</div>
+              <div style="font-size:0.75rem; color:var(--mid);">$3–5/employee/mo · SME EAP replacement</div>
+              <div class="use-bar" style="width:55%;"></div>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.85rem; font-weight:600;">30%</div>
+          </div>
+          <div class="use-item">
+            <div>
+              <div style="font-weight:700; font-size:0.88rem;">White-Label Licensing (B2G)</div>
+              <div style="font-size:0.75rem; color:var(--mid);">University/Gov contracts $20K–$150K/yr</div>
+              <div class="use-bar" style="width:35%;"></div>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.85rem; font-weight:600;">18%</div>
+          </div>
+          <div class="use-item" style="border-bottom:none;">
+            <div>
+              <div style="font-weight:700; font-size:0.88rem;">Wellness Marketplace (Affiliate)</div>
+              <div style="font-size:0.75rem; color:var(--mid);">Curated supplements, journals, courses referral</div>
+              <div class="use-bar" style="width:15%; background:var(--border);"></div>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.85rem; font-weight:600;">7%</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; border:2px solid var(--black); padding:20px;">
+        <div class="section-num" style="margin-bottom:12px;">User Acquisition Funnel</div>
+        <div class="funnel">
+          <div class="funnel-step">
+            <div class="funnel-label">Organic (SEO/Social)</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-fill" style="width:100%;"><span class="funnel-text">10,000 visitors/mo</span></div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">App Downloads</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-fill" style="width:60%;"><span class="funnel-text">6,000 downloads</span></div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">Activated Users</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-fill" style="width:40%;"><span class="funnel-text">4,000 active</span></div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">Premium Converts</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-fill red" style="width:15%;"><span class="funnel-text">600 paid</span></div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">Monthly Revenue</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-fill red" style="width:15%; background:var(--black);"><span class="funnel-text">$5,994/mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="section-head">
+    <div class="section-num">05 — Technical Architecture</div>
+    <h2 class="section-title">Full Stack Built by AI<br>Zero IT Headcount</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">Every surface — web, mobile, admin panel — is built using AI-native no-code tools. Monthly infrastructure cost: CAD $180–$420. One person can operate everything.</p>
+  </div>
+
+  <div class="grid-2" style="gap:40px;">
+    <div>
+      <div class="section-num" style="margin-bottom:16px;">Layer 1 · Frontend (User-Facing)</div>
+
+      <div class="tech-item">
+        <div class="tech-num">01</div>
+        <div>
+          <div class="tech-name">Bubble.io — Web App + PWA</div>
+          <div class="tech-desc">Build the full web application with no code: social feed, AI chat interface, mood tracker, onboarding flows, subscription billing. Native mobile builder (2025) delivers iOS/Android apps from one editor. Shared database across all surfaces.</div>
+          <span class="tech-tag tag-paid">$32–$134/mo</span>
+          <span class="tech-tag tag-open">No Code</span>
+          <span class="tech-tag">Stripe Built-In</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">02</div>
+        <div>
+          <div class="tech-name">FlutterFlow (Alternative) — Native iOS/Android</div>
+          <div class="tech-desc">If deeper mobile performance is needed, FlutterFlow generates clean Flutter/Dart code deployable to App Store and Google Play. AI DreamFlow engine generates screens from text prompts. One non-developer built a working MVP in 10 hours.</div>
+          <span class="tech-tag tag-paid">$39/mo</span>
+          <span class="tech-tag">Native Apps</span>
+          <span class="tech-tag tag-open">Code Export</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">03</div>
+        <div>
+          <div class="tech-name">Webflow — Marketing Landing Page</div>
+          <div class="tech-desc">High-converting SEO-optimized marketing website for organic user acquisition. Blog, pricing page, waitlist signup. AI-powered CMS for content marketing. Canadian mental health keyword targeting.</div>
+          <span class="tech-tag tag-paid">$23/mo</span>
+          <span class="tech-tag">SEO-Native</span>
+        </div>
+      </div>
+
+      <div class="section-num" style="margin:24px 0 16px;">Layer 2 · AI Engine (The Brain)</div>
+
+      <div class="tech-item">
+        <div class="tech-num">04</div>
+        <div>
+          <div class="tech-name">Anthropic Claude API / OpenAI GPT-4o</div>
+          <div class="tech-desc">Powers the real-time AI chat companion. Claude excels at empathetic, safe mental health conversations with built-in safety guidelines. Custom system prompt trained on CBT/DBT frameworks and Canadian crisis protocols (CSC resources, CAMH guidelines).</div>
+          <span class="tech-tag tag-paid">$0.003/1K tokens</span>
+          <span class="tech-tag">Usage-Based</span>
+          <span class="tech-tag">Est. $80–150/mo at 1K users</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">05</div>
+        <div>
+          <div class="tech-name">Make.com (Integromat) — AI Automation Hub</div>
+          <div class="tech-desc">Automates all backend workflows: onboarding email sequences, crisis alert routing to Canadian resources, weekly mood report generation, B2B employer dashboard updates. Replaces an entire operations team.</div>
+          <span class="tech-tag tag-paid">$9–29/mo</span>
+          <span class="tech-tag tag-open">2,000+ integrations</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-num" style="margin-bottom:16px;">Layer 3 · Backend & Data</div>
+
+      <div class="tech-item">
+        <div class="tech-num">06</div>
+        <div>
+          <div class="tech-name">Supabase — Canadian Database</div>
+          <div class="tech-desc">PIPEDA-compliant PostgreSQL database hosted on AWS ca-central-1 (Toronto). User profiles, mood data, chat history, community posts. Row-level security. Free tier covers first 500 users.</div>
+          <span class="tech-tag tag-free">Free → $25/mo</span>
+          <span class="tech-tag">PIPEDA OK</span>
+          <span class="tech-tag">Canadian Servers</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">07</div>
+        <div>
+          <div class="tech-name">Stripe — Subscription Billing</div>
+          <div class="tech-desc">Full subscription management: freemium, monthly, annual plans. Canadian tax handling (GST/HST/PST by province). B2B invoice billing for employer contracts. Built natively into Bubble.</div>
+          <span class="tech-tag">2.9% + 30¢</span>
+          <span class="tech-tag tag-open">No Monthly Fee</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">08</div>
+        <div>
+          <div class="tech-name">Resend + Loops — Email Automation</div>
+          <div class="tech-desc">Transactional (Resend) + lifecycle email marketing (Loops). Onboarding sequences, weekly mood digests, re-engagement campaigns, B2B admin reports. AI-written email copy via Claude.</div>
+          <span class="tech-tag tag-free">Free → $20/mo</span>
+        </div>
+      </div>
+
+      <div class="section-num" style="margin:24px 0 16px;">Layer 4 · Admin Panel & Analytics</div>
+
+      <div class="tech-item">
+        <div class="tech-num">09</div>
+        <div>
+          <div class="tech-name">Softr — Admin Dashboard (No-Code)</div>
+          <div class="tech-desc">Internal admin panel connected to Supabase. View all users, flag accounts, review AI chat logs, manage B2B employer accounts, see revenue metrics. Built in hours, not weeks. No developer needed.</div>
+          <span class="tech-tag tag-paid">$49/mo</span>
+          <span class="tech-tag tag-open">Supabase Native</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">10</div>
+        <div>
+          <div class="tech-name">PostHog — Product Analytics</div>
+          <div class="tech-desc">Session recordings, funnel analysis, feature flags, A/B testing. Understand exactly where users drop off in onboarding, which AI chat topics drive most engagement, and which features drive Premium upgrades.</div>
+          <span class="tech-tag tag-free">Free to 1M events</span>
+          <span class="tech-tag tag-open">Open Source</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-num">11</div>
+        <div>
+          <div class="tech-name">Cloudflare — CDN, Security, AI Gateway</div>
+          <div class="tech-desc">DDoS protection, SSL, Canadian edge caching. Cloudflare AI Gateway proxies all LLM calls for cost control, caching, and audit logging — critical for PIPEDA compliance evidence.</div>
+          <span class="tech-tag tag-free">Free tier sufficient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly Stack Cost Summary -->
+  <div style="margin-top:36px; border:2px solid var(--black);">
+    <div style="background:var(--black); color:#fff; padding:16px 24px; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em;">Monthly Infrastructure Cost Summary (CAD)</span>
+      <span style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600; color:var(--red);">$285–$475/mo total</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(6,1fr); border-top:none;">
+      <div style="padding:16px; border-right:1px solid var(--border); text-align:center;">
+        <div style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600;">$134</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:4px;">Bubble (Production)</div>
+      </div>
+      <div style="padding:16px; border-right:1px solid var(--border); text-align:center;">
+        <div style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600;">$80</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:4px;">AI API (Claude/GPT)</div>
+      </div>
+      <div style="padding:16px; border-right:1px solid var(--border); text-align:center;">
+        <div style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600;">$49</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:4px;">Softr Admin</div>
+      </div>
+      <div style="padding:16px; border-right:1px solid var(--border); text-align:center;">
+        <div style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600;">$25</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:4px;">Supabase DB</div>
+      </div>
+      <div style="padding:16px; border-right:1px solid var(--border); text-align:center;">
+        <div style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600;">$29</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:4px;">Make.com</div>
+      </div>
+      <div style="padding:16px; text-align:center;">
+        <div style="font-family:'DM Mono',monospace; font-size:1rem; font-weight:600; color:var(--red);">$0</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:4px;">IT Staff Cost</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ONBOARDING -->
+<section id="onboarding">
+  <div class="section-head">
+    <div class="section-num">06 — Client Onboarding Flow</div>
+    <h2 class="section-title">From Download to<br>First AI Session in 4 Minutes</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">Fully automated. No human touchpoint required. The AI handles every step of onboarding, personalisation, and ongoing engagement.</p>
+  </div>
+
+  <div class="grid-2" style="gap:48px;">
+    <div>
+      <div class="section-num" style="margin-bottom:20px;">User Onboarding (B2C — 14 Steps)</div>
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-dot active">1</div>
+          <div class="step-content">
+            <div class="step-label">Download · App Store or Google Play</div>
+            <div class="step-title">App Discovery & Install</div>
+            <div class="step-desc">User finds [Mental Health Platform] via App Store search ("Canada mental health app"), Google SEO, or social media (TikTok/Reddit organic). Anonymous mode option shown on first screen — no sign-up required to explore.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot active">2</div>
+          <div class="step-content">
+            <div class="step-label">Step 2 · < 30 seconds</div>
+            <div class="step-title">Choose Your Journey</div>
+            <div class="step-desc">Single screen: "What brings you here today?" — 6 icons (Anxiety, Depression, Stress, Loneliness, Sleep, General Wellness). Selection personalises the entire app experience from this point.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot active">3</div>
+          <div class="step-content">
+            <div class="step-label">Step 3 · Optional</div>
+            <div class="step-title">Anonymous or Named Account</div>
+            <div class="step-desc">Email or Apple/Google sign-in — or continue anonymously. Anonymous users get full AI chat but no social feed or mood history sync. Encourages safety-first signup with zero friction.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">4</div>
+          <div class="step-content">
+            <div class="step-label">Step 4 · AI-Powered</div>
+            <div class="step-title">PHQ-2 + GAD-2 Micro-Assessment</div>
+            <div class="step-desc">AI guides user through 4 clinically validated questions in a conversational chat format (not a clinical form). Instantly generates a personalised Wellness Profile. Score stored for progress tracking.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">5</div>
+          <div class="step-content">
+            <div class="step-label">Step 5 · Personalisation</div>
+            <div class="step-title">AI Builds Your Plan</div>
+            <div class="step-desc">Based on assessment + topic selection, AI generates: (a) a 4-week program, (b) 3 community groups to join, (c) first 3 coping tools. Shown as an animated "your plan is ready" card.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">6</div>
+          <div class="step-content">
+            <div class="step-label">Step 6 · First Value Moment</div>
+            <div class="step-title">First AI Chat Session Starts Now</div>
+            <div class="step-desc">AI Companion "Mira" greets user by name (or "friend" if anonymous), references their chosen topic, and starts the first conversation. Goal: deliver insight or relief within 5 minutes of first launch.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">7</div>
+          <div class="step-content">
+            <div class="step-label">Step 7 · Community</div>
+            <div class="step-title">Join Your First Community</div>
+            <div class="step-desc">AI prompts user to read 3 posts from their chosen community group. Commenting is enabled immediately. Social belonging drives Day-7 retention by 3.2× (Woebot clinical data).</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">8</div>
+          <div class="step-content">
+            <div class="step-label">Step 8 · Notifications</div>
+            <div class="step-title">Daily Check-In Setup</div>
+            <div class="step-desc">AI asks preferred check-in time ("When should Mira check on you?"). Sets local timezone push notification. Daily mood log = app stickiness engine. Streak counter starts.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">9</div>
+          <div class="step-content">
+            <div class="step-label">Day 3 · Automated Email</div>
+            <div class="step-title">First Weekly Insight Email</div>
+            <div class="step-desc">Make.com triggers personalised email: "Here's what your first 3 days show..." — AI-generated mood graph, 1 insight, 1 tip. Drives re-engagement for users who didn't open app Day 2–3.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">10</div>
+          <div class="step-content">
+            <div class="step-label">Day 7 · Paywall Moment</div>
+            <div class="step-title">Premium Upgrade Offer</div>
+            <div class="step-desc">After 7-day free trial, AI surfaces Premium screen: "You've had 12 conversations with Mira. Upgrade to keep going — $9.99/mo, cancel anytime." Stripe handles billing. No human involved.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-num" style="margin-bottom:20px;">B2B Employer Onboarding (5 Steps)</div>
+      <div class="step-flow">
+        <div class="step">
+          <div class="step-dot active">1</div>
+          <div class="step-content">
+            <div class="step-label">Discovery</div>
+            <div class="step-title">HR Director Signs Up via Landing Page</div>
+            <div class="step-desc">Employer lands on business.[mental health platform].ca — sees ROI calculator ("Replace your $6,000/yr EAP with $3,600/yr [Mental Health Platform] for 100 employees"). Fills Typeform to request demo.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot active">2</div>
+          <div class="step-content">
+            <div class="step-label">Automated Demo</div>
+            <div class="step-title">AI-Powered Video Demo + Proposal</div>
+            <div class="step-desc">Make.com sends automated Loom video demo link + AI-generated PDF proposal customised with company name and employee count (via Docupilot). Zero sales call needed for companies under 50 employees.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">3</div>
+          <div class="step-content">
+            <div class="step-label">Contract & Payment</div>
+            <div class="step-title">DocuSign + Stripe Invoice</div>
+            <div class="step-desc">AI generates contract via PandaDoc template. Stripe sends invoice with CAD pricing. HST/GST auto-calculated by province. Contract signed and paid without founder involvement in 80% of cases.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">4</div>
+          <div class="step-content">
+            <div class="step-label">Employee Access</div>
+            <div class="step-title">Bulk Invite Email Campaign</div>
+            <div class="step-desc">Employer uploads CSV of employee emails to admin panel (Softr). Make.com sends branded invite emails with unique signup codes. Employees onboard same as B2C flow — fully automated.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">5</div>
+          <div class="step-content">
+            <div class="step-label">Monthly Reporting</div>
+            <div class="step-title">Auto-Generated Wellness Report</div>
+            <div class="step-desc">Every month, AI compiles anonymised aggregate wellness data (no individual data shared) into a PDF report for the HR director: usage rate, top concerns, program completion, engagement score. Sent via Make.com.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-num" style="margin:32px 0 16px;">How to Build It — Solo AI Roadmap</div>
+      <div style="border:2px solid var(--black);">
+        <div style="background:var(--black); color:#fff; padding:12px 16px; font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Build Sequence — 12 Weeks, One Person</div>
+        <div style="padding:16px;">
+          <div class="stat-row" style="padding:10px 0;">
+            <div style="min-width:70px; font-family:'DM Mono',monospace; font-size:0.8rem; font-weight:600; color:var(--red);">Wk 1–2</div>
+            <div style="font-size:0.8rem; color:var(--mid);">Set up Bubble workspace, design system, Supabase schema, user auth. Use Bubble AI to scaffold all screens from text prompts.</div>
+          </div>
+          <div class="stat-row" style="padding:10px 0;">
+            <div style="min-width:70px; font-family:'DM Mono',monospace; font-size:0.8rem; font-weight:600; color:var(--red);">Wk 3–4</div>
+            <div style="font-size:0.8rem; color:var(--mid);">Build AI chat module — connect Claude API via Bubble API connector. Write system prompt (CBT framework + Canadian crisis routing). Test safety filters.</div>
+          </div>
+          <div class="stat-row" style="padding:10px 0;">
+            <div style="min-width:70px; font-family:'DM Mono',monospace; font-size:0.8rem; font-weight:600; color:var(--red);">Wk 5–6</div>
+            <div style="font-size:0.8rem; color:var(--mid);">Build social feed, community groups, content moderation AI (Perspective API or OpenAI moderation endpoint). Mood tracker + PHQ assessment flows.</div>
+          </div>
+          <div class="stat-row" style="padding:10px 0;">
+            <div style="min-width:70px; font-family:'DM Mono',monospace; font-size:0.8rem; font-weight:600; color:var(--red);">Wk 7–8</div>
+            <div style="font-size:0.8rem; color:var(--mid);">Integrate Stripe billing. Build Make.com automation workflows (onboarding emails, weekly reports, crisis alerts). Set up PostHog analytics.</div>
+          </div>
+          <div class="stat-row" style="padding:10px 0;">
+            <div style="min-width:70px; font-family:'DM Mono',monospace; font-size:0.8rem; font-weight:600; color:var(--red);">Wk 9–10</div>
+            <div style="font-size:0.8rem; color:var(--mid);">Softr admin panel. Build B2B employer portal (invite management, aggregate reporting). Webflow marketing site. App Store submission (both platforms).</div>
+          </div>
+          <div class="stat-row" style="padding:10px 0; border-bottom:none;">
+            <div style="min-width:70px; font-family:'DM Mono',monospace; font-size:0.8rem; font-weight:600; color:var(--red);">Wk 11–12</div>
+            <div style="font-size:0.8rem; color:var(--mid);">Beta test with 50 users. Fix onboarding drop-off points (PostHog funnels). Launch waitlist campaign on Reddit r/Canada, TikTok mental health. Press release to Canadian health media.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- FINANCIALS -->
+<section id="financials">
+  <div class="section-head">
+    <div class="section-num">07 — Financial Projections</div>
+    <h2 class="section-title">3-Year P&L Forecast<br>QuickBooks Format</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">Conservative projections based on 6% conversion from free to premium and 85%+ gross margins from the zero-IT-cost model. All figures in CAD.</p>
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table class="fin-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Line Item</th>
+          <th>Year 1 (2026)</th>
+          <th>%Rev</th>
+          <th>Year 2 (2027)</th>
+          <th>%Rev</th>
+          <th>Year 3 (2028)</th>
+          <th>%Rev</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--bg3);">
+          <td colspan="7" style="font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--light); padding:8px 14px;">REVENUE</td>
+        </tr>
+        <tr>
+          <td>B2C Premium Subscriptions</td>
+          <td>$72,000</td>
+          <td class="pct">45%</td>
+          <td>$324,000</td>
+          <td class="pct">44%</td>
+          <td>$810,000</td>
+          <td class="pct">45%</td>
+        </tr>
+        <tr>
+          <td>B2B Employer Licenses</td>
+          <td>$48,000</td>
+          <td class="pct">30%</td>
+          <td>$220,000</td>
+          <td class="pct">30%</td>
+          <td>$540,000</td>
+          <td class="pct">30%</td>
+        </tr>
+        <tr>
+          <td>White-Label / Gov Contracts</td>
+          <td>$28,000</td>
+          <td class="pct">18%</td>
+          <td>$130,000</td>
+          <td class="pct">18%</td>
+          <td>$320,000</td>
+          <td class="pct">18%</td>
+        </tr>
+        <tr>
+          <td>Marketplace Affiliate Revenue</td>
+          <td>$12,000</td>
+          <td class="pct">7%</td>
+          <td>$60,000</td>
+          <td class="pct">8%</td>
+          <td>$130,000</td>
+          <td class="pct">7%</td>
+        </tr>
+        <tr class="gross-row">
+          <td>TOTAL REVENUE</td>
+          <td>$160,000</td>
+          <td class="pct">100%</td>
+          <td>$734,000</td>
+          <td class="pct">100%</td>
+          <td>$1,800,000</td>
+          <td class="pct">100%</td>
+        </tr>
+        <tr style="background:var(--bg3);">
+          <td colspan="7" style="font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--light); padding:8px 14px;">COST OF REVENUE (COGS)</td>
+        </tr>
+        <tr>
+          <td>AI API Costs (Claude/GPT)</td>
+          <td>$4,200</td>
+          <td class="pct">2.6%</td>
+          <td>$14,000</td>
+          <td class="pct">1.9%</td>
+          <td>$32,000</td>
+          <td class="pct">1.8%</td>
+        </tr>
+        <tr>
+          <td>Platform / Hosting (Bubble, Supabase)</td>
+          <td>$2,500</td>
+          <td class="pct">1.6%</td>
+          <td>$4,800</td>
+          <td class="pct">0.7%</td>
+          <td>$9,600</td>
+          <td class="pct">0.5%</td>
+        </tr>
+        <tr>
+          <td>Stripe Payment Fees</td>
+          <td>$5,200</td>
+          <td class="pct">3.3%</td>
+          <td>$22,000</td>
+          <td class="pct">3.0%</td>
+          <td>$52,000</td>
+          <td class="pct">2.9%</td>
+        </tr>
+        <tr class="gross-row">
+          <td>TOTAL COGS</td>
+          <td>$11,900</td>
+          <td class="pct">7.4%</td>
+          <td>$40,800</td>
+          <td class="pct">5.6%</td>
+          <td>$93,600</td>
+          <td class="pct">5.2%</td>
+        </tr>
+        <tr class="red-row">
+          <td>GROSS PROFIT</td>
+          <td>$148,100</td>
+          <td class="pct" style="color:var(--red);">92.6%</td>
+          <td>$693,200</td>
+          <td class="pct" style="color:var(--red);">94.4%</td>
+          <td>$1,706,400</td>
+          <td class="pct" style="color:var(--red);">94.8%</td>
+        </tr>
+        <tr style="background:var(--bg3);">
+          <td colspan="7" style="font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--light); padding:8px 14px;">OPERATING EXPENSES</td>
+        </tr>
+        <tr>
+          <td>Marketing & User Acquisition</td>
+          <td>$60,000</td>
+          <td class="pct">37.5%</td>
+          <td>$180,000</td>
+          <td class="pct">24.5%</td>
+          <td>$360,000</td>
+          <td class="pct">20.0%</td>
+        </tr>
+        <tr>
+          <td>Legal & Compliance (PIPEDA, Corp)</td>
+          <td>$12,000</td>
+          <td class="pct">7.5%</td>
+          <td>$15,000</td>
+          <td class="pct">2.0%</td>
+          <td>$20,000</td>
+          <td class="pct">1.1%</td>
+        </tr>
+        <tr>
+          <td>Software Tools & Subscriptions</td>
+          <td>$5,400</td>
+          <td class="pct">3.4%</td>
+          <td>$7,200</td>
+          <td class="pct">1.0%</td>
+          <td>$12,000</td>
+          <td class="pct">0.7%</td>
+        </tr>
+        <tr>
+          <td>Clinical Advisory / Content Review</td>
+          <td>$8,000</td>
+          <td class="pct">5.0%</td>
+          <td>$12,000</td>
+          <td class="pct">1.6%</td>
+          <td>$20,000</td>
+          <td class="pct">1.1%</td>
+        </tr>
+        <tr>
+          <td>Founder Salary / Draw</td>
+          <td>$48,000</td>
+          <td class="pct">30.0%</td>
+          <td>$80,000</td>
+          <td class="pct">10.9%</td>
+          <td>$120,000</td>
+          <td class="pct">6.7%</td>
+        </tr>
+        <tr>
+          <td>IT / Developer Cost</td>
+          <td style="color:#22c55e; font-weight:700;">$0</td>
+          <td class="pct" style="color:#22c55e;">0.0%</td>
+          <td style="color:#22c55e; font-weight:700;">$0</td>
+          <td class="pct" style="color:#22c55e;">0.0%</td>
+          <td style="color:#22c55e; font-weight:700;">$0</td>
+          <td class="pct" style="color:#22c55e;">0.0%</td>
+        </tr>
+        <tr class="gross-row">
+          <td>TOTAL OPEX</td>
+          <td>$133,400</td>
+          <td class="pct">83.4%</td>
+          <td>$294,200</td>
+          <td class="pct">40.1%</td>
+          <td>$532,000</td>
+          <td class="pct">29.6%</td>
+        </tr>
+        <tr class="total-row">
+          <td>NET OPERATING PROFIT / (LOSS)</td>
+          <td>$14,700</td>
+          <td class="pct" style="color:var(--red);">9.2%</td>
+          <td>$399,000</td>
+          <td class="pct" style="color:var(--red);">54.4%</td>
+          <td>$1,174,400</td>
+          <td class="pct" style="color:var(--red);">65.2%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-4" style="margin-top:24px;">
+    <div class="card" style="padding:20px; text-align:center;">
+      <div class="card-label">Year 1 Users</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:var(--red);">1,200</div>
+      <div class="card-sub" style="margin-top:4px;">Paid subscribers at $9.99/mo avg</div>
+    </div>
+    <div class="card" style="padding:20px; text-align:center;">
+      <div class="card-label">Year 2 Users</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900;">6,100</div>
+      <div class="card-sub" style="margin-top:4px;">Paid + 15,000 free users</div>
+    </div>
+    <div class="card card-red" style="padding:20px; text-align:center;">
+      <div class="card-label">Gross Margin</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900;">92–95%</div>
+      <div class="card-sub" style="margin-top:4px;">Best-in-class SaaS margins</div>
+    </div>
+    <div class="card" style="padding:20px; text-align:center;">
+      <div class="card-label">Break-Even</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:var(--red);">Month 8</div>
+      <div class="card-sub" style="margin-top:4px;">Without additional investment</div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- INVESTMENT -->
+<section id="investment">
+  <div class="section-head">
+    <div class="section-num">08 — Investment Ask</div>
+    <h2 class="section-title">Seed Round:<br>CAD $350,000</h2>
+    <div class="red-line"></div>
+    <p class="section-sub">Pre-seed / seed raise to fund 18 months of growth. Instrument: SAFE Note or Equity at 8–12% for lead investor. Target: Canadian angels, health tech VCs, impact funds.</p>
+  </div>
+
+  <div class="ask-block">
+    <div>
+      <div class="ask-label">Total Raise</div>
+      <div class="ask-amount">CAD<br>$350K</div>
+      <div style="margin-top:24px; font-size:0.8rem; color:#aaa; line-height:1.7;">
+        Instrument: SAFE Note (YC MFN) or Equity<br>
+        Equity Offered: 8–15% (negotiable)<br>
+        Pre-money Valuation: $2.0–$2.5M<br>
+        Lead Ticket: $150K minimum<br>
+        Co-investors: $50K–$100K each<br>
+        Timeline: Close by Q3 2026
+      </div>
+    </div>
+    <div>
+      <div class="ask-label">Use of Funds</div>
+      <div class="use-item">
+        <div>
+          <div>Marketing & User Acquisition</div>
+          <div class="use-bar" style="width:51.4%; margin-top:6px;"></div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;">$180,000 · 51%</div>
+      </div>
+      <div class="use-item">
+        <div>
+          <div>Founder Salary (18 months)</div>
+          <div class="use-bar" style="width:25.7%; background:#666; margin-top:6px;"></div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;">$90,000 · 26%</div>
+      </div>
+      <div class="use-item">
+        <div>
+          <div>Legal, PIPEDA, Incorporation</div>
+          <div class="use-bar" style="width:8.6%; background:#888; margin-top:6px;"></div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;">$30,000 · 9%</div>
+      </div>
+      <div class="use-item">
+        <div>
+          <div>Clinical Advisor + Content</div>
+          <div class="use-bar" style="width:5.7%; background:#aaa; margin-top:6px;"></div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;">$20,000 · 6%</div>
+      </div>
+      <div class="use-item" style="border-bottom:none;">
+        <div>
+          <div>Reserve / Platform Infrastructure</div>
+          <div class="use-bar" style="width:8.6%; background:#555; margin-top:6px;"></div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;">$30,000 · 9%</div>
+      </div>
+
+      <div style="margin-top:24px; padding:16px; border:1px solid rgba(255,255,255,0.15); font-size:0.78rem; color:#ccc; line-height:1.7;">
+        <strong style="color:#fff;">Milestones at $350K:</strong><br>
+        ✓ 2,000+ paid subscribers (Month 12)<br>
+        ✓ 5 employer contracts signed<br>
+        ✓ App Store rating 4.5★+<br>
+        ✓ $30K MRR (Month 18)<br>
+        ✓ Series A ready at $3–5M valuation
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div style="margin-top:32px;">
+    <div class="section-num" style="margin-bottom:16px;">Product Roadmap — 18 Months</div>
+    <div class="roadmap">
+      <div class="rm-phase rm-active">
+        <div class="rm-q">Q2 2026 · NOW</div>
+        <div class="rm-title">Build & Launch MVP</div>
+        <ul class="rm-items">
+          <li>AI Chat (Claude API)</li>
+          <li>Bubble web + mobile app</li>
+          <li>User onboarding flow</li>
+          <li>Stripe billing integration</li>
+          <li>Soft launch beta 50 users</li>
+          <li>App Store submission</li>
+        </ul>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-q">Q3–Q4 2026</div>
+        <div class="rm-title">Growth & Monetisation</div>
+        <ul class="rm-items">
+          <li>SEO content engine live</li>
+          <li>TikTok organic campaign</li>
+          <li>B2B employer pilot (5 SMEs)</li>
+          <li>500 paid subscribers</li>
+          <li>Reddit community presence</li>
+          <li>First university contract</li>
+        </ul>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-q">Q1–Q2 2027</div>
+        <div class="rm-title">Scale & Expand</div>
+        <ul class="rm-items">
+          <li>French language launch</li>
+          <li>2,000 paid subscribers</li>
+          <li>Employer dashboard v2</li>
+          <li>Gov white-label contract</li>
+          <li>Wearables mood integration</li>
+          <li>Series A preparation</li>
+        </ul>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-q">Q3 2027+</div>
+        <div class="rm-title">Series A & Beyond</div>
+        <ul class="rm-items">
+          <li>$3–5M Series A raise</li>
+          <li>US market expansion</li>
+          <li>UK/Australia launch</li>
+          <li>Proprietary AI model</li>
+          <li>5,000+ paid subscribers</li>
+          <li>$1M+ ARR milestone</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- WHY NOW / RISKS -->
+<section>
+  <div class="section-head">
+    <div class="section-num">09 — Why Now & Risk Mitigation</div>
+    <h2 class="section-title">The Perfect Storm<br>for [Mental Health Platform]</h2>
+    <div class="red-line"></div>
+  </div>
+  <div class="grid-2" style="gap:40px;">
+    <div>
+      <div class="section-num" style="margin-bottom:16px;">Why Now — 5 Catalysts</div>
+      <div class="stat-row">
+        <div class="stat-num" style="font-size:1.5rem; min-width:50px;">🇨🇦</div>
+        <div class="stat-desc"><strong>Canadian government is building the channel.</strong> $240M+ invested in digital mental health (Wellness Together Canada, AbilitiCBT) has educated the market. Users now expect digital-first mental health.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num" style="font-size:1.5rem; min-width:50px;">🤖</div>
+        <div class="stat-desc"><strong>LLMs reached therapeutic quality in 2024–25.</strong> Woebot showed 22% PHQ-9 score drop. Wysa proved 30% GAD-7 reduction. The AI is clinically effective enough now.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num" style="font-size:1.5rem; min-width:50px;">⚡</div>
+        <div class="stat-desc"><strong>Zero-code AI platforms now rival custom dev.</strong> Bubble's 2025 native mobile launch means one person can build iOS + Android + web in 12 weeks. This was impossible 24 months ago.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num" style="font-size:1.5rem; min-width:50px;">💸</div>
+        <div class="stat-desc"><strong>BetterHelp ($240/mo) is unaffordable for most.</strong> Post-pandemic cost-of-living crisis means $9.99/mo mental health AI is the most accessible product in the category.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num" style="font-size:1.5rem; min-width:50px;">📱</div>
+        <div class="stat-desc"><strong>Gen Z normalised AI for emotional support.</strong> 72% of 18–25 year olds surveyed said they'd talk to an AI about their mental health before a doctor. The stigma barrier has collapsed.</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-num" style="margin-bottom:16px;">Key Risks & Mitigations</div>
+      <div class="card" style="padding:20px; margin-bottom:12px;">
+        <div class="card-label" style="color:var(--red);">Risk 01 — Regulatory</div>
+        <div class="card-title" style="font-size:0.88rem;">PIPEDA & Health Data Regulations</div>
+        <p class="card-sub"><strong>Mitigation:</strong> Canadian server-only data storage (AWS ca-central-1). No clinical claims made. Positioned as "wellness tool" not medical device. $12K Year 1 legal budget. Privacy policy drafted by Canadian health data counsel.</p>
+      </div>
+      <div class="card" style="padding:20px; margin-bottom:12px;">
+        <div class="card-label" style="color:var(--red);">Risk 02 — Clinical Safety</div>
+        <div class="card-title" style="font-size:0.88rem;">AI Giving Harmful Advice</div>
+        <p class="card-sub"><strong>Mitigation:</strong> Claude API's built-in safety system. Custom system prompt with hard refusals for clinical advice. Automatic escalation to Canadian crisis lines. Part-time clinical advisor on retainer ($8K/yr) to review AI outputs monthly.</p>
+      </div>
+      <div class="card" style="padding:20px; margin-bottom:12px;">
+        <div class="card-label" style="color:var(--red);">Risk 03 — Competition</div>
+        <div class="card-title" style="font-size:0.88rem;">Headspace/Calm Enter Canada AI</div>
+        <p class="card-sub"><strong>Mitigation:</strong> Canada-native social community is a moat they can't buy. Calm Health expanded to Canada June 2025 — B2B only, no social layer, no AI chat. Our social + AI combination is structurally different from their content library model.</p>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="card-label" style="color:var(--red);">Risk 04 — Retention</div>
+        <div class="card-title" style="font-size:0.88rem;">High Churn in Mental Health Apps</div>
+        <p class="card-sub"><strong>Mitigation:</strong> Social community creates lock-in (users don't leave communities). Streak gamification. Weekly AI-generated personalised insight emails. Day-7 and Day-30 re-engagement automations via Make.com. Target 60%+ Day-30 retention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- CLOSING -->
+<section style="padding:80px 48px; text-align:center; max-width:900px; margin:0 auto;">
+  <div class="hero-tag" style="margin-bottom:24px;">The Ask</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,4rem); font-weight:900; letter-spacing:-0.03em; line-height:1.1; margin-bottom:24px;">
+    CAD $350K to Build the<br><span style="color:var(--red);">Mental Health App</span><br>Canada Deserves
+  </h2>
+  <p style="font-size:1rem; color:var(--mid); line-height:1.8; max-width:600px; margin:0 auto 40px;">
+    One founder. Zero IT cost. AI-built. $716M Canadian market growing at 14.6% CAGR. 92%+ gross margins. Profitable by Month 8. This is the most capital-efficient mental health platform ever built in Canada.
+  </p>
+  <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:48px;">
+    <span class="badge badge-black">Canada-First</span>
+    <span class="badge badge-red">AI-Powered</span>
+    <span class="badge badge-outline">PIPEDA Compliant</span>
+    <span class="badge badge-black">Zero IT Staff</span>
+    <span class="badge badge-red">92% Gross Margin</span>
+    <span class="badge badge-outline">Seed Ready 2026</span>
+  </div>
+  <div style="border-top:2px solid var(--black); padding-top:40px; font-size:0.82rem; color:var(--light); line-height:1.8;">
+    This document is confidential and intended for accredited investors only. Financial projections are estimates based on market research and comparable SaaS/digital health benchmarks. Past performance of comparable platforms does not guarantee future results. Canadian securities regulations apply.
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="brand">Mind<span>Bridge</span> AI</div>
+    <p>Canada's AI-Native Mental Health Social Platform · Seed Round 2026</p>
+  </div>
+  <div style="text-align:right;">
+    <p style="color:#fff; font-size:0.82rem; margin-bottom:4px;">CAD $350,000 Seed Raise</p>
+    <p style="color:#666; font-size:0.75rem;">8–15% Equity · SAFE Note Available</p>
+    <p style="color:var(--red); font-size:0.75rem; margin-top:4px; font-weight:700;">Confidential · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

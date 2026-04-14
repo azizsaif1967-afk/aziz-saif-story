@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>[Audit Firm] — UAE Audit & Accounting Firm Explainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --red: #c0161c;
+    --red-light: #fdf0f0;
+    --black: #111111;
+    --white: #ffffff;
+    --grey: #f4f4f4;
+    --grey2: #e8e8e8;
+    --grey3: #888888;
+    --border: #dddddd;
+    --green: #1a7a3c;
+    --green-light: #edf7f1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 15px; line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    background: var(--white); border-bottom: 2px solid var(--red);
+    display: flex; align-items: center; padding: 0 36px; height: 52px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--black); letter-spacing:2px; margin-right:32px; flex-shrink:0; }
+  .nav-brand span { color:var(--red); }
+  .nav-links { display:flex; gap:4px; overflow-x:auto; }
+  .nav-links a {
+    color:var(--grey3); text-decoration:none; font-size:12px; font-weight:600;
+    letter-spacing:0.5px; text-transform:uppercase; padding:5px 12px;
+    border-radius:4px; white-space:nowrap; transition:all .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { background:var(--red); color:var(--white); }
+
+  /* HERO */
+  .hero {
+    background: var(--white); border-bottom: 1px solid var(--border);
+    padding: 52px 40px 44px;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .hero-eyebrow {
+    display:inline-block; background:var(--red); color:var(--white);
+    font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    padding:4px 12px; border-radius:3px; margin-bottom:16px;
+  }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:48px; line-height:1.05; color:var(--black); letter-spacing:1px; }
+  .hero-title span { color:var(--red); }
+  .hero-sub { color:var(--grey3); margin-top:14px; font-size:14px; line-height:1.75; max-width:430px; }
+  .kpi-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .kpi {
+    background:var(--grey); border:1px solid var(--border); border-radius:10px;
+    padding:18px 16px;
+  }
+  .kpi.red-border { border-top:3px solid var(--red); }
+  .kpi-val { font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:1; color:var(--black); }
+  .kpi-val.red { color:var(--red); }
+  .kpi-lbl { font-size:12px; color:var(--grey3); margin-top:4px; }
+
+  /* MAIN WRAPPER */
+  .main { max-width:1100px; margin:0 auto; padding:0 40px; }
+
+  /* SECTIONS */
+  .sec { padding:52px 0; border-bottom:1px solid var(--border); }
+  .sec-head { display:flex; align-items:center; gap:14px; margin-bottom:30px; }
+  .sec-num { background:var(--red); color:var(--white); font-family:'Bebas Neue',sans-serif; font-size:18px; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sec-title { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.5px; }
+  .sec-sub { font-size:13px; color:var(--grey3); font-weight:500; margin-top:2px; }
+
+  /* GRIDS */
+  .g2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+
+  /* CARD */
+  .card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:22px 20px; }
+  .card.red-top { border-top:3px solid var(--red); }
+  .card.grey-bg { background:var(--grey); }
+  .card h3 { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:0.5px; margin-bottom:12px; }
+  .card h3 .red { color:var(--red); }
+
+  /* BULLETS */
+  .blist { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .blist li { display:flex; gap:10px; align-items:flex-start; font-size:14px; line-height:1.6; }
+  .blist li::before { content:'▸'; color:var(--red); font-size:11px; margin-top:3px; flex-shrink:0; }
+
+  /* CALLOUT */
+  .callout { background:var(--red-light); border-left:4px solid var(--red); border-radius:0 8px 8px 0; padding:14px 18px; font-size:14px; line-height:1.65; }
+  .callout strong { color:var(--red); }
+  .callout.green { background:var(--green-light); border-color:var(--green); }
+  .callout.green strong { color:var(--green); }
+
+  /* STAT */
+  .stat-val { font-family:'Bebas Neue',sans-serif; font-size:44px; line-height:1; color:var(--red); }
+  .stat-lbl { font-size:12px; color:var(--grey3); margin-top:4px; }
+
+  /* TABLE */
+  .tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  .tbl th { background:var(--black); color:var(--white); padding:10px 14px; text-align:left; font-family:'Bebas Neue',sans-serif; font-size:14px; letter-spacing:0.5px; }
+  .tbl td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .tbl tr:last-child td { border-bottom:none; }
+  .tbl tr:hover td { background:var(--red-light); }
+  .tag { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px; text-transform:uppercase; }
+  .tag.red { background:var(--red); color:#fff; }
+  .tag.grey { background:var(--grey2); color:var(--black); }
+  .tag.green { background:#d4edda; color:#155724; }
+  .tag.amber { background:#fff3cd; color:#856404; }
+
+  /* BEFORE/AFTER */
+  .ba-wrap { display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:stretch; }
+  .ba-col { border-radius:10px; padding:22px 20px; }
+  .ba-col.before { background:var(--grey); border:1px solid var(--border); }
+  .ba-col.after { background:var(--red-light); border:1px solid #f0b0b0; }
+  .ba-label { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:1px; margin-bottom:12px; }
+  .ba-label.before { color:var(--grey3); }
+  .ba-label.after { color:var(--red); }
+  .ba-arrow { display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--red); font-weight:700; }
+
+  /* PROCESS STRIP */
+  .proc-strip { display:flex; align-items:stretch; gap:0; }
+  .proc-item { flex:1; background:var(--white); border:1px solid var(--border); border-right:none; padding:18px 16px; position:relative; }
+  .proc-item:last-child { border-right:1px solid var(--border); border-radius:0 8px 8px 0; }
+  .proc-item:first-child { border-radius:8px 0 0 8px; }
+  .proc-item::after { content:'→'; position:absolute; right:-12px; top:50%; transform:translateY(-50%); color:var(--red); font-size:16px; font-weight:700; z-index:1; background:var(--white); padding:0 2px; }
+  .proc-item:last-child::after { display:none; }
+  .proc-num { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--red); line-height:1; }
+  .proc-title { font-weight:600; font-size:13px; margin-top:4px; }
+  .proc-sub { font-size:12px; color:var(--grey3); margin-top:4px; line-height:1.5; }
+
+  /* FOOTER */
+  footer { background:var(--grey); border-top:2px solid var(--red); padding:24px 40px; font-size:12px; color:var(--grey3); display:flex; justify-content:space-between; align-items:center; }
+  footer strong { color:var(--red); }
+
+  @media(max-width:900px){
+    .hero-inner, .g2, .g3, .g4, .ba-wrap { grid-template-columns:1fr; }
+    .main { padding:0 20px; }
+    .hero { padding:32px 20px; }
+    .hero-title { font-size:34px; }
+    .proc-strip { flex-direction:column; }
+    .proc-item { border-right:1px solid var(--border); border-bottom:none; border-radius:0; }
+    .proc-item:first-child { border-radius:8px 8px 0 0; }
+    .proc-item:last-child { border-radius:0 0 8px 8px; border-bottom:1px solid var(--border); }
+    .proc-item::after { content:'↓'; right:auto; left:50%; top:auto; bottom:-14px; transform:translateX(-50%); }
+    .ba-arrow { transform:rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">DATA<span>BIRDS</span></div>
+  <div class="nav-links">
+    <a href="#whatisit">What Is It</a>
+    <a href="#problem">The Problem</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#usecases">Use Cases</a>
+    <a href="#before-after">Before vs After</a>
+    <a href="#roi">ROI</a>
+    <a href="#verdict">Verdict</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">For UAE Chartered Accountants &amp; Audit Firms</div>
+      <h1 class="hero-title">YOUR STAFF ARE<br/>COPY-PASTING.<br/><span>A MACHINE CAN DO THAT.</span></h1>
+      <p class="hero-sub">[Audit Firm] is an AI tool that watches how your team moves data from one place to another — then does it automatically. No IT project, no coding, no setup. Show it once. It handles the rest.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi red-border">
+        <div class="kpi-val red">60–70%</div>
+        <div class="kpi-lbl">Of audit junior time is spent on data gathering and re-entry — not actual analysis</div>
+      </div>
+      <div class="kpi red-border">
+        <div class="kpi-val red">40+</div>
+        <div class="kpi-lbl">Client formats a mid-size UAE audit firm handles — each ERP, bank, and ledger exports differently</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">3 Days</div>
+        <div class="kpi-lbl">Time for [Audit Firm] to automate your first client's data workflow — no consultant needed</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">80%</div>
+        <div class="kpi-lbl">Cost saving versus paying staff to do the same data entry tasks manually every audit cycle</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- SECTION 1: WHAT IS IT -->
+<div class="sec" id="whatisit">
+  <div class="sec-head">
+    <div class="sec-num">1</div>
+    <div>
+      <div class="sec-title">What Is [Audit Firm] — In Plain English</div>
+      <div class="sec-sub">Explained for a chartered accountant or audit firm partner in the UAE</div>
+    </div>
+  </div>
+  <div class="g2">
+    <div>
+      <div class="card red-top">
+        <h3>🤖 Think of it as a Tireless Digital Junior</h3>
+        <ul class="blist">
+          <li>Imagine hiring a junior accountant whose <strong>only job is to copy data</strong> from one system to another — perfectly, every time</li>
+          <li>That junior never gets tired, never makes typos, works at <strong>3am during audit season</strong>, and costs 80% less than a real person</li>
+          <li>You <strong>show it once</strong> what to do: "take column A from this client's bank statement, put it in column B of our audit template"</li>
+          <li>From that moment on, it does that task <strong>automatically every time</strong> — for every future statement, every month, every year</li>
+          <li>It handles all the messy part: different file formats, different banks, different ERPs — <strong>it figures out the mapping</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card red-top">
+        <h3>📋 What It Actually Does in an Audit Firm</h3>
+        <ul class="blist">
+          <li>Takes client data exports (Excel, PDF, ERP dumps) and <strong>maps them into your audit templates</strong> automatically</li>
+          <li>Pulls bank statements from 10 different banks — all different formats — and <strong>normalises them into one standard layout</strong></li>
+          <li>Extracts invoice data from scanned PDFs or supplier portals and <strong>populates your audit working papers</strong></li>
+          <li>Reconciles trial balance figures from a client's SAP/Oracle/Tally/Zoho and <strong>drops them into your audit file</strong></li>
+          <li>Handles <strong>UAE VAT return data</strong> — pulls input/output tax from client records into your FTA filing format</li>
+          <li>Runs the same task for <strong>every client in your portfolio</strong> — not just one</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:16px;">
+        <strong>Key Point:</strong> [Audit Firm] does NOT do the audit thinking. It does the data grunt work — so your qualified staff can spend time on judgement, risk assessment, and client advisory. That's where the real value of an audit firm sits.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: THE PROBLEM -->
+<div class="sec" id="problem">
+  <div class="sec-head">
+    <div class="sec-num">2</div>
+    <div>
+      <div class="sec-title">The Hidden Cost in Every UAE Audit Practice</div>
+      <div class="sec-sub">Why firms are paying professional salaries for clerical work</div>
+    </div>
+  </div>
+  <div class="g3" style="margin-bottom:24px;">
+    <div class="card" style="text-align:center; padding:24px;">
+      <div class="stat-val">4–6 hrs</div>
+      <div class="stat-lbl">Per client per month just to gather, clean, and re-key data into audit working papers</div>
+    </div>
+    <div class="card" style="text-align:center; padding:24px;">
+      <div class="stat-val">AED 120K+</div>
+      <div class="stat-lbl">Annual salary of a junior auditor in Dubai — 60% of their time spent on data entry tasks</div>
+    </div>
+    <div class="card" style="text-align:center; padding:24px; border-top:3px solid var(--red);">
+      <div class="stat-val" style="color:var(--black);">Zero</div>
+      <div class="stat-lbl">Billable value added by data re-entry — clients don't pay extra for it, but you still carry the cost</div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card grey-bg">
+      <h3>📌 Specific Tasks That Eat Junior Time</h3>
+      <ul class="blist">
+        <li><strong>Bank reconciliation data entry</strong> — pulling 12 months of bank statements from multiple banks into working papers. Different columns, different date formats, different currencies</li>
+        <li><strong>Trial balance mapping</strong> — client sends TB from Zoho, you need it in your audit software. Manual re-keying every single audit period</li>
+        <li><strong>VAT data extraction</strong> — pulling Emirates-wise sales, purchases, import figures from client records into FTA format quarterly</li>
+        <li><strong>Payroll reconciliation</strong> — WPS data from MOHRE + client payroll system + bank transfer confirmations — three sources, one working paper</li>
+        <li><strong>Fixed asset roll-forward</strong> — additions, disposals, depreciation from client ERP into your audit schedule — manually copied every year</li>
+        <li><strong>Accounts payable/receivable ageing</strong> — extracting from client system into your standard ageing template — different format every client</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card grey-bg" style="margin-bottom:16px;">
+        <h3>🏢 The UAE-Specific Context</h3>
+        <ul class="blist">
+          <li>UAE has <strong>no standard accounting software</strong> — clients use SAP, Oracle, Tally, Zoho, QuickBooks, Sage, bespoke ERP, Excel — often all at once</li>
+          <li>Since <strong>UAE Corporate Tax (2023)</strong>, audit demand has surged — same number of staff, far more filings</li>
+          <li>The ADGM and DIFC environments require <strong>specific disclosure formats</strong> that need manual data transposition</li>
+          <li>Clients in <strong>free zones vs mainland</strong> have different reporting structures — doubles the mapping work</li>
+          <li><strong>Year-end audit crunch</strong> (Dec–March) means juniors work 12-hour days — mostly on data entry, not analysis</li>
+        </ul>
+      </div>
+      <div class="callout">
+        <strong>The Brutal Truth:</strong> A Partner billing at AED 800/hr is reviewing audit files prepared by a junior billing at AED 180/hr — who spent half their time doing work that a AED 30/hr machine could have done. That's your margin problem.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: WORKFLOW -->
+<div class="sec" id="workflow">
+  <div class="sec-head">
+    <div class="sec-num">3</div>
+    <div>
+      <div class="sec-title">Complete Audit Data Workflow — How [Audit Firm] Fits In</div>
+      <div class="sec-sub">From client data receipt to completed working papers — automated</div>
+    </div>
+  </div>
+
+  <!-- WORKFLOW SVG -->
+  <div style="background:var(--grey); border:1px solid var(--border); border-radius:12px; padding:28px; margin-bottom:28px;">
+    <svg width="100%" viewBox="0 0 1020 620" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- ── ROW LABELS ── -->
+      <text x="10" y="100" fill="#888" font-size="11" font-weight="600" letter-spacing="1">CLIENT</text>
+      <text x="10" y="280" fill="#c0161c" font-size="11" font-weight="600" letter-spacing="1">[Audit Firm]</text>
+      <text x="10" y="460" fill="#111" font-size="11" font-weight="600" letter-spacing="1">AUDIT TEAM</text>
+
+      <!-- SWIM LANE BACKGROUNDS -->
+      <rect x="90" y="60" width="920" height="100" rx="8" fill="#ffffff" stroke="#dddddd" stroke-width="0.5"/>
+      <rect x="90" y="240" width="920" height="100" rx="8" fill="#fdf0f0" stroke="#c0161c" stroke-width="0.5" stroke-dasharray="6 3"/>
+      <rect x="90" y="420" width="920" height="100" rx="8" fill="#f4f4f4" stroke="#dddddd" stroke-width="0.5"/>
+
+      <!-- LANE LABELS INSIDE -->
+      <text x="105" y="82" fill="#aaa" font-size="10" font-weight="500">Client Data Sources</text>
+      <text x="105" y="262" fill="#c0161c" font-size="10" font-weight="600">AI Automation Engine</text>
+      <text x="105" y="442" fill="#888" font-size="10" font-weight="500">Audit Working Paper Output</text>
+
+      <!-- ── CLIENT LANE — source boxes ── -->
+      <!-- Box 1: Bank Statements -->
+      <rect x="110" y="88" width="130" height="52" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+      <text x="175" y="108" text-anchor="middle" fill="#111" font-size="12" font-weight="600">Bank Statements</text>
+      <text x="175" y="124" text-anchor="middle" fill="#888" font-size="10">ENBD · FAB · ADCB · Mashreq</text>
+      <text x="175" y="136" text-anchor="middle" fill="#888" font-size="10">10+ formats, PDF + Excel</text>
+
+      <!-- Box 2: ERP / Accounting -->
+      <rect x="268" y="88" width="130" height="52" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+      <text x="333" y="108" text-anchor="middle" fill="#111" font-size="12" font-weight="600">ERP / Accounting</text>
+      <text x="333" y="124" text-anchor="middle" fill="#888" font-size="10">SAP · Oracle · Tally</text>
+      <text x="333" y="136" text-anchor="middle" fill="#888" font-size="10">Zoho · QuickBooks · Sage</text>
+
+      <!-- Box 3: Invoices & POs -->
+      <rect x="426" y="88" width="130" height="52" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+      <text x="491" y="108" text-anchor="middle" fill="#111" font-size="12" font-weight="600">Invoices &amp; POs</text>
+      <text x="491" y="124" text-anchor="middle" fill="#888" font-size="10">Scanned PDFs · email</text>
+      <text x="491" y="136" text-anchor="middle" fill="#888" font-size="10">Supplier portals</text>
+
+      <!-- Box 4: Payroll / WPS -->
+      <rect x="584" y="88" width="130" height="52" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+      <text x="649" y="108" text-anchor="middle" fill="#111" font-size="12" font-weight="600">Payroll / WPS</text>
+      <text x="649" y="124" text-anchor="middle" fill="#888" font-size="10">MOHRE WPS data</text>
+      <text x="649" y="136" text-anchor="middle" fill="#888" font-size="10">HR + bank transfers</text>
+
+      <!-- Box 5: VAT Records -->
+      <rect x="742" y="88" width="130" height="52" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+      <text x="807" y="108" text-anchor="middle" fill="#111" font-size="12" font-weight="600">VAT Records</text>
+      <text x="807" y="124" text-anchor="middle" fill="#888" font-size="10">Tax invoices · imports</text>
+      <text x="807" y="136" text-anchor="middle" fill="#888" font-size="10">Emirates-wise breakdown</text>
+
+      <!-- Box 6: Fixed Assets -->
+      <rect x="900" y="88" width="100" height="52" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+      <text x="950" y="108" text-anchor="middle" fill="#111" font-size="12" font-weight="600">Fixed Assets</text>
+      <text x="950" y="124" text-anchor="middle" fill="#888" font-size="10">Additions · disposals</text>
+      <text x="950" y="136" text-anchor="middle" fill="#888" font-size="10">Depreciation schedules</text>
+
+      <!-- ARROWS: Client → [Audit Firm] -->
+      <line x1="175" y1="140" x2="175" y2="238" stroke="#c0161c" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+      <line x1="333" y1="140" x2="333" y2="238" stroke="#c0161c" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+      <line x1="491" y1="140" x2="491" y2="238" stroke="#c0161c" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+      <line x1="649" y1="140" x2="649" y2="238" stroke="#c0161c" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+      <line x1="807" y1="140" x2="807" y2="238" stroke="#c0161c" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+      <line x1="950" y1="140" x2="950" y2="238" stroke="#c0161c" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+
+      <!-- ── [Audit Firm] LANE — single engine box ── -->
+      <rect x="110" y="248" width="900" height="84" rx="8" fill="#c0161c"/>
+      <!-- Icon circles -->
+      <circle cx="165" cy="290" r="22" fill="rgba(255,255,255,0.12)"/>
+      <text x="165" y="295" text-anchor="middle" fill="#fff" font-size="16">🤖</text>
+      <text x="210" y="278" fill="#fff" font-size="14" font-weight="600">[Audit Firm] AI Engine</text>
+      <text x="210" y="296" fill="rgba(255,255,255,0.8)" font-size="11">Reads every source format automatically · Maps columns to your templates</text>
+      <text x="210" y="312" fill="rgba(255,255,255,0.8)" font-size="11">Validates data · Flags anomalies · Generates clean structured output</text>
+      <!-- Right side badges -->
+      <rect x="700" y="262" width="130" height="24" rx="12" fill="rgba(255,255,255,0.18)"/>
+      <text x="765" y="278" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">SHOW ONCE · RUNS FOREVER</text>
+      <rect x="700" y="294" width="130" height="24" rx="12" fill="rgba(255,255,255,0.18)"/>
+      <text x="765" y="310" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">NO IT PROJECT REQUIRED</text>
+      <rect x="840" y="262" width="130" height="56" rx="8" fill="rgba(255,255,255,0.15)"/>
+      <text x="905" y="280" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">First delivery:</text>
+      <text x="905" y="298" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">3 days</text>
+      <text x="905" y="312" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="10">from sign-off</text>
+
+      <!-- ARROWS: [Audit Firm] → Audit Output -->
+      <line x1="175" y1="332" x2="175" y2="418" stroke="#111" stroke-width="1" marker-end="url(#arr)" opacity="0.4"/>
+      <line x1="333" y1="332" x2="333" y2="418" stroke="#111" stroke-width="1" marker-end="url(#arr)" opacity="0.4"/>
+      <line x1="491" y1="332" x2="491" y2="418" stroke="#111" stroke-width="1" marker-end="url(#arr)" opacity="0.4"/>
+      <line x1="649" y1="332" x2="649" y2="418" stroke="#111" stroke-width="1" marker-end="url(#arr)" opacity="0.4"/>
+      <line x1="807" y1="332" x2="807" y2="418" stroke="#111" stroke-width="1" marker-end="url(#arr)" opacity="0.4"/>
+      <line x1="950" y1="332" x2="950" y2="418" stroke="#111" stroke-width="1" marker-end="url(#arr)" opacity="0.4"/>
+
+      <!-- ── AUDIT TEAM LANE — output boxes ── -->
+      <rect x="110" y="428" width="130" height="52" rx="6" fill="#ffffff" stroke="#1a7a3c" stroke-width="1"/>
+      <text x="175" y="448" text-anchor="middle" fill="#1a7a3c" font-size="12" font-weight="600">Bank Recon</text>
+      <text x="175" y="464" text-anchor="middle" fill="#888" font-size="10">Ready in working papers</text>
+      <text x="175" y="476" text-anchor="middle" fill="#888" font-size="10">0 data entry needed</text>
+
+      <rect x="268" y="428" width="130" height="52" rx="6" fill="#ffffff" stroke="#1a7a3c" stroke-width="1"/>
+      <text x="333" y="448" text-anchor="middle" fill="#1a7a3c" font-size="12" font-weight="600">Trial Balance</text>
+      <text x="333" y="464" text-anchor="middle" fill="#888" font-size="10">Mapped to audit file</text>
+      <text x="333" y="476" text-anchor="middle" fill="#888" font-size="10">Auto-validated</text>
+
+      <rect x="426" y="428" width="130" height="52" rx="6" fill="#ffffff" stroke="#1a7a3c" stroke-width="1"/>
+      <text x="491" y="448" text-anchor="middle" fill="#1a7a3c" font-size="12" font-weight="600">AP/AR Ageing</text>
+      <text x="491" y="464" text-anchor="middle" fill="#888" font-size="10">Extracted &amp; formatted</text>
+      <text x="491" y="476" text-anchor="middle" fill="#888" font-size="10">Standard template</text>
+
+      <rect x="584" y="428" width="130" height="52" rx="6" fill="#ffffff" stroke="#1a7a3c" stroke-width="1"/>
+      <text x="649" y="448" text-anchor="middle" fill="#1a7a3c" font-size="12" font-weight="600">Payroll Schedule</text>
+      <text x="649" y="464" text-anchor="middle" fill="#888" font-size="10">WPS + HR + bank merged</text>
+      <text x="649" y="476" text-anchor="middle" fill="#888" font-size="10">Exception-flagged</text>
+
+      <rect x="742" y="428" width="130" height="52" rx="6" fill="#ffffff" stroke="#1a7a3c" stroke-width="1"/>
+      <text x="807" y="448" text-anchor="middle" fill="#1a7a3c" font-size="12" font-weight="600">VAT Working Paper</text>
+      <text x="807" y="464" text-anchor="middle" fill="#888" font-size="10">FTA-ready format</text>
+      <text x="807" y="476" text-anchor="middle" fill="#888" font-size="10">Emirates-wise split done</text>
+
+      <rect x="900" y="428" width="100" height="52" rx="6" fill="#ffffff" stroke="#1a7a3c" stroke-width="1"/>
+      <text x="950" y="448" text-anchor="middle" fill="#1a7a3c" font-size="12" font-weight="600">FA Schedule</text>
+      <text x="950" y="464" text-anchor="middle" fill="#888" font-size="10">Roll-forward done</text>
+      <text x="950" y="476" text-anchor="middle" fill="#888" font-size="10">Auto-reconciled</text>
+
+      <!-- BOTTOM: Audit Team Next Steps -->
+      <rect x="110" y="550" width="900" height="52" rx="8" fill="#f4f4f4" stroke="#dddddd" stroke-width="0.5"/>
+      <text x="560" y="571" text-anchor="middle" fill="#111" font-size="13" font-weight="600">✓ Audit team now focuses on: Risk assessment · Materiality judgement · Client advisory · Partner review · FTA compliance analysis</text>
+      <text x="560" y="590" text-anchor="middle" fill="#888" font-size="11">All data entry, mapping, cleaning, and formatting is completed by [Audit Firm] before the auditor opens the file</text>
+      <line x1="175" y1="480" x2="175" y2="548" stroke="#111" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="333" y1="480" x2="333" y2="548" stroke="#111" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="491" y1="480" x2="491" y2="548" stroke="#111" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="649" y1="480" x2="649" y2="548" stroke="#111" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="807" y1="480" x2="807" y2="548" stroke="#111" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="950" y1="480" x2="950" y2="548" stroke="#111" stroke-width="0.5" stroke-dasharray="3 3"/>
+    </svg>
+  </div>
+
+  <!-- PROCESS STEPS -->
+  <div class="proc-strip">
+    <div class="proc-item">
+      <div class="proc-num">01</div>
+      <div class="proc-title">Client sends data</div>
+      <div class="proc-sub">Email, shared drive, WhatsApp — any format. You receive it as normal.</div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">02</div>
+      <div class="proc-title">[Audit Firm] reads it</div>
+      <div class="proc-sub">AI reads the file — even PDFs, even messy formats. Identifies columns, amounts, dates.</div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">03</div>
+      <div class="proc-title">Maps to your template</div>
+      <div class="proc-sub">Uses the mapping you showed it once. Puts data exactly where your working paper expects it.</div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">04</div>
+      <div class="proc-title">Validates &amp; flags</div>
+      <div class="proc-sub">Checks totals, spots gaps, flags anomalies. Delivers a clean, reviewed file.</div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">05</div>
+      <div class="proc-title">Auditor reviews</div>
+      <div class="proc-sub">Your team opens a ready working paper. Zero data entry. Jump straight to analysis.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: USE CASES -->
+<div class="sec" id="usecases">
+  <div class="sec-head">
+    <div class="sec-num">4</div>
+    <div>
+      <div class="sec-title">Specific Use Cases for a UAE Audit Firm</div>
+      <div class="sec-sub">Every task below is currently done manually — [Audit Firm] automates all of them</div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card red-top">
+      <h3>📊 <span class="red">Financial Statement Audit</span></h3>
+      <ul class="blist">
+        <li><strong>Client sends trial balance from their ERP</strong> (say, Oracle NetSuite) — [Audit Firm] maps it to your CaseWare/Caseview or Excel-based audit template automatically</li>
+        <li><strong>Lead schedules populated automatically</strong> — revenue, cost of sales, payroll, fixed assets — all pre-filled from source data</li>
+        <li><strong>Prior year comparatives</strong> mapped in alongside current year — no manual copy from last year's file</li>
+        <li><strong>Bank reconciliation schedules</strong> built from raw bank statements — all 4 UAE banks on one layout automatically</li>
+        <li><strong>Confirmations</strong> — debtors, creditors, bank — data extracted and pre-populated for sign-off by partner</li>
+      </ul>
+    </div>
+    <div class="card red-top">
+      <h3>🏛️ <span class="red">UAE Corporate Tax Compliance</span></h3>
+      <ul class="blist">
+        <li><strong>CT return data population</strong> — [Audit Firm] pulls taxable income figures from audit file and maps to MoF CT return format</li>
+        <li><strong>Transfer pricing documentation</strong> — extracts related-party transaction data from ledgers across multiple group entities</li>
+        <li><strong>Free zone vs mainland analysis</strong> — automatically separates qualifying and non-qualifying income per entity</li>
+        <li><strong>Group consolidation data</strong> — pulls subsidiary financials from different ERP systems into your consolidation template</li>
+        <li><strong>Interest deduction limitation workings</strong> — feeds EBITDA and interest figures from TB into the formula template</li>
+      </ul>
+    </div>
+    <div class="card red-top">
+      <h3>🧾 <span class="red">VAT Audit &amp; Compliance</span></h3>
+      <ul class="blist">
+        <li><strong>VAT return reconciliation</strong> — extracts box-by-box figures from client records and reconciles against filed return — automated</li>
+        <li><strong>Input VAT recovery analysis</strong> — pulls all input tax invoices, categorises by type (standard, exempt, blocked), calculates partial exemption</li>
+        <li><strong>Emirates-wise revenue split</strong> — needed for UAE VAT returns — extracted from client POS/invoicing system automatically</li>
+        <li><strong>Reverse charge mechanism</strong> — identifies cross-border services, maps to Box 3 and Box 10 of the return</li>
+        <li><strong>Tax invoice validation</strong> — checks all invoices have TRN, correct VAT amount, correct format per FTA requirements</li>
+      </ul>
+    </div>
+    <div class="card red-top">
+      <h3>👷 <span class="red">Payroll &amp; WPS Audit</span></h3>
+      <ul class="blist">
+        <li><strong>WPS compliance check</strong> — pulls MOHRE salary transfer data and matches against payroll register and bank statements</li>
+        <li><strong>End-of-service gratuity calculation</strong> — extracts join dates, salaries, increments from HR records and calculates EOSB liability per UAE Labour Law</li>
+        <li><strong>Headcount reconciliation</strong> — matches HR system count against payroll count against WPS count — flags any variance</li>
+        <li><strong>Overtime and allowances audit</strong> — maps all salary components from client payroll into your structured audit schedule</li>
+        <li><strong>Visa &amp; cost centre analysis</strong> — extracts PRO records + salary to verify staff are classified in correct cost centres</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: BEFORE VS AFTER -->
+<div class="sec" id="before-after">
+  <div class="sec-head">
+    <div class="sec-num">5</div>
+    <div>
+      <div class="sec-title">Before vs After — One Audit Client, One Month</div>
+      <div class="sec-sub">What changes when [Audit Firm] handles your data workflow</div>
+    </div>
+  </div>
+  <div class="ba-wrap">
+    <div class="ba-col before">
+      <div class="ba-label before">⏳ WITHOUT [Audit Firm] — CURRENT STATE</div>
+      <ul class="blist">
+        <li><strong>Monday 8am:</strong> Junior receives 6 Excel files from client — all different formats. Spends 3 hours figuring out the column structure of each</li>
+        <li><strong>Monday 11am:</strong> Starts manually copying bank statement data into reconciliation template. Makes two errors. Senior spots them Wednesday. Fix takes 1 hour</li>
+        <li><strong>Tuesday:</strong> Copies trial balance from Tally export into audit file. Tally uses Indian account code format — junior spends 2 hours mapping codes to UAE chart</li>
+        <li><strong>Wednesday:</strong> Extracts payroll data from HR system. WPS export and payroll don't match. Chases client. Response comes Thursday</li>
+        <li><strong>Thursday:</strong> Builds VAT working paper manually from 3 sources. Emirates split has to be calculated by formula in Excel — 1.5 hours</li>
+        <li><strong>Friday:</strong> Partner reviews. Finds format inconsistency. Junior re-does two schedules. 2 hours lost</li>
+        <li style="font-weight:600; color:var(--red);">Total: 14–18 hours of junior time. AED 2,500–3,200 in salary cost. Zero billed to client.</li>
+      </ul>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-col after">
+      <div class="ba-label after">✅ WITH [Audit Firm] — NEW STATE</div>
+      <ul class="blist">
+        <li><strong>Monday 8am:</strong> Junior uploads all 6 files to [Audit Firm]. Tool reads and maps all of them automatically. Takes 8 minutes</li>
+        <li><strong>Monday 8:15am:</strong> Bank reconciliation schedule is pre-populated in standard format. Junior reviews for completeness — 20 minutes</li>
+        <li><strong>Monday 9am:</strong> Trial balance fully mapped to audit file. Tally-to-UAE account code mapping was set up once when onboarding this client — never done again</li>
+        <li><strong>Monday 9:30am:</strong> Payroll schedule built from WPS + HR data. [Audit Firm] flags a AED 2,400 variance automatically — junior investigates the real issue, not the data entry</li>
+        <li><strong>Monday 11am:</strong> VAT working paper complete. Emirates split calculated. All three source files merged</li>
+        <li><strong>Monday 12pm:</strong> Partner receives file for review. Consistent format. No re-work needed</li>
+        <li style="font-weight:600; color:var(--green);">Total: 3–4 hours of junior time. AED 500–700 in salary cost. [Audit Firm] fee: AED 300–400. Net saving: AED 1,800–2,500 per client per month.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: ROI -->
+<div class="sec" id="roi">
+  <div class="sec-head">
+    <div class="sec-num">6</div>
+    <div>
+      <div class="sec-title">The ROI for a UAE Audit Firm — Your Numbers</div>
+      <div class="sec-sub">Based on a mid-size Dubai practice with 40 active audit clients and 5 juniors</div>
+    </div>
+  </div>
+  <div class="g2" style="margin-bottom:24px;">
+    <div>
+      <table class="tbl">
+        <tr><th colspan="3">Current Annual Cost (Without [Audit Firm])</th></tr>
+        <tr>
+          <td>Junior auditors doing data entry</td>
+          <td>5 staff × AED 120K × 60% time</td>
+          <td style="font-weight:700; color:var(--red);">AED 360,000</td>
+        </tr>
+        <tr>
+          <td>Audit season overtime (data entry)</td>
+          <td>Dec–March, avg 3 hrs/day extra</td>
+          <td style="font-weight:700; color:var(--red);">AED 42,000</td>
+        </tr>
+        <tr>
+          <td>Error correction &amp; rework</td>
+          <td>Avg 1.5 hrs per client per quarter</td>
+          <td style="font-weight:700; color:var(--red);">AED 36,000</td>
+        </tr>
+        <tr>
+          <td>Delayed file completion (client dissatisfaction)</td>
+          <td>Lost repeat / referral business</td>
+          <td style="font-weight:700; color:var(--red);">AED 80,000+</td>
+        </tr>
+        <tr style="background:var(--red-light);">
+          <td colspan="2" style="font-weight:700;">Total Hidden Annual Cost</td>
+          <td style="font-weight:700; color:var(--red); font-size:16px;">AED 518,000+</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <table class="tbl">
+        <tr><th colspan="3">With [Audit Firm] (Annual)</th></tr>
+        <tr>
+          <td>[Audit Firm] subscription</td>
+          <td>40 clients × AED 1,200/yr</td>
+          <td>AED 48,000</td>
+        </tr>
+        <tr>
+          <td>Junior time (reduced to review only)</td>
+          <td>5 staff × AED 120K × 15% time</td>
+          <td>AED 90,000</td>
+        </tr>
+        <tr>
+          <td>Overtime (eliminated)</td>
+          <td>Data entry no longer manual</td>
+          <td>AED 0</td>
+        </tr>
+        <tr>
+          <td>Error correction</td>
+          <td>AI validation catches issues</td>
+          <td>AED 4,000</td>
+        </tr>
+        <tr style="background:var(--green-light);">
+          <td colspan="2" style="font-weight:700; color:var(--green);">Total Annual Cost</td>
+          <td style="font-weight:700; color:var(--green); font-size:16px;">AED 142,000</td>
+        </tr>
+      </table>
+      <div class="callout green" style="margin-top:16px;">
+        <strong>Net Annual Saving: AED 376,000</strong> — plus your 5 juniors now spend their time on billable analysis, advisory, and client-facing work that you CAN charge for.
+      </div>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="card" style="text-align:center; padding:20px;">
+      <div class="stat-val">AED 376K</div>
+      <div class="stat-lbl">Annual savings for a 40-client Dubai audit firm</div>
+    </div>
+    <div class="card" style="text-align:center; padding:20px;">
+      <div class="stat-val" style="color:var(--black);">3 mos</div>
+      <div class="stat-lbl">Payback period — tool pays for itself in Q1</div>
+    </div>
+    <div class="card" style="text-align:center; padding:20px;">
+      <div class="stat-val">45%</div>
+      <div class="stat-lbl">More clients serviceable with same headcount</div>
+    </div>
+    <div class="card" style="text-align:center; padding:20px; border-top:3px solid var(--red);">
+      <div class="stat-val">Zero</div>
+      <div class="stat-lbl">IT project, setup cost, or coding required to get started</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: VERDICT -->
+<div class="sec" id="verdict">
+  <div class="sec-head">
+    <div class="sec-num">7</div>
+    <div>
+      <div class="sec-title">Verdict — Should a UAE Audit Firm Use [Audit Firm]?</div>
+      <div class="sec-sub">Plain English summary for the Managing Partner</div>
+    </div>
+  </div>
+  <div class="g3">
+    <div class="card red-top">
+      <h3>✅ Strong YES — If You Have</h3>
+      <ul class="blist">
+        <li>More than <strong>10 audit clients</strong> — the ROI compounds with volume</li>
+        <li>Juniors spending <strong>more than 3 hours per client</strong> gathering and formatting data before audit work begins</li>
+        <li>Clients on <strong>multiple different accounting systems</strong> — the more formats, the bigger the gain</li>
+        <li>Audit season <strong>bottlenecks</strong> where partners are waiting for files to be prepared</li>
+        <li>UAE <strong>Corporate Tax compliance work</strong> added to your scope — more data, same staff</li>
+      </ul>
+    </div>
+    <div class="card red-top">
+      <h3>⚠️ Important Limitations</h3>
+      <ul class="blist">
+        <li>[Audit Firm] does <strong>NOT think</strong> — it moves data. The audit judgement, risk identification, and professional opinion are still 100% yours</li>
+        <li>It still needs a <strong>one-time setup per client</strong> to show it the mapping — 2–3 hours per new client</li>
+        <li>Works best on <strong>structured data</strong> — highly narrative or handwritten client documents need human processing first</li>
+        <li><strong>Regulatory sign-off</strong> is still the audit firm's responsibility — outputs must be reviewed before filing or use in audit reports</li>
+        <li>Not a substitute for <strong>audit software</strong> (CaseWare, Caseview, TeamMate) — it feeds data INTO those tools</li>
+      </ul>
+    </div>
+    <div class="card red-top">
+      <h3>🚀 How to Start</h3>
+      <ul class="blist">
+        <li><strong>Pick one client</strong> — ideally your most painful one (most formats, most data, most re-work)</li>
+        <li>Show [Audit Firm] the <strong>mapping once</strong>: "this column from bank statement goes here in the reconciliation template"</li>
+        <li>Run next month's <strong>data cycle fully automated</strong> — compare the time taken vs manual</li>
+        <li>If it saves 3+ hours on that one client, <strong>roll out to all clients</strong> — same setup process</li>
+        <li>By month 3 your team is spending <strong>audit season doing audit work</strong>, not data entry</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:28px; font-size:15px; line-height:1.75;">
+    <strong>Bottom Line for UAE Audit Firms:</strong> Your qualified chartered accountants are being paid AED 120,000–200,000 per year. If 60% of their time is moving data from one spreadsheet to another, you are paying AED 72,000–120,000 per person per year for work that a machine can do for AED 1,200 per year. [Audit Firm] does not replace your auditors — it gives them their time back to do what they were actually trained and licensed for: analyse, advise, and sign.
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<footer>
+  <div>[Audit Firm] · UAE Audit &amp; Accounting Firm Application Guide · Confidential</div>
+  <div>Design: White background · Black text · <strong>Red #c0161c</strong> highlights · March 2026</div>
+</footer>
+
+<script>
+  const anchors = document.querySelectorAll('.sec');
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    anchors.forEach(s => { if (window.scrollY >= s.offsetTop - 70) cur = s.id; });
+    navAs.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+  });
+  navAs.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
