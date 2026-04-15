@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aziz Saif Website — Full Technical Documentation</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#0a1628;--accent:#c9a84c;--white:#fff;--off-white:#f7f8fa;--gray-100:#e4e7eb;--gray-500:#6b7280;--gray-700:#374151}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--off-white);color:var(--gray-700);line-height:1.7;font-size:15px}
+.doc-header{background:var(--primary);color:var(--white);padding:60px 48px 48px;border-bottom:3px solid var(--accent)}
+.doc-header h1{font-size:2.2rem;font-weight:700;margin-bottom:8px}
+.doc-header p{color:rgba(255,255,255,.5);font-size:.95rem}
+.doc-header .meta{margin-top:20px;display:flex;gap:32px;flex-wrap:wrap}
+.doc-header .meta span{font-size:.78rem;color:var(--accent);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.container{max-width:1200px;margin:0 auto;padding:48px}
+.toc{background:var(--white);border:1px solid var(--gray-100);padding:32px;margin-bottom:48px}
+.toc h2{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.toc ol{padding-left:24px}
+.toc li{padding:4px 0}
+.toc a{color:var(--primary);text-decoration:none;font-size:.88rem}
+.toc a:hover{color:var(--accent)}
+section{background:var(--white);border:1px solid var(--gray-100);padding:36px;margin-bottom:32px}
+section h2{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:6px;padding-bottom:12px;border-bottom:2px solid var(--accent);display:inline-block}
+section h3{font-size:.95rem;font-weight:700;color:var(--primary);margin:24px 0 10px}
+section h4{font-size:.85rem;font-weight:600;color:var(--gray-700);margin:16px 0 8px}
+p{margin:10px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.85rem}
+th{background:var(--primary);color:var(--white);padding:10px 14px;text-align:left;font-size:.72rem;letter-spacing:.5px;text-transform:uppercase}
+td{padding:8px 14px;border-bottom:1px solid var(--gray-100)}
+tr:hover td{background:var(--off-white)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}
+.stat-box{background:var(--off-white);padding:20px;text-align:center}
+.stat-box .num{font-size:2rem;font-weight:800;color:var(--primary)}
+.stat-box .label{font-size:.68rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+code{background:#f1f3f5;padding:2px 6px;font-size:.82rem;color:#d63384;border-radius:2px}
+pre{background:var(--primary);color:#e4e7eb;padding:20px;overflow-x:auto;font-size:.8rem;line-height:1.6;margin:12px 0}
+.tag{display:inline-block;font-size:.62rem;font-weight:600;padding:3px 10px;border:1px solid var(--gray-100);color:var(--gray-500);letter-spacing:.5px;text-transform:uppercase;margin:2px}
+.tag.accent{border-color:var(--accent);color:var(--accent)}
+ul.file-list{list-style:none;padding:0}
+ul.file-list li{padding:6px 0;border-bottom:1px solid var(--gray-100);font-size:.85rem}
+ul.file-list li::before{content:'\1F4C4';margin-right:8px}
+ul.file-list li.folder::before{content:'\1F4C1'}
+.change-log{counter-reset:changelog}
+.change-log li{counter-increment:changelog;padding:8px 0;border-bottom:1px solid var(--gray-100);font-size:.85rem}
+.change-log li::before{content:counter(changelog) ".";font-weight:700;color:var(--accent);margin-right:8px}
+@media(max-width:768px){.stat-grid{grid-template-columns:repeat(2,1fr)}.container{padding:24px}section{padding:24px}}
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>Aziz Saif — Website Technical Documentation</h1>
+  <p>Complete reference of technology, content, structure &amp; change history for the personal/business portfolio website.</p>
+  <div class="meta">
+    <span>Generated: 15 April 2026</span>
+    <span>Live URL: azizsaif1967-afk.github.io/aziz-saif-story</span>
+    <span>Repository: github.com/azizsaif1967-afk/aziz-saif-story</span>
+    <span>Single-Page HTML</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#overview">Overview &amp; Stats</a></li>
+    <li><a href="#tech-stack">Technology Stack</a></li>
+    <li><a href="#file-structure">File Structure &amp; Assets</a></li>
+    <li><a href="#sections">All Website Sections</a></li>
+    <li><a href="#css-design">CSS Design System (Tata Elxsi Style)</a></li>
+    <li><a href="#javascript">JavaScript Features</a></li>
+    <li><a href="#reports">Industry Reports (27 Files)</a></li>
+    <li><a href="#ai-implementation">AI Implementation Cases (24 Cards)</a></li>
+    <li><a href="#catalogues">Catalogues &amp; Galleries</a></li>
+    <li><a href="#blog">Blog Section</a></li>
+    <li><a href="#portfolio">Portfolio Websites</a></li>
+    <li><a href="#external-links">All External Links &amp; URLs</a></li>
+    <li><a href="#contact-info">Contact Information</a></li>
+    <li><a href="#change-log">Change Log &amp; Commits</a></li>
+    <li><a href="#how-to-edit">How to Make Changes</a></li>
+  </ol>
+</div>
+
+<!-- 1. OVERVIEW -->
+<section id="overview">
+  <h2>1. Overview &amp; Stats</h2>
+  <p>Single-page portfolio website for <strong>Aziz Saif</strong> — VP Operations, Managing Partner &amp; AI Business Builder with 37+ years across the GCC. The site showcases 4 companies, AI services, 27 industry reports, 24 AI implementation cases, 12 portfolio websites, and a blog.</p>
+
+  <div class="stat-grid">
+    <div class="stat-box"><div class="num">1,501</div><div class="label">Lines of Code</div></div>
+    <div class="stat-box"><div class="num">1</div><div class="label">HTML File</div></div>
+    <div class="stat-box"><div class="num">126</div><div class="label">CSS Classes</div></div>
+    <div class="stat-box"><div class="num">11</div><div class="label">JS Functions</div></div>
+    <div class="stat-box"><div class="num">27</div><div class="label">Report Files</div></div>
+    <div class="stat-box"><div class="num">88</div><div class="label">Image Files</div></div>
+    <div class="stat-box"><div class="num">12</div><div class="label">Grid Layouts</div></div>
+    <div class="stat-box"><div class="num">122</div><div class="label">Interactive Elements</div></div>
+  </div>
+
+  <h3>Key Numbers Displayed on Site</h3>
+  <table>
+    <tr><th>Stat</th><th>Value</th><th>Location</th></tr>
+    <tr><td>Years Experience</td><td>37+</td><td>Stats Bar, Hero Slide</td></tr>
+    <tr><td>Stores Built</td><td>60+</td><td>Stats Bar</td></tr>
+    <tr><td>Countries</td><td>5</td><td>Stats Bar</td></tr>
+    <tr><td>Brands</td><td>9+</td><td>Stats Bar</td></tr>
+    <tr><td>Industry Reports</td><td>27+</td><td>Industry Expertise Section</td></tr>
+    <tr><td>AI Implementation Cases</td><td>24</td><td>AI Implementation Section</td></tr>
+    <tr><td>Industries Covered</td><td>20+</td><td>AI Hero Slide</td></tr>
+    <tr><td>Portfolio Websites</td><td>12</td><td>Portfolio Section</td></tr>
+    <tr><td>Blog Articles</td><td>13</td><td>Blog Section</td></tr>
+  </table>
+</section>
+
+<!-- 2. TECHNOLOGY STACK -->
+<section id="tech-stack">
+  <h2>2. Technology Stack</h2>
+
+  <h3>Frontend</h3>
+  <table>
+    <tr><th>Technology</th><th>Purpose</th><th>Details</th></tr>
+    <tr><td><strong>HTML5</strong></td><td>Structure</td><td>Single index.html file, semantic markup, no frameworks</td></tr>
+    <tr><td><strong>CSS3 (Embedded)</strong></td><td>Styling</td><td>~370 lines of CSS in &lt;style&gt; tag. Custom properties (CSS variables), Grid, Flexbox, animations, @keyframes, backdrop-filter, ::before/::after pseudo-elements</td></tr>
+    <tr><td><strong>Vanilla JavaScript</strong></td><td>Interactivity</td><td>~140 lines of JS. No libraries. IntersectionObserver, DOM manipulation, event listeners</td></tr>
+    <tr><td><strong>Google Fonts</strong></td><td>Typography</td><td>Inter (weights 300–900) for body, Playfair Display (400–700 + italic) for headings</td></tr>
+  </table>
+
+  <h3>Design System — Tata Elxsi Corporate Style</h3>
+  <table>
+    <tr><th>Design Pattern</th><th>Implementation</th></tr>
+    <tr><td>Grid Separator</td><td><code>gap:1px; background:var(--gray-100)</code> — cells have white bg, 1px gray gaps act as dividers</td></tr>
+    <tr><td>Hover Accent Line</td><td><code>::after</code> pseudo-element with <code>scaleX(0)</code> → <code>scaleX(1)</code> gold 2px bottom bar</td></tr>
+    <tr><td>Frosted Glass Nav</td><td><code>backdrop-filter:blur(12px); background:rgba(255,255,255,.97)</code></td></tr>
+    <tr><td>No Border Radius</td><td><code>border-radius:0</code> on all cards, buttons, overlays</td></tr>
+    <tr><td>Typography</td><td>Uppercase nav/CTAs with <code>letter-spacing:.4px</code>, body <code>font-weight:300</code></td></tr>
+    <tr><td>Color Palette</td><td>Primary navy <code>#0a1628</code>, Gold accent <code>#c9a84c</code>, Off-white <code>#f7f8fa</code></td></tr>
+  </table>
+
+  <h3>Hosting &amp; Deployment</h3>
+  <table>
+    <tr><th>Service</th><th>Details</th></tr>
+    <tr><td><strong>GitHub Pages</strong></td><td>Free static hosting, auto-deploys from main branch</td></tr>
+    <tr><td><strong>Repository</strong></td><td>github.com/azizsaif1967-afk/aziz-saif-story</td></tr>
+    <tr><td><strong>Branch</strong></td><td>main</td></tr>
+    <tr><td><strong>Live URL</strong></td><td>https://azizsaif1967-afk.github.io/aziz-saif-story/</td></tr>
+    <tr><td><strong>CDN Images</strong></td><td>Cloudfront (GP brochure), WordPress CDN (Le Pearl), local files (catalogues, portfolio)</td></tr>
+  </table>
+
+  <h3>AI Tools Used to Build</h3>
+  <table>
+    <tr><th>Tool</th><th>Used For</th></tr>
+    <tr><td>Claude Code (Anthropic)</td><td>All HTML/CSS/JS code generation, report creation, sanitization, deployment</td></tr>
+    <tr><td>Gamma.app</td><td>Original report slide decks converted to HTML</td></tr>
+    <tr><td>Perplexity AI</td><td>Research &amp; market data for feasibility reports</td></tr>
+    <tr><td>Manus AI</td><td>Case studies &amp; business research</td></tr>
+  </table>
+</section>
+
+<!-- 3. FILE STRUCTURE -->
+<section id="file-structure">
+  <h2>3. File Structure &amp; Assets</h2>
+
+  <h3>Directory Tree</h3>
+  <pre>aziz-saif-story/
+├── index.html                  (1,501 lines — the entire website)
+├── website-documentation.html  (this file)
+├── brand-logos/                 (7 files)
+│   ├── all-brands.png
+│   ├── gp-logo.jpg
+│   ├── lepearl-logo.jpg / .png
+│   ├── sana-logo.jpg
+│   └── yoyoso-logo.jpg / .png
+├── gp-catalogue/               (16 files)
+│   └── page-01.jpg → page-16.jpg
+├── lepearl-catalogue/          (16 files)
+│   └── page-01.jpg → page-16.jpg
+├── yoyoso-catalogue/           (17 files)
+│   └── page-01.jpg → page-16.jpg + PDF preview
+├── yoyoso-photos/              (20 files)
+│   └── signing ceremony, contract, team photos
+├── portfolio-thumbs/           (12 files)
+│   └── globalpioneer.jpg, eatcookjoy.jpg, etc.
+└── reports/                    (27 HTML files)
+    └── retail-consultancy-guide.html, etc.</pre>
+
+  <h3>Total Asset Count</h3>
+  <table>
+    <tr><th>Directory</th><th>Files</th><th>Type</th></tr>
+    <tr><td>brand-logos/</td><td>7</td><td>JPG, PNG</td></tr>
+    <tr><td>gp-catalogue/</td><td>16</td><td>JPG</td></tr>
+    <tr><td>lepearl-catalogue/</td><td>16</td><td>JPG</td></tr>
+    <tr><td>yoyoso-catalogue/</td><td>17</td><td>JPG, PNG</td></tr>
+    <tr><td>yoyoso-photos/</td><td>20</td><td>JPEG</td></tr>
+    <tr><td>portfolio-thumbs/</td><td>12</td><td>JPG</td></tr>
+    <tr><td>reports/</td><td>27</td><td>HTML</td></tr>
+    <tr><td><strong>TOTAL</strong></td><td><strong>115 + 2 HTML</strong></td><td></td></tr>
+  </table>
+</section>
+
+<!-- 4. ALL WEBSITE SECTIONS -->
+<section id="sections">
+  <h2>4. All Website Sections (Top to Bottom)</h2>
+
+  <table>
+    <tr><th>#</th><th>Section</th><th>ID / Anchor</th><th>Background</th><th>Content</th></tr>
+    <tr><td>1</td><td>Preloader</td><td>—</td><td>White</td><td>Spinning ring animation, hidden after load</td></tr>
+    <tr><td>2</td><td>Navigation</td><td>—</td><td>Frosted glass</td><td>10 links: Story, GP, Le Pearl, YOYOSO, Sana, AI Services, Reports, Stackbirds, Blog, Contact</td></tr>
+    <tr><td>3</td><td>Hero Carousel</td><td>#heroCarousel</td><td>Images/AI bg</td><td>4 slides: Global Pioneer, Le Pearl, YOYOSO, AI (futuristic)</td></tr>
+    <tr><td>4</td><td>Stats Bar</td><td>—</td><td>Navy</td><td>37+ Years, 60+ Stores, 5 Countries, 9+ Brands</td></tr>
+    <tr><td>5</td><td>Story</td><td>#story</td><td>White</td><td>Personal bio, info cards, countries flags, consulting services list</td></tr>
+    <tr><td>6</td><td>Global Pioneer Gallery</td><td>#gp-section</td><td>Off-white</td><td>8 photos, 3 info boxes (Business Dev, Retail, B2B)</td></tr>
+    <tr><td>7</td><td>GP Catalogue</td><td>#gpGallery</td><td>White</td><td>16-page company brochure grid</td></tr>
+    <tr><td>8</td><td>Le Pearl Gallery</td><td>#lepearl-section</td><td>White</td><td>8 store/product photos</td></tr>
+    <tr><td>9</td><td>Le Pearl Catalogue</td><td>#lpCatalogue</td><td>Off-white</td><td>16-page brand brochure grid</td></tr>
+    <tr><td>10</td><td>YOYOSO Gallery</td><td>#yoyoso-section</td><td>White</td><td>8 franchise signing photos</td></tr>
+    <tr><td>11</td><td>YOYOSO Catalogue</td><td>#yoCatalogue</td><td>Off-white</td><td>16-page catalogue grid</td></tr>
+    <tr><td>12</td><td>Sana Fashions</td><td>#sana-section</td><td>White</td><td>Store photos, info boxes</td></tr>
+    <tr><td>13</td><td>AI Services</td><td>#services</td><td>Off-white</td><td>9 service cards (Website, Audit, SOP, Gap, AI Agents, Lead Gen, LinkedIn, Scope, Pitches)</td></tr>
+    <tr><td>14</td><td>AI Implementation Case History</td><td>#ai-implementation</td><td>Navy (dark)</td><td>24 case cards across 13 industries</td></tr>
+    <tr><td>15</td><td>Industry Expertise &amp; Reports</td><td>#ai-creations</td><td>White</td><td>Consulting tip, filter tabs, 27 report cards</td></tr>
+    <tr><td>16</td><td>Stackbirds</td><td>#stackbirds</td><td>Navy (dark)</td><td>AI agent platform promo</td></tr>
+    <tr><td>17</td><td>AI Tools</td><td>—</td><td>Off-white</td><td>6 tool cards (Claude, Gamma, Apollo, Manus, MiniMax, Perplexity)</td></tr>
+    <tr><td>18</td><td>Business Setup</td><td>#setup</td><td>White</td><td>4 setup service cards</td></tr>
+    <tr><td>19</td><td>Consulting</td><td>#consulting</td><td>Off-white</td><td>2-column consulting info</td></tr>
+    <tr><td>20</td><td>Process</td><td>—</td><td>White</td><td>4-step process (Discover, Scope, Go-Live, Handover)</td></tr>
+    <tr><td>21</td><td>Portfolio</td><td>—</td><td>Off-white</td><td>12 website showcase cards with thumbnails</td></tr>
+    <tr><td>22</td><td>CTA</td><td>#contact</td><td>Navy (dark)</td><td>Book a call button, WhatsApp link</td></tr>
+    <tr><td>23</td><td>Blog</td><td>#blog</td><td>Off-white</td><td>13 articles in 5 categories from azizsaif.xyz</td></tr>
+    <tr><td>24</td><td>Footer</td><td>—</td><td>Dark (#0d1117)</td><td>4-column: About, Companies, Services, Contact</td></tr>
+    <tr><td>25</td><td>Lightbox Modal</td><td>—</td><td>Dark overlay</td><td>Full-screen image viewer with prev/next</td></tr>
+    <tr><td>26</td><td>WhatsApp Float</td><td>—</td><td>Green</td><td>Fixed bottom-right chat button</td></tr>
+    <tr><td>27</td><td>Chatbot</td><td>—</td><td>White</td><td>Simple keyword-response chat widget</td></tr>
+  </table>
+</section>
+
+<!-- 5. CSS DESIGN SYSTEM -->
+<section id="css-design">
+  <h2>5. CSS Design System</h2>
+
+  <h3>CSS Variables (Root)</h3>
+  <pre>:root {
+  --primary: #0a1628;        /* Dark navy — headings, nav, dark sections */
+  --primary-light: #152238;  /* Slightly lighter navy */
+  --accent: #c9a84c;         /* Gold — accents, hovers, CTAs */
+  --accent-light: #e8d5a0;   /* Light gold */
+  --accent-dark: #a8872e;    /* Dark gold — labels */
+  --white: #fff;
+  --off-white: #f7f8fa;      /* Light gray backgrounds */
+  --gray-50: #f1f3f5;
+  --gray-100: #e4e7eb;       /* Grid separators, borders */
+  --gray-200: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;       /* Body text */
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --green: #16a34a;
+  --section-pad: clamp(72px, 9vw, 120px);
+}</pre>
+
+  <h3>Key CSS Patterns</h3>
+  <table>
+    <tr><th>Pattern</th><th>CSS</th><th>Used On</th></tr>
+    <tr><td>1px Separator Grid</td><td><code>gap:1px; background:var(--gray-100)</code></td><td>All grids: gallery, reports, portfolio, AI impl, info, cases</td></tr>
+    <tr><td>Gold Accent Hover Line</td><td><code>::after { height:2px; background:var(--accent); transform:scaleX(0→1) }</code></td><td>Gallery items, report cards, info boxes, AI impl cards, blog categories</td></tr>
+    <tr><td>Frosted Glass</td><td><code>backdrop-filter:blur(12px); background:rgba(255,255,255,.97)</code></td><td>Navigation bar</td></tr>
+    <tr><td>Scroll Reveal</td><td><code>.reveal { opacity:0; transform:translateY(28px) } .reveal.visible { opacity:1 }</code></td><td>All section headers and content blocks</td></tr>
+    <tr><td>Image Zoom on Hover</td><td><code>.gallery-item:hover img { transform:scale(1.05) }</code></td><td>All gallery/catalogue images</td></tr>
+  </table>
+
+  <h3>Responsive Breakpoints</h3>
+  <table>
+    <tr><th>Breakpoint</th><th>Grid Change</th><th>Other Changes</th></tr>
+    <tr><td>≤ 1024px</td><td>All grids → 2 columns</td><td>Reduced padding, carousel height 480px</td></tr>
+    <tr><td>≤ 768px</td><td>Services/info → 1 column</td><td>Hamburger menu, carousel 400px, nav arrows hidden</td></tr>
+    <tr><td>≤ 480px</td><td>All grids → 1 column</td><td>Carousel 320px, minimal padding</td></tr>
+  </table>
+</section>
+
+<!-- 6. JAVASCRIPT -->
+<section id="javascript">
+  <h2>6. JavaScript Features</h2>
+
+  <h3>Functions (11 Total)</h3>
+  <table>
+    <tr><th>Function</th><th>Purpose</th></tr>
+    <tr><td><code>goToSlide(index)</code></td><td>Hero carousel — moves track to slide index, updates dots</td></tr>
+    <tr><td><code>openLightbox(galleryId, index)</code></td><td>Opens full-screen image viewer for any gallery</td></tr>
+    <tr><td><code>showLightboxImage()</code></td><td>Displays current image in lightbox</td></tr>
+    <tr><td><code>closeLightbox()</code></td><td>Closes the lightbox modal</td></tr>
+    <tr><td><code>lightboxPrev()</code></td><td>Navigate to previous image</td></tr>
+    <tr><td><code>lightboxNext()</code></td><td>Navigate to next image</td></tr>
+    <tr><td><code>filterReports(category)</code></td><td>Filters report cards by data-cat attribute</td></tr>
+    <tr><td><code>closeMenu()</code></td><td>Closes mobile hamburger menu</td></tr>
+    <tr><td><code>sendChat()</code></td><td>Handles chatbot message submission</td></tr>
+    <tr><td><code>handleUserMessage(msg)</code></td><td>Keyword-based chatbot responses</td></tr>
+    <tr><td><code>addMessage(text, isUser)</code></td><td>Appends message to chat window</td></tr>
+  </table>
+
+  <h3>Event Listeners &amp; Observers</h3>
+  <table>
+    <tr><th>Feature</th><th>Mechanism</th></tr>
+    <tr><td>Scroll Reveal Animation</td><td>IntersectionObserver with threshold 0.1</td></tr>
+    <tr><td>Nav Scroll Shadow</td><td>Window scroll listener adds .scrolled class</td></tr>
+    <tr><td>Carousel Auto-play</td><td>setInterval every 5 seconds</td></tr>
+    <tr><td>Carousel Navigation</td><td>Click listeners on dots, prev/next buttons</td></tr>
+    <tr><td>Keyboard Lightbox</td><td>Keydown listener for Escape, ArrowLeft, ArrowRight</td></tr>
+    <tr><td>Preloader</td><td>window.onload hides preloader after 400ms</td></tr>
+  </table>
+</section>
+
+<!-- 7. REPORTS -->
+<section id="reports">
+  <h2>7. Industry Reports (27 Files)</h2>
+  <p>All reports are standalone HTML files in the <code>reports/</code> directory. Each opens in a new tab when clicked from the main website.</p>
+
+  <h3>Filter Categories</h3>
+  <p>
+    <span class="tag accent">ALL</span>
+    <span class="tag">RETAIL &amp; FASHION</span>
+    <span class="tag">F&amp;B &amp; RESTAURANT</span>
+    <span class="tag">SALON &amp; GROOMING</span>
+    <span class="tag">FRANCHISE &amp; KIOSK</span>
+    <span class="tag">HEALTH &amp; PHARMA</span>
+    <span class="tag">E-COMMERCE</span>
+    <span class="tag">REAL ESTATE</span>
+    <span class="tag">OTHER INDUSTRIES</span>
+  </p>
+
+  <table>
+    <tr><th>#</th><th>Report Title</th><th>File</th><th>Category</th></tr>
+    <tr><td>1</td><td>Retail Consultancy Guide</td><td>retail-consultancy-guide.html</td><td>Retail</td></tr>
+    <tr><td>2</td><td>Retail Chain Crisis Guide</td><td>retail-crisis-guide-uae-oman.html</td><td>Retail</td></tr>
+    <tr><td>3</td><td>Retail Operations SOP</td><td>retail-sop-checklist.html</td><td>Retail</td></tr>
+    <tr><td>4</td><td>Fashion Store — Owner Retiring</td><td>fashion-retail-succession.html</td><td>Retail</td></tr>
+    <tr><td>5</td><td>Fashion AI Automation Guide</td><td>fashion-ai-automation.html</td><td>Retail</td></tr>
+    <tr><td>6</td><td>Africa Retail Expansion</td><td>africa-retail-expansion.html</td><td>Retail</td></tr>
+    <tr><td>7</td><td>Garment Factory Investor Pitch</td><td>garment-factory-pitch.html</td><td>Retail</td></tr>
+    <tr><td>8</td><td>Restaurant Investor Dashboard</td><td>restaurant-investor-dashboard.html</td><td>F&amp;B</td></tr>
+    <tr><td>9</td><td>Restaurant Buy &amp; Sell Pitch</td><td>restaurant-buy-sell-pitch.html</td><td>F&amp;B</td></tr>
+    <tr><td>10</td><td>Supermarket Acquisition Analysis</td><td>supermarket-acquisition-analysis.html</td><td>F&amp;B</td></tr>
+    <tr><td>11</td><td>Barbershop Feasibility — Dubai</td><td>barbershop-feasibility.html</td><td>Salon</td></tr>
+    <tr><td>12</td><td>Salon Investor Pitch Deck</td><td>salon-pitch-deck.html</td><td>Salon</td></tr>
+    <tr><td>13</td><td>Barber Shop Improvement Plan</td><td>barber-improvement-plan.html</td><td>Salon</td></tr>
+    <tr><td>14</td><td>Perfume Brand — Kiosk Pitch</td><td>perfume-kiosk-pitch.html</td><td>Franchise</td></tr>
+    <tr><td>15</td><td>Cookware Brand — Kiosk Franchise</td><td>naturals-kiosk-franchise.html</td><td>Franchise</td></tr>
+    <tr><td>16</td><td>Machinist Kiosk — City Walk</td><td>machinist-kiosk-feasibility.html</td><td>Franchise</td></tr>
+    <tr><td>17</td><td>Kiosk Financial Model</td><td>kiosk-financial-model.html</td><td>Franchise</td></tr>
+    <tr><td>18</td><td>Pharmacy Dark Store — UAE</td><td>pharmacy-investor-dashboard.html</td><td>Health</td></tr>
+    <tr><td>19</td><td>Mental Health Platform — Canada</td><td>mental-health-platform-canada.html</td><td>Health</td></tr>
+    <tr><td>20</td><td>Slime E-Commerce — UAE Kids</td><td>slime-ecommerce-feasibility.html</td><td>E-Commerce</td></tr>
+    <tr><td>21</td><td>Slime Brand — Investor Pitch</td><td>slime-investor-pitch.html</td><td>E-Commerce</td></tr>
+    <tr><td>22</td><td>LED Lighting — E-Commerce</td><td>led-ecommerce-strategy.html</td><td>E-Commerce</td></tr>
+    <tr><td>23</td><td>Holiday Homes — Investment Pitch</td><td>real-estate-holiday-homes.html</td><td>Real Estate</td></tr>
+    <tr><td>24</td><td>Accountancy &amp; Audit Firm</td><td>accountancy-audit-firm.html</td><td>Other</td></tr>
+    <tr><td>25</td><td>Printing Press — On Sale</td><td>printing-press-acquisition.html</td><td>Other</td></tr>
+    <tr><td>26</td><td>Audit &amp; Consulting Firm — Feasibility</td><td>aviation-investment-feasibility.html</td><td>Other</td></tr>
+    <tr><td>27</td><td>Canada Startup Visa Program</td><td>canada-startup-program.html</td><td>Other</td></tr>
+  </table>
+
+  <h3>Sanitized Names (Confidential)</h3>
+  <table>
+    <tr><th>Original Name</th><th>Replaced With</th><th>Reason</th></tr>
+    <tr><td>Khadlaj</td><td>Premium Perfume Brand / Perfume Brand</td><td>No permission to display</td></tr>
+    <tr><td>Ark Naturals</td><td>Cookware Brand</td><td>No permission to display</td></tr>
+    <tr><td>Aviation (title)</td><td>Audit &amp; Consulting Firm</td><td>Incorrect label — was actually audit firm</td></tr>
+    <tr><td>Databirds, Alliott, Hadi Shahid, Ripples, Liwan, KSE, MindBridge, Levin, Squeezy, Zada Tower</td><td>[Redacted] / Generic terms</td><td>Confidentiality</td></tr>
+    <tr><td colspan="3"><em>Names KEPT: Machinist (public brand)</em></td></tr>
+  </table>
+</section>
+
+<!-- 8. AI IMPLEMENTATION -->
+<section id="ai-implementation">
+  <h2>8. AI Implementation Cases (24 Cards)</h2>
+  <p>Dark navy section (<code>#ai-implementation</code>) with white cards in 3-column grid. All company names are generic.</p>
+
+  <table>
+    <tr><th>Industry</th><th>Count</th><th>Case Titles</th></tr>
+    <tr><td>Retail &amp; Fashion</td><td>3</td><td>Multi-Store Operations Overhaul, Fashion Brand Succession, Retail Crisis Turnaround</td></tr>
+    <tr><td>F&amp;B &amp; Restaurant</td><td>2</td><td>Restaurant Investor Dashboard, Restaurant Buy &amp; Sell Framework</td></tr>
+    <tr><td>Salon &amp; Grooming</td><td>2</td><td>Barbershop Feasibility Dubai, Ladies Salon Investor Pitch</td></tr>
+    <tr><td>Franchise &amp; Kiosk</td><td>3</td><td>Perfume Kiosk Duty Free, Cookware Kiosk Mall, Kiosk Financial Model Template</td></tr>
+    <tr><td>Health &amp; Pharma</td><td>2</td><td>Pharmacy Dark Store UAE, Mental Health Platform Canada</td></tr>
+    <tr><td>E-Commerce</td><td>2</td><td>Kids Slime D2C Launch, LED Lighting E-Commerce Strategy</td></tr>
+    <tr><td>Manufacturing</td><td>1</td><td>Garment Factory Investor Pitch</td></tr>
+    <tr><td>Real Estate</td><td>1</td><td>Holiday Homes Investment Pitch</td></tr>
+    <tr><td>Professional Services</td><td>1</td><td>Audit &amp; Consulting Firm Setup</td></tr>
+    <tr><td>Acquisition &amp; M&amp;A</td><td>2</td><td>Supermarket Acquisition, Printing Press Acquisition</td></tr>
+    <tr><td>AI Automation</td><td>2</td><td>Fashion Retail AI Toolkit, LinkedIn Auto-Posting System</td></tr>
+    <tr><td>Market Entry</td><td>2</td><td>Africa Retail Expansion, Canada Startup Visa</td></tr>
+    <tr><td>Consultancy</td><td>1</td><td>Retail Consultancy Playbook</td></tr>
+  </table>
+</section>
+
+<!-- 9. CATALOGUES -->
+<section id="catalogues">
+  <h2>9. Catalogues &amp; Galleries</h2>
+
+  <table>
+    <tr><th>Gallery</th><th>ID</th><th>Items</th><th>Source</th></tr>
+    <tr><td>Global Pioneer Gallery</td><td>#gpGallery</td><td>8 photos</td><td>Cloudfront CDN URLs</td></tr>
+    <tr><td>GP Company Brochure</td><td>#gpCatalogue</td><td>16 pages</td><td>gp-catalogue/page-01→16.jpg</td></tr>
+    <tr><td>Le Pearl Gallery</td><td>#lpGallery</td><td>8 photos</td><td>lepearlfashion.com + WordPress CDN</td></tr>
+    <tr><td>Le Pearl Brochure</td><td>#lpCatalogue</td><td>16 pages</td><td>lepearl-catalogue/page-01→16.jpg</td></tr>
+    <tr><td>YOYOSO Gallery</td><td>#yoGallery</td><td>8 photos</td><td>yoyoso-photos/*.jpeg</td></tr>
+    <tr><td>YOYOSO Catalogue</td><td>#yoCatalogue</td><td>16 pages</td><td>yoyoso-catalogue/page-01→16.jpg</td></tr>
+  </table>
+  <p><strong>Total gallery/catalogue items: 72 images</strong> — all use the same <code>.gallery-grid</code> / <code>.gallery-item</code> pattern with lightbox support.</p>
+</section>
+
+<!-- 10. BLOG -->
+<section id="blog">
+  <h2>10. Blog Section</h2>
+  <p>All links point to <strong>azizsaif.xyz/blog/[slug]</strong> and open in new tabs. Description: "Curated articles on business, technology, geopolitics &amp; investing — compiled from across the internet."</p>
+
+  <table>
+    <tr><th>Category</th><th>Articles</th></tr>
+    <tr><td>Business &amp; Feasibility</td><td>VLCC Global Fleet Case Study, Stackbirds.xyz, Eat Cook Joy, Angel Investor</td></tr>
+    <tr><td>Technology &amp; AI</td><td>Telegram's Valuation, Why $72B Can't Buy Direction</td></tr>
+    <tr><td>Geopolitics &amp; Energy</td><td>Oil History, India Gas Requirements, Iran Timeline, War Preparedness Plan</td></tr>
+    <tr><td>Inspiration &amp; Wisdom</td><td>Quotes (Overdose), Stop Tolerating What You Don't Deserve</td></tr>
+    <tr><td>Faith &amp; History</td><td>Coming of Imam Mehdi</td></tr>
+  </table>
+</section>
+
+<!-- 11. PORTFOLIO -->
+<section id="portfolio">
+  <h2>11. Portfolio Websites (12)</h2>
+  <table>
+    <tr><th>#</th><th>Website</th><th>URL</th><th>Thumbnail</th></tr>
+    <tr><td>1</td><td>Global Pioneer</td><td>globalpioneer.xyz</td><td>globalpioneer.jpg</td></tr>
+    <tr><td>2</td><td>Aziz Saif</td><td>azizsaif.xyz</td><td>azizsaif.jpg</td></tr>
+    <tr><td>3</td><td>Eat Cook Joy (.com)</td><td>eatcookjoy.com</td><td>eatcookjoy-com.jpg</td></tr>
+    <tr><td>4</td><td>Eat Cook Joy (.xyz)</td><td>eatcookjoy.xyz</td><td>eatcookjoy.jpg</td></tr>
+    <tr><td>5</td><td>Stackbirds</td><td>stackbirds.xyz</td><td>stackbirds.jpg</td></tr>
+    <tr><td>6</td><td>Sana Consult</td><td>sanaconsult.xyz</td><td>sanaconsult.jpg</td></tr>
+    <tr><td>7</td><td>Homeland AE</td><td>homeland-ae.com / .xyz</td><td>homeland-ae.jpg</td></tr>
+    <tr><td>8</td><td>Maroten</td><td>maroten.com</td><td>maroten.jpg</td></tr>
+    <tr><td>9</td><td>Kakal Brothers</td><td>kakalbrothers (Railway)</td><td>kakalbrothers.jpg</td></tr>
+    <tr><td>10</td><td>TarkashUAE</td><td>tarkashuae (Railway)</td><td>tarkashuae.jpg</td></tr>
+    <tr><td>11</td><td>Rishmita Healing</td><td>rishmitahealing (Railway)</td><td>rishmitahealing.jpg</td></tr>
+    <tr><td>12</td><td>Snellito</td><td>snellito-web.vercel.app</td><td>snellito.jpg</td></tr>
+  </table>
+</section>
+
+<!-- 12. EXTERNAL LINKS -->
+<section id="external-links">
+  <h2>12. All External Links &amp; URLs</h2>
+
+  <h3>Social &amp; Contact</h3>
+  <table>
+    <tr><th>Platform</th><th>URL</th></tr>
+    <tr><td>LinkedIn</td><td>linkedin.com/in/aziz-akbar-853698225</td></tr>
+    <tr><td>WhatsApp</td><td>wa.me/971556492370</td></tr>
+    <tr><td>Email</td><td>aziz@azizsaif.com</td></tr>
+    <tr><td>Calendly</td><td>calendly.com/aziz-azizsaif/30min</td></tr>
+    <tr><td>Personal Blog</td><td>azizsaif.xyz</td></tr>
+  </table>
+
+  <h3>Company Websites</h3>
+  <table>
+    <tr><th>Company</th><th>URL</th></tr>
+    <tr><td>Global Pioneer</td><td>globalpioneer.xyz</td></tr>
+    <tr><td>Le Pearl Fashion</td><td>lepearlfashion.com</td></tr>
+    <tr><td>Stackbirds</td><td>stackbirds.xyz</td></tr>
+  </table>
+
+  <h3>AI Tool Links (in Tools Section)</h3>
+  <table>
+    <tr><th>Tool</th><th>URL</th></tr>
+    <tr><td>Claude AI</td><td>claude.ai</td></tr>
+    <tr><td>Gamma</td><td>gamma.app</td></tr>
+    <tr><td>Apollo</td><td>apollo.io</td></tr>
+    <tr><td>Manus</td><td>manus.ai</td></tr>
+    <tr><td>MiniMax</td><td>minimax.io</td></tr>
+    <tr><td>Perplexity</td><td>perplexity.ai</td></tr>
+  </table>
+</section>
+
+<!-- 13. CONTACT INFO -->
+<section id="contact-info">
+  <h2>13. Contact Information (on website)</h2>
+  <table>
+    <tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Full Name</td><td>Aziz Saif</td></tr>
+    <tr><td>Title</td><td>VP Operations &middot; Managing Partner &middot; AI Business Builder</td></tr>
+    <tr><td>Company</td><td>Global Pioneer General Trading FZE</td></tr>
+    <tr><td>Location</td><td>RAK, United Arab Emirates</td></tr>
+    <tr><td>Email</td><td>aziz@azizsaif.com</td></tr>
+    <tr><td>Phone/WhatsApp</td><td>+971 55 649 2370</td></tr>
+    <tr><td>LinkedIn</td><td>linkedin.com/in/aziz-akbar-853698225</td></tr>
+    <tr><td>Website</td><td>azizsaif.xyz</td></tr>
+    <tr><td>Since</td><td>1987 (Dubai)</td></tr>
+  </table>
+</section>
+
+<!-- 14. CHANGE LOG -->
+<section id="change-log">
+  <h2>14. Change Log &amp; Git Commits</h2>
+  <ol class="change-log">
+    <li><strong>Tata Elxsi-style redesign</strong> — Full CSS overhaul with clean corporate design system (frosted glass nav, 1px grids, gold accents, squared corners)</li>
+    <li><strong>Add 27 industry reports</strong> — Portfolio thumbnails, brand catalogues &amp; logos, 27 sanitized HTML report files</li>
+    <li><strong>Remove duplicate GP Catalogue</strong> — Deleted second Global Pioneer brochure section</li>
+    <li><strong>Unify all catalogues</strong> — Converted Le Pearl &amp; YOYOSO from catalogue-grid to gallery-grid format</li>
+    <li><strong>Apply Tata Elxsi grid to all sections</strong> — 1px separator gaps, gold accent-line hovers on gallery items, squared lightbox, hidden report icons with tab-style filters</li>
+    <li><strong>Fix LinkedIn URL</strong> — Corrected to linkedin.com/in/aziz-akbar-853698225</li>
+    <li><strong>Remove company names</strong> — Khadlaj → Perfume Brand, Ark Naturals → Cookware Brand, Aviation → Audit &amp; Consulting Firm. Added consulting tip quote.</li>
+    <li><strong>Add futuristic AI hero slide</strong> — Particle effects, circuit lines, "AI" watermark, dark gradient background</li>
+    <li><strong>Add AI Implementation Case History</strong> — 24 industry cases in new dark section with tool tags</li>
+    <li><strong>Add Blog section</strong> — 13 articles from azizsaif.xyz in 5 categories, nav link added, "compiled from internet" description</li>
+  </ol>
+</section>
+
+<!-- 15. HOW TO EDIT -->
+<section id="how-to-edit">
+  <h2>15. How to Make Changes</h2>
+
+  <h3>Edit Content</h3>
+  <p>Everything is in one file: <code>index.html</code>. Open it in any text editor (VS Code, Notepad++, etc.)</p>
+
+  <h4>To change text/headings:</h4>
+  <p>Search for the text you want to change and edit it directly. All content is plain HTML.</p>
+
+  <h4>To add a new report card:</h4>
+  <pre>&lt;a href="reports/your-new-report.html" target="_blank" class="report-card" data-cat="retail"&gt;
+  &lt;div class="rpt-icon" style="background:linear-gradient(135deg,#c9a84c,#a8872e)"&gt;&amp;#128202;&lt;/div&gt;
+  &lt;div class="rpt-body"&gt;
+    &lt;h4&gt;Your Report Title&lt;/h4&gt;
+    &lt;p&gt;Description here.&lt;/p&gt;
+    &lt;span class="rpt-tag"&gt;TAG1&lt;/span&gt;
+    &lt;span class="rpt-tag"&gt;TAG2&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;</pre>
+
+  <h4>To add a new blog link:</h4>
+  <pre>&lt;li&gt;&lt;a href="https://azizsaif.xyz/blog/your-slug" target="_blank"&gt;Blog Title&lt;/a&gt;&lt;/li&gt;</pre>
+
+  <h4>To add a new AI Implementation card:</h4>
+  <pre>&lt;div class="ai-impl-card"&gt;
+  &lt;div class="ai-impl-industry"&gt;INDUSTRY NAME&lt;/div&gt;
+  &lt;h4&gt;Project Title&lt;/h4&gt;
+  &lt;p&gt;Description of what was done.&lt;/p&gt;
+  &lt;div class="ai-impl-tools"&gt;
+    &lt;span&gt;CLAUDE&lt;/span&gt;
+    &lt;span&gt;GAMMA&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+  <h3>Deploy Changes</h3>
+  <pre># From terminal in the aziz-saif-story folder:
+git add .
+git commit -m "Your change description"
+git push origin main
+
+# Changes go live in ~1 minute on GitHub Pages</pre>
+
+  <h3>To Point azizsaif.com Here</h3>
+  <p>Add these DNS records at your domain registrar:</p>
+  <table>
+    <tr><th>Type</th><th>Name</th><th>Value</th></tr>
+    <tr><td>A</td><td>@</td><td>185.199.108.153</td></tr>
+    <tr><td>A</td><td>@</td><td>185.199.109.153</td></tr>
+    <tr><td>A</td><td>@</td><td>185.199.110.153</td></tr>
+    <tr><td>A</td><td>@</td><td>185.199.111.153</td></tr>
+    <tr><td>CNAME</td><td>www</td><td>azizsaif1967-afk.github.io</td></tr>
+  </table>
+  <p>Then in GitHub: Settings → Pages → Custom domain → type <code>azizsaif.com</code> → Save → Enable HTTPS.</p>
+</section>
+
+</div>
+
+<div style="background:var(--primary);padding:32px 48px;text-align:center;color:rgba(255,255,255,.3);font-size:.75rem">
+  Documentation generated 15 April 2026 &bull; Built with Claude Code (Anthropic) &bull; Aziz Saif &mdash; Global Pioneer FZE
+</div>
+
+</body>
+</html>
