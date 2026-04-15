@@ -225,13 +225,33 @@ section{padding:var(--section-pad) 56px}
 .report-card:hover .rpt-tag{border-color:var(--accent);color:var(--accent-dark)}
 
 /* STACKBIRDS */
-.stackbirds-section{background:var(--primary);color:var(--white);padding:var(--section-pad) 56px}
-.sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;max-width:1440px;margin:0 auto}
-.sb-steps{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);margin-top:28px}
-.sb-step{background:rgba(255,255,255,.03);padding:26px;transition:background .3s}
+.stackbirds-section{background:linear-gradient(160deg,#0a1628 0%,#0d1f3c 50%,#132744 100%);color:var(--white);padding:var(--section-pad) 56px;position:relative;overflow:hidden}
+.stackbirds-section::before{content:'STACKBIRDS';position:absolute;right:-60px;top:-40px;font-size:14rem;font-weight:900;font-family:'Inter',sans-serif;color:rgba(201,168,76,.02);letter-spacing:-10px;line-height:.9;pointer-events:none}
+.stackbirds-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.sb-hero{max-width:1440px;margin:0 auto 56px;text-align:center}
+.sb-hero .sb-badge{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);padding:8px 24px;border:1px solid rgba(201,168,76,.25);margin-bottom:24px}
+.sb-hero h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:16px;max-width:800px;margin-left:auto;margin-right:auto}
+.sb-hero h2 em{color:var(--accent);font-style:italic}
+.sb-hero .sb-tagline{font-size:1.05rem;color:rgba(255,255,255,.5);max-width:640px;margin:0 auto 8px;line-height:1.8;font-weight:300}
+.sb-hero .sb-year{font-size:.7rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-top:16px}
+.sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);max-width:1440px;margin:0 auto 48px}
+.sb-content-block{background:rgba(255,255,255,.03);padding:44px 40px;transition:background .3s}
+.sb-content-block:hover{background:rgba(255,255,255,.05)}
+.sb-content-block h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:14px}
+.sb-content-block h3 span{color:var(--accent)}
+.sb-content-block p{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.85;font-weight:300;margin-bottom:12px}
+.sb-content-block ul{list-style:none;padding:0}
+.sb-content-block li{padding:8px 0;font-size:.8rem;color:rgba(255,255,255,.55);font-weight:300;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.sb-content-block li::before{content:'';width:5px;height:5px;background:var(--accent);flex-shrink:0;margin-top:7px}
+.sb-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);max-width:1440px;margin:0 auto 48px}
+.sb-step{background:rgba(255,255,255,.03);padding:32px 24px;text-align:center;transition:background .3s;position:relative}
+.sb-step::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.sb-step:hover::after{transform:scaleX(1)}
 .sb-step:hover{background:rgba(255,255,255,.06)}
-.sb-step h4{font-size:.84rem;color:var(--accent);margin-bottom:6px;font-weight:600}
-.sb-step p{font-size:.76rem;color:rgba(255,255,255,.45);line-height:1.7;font-weight:300}
+.sb-step-num{width:40px;height:40px;margin:0 auto 14px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--accent)}
+.sb-step h4{font-size:.8rem;color:var(--accent);margin-bottom:6px;font-weight:600}
+.sb-step p{font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300}
+.sb-cta-row{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
 
 /* TOOLS / SETUP GRIDS */
 .tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray-100)}
@@ -1079,26 +1099,83 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 
 <!-- STACKBIRDS -->
 <section class="stackbirds-section" id="stackbirds">
-  <div class="sb-grid">
-    <div class="reveal">
-      <div class="section-label" style="color:var(--accent)"><span class="line"></span> Launching in GCC</div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;margin-bottom:12px;color:var(--white)">Stackbirds.xyz &mdash; The World's First Self-Trained AI Agent</h2>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.65);margin-bottom:20px;line-height:1.8">"Show the bird once. It handles the rest." &mdash; Stackbirds lets SMBs automate workflows in under 10 minutes, with zero prompt engineering or coding.</p>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:24px;line-height:1.7">Role-based AI agents for accounting, invoicing, CRM, email &amp; more. Pre-trained agents that learn from your real business &mdash; not templates.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="https://stackbirds.xyz" target="_blank" class="btn-primary">&#9881;&#65039; Visit Stackbirds.xyz</a>
-        <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27m%20interested%20in%20Stackbirds" target="_blank" class="btn-outline">Join the Waitlist</a>
-      </div>
+
+  <!-- Hero -->
+  <div class="sb-hero reveal">
+    <div class="sb-badge">Launching 2027 &bull; UAE &amp; Gulf &bull; In Sha Allah</div>
+    <h2>Stackbirds.xyz &mdash; The World&rsquo;s First <em>Self-Trained</em> AI Agent</h2>
+    <p class="sb-tagline">&ldquo;Show the bird once. It handles the rest.&rdquo; &mdash; AI agents that learn by watching you work, then run your business workflows autonomously. No coding. No prompts. No IT team.</p>
+    <div class="sb-year">Target Launch &bull; Q1 2027 &bull; UAE &bull; KSA &bull; Oman &bull; Bahrain &bull; Qatar</div>
+  </div>
+
+  <!-- Two-column content -->
+  <div class="sb-grid reveal">
+    <div class="sb-content-block">
+      <h3>Why <span>Aziz + Stackbirds</span> in the Gulf</h3>
+      <p>Most AI platforms are built in Silicon Valley for tech-savvy startups. Gulf SMEs need something different &mdash; an AI that understands Arabic-English billing, GCC trade customs, retail floor operations, and the real daily grind of running a business in Dubai, Muscat, or Riyadh.</p>
+      <p>Aziz brings 37+ years of on-the-ground Gulf expertise &mdash; from setting up trade licences and managing 60+ retail stores to negotiating franchise deals across 5 countries. Stackbirds combines this deep local knowledge with AI automation to give every SME owner a tireless digital team member.</p>
+      <ul>
+        <li>Built for Arabic-English bilingual business environments</li>
+        <li>Pre-trained on GCC compliance &mdash; VAT, WPS payroll, MOHRE, municipality rules</li>
+        <li>Retail-first design &mdash; inventory, POS reconciliation, supplier follow-ups</li>
+        <li>Works with tools SMEs already use &mdash; QuickBooks, Zoho, Tally, WhatsApp, Excel</li>
+        <li>On-ground onboarding &amp; support from Aziz&rsquo;s team across the Gulf</li>
+      </ul>
     </div>
-    <div class="reveal">
-      <div class="sb-steps">
-        <div class="sb-step"><h4>1. Show</h4><p>Record your screen and narrate the task. The agent watches and learns.</p></div>
-        <div class="sb-step"><h4>2. Learn</h4><p>The agent asks clarifying questions and auto-configures itself.</p></div>
-        <div class="sb-step"><h4>3. Connect</h4><p>Add credentials. Stackbirds links to your business tools automatically.</p></div>
-        <div class="sb-step"><h4>4. Execute</h4><p>The agent runs the workflow autonomously. Correct and refine anytime.</p></div>
-      </div>
+    <div class="sb-content-block">
+      <h3>What Stackbirds <span>Automates</span></h3>
+      <p>Role-based AI agents that handle the tasks eating up your team&rsquo;s time. Each agent learns from YOUR business &mdash; not generic templates.</p>
+      <ul>
+        <li><strong style="color:var(--accent)">Accountant Agent</strong> &mdash; Invoice matching, bank reconciliation, VAT filing prep, monthly P&amp;L generation</li>
+        <li><strong style="color:var(--accent)">Sales Agent</strong> &mdash; Lead capture from WhatsApp/email, auto-follow-ups, CRM updates, quotation drafts</li>
+        <li><strong style="color:var(--accent)">Inventory Agent</strong> &mdash; Stock level alerts, reorder triggers, supplier PO generation, dead stock flagging</li>
+        <li><strong style="color:var(--accent)">HR Agent</strong> &mdash; Leave tracking, visa renewal reminders, contract generation, WPS payroll prep</li>
+        <li><strong style="color:var(--accent)">Marketing Agent</strong> &mdash; Social media scheduling, campaign performance reports, competitor monitoring</li>
+        <li><strong style="color:var(--accent)">Retail Ops Agent</strong> &mdash; Daily store checklists, KPI dashboards, mystery shopper analysis, staff scheduling</li>
+      </ul>
     </div>
   </div>
+
+  <!-- How it works -->
+  <div class="sb-steps reveal">
+    <div class="sb-step"><div class="sb-step-num">1</div><h4>Show</h4><p>Record your screen doing any task. The agent watches, listens &amp; learns your exact workflow.</p></div>
+    <div class="sb-step"><div class="sb-step-num">2</div><h4>Learn</h4><p>The AI asks smart questions, maps your tools &amp; auto-configures itself. Under 10 minutes.</p></div>
+    <div class="sb-step"><div class="sb-step-num">3</div><h4>Connect</h4><p>Link your business apps &mdash; QuickBooks, WhatsApp, email, POS. One-click integrations.</p></div>
+    <div class="sb-step"><div class="sb-step-num">4</div><h4>Execute</h4><p>The agent runs autonomously 24/7. Review, correct &amp; refine anytime. It only gets smarter.</p></div>
+  </div>
+
+  <!-- Who is it for -->
+  <div class="sb-grid reveal" style="margin-bottom:0">
+    <div class="sb-content-block">
+      <h3>Built for <span>Gulf SMEs</span></h3>
+      <ul>
+        <li><strong style="color:var(--white)">Retail store owners</strong> running 1&ndash;50 locations who need automated inventory, sales &amp; staff ops</li>
+        <li><strong style="color:var(--white)">Restaurant &amp; F&amp;B operators</strong> drowning in daily reports, supplier orders &amp; delivery tracking</li>
+        <li><strong style="color:var(--white)">Salon &amp; service businesses</strong> managing bookings, staff rosters &amp; customer follow-ups manually</li>
+        <li><strong style="color:var(--white)">Trading &amp; wholesale companies</strong> with complex supplier POs, LC documents &amp; logistics</li>
+        <li><strong style="color:var(--white)">Professional services firms</strong> handling client onboarding, invoicing &amp; compliance paperwork</li>
+        <li><strong style="color:var(--white)">Franchise operators</strong> managing multi-brand, multi-location reporting &amp; standardisation</li>
+      </ul>
+    </div>
+    <div class="sb-content-block">
+      <h3>Aziz&rsquo;s <span>Launch Roadmap</span></h3>
+      <ul>
+        <li><strong style="color:var(--accent)">Q3 2026</strong> &mdash; Beta testing with 10 select SME partners in Dubai &amp; Abu Dhabi</li>
+        <li><strong style="color:var(--accent)">Q4 2026</strong> &mdash; Expand beta to Oman &amp; Bahrain. Onboard retail &amp; F&amp;B pilot clients</li>
+        <li><strong style="color:var(--accent)">Q1 2027</strong> &mdash; Official launch across UAE. In sha Allah. Subscription model live</li>
+        <li><strong style="color:var(--accent)">Q2 2027</strong> &mdash; KSA &amp; Qatar expansion. Arabic-first agent templates</li>
+        <li><strong style="color:var(--accent)">2027+</strong> &mdash; Industry-specific agent packs: Retail, F&amp;B, Salon, Trading, Professional Services</li>
+      </ul>
+      <p style="margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.35);font-style:italic">Every SME deserves an AI team. Stackbirds makes it possible without the enterprise price tag.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sb-cta-row reveal">
+    <a href="https://stackbirds.xyz" target="_blank" class="btn-primary">Visit Stackbirds.xyz</a>
+    <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27m%20interested%20in%20Stackbirds%20for%20my%20business" target="_blank" class="btn-outline">Join the Waitlist &rarr;</a>
+  </div>
+
 </section>
 
 <!-- AI TOOLS -->
@@ -1176,13 +1253,116 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
       <div class="portfolio-card"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/eatcookjoy.jpg" alt="EatCookJoy Investor Pitch" loading="lazy"></div><div class="portfolio-card-body"><h4>eatcookjoy.xyz</h4><p class="portfolio-desc">AI-powered meal planning &amp; chef-enabled food support. Investor pitch deck website &mdash; $1.2M ARR, 100K+ servings, 92% retention.</p><div class="portfolio-links"><a href="https://eatcookjoy.xyz" target="_blank" class="plink-built">View Build &#8599;</a><a href="https://eatcookjoy.com" target="_blank" class="plink-orig">Original Site &#8599;</a></div></div></div>
       <div class="portfolio-card"><a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%20need%20a%20website" target="_blank"><div class="portfolio-card-thumb"><div class="thumb-fallback" style="display:flex;background:linear-gradient(135deg,#c9a84c,#0a1628)"><span style="color:#fff;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:1px">YOUR SITE?</span></div></div><div class="portfolio-card-body"><h4>Need a Website?</h4><p class="portfolio-desc">Get a professional website deployed in hours &mdash; not weeks. Full design, development, hosting &amp; AI integration included.</p><div class="plink-built" style="text-align:center">Get Started &#8599;</div></div></a></div>
     </div>
-    <!-- LAUNCHING SOON -->
-    <div style="margin-top:48px" class="reveal">
-      <h3 style="font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:20px;text-align:center">Launching in UAE &amp; Gulf Soon <span style="font-weight:400;color:var(--gray-500)">In sha Allah</span></h3>
-      <div class="portfolio-grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="portfolio-card" style="border:2px dashed var(--accent)"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/stackbirds.jpg" alt="Stackbirds" loading="lazy"></div><div class="portfolio-card-body"><h4>stackbirds.xyz</h4><p class="portfolio-desc">World's first self-trained AI agent. Automate workflows in under 10 minutes &mdash; no coding, no prompts. Just show the bird once.</p><div class="portfolio-links"><a href="https://stackbirds.xyz" target="_blank" class="plink-built">Preview &#8599;</a></div></div></div>
-        <div class="portfolio-card" style="border:2px dashed var(--accent)"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/eatcookjoy-com.jpg" alt="EatCookJoy" loading="lazy"></div><div class="portfolio-card-body"><h4>eatcookjoy.com</h4><p class="portfolio-desc">AI-powered meal planning, grocery coordination &amp; chef-enabled food support. Bringing the joy of cooking to every home.</p><div class="portfolio-links"><a href="https://eatcookjoy.com" target="_blank" class="plink-built">Preview &#8599;</a></div></div></div>
-        <div class="portfolio-card" style="border:2px dashed var(--accent)"><div class="portfolio-card-thumb"><img src="portfolio-thumbs/snellito.jpg" alt="Snellito" loading="lazy"></div><div class="portfolio-card-body"><h4>snellito</h4><p class="portfolio-desc">Recipe extraction platform &mdash; paste URLs, TikToks, screenshots, or voice notes into clean, structured recipes you can scale and shop for.</p><div class="portfolio-links"><a href="https://snellito-web.vercel.app/" target="_blank" class="plink-built">Preview &#8599;</a></div></div></div>
+    <!-- ===== LAUNCHING IN UAE & GULF 2027 ===== -->
+    <div style="margin-top:64px;background:linear-gradient(135deg,var(--primary) 0%,#152238 50%,#1a2d4a 100%);border-radius:20px;overflow:hidden;border:1px solid rgba(201,168,76,0.15)" class="reveal">
+      <!-- Header -->
+      <div style="padding:48px 40px 0;text-align:center">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);border-radius:50px;padding:6px 18px;margin-bottom:16px">
+          <span style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">Launching 2027</span>
+          <span style="font-size:0.7rem;color:rgba(255,255,255,0.4)">In sha Allah</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">AI-Powered Ventures for<br><span style="color:var(--accent)">UAE &amp; the Gulf</span></h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.9rem;max-width:700px;margin:0 auto 12px;line-height:1.7">Aziz is combining <strong style="color:rgba(255,255,255,0.85)">15+ years of Gulf retail &amp; operations expertise</strong> with cutting-edge AI automation to build platforms that serve chefs, SMEs, and everyday consumers across the GCC.</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:0.82rem;max-width:640px;margin:0 auto 32px;line-height:1.6;font-style:italic">On-the-ground relationships with suppliers, chefs, retailers &amp; government entities in Dubai, Sharjah &amp; the wider Gulf &mdash; paired with AI that scales what one person cannot.</p>
+      </div>
+
+      <!-- Gulf Edge Pillars -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,0.06);margin:0 40px 32px;border-radius:12px;overflow:hidden">
+        <div style="background:rgba(10,22,40,0.8);padding:20px;text-align:center">
+          <div style="font-size:1.6rem;margin-bottom:4px">&#127758;</div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Local Gulf Network</div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.5">Direct relationships with chefs, suppliers, restaurants &amp; retail operators across UAE, KSA &amp; GCC</p>
+        </div>
+        <div style="background:rgba(10,22,40,0.8);padding:20px;text-align:center">
+          <div style="font-size:1.6rem;margin-bottom:4px">&#129302;</div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">AI Automation</div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.5">Claude, GPT &amp; custom agents for invoicing, CRM, inventory, content &amp; workflow automation for SMEs</p>
+        </div>
+        <div style="background:rgba(10,22,40,0.8);padding:20px;text-align:center">
+          <div style="font-size:1.6rem;margin-bottom:4px">&#128200;</div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Retail &amp; SME Focus</div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.5">From grocery &amp; F&amp;B to fashion retail &mdash; AI tools tailored for businesses that need results, not complexity</p>
+        </div>
+        <div style="background:rgba(10,22,40,0.8);padding:20px;text-align:center">
+          <div style="font-size:1.6rem;margin-bottom:4px">&#128640;</div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Launch-Ready</div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.5">Products already built &amp; tested &mdash; ready for UAE market deployment with local partnerships in place</p>
+        </div>
+      </div>
+
+      <!-- Product Cards -->
+      <div style="padding:0 40px 48px">
+        <div class="portfolio-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+          <!-- Stackbirds -->
+          <div class="portfolio-card" style="border:1px solid rgba(201,168,76,0.2);background:rgba(255,255,255,0.03);position:relative;overflow:hidden">
+            <div style="position:absolute;top:12px;right:12px;background:var(--accent);color:var(--primary);font-size:0.6rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;z-index:2">AI Agent Platform</div>
+            <div class="portfolio-card-thumb"><img src="portfolio-thumbs/stackbirds.jpg" alt="Stackbirds" loading="lazy"></div>
+            <div class="portfolio-card-body">
+              <h4 style="color:var(--accent)">stackbirds.xyz</h4>
+              <p class="portfolio-desc">The world's first <strong>self-trained AI agent</strong>. Automate invoicing, CRM, accounting, email &amp; operations for Gulf SMEs &mdash; no coding, no prompts. Show the bird once, it handles the rest. Role-based agents that learn from your actual business data.</p>
+              <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap">
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">AI Agents</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">SME Automation</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">No-Code</span>
+              </div>
+              <div class="portfolio-links"><a href="https://stackbirds.xyz" target="_blank" class="plink-built">Preview &#8599;</a></div>
+            </div>
+          </div>
+          <!-- EatCookJoy -->
+          <div class="portfolio-card" style="border:1px solid rgba(201,168,76,0.2);background:rgba(255,255,255,0.03);position:relative;overflow:hidden">
+            <div style="position:absolute;top:12px;right:12px;background:var(--accent);color:var(--primary);font-size:0.6rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;z-index:2">Chef &amp; Food Tech</div>
+            <div class="portfolio-card-thumb"><img src="portfolio-thumbs/eatcookjoy-com.jpg" alt="EatCookJoy" loading="lazy"></div>
+            <div class="portfolio-card-body">
+              <h4 style="color:var(--accent)">eatcookjoy.com</h4>
+              <p class="portfolio-desc"><strong>AI-powered meal planning</strong>, grocery coordination &amp; chef-enabled food support for the Gulf market. Leveraging Aziz's direct network of 100+ UAE-based chefs, home cooks &amp; food bloggers to connect families with affordable, personalized cooking help.</p>
+              <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap">
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">AI Meal Planning</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">Chef Network</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">GCC Launch</span>
+              </div>
+              <div class="portfolio-links"><a href="https://eatcookjoy.com" target="_blank" class="plink-built">Preview &#8599;</a></div>
+            </div>
+          </div>
+          <!-- Snellito -->
+          <div class="portfolio-card" style="border:1px solid rgba(201,168,76,0.2);background:rgba(255,255,255,0.03);position:relative;overflow:hidden">
+            <div style="position:absolute;top:12px;right:12px;background:var(--accent);color:var(--primary);font-size:0.6rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;z-index:2">Recipe AI</div>
+            <div class="portfolio-card-thumb"><img src="portfolio-thumbs/snellito.jpg" alt="Snellito" loading="lazy"></div>
+            <div class="portfolio-card-body">
+              <h4 style="color:var(--accent)">snellito</h4>
+              <p class="portfolio-desc"><strong>AI recipe extraction platform</strong> &mdash; paste URLs, TikToks, screenshots, or voice notes and get clean, structured recipes you can scale, shop for &amp; cook. Perfect for Gulf home cooks navigating international recipes with local ingredient mapping.</p>
+              <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap">
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">AI Extraction</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">Voice &amp; Video</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:rgba(201,168,76,0.1);color:var(--accent);border:1px solid rgba(201,168,76,0.2)">Grocery Lists</span>
+              </div>
+              <div class="portfolio-links"><a href="https://snellito-web.vercel.app/" target="_blank" class="plink-built">Preview &#8599;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Automation for Retail & SMEs -->
+        <div style="margin-top:32px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.12);border-radius:14px;padding:28px 32px">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;margin-bottom:6px">AI Automation for Retail &amp; SME Companies</h4>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:16px;line-height:1.6">Beyond product launches, Aziz provides hands-on AI automation consulting for Gulf businesses &mdash; helping companies adopt Claude, GPT agents &amp; custom workflows without the enterprise price tag.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+            <div style="background:rgba(10,22,40,0.5);border-radius:10px;padding:14px;border:1px solid rgba(255,255,255,0.05)">
+              <div style="font-size:0.7rem;font-weight:700;color:var(--accent);margin-bottom:4px">Retail Operations</div>
+              <p style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5">AI demand forecasting, inventory optimization, POS integration &amp; automated reordering for supermarkets, fashion stores &amp; F&amp;B outlets</p>
+            </div>
+            <div style="background:rgba(10,22,40,0.5);border-radius:10px;padding:14px;border:1px solid rgba(255,255,255,0.05)">
+              <div style="font-size:0.7rem;font-weight:700;color:var(--accent);margin-bottom:4px">Customer Service AI</div>
+              <p style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5">WhatsApp bots, AI chat support, automated order tracking &amp; multilingual customer agents for UAE's diverse market</p>
+            </div>
+            <div style="background:rgba(10,22,40,0.5);border-radius:10px;padding:14px;border:1px solid rgba(255,255,255,0.05)">
+              <div style="font-size:0.7rem;font-weight:700;color:var(--accent);margin-bottom:4px">Finance &amp; HR Automation</div>
+              <p style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5">Automated invoicing, payroll processing, expense tracking &amp; recruitment screening &mdash; reducing back-office costs by 40-60%</p>
+            </div>
+            <div style="background:rgba(10,22,40,0.5);border-radius:10px;padding:14px;border:1px solid rgba(255,255,255,0.05)">
+              <div style="font-size:0.7rem;font-weight:700;color:var(--accent);margin-bottom:4px">Content &amp; Marketing</div>
+              <p style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5">AI-generated social media, product descriptions, email campaigns &amp; menu engineering &mdash; in Arabic &amp; English</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
