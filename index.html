@@ -311,6 +311,21 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 .btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);padding:16px 36px;font-weight:500;font-size:.78rem;text-decoration:none;transition:all .4s;cursor:pointer;letter-spacing:.5px;text-transform:uppercase}
 .btn-outline:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
 
+/* BLOG SECTION */
+.blog-section{padding:var(--section-pad) 56px;background:var(--off-white)}
+.blog-inner{max-width:1440px;margin:0 auto}
+.blog-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-100)}
+.blog-category{background:var(--white);padding:32px 28px;position:relative;overflow:hidden}
+.blog-category::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.blog-category:hover::after{transform:scaleX(1)}
+.blog-cat-title{font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-dark);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--gray-100)}
+.blog-list{list-style:none}
+.blog-list li{padding:10px 0;border-bottom:1px solid var(--gray-50)}
+.blog-list li:last-child{border-bottom:none}
+.blog-list a{text-decoration:none;color:var(--primary);font-size:.82rem;font-weight:500;line-height:1.5;display:block;transition:color .3s}
+.blog-list a:hover{color:var(--accent-dark)}
+.blog-list a::before{content:'\2192';margin-right:8px;color:var(--accent);font-size:.7rem}
+
 /* FOOTER */
 .footer{background:#0d1117;padding:64px 56px 28px;color:rgba(255,255,255,.5)}
 .footer-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
@@ -361,7 +376,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 @media(max-width:1024px){
   .nav-top{padding:0 24px}section,.gallery-section,.stackbirds-section{padding:var(--section-pad) 24px}
   .hero-carousel{height:480px}.stats-inner{padding:0 24px}
-  .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid,.ai-impl-grid{grid-template-columns:repeat(2,1fr);gap:1px}
+  .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid,.ai-impl-grid,.blog-columns{grid-template-columns:repeat(2,1fr);gap:1px}
   .company-hero{grid-template-columns:1fr}.company-hero-img{height:300px}
   .sb-grid{grid-template-columns:1fr}.sb-steps{grid-template-columns:1fr}
   .services-grid{grid-template-columns:repeat(2,1fr)}.tools-grid,.setup-grid{grid-template-columns:repeat(2,1fr)}
@@ -379,7 +394,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 }
 @media(max-width:480px){
   section,.gallery-section{padding:40px 16px}
-  .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid,.tools-grid,.setup-grid,.process-row,.ai-impl-grid{grid-template-columns:1fr}
+  .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid,.tools-grid,.setup-grid,.process-row,.ai-impl-grid,.blog-columns{grid-template-columns:1fr}
   .stores-row{grid-template-columns:1fr 1fr}.stats-inner{grid-template-columns:1fr}
   .chatbot-window{width:calc(100vw - 24px);right:12px;bottom:120px}
   .hero-carousel{height:320px}
@@ -404,6 +419,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
       <li><a href="#services" onclick="closeMenu()">AI Services</a></li>
       <li><a href="#ai-creations" onclick="closeMenu()">Reports</a></li>
       <li><a href="#stackbirds" onclick="closeMenu()">Stackbirds</a></li>
+      <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
       <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -1194,6 +1210,71 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
     </div>
   </div>
 </section>
+
+<!-- ===== BLOG ===== -->
+<div class="blog-section" id="blog">
+  <div class="blog-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> Insights &amp; Articles</div>
+        <h2 class="section-title">Blog &mdash; azizsaif.xyz</h2>
+        <p class="section-subtitle">Curated articles on business, technology, geopolitics &amp; investing &mdash; compiled from across the internet.</p>
+      </div>
+      <a href="https://azizsaif.xyz" target="_blank" class="btn-primary" style="white-space:nowrap">Visit Full Blog &rarr;</a>
+    </div>
+    <div class="blog-columns reveal">
+
+      <!-- BUSINESS & FEASIBILITY -->
+      <div class="blog-category">
+        <div class="blog-cat-title">Business &amp; Feasibility</div>
+        <ul class="blog-list">
+          <li><a href="https://azizsaif.xyz/blog/vlcc-global-fleet-business-case-study" target="_blank">VLCC Global Fleet Business Case Study</a></li>
+          <li><a href="https://azizsaif.xyz/blog/stackbirds-xyz" target="_blank">Stackbirds.xyz &mdash; AI Agent Platform</a></li>
+          <li><a href="https://azizsaif.xyz/blog/eat-cook-joy" target="_blank">Eat Cook Joy</a></li>
+          <li><a href="https://azizsaif.xyz/blog/angel-investor" target="_blank">Angel Investor</a></li>
+        </ul>
+      </div>
+
+      <!-- TECHNOLOGY & AI -->
+      <div class="blog-category">
+        <div class="blog-cat-title">Technology &amp; AI</div>
+        <ul class="blog-list">
+          <li><a href="https://azizsaif.xyz/blog/telegram-s-valuation" target="_blank">Telegram&rsquo;s Valuation</a></li>
+          <li><a href="https://azizsaif.xyz/blog/why-72b-can-t-buy-direction" target="_blank">Why $72B Can&rsquo;t Buy Direction</a></li>
+        </ul>
+      </div>
+
+      <!-- GEOPOLITICS & ENERGY -->
+      <div class="blog-category">
+        <div class="blog-cat-title">Geopolitics &amp; Energy</div>
+        <ul class="blog-list">
+          <li><a href="https://azizsaif.xyz/blog/oil-history" target="_blank">Oil History</a></li>
+          <li><a href="https://azizsaif.xyz/blog/india-gas-requirements" target="_blank">India Gas Requirements</a></li>
+          <li><a href="https://azizsaif.xyz/blog/iran-history-timeline" target="_blank">Iran &mdash; A Timeline Through History</a></li>
+          <li><a href="https://azizsaif.xyz/blog/war-preparedness-plan" target="_blank">War Preparedness Plan</a></li>
+        </ul>
+      </div>
+
+      <!-- INSPIRATION & WISDOM -->
+      <div class="blog-category">
+        <div class="blog-cat-title">Inspiration &amp; Wisdom</div>
+        <ul class="blog-list">
+          <li><a href="https://azizsaif.xyz/blog/quotes-overdose" target="_blank">Quotes (Overdose)</a></li>
+          <li><a href="https://azizsaif.xyz/blog/stop-tolerating-what-you-do-not-deserve-by-gaur-gopal-das" target="_blank">Stop Tolerating What You Don&rsquo;t Deserve</a></li>
+        </ul>
+      </div>
+
+      <!-- FAITH & HISTORY -->
+      <div class="blog-category">
+        <div class="blog-cat-title">Faith &amp; History</div>
+        <ul class="blog-list">
+          <li><a href="https://azizsaif.xyz/blog/coming-of-imam-mehdi" target="_blank">Coming of Imam Mehdi</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
