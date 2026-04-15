@@ -182,10 +182,54 @@ section{padding:var(--section-pad) 56px}
 .store-card h5{font-size:.78rem;font-weight:600;color:var(--primary);margin-bottom:3px}
 .store-card p{font-size:.66rem;color:var(--gray-500);font-weight:300}
 
+/* STORY SECTION - Tata Elxsi Interactive */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.story-left{padding:0 48px 0 0;display:flex;flex-direction:column;justify-content:center}
+.story-right{position:relative}
+
+/* Expertise Card */
+.expertise-card{background:var(--primary);padding:40px;color:var(--white);position:relative;overflow:hidden}
+.expertise-card::before{content:'';position:absolute;top:-80px;right:-80px;width:200px;height:200px;border:1px solid rgba(201,168,76,.06);border-radius:50%;transition:all .8s}
+.expertise-card:hover::before{transform:scale(1.5);border-color:rgba(201,168,76,.12)}
+.expertise-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),rgba(201,168,76,.3));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.expertise-card:hover::after{transform:scaleX(1)}
+.expertise-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--accent);margin-bottom:24px;position:relative}
+.expertise-list{list-style:none}
+.expertise-list li{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.65);font-size:.86rem;display:flex;align-items:center;gap:12px;position:relative;transition:all .35s;cursor:default;padding-left:0}
+.expertise-list li::before{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.expertise-list li:hover::before{width:100%}
+.expertise-list li:hover{color:var(--white);padding-left:6px}
+.expertise-list li:last-child{border-bottom:none}
+.expertise-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;transition:transform .3s}
+.expertise-list li:hover .expertise-dot{transform:scale(1.6)}
+
+/* Country tags inside expertise */
+.expertise-tags{margin-top:24px;display:flex;flex-wrap:wrap;gap:6px}
+.expertise-tag{background:rgba(201,168,76,.1);padding:5px 14px;font-size:.68rem;color:var(--accent);font-weight:600;border:1px solid rgba(201,168,76,.15);transition:all .3s;cursor:default}
+.expertise-tag:hover{background:rgba(201,168,76,.2);border-color:var(--accent);transform:translateY(-2px)}
+
+/* Personal info mini-cards */
+.personal-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-100);margin-top:1px}
+.personal-card{background:var(--white);padding:22px 24px;position:relative;overflow:hidden;transition:all .3s}
+.personal-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .4s}
+.personal-card:hover::after{transform:scaleX(1)}
+.personal-card:hover{background:var(--off-white)}
+.personal-label{font-size:.62rem;font-weight:700;letter-spacing:1.2px;color:var(--gray-400);text-transform:uppercase;margin-bottom:6px}
+.personal-value{font-size:1rem;font-weight:700;color:var(--primary)}
+.personal-value.small{font-size:.82rem;font-weight:600}
+
+/* Story quote */
+.story-quote{position:relative;font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--primary);font-style:italic;padding:24px 0 24px 24px;margin:28px 0}
+.story-quote::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),rgba(201,168,76,.3));transition:width .4s}
+.story-quote:hover::before{width:5px}
+.story-quote::after{content:'\201C';position:absolute;top:-12px;left:28px;font-size:3.5rem;color:rgba(201,168,76,.12);font-style:normal;pointer-events:none}
+
 /* FLAGS */
 .flags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.flag-chip{background:var(--off-white);border:1px solid var(--gray-100);padding:6px 14px;border-radius:0;font-size:.74rem;font-weight:500;color:var(--gray-600);display:inline-flex;align-items:center;gap:6px;transition:all .3s}
-.flag-chip:hover{border-color:var(--accent);color:var(--primary)}
+.flag-chip{background:var(--off-white);border:1px solid var(--gray-100);padding:6px 14px;border-radius:0;font-size:.74rem;font-weight:500;color:var(--gray-600);display:inline-flex;align-items:center;gap:6px;transition:all .3s;position:relative;overflow:hidden}
+.flag-chip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .4s}
+.flag-chip:hover{border-color:var(--accent);color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.flag-chip:hover::after{transform:scaleX(1)}
 
 /* SOCIAL BTNS */
 .social-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
@@ -224,33 +268,32 @@ section{padding:var(--section-pad) 56px}
 .rpt-tag{display:inline-block;font-size:.52rem;font-weight:600;padding:3px 10px;background:transparent;color:var(--gray-400);letter-spacing:1px;margin-right:4px;text-transform:uppercase;border:1px solid var(--gray-200)}
 .report-card:hover .rpt-tag{border-color:var(--accent);color:var(--accent-dark)}
 
-/* STACKBIRDS */
-.stackbirds-section{background:linear-gradient(160deg,#0a1628 0%,#0d1f3c 50%,#132744 100%);color:var(--white);padding:var(--section-pad) 56px;position:relative;overflow:hidden}
-.stackbirds-section::before{content:'STACKBIRDS';position:absolute;right:-60px;top:-40px;font-size:14rem;font-weight:900;font-family:'Inter',sans-serif;color:rgba(201,168,76,.02);letter-spacing:-10px;line-height:.9;pointer-events:none}
-.stackbirds-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+/* STACKBIRDS - Matching stackbirds.xyz Neo-Brutalist Style */
+.stackbirds-section{background:#F9F5F6;color:#000;padding:var(--section-pad) 56px;position:relative;overflow:hidden}
+.stackbirds-section::before{content:'STACKBIRDS';position:absolute;right:-40px;top:-30px;font-size:12rem;font-weight:900;font-family:'Inter',sans-serif;color:rgba(0,0,0,.02);letter-spacing:-8px;line-height:.9;pointer-events:none}
+.stackbirds-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#FFDB58}
 .sb-hero{max-width:1440px;margin:0 auto 56px;text-align:center}
-.sb-hero .sb-badge{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);padding:8px 24px;border:1px solid rgba(201,168,76,.25);margin-bottom:24px}
-.sb-hero h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:16px;max-width:800px;margin-left:auto;margin-right:auto}
-.sb-hero h2 em{color:var(--accent);font-style:italic}
-.sb-hero .sb-tagline{font-size:1.05rem;color:rgba(255,255,255,.5);max-width:640px;margin:0 auto 8px;line-height:1.8;font-weight:300}
-.sb-hero .sb-year{font-size:.7rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-top:16px}
-.sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);max-width:1440px;margin:0 auto 48px}
-.sb-content-block{background:rgba(255,255,255,.03);padding:44px 40px;transition:background .3s}
-.sb-content-block:hover{background:rgba(255,255,255,.05)}
-.sb-content-block h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:14px}
-.sb-content-block h3 span{color:var(--accent)}
-.sb-content-block p{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.85;font-weight:300;margin-bottom:12px}
+.sb-hero .sb-badge{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#000;padding:10px 28px;background:#FFDB58;border:2px solid #000;border-radius:100px;box-shadow:3px 3px 0 0 #000;margin-bottom:28px}
+.sb-hero h2{font-family:'Inter',sans-serif;font-size:clamp(2rem,3.8vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:16px;max-width:800px;margin-left:auto;margin-right:auto;color:#000}
+.sb-hero h2 em{color:#FFDB58;font-style:italic;text-decoration:underline;text-decoration-color:#000;text-underline-offset:4px}
+.sb-hero .sb-tagline{font-size:1rem;color:#555;max-width:640px;margin:0 auto 8px;line-height:1.8;font-weight:400}
+.sb-hero .sb-year{font-size:.72rem;color:#000;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-top:16px;background:#FDFD96;display:inline-block;padding:6px 20px;border:1px solid #000;border-radius:8px}
+.sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1440px;margin:0 auto 48px}
+.sb-content-block{background:#fff;padding:36px 32px;border:2px solid #000;border-radius:12px;box-shadow:6px 6px 0 0 #000;transition:all .3s}
+.sb-content-block:hover{box-shadow:8px 8px 0 0 #000;transform:translate(-2px,-2px)}
+.sb-content-block h3{font-family:'Inter',sans-serif;font-size:1.08rem;font-weight:800;color:#000;margin-bottom:14px}
+.sb-content-block h3 span{color:#000;background:#FFDB58;padding:0 6px;border-radius:4px}
+.sb-content-block p{font-size:.84rem;color:#555;line-height:1.85;font-weight:400;margin-bottom:12px}
 .sb-content-block ul{list-style:none;padding:0}
-.sb-content-block li{padding:8px 0;font-size:.8rem;color:rgba(255,255,255,.55);font-weight:300;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
-.sb-content-block li::before{content:'';width:5px;height:5px;background:var(--accent);flex-shrink:0;margin-top:7px}
-.sb-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);max-width:1440px;margin:0 auto 48px}
-.sb-step{background:rgba(255,255,255,.03);padding:32px 24px;text-align:center;transition:background .3s;position:relative}
-.sb-step::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.sb-step:hover::after{transform:scaleX(1)}
-.sb-step:hover{background:rgba(255,255,255,.06)}
-.sb-step-num{width:40px;height:40px;margin:0 auto 14px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--accent)}
-.sb-step h4{font-size:.8rem;color:var(--accent);margin-bottom:6px;font-weight:600}
-.sb-step p{font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300}
+.sb-content-block li{padding:9px 0;font-size:.8rem;color:#444;font-weight:400;border-bottom:1px solid #eee;display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.sb-content-block li::before{content:'';width:6px;height:6px;background:#FFDB58;border:1px solid #000;border-radius:50%;flex-shrink:0;margin-top:7px}
+.sb-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1440px;margin:0 auto 48px}
+.sb-step{background:#fff;padding:28px 20px;text-align:center;border:2px solid #000;border-radius:12px;box-shadow:4px 4px 0 0 #000;transition:all .3s;position:relative}
+.sb-step::after{display:none}
+.sb-step:hover{box-shadow:6px 6px 0 0 #000;transform:translate(-2px,-2px);background:#FDFD96}
+.sb-step-num{width:44px;height:44px;margin:0 auto 14px;background:#FFDB58;border:2px solid #000;border-radius:10px;box-shadow:3px 3px 0 0 #000;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:900;color:#000}
+.sb-step h4{font-size:.82rem;color:#000;margin-bottom:6px;font-weight:700}
+.sb-step p{font-size:.72rem;color:#666;line-height:1.7;font-weight:400}
 .sb-cta-row{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
 
 /* TOOLS / SETUP GRIDS */
@@ -398,7 +441,7 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   .hero-carousel{height:480px}.stats-inner{padding:0 24px}
   .cases-grid,.gallery-grid,.report-grid,.portfolio-grid,.catalogue-grid,.ai-impl-grid,.blog-columns{grid-template-columns:repeat(2,1fr);gap:1px}
   .company-hero{grid-template-columns:1fr}.company-hero-img{height:300px}
-  .sb-grid{grid-template-columns:1fr}.sb-steps{grid-template-columns:1fr}
+  .sb-grid{grid-template-columns:1fr}.sb-steps{grid-template-columns:1fr 1fr}.story-grid{grid-template-columns:1fr;gap:32px}
   .services-grid{grid-template-columns:repeat(2,1fr)}.tools-grid,.setup-grid{grid-template-columns:repeat(2,1fr)}
   .consult-grid{grid-template-columns:1fr}.stores-row{grid-template-columns:repeat(3,1fr)}
   .process-row{grid-template-columns:repeat(2,1fr)}.process-row::before{display:none}
@@ -514,47 +557,47 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <!-- STORY -->
 <section id="story" style="background:var(--white)">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
-      <div class="reveal">
+    <div class="story-grid">
+      <div class="story-left reveal">
         <div class="section-label"><span class="line"></span> My Story</div>
         <h2 class="section-title">At 18, I Came to Dubai &mdash; And Built a Retail Career Across the Gulf</h2>
         <p style="color:var(--gray-600);margin:16px 0;font-size:.94rem;line-height:1.8">I arrived in Dubai at the age of 18 and joined Sana Fashions as one of the company's first employees. Over the next 30 years, I grew with the brand from a single store to 35 retail chain locations across 5 GCC countries &mdash; rising to Vice President of Operations.</p>
         <p style="color:var(--gray-600);margin-bottom:16px;font-size:.94rem;line-height:1.8">I've built and operated businesses across Retail, Franchise, Trade, Wholesale, Shipping, and Services in the UAE, Oman, KSA, Bahrain, Qatar, and Bangladesh.</p>
-        <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--primary);font-style:italic;border-left:3px solid var(--accent);padding-left:20px;margin:24px 0">"Implement in Hours. Not Days. In sha Allah."</div>
+        <div class="story-quote">"Implement in Hours. Not Days. In sha Allah."</div>
         <p style="color:var(--gray-600);font-size:.94rem;line-height:1.8">Today, I combine 37+ years of real-world business expertise with AI automation to help SMEs get set up, scale smartly, and operate without the bloat.</p>
       </div>
-      <div class="reveal">
-        <div style="background:var(--primary);padding:36px;color:var(--white)">
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--accent);margin-bottom:20px">Core Expertise</h3>
-          <ul style="list-style:none">
-            <li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>Retail Scaling &amp; Multi-Location Ops</li>
-            <li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>Franchise Development &amp; Onboarding</li>
-            <li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>B2B Sourcing &amp; Supply Chain</li>
-            <li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>AI Business Automation</li>
-            <li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>Investor Pitch Decks &amp; Feasibility</li>
-            <li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>eCommerce &amp; Digital Transformation</li>
-            <li style="padding:9px 0;color:rgba(255,255,255,.75);font-size:.86rem;display:flex;align-items:center;gap:10px"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0"></span>Accounting &amp; Financial Reports</li>
+      <div class="story-right reveal">
+        <div class="expertise-card">
+          <h3 class="expertise-title">Core Expertise</h3>
+          <ul class="expertise-list">
+            <li><span class="expertise-dot"></span>Retail Scaling &amp; Multi-Location Ops</li>
+            <li><span class="expertise-dot"></span>Franchise Development &amp; Onboarding</li>
+            <li><span class="expertise-dot"></span>B2B Sourcing &amp; Supply Chain</li>
+            <li><span class="expertise-dot"></span>AI Business Automation</li>
+            <li><span class="expertise-dot"></span>Investor Pitch Decks &amp; Feasibility</li>
+            <li><span class="expertise-dot"></span>eCommerce &amp; Digital Transformation</li>
+            <li><span class="expertise-dot"></span>Accounting &amp; Financial Reports</li>
           </ul>
-          <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px">
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127462;&#127466; UAE</span>
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127480;&#127462; KSA</span>
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127476;&#127474; Oman</span>
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127463;&#127469; Bahrain</span>
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127478;&#127462; Qatar</span>
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127470;&#127475; India</span>
-            <span style="background:rgba(201,168,76,.12);padding:4px 12px;border-radius:100px;font-size:.68rem;color:var(--accent);font-weight:600">&#127463;&#127465; Bangladesh</span>
+          <div class="expertise-tags">
+            <span class="expertise-tag">&#127462;&#127466; UAE</span>
+            <span class="expertise-tag">&#127480;&#127462; KSA</span>
+            <span class="expertise-tag">&#127476;&#127474; Oman</span>
+            <span class="expertise-tag">&#127463;&#127469; Bahrain</span>
+            <span class="expertise-tag">&#127478;&#127462; Qatar</span>
+            <span class="expertise-tag">&#127470;&#127475; India</span>
+            <span class="expertise-tag">&#127463;&#127465; Bangladesh</span>
           </div>
         </div>
 
         <!-- Personal Info Cards -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-100);margin-top:1px">
-          <div style="background:var(--white);padding:20px">
-            <div style="font-size:.65rem;font-weight:700;letter-spacing:1px;color:var(--gray-400);text-transform:uppercase;margin-bottom:6px">Nationality</div>
-            <div style="font-size:1rem;font-weight:700;color:var(--primary)">&#127470;&#127475; Indian</div>
+        <div class="personal-row">
+          <div class="personal-card">
+            <div class="personal-label">Nationality</div>
+            <div class="personal-value">&#127470;&#127475; Indian</div>
           </div>
-          <div style="background:var(--white);padding:20px">
-            <div style="font-size:.65rem;font-weight:700;letter-spacing:1px;color:var(--gray-400);text-transform:uppercase;margin-bottom:6px">Languages</div>
-            <div style="font-size:.82rem;font-weight:600;color:var(--primary)">&#127480;&#127462; Arabic &bull; &#127468;&#127463; English &bull; &#127470;&#127475; Hindi &bull; &#127477;&#127472; Urdu</div>
+          <div class="personal-card">
+            <div class="personal-label">Languages</div>
+            <div class="personal-value small">&#127480;&#127462; Arabic &bull; &#127468;&#127463; English &bull; &#127470;&#127475; Hindi &bull; &#127477;&#127472; Urdu</div>
           </div>
         </div>
       </div>
@@ -723,8 +766,8 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
     <div class="section-header reveal">
       <div>
         <div class="section-label"><span class="line"></span> <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="height:28px;vertical-align:middle;margin-right:6px"> YOYOSO KSA</div>
-        <h2 class="section-title">Store Display &amp; Design Concept</h2>
-        <p class="section-subtitle">"Aesthetics Life Designer Brand" &mdash; Master Franchise, Saudi Arabia. 15 mall stores, 5,000+ lifestyle products.</p>
+        <h2 class="section-title">Master Franchise Agreement &mdash; KSA Signing Ceremony</h2>
+        <p class="section-subtitle">&ldquo;Aesthetics Life Designer Brand&rdquo; &mdash; Strategic cooperation signing for the YOYOSO Master Franchise in Saudi Arabia. 15 mall stores, 5,000+ lifestyle products across the Kingdom.</p>
       </div>
       <div style="text-align:right">
         <div style="display:flex;gap:16px;margin-bottom:8px">
@@ -1126,12 +1169,12 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
       <h3>What Stackbirds <span>Automates</span></h3>
       <p>Role-based AI agents that handle the tasks eating up your team&rsquo;s time. Each agent learns from YOUR business &mdash; not generic templates.</p>
       <ul>
-        <li><strong style="color:var(--accent)">Accountant Agent</strong> &mdash; Invoice matching, bank reconciliation, VAT filing prep, monthly P&amp;L generation</li>
-        <li><strong style="color:var(--accent)">Sales Agent</strong> &mdash; Lead capture from WhatsApp/email, auto-follow-ups, CRM updates, quotation drafts</li>
-        <li><strong style="color:var(--accent)">Inventory Agent</strong> &mdash; Stock level alerts, reorder triggers, supplier PO generation, dead stock flagging</li>
-        <li><strong style="color:var(--accent)">HR Agent</strong> &mdash; Leave tracking, visa renewal reminders, contract generation, WPS payroll prep</li>
-        <li><strong style="color:var(--accent)">Marketing Agent</strong> &mdash; Social media scheduling, campaign performance reports, competitor monitoring</li>
-        <li><strong style="color:var(--accent)">Retail Ops Agent</strong> &mdash; Daily store checklists, KPI dashboards, mystery shopper analysis, staff scheduling</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 6px;border-radius:4px">Accountant Agent</strong> &mdash; Invoice matching, bank reconciliation, VAT filing prep, monthly P&amp;L generation</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 6px;border-radius:4px">Sales Agent</strong> &mdash; Lead capture from WhatsApp/email, auto-follow-ups, CRM updates, quotation drafts</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 6px;border-radius:4px">Inventory Agent</strong> &mdash; Stock level alerts, reorder triggers, supplier PO generation, dead stock flagging</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 6px;border-radius:4px">HR Agent</strong> &mdash; Leave tracking, visa renewal reminders, contract generation, WPS payroll prep</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 6px;border-radius:4px">Marketing Agent</strong> &mdash; Social media scheduling, campaign performance reports, competitor monitoring</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 6px;border-radius:4px">Retail Ops Agent</strong> &mdash; Daily store checklists, KPI dashboards, mystery shopper analysis, staff scheduling</li>
       </ul>
     </div>
   </div>
@@ -1149,31 +1192,31 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
     <div class="sb-content-block">
       <h3>Built for <span>Gulf SMEs</span></h3>
       <ul>
-        <li><strong style="color:var(--white)">Retail store owners</strong> running 1&ndash;50 locations who need automated inventory, sales &amp; staff ops</li>
-        <li><strong style="color:var(--white)">Restaurant &amp; F&amp;B operators</strong> drowning in daily reports, supplier orders &amp; delivery tracking</li>
-        <li><strong style="color:var(--white)">Salon &amp; service businesses</strong> managing bookings, staff rosters &amp; customer follow-ups manually</li>
-        <li><strong style="color:var(--white)">Trading &amp; wholesale companies</strong> with complex supplier POs, LC documents &amp; logistics</li>
-        <li><strong style="color:var(--white)">Professional services firms</strong> handling client onboarding, invoicing &amp; compliance paperwork</li>
-        <li><strong style="color:var(--white)">Franchise operators</strong> managing multi-brand, multi-location reporting &amp; standardisation</li>
+        <li><strong style="color:#000;font-weight:700">Retail store owners</strong> running 1&ndash;50 locations who need automated inventory, sales &amp; staff ops</li>
+        <li><strong style="color:#000;font-weight:700">Restaurant &amp; F&amp;B operators</strong> drowning in daily reports, supplier orders &amp; delivery tracking</li>
+        <li><strong style="color:#000;font-weight:700">Salon &amp; service businesses</strong> managing bookings, staff rosters &amp; customer follow-ups manually</li>
+        <li><strong style="color:#000;font-weight:700">Trading &amp; wholesale companies</strong> with complex supplier POs, LC documents &amp; logistics</li>
+        <li><strong style="color:#000;font-weight:700">Professional services firms</strong> handling client onboarding, invoicing &amp; compliance paperwork</li>
+        <li><strong style="color:#000;font-weight:700">Franchise operators</strong> managing multi-brand, multi-location reporting &amp; standardisation</li>
       </ul>
     </div>
     <div class="sb-content-block">
       <h3>Aziz&rsquo;s <span>Launch Roadmap</span></h3>
       <ul>
-        <li><strong style="color:var(--accent)">Q3 2026</strong> &mdash; Beta testing with 10 select SME partners in Dubai &amp; Abu Dhabi</li>
-        <li><strong style="color:var(--accent)">Q4 2026</strong> &mdash; Expand beta to Oman &amp; Bahrain. Onboard retail &amp; F&amp;B pilot clients</li>
-        <li><strong style="color:var(--accent)">Q1 2027</strong> &mdash; Official launch across UAE. In sha Allah. Subscription model live</li>
-        <li><strong style="color:var(--accent)">Q2 2027</strong> &mdash; KSA &amp; Qatar expansion. Arabic-first agent templates</li>
-        <li><strong style="color:var(--accent)">2027+</strong> &mdash; Industry-specific agent packs: Retail, F&amp;B, Salon, Trading, Professional Services</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 8px;border-radius:4px;font-size:.72rem">Q3 2026</strong> &mdash; Beta testing with 10 select SME partners in Dubai &amp; Abu Dhabi</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 8px;border-radius:4px;font-size:.72rem">Q4 2026</strong> &mdash; Expand beta to Oman &amp; Bahrain. Onboard retail &amp; F&amp;B pilot clients</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 8px;border-radius:4px;font-size:.72rem">Q1 2027</strong> &mdash; Official launch across UAE. In sha Allah. Subscription model live</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 8px;border-radius:4px;font-size:.72rem">Q2 2027</strong> &mdash; KSA &amp; Qatar expansion. Arabic-first agent templates</li>
+        <li><strong style="color:#000;background:#FFDB58;padding:1px 8px;border-radius:4px;font-size:.72rem">2027+</strong> &mdash; Industry-specific agent packs: Retail, F&amp;B, Salon, Trading, Professional Services</li>
       </ul>
-      <p style="margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.35);font-style:italic">Every SME deserves an AI team. Stackbirds makes it possible without the enterprise price tag.</p>
+      <p style="margin-top:16px;font-size:.78rem;color:#999;font-style:italic">Every SME deserves an AI team. Stackbirds makes it possible without the enterprise price tag.</p>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="sb-cta-row reveal">
-    <a href="https://stackbirds.xyz" target="_blank" class="btn-primary">Visit Stackbirds.xyz</a>
-    <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27m%20interested%20in%20Stackbirds%20for%20my%20business" target="_blank" class="btn-outline">Join the Waitlist &rarr;</a>
+    <a href="https://stackbirds.xyz" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#FFDB58;color:#000;padding:16px 36px;font-weight:800;font-size:.78rem;text-decoration:none;border:2px solid #000;border-radius:12px;box-shadow:5px 5px 0 0 #000;transition:all .2s;letter-spacing:.5px;text-transform:uppercase;cursor:pointer" onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='7px 7px 0 0 #000'" onmouseout="this.style.transform='';this.style.boxShadow='5px 5px 0 0 #000'">Visit Stackbirds.xyz</a>
+    <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27m%20interested%20in%20Stackbirds%20for%20my%20business" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#000;padding:16px 36px;font-weight:700;font-size:.78rem;text-decoration:none;border:2px solid #000;border-radius:12px;box-shadow:5px 5px 0 0 #000;transition:all .2s;letter-spacing:.5px;text-transform:uppercase;cursor:pointer" onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='7px 7px 0 0 #000'" onmouseout="this.style.transform='';this.style.boxShadow='5px 5px 0 0 #000'">Join the Waitlist &rarr;</a>
   </div>
 
 </section>
