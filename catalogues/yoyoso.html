@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YOYOSO — Master Franchise KSA · Company Catalogue</title>
+<meta name="description" content="YOYOSO Master Franchise for Saudi Arabia — 5,000+ lifestyle products, 15 mall locations, signed 2019. Complete brand catalogue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#0a1628;
+  --primary-light:#152238;
+  --accent:#c9a84c;
+  --accent-dark:#8a6f27;
+  --white:#ffffff;
+  --off-white:#f7f5f0;
+  --gray-50:#faf9f7;
+  --gray-100:#e5e2dc;
+  --gray-300:#c1beb8;
+  --gray-500:#8a8782;
+  --gray-600:#5c5a58;
+  --gray-900:#1a1a1a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--gray-900);background:var(--white);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-.01em;line-height:1.1}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* TOP NAV */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-100);transition:all .4s}
+.top-nav.scrolled{padding:12px 48px;background:rgba(255,255,255,.97)}
+.tn-brand{display:flex;align-items:center;gap:12px}
+.tn-brand img{height:32px;width:auto}
+.tn-brand .tn-name{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary)}
+.tn-brand .tn-sep{width:1px;height:18px;background:var(--gray-300)}
+.tn-brand .tn-tag{font-size:.68rem;letter-spacing:1.2px;color:var(--gray-500);text-transform:uppercase;font-weight:500}
+.tn-back{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;color:var(--gray-600);transition:color .3s}
+.tn-back:hover{color:var(--accent-dark)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;background:var(--primary);overflow:hidden;display:flex;align-items:center;padding:120px 48px 80px}
+.hero::before{content:'';position:absolute;top:0;right:0;width:60%;height:100%;background:radial-gradient(ellipse at top right,rgba(201,168,76,.12),transparent 60%)}
+.hero-inner{max-width:1400px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.hero-left .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:var(--accent);margin-bottom:32px}
+.hero-left .eyebrow .line{width:40px;height:1px;background:var(--accent)}
+.hero-left h1{font-size:clamp(2.8rem,6vw,5rem);color:var(--white);font-weight:400;margin-bottom:32px}
+.hero-left h1 em{font-style:italic;color:var(--accent);font-weight:500}
+.hero-left .hero-desc{font-size:1.02rem;color:rgba(255,255,255,.72);max-width:520px;margin-bottom:40px;font-weight:300;line-height:1.8}
+.hero-meta{display:flex;gap:40px;margin-bottom:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12)}
+.hero-meta-item .num{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--accent);font-weight:500;line-height:1}
+.hero-meta-item .lbl{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px;font-weight:500}
+.hero-cta-row{display:flex;gap:16px;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--primary);padding:18px 32px;font-size:.76rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .3s;border:1px solid var(--accent)}
+.btn-primary:hover{background:transparent;color:var(--accent)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);padding:18px 24px;font-size:.72rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);transition:all .3s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-right{position:relative;perspective:1200px}
+.hero-cover{position:relative;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.15);transform:rotate(-3deg) translateZ(0);animation:float 6s ease-in-out infinite}
+.hero-cover img{width:100%;display:block}
+.hero-cover-2{position:absolute;top:8%;right:-6%;width:55%;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 60px rgba(0,0,0,.4);transform:rotate(6deg);animation:float2 7s ease-in-out infinite .5s}
+.hero-cover-2 img{width:100%;display:block}
+@keyframes float{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-12px)}}
+@keyframes float2{0%,100%{transform:rotate(6deg) translateY(0)}50%{transform:rotate(6deg) translateY(-16px)}}
+.scroll-cue{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;z-index:2}
+.scroll-cue .sc-line{width:1px;height:40px;background:linear-gradient(transparent,rgba(201,168,76,.6));animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* INTRO SECTION */
+.intro{padding:140px 48px;background:var(--off-white);position:relative}
+.intro-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:100px;align-items:start}
+.intro-label{font-size:.7rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:var(--accent-dark);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.intro-label .line{width:30px;height:1px;background:var(--accent-dark)}
+.intro h2{font-size:clamp(2rem,3.5vw,3rem);color:var(--primary);margin-bottom:32px}
+.intro h2 em{font-style:italic;color:var(--accent-dark)}
+.intro p{color:var(--gray-600);font-size:.98rem;line-height:1.9;margin-bottom:24px;font-weight:300}
+.intro-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-100);margin-top:32px}
+.intro-stat{padding:28px 24px;background:var(--white)}
+.intro-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--primary);font-weight:500}
+.intro-stat .lbl{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-top:6px;font-weight:500}
+
+/* SIDE NAV - PROGRESS DOTS */
+.side-nav{position:fixed;right:32px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:10px}
+.side-nav-dot{width:6px;height:6px;border-radius:50%;background:var(--gray-300);cursor:pointer;position:relative;transition:all .3s}
+.side-nav-dot.active{background:var(--accent);transform:scale(1.6)}
+.side-nav-dot:hover::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--primary);color:var(--white);padding:6px 12px;font-size:.62rem;letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap;font-weight:600}
+
+/* PAGE CHAPTERS */
+.pages{padding:0;background:var(--white)}
+.chapter{position:relative;min-height:90vh;padding:120px 48px;overflow:hidden;border-bottom:1px solid var(--gray-100)}
+.chapter:nth-child(even){background:var(--gray-50)}
+.chapter-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;position:relative;z-index:2}
+.chapter:nth-child(odd) .chapter-inner{direction:rtl}
+.chapter:nth-child(odd) .chapter-inner > *{direction:ltr}
+.chapter-num{position:absolute;top:60px;right:48px;font-family:'Playfair Display',serif;font-size:clamp(10rem,18vw,18rem);font-weight:400;color:var(--gray-100);line-height:.8;letter-spacing:-.04em;z-index:1;user-select:none}
+.chapter:nth-child(odd) .chapter-num{left:48px;right:auto}
+.chapter-content{position:relative;z-index:3}
+.chapter-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.66rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:var(--accent-dark);margin-bottom:24px}
+.chapter-eyebrow .line{width:30px;height:1px;background:var(--accent-dark)}
+.chapter h3{font-size:clamp(1.8rem,3.2vw,2.8rem);color:var(--primary);margin-bottom:24px;font-weight:500}
+.chapter h3 em{font-style:italic;color:var(--accent-dark)}
+.chapter .chapter-desc{font-size:.98rem;color:var(--gray-600);line-height:1.9;margin-bottom:28px;font-weight:300;max-width:520px}
+.chapter-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.chapter-tag{font-size:.64rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-600);padding:6px 12px;border:1px solid var(--gray-100);background:var(--white);font-weight:600}
+.view-link{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--primary);padding:12px 0;border-bottom:1px solid var(--primary);transition:all .3s;cursor:pointer}
+.view-link:hover{color:var(--accent-dark);border-color:var(--accent-dark);gap:14px}
+
+.chapter-visual{position:relative;cursor:zoom-in}
+.chapter-visual-frame{position:relative;border:1px solid var(--gray-100);overflow:hidden;box-shadow:0 30px 60px rgba(10,22,40,.12);transform:translateY(0);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.chapter-visual:hover .chapter-visual-frame{transform:translateY(-8px);box-shadow:0 50px 100px rgba(10,22,40,.2)}
+.chapter-visual-frame img{width:100%;display:block;transition:transform .8s cubic-bezier(.4,0,.2,1)}
+.chapter-visual:hover .chapter-visual-frame img{transform:scale(1.04)}
+.chapter-visual::after{content:'';position:absolute;inset:-8px;border:1px solid var(--accent);z-index:-1;transform:translate(16px,16px);transition:all .4s}
+.chapter-visual:hover::after{transform:translate(22px,22px)}
+.chapter-zoom{position:absolute;top:16px;right:16px;width:48px;height:48px;background:rgba(10,22,40,.85);backdrop-filter:blur(6px);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1rem;opacity:0;transition:opacity .3s}
+.chapter-visual:hover .chapter-zoom{opacity:1}
+
+/* CTA SECTION */
+.cta-section{background:var(--primary);color:var(--white);padding:140px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,.15),transparent 60%)}
+.cta-inner{max-width:800px;margin:0 auto;position:relative;z-index:2}
+.cta-section .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.cta-section .eyebrow .line{width:40px;height:1px;background:var(--accent)}
+.cta-section h2{font-size:clamp(2rem,4vw,3.4rem);margin-bottom:32px;font-weight:400}
+.cta-section h2 em{font-style:italic;color:var(--accent);font-weight:500}
+.cta-section p{color:rgba(255,255,255,.65);font-size:1rem;margin-bottom:48px;line-height:1.8;font-weight:300;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:#060f1d;color:var(--white);padding:64px 48px 32px;text-align:center}
+footer .ft-logos{display:flex;justify-content:center;align-items:center;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+footer .ft-logos img{height:28px;opacity:.6;transition:opacity .3s}
+footer .ft-logos img:hover{opacity:1}
+footer .ft-text{font-size:.74rem;color:rgba(255,255,255,.4);letter-spacing:1.2px;font-weight:300}
+footer .ft-text a{color:var(--accent);transition:color .3s}
+footer .ft-text a:hover{color:var(--white)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(6,10,20,.97);z-index:200;display:none;align-items:center;justify-content:center;padding:40px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;box-shadow:0 40px 100px rgba(0,0,0,.7)}
+.lb-close{position:absolute;top:32px;right:32px;width:48px;height:48px;background:rgba(255,255,255,.08);color:var(--white);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;transition:all .3s}
+.lb-close:hover{background:var(--accent);color:var(--primary);border-color:var(--accent)}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;background:rgba(255,255,255,.08);color:var(--white);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;transition:all .3s}
+.lb-prev{left:32px}.lb-next{right:32px}
+.lb-prev:hover,.lb-next:hover{background:var(--accent);color:var(--primary);border-color:var(--accent)}
+.lb-counter{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:2px;font-weight:500}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media (max-width:1100px){
+  .hero{padding:100px 32px 60px}
+  .hero-inner{grid-template-columns:1fr;gap:60px}
+  .intro-inner{grid-template-columns:1fr;gap:40px}
+  .chapter{padding:80px 32px}
+  .chapter-inner{grid-template-columns:1fr;gap:50px;direction:ltr!important}
+  .chapter:nth-child(odd) .chapter-inner{direction:ltr!important}
+  .chapter-num{font-size:8rem;top:30px;right:20px;opacity:.5}
+  .chapter:nth-child(odd) .chapter-num{left:20px}
+  .side-nav{display:none}
+  .top-nav,.top-nav.scrolled{padding:14px 24px}
+  .cta-section{padding:90px 32px}
+  .hero-meta{gap:24px;flex-wrap:wrap}
+  .tn-brand .tn-tag{display:none}
+}
+@media (max-width:640px){
+  .hero-left h1{font-size:2.4rem}
+  .hero-cover-2{display:none}
+  .lb-prev{left:12px}.lb-next{right:12px}
+  .lb-close{top:16px;right:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav" id="topNav">
+  <a href="../index.html#yo-section" class="tn-brand">
+    <img src="../brand-logos/yoyoso-logo.png" alt="YOYOSO">
+    <span class="tn-sep"></span>
+    <span class="tn-name">YOYOSO &middot; KSA Master Franchise</span>
+    <span class="tn-sep"></span>
+    <span class="tn-tag">Signed 2019</span>
+  </a>
+  <a href="../index.html" class="tn-back">&larr; Back to Aziz Saif</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="eyebrow"><span class="line"></span> Master Franchise Catalogue</div>
+      <h1>Affordable <em>Lifestyle</em><br>Retail for KSA.</h1>
+      <p class="hero-desc">YOYOSO &mdash; global lifestyle retail brand with 5,000+ curated products across home, beauty, accessories &amp; gifts. Master Franchise for the Kingdom of Saudi Arabia secured 2019, scaling through premium mall locations across Riyadh, Jeddah &amp; the Eastern Province.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><div class="num">15</div><div class="lbl">Mall Stores</div></div>
+        <div class="hero-meta-item"><div class="num">5,000+</div><div class="lbl">SKUs</div></div>
+        <div class="hero-meta-item"><div class="num">KSA</div><div class="lbl">Exclusive Territory</div></div>
+      </div>
+      <div class="hero-cta-row">
+        <a href="#chapter-01" class="btn-primary">Explore Catalogue &rarr;</a>
+        <a href="../index.html#yo-section" class="btn-ghost">View Case Study</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-cover"><img src="../yoyoso-catalogue/page-01.jpg" alt="YOYOSO Cover"></div>
+      <div class="hero-cover-2"><img src="../yoyoso-catalogue/page-06.jpg" alt="YOYOSO Product Range"></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="sc-line"></span></div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="intro">
+  <div class="intro-inner">
+    <div class="reveal">
+      <div class="intro-label"><span class="line"></span> About the Catalogue</div>
+      <h2>The YOYOSO <em>KSA</em> story &mdash; in 16 chapters.</h2>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <p>Walk through the complete YOYOSO master-franchise proposition for Saudi Arabia &mdash; from brand origins and product categories to store concepts, supply chain, and unit economics. Each chapter floats as its own window into a capability that enables affordable-lifestyle retail at mall scale.</p>
+      <p>Prepared for mall developers, retail investors &amp; brand partners evaluating YOYOSO as a high-velocity anchor category for the Kingdom.</p>
+      <div class="intro-stats">
+        <div class="intro-stat"><div class="num">16</div><div class="lbl">Catalogue Pages</div></div>
+        <div class="intro-stat"><div class="num">10</div><div class="lbl">Product Categories</div></div>
+        <div class="intro-stat"><div class="num">2019</div><div class="lbl">Franchise Signed</div></div>
+        <div class="intro-stat"><div class="num">KSA</div><div class="lbl">Master Territory</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS SIDE NAV -->
+<div class="side-nav" id="sideNav">
+  <a class="side-nav-dot" href="#chapter-01" data-label="01 · Cover"></a>
+  <a class="side-nav-dot" href="#chapter-02" data-label="02 · About YOYOSO"></a>
+  <a class="side-nav-dot" href="#chapter-03" data-label="03 · Brand Story"></a>
+  <a class="side-nav-dot" href="#chapter-04" data-label="04 · Product Range"></a>
+  <a class="side-nav-dot" href="#chapter-05" data-label="05 · Home & Living"></a>
+  <a class="side-nav-dot" href="#chapter-06" data-label="06 · Beauty"></a>
+  <a class="side-nav-dot" href="#chapter-07" data-label="07 · Accessories"></a>
+  <a class="side-nav-dot" href="#chapter-08" data-label="08 · Gifts & Stationery"></a>
+  <a class="side-nav-dot" href="#chapter-09" data-label="09 · Store Concept"></a>
+  <a class="side-nav-dot" href="#chapter-10" data-label="10 · Mall Locations"></a>
+  <a class="side-nav-dot" href="#chapter-11" data-label="11 · Visual Merchandising"></a>
+  <a class="side-nav-dot" href="#chapter-12" data-label="12 · Supply Chain"></a>
+  <a class="side-nav-dot" href="#chapter-13" data-label="13 · Unit Economics"></a>
+  <a class="side-nav-dot" href="#chapter-14" data-label="14 · Marketing"></a>
+  <a class="side-nav-dot" href="#chapter-15" data-label="15 · Growth Plan"></a>
+  <a class="side-nav-dot" href="#chapter-16" data-label="16 · Partnership"></a>
+</div>
+
+<!-- PAGE CHAPTERS -->
+<div class="pages" id="pages">
+
+<section class="chapter" id="chapter-01">
+  <div class="chapter-num">01</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter One</div>
+      <h3>Catalogue <em>Cover</em></h3>
+      <p class="chapter-desc">The opening statement &mdash; YOYOSO, curated lifestyle at an accessible price point. A brand built for the mall-going family across Saudi Arabia.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Brand Identity</span><span class="chapter-tag">Opening</span></div>
+      <span class="view-link" onclick="openLb(0)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(0)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-01.jpg" alt="Cover" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-02">
+  <div class="chapter-num">02</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Two</div>
+      <h3>About <em>YOYOSO</em></h3>
+      <p class="chapter-desc">A global lifestyle retail brand with thousands of stores worldwide. Designed in Korea, sourced from the world &mdash; curated for fast-moving trend-driven consumers.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Global Brand</span><span class="chapter-tag">Lifestyle Retail</span></div>
+      <span class="view-link" onclick="openLb(1)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(1)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-02.jpg" alt="About YOYOSO" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-03">
+  <div class="chapter-num">03</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Three</div>
+      <h3>Brand <em>Story</em></h3>
+      <p class="chapter-desc">Built on the principle of democratised design &mdash; affordable products that look and feel premium. Every SKU is trend-tested, quality-controlled and priced for volume.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Design DNA</span><span class="chapter-tag">Value Proposition</span></div>
+      <span class="view-link" onclick="openLb(2)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(2)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-03.jpg" alt="Brand Story" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-04">
+  <div class="chapter-num">04</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Four</div>
+      <h3>Product <em>Range</em></h3>
+      <p class="chapter-desc">5,000+ SKUs across 10 categories &mdash; home, beauty, accessories, gifts, stationery, tech accessories, travel, toys, wellness &amp; seasonal lines, refreshed continuously.</p>
+      <div class="chapter-tags"><span class="chapter-tag">5,000+ SKUs</span><span class="chapter-tag">10 Categories</span></div>
+      <span class="view-link" onclick="openLb(3)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(3)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-04.jpg" alt="Product Range" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-05">
+  <div class="chapter-num">05</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Five</div>
+      <h3>Home &amp; <em>Living</em></h3>
+      <p class="chapter-desc">Kitchen, bath, storage, dining &amp; decorative items at price points that drive basket size. The category that anchors every YOYOSO store.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Home</span><span class="chapter-tag">Anchor Category</span></div>
+      <span class="view-link" onclick="openLb(4)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(4)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-05.jpg" alt="Home & Living" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-06">
+  <div class="chapter-num">06</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Six</div>
+      <h3>Beauty &amp; <em>Personal Care</em></h3>
+      <p class="chapter-desc">Cosmetics, tools, skincare accessories &amp; grooming essentials. A high-velocity category that drives repeat visits and impulse purchase.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Beauty</span><span class="chapter-tag">High Velocity</span></div>
+      <span class="view-link" onclick="openLb(5)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(5)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-06.jpg" alt="Beauty" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-07">
+  <div class="chapter-num">07</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Seven</div>
+      <h3>Fashion <em>Accessories</em></h3>
+      <p class="chapter-desc">Bags, wallets, jewellery, belts, sunglasses &amp; travel accessories &mdash; trend-led, affordable, and refreshed with every seasonal drop.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Accessories</span><span class="chapter-tag">Seasonal</span></div>
+      <span class="view-link" onclick="openLb(6)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(6)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-07.jpg" alt="Accessories" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-08">
+  <div class="chapter-num">08</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Eight</div>
+      <h3>Gifts &amp; <em>Stationery</em></h3>
+      <p class="chapter-desc">Greeting cards, gift wrap, notebooks, pens &amp; desk accessories &mdash; the impulse category that lifts average transaction value.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Gifting</span><span class="chapter-tag">Stationery</span></div>
+      <span class="view-link" onclick="openLb(7)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(7)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-08.jpg" alt="Gifts & Stationery" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-09">
+  <div class="chapter-num">09</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Nine</div>
+      <h3>Store <em>Concept</em></h3>
+      <p class="chapter-desc">Bright, playful retail environments optimised for discovery &mdash; open sightlines, category-led adjacencies &amp; the signature YOYOSO colour palette.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Store Design</span><span class="chapter-tag">Discovery</span></div>
+      <span class="view-link" onclick="openLb(8)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(8)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-09.jpg" alt="Store Concept" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-10">
+  <div class="chapter-num">10</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Ten</div>
+      <h3>Mall <em>Locations</em></h3>
+      <p class="chapter-desc">15 stores across tier-one KSA malls &mdash; Riyadh, Jeddah, Dammam &amp; secondary cities. Mall-footfall-dependent strategy with data-driven site selection.</p>
+      <div class="chapter-tags"><span class="chapter-tag">15 Stores</span><span class="chapter-tag">Tier-1 Malls</span></div>
+      <span class="view-link" onclick="openLb(9)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(9)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-10.jpg" alt="Mall Locations" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-11">
+  <div class="chapter-num">11</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Eleven</div>
+      <h3>Visual <em>Merchandising</em></h3>
+      <p class="chapter-desc">Standardised VM playbook &mdash; category zoning, planogram discipline &amp; weekly refresh cycles that keep stores feeling new on every visit.</p>
+      <div class="chapter-tags"><span class="chapter-tag">VM Playbook</span><span class="chapter-tag">Planogram</span></div>
+      <span class="view-link" onclick="openLb(10)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(10)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-11.jpg" alt="Visual Merchandising" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-12">
+  <div class="chapter-num">12</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Twelve</div>
+      <h3>Supply <em>Chain</em></h3>
+      <p class="chapter-desc">Centralised distribution hub serving the Kingdom &mdash; direct sourcing, consolidated freight &amp; weekly store replenishment cycles.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Distribution</span><span class="chapter-tag">Replenishment</span></div>
+      <span class="view-link" onclick="openLb(11)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(11)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-12.jpg" alt="Supply Chain" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-13">
+  <div class="chapter-num">13</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Thirteen</div>
+      <h3>Unit <em>Economics</em></h3>
+      <p class="chapter-desc">Per-store revenue model built on foot traffic, basket size &amp; repeat visit frequency &mdash; tuned for mall retail realities in the Kingdom.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Unit Economics</span><span class="chapter-tag">Store P&amp;L</span></div>
+      <span class="view-link" onclick="openLb(12)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(12)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-13.jpg" alt="Unit Economics" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-14">
+  <div class="chapter-num">14</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Fourteen</div>
+      <h3>Marketing &amp; <em>Loyalty</em></h3>
+      <p class="chapter-desc">Mall activations, social-media driven footfall, seasonal campaigns &amp; a repeat-visitor loyalty programme built into the POS.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Marketing</span><span class="chapter-tag">Loyalty</span></div>
+      <span class="view-link" onclick="openLb(13)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(13)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-14.jpg" alt="Marketing" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-15">
+  <div class="chapter-num">15</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Fifteen</div>
+      <h3>Growth <em>Plan</em></h3>
+      <p class="chapter-desc">Roadmap from 15 stores toward saturation across Tier-1 and Tier-2 KSA cities &mdash; phased, capital-efficient &amp; staged around mall-opening calendars.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Roadmap</span><span class="chapter-tag">Expansion</span></div>
+      <span class="view-link" onclick="openLb(14)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(14)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-15.jpg" alt="Growth Plan" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+<section class="chapter" id="chapter-16">
+  <div class="chapter-num">16</div>
+  <div class="chapter-inner">
+    <div class="chapter-content reveal">
+      <div class="chapter-eyebrow"><span class="line"></span> Chapter Sixteen</div>
+      <h3>Partnership &amp; <em>Contact</em></h3>
+      <p class="chapter-desc">Ready to anchor your mall with an affordable-lifestyle category leader? Let's talk. YOYOSO KSA Master Franchise &mdash; operated via Global Pioneer FZE.</p>
+      <div class="chapter-tags"><span class="chapter-tag">Partnership</span><span class="chapter-tag">Contact</span></div>
+      <span class="view-link" onclick="openLb(15)">View Full Page &rarr;</span>
+    </div>
+    <div class="chapter-visual reveal reveal-delay-1" onclick="openLb(15)"><div class="chapter-visual-frame"><img src="../yoyoso-catalogue/page-16.jpg" alt="Contact" loading="lazy"></div><div class="chapter-zoom">&#128269;</div></div>
+  </div>
+</section>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="eyebrow"><span class="line"></span> Mall developers & retail investors</div>
+    <h2>Anchor your mall with <em>YOYOSO</em>.</h2>
+    <p>Master-Franchise rights secured 2019 &middot; 15 stores live across KSA &middot; 5,000+ curated SKUs &middot; operated by Global Pioneer FZE. Ready to bring the affordable-lifestyle category to your catchment.</p>
+    <div class="cta-row">
+      <a href="../index.html#yo-section" class="btn-primary">View Case Study &rarr;</a>
+      <a href="https://wa.me/971556492370" target="_blank" rel="noopener" class="btn-ghost">WhatsApp Aziz</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logos">
+    <img src="../brand-logos/yoyoso-logo.png" alt="YOYOSO">
+    <img src="../brand-logos/gp-logo.jpg" alt="Global Pioneer">
+    <img src="../brand-logos/lepearl-logo.png" alt="Le Pearl">
+  </div>
+  <div class="ft-text">
+    &copy; 2026 YOYOSO KSA &middot; Operated by Global Pioneer FZE &middot; Curated by <a href="../index.html">Aziz Saif</a>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb">
+  <button class="lb-close" onclick="closeLb()">&times;</button>
+  <button class="lb-prev" onclick="prevLb()">&larr;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" onclick="nextLb()">&rarr;</button>
+  <div class="lb-counter" id="lbCounter">1 / 16</div>
+</div>
+
+<script>
+const pages=[...Array(16).keys()].map(i=>`../yoyoso-catalogue/page-${String(i+1).padStart(2,'0')}.jpg`);
+let lbIdx=0;
+function openLb(i){lbIdx=i;showLb();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+function showLb(){document.getElementById('lbImg').src=pages[lbIdx];document.getElementById('lbCounter').textContent=(lbIdx+1)+' / '+pages.length}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+function nextLb(){lbIdx=(lbIdx+1)%pages.length;showLb()}
+function prevLb(){lbIdx=(lbIdx-1+pages.length)%pages.length;showLb()}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target.id==='lb')closeLb()});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')nextLb();if(e.key==='ArrowLeft')prevLb()});
+
+// Top nav scroll state
+window.addEventListener('scroll',()=>{
+  document.getElementById('topNav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// Reveal on scroll
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Side-nav active dot
+const chapters=[...document.querySelectorAll('.chapter')];
+const dots=[...document.querySelectorAll('.side-nav-dot')];
+const activeIO=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx=chapters.indexOf(e.target);
+      dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+    }
+  });
+},{threshold:.5});
+chapters.forEach(c=>activeIO.observe(c));
+</script>
+
+</body>
+</html>
