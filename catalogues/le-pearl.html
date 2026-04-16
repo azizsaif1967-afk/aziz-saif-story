@@ -33,11 +33,11 @@ a{color:inherit;text-decoration:none}
 /* TOP NAV */
 .top-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-100);transition:all .4s}
 .top-nav.scrolled{padding:12px 48px;background:rgba(255,255,255,.97)}
-.tn-brand{display:flex;align-items:center;gap:12px}
-.tn-brand img{height:32px;width:auto}
-.tn-brand .tn-name{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary)}
-.tn-brand .tn-sep{width:1px;height:18px;background:var(--gray-300)}
-.tn-brand .tn-tag{font-size:.68rem;letter-spacing:1.2px;color:var(--gray-500);text-transform:uppercase;font-weight:500}
+.tn-brand{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;min-width:0;flex:1}
+.tn-brand img{height:38px;width:auto;max-width:160px;object-fit:contain;flex-shrink:0;display:block}
+.tn-brand .tn-name{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary);white-space:nowrap}
+.tn-brand .tn-sep{width:1px;height:18px;background:var(--gray-300);flex-shrink:0}
+.tn-brand .tn-tag{font-size:.68rem;letter-spacing:1.2px;color:var(--gray-500);text-transform:uppercase;font-weight:500;white-space:nowrap}
 .tn-back{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;color:var(--gray-600);transition:color .3s}
 .tn-back:hover{color:var(--accent-dark)}
 
@@ -169,7 +169,8 @@ footer .ft-text a:hover{color:var(--white)}
   .top-nav,.top-nav.scrolled{padding:14px 24px}
   .cta-section{padding:90px 32px}
   .hero-meta{gap:24px;flex-wrap:wrap}
-  .tn-brand .tn-tag{display:none}
+  .tn-brand .tn-tag,.tn-brand .tn-sep:nth-of-type(2){display:none}
+  .tn-brand img{height:30px;max-width:120px}
 }
 @media (max-width:640px){
   .hero-left h1{font-size:2.4rem}
@@ -494,7 +495,8 @@ footer .ft-text a:hover{color:var(--white)}
     <h2>Scale <em>Le Pearl</em> across the Gulf.</h2>
     <p>Three divisions &middot; Oman-rooted, UAE-expanding &middot; proven multi-brand format &middot; operated by Global Pioneer FZE. Ready to bring family-fashion to your catchment.</p>
     <div class="cta-row">
-      <a href="../index.html#lp-section" class="btn-primary">View Case Study &rarr;</a>
+      <a href="https://le-pearl.com" target="_blank" rel="noopener" class="btn-primary">Visit le-pearl.com &rarr;</a>
+      <a href="https://lepearlfashion.com" target="_blank" rel="noopener" class="btn-ghost">Shop lepearlfashion.com</a>
       <a href="https://wa.me/971556492370" target="_blank" rel="noopener" class="btn-ghost">WhatsApp Aziz</a>
     </div>
   </div>
@@ -508,7 +510,7 @@ footer .ft-text a:hover{color:var(--white)}
     <img src="../brand-logos/yoyoso-logo.png" alt="YOYOSO">
   </div>
   <div class="ft-text">
-    &copy; 2026 Le Pearl Fashion &middot; Operated by Global Pioneer FZE &middot; Curated by <a href="../index.html">Aziz Saif</a>
+    &copy; 2026 Le Pearl Fashion &middot; Operated by Global Pioneer FZE &middot; <a href="https://le-pearl.com">le-pearl.com</a> &middot; <a href="https://lepearlfashion.com">lepearlfashion.com</a> &middot; Curated by <a href="../index.html">Aziz Saif</a>
   </div>
 </footer>
 
