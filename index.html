@@ -1526,10 +1526,10 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
           try{
             var {data,error}=await sb.from('subscribers').insert({email:email}).select().single();
             if(error){
-              if(error.code==='23505'){showMsg('&#10004; You\'re already subscribed! Check your inbox for the verification link.',true);}
+              if(error.code==='23505'){showMsg('&#10004; You\'re already subscribed! You\'ll hear from us soon.',true);}
               else{showMsg('Something went wrong: '+error.message,false);}
             }else{
-              showMsg('&#10004; Thanks! Check your inbox for a verification email to confirm your subscription.',true);
+              showMsg('&#10004; Thanks for subscribing! You\'re on the list &mdash; you\'ll receive the next newsletter straight to your inbox.',true);
               emailIn.value='';
             }
           }catch(err){showMsg('Network error. Please try again.',false);}
