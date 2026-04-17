@@ -1518,6 +1518,25 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
         var btn=document.getElementById('subBtn');
         var msg=document.getElementById('subMsg');
         function showMsg(text,ok){msg.style.display='block';msg.style.background=ok?'rgba(201,168,76,.12)':'rgba(239,68,68,.12)';msg.style.border='1px solid '+(ok?'rgba(201,168,76,.4)':'rgba(239,68,68,.4)');msg.style.color=ok?'#c9a84c':'#ef4444';msg.innerHTML=text;}
+
+        async function sendVerificationEmail(subscriberEmail, token, resendKey, senderName, senderEmail) {
+          var verifyUrl = 'https://azizsaif.com/admin/verify.html?token=' + token;
+          var unsubUrl = 'https://azizsaif.com/admin/verify.html?action=unsubscribe&token=' + token;
+          var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><style>body{margin:0;padding:0;background:#f7f8fa;font-family:-apple-system,\'Segoe UI\',sans-serif}.wrapper{max-width:600px;margin:0 auto;background:#ffffff}.header{background:#0a1628;padding:32px 40px;text-align:center}.header h1{color:#c9a84c;font-family:Georgia,serif;font-size:24px;margin:0}.gold-bar{height:3px;background:linear-gradient(90deg,#c9a84c,#e8d5a0,#c9a84c)}.body{padding:40px;color:#374151;font-size:16px;line-height:1.7}.body h2{color:#0a1628;font-family:Georgia,serif;margin-bottom:16px}.btn{display:inline-block;background:#c9a84c;color:#0a1628;padding:14px 36px;text-decoration:none;font-weight:700;border-radius:6px;margin:20px 0;font-size:16px}.footer{background:#0a1628;padding:24px 40px;text-align:center;font-size:13px;color:#64748b}.footer a{color:#c9a84c;text-decoration:none}</style></head><body><div class="wrapper"><div class="header"><h1>' + senderName + '</h1></div><div class="gold-bar"></div><div class="body"><h2>Confirm your subscription</h2><p>Thanks for subscribing to the newsletter! Please click the button below to verify your email address.</p><p style="text-align:center"><a href="' + verifyUrl + '" class="btn">Verify My Email &rarr;</a></p><p style="font-size:14px;color:#6b7280;margin-top:24px">If the button doesn\'t work, copy and paste this link:<br><a href="' + verifyUrl + '" style="color:#c9a84c;word-break:break-all">' + verifyUrl + '</a></p><p style="font-size:13px;color:#9ca3af;margin-top:32px">If you didn\'t subscribe, you can safely ignore this email.</p></div><div class="footer"><p><a href="https://azizsaif.com">azizsaif.com</a></p><p style="margin-top:8px"><a href="' + unsubUrl + '">Unsubscribe</a></p></div></div></body></html>';
+          try {
+            await fetch('https://api.resend.com/emails', {
+              method: 'POST',
+              headers: { 'Authorization': 'Bearer ' + resendKey, 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                from: senderName + ' <' + senderEmail + '>',
+                to: [subscriberEmail],
+                subject: 'Confirm your subscription — ' + senderName,
+                html: html
+              })
+            });
+          } catch(e) { console.log('Verify email send error:', e); }
+        }
+
         form.addEventListener('submit',async function(e){
           e.preventDefault();
           var email=emailIn.value.trim().toLowerCase();
@@ -1529,7 +1548,16 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
               if(error.code==='23505'){showMsg('&#10004; You\'re already subscribed! You\'ll hear from us soon.',true);}
               else{showMsg('Something went wrong: '+error.message,false);}
             }else{
-              showMsg('&#10004; Thanks for subscribing! You\'re on the list &mdash; you\'ll receive the next newsletter straight to your inbox.',true);
+              // Try to send verification email via Resend
+              var {data:settings}=await sb.from('settings').select('key,value').in('key',['resend_api_key','sender_name','sender_email']);
+              var cfg={};
+              if(settings) settings.forEach(function(r){cfg[r.key]=r.value;});
+              if(cfg.resend_api_key && data.verify_token){
+                await sendVerificationEmail(email, data.verify_token, cfg.resend_api_key, cfg.sender_name||'Aziz Saif', cfg.sender_email||'newsletter@azizsaif.com');
+                showMsg('&#10004; Thanks for subscribing! Check your inbox for a verification email to confirm.',true);
+              } else {
+                showMsg('&#10004; Thanks for subscribing! You\'re on the list &mdash; you\'ll receive the next newsletter straight to your inbox.',true);
+              }
               emailIn.value='';
             }
           }catch(err){showMsg('Network error. Please try again.',false);}
