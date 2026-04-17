@@ -1501,37 +1501,41 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;line-height:1.2;margin-bottom:16px;color:#fff">Join the newsletter &mdash; <em style="color:#c9a84c;font-style:italic">weekly notes from Dubai.</em></h2>
       <p style="color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.7;max-width:560px;margin:0 auto 28px">Short weekly notes on GCC retail, AI in business, franchise &amp; setup, geopolitics, and whatever I'm reading. Free. One-click unsubscribe. You'll confirm your email once before the first issue lands.</p>
 
-      <!-- ============================================================ -->
-      <!-- SUBSCRIBE FORM                                                -->
-      <!-- Currently: FormSubmit.co (zero-signup, emails every submission-->
-      <!-- to aziz@azizsaif.com). Aziz must click the activation link    -->
-      <!-- in the very first email FormSubmit sends to him, one time.    -->
-      <!--                                                               -->
-      <!-- To upgrade to MailerLite later: replace this whole <form> +   -->
-      <!-- the thank-you redirect <input> with the MailerLite Universal  -->
-      <!-- + form embed code from Forms → Embedded forms → "Copy code".  -->
-      <!-- ============================================================ -->
-      <form action="https://formsubmit.co/aziz@azizsaif.com" method="POST" style="display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center">
-        <input type="email" name="email" required placeholder="you@example.com" style="flex:1;min-width:220px;padding:14px 18px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-family:inherit;font-size:.95rem;border-radius:4px;outline:none" onfocus="this.style.borderColor='#c9a84c'" onblur="this.style.borderColor='rgba(255,255,255,.18)'">
-        <input type="hidden" name="_subject" value="New newsletter subscriber - azizsaif.com">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://azizsaif.com/?subscribed=1#newsletter">
-        <input type="hidden" name="_autoresponse" value="Thanks for subscribing to Aziz Saif's newsletter. I'll send an email to verify your address before the first issue lands in your inbox. — Aziz">
-        <button type="submit" style="padding:14px 28px;background:var(--accent);color:var(--primary);border:none;font-family:inherit;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .3s" onmouseover="this.style.background='#b89540'" onmouseout="this.style.background='var(--accent)'">Subscribe &rarr;</button>
+      <!-- Subscribe form — wired to Supabase -->
+      <form id="subscribeForm" style="display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center" onsubmit="return false">
+        <input type="email" id="subEmail" required placeholder="you@example.com" style="flex:1;min-width:220px;padding:14px 18px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-family:inherit;font-size:.95rem;border-radius:4px;outline:none" onfocus="this.style.borderColor='#c9a84c'" onblur="this.style.borderColor='rgba(255,255,255,.18)'">
+        <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--accent);color:var(--primary);border:none;font-family:inherit;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .3s" onmouseover="this.style.background='#b89540'" onmouseout="this.style.background='var(--accent)'">Subscribe &rarr;</button>
       </form>
+      <div id="subMsg" style="display:none;max-width:480px;margin:16px auto 0;padding:14px 20px;border-radius:6px;font-size:.88rem;line-height:1.5"></div>
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
       <script>
-        // Show thank-you banner if user just subscribed
-        if (new URLSearchParams(window.location.search).get('subscribed') === '1') {
-          document.addEventListener('DOMContentLoaded', function() {
-            var nl = document.getElementById('newsletter');
-            if (!nl) return;
-            var banner = document.createElement('div');
-            banner.style.cssText = 'max-width:480px;margin:20px auto 0;padding:14px 20px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.4);border-radius:6px;color:#c9a84c;font-size:.88rem;line-height:1.5';
-            banner.innerHTML = '&#10004; Thanks. Check your inbox for a verification email to confirm your subscription.';
-            nl.querySelector('.reveal').appendChild(banner);
-          });
-        }
+      (function(){
+        var SB_URL='https://qtkvtwwtkxwigibockhi.supabase.co';
+        var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0a3Z0d3d0a3h3aWdpYm9ja2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MDQ0ODEsImV4cCI6MjA5MTk4MDQ4MX0.6vYtrBuOWf0u3a98E77ICyLe0MkFJUF4pYW19EkjNwI';
+        var sb=window.supabase.createClient(SB_URL,SB_KEY);
+        var form=document.getElementById('subscribeForm');
+        var emailIn=document.getElementById('subEmail');
+        var btn=document.getElementById('subBtn');
+        var msg=document.getElementById('subMsg');
+        function showMsg(text,ok){msg.style.display='block';msg.style.background=ok?'rgba(201,168,76,.12)':'rgba(239,68,68,.12)';msg.style.border='1px solid '+(ok?'rgba(201,168,76,.4)':'rgba(239,68,68,.4)');msg.style.color=ok?'#c9a84c':'#ef4444';msg.innerHTML=text;}
+        form.addEventListener('submit',async function(e){
+          e.preventDefault();
+          var email=emailIn.value.trim().toLowerCase();
+          if(!email)return;
+          btn.disabled=true;btn.textContent='Subscribing...';
+          try{
+            var {data,error}=await sb.from('subscribers').insert({email:email}).select().single();
+            if(error){
+              if(error.code==='23505'){showMsg('&#10004; You\'re already subscribed! Check your inbox for the verification link.',true);}
+              else{showMsg('Something went wrong: '+error.message,false);}
+            }else{
+              showMsg('&#10004; Thanks! Check your inbox for a verification email to confirm your subscription.',true);
+              emailIn.value='';
+            }
+          }catch(err){showMsg('Network error. Please try again.',false);}
+          btn.disabled=false;btn.textContent='Subscribe \u2192';
+        });
+      })();
       </script>
 
       <p style="font-size:.72rem;color:rgba(255,255,255,.4);margin-top:16px;letter-spacing:.5px">&#128274; Your email stays private. Double opt-in verification. Unsubscribe anytime.</p>

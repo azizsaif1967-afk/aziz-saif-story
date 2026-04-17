@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter — Aziz Saif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a1628;
+      color: #e8e6e1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #c9a84c;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .icon-success { background: rgba(76, 175, 80, 0.15); }
+    .icon-error { background: rgba(244, 67, 54, 0.15); }
+    .icon-unsubscribed { background: rgba(201, 168, 76, 0.15); }
+    .icon-loading { background: rgba(201, 168, 76, 0.1); }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #a8a49c;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #c9a84c;
+      color: #0a1628;
+    }
+    .btn-primary:hover { background: #d4b65e; }
+
+    .btn-secondary {
+      background: transparent;
+      color: #c9a84c;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      margin-left: 0.5rem;
+    }
+    .btn-secondary:hover { border-color: #c9a84c; }
+
+    .btn-resubscribe {
+      background: rgba(201, 168, 76, 0.15);
+      color: #c9a84c;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      margin-bottom: 1rem;
+    }
+    .btn-resubscribe:hover { background: rgba(201, 168, 76, 0.25); }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(201, 168, 76, 0.2);
+      border-top-color: #c9a84c;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hidden { display: none; }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: rgba(201, 168, 76, 0.3);
+      margin: 1.5rem auto;
+    }
+
+    .buttons { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+
+    @media (max-width: 520px) {
+      .card { padding: 2rem 1.5rem; }
+      h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">Aziz Saif</div>
+
+    <!-- Loading State -->
+    <div id="state-loading">
+      <div class="spinner"></div>
+      <p>Processing your request...</p>
+    </div>
+
+    <!-- Verification Success -->
+    <div id="state-verified" class="hidden">
+      <div class="icon icon-success">&#10003;</div>
+      <h1>Email Verified</h1>
+      <p>Your email has been verified! You'll receive our newsletter from now on.</p>
+      <div class="divider"></div>
+      <a href="https://azizsaif.com" class="btn btn-primary">Visit azizsaif.com</a>
+    </div>
+
+    <!-- Already Verified -->
+    <div id="state-already-verified" class="hidden">
+      <div class="icon icon-success">&#10003;</div>
+      <h1>Already Verified</h1>
+      <p>This email has already been verified. You're all set!</p>
+      <div class="divider"></div>
+      <a href="https://azizsaif.com" class="btn btn-primary">Visit azizsaif.com</a>
+    </div>
+
+    <!-- Unsubscribed -->
+    <div id="state-unsubscribed" class="hidden">
+      <div class="icon icon-unsubscribed">&#9993;</div>
+      <h1>You've Been Unsubscribed</h1>
+      <p>Sorry to see you go. You won't receive any more emails from us.</p>
+      <div class="divider"></div>
+      <div class="buttons">
+        <button id="btn-resubscribe" class="btn btn-resubscribe" onclick="resubscribe()">Resubscribe</button>
+        <a href="https://azizsaif.com" class="btn btn-secondary">Visit azizsaif.com</a>
+      </div>
+    </div>
+
+    <!-- Resubscribed -->
+    <div id="state-resubscribed" class="hidden">
+      <div class="icon icon-success">&#10003;</div>
+      <h1>Welcome Back!</h1>
+      <p>You've been resubscribed. We're glad to have you back.</p>
+      <div class="divider"></div>
+      <a href="https://azizsaif.com" class="btn btn-primary">Visit azizsaif.com</a>
+    </div>
+
+    <!-- Error -->
+    <div id="state-error" class="hidden">
+      <div class="icon icon-error">&#10007;</div>
+      <h1>Something Went Wrong</h1>
+      <p id="error-message">Invalid or expired token. Please check the link in your email.</p>
+      <div class="divider"></div>
+      <a href="https://azizsaif.com" class="btn btn-primary">Visit azizsaif.com</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+    const SUPABASE_URL = 'https://qtkvtwwtkxwigibockhi.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0a3Z0d3d0a3h3aWdpYm9ja2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MDQ0ODEsImV4cCI6MjA5MTk4MDQ4MX0.6vYtrBuOWf0u3a98E77ICyLe0MkFJUF4pYW19EkjNwI';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let currentToken = null;
+
+    function showState(stateId) {
+      document.querySelectorAll('[id^="state-"]').forEach(el => el.classList.add('hidden'));
+      document.getElementById(stateId).classList.remove('hidden');
+    }
+
+    function showError(message) {
+      document.getElementById('error-message').textContent = message;
+      showState('state-error');
+    }
+
+    async function handleVerification(token) {
+      // Look up subscriber by token
+      const { data, error } = await supabase
+        .from('subscribers')
+        .select('*')
+        .eq('verify_token', token)
+        .single();
+
+      if (error || !data) {
+        showError('Invalid or expired verification token.');
+        return;
+      }
+
+      if (data.verified) {
+        showState('state-already-verified');
+        return;
+      }
+
+      // Update to verified
+      const { error: updateError } = await supabase
+        .from('subscribers')
+        .update({ verified: true, verified_at: new Date().toISOString() })
+        .eq('verify_token', token);
+
+      if (updateError) {
+        showError('Could not verify your email. Please try again.');
+        return;
+      }
+
+      showState('state-verified');
+    }
+
+    async function handleUnsubscribe(token) {
+      // Look up subscriber by token
+      const { data, error } = await supabase
+        .from('subscribers')
+        .select('*')
+        .eq('verify_token', token)
+        .single();
+
+      if (error || !data) {
+        showError('Invalid or expired token.');
+        return;
+      }
+
+      // Update to unsubscribed
+      const { error: updateError } = await supabase
+        .from('subscribers')
+        .update({ unsubscribed: true, unsubscribed_at: new Date().toISOString() })
+        .eq('verify_token', token);
+
+      if (updateError) {
+        showError('Could not process your unsubscribe request. Please try again.');
+        return;
+      }
+
+      showState('state-unsubscribed');
+    }
+
+    async function resubscribe() {
+      if (!currentToken) return;
+
+      const btn = document.getElementById('btn-resubscribe');
+      btn.textContent = 'Processing...';
+      btn.disabled = true;
+
+      const { error } = await supabase
+        .from('subscribers')
+        .update({ unsubscribed: false, unsubscribed_at: null })
+        .eq('verify_token', currentToken);
+
+      if (error) {
+        showError('Could not resubscribe. Please try again.');
+        return;
+      }
+
+      showState('state-resubscribed');
+    }
+
+    // Main entry point
+    (async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      const action = params.get('action');
+
+      if (!token) {
+        showError('No token provided. Please use the link from your email.');
+        return;
+      }
+
+      currentToken = token;
+
+      if (action === 'unsubscribe') {
+        await handleUnsubscribe(token);
+      } else {
+        await handleVerification(token);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter Admin — azizsaif.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a1628;--bg-light:#0f1d33;--bg-card:#152238;--bg-input:#1a2a45;
+  --gold:#c9a84c;--gold-light:#e8d5a0;--gold-dark:#a8872e;
+  --white:#fff;--text:#cbd5e1;--text-muted:#64748b;--text-dim:#475569;
+  --border:#1e3355;--border-light:#2a4060;
+  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;--orange:#f59e0b;
+  --radius:8px;
+}
+html{font-size:15px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;color:var(--white);font-weight:600}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold-light)}
+
+/* Auth screen */
+.auth-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+.auth-box{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:48px 40px;width:100%;max-width:420px}
+.auth-box h1{text-align:center;font-size:1.6rem;margin-bottom:6px}
+.auth-box .auth-sub{text-align:center;color:var(--text-muted);font-size:.85rem;margin-bottom:32px}
+.auth-box .gold-line{width:48px;height:2px;background:var(--gold);margin:12px auto 20px}
+
+/* Forms */
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius);color:var(--white);font-size:.9rem;font-family:inherit;transition:border .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--gold)}
+.form-group input::placeholder{color:var(--text-dim)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 24px;border-radius:var(--radius);font-size:.85rem;font-weight:600;font-family:inherit;cursor:pointer;border:none;transition:all .2s}
+.btn-gold{background:var(--gold);color:var(--bg)}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;border:1px solid var(--border-light);color:var(--text)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{background:#dc2626}
+.btn-sm{padding:7px 14px;font-size:.78rem}
+.btn-block{width:100%}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+.auth-links{text-align:center;margin-top:20px;font-size:.82rem}
+.auth-links a{margin:0 10px}
+
+.alert{padding:12px 16px;border-radius:var(--radius);font-size:.84rem;margin-bottom:16px}
+.alert-error{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);color:#fca5a5}
+.alert-success{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);color:#86efac}
+
+/* Dashboard layout */
+.app{display:none;min-height:100vh}
+.header{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:60px;background:var(--bg-card);border-bottom:1px solid var(--border)}
+.header h2{font-size:1.15rem}
+.header h2 span{color:var(--gold)}
+.header-right{display:flex;align-items:center;gap:16px}
+.header-email{font-size:.8rem;color:var(--text-muted)}
+.header .btn-sm{padding:6px 14px}
+
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg-light);padding:0 32px}
+.tab{padding:14px 22px;font-size:.82rem;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;letter-spacing:.3px}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+.tab-content{display:none;padding:32px}
+.tab-content.active{display:block}
+.container{max-width:1200px;margin:0 auto}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:32px}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.stat-card .stat-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:8px}
+.stat-card .stat-value{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white)}
+.stat-card .stat-value.gold{color:var(--gold)}
+
+/* Tables */
+.table-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.table-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.table-header h3{font-size:1rem}
+table{width:100%;border-collapse:collapse}
+thead{background:var(--bg-light)}
+th{text-align:left;padding:12px 16px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);border-bottom:1px solid var(--border)}
+td{padding:12px 16px;font-size:.85rem;border-bottom:1px solid var(--border);color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(201,168,76,.03)}
+
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+.badge-orange{background:rgba(245,158,11,.15);color:var(--orange)}
+.badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+
+.search-bar{display:flex;gap:12px;align-items:center}
+.search-bar input{padding:8px 14px;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius);color:var(--white);font-size:.85rem;width:280px;font-family:inherit}
+.search-bar input:focus{outline:none;border-color:var(--gold)}
+
+.pagination{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;border-top:1px solid var(--border)}
+.pagination button{padding:6px 14px;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:.8rem;cursor:pointer;font-family:inherit}
+.pagination button:hover{border-color:var(--gold)}
+.pagination button.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.pagination button:disabled{opacity:.4;cursor:not-allowed}
+.pagination span{font-size:.8rem;color:var(--text-muted)}
+
+/* Compose */
+.compose-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.compose-layout.preview-hidden{grid-template-columns:1fr}
+.compose-editor{display:flex;flex-direction:column;gap:16px}
+.compose-editor textarea{min-height:450px;font-family:'SF Mono','Fira Code',monospace;font-size:.82rem;line-height:1.6;resize:vertical}
+.compose-preview{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.compose-preview .preview-header{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted)}
+.compose-preview iframe{width:100%;min-height:450px;border:none;background:#fff}
+.compose-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.compose-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+/* Settings */
+.settings-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.settings-section h3{font-size:1rem;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+/* Progress bar */
+.progress-overlay{display:none;position:fixed;inset:0;background:rgba(10,22,40,.85);z-index:9999;align-items:center;justify-content:center}
+.progress-overlay.visible{display:flex}
+.progress-box{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:40px;width:90%;max-width:460px;text-align:center}
+.progress-box h3{margin-bottom:16px}
+.progress-bar{width:100%;height:8px;background:var(--bg-input);border-radius:4px;overflow:hidden;margin-bottom:12px}
+.progress-fill{height:100%;background:var(--gold);border-radius:4px;transition:width .3s;width:0}
+.progress-text{font-size:.85rem;color:var(--text-muted)}
+
+/* Checkbox */
+.checkbox-cell{width:40px}
+input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;padding:14px 22px;border-radius:var(--radius);font-size:.85rem;font-weight:500;z-index:10000;transform:translateY(80px);opacity:0;transition:all .3s}
+.toast.visible{transform:translateY(0);opacity:1}
+.toast-success{background:var(--green);color:#fff}
+.toast-error{background:var(--red);color:#fff}
+
+/* Quick actions */
+.quick-actions{display:flex;gap:12px;margin-top:24px}
+
+/* Responsive */
+@media(max-width:768px){
+  .header{padding:0 16px}
+  .tabs{padding:0 8px;overflow-x:auto}
+  .tab{padding:12px 14px;font-size:.78rem;white-space:nowrap}
+  .tab-content{padding:20px 16px}
+  .compose-layout{grid-template-columns:1fr}
+  .settings-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .search-bar input{width:180px}
+  .table-header{flex-direction:column;align-items:flex-start}
+  td,th{padding:10px 12px;font-size:.8rem}
+  .auth-box{padding:32px 24px}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .header-email{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Auth Screen -->
+<div id="authScreen" class="auth-screen">
+  <div class="auth-box">
+    <h1>Newsletter <span style="color:var(--gold)">Admin</span></h1>
+    <div class="gold-line"></div>
+    <p class="auth-sub">azizsaif.com newsletter management</p>
+    <div id="authAlert"></div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="authEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="authPassword" placeholder="Enter password" required>
+      </div>
+      <button type="submit" class="btn btn-gold btn-block" id="authSubmit">Sign In</button>
+    </form>
+    <div class="auth-links">
+      <a href="#" id="toggleSignup">Create Admin Account</a>
+      <a href="#" id="forgotPassword">Forgot Password</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main App -->
+<div id="app" class="app">
+  <header class="header">
+    <h2>Newsletter <span>Admin</span></h2>
+    <div class="header-right">
+      <span class="header-email" id="userEmail"></span>
+      <button class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <div class="tab active" data-tab="dashboard">Dashboard</div>
+    <div class="tab" data-tab="subscribers">Subscribers</div>
+    <div class="tab" data-tab="compose">Compose</div>
+    <div class="tab" data-tab="settings">Settings</div>
+  </nav>
+
+  <!-- Dashboard Tab -->
+  <div class="tab-content active" id="tab-dashboard">
+    <div class="container">
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card"><div class="stat-label">Total Subscribers</div><div class="stat-value gold" id="statTotal">--</div></div>
+        <div class="stat-card"><div class="stat-label">Verified</div><div class="stat-value" id="statVerified">--</div></div>
+        <div class="stat-card"><div class="stat-label">Unverified</div><div class="stat-value" id="statUnverified">--</div></div>
+        <div class="stat-card"><div class="stat-label">Unsubscribed</div><div class="stat-value" id="statUnsubscribed">--</div></div>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Recent Subscribers</h3>
+        </div>
+        <table>
+          <thead><tr><th>Email</th><th>Status</th><th>Date</th></tr></thead>
+          <tbody id="recentSubscribers"></tbody>
+        </table>
+      </div>
+      <div class="quick-actions">
+        <button class="btn btn-outline btn-sm" onclick="exportCSV()">Export CSV</button>
+        <button class="btn btn-gold btn-sm" onclick="switchTab('compose')">Compose New</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscribers Tab -->
+  <div class="tab-content" id="tab-subscribers">
+    <div class="container">
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>All Subscribers</h3>
+          <div class="search-bar">
+            <input type="text" id="subscriberSearch" placeholder="Search by email...">
+            <button class="btn btn-outline btn-sm" onclick="exportCSV()">Export CSV</button>
+            <button class="btn btn-danger btn-sm" id="bulkDeleteBtn" style="display:none" onclick="bulkDelete()">Delete Selected</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th class="checkbox-cell"><input type="checkbox" id="selectAll"></th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Subscribed</th>
+              <th>Verified</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="subscriberTable"></tbody>
+        </table>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compose Tab -->
+  <div class="tab-content" id="tab-compose">
+    <div class="container">
+      <div class="compose-toolbar">
+        <button class="btn btn-outline btn-sm" onclick="insertTemplate('basic')">Basic Template</button>
+        <button class="btn btn-outline btn-sm" onclick="insertTemplate('newsletter')">Newsletter Template</button>
+        <button class="btn btn-outline btn-sm" id="togglePreview" onclick="togglePreview()">Hide Preview</button>
+      </div>
+      <div class="form-group">
+        <label>Subject Line</label>
+        <input type="text" id="composeSubject" placeholder="Your email subject...">
+      </div>
+      <div class="compose-layout" id="composeLayout">
+        <div class="compose-editor">
+          <div class="form-group" style="margin-bottom:0">
+            <label>HTML Body</label>
+            <textarea id="composeBody" placeholder="Write or paste your HTML email here..."></textarea>
+          </div>
+        </div>
+        <div class="compose-preview" id="previewPane">
+          <div class="preview-header">Live Preview</div>
+          <iframe id="previewFrame"></iframe>
+        </div>
+      </div>
+      <div class="compose-actions">
+        <button class="btn btn-gold" onclick="sendCampaign()">Send Campaign</button>
+        <button class="btn btn-outline" onclick="sendTestEmail()">Send Test Email</button>
+        <button class="btn btn-outline" onclick="saveDraft()">Save Draft</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Tab -->
+  <div class="tab-content" id="tab-settings">
+    <div class="container">
+      <div class="settings-section">
+        <h3>Email Sending (Resend)</h3>
+        <div class="settings-grid">
+          <div class="form-group">
+            <label>Resend API Key</label>
+            <input type="password" id="settingResendKey" placeholder="re_xxxxxxxxxxxx">
+            <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px" id="maskedKey"></div>
+          </div>
+          <div class="form-group">
+            <label>Sender Name</label>
+            <input type="text" id="settingSenderName" placeholder="Aziz Saif">
+          </div>
+          <div class="form-group">
+            <label>Sender Email</label>
+            <input type="text" id="settingSenderEmail" placeholder="newsletter@azizsaif.com">
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px">
+          <button class="btn btn-gold btn-sm" onclick="saveSettings()">Save Settings</button>
+          <button class="btn btn-outline btn-sm" onclick="testConnection()">Test Connection</button>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3>Past Campaigns</h3>
+        <table>
+          <thead><tr><th>Subject</th><th>Sent</th><th>Recipients</th><th>Date</th></tr></thead>
+          <tbody id="campaignsTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress Overlay -->
+<div class="progress-overlay" id="progressOverlay">
+  <div class="progress-box">
+    <h3>Sending Campaign</h3>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">Preparing...</div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL = 'https://qtkvtwwtkxwigibockhi.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0a3Z0d3d0a3h3aWdpYm9ja2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MDQ0ODEsImV4cCI6MjA5MTk4MDQ4MX0.6vYtrBuOWf0u3a98E77ICyLe0MkFJUF4pYW19EkjNwI';
+const ALLOWED_ADMINS = ['aziz@azizsaif.com', 'aziz@globalpioneer.co'];
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// State
+let currentPage = 1;
+const PAGE_SIZE = 25;
+let subscriberSearchQuery = '';
+let selectedIds = new Set();
+let previewVisible = true;
+let isSignupMode = false;
+
+// ========== UTILITY ==========
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast toast-' + type + ' visible';
+  setTimeout(() => t.classList.remove('visible'), 3500);
+}
+
+function showAuthAlert(msg, type = 'error') {
+  document.getElementById('authAlert').innerHTML = `<div class="alert alert-${type}">${msg}</div>`;
+}
+
+function formatDate(d) {
+  if (!d) return '---';
+  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ========== AUTH ==========
+document.getElementById('toggleSignup').addEventListener('click', (e) => {
+  e.preventDefault();
+  isSignupMode = !isSignupMode;
+  document.getElementById('authSubmit').textContent = isSignupMode ? 'Create Account' : 'Sign In';
+  e.target.textContent = isSignupMode ? 'Back to Login' : 'Create Admin Account';
+  document.getElementById('authAlert').innerHTML = '';
+});
+
+document.getElementById('forgotPassword').addEventListener('click', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value.trim();
+  if (!email) { showAuthAlert('Enter your email first.'); return; }
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + window.location.pathname
+  });
+  if (error) showAuthAlert(error.message);
+  else showAuthAlert('Password reset email sent. Check your inbox.', 'success');
+});
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value.trim().toLowerCase();
+  const password = document.getElementById('authPassword').value;
+  const btn = document.getElementById('authSubmit');
+  btn.disabled = true;
+  btn.textContent = isSignupMode ? 'Creating...' : 'Signing in...';
+
+  if (isSignupMode) {
+    if (!ALLOWED_ADMINS.includes(email)) {
+      showAuthAlert('Only authorized admin emails can create accounts.');
+      btn.disabled = false;
+      btn.textContent = 'Create Account';
+      return;
+    }
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) showAuthAlert(error.message);
+    else showAuthAlert('Account created. Check your email to confirm, then sign in.', 'success');
+    btn.disabled = false;
+    btn.textContent = 'Create Account';
+  } else {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      showAuthAlert(error.message);
+      btn.disabled = false;
+      btn.textContent = 'Sign In';
+    } else {
+      showApp(data.user);
+    }
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('authScreen').style.display = 'flex';
+  document.getElementById('authPassword').value = '';
+  document.getElementById('authSubmit').textContent = 'Sign In';
+  document.getElementById('authSubmit').disabled = false;
+});
+
+// Check session on load
+(async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) showApp(session.user);
+})();
+
+function showApp(user) {
+  document.getElementById('authScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('userEmail').textContent = user.email;
+  loadDashboard();
+  loadSettings();
+  loadCampaigns();
+}
+
+// ========== TABS ==========
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+});
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-content').forEach(tc => tc.classList.toggle('active', tc.id === 'tab-' + name));
+  if (name === 'subscribers') { currentPage = 1; loadSubscribers(); }
+  if (name === 'dashboard') loadDashboard();
+  if (name === 'settings') { loadSettings(); loadCampaigns(); }
+}
+
+// ========== DASHBOARD ==========
+async function loadDashboard() {
+  try {
+    const { data: all, error } = await supabase.from('subscribers').select('*');
+    if (error) throw error;
+    const total = all.length;
+    const verified = all.filter(s => s.verified && !s.unsubscribed).length;
+    const unverified = all.filter(s => !s.verified && !s.unsubscribed).length;
+    const unsub = all.filter(s => s.unsubscribed).length;
+
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statVerified').textContent = verified;
+    document.getElementById('statUnverified').textContent = unverified;
+    document.getElementById('statUnsubscribed').textContent = unsub;
+
+    const recent = all.sort((a, b) => new Date(b.subscribed_at) - new Date(a.subscribed_at)).slice(0, 10);
+    document.getElementById('recentSubscribers').innerHTML = recent.map(s => `
+      <tr>
+        <td>${escapeHtml(s.email)}</td>
+        <td>${s.unsubscribed ? '<span class="badge badge-red">Unsubscribed</span>' : s.verified ? '<span class="badge badge-green">Verified</span>' : '<span class="badge badge-orange">Unverified</span>'}</td>
+        <td>${formatDate(s.subscribed_at)}</td>
+      </tr>
+    `).join('') || '<tr><td colspan="3" style="text-align:center;color:var(--text-muted);padding:32px">No subscribers yet</td></tr>';
+  } catch (err) {
+    console.error('Dashboard load error:', err);
+    document.getElementById('recentSubscribers').innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--text-muted);padding:32px">Could not load subscribers. Make sure the table exists.</td></tr>';
+  }
+}
+
+// ========== SUBSCRIBERS ==========
+document.getElementById('subscriberSearch').addEventListener('input', (e) => {
+  subscriberSearchQuery = e.target.value.trim().toLowerCase();
+  currentPage = 1;
+  loadSubscribers();
+});
+
+document.getElementById('selectAll').addEventListener('change', (e) => {
+  const boxes = document.querySelectorAll('.row-checkbox');
+  boxes.forEach(b => {
+    b.checked = e.target.checked;
+    if (e.target.checked) selectedIds.add(b.dataset.id);
+    else selectedIds.delete(b.dataset.id);
+  });
+  updateBulkBtn();
+});
+
+function updateBulkBtn() {
+  document.getElementById('bulkDeleteBtn').style.display = selectedIds.size > 0 ? 'inline-flex' : 'none';
+}
+
+async function loadSubscribers() {
+  try {
+    let query = supabase.from('subscribers').select('*', { count: 'exact' });
+    if (subscriberSearchQuery) query = query.ilike('email', `%${subscriberSearchQuery}%`);
+    query = query.order('subscribed_at', { ascending: false });
+    query = query.range((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE - 1);
+
+    const { data, count, error } = await query;
+    if (error) throw error;
+
+    selectedIds.clear();
+    document.getElementById('selectAll').checked = false;
+    updateBulkBtn();
+
+    document.getElementById('subscriberTable').innerHTML = data.map(s => `
+      <tr>
+        <td class="checkbox-cell"><input type="checkbox" class="row-checkbox" data-id="${s.id}" onchange="toggleSelect(this)"></td>
+        <td>${escapeHtml(s.email)}</td>
+        <td>${s.unsubscribed ? '<span class="badge badge-red">Unsubscribed</span>' : s.verified ? '<span class="badge badge-green">Verified</span>' : '<span class="badge badge-orange">Unverified</span>'}</td>
+        <td>${formatDate(s.subscribed_at)}</td>
+        <td>${formatDate(s.verified_at)}</td>
+        <td>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn btn-outline btn-sm" onclick="copyVerifyLink('${s.verify_token}')">Copy Link</button>
+            ${!s.verified ? `<button class="btn btn-outline btn-sm" onclick="markVerified('${s.id}')">Verify</button>` : ''}
+            <button class="btn btn-danger btn-sm" onclick="deleteSubscriber('${s.id}')">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:32px">No subscribers found</td></tr>';
+
+    renderPagination(count);
+  } catch (err) {
+    console.error('Subscribers load error:', err);
+    document.getElementById('subscriberTable').innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:32px">Could not load subscribers.</td></tr>';
+  }
+}
+
+function toggleSelect(el) {
+  if (el.checked) selectedIds.add(el.dataset.id);
+  else selectedIds.delete(el.dataset.id);
+  updateBulkBtn();
+}
+
+function renderPagination(total) {
+  const pages = Math.ceil(total / PAGE_SIZE);
+  if (pages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+  let html = `<button ${currentPage === 1 ? 'disabled' : ''} onclick="goPage(${currentPage - 1})">Prev</button>`;
+  for (let i = 1; i <= pages; i++) {
+    if (pages > 7 && i > 3 && i < pages - 2 && Math.abs(i - currentPage) > 1) {
+      if (i === 4 || i === pages - 3) html += '<span>...</span>';
+      continue;
+    }
+    html += `<button class="${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+  }
+  html += `<button ${currentPage === pages ? 'disabled' : ''} onclick="goPage(${currentPage + 1})">Next</button>`;
+  document.getElementById('pagination').innerHTML = html;
+}
+
+function goPage(p) { currentPage = p; loadSubscribers(); }
+
+function copyVerifyLink(token) {
+  const url = `https://azizsaif.com/admin/verify.html?token=${token}`;
+  navigator.clipboard.writeText(url).then(() => showToast('Verify link copied to clipboard'));
+}
+
+async function markVerified(id) {
+  const { error } = await supabase.from('subscribers').update({ verified: true, verified_at: new Date().toISOString() }).eq('id', id);
+  if (error) showToast(error.message, 'error');
+  else { showToast('Subscriber verified'); loadSubscribers(); }
+}
+
+async function deleteSubscriber(id) {
+  if (!confirm('Delete this subscriber permanently?')) return;
+  const { error } = await supabase.from('subscribers').delete().eq('id', id);
+  if (error) showToast(error.message, 'error');
+  else { showToast('Subscriber deleted'); loadSubscribers(); }
+}
+
+async function bulkDelete() {
+  if (!confirm(`Delete ${selectedIds.size} selected subscriber(s)?`)) return;
+  const ids = Array.from(selectedIds);
+  const { error } = await supabase.from('subscribers').delete().in('id', ids);
+  if (error) showToast(error.message, 'error');
+  else { showToast(`${ids.length} subscriber(s) deleted`); selectedIds.clear(); loadSubscribers(); }
+}
+
+// ========== EXPORT CSV ==========
+async function exportCSV() {
+  const { data, error } = await supabase.from('subscribers').select('*').order('subscribed_at', { ascending: false });
+  if (error) { showToast('Export failed: ' + error.message, 'error'); return; }
+  const headers = ['email', 'verified', 'subscribed_at', 'verified_at', 'unsubscribed', 'unsubscribed_at'];
+  let csv = headers.join(',') + '\n';
+  data.forEach(row => {
+    csv += headers.map(h => `"${(row[h] ?? '').toString().replace(/"/g, '""')}"`).join(',') + '\n';
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `subscribers-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('CSV exported');
+}
+
+// ========== COMPOSE ==========
+function togglePreview() {
+  previewVisible = !previewVisible;
+  document.getElementById('previewPane').style.display = previewVisible ? '' : 'none';
+  document.getElementById('composeLayout').classList.toggle('preview-hidden', !previewVisible);
+  document.getElementById('togglePreview').textContent = previewVisible ? 'Hide Preview' : 'Show Preview';
+}
+
+document.getElementById('composeBody').addEventListener('input', updatePreview);
+function updatePreview() {
+  const html = document.getElementById('composeBody').value;
+  const frame = document.getElementById('previewFrame');
+  const doc = frame.contentDocument || frame.contentWindow.document;
+  doc.open();
+  doc.write(html);
+  doc.close();
+}
+
+function insertTemplate(type) {
+  const subject = document.getElementById('composeSubject');
+  const body = document.getElementById('composeBody');
+
+  if (type === 'basic') {
+    subject.value = subject.value || 'A message from Aziz Saif';
+    body.value = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { margin: 0; padding: 0; background: #f7f8fa; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; }
+  .header { background: #0a1628; padding: 32px 40px; text-align: center; }
+  .header h1 { color: #c9a84c; font-family: Georgia, serif; font-size: 24px; margin: 0; }
+  .body { padding: 40px; color: #374151; font-size: 16px; line-height: 1.7; }
+  .body h2 { color: #0a1628; font-family: Georgia, serif; margin-bottom: 16px; }
+  .footer { background: #0a1628; padding: 24px 40px; text-align: center; font-size: 13px; color: #64748b; }
+  .footer a { color: #c9a84c; text-decoration: none; }
+  .btn { display: inline-block; background: #c9a84c; color: #0a1628; padding: 12px 32px; text-decoration: none; font-weight: 600; border-radius: 6px; margin: 16px 0; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <h1>Aziz Saif</h1>
+  </div>
+  <div class="body">
+    <h2>Hello,</h2>
+    <p>Your message goes here. Write something meaningful.</p>
+    <p>Best regards,<br><strong>Aziz Saif</strong></p>
+  </div>
+  <div class="footer">
+    <p><a href="https://azizsaif.com">azizsaif.com</a></p>
+    <p style="margin-top:12px"><a href="{{unsubscribe_url}}">Unsubscribe</a></p>
+  </div>
+</div>
+</body>
+</html>`;
+  } else if (type === 'newsletter') {
+    subject.value = subject.value || 'Newsletter from Aziz Saif';
+    body.value = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { margin: 0; padding: 0; background: #f7f8fa; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; }
+  .header { background: #0a1628; padding: 36px 40px; }
+  .header h1 { color: #c9a84c; font-family: Georgia, serif; font-size: 26px; margin: 0 0 4px; }
+  .header p { color: #64748b; font-size: 13px; margin: 0; }
+  .gold-bar { height: 3px; background: linear-gradient(90deg, #c9a84c, #e8d5a0, #c9a84c); }
+  .body { padding: 40px; color: #374151; font-size: 16px; line-height: 1.7; }
+  .body h2 { color: #0a1628; font-family: Georgia, serif; font-size: 22px; margin: 0 0 16px; }
+  .body h3 { color: #0a1628; font-family: Georgia, serif; font-size: 18px; margin: 28px 0 12px; }
+  .body p { margin: 0 0 16px; }
+  .section { border-top: 1px solid #e4e7eb; padding-top: 24px; margin-top: 24px; }
+  .highlight { background: #fef9ee; border-left: 3px solid #c9a84c; padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+  .btn { display: inline-block; background: #c9a84c; color: #0a1628; padding: 12px 32px; text-decoration: none; font-weight: 600; border-radius: 6px; margin: 8px 0; }
+  .footer { background: #0a1628; padding: 28px 40px; text-align: center; font-size: 13px; color: #64748b; }
+  .footer a { color: #c9a84c; text-decoration: none; }
+  .social { margin: 12px 0; }
+  .social a { color: #c9a84c; margin: 0 8px; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <h1>Aziz Saif</h1>
+    <p>Insights on Business, Leadership &amp; Growth</p>
+  </div>
+  <div class="gold-bar"></div>
+  <div class="body">
+    <h2>This Week's Insights</h2>
+    <p>Welcome to this edition of the newsletter. Here is what I have been thinking about.</p>
+
+    <div class="section">
+      <h3>Topic One</h3>
+      <p>Write about your first topic here. Share insights from your 37+ years of experience.</p>
+    </div>
+
+    <div class="highlight">
+      <strong>Key Takeaway:</strong> A memorable quote or insight goes here.
+    </div>
+
+    <div class="section">
+      <h3>Topic Two</h3>
+      <p>Another insight or story from your journey across the GCC markets.</p>
+    </div>
+
+    <p>Until next time,</p>
+    <p><strong>Aziz Saif</strong><br>
+    <span style="color:#64748b;font-size:14px">VP Operations | Managing Partner | AI Business Builder</span></p>
+
+    <a href="https://azizsaif.com" class="btn">Visit azizsaif.com</a>
+  </div>
+  <div class="footer">
+    <div class="social">
+      <a href="https://azizsaif.com">Website</a>
+      <a href="https://www.linkedin.com/in/azizsaif/">LinkedIn</a>
+    </div>
+    <p style="margin-top:16px"><a href="{{unsubscribe_url}}">Unsubscribe</a> from this newsletter</p>
+  </div>
+</div>
+</body>
+</html>`;
+  }
+  updatePreview();
+}
+
+async function getResendConfig() {
+  const { data: keyRow } = await supabase.from('settings').select('value').eq('key', 'resend_api_key').single();
+  const { data: nameRow } = await supabase.from('settings').select('value').eq('key', 'sender_name').single();
+  const { data: emailRow } = await supabase.from('settings').select('value').eq('key', 'sender_email').single();
+  return {
+    resendKey: keyRow?.value || '',
+    senderName: nameRow?.value || 'Aziz Saif',
+    senderEmail: emailRow?.value || 'newsletter@azizsaif.com'
+  };
+}
+
+async function sendCampaign() {
+  const subject = document.getElementById('composeSubject').value.trim();
+  const htmlBody = document.getElementById('composeBody').value.trim();
+  if (!subject || !htmlBody) { showToast('Subject and body are required.', 'error'); return; }
+
+  const config = await getResendConfig();
+  if (!config.resendKey) {
+    alert('Add your Resend API key in Settings to send emails. For now, copy the HTML and send manually.');
+    return;
+  }
+
+  const { data: subs, error } = await supabase.from('subscribers').select('*').eq('verified', true).eq('unsubscribed', false);
+  if (error) { showToast('Could not fetch subscribers: ' + error.message, 'error'); return; }
+  if (!subs || subs.length === 0) { showToast('No verified subscribers to send to.', 'error'); return; }
+
+  if (!confirm(`Send this campaign to ${subs.length} verified subscriber(s)?\n\nSubject: ${subject}`)) return;
+
+  const overlay = document.getElementById('progressOverlay');
+  const fill = document.getElementById('progressFill');
+  const text = document.getElementById('progressText');
+  overlay.classList.add('visible');
+
+  let sent = 0;
+  let failed = 0;
+
+  for (let i = 0; i < subs.length; i++) {
+    const sub = subs[i];
+    const personalizedHtml = htmlBody.replace(
+      /\{\{unsubscribe_url\}\}/g,
+      `https://azizsaif.com/admin/verify.html?action=unsubscribe&token=${sub.verify_token}`
+    );
+    try {
+      const resp = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${config.resendKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: `${config.senderName} <${config.senderEmail}>`,
+          to: [sub.email],
+          subject: subject,
+          html: personalizedHtml
+        })
+      });
+      if (resp.ok) sent++; else failed++;
+    } catch (e) {
+      failed++;
+    }
+    const pct = Math.round(((i + 1) / subs.length) * 100);
+    fill.style.width = pct + '%';
+    text.textContent = `${i + 1} of ${subs.length} sent${failed > 0 ? ` (${failed} failed)` : ''}`;
+  }
+
+  // Save campaign
+  await supabase.from('campaigns').insert({
+    subject,
+    html_body: htmlBody,
+    created_at: new Date().toISOString(),
+    sent_at: new Date().toISOString(),
+    sent_count: sent
+  });
+
+  overlay.classList.remove('visible');
+  fill.style.width = '0%';
+  showToast(`Campaign sent: ${sent} delivered, ${failed} failed.`);
+  loadCampaigns();
+}
+
+async function sendTestEmail() {
+  const subject = document.getElementById('composeSubject').value.trim();
+  const htmlBody = document.getElementById('composeBody').value.trim();
+  if (!subject || !htmlBody) { showToast('Subject and body are required.', 'error'); return; }
+
+  const config = await getResendConfig();
+  if (!config.resendKey) {
+    alert('Add your Resend API key in Settings first.');
+    return;
+  }
+
+  const adminEmail = document.getElementById('userEmail').textContent;
+  try {
+    const resp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${config.resendKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: `${config.senderName} <${config.senderEmail}>`,
+        to: [adminEmail],
+        subject: `[TEST] ${subject}`,
+        html: htmlBody.replace(/\{\{unsubscribe_url\}\}/g, '#')
+      })
+    });
+    if (resp.ok) showToast(`Test email sent to ${adminEmail}`);
+    else {
+      const err = await resp.json();
+      showToast('Send failed: ' + (err.message || resp.statusText), 'error');
+    }
+  } catch (e) {
+    showToast('Network error: ' + e.message, 'error');
+  }
+}
+
+async function saveDraft() {
+  const subject = document.getElementById('composeSubject').value.trim();
+  const htmlBody = document.getElementById('composeBody').value.trim();
+  if (!subject && !htmlBody) { showToast('Nothing to save.', 'error'); return; }
+
+  const { error } = await supabase.from('campaigns').insert({
+    subject: subject || '(no subject)',
+    html_body: htmlBody,
+    created_at: new Date().toISOString(),
+    sent_at: null,
+    sent_count: 0
+  });
+  if (error) showToast('Save failed: ' + error.message, 'error');
+  else showToast('Draft saved');
+  loadCampaigns();
+}
+
+// ========== SETTINGS ==========
+async function loadSettings() {
+  const { data } = await supabase.from('settings').select('*');
+  if (!data) return;
+  const map = {};
+  data.forEach(r => map[r.key] = r.value);
+
+  const keyVal = map['resend_api_key'] || '';
+  document.getElementById('settingResendKey').value = '';
+  document.getElementById('settingResendKey').placeholder = keyVal ? 'Key saved (enter new to replace)' : 're_xxxxxxxxxxxx';
+  document.getElementById('maskedKey').textContent = keyVal ? 'Current: ' + maskKey(keyVal) : '';
+  document.getElementById('settingSenderName').value = map['sender_name'] || 'Aziz Saif';
+  document.getElementById('settingSenderEmail').value = map['sender_email'] || 'newsletter@azizsaif.com';
+}
+
+function maskKey(key) {
+  if (key.length < 8) return '****';
+  return key.slice(0, 3) + '****' + key.slice(-3);
+}
+
+async function saveSettings() {
+  const keyVal = document.getElementById('settingResendKey').value.trim();
+  const name = document.getElementById('settingSenderName').value.trim() || 'Aziz Saif';
+  const email = document.getElementById('settingSenderEmail').value.trim() || 'newsletter@azizsaif.com';
+
+  const upserts = [
+    { key: 'sender_name', value: name },
+    { key: 'sender_email', value: email }
+  ];
+  if (keyVal) upserts.push({ key: 'resend_api_key', value: keyVal });
+
+  const { error } = await supabase.from('settings').upsert(upserts, { onConflict: 'key' });
+  if (error) showToast('Save failed: ' + error.message, 'error');
+  else { showToast('Settings saved'); loadSettings(); }
+}
+
+async function testConnection() {
+  const config = await getResendConfig();
+  if (!config.resendKey) { showToast('Add Resend API key first.', 'error'); return; }
+  const adminEmail = document.getElementById('userEmail').textContent;
+  try {
+    const resp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${config.resendKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: `${config.senderName} <${config.senderEmail}>`,
+        to: [adminEmail],
+        subject: 'Newsletter Admin - Connection Test',
+        html: '<p>Your Resend API connection is working correctly.</p><p style="color:#64748b;font-size:13px">Sent from azizsaif.com Newsletter Admin</p>'
+      })
+    });
+    if (resp.ok) showToast(`Test email sent to ${adminEmail}`);
+    else {
+      const err = await resp.json();
+      showToast('Test failed: ' + (err.message || resp.statusText), 'error');
+    }
+  } catch (e) {
+    showToast('Network error: ' + e.message, 'error');
+  }
+}
+
+// ========== CAMPAIGNS ==========
+async function loadCampaigns() {
+  const { data, error } = await supabase.from('campaigns').select('*').order('created_at', { ascending: false }).limit(20);
+  if (error || !data) {
+    document.getElementById('campaignsTable').innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:24px">No campaigns yet</td></tr>';
+    return;
+  }
+  document.getElementById('campaignsTable').innerHTML = data.map(c => `
+    <tr>
+      <td>${escapeHtml(c.subject)}</td>
+      <td>${c.sent_at ? '<span class="badge badge-green">Sent</span>' : '<span class="badge badge-orange">Draft</span>'}</td>
+      <td>${c.sent_count || 0}</td>
+      <td>${formatDate(c.sent_at || c.created_at)}</td>
+    </tr>
+  `).join('') || '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:24px">No campaigns yet</td></tr>';
+}
+</script>
+</body>
+</html>
