@@ -1501,18 +1501,38 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;line-height:1.2;margin-bottom:16px;color:#fff">Join the newsletter &mdash; <em style="color:#c9a84c;font-style:italic">weekly notes from Dubai.</em></h2>
       <p style="color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.7;max-width:560px;margin:0 auto 28px">Short weekly notes on GCC retail, AI in business, franchise &amp; setup, geopolitics, and whatever I'm reading. Free. One-click unsubscribe. You'll confirm your email once before the first issue lands.</p>
 
-      <!-- ========================================================== -->
-      <!-- MAILERLITE EMBED: paste the Universal + form snippet here    -->
-      <!-- once you finish the 5-step MailerLite setup. Replace the    -->
-      <!-- entire <form> block below with the MailerLite code you copy -->
-      <!-- from Forms → Embedded forms → "Copy the code".              -->
-      <!-- Until then the form falls back to mailto so nothing is lost.-->
-      <!-- ========================================================== -->
-      <form action="mailto:aziz@azizsaif.com" method="post" enctype="text/plain" style="display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center" onsubmit="alert('Thanks! Opening your email app to send your subscription. I will verify by email and add you manually until MailerLite is wired up.');">
+      <!-- ============================================================ -->
+      <!-- SUBSCRIBE FORM                                                -->
+      <!-- Currently: FormSubmit.co (zero-signup, emails every submission-->
+      <!-- to aziz@azizsaif.com). Aziz must click the activation link    -->
+      <!-- in the very first email FormSubmit sends to him, one time.    -->
+      <!--                                                               -->
+      <!-- To upgrade to MailerLite later: replace this whole <form> +   -->
+      <!-- the thank-you redirect <input> with the MailerLite Universal  -->
+      <!-- + form embed code from Forms → Embedded forms → "Copy code".  -->
+      <!-- ============================================================ -->
+      <form action="https://formsubmit.co/aziz@azizsaif.com" method="POST" style="display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center">
         <input type="email" name="email" required placeholder="you@example.com" style="flex:1;min-width:220px;padding:14px 18px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-family:inherit;font-size:.95rem;border-radius:4px;outline:none" onfocus="this.style.borderColor='#c9a84c'" onblur="this.style.borderColor='rgba(255,255,255,.18)'">
-        <input type="hidden" name="subject" value="Newsletter subscribe - azizsaif.com">
+        <input type="hidden" name="_subject" value="New newsletter subscriber - azizsaif.com">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://azizsaif.com/?subscribed=1#newsletter">
+        <input type="hidden" name="_autoresponse" value="Thanks for subscribing to Aziz Saif's newsletter. I'll send an email to verify your address before the first issue lands in your inbox. — Aziz">
         <button type="submit" style="padding:14px 28px;background:var(--accent);color:var(--primary);border:none;font-family:inherit;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .3s" onmouseover="this.style.background='#b89540'" onmouseout="this.style.background='var(--accent)'">Subscribe &rarr;</button>
       </form>
+      <script>
+        // Show thank-you banner if user just subscribed
+        if (new URLSearchParams(window.location.search).get('subscribed') === '1') {
+          document.addEventListener('DOMContentLoaded', function() {
+            var nl = document.getElementById('newsletter');
+            if (!nl) return;
+            var banner = document.createElement('div');
+            banner.style.cssText = 'max-width:480px;margin:20px auto 0;padding:14px 20px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.4);border-radius:6px;color:#c9a84c;font-size:.88rem;line-height:1.5';
+            banner.innerHTML = '&#10004; Thanks. Check your inbox for a verification email to confirm your subscription.';
+            nl.querySelector('.reveal').appendChild(banner);
+          });
+        }
+      </script>
 
       <p style="font-size:.72rem;color:rgba(255,255,255,.4);margin-top:16px;letter-spacing:.5px">&#128274; Your email stays private. Double opt-in verification. Unsubscribe anytime.</p>
     </div>
