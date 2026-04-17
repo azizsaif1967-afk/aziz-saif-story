@@ -376,7 +376,7 @@ const SUPABASE_URL = 'https://qtkvtwwtkxwigibockhi.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0a3Z0d3d0a3h3aWdpYm9ja2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MDQ0ODEsImV4cCI6MjA5MTk4MDQ4MX0.6vYtrBuOWf0u3a98E77ICyLe0MkFJUF4pYW19EkjNwI';
 const ALLOWED_ADMINS = ['aziz@azizsaif.com', 'aziz@globalpioneer.co'];
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // State
 let currentPage = 1;
@@ -413,7 +413,7 @@ function escapeHtml(str) {
 // Google OAuth
 document.getElementById('googleSignIn').addEventListener('click', async () => {
   document.getElementById('authAlert').innerHTML = '';
-  const { error } = await supabase.auth.signInWithOAuth({
+  const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
     options: {
       redirectTo: window.location.origin + window.location.pathname
@@ -441,7 +441,7 @@ document.getElementById('sendMagicBtn').addEventListener('click', async () => {
   const btn = document.getElementById('sendMagicBtn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
-  const { error } = await supabase.auth.signInWithOtp({
+  const { error } = await sb.auth.signInWithOtp({
     email,
     options: { emailRedirectTo: window.location.origin + window.location.pathname }
   });
@@ -456,7 +456,7 @@ document.getElementById('forgotPassword').addEventListener('click', async (e) =>
   e.preventDefault();
   const email = document.getElementById('authEmail').value.trim();
   if (!email) { showAuthAlert('Enter your email first.'); return; }
-  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
     redirectTo: window.location.origin + window.location.pathname
   });
   if (error) showAuthAlert(error.message);
@@ -472,7 +472,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   btn.disabled = true;
   btn.textContent = 'Signing in...';
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
   if (error) {
     showAuthAlert(error.message);
     btn.disabled = false;
@@ -483,7 +483,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 });
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-  await supabase.auth.signOut();
+  await sb.auth.signOut();
   document.getElementById('app').style.display = 'none';
   document.getElementById('authScreen').style.display = 'flex';
   document.getElementById('authPassword').value = '';
@@ -493,7 +493,7 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
 
 // Check session on load
 (async () => {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await sb.auth.getSession();
   if (session) showApp(session.user);
 })();
 
@@ -522,7 +522,7 @@ function switchTab(name) {
 // ========== DASHBOARD ==========
 async function loadDashboard() {
   try {
-    const { data: all, error } = await supabase.from('subscribers').select('*');
+    const { data: all, error } = await sb.from('subscribers').select('*');
     if (error) throw error;
     const total = all.length;
     const verified = all.filter(s => s.verified && !s.unsubscribed).length;
@@ -571,7 +571,7 @@ function updateBulkBtn() {
 
 async function loadSubscribers() {
   try {
-    let query = supabase.from('subscribers').select('*', { count: 'exact' });
+    let query = sb.from('subscribers').select('*', { count: 'exact' });
     if (subscriberSearchQuery) query = query.ilike('email', `%${subscriberSearchQuery}%`);
     query = query.order('subscribed_at', { ascending: false });
     query = query.range((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE - 1);
@@ -636,14 +636,14 @@ function copyVerifyLink(token) {
 }
 
 async function markVerified(id) {
-  const { error } = await supabase.from('subscribers').update({ verified: true, verified_at: new Date().toISOString() }).eq('id', id);
+  const { error } = await sb.from('subscribers').update({ verified: true, verified_at: new Date().toISOString() }).eq('id', id);
   if (error) showToast(error.message, 'error');
   else { showToast('Subscriber verified'); loadSubscribers(); }
 }
 
 async function deleteSubscriber(id) {
   if (!confirm('Delete this subscriber permanently?')) return;
-  const { error } = await supabase.from('subscribers').delete().eq('id', id);
+  const { error } = await sb.from('subscribers').delete().eq('id', id);
   if (error) showToast(error.message, 'error');
   else { showToast('Subscriber deleted'); loadSubscribers(); }
 }
@@ -651,14 +651,14 @@ async function deleteSubscriber(id) {
 async function bulkDelete() {
   if (!confirm(`Delete ${selectedIds.size} selected subscriber(s)?`)) return;
   const ids = Array.from(selectedIds);
-  const { error } = await supabase.from('subscribers').delete().in('id', ids);
+  const { error } = await sb.from('subscribers').delete().in('id', ids);
   if (error) showToast(error.message, 'error');
   else { showToast(`${ids.length} subscriber(s) deleted`); selectedIds.clear(); loadSubscribers(); }
 }
 
 // ========== EXPORT CSV ==========
 async function exportCSV() {
-  const { data, error } = await supabase.from('subscribers').select('*').order('subscribed_at', { ascending: false });
+  const { data, error } = await sb.from('subscribers').select('*').order('subscribed_at', { ascending: false });
   if (error) { showToast('Export failed: ' + error.message, 'error'); return; }
   const headers = ['email', 'verified', 'subscribed_at', 'verified_at', 'unsubscribed', 'unsubscribed_at'];
   let csv = headers.join(',') + '\n';
@@ -806,9 +806,9 @@ function insertTemplate(type) {
 }
 
 async function getResendConfig() {
-  const { data: keyRow } = await supabase.from('settings').select('value').eq('key', 'resend_api_key').single();
-  const { data: nameRow } = await supabase.from('settings').select('value').eq('key', 'sender_name').single();
-  const { data: emailRow } = await supabase.from('settings').select('value').eq('key', 'sender_email').single();
+  const { data: keyRow } = await sb.from('settings').select('value').eq('key', 'resend_api_key').single();
+  const { data: nameRow } = await sb.from('settings').select('value').eq('key', 'sender_name').single();
+  const { data: emailRow } = await sb.from('settings').select('value').eq('key', 'sender_email').single();
   return {
     resendKey: keyRow?.value || '',
     senderName: nameRow?.value || 'Aziz Saif',
@@ -827,7 +827,7 @@ async function sendCampaign() {
     return;
   }
 
-  const { data: subs, error } = await supabase.from('subscribers').select('*').eq('verified', true).eq('unsubscribed', false);
+  const { data: subs, error } = await sb.from('subscribers').select('*').eq('verified', true).eq('unsubscribed', false);
   if (error) { showToast('Could not fetch subscribers: ' + error.message, 'error'); return; }
   if (!subs || subs.length === 0) { showToast('No verified subscribers to send to.', 'error'); return; }
 
@@ -871,7 +871,7 @@ async function sendCampaign() {
   }
 
   // Save campaign
-  await supabase.from('campaigns').insert({
+  await sb.from('campaigns').insert({
     subject,
     html_body: htmlBody,
     created_at: new Date().toISOString(),
@@ -926,7 +926,7 @@ async function saveDraft() {
   const htmlBody = document.getElementById('composeBody').value.trim();
   if (!subject && !htmlBody) { showToast('Nothing to save.', 'error'); return; }
 
-  const { error } = await supabase.from('campaigns').insert({
+  const { error } = await sb.from('campaigns').insert({
     subject: subject || '(no subject)',
     html_body: htmlBody,
     created_at: new Date().toISOString(),
@@ -940,7 +940,7 @@ async function saveDraft() {
 
 // ========== SETTINGS ==========
 async function loadSettings() {
-  const { data } = await supabase.from('settings').select('*');
+  const { data } = await sb.from('settings').select('*');
   if (!data) return;
   const map = {};
   data.forEach(r => map[r.key] = r.value);
@@ -969,7 +969,7 @@ async function saveSettings() {
   ];
   if (keyVal) upserts.push({ key: 'resend_api_key', value: keyVal });
 
-  const { error } = await supabase.from('settings').upsert(upserts, { onConflict: 'key' });
+  const { error } = await sb.from('settings').upsert(upserts, { onConflict: 'key' });
   if (error) showToast('Save failed: ' + error.message, 'error');
   else { showToast('Settings saved'); loadSettings(); }
 }
@@ -1004,7 +1004,7 @@ async function testConnection() {
 
 // ========== CAMPAIGNS ==========
 async function loadCampaigns() {
-  const { data, error } = await supabase.from('campaigns').select('*').order('created_at', { ascending: false }).limit(20);
+  const { data, error } = await sb.from('campaigns').select('*').order('created_at', { ascending: false }).limit(20);
   if (error || !data) {
     document.getElementById('campaignsTable').innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:24px">No campaigns yet</td></tr>';
     return;
