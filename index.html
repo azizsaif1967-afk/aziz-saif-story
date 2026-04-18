@@ -523,6 +523,77 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 .corp-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
 .corp-hamburger span{width:22px;height:2px;background:var(--primary);transition:.3s;display:block}
 
+/* ============ CORPORATE TEASER CARDS (Tata-Elxsi style for company sections) ============ */
+.corp-teaser-card{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:#fff;border:1px solid var(--gray-100);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;max-width:1100px;margin:32px auto 0}
+.corp-teaser-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.4,0,.2,1);z-index:3}
+.corp-teaser-card:hover{transform:translateY(-4px);box-shadow:0 28px 56px rgba(10,22,40,.12);border-color:var(--accent-light)}
+.corp-teaser-card:hover::before{transform:scaleX(1)}
+.ctc-img{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--off-white),var(--gray-50));min-height:340px}
+.ctc-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.4,0,.2,1);position:absolute;inset:0}
+.corp-teaser-card:hover .ctc-img img{transform:scale(1.06)}
+.ctc-body{padding:44px 48px;display:flex;flex-direction:column;justify-content:center;gap:0}
+.ctc-tag{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent-dark);font-weight:700;margin-bottom:14px}
+.ctc-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--primary);line-height:1.1;margin:0 0 14px;letter-spacing:-.5px}
+.ctc-title em{color:var(--accent);font-style:italic;font-weight:500}
+.ctc-desc{font-size:.92rem;color:var(--gray-600);line-height:1.7;font-weight:300;margin-bottom:24px}
+.ctc-stats{display:flex;gap:32px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)}
+.ctc-stats > div{display:flex;flex-direction:column}
+.ctc-stats strong{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--primary);font-weight:600;line-height:1}
+.ctc-stats span{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);font-weight:600;margin-top:6px}
+.ctc-cta{font-size:.7rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent-dark);display:inline-flex;align-items:center;gap:8px;transition:gap .3s}
+.corp-teaser-card:hover .ctc-cta{gap:14px;color:var(--accent)}
+
+/* Reverse layout variant for visual rhythm */
+.corp-teaser-card.reverse{grid-template-columns:1fr 1.1fr}
+.corp-teaser-card.reverse .ctc-img{order:2}
+.corp-teaser-card.reverse .ctc-body{order:1}
+
+/* Capabilities grid (Tata-Elxsi style) */
+.capability-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:40px}
+.cap-card{background:#fff;border:1px solid var(--gray-100);border-radius:8px;padding:32px 28px;text-decoration:none;color:inherit;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.cap-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:0;background:linear-gradient(135deg,var(--primary),var(--primary-light));transition:height .4s cubic-bezier(.4,0,.2,1);z-index:0}
+.cap-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(10,22,40,.14);border-color:var(--primary)}
+.cap-card:hover::before{height:100%}
+.cap-card > *{position:relative;z-index:1;transition:color .4s}
+.cap-card:hover > *,.cap-card:hover .cap-icon,.cap-card:hover .cap-title,.cap-card:hover .cap-desc,.cap-card:hover .cap-cta{color:#fff}
+.cap-card:hover .cap-cta{color:var(--accent-light)}
+.cap-icon{font-size:2rem;margin-bottom:18px;line-height:1}
+.cap-tag{font-size:.58rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--accent-dark);font-weight:700;margin-bottom:10px}
+.cap-card:hover .cap-tag{color:var(--accent-light)}
+.cap-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--primary);font-weight:600;margin:0 0 10px;line-height:1.2}
+.cap-desc{font-size:.82rem;color:var(--gray-600);line-height:1.6;font-weight:300;margin-bottom:20px;flex:1}
+.cap-cta{font-size:.66rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-dark)}
+
+/* Insights cards row */
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
+.insight-card{background:#fff;border:1px solid var(--gray-100);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:all .35s;display:flex;flex-direction:column}
+.insight-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(10,22,40,.1);border-color:var(--accent-light)}
+.insight-thumb{aspect-ratio:16/10;background:linear-gradient(135deg,var(--primary),var(--primary-light));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.insight-thumb-tag{position:absolute;top:14px;left:14px;background:var(--accent);color:var(--primary);font-size:.56rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border-radius:3px}
+.insight-thumb-emoji{font-size:3rem;opacity:.5}
+.insight-body{padding:24px 26px;flex:1;display:flex;flex-direction:column}
+.insight-meta{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);font-weight:600;margin-bottom:8px}
+.insight-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--primary);font-weight:600;line-height:1.25;margin:0 0 10px}
+.insight-desc{font-size:.78rem;color:var(--gray-600);line-height:1.6;font-weight:300;margin-bottom:16px;flex:1}
+.insight-link{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-dark)}
+
+/* News/press strip */
+.news-strip{background:var(--off-white);padding:36px 0;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100)}
+.news-strip-inner{max-width:1200px;margin:0 auto;padding:0 56px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center}
+.news-strip-label{font-size:.62rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--gray-500);font-weight:700;margin-right:12px}
+.news-logo{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--gray-600);font-weight:600;letter-spacing:.3px;opacity:.7;transition:opacity .25s}
+.news-logo:hover{opacity:1;color:var(--primary)}
+
+@media (max-width:780px){
+  .corp-teaser-card,.corp-teaser-card.reverse{grid-template-columns:1fr}
+  .corp-teaser-card.reverse .ctc-img{order:1}
+  .corp-teaser-card.reverse .ctc-body{order:2}
+  .ctc-img{min-height:240px}
+  .ctc-body{padding:28px 24px}
+  .ctc-stats{gap:20px;flex-wrap:wrap}
+  .news-strip-inner{gap:18px;padding:0 24px}
+}
+
 /* ============ SITES BRAND CARDS (Bold brand-name showcase) ============ */
 .sites-brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:40px}
 .site-brand-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-100);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative}
@@ -827,10 +898,10 @@ body.has-corp-nav{padding-top:0}
     <div class="reveal" style="text-align:center;margin-bottom:48px">
       <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.35);border-radius:50px;padding:8px 20px;margin-bottom:18px">
         <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:cu-pulse 1.8s infinite"></span>
-        <span style="font-size:.66rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent)">New &middot; Launching in UAE 2026</span>
+        <span style="font-size:.66rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent)">New &middot; Launching in UAE 2026 &middot; In sha Allah</span>
       </div>
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:500;line-height:1.15;margin-bottom:14px">Four AI Ventures Launching in <em style="color:var(--accent);font-style:italic">UAE &amp; Gulf</em></h2>
-      <p style="color:rgba(255,255,255,.7);font-size:.95rem;max-width:680px;margin:0 auto;line-height:1.7;font-weight:300">Combining 37+ years of GCC retail leadership with cutting-edge AI &mdash; four production-ready platforms launching in Dubai, Sharjah &amp; the wider Gulf.</p>
+      <p style="color:rgba(255,255,255,.7);font-size:.95rem;max-width:680px;margin:0 auto;line-height:1.7;font-weight:300">Combining 37+ years of GCC retail leadership with cutting-edge AI &mdash; four production-ready platforms launching in Dubai, Sharjah &amp; the wider Gulf. <em style="color:var(--accent);font-style:italic">In sha Allah.</em></p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
@@ -941,6 +1012,79 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
+<!-- ============ CAPABILITIES GRID (Tata Elxsi style) ============ -->
+<section id="capabilities" style="background:var(--off-white);padding:96px 0">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> Capabilities</div>
+        <h2 class="section-title">What we <em>do</em></h2>
+        <p class="section-subtitle">Six practice areas combining 37+ years of GCC retail leadership with hands-on AI implementation. Pick the entry point that fits.</p>
+      </div>
+    </div>
+
+    <div class="capability-grid reveal">
+      <a href="pages/ai-services.html" class="cap-card">
+        <div class="cap-icon">&#129302;</div>
+        <div class="cap-tag">AI Services</div>
+        <h3 class="cap-title">AI Implementation</h3>
+        <p class="cap-desc">Claude, GPT &amp; custom agent rollouts for SMEs &mdash; invoicing, CRM, content &amp; workflow automation.</p>
+        <div class="cap-cta">Explore Services &rarr;</div>
+      </a>
+      <a href="pages/reports.html" class="cap-card">
+        <div class="cap-icon">&#128202;</div>
+        <div class="cap-tag">Knowledge Library</div>
+        <h3 class="cap-title">28+ Reports</h3>
+        <p class="cap-desc">Feasibility studies, investor pitches, SOPs &amp; financial models built with AI across 8 industries.</p>
+        <div class="cap-cta">Open Library &rarr;</div>
+      </a>
+      <a href="#consulting" class="cap-card">
+        <div class="cap-icon">&#128188;</div>
+        <div class="cap-tag">Consulting</div>
+        <h3 class="cap-title">AI Consulting</h3>
+        <p class="cap-desc">Hands-on strategy &amp; implementation for Gulf businesses adopting Claude, GPT agents &amp; workflows.</p>
+        <div class="cap-cta">Book a Call &rarr;</div>
+      </a>
+      <a href="pages/tools.html" class="cap-card">
+        <div class="cap-icon">&#128295;</div>
+        <div class="cap-tag">AI Stack</div>
+        <h3 class="cap-title">Tools I Use</h3>
+        <p class="cap-desc">The complete stack &mdash; Claude, Cursor, Manus, Gamma, Perplexity, Vercel, Supabase &amp; more.</p>
+        <div class="cap-cta">View Stack &rarr;</div>
+      </a>
+      <a href="#portfolio" class="cap-card">
+        <div class="cap-icon">&#127760;</div>
+        <div class="cap-tag">Websites Built</div>
+        <h3 class="cap-title">8 Live Sites</h3>
+        <p class="cap-desc">Production websites built end-to-end &mdash; each with its own brand, copy &amp; conversion paths.</p>
+        <div class="cap-cta">See Portfolio &rarr;</div>
+      </a>
+      <a href="#launching-uae" class="cap-card">
+        <div class="cap-icon">&#128640;</div>
+        <div class="cap-tag">In Build</div>
+        <h3 class="cap-title">Launching 2026</h3>
+        <p class="cap-desc">Four AI ventures launching in the UAE &amp; Gulf &mdash; Stackbirds, EatCookJoy, Snellito + 1 stealth. <em>In sha Allah.</em></p>
+        <div class="cap-cta">See Roadmap &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS / RECOGNITION STRIP ============ -->
+<div class="news-strip">
+  <div class="news-strip-inner">
+    <span class="news-strip-label">Working with &amp; recognised by:</span>
+    <span class="news-logo">YOYOSO</span>
+    <span class="news-logo">LE PEARL</span>
+    <span class="news-logo">Disney</span>
+    <span class="news-logo">Marvel</span>
+    <span class="news-logo">Bosch-Hitachi</span>
+    <span class="news-logo">Grundfos</span>
+    <span class="news-logo">RAK Free Zone</span>
+    <span class="news-logo">Anthropic Claude</span>
+  </div>
+</div>
+
 <!-- ===== GLOBAL PIONEER - GALLERY ===== -->
 <div class="gallery-section" id="gp-section">
   <div class="gallery-inner">
@@ -960,29 +1104,29 @@ body.has-corp-nav{padding-top:0}
         <a href="https://globalpioneer.xyz" target="_blank" rel="noopener" style="font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);text-decoration:none;font-weight:600">Visit Live Site &#8599;</a>
       </div>
     </div>
-    <div class="gallery-grid compact" id="gpGallery">
-      <div class="gallery-item" onclick="window.location.href='catalogues/global-pioneer.html'"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-01_a0145279.png" alt="Cover" loading="lazy"><div class="gi-overlay"><h4>Company Brochure &amp; Catalogue</h4><p>Global Pioneer FZE &mdash; floating catalogue experience</p><span class="gi-cta">Open Catalogue <span class="arrow">&rarr;</span></span></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',1)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-04_e5a86cf9.png" alt="Business Development" loading="lazy"><div class="gi-overlay"><div><h4>Business Development</h4><p>Concept to Execution</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',2)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-10_6a77e321.png" alt="Retail Showrooms" loading="lazy"><div class="gi-overlay"><div><h4>Retail Showrooms</h4><p>Fashion Brand Partners</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',3)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-12_fbdcfef8.png" alt="Partner Brands" loading="lazy"><div class="gi-overlay"><div><h4>Partner Brands</h4><p>LE PEARL &amp; YOYOSO</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',4)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-13_75222ec3.png" alt="B2B Sourcing" loading="lazy"><div class="gi-overlay"><div><h4>B2B Sourcing</h4><p>Procurement &amp; Supply</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',5)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-17_fbe3e5b6.png" alt="Store Design" loading="lazy"><div class="gi-overlay"><div><h4>Store Design</h4><p>Concept &amp; Interiors</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',6)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-19_7f062e2d.png" alt="8-Step Design" loading="lazy"><div class="gi-overlay"><div><h4>8-Step Design Process</h4><p>Customer Journey</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('gpGallery',7)"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-21_88e876f3.png" alt="Franchising" loading="lazy"><div class="gi-overlay"><div><h4>Franchising</h4><p>Inbound &amp; Outbound</p></div></div><div class="gi-zoom">&#128269;</div></div>
-    </div>
-    <div class="info-grid reveal">
-      <div class="info-box"><div class="ib-icon">&#128640;</div><h4>Business Development</h4><p>Complete solutions from concept through execution across the Middle East. Legal setup, partnerships, and market entry.</p></div>
-      <div class="info-box"><div class="ib-icon">&#127978;</div><h4>Retail Showrooms</h4><p>Representation of modern fashion brands &mdash; LE PEARL &amp; YOYOSO. Legal rights, store establishment, and operations.</p></div>
-      <div class="info-box"><div class="ib-icon">&#128230;</div><h4>B2B Sourcing &amp; Wholesale</h4><p>Wholesale distribution, stocklot inventory, store interior design, and concept design services.</p></div>
-    </div>
+    <!-- Corporate teaser card (replaces full gallery + info grid) -->
+    <a href="catalogues/global-pioneer.html" class="reveal corp-teaser-card">
+      <div class="ctc-img"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-01_a0145279.png" alt="Global Pioneer Brochure cover" loading="lazy"></div>
+      <div class="ctc-body">
+        <div class="ctc-tag">24-Page Brochure &middot; Floating Catalogue</div>
+        <h3 class="ctc-title">Inside the Group <em>Brochure</em></h3>
+        <p class="ctc-desc">Business development, retail showrooms, B2B sourcing, store design &amp; franchise representation &mdash; presented as an interactive page-flip catalogue.</p>
+        <div class="ctc-stats">
+          <div><strong>10+</strong><span>Brand Partners</span></div>
+          <div><strong>3</strong><span>Countries</span></div>
+          <div><strong>8+</strong><span>Years</span></div>
+        </div>
+        <div class="ctc-cta">Open Brochure &rarr;</div>
+      </div>
+    </a>
   </div>
 </div>
 
 
-<!-- ===== LE PEARL - GALLERY ===== -->
+<!-- ===== LE PEARL (corporate teaser) ===== -->
 <div class="gallery-section white-bg" id="lepearl-section">
   <div class="gallery-inner">
-    <!-- Brand logo block (above heading) -->
+    <!-- Brand logo block -->
     <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
       <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl Fashion" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
       <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Fashion Retail &middot; 10+ Stores &middot; Oman &amp; UAE</div>
@@ -990,122 +1134,55 @@ body.has-corp-nav{padding-top:0}
     <div class="section-header reveal">
       <div>
         <div class="section-label"><span class="line"></span> Le Pearl Fashion</div>
-        <h2 class="section-title">Store &amp; Product Gallery</h2>
-        <p class="section-subtitle">"Quality Fashion, Trending Style, Affordable Price" &mdash; 10+ stores across Oman &amp; UAE. Kids, Men &amp; Women.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-        <a href="https://le-pearl.com" target="_blank" rel="noopener" class="view-all">Visit Website &rarr;</a>
-        <a href="https://lepearlfashion.com" target="_blank" rel="noopener" class="view-all">Shop Online &rarr;</a>
+        <h2 class="section-title">&ldquo;Quality Fashion, <em>Trending Style</em>, Affordable Price.&rdquo;</h2>
+        <p class="section-subtitle">10+ stores across Oman &amp; UAE. Kids, Men, Women &mdash; with international brand partners including Disney, Marvel, Minoti &amp; Hello Kitty.</p>
       </div>
     </div>
-    <a href="pages/store-gallery.html" class="reveal" style="display:block;margin-top:16px;border:1px solid var(--gray-100);background:linear-gradient(135deg,#0a1628,#152238);color:#fff;padding:48px 40px;position:relative;overflow:hidden;transition:all .4s;text-decoration:none" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 24px 48px rgba(10,22,40,.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;z-index:2">
-        <div>
-          <div style="font-size:.7rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:#c9a84c;margin-bottom:16px">&#128092; Store &amp; Product Gallery</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;margin-bottom:12px;line-height:1.2">Kids, Men, Women &mdash; <em style="color:#c9a84c;font-style:italic">10+ stores</em> across Oman &amp; UAE.</h3>
-          <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.7;font-weight:300;max-width:640px">&ldquo;Quality Fashion, Trending Style, Affordable Price.&rdquo; A floating 8-chapter walk-through of the store front, each customer segment, seasonal drops, and best-sellers &mdash; with full-screen lightbox navigation.</p>
-          <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap">
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#c9a84c">10+</div><div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px">Stores</div></div>
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#c9a84c">18+</div><div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px">Brands</div></div>
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#c9a84c">8</div><div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px">Chapters</div></div>
-          </div>
+
+    <!-- Two corporate teaser cards: Store Gallery + Brand Brochure -->
+    <a href="pages/store-gallery.html" class="reveal corp-teaser-card">
+      <div class="ctc-img"><img src="https://lepearlfashion.com/wp-content/uploads/2021/10/slide-1-alt-min-1024x819.webp" alt="Le Pearl store front" loading="lazy"></div>
+      <div class="ctc-body">
+        <div class="ctc-tag">Store &amp; Product Gallery &middot; 8 Chapters</div>
+        <h3 class="ctc-title">Inside Our <em>Stores</em></h3>
+        <p class="ctc-desc">A floating walk-through of the store front, customer segments, seasonal drops &amp; best-sellers &mdash; with full-screen lightbox navigation.</p>
+        <div class="ctc-stats">
+          <div><strong>10+</strong><span>Stores</span></div>
+          <div><strong>18+</strong><span>Brands</span></div>
+          <div><strong>2</strong><span>Countries</span></div>
         </div>
-        <div style="position:relative;height:220px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <img src="https://lepearlfashion.com/wp-content/uploads/2021/10/slide-1-alt-min-1024x819.webp" alt="Le Pearl Store" style="width:100%;height:100%;object-fit:cover;border:1px solid rgba(255,255,255,.1)" loading="lazy">
-          <img src="https://lepearlfashion.com/wp-content/uploads/2021/10/kids-fashion-min.webp" alt="Kids Fashion" style="width:100%;height:100%;object-fit:cover;border:1px solid rgba(255,255,255,.1)" loading="lazy">
-        </div>
-      </div>
-      <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2">
-        <div style="font-size:.78rem;color:rgba(255,255,255,.55);letter-spacing:.3px">Store Front &middot; Men&rsquo;s &middot; Kids &middot; Women&rsquo;s &middot; Latest Arrivals &middot; New Collection &middot; Full Range &middot; Seasonal</div>
-        <span style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#c9a84c">Open Gallery &rarr;</span>
+        <div class="ctc-cta">Open Store Gallery &rarr;</div>
       </div>
     </a>
-    <!-- Stores & Brands -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px" class="reveal">
-      <div>
-        <h3 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:16px">&#128205; Store Locations</h3>
-        <div class="stores-row" style="grid-template-columns:repeat(5,1fr)">
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Barka Souq</h5><p>Oman</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Al-Khuwair</h5><p>Muscat</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Grand Mall</h5><p>Muscat</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Araimi Blvd</h5><p>Muscat</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Safeer Mall</h5><p>Sohar</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Nizwa</h5><p>Oman</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Ameerat</h5><p>Oman</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Salalah Mall</h5><p>Salalah</p></div>
-          <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Suwaiq</h5><p>Oman</p></div>
-          <div class="store-card"><div class="sc-flag">&#127462;&#127466;</div><h5>Sahara Centre</h5><p>Sharjah</p></div>
+
+    <a href="catalogues/le-pearl.html" class="reveal corp-teaser-card reverse" style="margin-top:24px">
+      <div class="ctc-img"><img src="lepearl-catalogue/page-01.jpg" alt="Le Pearl Catalogue cover" loading="lazy"></div>
+      <div class="ctc-body">
+        <div class="ctc-tag">Brand Brochure &middot; 16 Pages</div>
+        <h3 class="ctc-title">The <em>Brand Story</em></h3>
+        <p class="ctc-desc">Full company profile &mdash; collections, store locations, brand partnerships, expansion roadmap &amp; investment opportunities across Oman, UAE &amp; KSA.</p>
+        <div class="ctc-stats">
+          <div><strong>16</strong><span>Pages</span></div>
+          <div><strong>3</strong><span>Markets</span></div>
+          <div><strong>Live</strong><span>Catalogue</span></div>
         </div>
+        <div class="ctc-cta">Open Brochure &rarr;</div>
       </div>
-      <div>
-        <h3 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:16px">Brands Stocked <span style="font-size:.68rem;font-weight:500;color:var(--gray-500);letter-spacing:1.5px;text-transform:uppercase;margin-left:8px">Sourced from le-pearl.com</span></h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:20px">
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Minoti"><img src="https://minoti.com/cdn/shop/files/MINOTI_LOGO.svg?v=1758696099&width=799" alt="Minoti" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Dirkje"><img src="https://cdn.webshopapp.com/shops/308966/files/480860568/dirkje-logo-taupe.svg" alt="Dirkje" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Charlie Choe"><img src="https://cdn.webshopapp.com/shops/147536/files/316910503/charlie-choe.svg" alt="Charlie Choe" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Koko Noko"><img src="https://static.webshopapp.com/shops/251177/files/178794020/kokonoko-logo-desktop-tablet.svg" alt="Koko Noko" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Coccodrillo"><img src="https://cdrl.pl/wp-content/uploads/2023/08/coccodrillo_logo_new.png" alt="Coccodrillo" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Quimby"><img src="https://www.b2blocal.cristina.com.br/img/slides/logo/8-quimbykids.png" alt="Quimby" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Up Baby"><img src="https://www.b2blocal.cristina.com.br/img/slides/logo/9-upbaby.png" alt="Up Baby" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Bee Loop"><img src="https://www.b2blocal.cristina.com.br/img/slides/logo/4-beeloop.png" alt="Bee Loop" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Gloss Mini"><img src="https://www.b2blocal.cristina.com.br/img/slides/logo/5-gloss.png" alt="Gloss Mini" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="YOYOSO"><img src="https://www.yoyosolife.com/uploads/202026642/logo202003310900455992378.png" alt="YOYOSO" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Disney"><img src="https://i0.wp.com/lepearlfashion.com/wp-content/uploads/2021/10/Disney-520x370-1.png" alt="Disney" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Marvel"><img src="https://i2.wp.com/lepearlfashion.com/wp-content/uploads/2021/10/MARVEL-520x370-1.png" alt="Marvel" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Hello Kitty"><img src="https://i2.wp.com/lepearlfashion.com/wp-content/uploads/2021/10/HelloKitty-520x370-1.png" alt="Hello Kitty" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="DJ Dutch Jeans"><img src="https://i0.wp.com/lepearlfashion.com/wp-content/uploads/2021/10/DJDUTCHJEANS-520x370-1.png" alt="DJ Dutch Jeans" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:#fff;display:flex;align-items:center;justify-content:center;padding:8px" title="Zane"><img src="https://i1.wp.com/lepearlfashion.com/wp-content/uploads/2021/10/Zane-520x370-1.png" alt="Zane" style="max-height:100%;max-width:100%;object-fit:contain" loading="lazy"></div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:linear-gradient(135deg,#f7f5f0,#fff);display:flex;align-items:center;justify-content:center;padding:8px;font-family:'Playfair Display',serif;font-weight:600;font-size:.78rem;color:var(--primary);letter-spacing:.5px" title="Bentati">BENTATI</div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:linear-gradient(135deg,#f7f5f0,#fff);display:flex;align-items:center;justify-content:center;padding:8px;font-family:'Playfair Display',serif;font-weight:500;font-style:italic;font-size:.78rem;color:var(--primary);letter-spacing:.5px" title="Ira Soleil">Ira&nbsp;Soleil</div>
-          <div style="height:64px;border:1px solid var(--gray-100);background:linear-gradient(135deg,#f7f5f0,#fff);display:flex;align-items:center;justify-content:center;padding:8px;font-family:'Inter',sans-serif;font-weight:700;font-size:.72rem;color:var(--primary);letter-spacing:1.2px;text-align:center" title="Modern Yogis">MODERN<br>YOGIS</div>
-        </div>
-        <div class="social-btns">
-          <a href="https://le-pearl.com" target="_blank" rel="noopener" class="social-btn website">&#127760; le-pearl.com</a>
-          <a href="https://www.instagram.com/lepearlfashion_oman/" target="_blank" rel="noopener" class="social-btn instagram">&#128247; @lepearlfashion_oman</a>
-        </div>
-      </div>
+    </a>
+
+    <!-- Quick links bar -->
+    <div class="reveal" style="margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--gray-100)">
+      <a href="https://le-pearl.com" target="_blank" rel="noopener" class="social-btn website">&#127760; le-pearl.com</a>
+      <a href="https://lepearlfashion.com" target="_blank" rel="noopener" class="social-btn website">&#128722; Shop Online</a>
+      <a href="https://www.instagram.com/lepearlfashion_oman/" target="_blank" rel="noopener" class="social-btn instagram">&#128247; @lepearlfashion_oman</a>
     </div>
   </div>
 </div>
 
-<!-- ===== LE PEARL - CATALOGUE ===== -->
-<div class="gallery-section">
-  <div class="gallery-inner">
-    <div class="section-header reveal">
-      <div>
-        <div class="section-label"><span class="line"></span> <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl" style="height:32px;vertical-align:middle;margin-right:8px"> Le Pearl Fashion</div>
-        <h2 class="section-title">Brand Brochure</h2>
-        <p class="section-subtitle">Le Pearl Fashion company profile &mdash; store locations, collections, brand partnerships, and expansion across Oman, UAE &amp; KSA.</p>
-      </div>
-      <div style="text-align:right">
-        <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--white);padding:4px 12px;border:1px solid var(--gray-100)">&#128218; 16 Pages</span>
-      </div>
-    </div>
-    <div class="gallery-grid compact" id="lpCatalogue">
-      <div class="gallery-item" onclick="window.location.href='catalogues/le-pearl.html'"><img src="lepearl-catalogue/page-01.jpg" alt="Le Pearl Cover" loading="lazy"><div class="gi-overlay"><h4>Le Pearl Fashion Catalogue</h4><p>Men's, Women's &amp; Kids &mdash; floating catalogue experience</p><span class="gi-cta">Open Catalogue <span class="arrow">&rarr;</span></span></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',1)"><img src="lepearl-catalogue/page-02.jpg" alt="About Le Pearl" loading="lazy"><div class="gi-overlay"><div><h4>About Le Pearl</h4><p>Brand Story</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',2)"><img src="lepearl-catalogue/page-03.jpg" alt="Brand Story" loading="lazy"><div class="gi-overlay"><div><h4>Brand Story</h4><p>Heritage &amp; Vision</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',3)"><img src="lepearl-catalogue/page-04.jpg" alt="Collections" loading="lazy"><div class="gi-overlay"><div><h4>Collections</h4><p>Full Range</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',4)"><img src="lepearl-catalogue/page-05.jpg" alt="Men's Range" loading="lazy"><div class="gi-overlay"><div><h4>Men's Range</h4><p>Fashion &amp; Style</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',5)"><img src="lepearl-catalogue/page-06.jpg" alt="Women's Range" loading="lazy"><div class="gi-overlay"><div><h4>Women's Range</h4><p>Fashion &amp; Accessories</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',6)"><img src="lepearl-catalogue/page-07.jpg" alt="Kids Range" loading="lazy"><div class="gi-overlay"><div><h4>Kids Range</h4><p>Boys &amp; Girls</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',7)"><img src="lepearl-catalogue/page-08.jpg" alt="Stores" loading="lazy"><div class="gi-overlay"><div><h4>Store Locations</h4><p>Oman &amp; UAE</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',8)"><img src="lepearl-catalogue/page-09.jpg" alt="Store Interiors" loading="lazy"><div class="gi-overlay"><div><h4>Store Interiors</h4><p>Design &amp; Layout</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',9)"><img src="lepearl-catalogue/page-10.jpg" alt="Brand Partners" loading="lazy"><div class="gi-overlay"><div><h4>Brand Partners</h4><p>International Brands</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',10)"><img src="lepearl-catalogue/page-11.jpg" alt="Growth Journey" loading="lazy"><div class="gi-overlay"><div><h4>Growth Journey</h4><p>Milestones</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',11)"><img src="lepearl-catalogue/page-12.jpg" alt="Expansion" loading="lazy"><div class="gi-overlay"><div><h4>Expansion</h4><p>New Markets</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',12)"><img src="lepearl-catalogue/page-13.jpg" alt="Marketing" loading="lazy"><div class="gi-overlay"><div><h4>Marketing</h4><p>Campaigns</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',13)"><img src="lepearl-catalogue/page-14.jpg" alt="Milestones" loading="lazy"><div class="gi-overlay"><div><h4>Milestones</h4><p>Key Achievements</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',14)"><img src="lepearl-catalogue/page-15.jpg" alt="Contact" loading="lazy"><div class="gi-overlay"><div><h4>Contact</h4><p>Get In Touch</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('lpCatalogue',15)"><img src="lepearl-catalogue/page-16.jpg" alt="Back Cover" loading="lazy"><div class="gi-overlay"><div><h4>Back Cover</h4><p>Le Pearl Fashion</p></div></div><div class="gi-zoom">&#128269;</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== YOYOSO - GALLERY ===== -->
+<!-- ===== YOYOSO (corporate teaser) ===== -->
 <div class="gallery-section" id="yoyoso-section">
   <div class="gallery-inner">
-    <!-- Brand logo block (above heading) -->
+    <!-- Brand logo block -->
     <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
       <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
       <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Master Franchise &middot; Saudi Arabia &middot; 15 Mall Stores</div>
@@ -1113,101 +1190,46 @@ body.has-corp-nav{padding-top:0}
     <div class="section-header reveal">
       <div>
         <div class="section-label"><span class="line"></span> YOYOSO KSA</div>
-        <h2 class="section-title">Master Franchise Agreement &mdash; KSA Signing Ceremony</h2>
-        <p class="section-subtitle">&ldquo;Aesthetics Life Designer Brand&rdquo; &mdash; Strategic cooperation signing for the YOYOSO Master Franchise in Saudi Arabia. 15 mall stores, 5,000+ lifestyle products across the Kingdom.</p>
-      </div>
-      <div style="text-align:right">
-        <div style="display:flex;gap:16px;margin-bottom:12px;justify-content:flex-end;flex-wrap:wrap">
-          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--white);padding:4px 12px;border:1px solid var(--gray-100)">&#127978; 15 Mall Stores</span>
-          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--white);padding:4px 12px;border:1px solid var(--gray-100)">&#128717; 5,000+ Products</span>
-          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--white);padding:4px 12px;border:1px solid var(--gray-100)">2019&ndash;2024</span>
-        </div>
-        <a href="pages/yoyoso-ceremony.html" class="view-all">View Ceremony Page &rarr;</a>
+        <h2 class="section-title">Master Franchise &mdash; <em>KSA Signing</em></h2>
+        <p class="section-subtitle">&ldquo;Aesthetics Life Designer Brand&rdquo; &mdash; strategic cooperation signing for the YOYOSO Master Franchise in Saudi Arabia. 15 mall stores, 5,000+ lifestyle products across the Kingdom.</p>
       </div>
     </div>
-    <div class="gallery-grid compact" id="yoGallery">
-      <div class="gallery-item" onclick="openLightbox('yoGallery',0)"><img src="yoyoso-photos/signing-ceremony-1.jpeg" alt="Saudi Arabia & YOYOSO Strategic Cooperation Signing" loading="lazy"><div class="gi-overlay"><h4>Master Franchise &mdash; KSA Signing Ceremony</h4><p>Strategic Cooperation, YOYOSO HQ China 2019 &mdash; 20 photos</p><span class="gi-cta">View Full Gallery <span class="arrow">&rarr;</span></span></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',1)"><img src="yoyoso-photos/signing-ceremony-2.jpeg" alt="Franchise Agreement Signing" loading="lazy"><div class="gi-overlay"><div><h4>Franchise Agreement</h4><p>Master Franchise KSA Signing</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',2)"><img src="yoyoso-photos/ceremony-stage.jpeg" alt="Signing Ceremony Stage" loading="lazy"><div class="gi-overlay"><div><h4>Ceremony Stage</h4><p>YOYOSO HQ, Yiwu China</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',3)"><img src="yoyoso-photos/audience-applause.jpeg" alt="Audience at Ceremony" loading="lazy"><div class="gi-overlay"><div><h4>Franchise Celebration</h4><p>Team &amp; Partners Applause</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',4)"><img src="yoyoso-photos/yoyoso-spokesman.jpeg" alt="YOYOSO Spokesman" loading="lazy"><div class="gi-overlay"><div><h4>I AM YOYOSO Spokesman</h4><p>Brand Ambassador</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',5)"><img src="yoyoso-photos/contract-signing.jpeg" alt="Contract Signing Meeting" loading="lazy"><div class="gi-overlay"><div><h4>Contract Signing</h4><p>Private Meeting, YOYOSO Office</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',6)"><img src="yoyoso-photos/ceremony-wide.jpeg" alt="Full Stage Ceremony View" loading="lazy"><div class="gi-overlay"><div><h4>Grand Ceremony</h4><p>Strategic Cooperation Signing</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',7)"><img src="yoyoso-photos/ceremony-celebration.jpeg" alt="Celebration at Ceremony" loading="lazy"><div class="gi-overlay"><div><h4>Celebration</h4><p>Saudi Arabia Signing Event</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',8)"><img src="yoyoso-photos/ceremony-signing-table.jpeg" alt="Signing Table" loading="lazy"><div class="gi-overlay"><div><h4>Signing Table</h4><p>Official Documentation</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',9)"><img src="yoyoso-photos/ceremony-team-photo.jpeg" alt="Team Photo at Ceremony" loading="lazy"><div class="gi-overlay"><div><h4>Team Photo</h4><p>YOYOSO &amp; KSA Partners</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',10)"><img src="yoyoso-photos/contract-meeting.jpeg" alt="Contract Meeting" loading="lazy"><div class="gi-overlay"><div><h4>Contract Meeting</h4><p>Pre-Signing Discussion</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',11)"><img src="yoyoso-photos/signing-closeup.jpeg" alt="Signing Close-up" loading="lazy"><div class="gi-overlay"><div><h4>Signing Close-up</h4><p>Pen to Paper Moment</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',12)"><img src="yoyoso-photos/5182a495-348f-49fe-bce9-30fb7ec56a8c.jpeg" alt="Ceremony Moment" loading="lazy"><div class="gi-overlay"><div><h4>Ceremony Moment</h4><p>Official Handover</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',13)"><img src="yoyoso-photos/5200bc64-6b7f-431b-94a9-c5611a1389f8.jpeg" alt="Event Coverage" loading="lazy"><div class="gi-overlay"><div><h4>Event Coverage</h4><p>Signing Ceremony</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',14)"><img src="yoyoso-photos/7ccff4a8-8a2f-4845-a926-fbc846e00971.jpeg" alt="Ceremony Highlight" loading="lazy"><div class="gi-overlay"><div><h4>Ceremony Highlight</h4><p>Partnership Sealed</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',15)"><img src="yoyoso-photos/a86768ec-49a7-4574-ad96-7985385b77a9.jpeg" alt="Ceremony Scene" loading="lazy"><div class="gi-overlay"><div><h4>Ceremony Scene</h4><p>Stage Event</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',16)"><img src="yoyoso-photos/deeb825e-c2d2-4274-b263-5708dea256a9.jpeg" alt="Ceremony Image" loading="lazy"><div class="gi-overlay"><div><h4>Ceremony Image</h4><p>Official Event</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',17)"><img src="yoyoso-photos/e34db5a4-403a-44d4-a02c-7d6f1b248d9e.jpeg" alt="Event Photo" loading="lazy"><div class="gi-overlay"><div><h4>Event Photo</h4><p>YOYOSO Yiwu HQ</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',18)"><img src="yoyoso-photos/e6d54939-e7e3-45b5-a7ac-20cff0c1ba8e.jpeg" alt="Ceremony Shot" loading="lazy"><div class="gi-overlay"><div><h4>Ceremony Shot</h4><p>Franchise Event</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoGallery',19)"><img src="yoyoso-photos/f9168708-b372-4ca8-b653-f0d12fe6c18a.jpeg" alt="Signing Event" loading="lazy"><div class="gi-overlay"><div><h4>Signing Event</h4><p>KSA Master Franchise</p></div></div><div class="gi-zoom">&#128269;</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px" class="reveal">
-      <div>
-        <h3 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:16px">&#128205; KSA Mall Locations (15 Stores)</h3>
-        <div class="stores-row" style="grid-template-columns:repeat(5,1fr)">
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Jeddah</h5><p>June 2019</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Medina</h5><p>June 2019</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Tera Mall, Taif</h5><p>Aug 2019</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Riyadh</h5><p>Mall Locations</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Dammam</h5><p>Eastern Province</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Makkah</h5><p>Makkah Region</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Khobar</h5><p>Eastern Province</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Abha</h5><p>Southern Region</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Tabuk</h5><p>Northern Region</p></div>
-          <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>+6 More</h5><p>Across KSA</p></div>
-        </div>
-      </div>
-      <div>
-        <h3 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:16px">Connect</h3>
-        <div class="social-btns">
-          <a href="https://www.instagram.com/yoyoso.sa/" target="_blank" class="social-btn instagram">&#128247; @yoyoso.sa</a>
-          <a href="https://www.instagram.com/yoyosome/" target="_blank" class="social-btn instagram">&#128247; @yoyosome GCC</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== YOYOSO FRANCHISE CATALOGUE ===== -->
-<div class="gallery-section" style="background:var(--white)">
-  <div class="gallery-inner">
-    <div class="section-header reveal">
-      <div>
-        <div class="section-label"><span class="line"></span> <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="height:32px;vertical-align:middle;margin-right:8px"> YOYOSO Franchise</div>
-        <h2 class="section-title">Franchise Catalogue</h2>
-        <p class="section-subtitle">Complete franchise investment guide designed by Savitha &mdash; brand overview, store concepts, product categories, investment model &amp; ROI projections for YOYOSO Saudi Arabia.</p>
-      </div>
-      <div style="text-align:right">
-        <div style="display:flex;gap:16px;margin-bottom:8px">
-          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#128218; 16 Pages</span>
-          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#127978; Franchise Model</span>
-          <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:4px 12px;border:1px solid var(--gray-100)">&#127480;&#127462; KSA Market</span>
+    <!-- Two corporate teaser cards: Signing Ceremony + Franchise Catalogue -->
+    <a href="pages/yoyoso-ceremony.html" class="reveal corp-teaser-card">
+      <div class="ctc-img"><img src="yoyoso-photos/signing-ceremony-1.jpeg" alt="YOYOSO KSA signing ceremony" loading="lazy"></div>
+      <div class="ctc-body">
+        <div class="ctc-tag">Signing Ceremony &middot; 20 Photos</div>
+        <h3 class="ctc-title">The <em>Yiwu Ceremony</em></h3>
+        <p class="ctc-desc">Strategic cooperation signing at YOYOSO HQ in Yiwu, China &mdash; the moment the KSA Master Franchise was sealed. Full photo essay with stage, contract &amp; team shots.</p>
+        <div class="ctc-stats">
+          <div><strong>20</strong><span>Photos</span></div>
+          <div><strong>2019</strong><span>Sealed</span></div>
+          <div><strong>15</strong><span>Stores Live</span></div>
         </div>
+        <div class="ctc-cta">View Ceremony Gallery &rarr;</div>
       </div>
-    </div>
-    <div class="gallery-grid compact" id="yoCatalogue">
-      <div class="gallery-item" onclick="window.location.href='catalogues/yoyoso.html'"><img src="yoyoso-catalogue/page-01.jpg" alt="YOYOSO Catalogue Cover" loading="lazy"><div class="gi-overlay"><h4>YOYOSO Franchise Catalogue</h4><p>KSA Master Franchise &mdash; floating catalogue experience</p><span class="gi-cta">Open Catalogue <span class="arrow">&rarr;</span></span></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',1)"><img src="yoyoso-catalogue/page-02.jpg" alt="Brand Introduction" loading="lazy"><div class="gi-overlay"><div><h4>Brand Introduction</h4><p>About YOYOSO</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',2)"><img src="yoyoso-catalogue/page-03.jpg" alt="Brand Story" loading="lazy"><div class="gi-overlay"><div><h4>Brand Story</h4><p>Heritage &amp; Vision</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',3)"><img src="yoyoso-catalogue/page-04.jpg" alt="Global Presence" loading="lazy"><div class="gi-overlay"><div><h4>Global Presence</h4><p>Worldwide Operations</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',4)"><img src="yoyoso-catalogue/page-05.jpg" alt="Product Categories" loading="lazy"><div class="gi-overlay"><div><h4>Product Categories</h4><p>5,000+ Products</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',5)"><img src="yoyoso-catalogue/page-06.jpg" alt="Store Concept" loading="lazy"><div class="gi-overlay"><div><h4>Store Concept</h4><p>Design &amp; Layout</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',6)"><img src="yoyoso-catalogue/page-07.jpg" alt="Store Layout" loading="lazy"><div class="gi-overlay"><div><h4>Store Layout</h4><p>Visual Merchandising</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',7)"><img src="yoyoso-catalogue/page-08.jpg" alt="Investment Model" loading="lazy"><div class="gi-overlay"><div><h4>Investment Model</h4><p>Financial Overview</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',8)"><img src="yoyoso-catalogue/page-09.jpg" alt="Franchise Benefits" loading="lazy"><div class="gi-overlay"><div><h4>Franchise Benefits</h4><p>Partner Advantages</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',9)"><img src="yoyoso-catalogue/page-10.jpg" alt="Revenue Projections" loading="lazy"><div class="gi-overlay"><div><h4>Revenue Projections</h4><p>3-Year Forecast</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',10)"><img src="yoyoso-catalogue/page-11.jpg" alt="Support System" loading="lazy"><div class="gi-overlay"><div><h4>Support System</h4><p>HQ Training</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',11)"><img src="yoyoso-catalogue/page-12.jpg" alt="Training Program" loading="lazy"><div class="gi-overlay"><div><h4>Training Program</h4><p>Staff Development</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',12)"><img src="yoyoso-catalogue/page-13.jpg" alt="Marketing Strategy" loading="lazy"><div class="gi-overlay"><div><h4>Marketing Strategy</h4><p>Brand Campaigns</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',13)"><img src="yoyoso-catalogue/page-14.jpg" alt="Operations Guide" loading="lazy"><div class="gi-overlay"><div><h4>Operations Guide</h4><p>Daily Management</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',14)"><img src="yoyoso-catalogue/page-15.jpg" alt="Partnership Terms" loading="lazy"><div class="gi-overlay"><div><h4>Partnership Terms</h4><p>Agreement Details</p></div></div><div class="gi-zoom">&#128269;</div></div>
-      <div class="gallery-item" onclick="openLightbox('yoCatalogue',15)"><img src="yoyoso-catalogue/page-16.jpg" alt="Contact" loading="lazy"><div class="gi-overlay"><div><h4>Contact &amp; Next Steps</h4><p>Get Started</p></div></div><div class="gi-zoom">&#128269;</div></div>
+    </a>
+
+    <a href="catalogues/yoyoso.html" class="reveal corp-teaser-card reverse" style="margin-top:24px">
+      <div class="ctc-img"><img src="yoyoso-catalogue/page-01.jpg" alt="YOYOSO Franchise Catalogue cover" loading="lazy"></div>
+      <div class="ctc-body">
+        <div class="ctc-tag">Franchise Catalogue &middot; 16 Pages</div>
+        <h3 class="ctc-title">The <em>Franchise Pitch</em></h3>
+        <p class="ctc-desc">Investor-ready franchise guide &mdash; brand overview, store concepts, product categories, investment model &amp; ROI projections for YOYOSO KSA. Designed by Savitha.</p>
+        <div class="ctc-stats">
+          <div><strong>16</strong><span>Pages</span></div>
+          <div><strong>5,000<em>+</em></strong><span>Products</span></div>
+          <div><strong>KSA</strong><span>Market</span></div>
+        </div>
+        <div class="ctc-cta">Open Franchise Catalogue &rarr;</div>
+      </div>
+    </a>
+
+    <!-- Quick links bar -->
+    <div class="reveal" style="margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--gray-100)">
+      <a href="https://www.instagram.com/yoyoso.sa/" target="_blank" rel="noopener" class="social-btn instagram">&#128247; @yoyoso.sa</a>
+      <a href="https://www.instagram.com/yoyosome/" target="_blank" rel="noopener" class="social-btn instagram">&#128247; @yoyosome GCC</a>
     </div>
   </div>
 </div>
@@ -1288,8 +1310,58 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
-<!-- AI Implementation Case History removed — duplicated content of live Reports section below -->
+<!-- ============ INSIGHTS / BLOG CARDS (Tata Elxsi style) ============ -->
+<section id="insights" style="background:var(--white);padding:96px 0">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> Insights &amp; Lean Forward</div>
+        <h2 class="section-title">Latest <em>thinking</em></h2>
+        <p class="section-subtitle">Field notes, build journals &amp; perspectives from 37 years of GCC retail and three years building AI-native ventures.</p>
+      </div>
+      <a href="#blog" class="view-all">All Insights &rarr;</a>
+    </div>
 
+    <div class="insights-grid reveal">
+      <a href="pages/tech/homeland.html" class="insight-card">
+        <div class="insight-thumb" style="background:linear-gradient(135deg,#0a1628,#152238)">
+          <span class="insight-thumb-tag">Case Study</span>
+          <span class="insight-thumb-emoji">&#127968;</span>
+        </div>
+        <div class="insight-body">
+          <div class="insight-meta">PropTech &middot; UAE &middot; 8 min read</div>
+          <h3 class="insight-title">How we automated a UAE real-estate platform end-to-end</h3>
+          <p class="insight-desc">Five AI pipelines, seven live modules &amp; a brand under NDA &mdash; the behind-the-scenes build for Codename: Skyline.</p>
+          <div class="insight-link">Read Case Study &rarr;</div>
+        </div>
+      </a>
+      <a href="pages/tech/stackbirds.html" class="insight-card">
+        <div class="insight-thumb" style="background:linear-gradient(135deg,#a8872e,#c9a84c)">
+          <span class="insight-thumb-tag">Build Note</span>
+          <span class="insight-thumb-emoji">&#128038;</span>
+        </div>
+        <div class="insight-body">
+          <div class="insight-meta">AI Agents &middot; Launching 2026 &middot; 6 min read</div>
+          <h3 class="insight-title">Why Gulf SMEs need agents that learn, not prompts</h3>
+          <p class="insight-desc">The thinking behind Stackbirds &mdash; show the bird once, it handles the rest. No prompt engineering, no consultants.</p>
+          <div class="insight-link">Read Build Note &rarr;</div>
+        </div>
+      </a>
+      <a href="pages/reports.html" class="insight-card">
+        <div class="insight-thumb" style="background:linear-gradient(135deg,#1565c0,#0d47a1)">
+          <span class="insight-thumb-tag">Field Notes</span>
+          <span class="insight-thumb-emoji">&#128202;</span>
+        </div>
+        <div class="insight-body">
+          <div class="insight-meta">AI &amp; Reports &middot; 8 industries &middot; 5 min read</div>
+          <h3 class="insight-title">28 feasibility studies in 18 months &mdash; what we learned</h3>
+          <p class="insight-desc">Patterns across retail, F&amp;B, salon, franchise, health, e-commerce, real estate &amp; more &mdash; and what AI changed about the work.</p>
+          <div class="insight-link">Open Library &rarr;</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- INDUSTRY EXPERTISE & AI REPORTS -->
 <section id="ai-creations" style="background:var(--white)">
