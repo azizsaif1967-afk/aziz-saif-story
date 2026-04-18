@@ -3,18 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Homeland AE — Tech Stack &amp; Build Notes | Aziz Saif</title>
-<meta name="description" content="Technology stack and build approach for homeland-ae.xyz — Real Estate &middot; UAE Property Listings.">
+<title>Codename Skyline — Behind the Scenes: AI Automation for UAE Real Estate | Aziz Saif</title>
+<meta name="description" content="Behind-the-scenes look at how a UAE real estate platform was built end-to-end with AI automation. Stack, automations, what's live and what's pending.">
+<meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="_tech.css">
+<style>
+  .stealth-banner{background:linear-gradient(135deg,#0a1628,#152238);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:18px 22px;color:rgba(255,255,255,.85);font-size:.78rem;display:flex;align-items:center;gap:14px;margin:0 auto 28px;max-width:760px}
+  .stealth-banner .lock{font-size:1.2rem;color:var(--accent)}
+  .stealth-banner strong{color:#fff;font-weight:700}
+  .pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+  .pipe-step{background:#fff;border:1px solid var(--gray-100);border-radius:8px;padding:20px;position:relative}
+  .pipe-step::after{content:'\2192';position:absolute;right:-18px;top:50%;transform:translateY(-50%);font-size:1.6rem;color:var(--accent);z-index:2}
+  .pipe-step:last-child::after{display:none}
+  .pipe-num{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--accent-dark);font-weight:600;margin-bottom:6px}
+  .pipe-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--primary);font-weight:600;margin-bottom:6px;line-height:1.2}
+  .pipe-desc{font-size:.74rem;color:var(--gray-600);line-height:1.55}
+  .pipe-tools{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px}
+  .pipe-tools span{font-size:.6rem;background:var(--off-white);color:var(--gray-700);padding:3px 8px;border-radius:3px;border:1px solid var(--gray-100);font-weight:600}
+
+  .status-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+  .status-col{background:#fff;border:1px solid var(--gray-100);border-radius:8px;padding:24px}
+  .status-col.live{border-left:3px solid var(--green)}
+  .status-col.pending{border-left:3px solid var(--accent)}
+  .status-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--gray-100)}
+  .status-dot{width:10px;height:10px;border-radius:50%}
+  .status-dot.live{background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.15)}
+  .status-dot.pending{background:var(--accent);box-shadow:0 0 0 3px rgba(201,168,76,.18);animation:cu-pulse 1.8s infinite}
+  @keyframes cu-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .status-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--primary);font-weight:600}
+  .status-head .count{margin-left:auto;font-size:.66rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500)}
+  .status-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .status-list li{display:flex;align-items:start;gap:10px;font-size:.82rem;color:var(--gray-700);line-height:1.5;padding:10px 0;border-bottom:1px dashed var(--gray-100)}
+  .status-list li:last-child{border-bottom:none}
+  .status-list li::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:8px}
+  .status-col.live li::before{background:var(--green)}
+  .status-col.pending li::before{background:var(--accent)}
+  .status-list strong{display:block;color:var(--primary);font-weight:600;font-size:.86rem;margin-bottom:2px}
+  .status-list span{color:var(--gray-500);font-size:.74rem}
+
+  @media (max-width:780px){
+    .pipe-step::after{display:none}
+    .status-grid{grid-template-columns:1fr}
+  }
+</style>
 </head>
 <body>
 
 <div class="t-utility">
   <div class="t-utility-inner">
-    <div class="t-utility-left"><span class="t-utility-tag">Aziz Saif &middot; Tech Notes</span></div>
+    <div class="t-utility-left"><span class="t-utility-tag">Aziz Saif &middot; Behind The Scenes</span></div>
     <div class="t-utility-right">
       <a href="../../index.html#portfolio">All Websites</a>
       <a href="../../index.html#contact">Contact</a>
@@ -45,65 +85,119 @@
     <span class="t-breadcrumb-sep">&rsaquo;</span>
     <a href="../../index.html#portfolio">Websites Built</a>
     <span class="t-breadcrumb-sep">&rsaquo;</span>
-    <span style="color:var(--gray-700);font-weight:600">Homeland AE</span>
+    <span style="color:var(--gray-700);font-weight:600">Codename: Skyline</span>
   </div>
 </div>
 
 <header class="t-hero">
   <div class="t-hero-inner">
     <div>
-      <div class="t-hero-tag">Real Estate &middot; UAE Property Listings</div>
-      <h1>Homeland <em>AE</em></h1>
-      <div class="t-hero-domain">homeland-ae.xyz</div>
-      <p class="t-hero-desc">A UAE property listings platform &mdash; rental &amp; sale listings, agent profiles &amp; lead capture, designed for both individual seekers &amp; investors.</p>
+      <div class="t-hero-tag" style="color:var(--accent)">&#128274; Confidential Build &middot; Under NDA</div>
+      <h1>Codename: <em>Skyline</em></h1>
+      <div class="t-hero-domain">UAE Real Estate Platform &middot; domain ghosted</div>
+      <p class="t-hero-desc">A full property listings &amp; agent CRM platform for the UAE market &mdash; built end-to-end with deep AI automation across listings ingestion, lead routing, agent workflows &amp; market analytics. The brand stays under wraps; the build approach is open.</p>
       <div class="t-hero-meta">
-        <div class="t-hero-meta-item"><span class="t-hero-meta-label">Industry</span><span class="t-hero-meta-val">Real Estate &middot; Listings</span></div>
-        <div class="t-hero-meta-item"><span class="t-hero-meta-label">Build Time</span><span class="t-hero-meta-val">5 days</span></div>
-        <div class="t-hero-meta-item"><span class="t-hero-meta-label">Status</span><span class="t-hero-meta-val" style="color:var(--accent)">&#9679; Live</span></div>
+        <div class="t-hero-meta-item"><span class="t-hero-meta-label">Industry</span><span class="t-hero-meta-val">Real Estate &middot; PropTech</span></div>
+        <div class="t-hero-meta-item"><span class="t-hero-meta-label">Build Approach</span><span class="t-hero-meta-val">AI-First Automation</span></div>
+        <div class="t-hero-meta-item"><span class="t-hero-meta-label">Status</span><span class="t-hero-meta-val" style="color:var(--accent)">&#9679; Active Build</span></div>
       </div>
     </div>
-    <div class="t-hero-thumb">
-      <img src="../../portfolio-thumbs/homeland-ae.jpg" alt="Homeland AE screenshot" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--accent-dark),var(--accent))'">
+    <div class="t-hero-thumb" style="background:linear-gradient(135deg,#0a1628,#152238);display:flex;align-items:center;justify-content:center">
+      <div style="text-align:center;color:#fff;padding:24px">
+        <div style="font-size:3rem;margin-bottom:8px">&#127968;</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--accent);margin-bottom:6px">Skyline</div>
+        <div style="font-size:.66rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:700">Stealth Mode</div>
+      </div>
     </div>
   </div>
 </header>
 
 <section class="t-section">
   <div class="t-section-inner">
-    <div class="t-section-label">Technology Stack</div>
-    <h2>Built with the <em>essentials</em></h2>
-    <p class="t-section-lead">HTML5, CSS Grid listing cards, vanilla JavaScript filters &amp; map preview, web forms for lead capture. Hosted on GitHub Pages. Lean by design, fast to ship, easy to maintain.</p>
+    <div class="stealth-banner">
+      <span class="lock">&#128274;</span>
+      <div>The brand name &amp; live URL stay <strong>confidential under NDA</strong> until the public launch. Below is the full automation breakdown &mdash; how the platform was built, what&rsquo;s live, what&rsquo;s pending. Full project status is tracked in <a href="https://manus.im/share/file/4422b627-020a-40f3-99fd-fd77fd450e35" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">our Manus workspace</a>.</div>
+    </div>
+  </div>
+</section>
+
+<section class="t-section alt">
+  <div class="t-section-inner">
+    <div class="t-section-label">The Automation Pipeline</div>
+    <h2>How <em>AI runs</em> the platform end-to-end</h2>
+    <p class="t-section-lead">Five automation pipelines feed each other &mdash; listings flow in, leads flow out, agents stay in sync. The platform runs largely without human intervention day-to-day.</p>
+
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-num">01</div>
+        <div class="pipe-title">Listings Ingestion</div>
+        <div class="pipe-desc">Property feeds scraped from broker sources, normalised &amp; auto-tagged by location, price band &amp; type.</div>
+        <div class="pipe-tools"><span>Manus</span><span>Claude</span><span>Cron</span></div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">02</div>
+        <div class="pipe-title">AI Enrichment</div>
+        <div class="pipe-desc">Each listing gets AI-generated copy, suggested pricing band, neighbourhood profile &amp; SEO meta &mdash; in seconds.</div>
+        <div class="pipe-tools"><span>Claude</span><span>GPT-4</span><span>Vision</span></div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">03</div>
+        <div class="pipe-title">Search &amp; Match</div>
+        <div class="pipe-desc">Semantic search lets buyers describe what they want in natural language &mdash; AI maps to filters &amp; ranks results.</div>
+        <div class="pipe-tools"><span>Supabase</span><span>pgvector</span><span>Embeddings</span></div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">04</div>
+        <div class="pipe-title">Lead Routing</div>
+        <div class="pipe-desc">Inbound inquiry triggers an AI qualifier &mdash; budget, timeline, area &mdash; then routes to the right agent via WhatsApp.</div>
+        <div class="pipe-tools"><span>Twilio</span><span>WhatsApp</span><span>Claude</span></div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">05</div>
+        <div class="pipe-title">Agent Workflow</div>
+        <div class="pipe-desc">Agents get a daily AI-generated digest: hot leads, follow-up reminders &amp; market shifts &mdash; delivered before 8am.</div>
+        <div class="pipe-tools"><span>Resend</span><span>Cron</span><span>Claude</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="t-section">
+  <div class="t-section-inner">
+    <div class="t-section-label">Stack Behind the Scenes</div>
+    <h2>What it&rsquo;s <em>built on</em></h2>
+    <p class="t-section-lead">Modern, lean, AI-native. Every layer chosen for speed of iteration over enterprise complexity.</p>
 
     <div class="tech-grid">
       <div class="tech-card">
         <div class="tech-card-tag">Frontend</div>
-        <div class="tech-card-name">HTML5 + CSS3</div>
-        <div class="tech-card-desc">Semantic markup with custom CSS variables. Mobile-first responsive design.</div>
+        <div class="tech-card-name">Next.js 14 + Tailwind</div>
+        <div class="tech-card-desc">App Router, React Server Components for fast, SEO-friendly listing pages.</div>
       </div>
       <div class="tech-card">
-        <div class="tech-card-tag">Interactions</div>
-        <div class="tech-card-name">Vanilla JavaScript</div>
-        <div class="tech-card-desc">Lightweight ES6+ for interactions &mdash; no framework overhead.</div>
+        <div class="tech-card-tag">Database</div>
+        <div class="tech-card-name">Supabase (Postgres)</div>
+        <div class="tech-card-desc">Postgres + pgvector for semantic search, Row Level Security for agent &amp; admin separation.</div>
       </div>
       <div class="tech-card">
-        <div class="tech-card-tag">Typography</div>
-        <div class="tech-card-name">Google Fonts</div>
-        <div class="tech-card-desc">Curated font pairing for brand voice &amp; readability across devices.</div>
+        <div class="tech-card-tag">AI Engine</div>
+        <div class="tech-card-name">Claude + GPT-4 Vision</div>
+        <div class="tech-card-desc">Claude for copy, classification &amp; lead qualification. GPT-4 Vision for floor plan analysis.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Automation</div>
+        <div class="tech-card-name">Manus + Cron</div>
+        <div class="tech-card-desc">Manus orchestrates multi-step automations (scrape &rarr; enrich &rarr; publish). Cron triggers daily digests.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Messaging</div>
+        <div class="tech-card-name">Twilio WhatsApp + Resend</div>
+        <div class="tech-card-desc">WhatsApp for buyer &amp; agent comms, Resend for transactional &amp; marketing email.</div>
       </div>
       <div class="tech-card">
         <div class="tech-card-tag">Hosting</div>
-        <div class="tech-card-name">GitHub Pages / Vercel</div>
-        <div class="tech-card-desc">Free, fast, global CDN. Deployment via git push.</div>
-      </div>
-      <div class="tech-card">
-        <div class="tech-card-tag">Forms / Booking</div>
-        <div class="tech-card-name">Calendly + Web Forms</div>
-        <div class="tech-card-desc">Embedded scheduling &amp; lead capture wired into the contact flow.</div>
-      </div>
-      <div class="tech-card">
-        <div class="tech-card-tag">SEO</div>
-        <div class="tech-card-name">Schema.org + Open Graph</div>
-        <div class="tech-card-desc">Structured data for rich search results &amp; social media previews.</div>
+        <div class="tech-card-name">Vercel + CDN</div>
+        <div class="tech-card-desc">Edge functions for instant page loads across UAE, MENA &amp; expat source markets.</div>
       </div>
     </div>
   </div>
@@ -111,68 +205,75 @@
 
 <section class="t-section alt">
   <div class="t-section-inner">
-    <div class="t-section-label">Build Process</div>
-    <h2>From brief to <em>live URL</em></h2>
-    <p class="t-section-lead">A repeatable process that ships sites in days, not months.</p>
+    <div class="t-section-label">Build Status</div>
+    <h2>What&rsquo;s <em>live</em> &middot; What&rsquo;s pending</h2>
+    <p class="t-section-lead">Tracked in our <a href="https://manus.im/share/file/4422b627-020a-40f3-99fd-fd77fd450e35" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:600">Manus project workspace</a>. Snapshot of the major modules below.</p>
 
-    <div class="build-steps">
-      <div class="build-step">
-        <h4>Brief &amp; competitor scan</h4>
-        <p>Capture the company story, target customer, key services &amp; competitive landscape.</p>
+    <div class="status-grid">
+      <div class="status-col live">
+        <div class="status-head">
+          <span class="status-dot live"></span>
+          <h3>Built &amp; Live</h3>
+          <span class="count">Shipped</span>
+        </div>
+        <ul class="status-list">
+          <li><div><strong>Listings ingestion pipeline</strong><span>Scrapes &amp; normalises broker feeds nightly</span></div></li>
+          <li><div><strong>AI listing copy generation</strong><span>Claude writes copy, neighbourhood profile &amp; SEO meta</span></div></li>
+          <li><div><strong>Filter-first search UI</strong><span>Area, type, price, beds &mdash; instant results, no reload</span></div></li>
+          <li><div><strong>Listing detail pages</strong><span>Full property pages with images, map preview &amp; agent contact</span></div></li>
+          <li><div><strong>Inquiry capture &amp; routing</strong><span>Inbound forms route to agents via WhatsApp + email</span></div></li>
+          <li><div><strong>Agent profile pages</strong><span>Each agent gets a profile with specialties, areas &amp; lead form</span></div></li>
+          <li><div><strong>Daily agent digest</strong><span>AI-summarised hot leads &amp; follow-ups before 8am</span></div></li>
+        </ul>
       </div>
-      <div class="build-step">
-        <h4>Content extraction &amp; copy</h4>
-        <p>Convert existing brand assets, brochures &amp; messaging into web-ready copy &amp; imagery.</p>
-      </div>
-      <div class="build-step">
-        <h4>Design tokens &amp; system</h4>
-        <p>Establish colour palette, typography scale &amp; spacing rhythm before writing HTML.</p>
-      </div>
-      <div class="build-step">
-        <h4>Build &amp; mobile-first responsive</h4>
-        <p>Hand-coded with mobile-first breakpoints. Tested on real devices.</p>
-      </div>
-      <div class="build-step">
-        <h4>Deploy &amp; analytics</h4>
-        <p>Push to production with CDN, custom domain, SSL &amp; Google Analytics 4.</p>
+      <div class="status-col pending">
+        <div class="status-head">
+          <span class="status-dot pending"></span>
+          <h3>Pending / In Progress</h3>
+          <span class="count">In Build</span>
+        </div>
+        <ul class="status-list">
+          <li><div><strong>Semantic NL search</strong><span>&ldquo;3-bed near a metro station, garden, under 1.8M&rdquo; &rarr; results</span></div></li>
+          <li><div><strong>WhatsApp AI lead qualifier</strong><span>Pre-qualifies buyers via chat before agent handover</span></div></li>
+          <li><div><strong>Floor plan vision analysis</strong><span>GPT-4 Vision auto-extracts beds, baths &amp; layout from PDFs</span></div></li>
+          <li><div><strong>Buyer &amp; investor accounts</strong><span>Saved searches, alerts &amp; viewing history</span></div></li>
+          <li><div><strong>Mortgage calculator + bank API</strong><span>Live UAE mortgage rates &amp; pre-approval flow</span></div></li>
+          <li><div><strong>Arabic translation pipeline</strong><span>Bilingual listings &mdash; AI-generated EN/AR with QA pass</span></div></li>
+          <li><div><strong>Public launch &amp; brand reveal</strong><span>Going live to general audience &mdash; date TBD</span></div></li>
+        </ul>
       </div>
     </div>
 
-    <div class="stats-row">
-      <div><div class="stat-num">5 days</div><div class="stat-label">Build Time</div></div>
-      <div><div class="stat-num">0</div><div class="stat-label">Frameworks</div></div>
-      <div><div class="stat-num">100<em>%</em></div><div class="stat-label">Hand-Coded</div></div>
-      <div><div class="stat-num">A<em>+</em></div><div class="stat-label">Lighthouse</div></div>
+    <div class="stats-row" style="margin-top:32px">
+      <div><div class="stat-num">7</div><div class="stat-label">Modules Live</div></div>
+      <div><div class="stat-num">7</div><div class="stat-label">In Build</div></div>
+      <div><div class="stat-num">5</div><div class="stat-label">AI Pipelines</div></div>
+      <div><div class="stat-num">100<em>%</em></div><div class="stat-label">Automated Ingestion</div></div>
     </div>
   </div>
 </section>
 
 <section class="t-section">
   <div class="t-section-inner">
-    <div class="t-section-label">Notable Features</div>
-    <h2>What makes this <em>site work</em></h2>
-    <p class="t-section-lead">Specific design decisions that make the experience memorable &amp; conversion-focused.</p>
+    <div class="t-section-label">Lessons From The Build</div>
+    <h2>What this project <em>taught us</em></h2>
+    <p class="t-section-lead">Three principles that shape how we build AI-first products for the GCC.</p>
 
     <div class="tech-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
       <div class="tech-card">
-        <div class="tech-card-tag">Feature</div>
-        <div class="tech-card-name">Filter-First Search</div>
-        <div class="tech-card-desc">Filters by area, price, type, bedrooms &mdash; surfaces matching listings instantly without page reloads.</div>
+        <div class="tech-card-tag">Lesson 01</div>
+        <div class="tech-card-name">Automate the boring 80%</div>
+        <div class="tech-card-desc">Listing copy, classification, photo tagging &mdash; all things an agent shouldn&rsquo;t spend time on. AI handles them in seconds, agents stay focused on closing deals.</div>
       </div>
       <div class="tech-card">
-        <div class="tech-card-tag">Feature</div>
-        <div class="tech-card-name">Map Preview Cards</div>
-        <div class="tech-card-desc">Each listing card has a map preview thumbnail &mdash; cuts time-to-decision dramatically.</div>
+        <div class="tech-card-tag">Lesson 02</div>
+        <div class="tech-card-name">WhatsApp is the UI</div>
+        <div class="tech-card-desc">In the UAE, buyers &amp; agents transact on WhatsApp. Building a pretty webapp without WhatsApp-first comms is building for the wrong reality.</div>
       </div>
       <div class="tech-card">
-        <div class="tech-card-tag">Feature</div>
-        <div class="tech-card-name">Agent Profiles</div>
-        <div class="tech-card-desc">Direct contact details for the listing agent &mdash; no middleman platform fees, transparent pricing.</div>
-      </div>
-      <div class="tech-card">
-        <div class="tech-card-tag">Feature</div>
-        <div class="tech-card-name">Lead Capture</div>
-        <div class="tech-card-desc">Inquiry forms embedded on every listing &mdash; routed instantly to the assigned agent via email.</div>
+        <div class="tech-card-tag">Lesson 03</div>
+        <div class="tech-card-name">Manus runs the loops</div>
+        <div class="tech-card-desc">Multi-step automations (scrape &rarr; enrich &rarr; publish &rarr; notify) are exactly what Manus is built for. We orchestrate, AI does the work.</div>
       </div>
     </div>
   </div>
@@ -180,15 +281,16 @@
 
 <section class="t-final-cta">
   <div class="t-section-inner">
-    <h2>See it <em>live</em></h2>
-    <p>Open the production site to experience the design, content &amp; interactions firsthand.</p>
-    <a href="https://homeland-ae.xyz" target="_blank" rel="noopener" class="t-final-cta-btn">Visit homeland-ae.xyz &rarr;</a>
+    <h2>See the <em>full project status</em></h2>
+    <p>The brand name &amp; live URL stay confidential, but the full build tracker (modules, automations, pending work) is open in our Manus workspace.</p>
+    <a href="https://manus.im/share/file/4422b627-020a-40f3-99fd-fd77fd450e35" target="_blank" rel="noopener" class="t-final-cta-btn">Open Manus Project Tracker &rarr;</a>
+    <div style="margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:.5px">Want to build something similar for your business? <a href="../../index.html#book" style="color:var(--accent);font-weight:600">Book a call</a> with Aziz.</div>
   </div>
 </section>
 
 <footer class="t-footer">
   <div class="t-section-inner">
-    <p>&copy; 2026 Aziz Saif &middot; Built end-to-end by <a href="../../index.html">azizsaif.com</a> &middot; <a href="../../index.html#portfolio">View All Websites &rarr;</a></p>
+    <p>&copy; 2026 Aziz Saif &middot; Behind-the-scenes build by <a href="../../index.html">azizsaif.com</a> &middot; <a href="../../index.html#portfolio">View All Websites &rarr;</a></p>
   </div>
 </footer>
 
