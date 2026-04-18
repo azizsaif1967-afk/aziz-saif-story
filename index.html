@@ -474,35 +474,286 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
   .chatbot-window{width:calc(100vw - 24px);right:12px;bottom:120px}
   .hero-carousel{height:320px}
 }
+
+/* ============ NEW CORPORATE NAV (Tata-Elxsi inspired) ============ */
+.corp-utility{background:var(--primary);color:rgba(255,255,255,.78);font-size:.7rem;font-weight:500;letter-spacing:.4px;height:34px;display:flex;align-items:center}
+.corp-utility-inner{max-width:1440px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px}
+.corp-utility-left{display:flex;align-items:center;gap:18px;color:rgba(255,255,255,.55)}
+.corp-utility-tag{display:inline-flex;align-items:center;gap:6px}
+.corp-utility-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;animation:cu-pulse 2s infinite}
+@keyframes cu-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.corp-utility-right{display:flex;align-items:center;gap:6px}
+.corp-utility-right a{color:rgba(255,255,255,.7);text-decoration:none;padding:0 12px;border-right:1px solid rgba(255,255,255,.15);transition:color .2s}
+.corp-utility-right a:last-child{border-right:none;padding-right:0}
+.corp-utility-right a:hover{color:var(--accent)}
+.corp-utility-right .cu-cta{background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:3px;border-right:none;font-weight:600;letter-spacing:.6px;text-transform:uppercase;font-size:.62rem;margin-left:8px}
+.corp-utility-right .cu-cta:hover{background:var(--accent-light);color:var(--primary)}
+.corp-main{position:fixed;top:34px;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.05);transition:all .3s}
+.corp-main.scrolled{box-shadow:0 1px 18px rgba(10,22,40,.07);top:0}
+.corp-main.scrolled ~ .corp-utility{transform:translateY(-100%)}
+.corp-utility{position:fixed;top:0;left:0;right:0;z-index:1001;transition:transform .3s}
+.corp-main-inner{max-width:1440px;margin:0 auto;padding:0 56px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.corp-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--primary);text-decoration:none;display:flex;align-items:center;gap:10px;line-height:1}
+.corp-brand span{color:var(--accent)}
+.corp-brand-sub{font-size:.55rem;font-weight:600;color:var(--gray-400);letter-spacing:2.2px;text-transform:uppercase;font-family:'Inter',sans-serif;margin-top:3px}
+.corp-nav-list{display:flex;align-items:stretch;gap:0;list-style:none;height:64px;margin:0;padding:0}
+.corp-nav-list > li{position:relative;display:flex;align-items:center}
+.corp-nav-list > li > a{color:var(--gray-700);text-decoration:none;font-size:.74rem;font-weight:600;padding:0 16px;height:100%;display:flex;align-items:center;gap:5px;letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid transparent;transition:all .25s;cursor:pointer}
+.corp-nav-list > li > a::after{content:'';width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;border-top:4px solid currentColor;display:inline-block;margin-left:2px;opacity:.5}
+.corp-nav-list > li.no-drop > a::after{display:none}
+.corp-nav-list > li:hover > a{color:var(--primary);border-bottom-color:var(--accent)}
+.corp-nav-list > li > a.active{color:var(--primary);border-bottom-color:var(--accent)}
+.corp-dropdown{position:absolute;top:64px;left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border:1px solid var(--gray-100);border-top:3px solid var(--accent);box-shadow:0 24px 48px rgba(10,22,40,.12);min-width:280px;padding:18px 0;opacity:0;pointer-events:none;transition:all .28s cubic-bezier(.4,0,.2,1);z-index:1002}
+.corp-nav-list > li:hover .corp-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.corp-dropdown-mega{min-width:760px;padding:24px 28px}
+.corp-dropdown a{display:block;padding:8px 22px;color:var(--gray-700);text-decoration:none;font-size:.78rem;font-weight:500;transition:all .2s;border-left:2px solid transparent}
+.corp-dropdown a:hover{color:var(--primary);background:var(--off-white);border-left-color:var(--accent);padding-left:24px}
+.corp-dropdown .cd-section{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-dark);font-weight:700;padding:8px 22px 4px;margin-top:4px}
+.corp-dropdown .cd-section:first-child{margin-top:0}
+.corp-mega-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 18px}
+.corp-mega-item{display:block;padding:12px 14px;border-radius:6px;text-decoration:none;color:var(--gray-700);transition:all .25s;border:1px solid transparent}
+.corp-mega-item:hover{background:var(--off-white);border-color:var(--gray-100);transform:translateY(-1px)}
+.corp-mega-name{font-family:'Playfair Display',serif;font-size:.96rem;font-weight:600;color:var(--primary);line-height:1.2;margin-bottom:3px}
+.corp-mega-tag{font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent-dark);font-weight:600}
+.corp-mega-desc{font-size:.7rem;color:var(--gray-500);line-height:1.4;margin-top:4px}
+.corp-mega-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-100);display:flex;justify-content:space-between;align-items:center;padding-left:14px;padding-right:14px}
+.corp-mega-foot .cm-link{color:var(--accent-dark);font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
+.corp-cta-btn{background:var(--primary);color:#fff;text-decoration:none;padding:11px 22px;font-size:.7rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;border-radius:3px;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.corp-cta-btn:hover{background:var(--accent);color:var(--primary);transform:translateY(-1px)}
+.corp-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.corp-hamburger span{width:22px;height:2px;background:var(--primary);transition:.3s;display:block}
+
+/* ============ SITES BRAND CARDS (Bold brand-name showcase) ============ */
+.sites-brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:40px}
+.site-brand-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-100);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative}
+.site-brand-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1);z-index:3}
+.site-brand-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(10,22,40,.12);border-color:var(--accent-light)}
+.site-brand-card:hover::before{transform:scaleX(1)}
+.sbc-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--off-white),var(--gray-50));position:relative}
+.sbc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.site-brand-card:hover .sbc-thumb img{transform:scale(1.05)}
+.sbc-thumb.no-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%)}
+.sbc-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+.sbc-tag{font-size:.58rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--accent-dark);font-weight:700;margin-bottom:10px}
+.sbc-brand{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--primary);line-height:1.05;margin:0 0 6px;letter-spacing:-.5px}
+.sbc-domain{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--accent-dark);font-weight:600;margin-bottom:14px;letter-spacing:.4px}
+.sbc-desc{font-size:.85rem;color:var(--gray-600);line-height:1.6;font-weight:300;margin-bottom:18px;flex:1}
+.sbc-tech-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--gray-100)}
+.sbc-tech-row span{font-size:.62rem;font-weight:600;letter-spacing:.5px;background:var(--off-white);color:var(--gray-700);padding:4px 9px;border-radius:3px;border:1px solid var(--gray-100)}
+.sbc-cta{font-size:.66rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-dark);display:flex;align-items:center;gap:6px;transition:gap .3s}
+.site-brand-card:hover .sbc-cta{gap:10px;color:var(--accent)}
+
+@media (max-width:600px){
+  .sites-brand-grid{grid-template-columns:1fr;gap:18px}
+  .sbc-brand{font-size:1.7rem}
+  .sbc-body{padding:20px}
+}
+
+/* Section anchor bar (sticky sub-nav) */
+.section-anchor-bar{position:sticky;top:64px;z-index:900;background:#fff;border-bottom:1px solid var(--gray-100);box-shadow:0 1px 8px rgba(10,22,40,.04);transition:transform .3s}
+.section-anchor-inner{max-width:1440px;margin:0 auto;padding:0 56px;display:flex;align-items:center;gap:0;height:48px;overflow-x:auto;scrollbar-width:none}
+.section-anchor-inner::-webkit-scrollbar{display:none}
+.section-anchor-inner a{color:var(--gray-500);text-decoration:none;font-size:.68rem;font-weight:600;padding:0 14px;height:100%;display:flex;align-items:center;letter-spacing:1.2px;text-transform:uppercase;border-bottom:2px solid transparent;white-space:nowrap;transition:all .25s}
+.section-anchor-inner a:hover,.section-anchor-inner a.active{color:var(--primary);border-bottom-color:var(--accent)}
+.section-anchor-label{color:var(--accent-dark)!important;font-weight:700!important;border-right:1px solid var(--gray-100);padding-right:18px!important;margin-right:6px}
+
+/* When scrolled, hero pushes down to account for util bar collapse */
+body.has-corp-nav{padding-top:0}
+
+@media (max-width:1100px){
+  .corp-main-inner{padding:0 24px}
+  .corp-utility-inner{padding:0 24px}
+  .section-anchor-inner{padding:0 24px}
+  .corp-nav-list > li > a{padding:0 12px;font-size:.7rem}
+}
+@media (max-width:980px){
+  .corp-utility{display:none}
+  .corp-main{top:0}
+  .corp-nav-list{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;flex-direction:column;height:auto;max-height:calc(100vh - 64px);overflow-y:auto;padding:16px 0;border-top:1px solid var(--gray-100);box-shadow:0 12px 24px rgba(10,22,40,.1)}
+  .corp-nav-list.open{display:flex}
+  .corp-nav-list > li{display:block;width:100%;flex-direction:column;align-items:stretch}
+  .corp-nav-list > li > a{padding:14px 24px;height:auto;border-bottom:1px solid var(--gray-100)}
+  .corp-dropdown{position:static;transform:none!important;opacity:1;pointer-events:auto;box-shadow:none;border:none;border-top:none;background:var(--off-white);padding:8px 0;min-width:0;display:none}
+  .corp-nav-list > li.open .corp-dropdown{display:block}
+  .corp-dropdown-mega{padding:8px 16px}
+  .corp-mega-grid{grid-template-columns:1fr;gap:4px}
+  .corp-cta-btn{display:none}
+  .corp-hamburger{display:flex}
+  .section-anchor-bar{top:64px}
+  .section-anchor-inner{height:42px}
+}
 </style>
 </head>
 <body>
 <div class="preloader" id="preloader"><div class="preloader-ring"></div></div>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-top">
-    <a href="#" class="nav-brand">
-      <div>Aziz <span>Saif</span><div class="nav-brand-sub">Dubai &bull; Since 1987</div></div>
+<!-- ============ CORPORATE NAV (Top utility bar + Main nav with mega menus) ============ -->
+<div class="corp-utility" id="corpUtility">
+  <div class="corp-utility-inner">
+    <div class="corp-utility-left">
+      <span class="corp-utility-tag">Dubai &middot; Since 1987</span>
+      <span style="opacity:.5">37+ years of GCC retail leadership</span>
+    </div>
+    <div class="corp-utility-right">
+      <a href="pages/reports.html">Reports Library</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#contact">Contact</a>
+      <a href="#book" class="cu-cta">Book a Call</a>
+    </div>
+  </div>
+</div>
+
+<nav class="corp-main" id="corpMain">
+  <div class="corp-main-inner">
+    <a href="#" class="corp-brand">
+      <div>Aziz <span>Saif</span><div class="corp-brand-sub">Dubai &bull; Since 1987</div></div>
     </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#story" onclick="closeMenu()">Story</a></li>
-      <li><a href="#gp-section" onclick="closeMenu()">Global Pioneer</a></li>
-      <li><a href="#lepearl-section" onclick="closeMenu()">Le Pearl</a></li>
-      <li><a href="#yoyoso-section" onclick="closeMenu()">YOYOSO</a></li>
-      <li><a href="#sana-section" onclick="closeMenu()">Sana Fashions</a></li>
-      <li><a href="#services" onclick="closeMenu()">AI Services</a></li>
-      <li><a href="#ai-creations" onclick="closeMenu()">Reports</a></li>
-      <li><a href="#stackbirds" onclick="closeMenu()">Stackbirds</a></li>
-      <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
-      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <ul class="corp-nav-list" id="corpNavList">
+      <li class="no-drop"><a href="#story">Story</a></li>
+
+      <li>
+        <a href="#gp-section">Companies</a>
+        <div class="corp-dropdown">
+          <div class="cd-section">Group Companies</div>
+          <a href="#gp-section">Global Pioneer FZE</a>
+          <a href="#lepearl-section">Le Pearl Fashion</a>
+          <a href="#yoyoso-section">YOYOSO KSA</a>
+          <a href="#sana-section">Sana Fashions</a>
+        </div>
+      </li>
+
+      <li>
+        <a href="#portfolio">Websites Built</a>
+        <div class="corp-dropdown corp-dropdown-mega">
+          <div class="cd-section">Live Websites &mdash; 8 production sites</div>
+          <div class="corp-mega-grid">
+            <a href="pages/tech/globalpioneer.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Group Holding</div>
+              <div class="corp-mega-name">Global Pioneer</div>
+              <div class="corp-mega-desc">Corporate site, brochure &amp; floating catalogue</div>
+            </a>
+            <a href="pages/tech/azizsaif.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Personal Brand</div>
+              <div class="corp-mega-name">Aziz Saif</div>
+              <div class="corp-mega-desc">Founder portfolio &amp; AI consulting</div>
+            </a>
+            <a href="pages/tech/maroten.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Real Estate</div>
+              <div class="corp-mega-name">Maroten</div>
+              <div class="corp-mega-desc">Premium UAE real estate brokerage</div>
+            </a>
+            <a href="pages/tech/kakalbrothers.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Family Office</div>
+              <div class="corp-mega-name">Kakal Brothers</div>
+              <div class="corp-mega-desc">Multi-generation business legacy</div>
+            </a>
+            <a href="pages/tech/sanaconsult.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Consulting</div>
+              <div class="corp-mega-name">Sana Consult</div>
+              <div class="corp-mega-desc">Retail &amp; fashion consultancy</div>
+            </a>
+            <a href="pages/tech/rishmitahealing.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Wellness</div>
+              <div class="corp-mega-name">Rishmita Healing</div>
+              <div class="corp-mega-desc">Holistic healing &amp; therapy practice</div>
+            </a>
+            <a href="pages/tech/tarkashuae.html" class="corp-mega-item">
+              <div class="corp-mega-tag">F&amp;B / Retail</div>
+              <div class="corp-mega-name">Tarkash UAE</div>
+              <div class="corp-mega-desc">Premium spice &amp; specialty foods</div>
+            </a>
+            <a href="pages/tech/homeland.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Real Estate</div>
+              <div class="corp-mega-name">Homeland AE</div>
+              <div class="corp-mega-desc">UAE property listings platform</div>
+            </a>
+          </div>
+          <div class="corp-mega-foot">
+            <span style="font-size:.66rem;color:var(--gray-500)">Each link opens the technology breakdown &mdash; stack, tools &amp; build notes</span>
+            <a href="pages/live-sites.html" class="cm-link">View Full Portfolio &rarr;</a>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="#launching-uae">Launching in UAE</a>
+        <div class="corp-dropdown corp-dropdown-mega" style="min-width:600px">
+          <div class="cd-section">Launching 2026&ndash;2027 in UAE &amp; Gulf</div>
+          <div class="corp-mega-grid" style="grid-template-columns:repeat(2,1fr)">
+            <a href="pages/tech/stackbirds.html" class="corp-mega-item">
+              <div class="corp-mega-tag">AI Agent Platform</div>
+              <div class="corp-mega-name">Stackbirds.xyz</div>
+              <div class="corp-mega-desc">Self-trained AI agents for Gulf SMEs</div>
+            </a>
+            <a href="pages/tech/eatcookjoy.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Food Tech</div>
+              <div class="corp-mega-name">EatCookJoy</div>
+              <div class="corp-mega-desc">AI meal planning + chef network</div>
+            </a>
+            <a href="pages/tech/snellito.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Recipe AI</div>
+              <div class="corp-mega-name">Snellito</div>
+              <div class="corp-mega-desc">AI recipe extraction &amp; meal mapping</div>
+            </a>
+            <a href="pages/launching-soon.html" class="corp-mega-item">
+              <div class="corp-mega-tag">Coming Soon</div>
+              <div class="corp-mega-name">+ More Launches</div>
+              <div class="corp-mega-desc">See full launch roadmap</div>
+            </a>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="#ai-creations">Insights</a>
+        <div class="corp-dropdown">
+          <div class="cd-section">Knowledge &amp; Library</div>
+          <a href="pages/reports.html">28+ Reports Library</a>
+          <a href="#blog">Blog &amp; Articles</a>
+          <a href="#process">My AI Workflow</a>
+          <div class="cd-section">Tools</div>
+          <a href="pages/tools.html">AI Tools I Use</a>
+          <a href="pages/journey.html">My Journey</a>
+        </div>
+      </li>
+
+      <li>
+        <a href="#services">Services</a>
+        <div class="corp-dropdown">
+          <div class="cd-section">What I Offer</div>
+          <a href="pages/ai-services.html">AI Services</a>
+          <a href="#consulting">AI Consulting</a>
+          <a href="#setup">AI Setup &amp; Implementation</a>
+          <a href="pages/tools.html">AI Tools &amp; Stack</a>
+        </div>
+      </li>
+
+      <li class="no-drop"><a href="#contact">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a href="#book" class="corp-cta-btn">Book a Call &rarr;</a>
+    <button class="corp-hamburger" id="corpHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
+<!-- Sticky in-page section anchor bar -->
+<div class="section-anchor-bar" id="sectionAnchorBar">
+  <div class="section-anchor-inner">
+    <a class="section-anchor-label">On this page:</a>
+    <a href="#story">Story</a>
+    <a href="#launching-uae">Launching</a>
+    <a href="#gp-section">Companies</a>
+    <a href="#portfolio">Websites Built</a>
+    <a href="#services">AI Services</a>
+    <a href="#ai-creations">Reports</a>
+    <a href="#stackbirds">Stackbirds</a>
+    <a href="#blog">Blog</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
 <!-- HERO CAROUSEL -->
-<div class="hero-carousel" id="heroCarousel" style="margin-top:72px">
+<div class="hero-carousel" id="heroCarousel" style="margin-top:98px">
   <div class="carousel-track" id="carouselTrack">
     <div class="carousel-slide">
       <div class="slide-bg" style="background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-01_a0145279.png')"></div>
@@ -565,6 +816,55 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
     <div class="stat-item"><div class="stat-num">9+</div><div class="stat-label">Brands</div></div>
   </div>
 </div>
+
+<!-- ============ NEW: LAUNCHING IN UAE ANNOUNCEMENT BANNER ============ -->
+<section id="launching-uae" style="background:linear-gradient(135deg,#0a1628 0%,#152238 50%,#0a1628 100%);color:#fff;padding:72px 0;position:relative;overflow:hidden">
+  <!-- Background glow -->
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%);pointer-events:none"></div>
+
+  <div class="section-inner" style="position:relative;z-index:2">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.35);border-radius:50px;padding:8px 20px;margin-bottom:18px">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:cu-pulse 1.8s infinite"></span>
+        <span style="font-size:.66rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent)">New &middot; Launching in UAE 2026</span>
+      </div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:500;line-height:1.15;margin-bottom:14px">Four AI Ventures Launching in <em style="color:var(--accent);font-style:italic">UAE &amp; Gulf</em></h2>
+      <p style="color:rgba(255,255,255,.7);font-size:.95rem;max-width:680px;margin:0 auto;line-height:1.7;font-weight:300">Combining 37+ years of GCC retail leadership with cutting-edge AI &mdash; four production-ready platforms launching in Dubai, Sharjah &amp; the wider Gulf.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <!-- Stackbirds -->
+      <a href="pages/tech/stackbirds.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:28px 24px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(201,168,76,.5)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,.08)';this.style.background='rgba(255,255,255,.04)'">
+        <div style="font-size:.58rem;letter-spacing:2px;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:14px">AI Agent Platform</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;line-height:1;margin-bottom:8px;color:#fff">Stackbirds<span style="color:var(--accent)">.xyz</span></h3>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;font-weight:300;margin-bottom:18px">Self-trained AI agents for Gulf SMEs. Show the bird once &mdash; it handles invoicing, CRM &amp; ops.</p>
+        <div style="font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:700">View Tech Stack &rarr;</div>
+      </a>
+      <!-- EatCookJoy -->
+      <a href="pages/tech/eatcookjoy.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:28px 24px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(201,168,76,.5)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,.08)';this.style.background='rgba(255,255,255,.04)'">
+        <div style="font-size:.58rem;letter-spacing:2px;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Food Tech</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;line-height:1;margin-bottom:8px;color:#fff">EatCookJoy<span style="color:var(--accent)">.com</span></h3>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;font-weight:300;margin-bottom:18px">AI meal planning &amp; chef coordination &mdash; powered by 100+ UAE chef network.</p>
+        <div style="font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:700">View Tech Stack &rarr;</div>
+      </a>
+      <!-- Snellito -->
+      <a href="pages/tech/snellito.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:28px 24px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(201,168,76,.5)';this.style.background='rgba(201,168,76,.06)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,.08)';this.style.background='rgba(255,255,255,.04)'">
+        <div style="font-size:.58rem;letter-spacing:2px;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Recipe AI</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;line-height:1;margin-bottom:8px;color:#fff">Snellito<span style="color:var(--accent)">.ai</span></h3>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;font-weight:300;margin-bottom:18px">AI recipe extraction &mdash; URLs, TikToks, voice notes to clean structured recipes.</p>
+        <div style="font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:700">View Tech Stack &rarr;</div>
+      </a>
+      <!-- Coming Q4 -->
+      <a href="pages/launching-soon.html" style="display:block;background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:28px 24px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(201,168,76,.6)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(201,168,76,.25)'">
+        <div style="font-size:.58rem;letter-spacing:2px;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Q4 2026 &middot; Stealth</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;line-height:1;margin-bottom:8px;color:#fff">+ More <em style="color:var(--accent);font-style:italic">Soon</em></h3>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;font-weight:300;margin-bottom:18px">Two additional AI ventures in stealth &mdash; UAE retail &amp; logistics focused. Roadmap public soon.</p>
+        <div style="font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:700">See Roadmap &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- STORY -->
 <section id="story" style="background:var(--white)">
@@ -644,13 +944,21 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <!-- ===== GLOBAL PIONEER - GALLERY ===== -->
 <div class="gallery-section" id="gp-section">
   <div class="gallery-inner">
+    <!-- Brand logo block (above heading) -->
+    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
+      <img src="brand-logos/gp-logo.jpg" alt="Global Pioneer General Trading" style="max-height:72px;width:auto;max-width:380px;display:block;margin:0 auto 14px;object-fit:contain">
+      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Group Holding &middot; Established 2017 &middot; RAK Free Zone</div>
+    </div>
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> <img src="brand-logos/gp-logo.jpg" alt="GP" style="height:28px;vertical-align:middle;margin-right:6px"> Global Pioneer FZE</div>
+        <div class="section-label"><span class="line"></span> Global Pioneer FZE</div>
         <h2 class="section-title">Company Brochure &amp; Catalogue</h2>
-        <p class="section-subtitle">Your Success Partner in the Middle East &mdash; Est. 2017, RAK Free Zone. Business development, B2B sourcing, retail showrooms &amp; franchise services.</p>
+        <p class="section-subtitle">Your Success Partner in the Middle East. Business development, B2B sourcing, retail showrooms &amp; franchise services across the GCC.</p>
       </div>
-      <a href="https://globalpioneer.xyz" target="_blank" class="view-all">Visit Website &rarr;</a>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+        <a href="pages/tech/globalpioneer.html" class="view-all">View Tech Stack &rarr;</a>
+        <a href="https://globalpioneer.xyz" target="_blank" rel="noopener" style="font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);text-decoration:none;font-weight:600">Visit Live Site &#8599;</a>
+      </div>
     </div>
     <div class="gallery-grid compact" id="gpGallery">
       <div class="gallery-item" onclick="window.location.href='catalogues/global-pioneer.html'"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/LWE3XfGzyiHVmudaeR9Kze/page-01_a0145279.png" alt="Cover" loading="lazy"><div class="gi-overlay"><h4>Company Brochure &amp; Catalogue</h4><p>Global Pioneer FZE &mdash; floating catalogue experience</p><span class="gi-cta">Open Catalogue <span class="arrow">&rarr;</span></span></div><div class="gi-zoom">&#128269;</div></div>
@@ -674,9 +982,14 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <!-- ===== LE PEARL - GALLERY ===== -->
 <div class="gallery-section white-bg" id="lepearl-section">
   <div class="gallery-inner">
+    <!-- Brand logo block (above heading) -->
+    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
+      <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl Fashion" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
+      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Fashion Retail &middot; 10+ Stores &middot; Oman &amp; UAE</div>
+    </div>
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl" style="height:28px;vertical-align:middle;margin-right:6px"> Le Pearl Fashion</div>
+        <div class="section-label"><span class="line"></span> Le Pearl Fashion</div>
         <h2 class="section-title">Store &amp; Product Gallery</h2>
         <p class="section-subtitle">"Quality Fashion, Trending Style, Affordable Price" &mdash; 10+ stores across Oman &amp; UAE. Kids, Men &amp; Women.</p>
       </div>
@@ -792,9 +1105,14 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <!-- ===== YOYOSO - GALLERY ===== -->
 <div class="gallery-section" id="yoyoso-section">
   <div class="gallery-inner">
+    <!-- Brand logo block (above heading) -->
+    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
+      <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
+      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Master Franchise &middot; Saudi Arabia &middot; 15 Mall Stores</div>
+    </div>
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="height:28px;vertical-align:middle;margin-right:6px"> YOYOSO KSA</div>
+        <div class="section-label"><span class="line"></span> YOYOSO KSA</div>
         <h2 class="section-title">Master Franchise Agreement &mdash; KSA Signing Ceremony</h2>
         <p class="section-subtitle">&ldquo;Aesthetics Life Designer Brand&rdquo; &mdash; Strategic cooperation signing for the YOYOSO Master Franchise in Saudi Arabia. 15 mall stores, 5,000+ lifestyle products across the Kingdom.</p>
       </div>
@@ -897,9 +1215,14 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <!-- ===== SANA FASHIONS ===== -->
 <section id="sana-section" style="background:var(--white)">
   <div class="section-inner">
+    <!-- Brand logo block (above heading) -->
+    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
+      <img src="brand-logos/sana-logo.jpg" alt="Sana Fashions" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
+      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Fashion &amp; Retail Consultancy</div>
+    </div>
     <div class="section-header reveal">
       <div>
-        <div class="section-label"><span class="line"></span> <img src="brand-logos/sana-logo.jpg" alt="Sana" style="height:28px;vertical-align:middle;margin-right:6px"> Sana Fashions</div>
+        <div class="section-label"><span class="line"></span> Sana Fashions</div>
         <h2 class="section-title">GCC Retail Chain &mdash; 35 Stores, 5 Countries</h2>
         <p class="section-subtitle">VP Operations &mdash; One of the First Employees. 30 years building the chain from a single store to 35 locations.</p>
       </div>
@@ -983,6 +1306,165 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
     <div class="reveal" style="max-width:900px;margin:0 auto 48px;padding:28px 32px;border-left:3px solid var(--accent);background:var(--off-white)">
       <p style="font-size:.82rem;color:var(--gray-600);line-height:1.85;font-weight:300;font-style:italic">&ldquo;Before hiring a consultant, an SME should have a clear understanding of what they hope to achieve. Whether it&rsquo;s improving operational efficiency, increasing sales, or navigating a specific business challenge, clearly defined goals ensure that both the SME and the consultant are aligned from the outset. Without clear objectives, there is a risk of scope creep &mdash; where the consultant&rsquo;s work expands beyond the original remit, leading to higher costs and potentially diluted results.&rdquo;</p>
     </div>
+
+    <!-- AI REPORTS TIMELINE CHART -->
+    <div class="reveal ai-timeline-wrap" style="margin:0 auto 56px;max-width:1100px">
+      <div style="text-align:center;margin-bottom:40px">
+        <div style="font-size:.62rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:var(--accent-dark);margin-bottom:12px">&#9201; The Build Journey</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:var(--primary);margin-bottom:8px">From 0 to 28+ Reports &mdash; <em style="color:var(--accent);font-style:italic">18 months of AI building</em></h3>
+        <p style="font-size:.85rem;color:var(--gray-500);font-weight:300;max-width:560px;margin:0 auto">Eight industries. Twenty-eight deliverables. Built with Claude, Gamma &amp; Perplexity across the GCC.</p>
+      </div>
+
+      <div class="ai-timeline" style="position:relative;padding:60px 0 70px">
+        <!-- horizontal line -->
+        <div class="ai-tl-line" style="position:absolute;left:4%;right:4%;top:50%;height:2px;background:linear-gradient(90deg,transparent 0%,var(--accent) 8%,var(--accent) 92%,transparent 100%);transform:translateY(-50%)"></div>
+        <!-- progress glow -->
+        <div class="ai-tl-progress" style="position:absolute;left:4%;top:50%;height:6px;width:92%;background:linear-gradient(90deg,var(--accent-dark),var(--accent),var(--accent-light));transform:translateY(-50%);opacity:.18;border-radius:6px;filter:blur(4px)"></div>
+
+        <div class="ai-tl-track" style="display:grid;grid-template-columns:repeat(8,1fr);gap:8px;position:relative;z-index:2">
+
+          <div class="ai-tl-item ai-tl-up">
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q3 &rsquo;24</div>
+              <div class="ai-tl-emoji">&#128717;</div>
+              <div class="ai-tl-title">Retail Foundations</div>
+              <div class="ai-tl-count">3 reports</div>
+            </div>
+            <div class="ai-tl-node"></div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-down">
+            <div class="ai-tl-node"></div>
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q4 &rsquo;24</div>
+              <div class="ai-tl-emoji">&#128090;</div>
+              <div class="ai-tl-title">Fashion &amp; Africa</div>
+              <div class="ai-tl-count">4 reports</div>
+            </div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-up">
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q1 &rsquo;25</div>
+              <div class="ai-tl-emoji">&#127869;</div>
+              <div class="ai-tl-title">F&amp;B Dashboards</div>
+              <div class="ai-tl-count">3 reports</div>
+            </div>
+            <div class="ai-tl-node"></div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-down">
+            <div class="ai-tl-node"></div>
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q2 &rsquo;25</div>
+              <div class="ai-tl-emoji">&#9986;</div>
+              <div class="ai-tl-title">Salon &amp; Grooming</div>
+              <div class="ai-tl-count">3 reports</div>
+            </div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-up">
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q3 &rsquo;25</div>
+              <div class="ai-tl-emoji">&#128230;</div>
+              <div class="ai-tl-title">Franchise &amp; Kiosk</div>
+              <div class="ai-tl-count">4 reports</div>
+            </div>
+            <div class="ai-tl-node"></div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-down">
+            <div class="ai-tl-node"></div>
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q4 &rsquo;25</div>
+              <div class="ai-tl-emoji">&#128138;</div>
+              <div class="ai-tl-title">Health &amp; E-Comm</div>
+              <div class="ai-tl-count">5 reports</div>
+            </div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-up">
+            <div class="ai-tl-card">
+              <div class="ai-tl-quarter">Q1 &rsquo;26</div>
+              <div class="ai-tl-emoji">&#127968;</div>
+              <div class="ai-tl-title">Real Estate &amp; Other</div>
+              <div class="ai-tl-count">4 reports</div>
+            </div>
+            <div class="ai-tl-node"></div>
+          </div>
+
+          <div class="ai-tl-item ai-tl-down ai-tl-live">
+            <div class="ai-tl-node ai-tl-node-live"></div>
+            <div class="ai-tl-card ai-tl-card-live">
+              <div class="ai-tl-quarter" style="color:var(--accent)">Q2 &rsquo;26</div>
+              <div class="ai-tl-emoji">&#127942;</div>
+              <div class="ai-tl-title">Live Apps Shipping</div>
+              <div class="ai-tl-count">2+ live</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- start & end caps -->
+        <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);font-weight:600">Start</div>
+        <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-dark);font-weight:600">Now &#9656;</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px;padding-top:32px;border-top:1px solid var(--gray-100);text-align:center" class="ai-tl-stats">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--primary);font-weight:500">28+</div>
+          <div style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-top:4px;font-weight:600">Total Reports</div>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--primary);font-weight:500">8</div>
+          <div style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-top:4px;font-weight:600">Industries</div>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--primary);font-weight:500">18<span style="font-size:1.1rem;color:var(--gray-500)">mo</span></div>
+          <div style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-top:4px;font-weight:600">Build Time</div>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--accent)">48<span style="font-size:1.1rem">h</span></div>
+          <div style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-top:4px;font-weight:600">Per Report Avg</div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .ai-tl-item{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px}
+      .ai-tl-up{flex-direction:column;justify-content:flex-end;padding-bottom:calc(50% - 8px)}
+      .ai-tl-down{flex-direction:column;justify-content:flex-start;padding-top:calc(50% - 8px)}
+      .ai-tl-card{background:var(--white);border:1px solid var(--gray-100);padding:14px 12px;border-radius:6px;text-align:center;width:100%;max-width:130px;transition:all .35s cubic-bezier(.4,0,.2,1);box-shadow:0 2px 8px rgba(10,22,40,.04)}
+      .ai-tl-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 28px rgba(10,22,40,.1)}
+      .ai-tl-up .ai-tl-card{margin-bottom:18px}
+      .ai-tl-down .ai-tl-card{margin-top:18px}
+      .ai-tl-quarter{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-dark);font-weight:700;margin-bottom:6px}
+      .ai-tl-emoji{font-size:1.6rem;line-height:1;margin-bottom:6px}
+      .ai-tl-title{font-family:'Playfair Display',serif;font-size:.82rem;color:var(--primary);font-weight:500;line-height:1.25;margin-bottom:4px}
+      .ai-tl-count{font-size:.62rem;color:var(--gray-500);font-weight:500;letter-spacing:.3px}
+      .ai-tl-node{width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--accent);box-shadow:0 0 0 4px rgba(201,168,76,.12);position:relative;z-index:3;flex-shrink:0}
+      .ai-tl-node-live{background:var(--accent);box-shadow:0 0 0 4px rgba(201,168,76,.18),0 0 0 9px rgba(201,168,76,.08);animation:tl-pulse 2.4s ease-in-out infinite}
+      .ai-tl-card-live{border-color:var(--accent);background:linear-gradient(180deg,#fff 0%,#fffaee 100%)}
+      @keyframes tl-pulse{0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,.18),0 0 0 9px rgba(201,168,76,.08)}50%{box-shadow:0 0 0 6px rgba(201,168,76,.28),0 0 0 14px rgba(201,168,76,.04)}}
+
+      @media (max-width:900px){
+        .ai-timeline{padding:0!important}
+        .ai-tl-line,.ai-tl-progress{left:24px!important;right:auto!important;top:0!important;bottom:0!important;width:2px!important;height:auto!important;background:linear-gradient(180deg,transparent 0%,var(--accent) 6%,var(--accent) 94%,transparent 100%)!important;transform:none!important}
+        .ai-tl-progress{filter:blur(3px)!important;opacity:.18!important;width:6px!important}
+        .ai-tl-track{display:flex!important;flex-direction:column!important;gap:24px!important;padding:24px 0 24px 56px!important}
+        .ai-tl-item{flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;min-height:auto!important;padding:0!important;gap:18px}
+        .ai-tl-up .ai-tl-card,.ai-tl-down .ai-tl-card{margin:0!important}
+        .ai-tl-up{flex-direction:row-reverse!important;justify-content:flex-end!important}
+        .ai-tl-down{flex-direction:row!important}
+        .ai-tl-card{max-width:none!important;flex:1;text-align:left!important;padding:14px 18px!important}
+        .ai-tl-emoji{display:inline-block;margin-right:8px;margin-bottom:0!important;vertical-align:middle}
+        .ai-tl-title{display:inline-block;vertical-align:middle}
+        .ai-tl-node{position:absolute!important;left:-44px!important}
+        .ai-timeline > div[style*="left:0"]{display:none}
+        .ai-timeline > div[style*="right:0"]{display:none}
+        .ai-tl-stats{grid-template-columns:repeat(2,1fr)!important}
+      }
+    </style>
 
     <a href="pages/reports.html" class="reveal" style="display:block;margin-top:16px;border:1px solid var(--gray-100);background:linear-gradient(135deg,#0a1628,#152238);color:#fff;padding:48px 40px;position:relative;overflow:hidden;transition:all .4s;text-decoration:none" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 24px 48px rgba(10,22,40,.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
       <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;z-index:2">
@@ -1247,8 +1729,110 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 <!-- PORTFOLIO -->
 <section id="portfolio" style="background:var(--off-white)">
   <div class="section-inner">
-    <div class="section-header reveal"><div><div class="section-label"><span class="line"></span> Websites Built</div><h2 class="section-title">Live Sites &mdash; Deployed in Hours</h2><p class="section-subtitle">8 production websites built end-to-end by Aziz &mdash; retail, healthcare, real estate, HR.</p></div><a href="pages/live-sites.html" class="view-all">View Full Page &rarr;</a></div>
-    <a href="pages/live-sites.html" class="reveal" style="display:block;margin-top:16px;border:1px solid var(--gray-100);background:linear-gradient(135deg,#0a1628,#152238);color:#fff;padding:48px 40px;position:relative;overflow:hidden;transition:all .4s;text-decoration:none" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 24px 48px rgba(10,22,40,.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+    <div class="section-header reveal"><div><div class="section-label"><span class="line"></span> Websites Built</div><h2 class="section-title">8 Live Websites &mdash; Each a Brand</h2><p class="section-subtitle">Production sites built end-to-end by Aziz. Click any brand to see the technology stack, build process &amp; live preview.</p></div><a href="pages/live-sites.html" class="view-all">View Full Portfolio &rarr;</a></div>
+
+    <!-- LARGE BOLD BRAND CARDS GRID -->
+    <div class="reveal sites-brand-grid">
+      <a href="pages/tech/globalpioneer.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/globalpioneer.jpg" alt="Global Pioneer" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Group Holding</div>
+          <h3 class="sbc-brand">Global Pioneer</h3>
+          <div class="sbc-domain">globalpioneer.xyz</div>
+          <p class="sbc-desc">The flagship corporate site &mdash; floating brochure, partner brands &amp; B2B sourcing portal for the GCC.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>GitHub Pages</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/azizsaif.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/azizsaif.jpg" alt="Aziz Saif" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Personal Brand</div>
+          <h3 class="sbc-brand">Aziz Saif</h3>
+          <div class="sbc-domain">azizsaif.com</div>
+          <p class="sbc-desc">Founder portfolio &mdash; 37 years of GCC retail leadership combined with AI consulting practice.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Supabase</span><span>Resend</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/maroten.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/maroten.jpg" alt="Maroten" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Real Estate</div>
+          <h3 class="sbc-brand">Maroten</h3>
+          <div class="sbc-domain">maroten.com</div>
+          <p class="sbc-desc">Premium UAE real estate brokerage &mdash; high-touch property listings &amp; investor matching.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Web Forms</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/kakalbrothers.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/kakalbrothers.jpg" alt="Kakal Brothers" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Family Office</div>
+          <h3 class="sbc-brand">Kakal Brothers</h3>
+          <div class="sbc-domain">kakalbrothers.xyz</div>
+          <p class="sbc-desc">Multi-generation family business legacy site &mdash; heritage timeline &amp; family enterprises.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>GitHub Pages</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/sanaconsult.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/sanaconsult.jpg" alt="Sana Consult" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Consulting</div>
+          <h3 class="sbc-brand">Sana Consult</h3>
+          <div class="sbc-domain">sanaconsult.xyz</div>
+          <p class="sbc-desc">Retail &amp; fashion consultancy practice &mdash; case studies, services &amp; engagement portal.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Calendly</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/rishmitahealing.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/rishmitahealing.jpg" alt="Rishmita Healing" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Wellness</div>
+          <h3 class="sbc-brand">Rishmita Healing</h3>
+          <div class="sbc-domain">rishmitahealing.xyz</div>
+          <p class="sbc-desc">Holistic healing &amp; therapy practice &mdash; appointment booking, services &amp; testimonials.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Calendly</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/tarkashuae.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/tarkashuae.jpg" alt="Tarkash UAE" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">F&amp;B / Retail</div>
+          <h3 class="sbc-brand">Tarkash UAE</h3>
+          <div class="sbc-domain">tarkashuae.com</div>
+          <p class="sbc-desc">Premium spice &amp; specialty foods e-commerce for the UAE market &mdash; product catalogue &amp; ordering.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>WhatsApp</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
+      <a href="pages/tech/homeland.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/homeland-ae.jpg" alt="Homeland AE" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Real Estate</div>
+          <h3 class="sbc-brand">Homeland AE</h3>
+          <div class="sbc-domain">homeland-ae.xyz</div>
+          <p class="sbc-desc">UAE property listings platform &mdash; rental &amp; sale listings, agent profiles &amp; lead capture.</p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Filters</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+    </div>
+
+    <p class="reveal" style="text-align:center;margin-top:40px;font-size:.78rem;color:var(--gray-500);font-weight:300">Each card opens a dedicated technology breakdown &mdash; stack, build approach &amp; lessons. Live site link at the end of each tech page.</p>
+
+    <div style="display:none">
       <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;z-index:2">
         <div>
           <div style="font-size:.7rem;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:#c9a84c;margin-bottom:16px">&#127760; Live Sites Portfolio</div>
@@ -1601,14 +2185,32 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 // Preloader
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),400)});
 
-// Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+// Corporate Nav scroll behavior — collapse utility bar on scroll
+const corpMain=document.getElementById('corpMain');
+const corpUtility=document.getElementById('corpUtility');
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY>40;
+  corpMain.classList.toggle('scrolled',scrolled);
+});
 
-// Mobile menu
-const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');navLinks.classList.toggle('open')});
-function closeMenu(){hamburger.classList.remove('open');navLinks.classList.remove('open')}
+// Corporate mobile menu
+const corpHamburger=document.getElementById('corpHamburger');
+const corpNavList=document.getElementById('corpNavList');
+corpHamburger.addEventListener('click',()=>{corpHamburger.classList.toggle('open');corpNavList.classList.toggle('open')});
+function closeMenu(){corpHamburger.classList.remove('open');corpNavList.classList.remove('open');document.querySelectorAll('.corp-nav-list > li.open').forEach(l=>l.classList.remove('open'))}
+// Mobile dropdown toggle
+document.querySelectorAll('.corp-nav-list > li:not(.no-drop) > a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    if(window.innerWidth<=980){
+      e.preventDefault();
+      a.parentElement.classList.toggle('open');
+    }
+  });
+});
+// Close mobile menu when in-page link clicked
+document.querySelectorAll('.corp-dropdown a, .section-anchor-inner a').forEach(a=>{
+  a.addEventListener('click',()=>{if(window.innerWidth<=980)closeMenu()});
+});
 
 // CAROUSEL
 let currentSlide=0;const totalSlides=4;

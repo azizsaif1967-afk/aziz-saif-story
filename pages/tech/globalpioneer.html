@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Global Pioneer — Tech Stack & Build Notes | Aziz Saif</title>
+<meta name="description" content="Technology stack, build approach and architecture notes for globalpioneer.xyz — the corporate site for Global Pioneer FZE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_tech.css">
+</head>
+<body>
+
+<!-- Top utility -->
+<div class="t-utility">
+  <div class="t-utility-inner">
+    <div class="t-utility-left">
+      <span class="t-utility-tag">Aziz Saif &middot; Tech Notes</span>
+    </div>
+    <div class="t-utility-right">
+      <a href="../../index.html#portfolio">All Websites</a>
+      <a href="../../index.html#contact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main nav -->
+<nav class="t-nav">
+  <div class="t-nav-inner">
+    <a href="../../index.html" class="t-brand">
+      <div>Aziz <span>Saif</span></div>
+      <div class="t-brand-sub">Dubai &bull; Since 1987</div>
+    </a>
+    <ul class="t-nav-links">
+      <li><a href="../../index.html#story">Story</a></li>
+      <li><a href="../../index.html#portfolio">Websites Built</a></li>
+      <li><a href="../../index.html#launching-uae">Launching</a></li>
+      <li><a href="../../index.html#ai-creations">Insights</a></li>
+      <li><a href="../../index.html#services">Services</a></li>
+    </ul>
+    <a href="../../index.html#book" class="t-cta">Book a Call &rarr;</a>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="t-breadcrumb">
+  <div class="t-breadcrumb-inner">
+    <a href="../../index.html">Home</a>
+    <span class="t-breadcrumb-sep">&rsaquo;</span>
+    <a href="../../index.html#portfolio">Websites Built</a>
+    <span class="t-breadcrumb-sep">&rsaquo;</span>
+    <span style="color:var(--gray-700);font-weight:600">Global Pioneer</span>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="t-hero">
+  <div class="t-hero-inner">
+    <div>
+      <div class="t-hero-tag">Group Holding &middot; Production Site</div>
+      <h1>Global <em>Pioneer</em></h1>
+      <div class="t-hero-domain">globalpioneer.xyz</div>
+      <p class="t-hero-desc">The corporate flagship for Global Pioneer FZE &mdash; a single-page experience pairing a floating brochure with retail showroom case studies, partner brands &amp; B2B sourcing inquiries from the GCC.</p>
+      <div class="t-hero-meta">
+        <div class="t-hero-meta-item">
+          <span class="t-hero-meta-label">Industry</span>
+          <span class="t-hero-meta-val">Group Holding &middot; Retail</span>
+        </div>
+        <div class="t-hero-meta-item">
+          <span class="t-hero-meta-label">Build Time</span>
+          <span class="t-hero-meta-val">3 days</span>
+        </div>
+        <div class="t-hero-meta-item">
+          <span class="t-hero-meta-label">Status</span>
+          <span class="t-hero-meta-val" style="color:var(--accent)">&#9679; Live</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-hero-thumb">
+      <img src="../../portfolio-thumbs/globalpioneer.jpg" alt="Global Pioneer screenshot" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--accent-dark),var(--accent))'">
+    </div>
+  </div>
+</header>
+
+<!-- Tech Stack -->
+<section class="t-section">
+  <div class="t-section-inner">
+    <div class="t-section-label">Technology Stack</div>
+    <h2>Built with the <em>essentials</em> &mdash; nothing more</h2>
+    <p class="t-section-lead">A deliberately lean stack. No build step, no framework lock-in. Edit a single HTML file, push to GitHub, the site is live.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-tag">Frontend</div>
+        <div class="tech-card-name">HTML5 + CSS3</div>
+        <div class="tech-card-desc">Hand-crafted semantic HTML with custom CSS variables for design tokens. No CSS framework.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Interactions</div>
+        <div class="tech-card-name">Vanilla JavaScript</div>
+        <div class="tech-card-desc">Lightweight ES6+ for the floating catalogue, gallery lightbox &amp; smooth scroll. Zero dependencies.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Typography</div>
+        <div class="tech-card-name">Google Fonts</div>
+        <div class="tech-card-desc">Playfair Display for headings &amp; Inter for body &mdash; loaded with preconnect for performance.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Hosting</div>
+        <div class="tech-card-name">GitHub Pages</div>
+        <div class="tech-card-desc">Free, fast, global CDN. Deployment is a git push. CNAME mapped to globalpioneer.xyz.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Images</div>
+        <div class="tech-card-name">CloudFront CDN</div>
+        <div class="tech-card-desc">Brochure pages served via AWS CloudFront with optimized PNG compression for instant load.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">SEO</div>
+        <div class="tech-card-name">Schema.org + OG</div>
+        <div class="tech-card-desc">Open Graph tags, structured data &amp; semantic HTML for organic ranking on Google &amp; LinkedIn.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Build Process -->
+<section class="t-section alt">
+  <div class="t-section-inner">
+    <div class="t-section-label">Build Process</div>
+    <h2>From brief to <em>live URL</em> in 72 hours</h2>
+    <p class="t-section-lead">A repeatable process &mdash; brief, content extraction, design system, build, deploy, iterate.</p>
+
+    <div class="build-steps">
+      <div class="build-step">
+        <h4>Brief &amp; competitor scan</h4>
+        <p>30-minute call to capture the company story, target customer, key services &amp; competitive landscape. Reviewed 5 GCC trading company sites for visual reference.</p>
+      </div>
+      <div class="build-step">
+        <h4>Content &amp; brochure extraction</h4>
+        <p>Extracted the existing 24-page brochure into individual high-res images, organized by service area (sourcing, showrooms, design, franchise).</p>
+      </div>
+      <div class="build-step">
+        <h4>Design tokens &amp; colour system</h4>
+        <p>Established a navy + gold palette with CSS variables &mdash; primary #0a1628, accent #c9a84c. Defined typography scale &amp; spacing rhythm before writing any HTML.</p>
+      </div>
+      <div class="build-step">
+        <h4>Floating catalogue interaction</h4>
+        <p>Custom JS + CSS to build a page-flip catalogue experience that mimics the printed brochure &mdash; without any heavy library like Turn.js.</p>
+      </div>
+      <div class="build-step">
+        <h4>Mobile-first responsive pass</h4>
+        <p>Started layouts at 320px, scaled up to 1440px. Tested on actual devices in the office before pushing to production.</p>
+      </div>
+      <div class="build-step">
+        <h4>Deploy &amp; analytics</h4>
+        <p>GitHub Pages deploy, CNAME setup at Namecheap for globalpioneer.xyz, Google Analytics 4 wired in for traffic insights.</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div><div class="stat-num">3<em>d</em></div><div class="stat-label">Build Time</div></div>
+      <div><div class="stat-num">1</div><div class="stat-label">HTML File</div></div>
+      <div><div class="stat-num">0</div><div class="stat-label">Dependencies</div></div>
+      <div><div class="stat-num">100<em>%</em></div><div class="stat-label">Lighthouse Perf</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Notable features -->
+<section class="t-section">
+  <div class="t-section-inner">
+    <div class="t-section-label">Notable Features</div>
+    <h2>What makes this <em>site work</em></h2>
+    <p class="t-section-lead">Specific design decisions that make the experience memorable &amp; conversion-focused.</p>
+
+    <div class="tech-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="tech-card">
+        <div class="tech-card-tag">Conversion</div>
+        <div class="tech-card-name">Floating Brochure</div>
+        <div class="tech-card-desc">Visitors can flip through the printed company brochure in-browser &mdash; cuts time-to-trust dramatically vs. plain text.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Trust</div>
+        <div class="tech-card-name">Partner Brands Showcase</div>
+        <div class="tech-card-desc">LE PEARL &amp; YOYOSO logos prominent in the partner section &mdash; instant credibility for B2B prospects.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">UX</div>
+        <div class="tech-card-name">Lightbox Gallery</div>
+        <div class="tech-card-desc">Custom lightbox for showroom photos &mdash; keyboard navigation, swipe support, no jquery dependency.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-tag">Performance</div>
+        <div class="tech-card-name">Lazy-Loaded Images</div>
+        <div class="tech-card-desc">Native loading="lazy" + WebP fallbacks &mdash; first contentful paint under 1.2s on 4G mobile.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="t-final-cta">
+  <div class="t-section-inner">
+    <h2>See it <em>live</em></h2>
+    <p>Open the production site to experience the floating brochure, partner showcase &amp; B2B inquiry flow.</p>
+    <a href="https://globalpioneer.xyz" target="_blank" rel="noopener" class="t-final-cta-btn">Visit globalpioneer.xyz &rarr;</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="t-footer">
+  <div class="t-section-inner">
+    <p>&copy; 2026 Aziz Saif &middot; Built end-to-end by <a href="../../index.html">azizsaif.com</a> &middot; <a href="../../index.html#portfolio">View All Websites &rarr;</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
