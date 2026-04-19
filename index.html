@@ -273,13 +273,17 @@ section{padding:var(--section-pad) 56px}
 .expertise-card:hover::after{transform:scaleX(1)}
 .expertise-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--accent);margin-bottom:24px;position:relative}
 .expertise-list{list-style:none}
-.expertise-list li{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.65);font-size:.86rem;display:flex;align-items:center;gap:12px;position:relative;transition:all .35s;cursor:default;padding-left:0}
+.expertise-list li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:14px;position:relative;transition:all .35s;cursor:default;padding-left:0}
 .expertise-list li::before{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .5s cubic-bezier(.4,0,.2,1)}
 .expertise-list li:hover::before{width:100%}
-.expertise-list li:hover{color:var(--white);padding-left:6px}
+.expertise-list li:hover{padding-left:6px}
+.expertise-list li:hover .exp-title{color:var(--accent-light)}
 .expertise-list li:last-child{border-bottom:none}
-.expertise-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;transition:transform .3s}
+.expertise-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;transition:transform .3s;margin-top:7px}
 .expertise-list li:hover .expertise-dot{transform:scale(1.6)}
+.exp-body{display:flex;flex-direction:column;gap:4px;flex:1}
+.exp-title{font-size:.9rem;font-weight:600;color:var(--white);letter-spacing:.2px;line-height:1.35;transition:color .3s}
+.exp-benefit{font-size:.78rem;color:rgba(255,255,255,.6);font-weight:300;line-height:1.6}
 
 /* Country tags inside expertise */
 .expertise-tags{margin-top:24px;display:flex;flex-wrap:wrap;gap:6px}
@@ -1066,13 +1070,55 @@ body.has-corp-nav{padding-top:0}
         <div class="expertise-card">
           <h3 class="expertise-title">Core Expertise</h3>
           <ul class="expertise-list">
-            <li><span class="expertise-dot"></span>Retail Scaling &amp; Multi-Location Ops</li>
-            <li><span class="expertise-dot"></span>Franchise Development &amp; Onboarding</li>
-            <li><span class="expertise-dot"></span>B2B Sourcing &amp; Supply Chain</li>
-            <li><span class="expertise-dot"></span>AI Business Automation</li>
-            <li><span class="expertise-dot"></span>Investor Pitch Decks &amp; Feasibility</li>
-            <li><span class="expertise-dot"></span>eCommerce &amp; Digital Transformation</li>
-            <li><span class="expertise-dot"></span>Accounting &amp; Financial Reports</li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">Retail Scaling &amp; Multi-Location Ops</div>
+                <div class="exp-benefit">Playbooks for opening, staffing, and controlling multi-store operations across the GCC, with clear KPIs and dashboards.</div>
+              </div>
+            </li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">Franchise Development &amp; Onboarding</div>
+                <div class="exp-benefit">From franchise model design to training manuals and launch support so new locations execute from day one.</div>
+              </div>
+            </li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">B2B Sourcing &amp; Supply Chain</div>
+                <div class="exp-benefit">Vendor selection, negotiation, and logistics flows that reduce stock-outs and working-capital stress.</div>
+              </div>
+            </li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">AI Business Automation</div>
+                <div class="exp-benefit">Replace manual spreadsheets and WhatsApp chaos with integrated CRM, ERP, and workflow automations customised to your business.</div>
+              </div>
+            </li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">Investor Pitch Decks &amp; Feasibility</div>
+                <div class="exp-benefit">Bank-ready feasibility studies and decks that speak the language of serious investors and lenders.</div>
+              </div>
+            </li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">eCommerce &amp; Digital Transformation</div>
+                <div class="exp-benefit">Turn legacy operations into measurable online funnels, with end-to-end order, inventory, and fulfilment systems.</div>
+              </div>
+            </li>
+            <li>
+              <span class="expertise-dot"></span>
+              <div class="exp-body">
+                <div class="exp-title">Accounting &amp; Financial Reports</div>
+                <div class="exp-benefit">Practical reporting structures so owners see cash, margins, and risks in one page &mdash; not buried in files.</div>
+              </div>
+            </li>
           </ul>
           <div class="expertise-tags">
             <span class="expertise-tag">&#127462;&#127466; UAE</span>
