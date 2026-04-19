@@ -896,58 +896,127 @@ body.has-corp-nav{padding-top:0}
   </div>
 </div>
 
-<!-- ============ SHARP HERO · ONE PROMISE · PRIMARY CTA ============ -->
+<!-- ============ EDITORIAL HERO · GULF EXECUTIVE DESK ============ -->
 <style>
-.az-hero{margin-top:98px;background:linear-gradient(180deg,var(--white) 0%,var(--off-white) 100%);padding:clamp(48px,8vw,96px) 48px clamp(40px,6vw,72px);border-bottom:1px solid var(--gray-100);position:relative;overflow:hidden}
-.az-hero::before{content:'';position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.10),transparent 70%);pointer-events:none}
-.az-hero::after{content:'';position:absolute;bottom:-180px;left:-120px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(10,22,40,.06),transparent 70%);pointer-events:none}
-.az-hero-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2;text-align:center}
-.az-hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;letter-spacing:2.5px;font-weight:700;text-transform:uppercase;color:var(--accent-dark);background:rgba(201,168,76,.10);border:1px solid rgba(201,168,76,.28);padding:8px 18px;border-radius:50px;margin-bottom:28px}
-.az-hero-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-.az-hero-headline{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:600;line-height:1.12;color:var(--primary);letter-spacing:-.01em;margin:0 auto 22px;max-width:900px}
-.az-hero-headline em{font-style:italic;color:var(--accent-dark);font-weight:600}
-.az-hero-sub{font-size:clamp(.95rem,1.4vw,1.08rem);color:var(--gray-600);line-height:1.7;max-width:720px;margin:0 auto 36px;font-weight:400}
-.az-hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-.az-cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:15px 30px;font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .3s;border:2px solid var(--primary);box-shadow:0 8px 24px rgba(10,22,40,.18)}
-.az-cta-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-2px);box-shadow:0 12px 28px rgba(168,135,46,.28)}
-.az-cta-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--primary);padding:15px 30px;font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .3s;border:2px solid var(--primary)}
-.az-cta-secondary:hover{background:var(--primary);color:#fff}
-.az-hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:680px;margin:0 auto;padding-top:32px;border-top:1px solid var(--gray-100)}
-.az-metric{text-align:center}
-.az-metric .n{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;color:var(--accent-dark);line-height:1;margin-bottom:6px}
-.az-metric .l{font-size:.66rem;letter-spacing:2px;font-weight:600;text-transform:uppercase;color:var(--gray-500)}
-@media (max-width:640px){
-  .az-hero{padding:56px 24px 40px}
-  .az-hero-ctas{flex-direction:column;align-items:stretch}
-  .az-cta-primary,.az-cta-secondary{justify-content:center}
-  .az-hero-metrics{gap:14px}
+:root{
+  --ed-ivory:#f7f2e8;
+  --ed-ivory-deep:#efe7d3;
+  --ed-stone:#e8e0cf;
+  --ed-stone-line:#d4c9b3;
+  --ed-charcoal:#1a1f1c;
+  --ed-charcoal-soft:#3a3f3a;
+  --ed-muted:#6f6a5c;
+  --ed-teal:#155e5e;
+  --ed-teal-deep:#0e4444;
+  --ed-teal-tint:#d7e3e2;
 }
-/* Sticky WhatsApp CTA (repeats after every major section) */
-.az-cta-float{position:fixed;right:20px;bottom:20px;z-index:900;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 18px;font-size:.74rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:50px;box-shadow:0 10px 28px rgba(37,211,102,.38);transition:transform .3s}
-.az-cta-float:hover{transform:translateY(-3px)}
-.az-cta-float svg{width:18px;height:18px}
+.ed-hero{margin-top:98px;background:var(--ed-ivory);color:var(--ed-charcoal);padding:clamp(72px,10vw,132px) 48px clamp(56px,7vw,88px);border-bottom:1px solid var(--ed-stone-line);position:relative;overflow:hidden}
+.ed-hero::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:36px;width:1px;height:40px;background:var(--ed-stone-line)}
+.ed-hero-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.ed-hero-masthead{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--ed-stone-line);margin-bottom:64px;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--ed-muted)}
+.ed-hero-masthead .mh-left,.ed-hero-masthead .mh-right{display:inline-flex;align-items:center;gap:12px}
+.ed-hero-masthead .mh-dot{width:6px;height:6px;border-radius:50%;background:var(--ed-teal)}
+.ed-hero-eyebrow{display:inline-block;font-size:.66rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);border-left:2px solid var(--ed-teal);padding:2px 0 2px 14px;margin-bottom:32px}
+.ed-hero-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:500;line-height:1.08;letter-spacing:-.015em;color:var(--ed-charcoal);margin:0 0 28px;max-width:920px}
+.ed-hero-headline em{font-style:italic;font-weight:500;color:var(--ed-teal)}
+.ed-hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,1.5vw,1.22rem);color:var(--ed-charcoal-soft);line-height:1.55;font-weight:400;max-width:780px;margin:0 0 44px}
+.ed-hero-cta-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.ed-cta-primary{display:inline-flex;align-items:center;gap:12px;background:var(--ed-teal);color:#fff;padding:16px 30px;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid var(--ed-teal);transition:background .3s, transform .3s;position:relative}
+.ed-cta-primary:hover{background:var(--ed-teal-deep);transform:translateY(-1px)}
+.ed-cta-primary::after{content:'\2192';font-size:1.05rem;margin-left:4px}
+.ed-hero-meta{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--ed-muted);font-weight:500}
+.ed-hero-meta strong{color:var(--ed-charcoal);font-weight:700}
+
+/* 4 BUSINESS SIGNAL CARDS */
+.ed-signals{background:var(--ed-ivory);border-bottom:1px solid var(--ed-stone-line);padding:0}
+.ed-signals-inner{max-width:1120px;margin:0 auto;padding:0 48px}
+.ed-signals-label{display:flex;align-items:center;gap:14px;padding:26px 0 22px;border-bottom:1px solid var(--ed-stone-line);font-size:.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-muted)}
+.ed-signals-label::before{content:'';width:28px;height:1px;background:var(--ed-teal)}
+.ed-signals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.ed-signal{padding:40px 28px 44px;border-right:1px solid var(--ed-stone-line);position:relative;transition:background .4s}
+.ed-signal:last-child{border-right:none}
+.ed-signal:hover{background:var(--ed-ivory-deep)}
+.ed-signal .s-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:500;color:var(--ed-charcoal);line-height:1;letter-spacing:-.02em;margin-bottom:12px}
+.ed-signal .s-num em{font-style:normal;color:var(--ed-teal);font-size:.6em;font-weight:600;letter-spacing:0;margin-left:2px;vertical-align:.15em}
+.ed-signal .s-title{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;color:var(--ed-charcoal);line-height:1.25;margin-bottom:10px;letter-spacing:-.005em}
+.ed-signal .s-note{font-size:.78rem;color:var(--ed-muted);line-height:1.65;font-weight:400}
+.ed-signal .s-label{font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);margin-bottom:16px;display:block}
+
+@media (max-width:900px){
+  .ed-signals-grid{grid-template-columns:repeat(2,1fr)}
+  .ed-signal:nth-child(2){border-right:none}
+  .ed-signal:nth-child(1),.ed-signal:nth-child(2){border-bottom:1px solid var(--ed-stone-line)}
+}
+@media (max-width:560px){
+  .ed-hero{padding:56px 24px 44px;margin-top:80px}
+  .ed-hero-masthead{margin-bottom:40px;font-size:.56rem;letter-spacing:2px;flex-wrap:wrap;gap:8px}
+  .ed-hero-cta-row{flex-direction:column;align-items:flex-start;gap:18px}
+  .ed-signals-inner{padding:0 24px}
+  .ed-signals-grid{grid-template-columns:1fr}
+  .ed-signal{border-right:none;border-bottom:1px solid var(--ed-stone-line);padding:32px 0 36px}
+  .ed-signal:last-child{border-bottom:none}
+}
+
+/* Editorial floating WhatsApp — restrained deep teal, not bright green */
+.az-cta-float{position:fixed;right:20px;bottom:20px;z-index:900;display:inline-flex;align-items:center;gap:8px;background:var(--ed-teal);color:#fff;padding:12px 18px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid var(--ed-teal-deep);box-shadow:0 10px 28px rgba(21,94,94,.28);transition:transform .3s, background .3s}
+.az-cta-float:hover{transform:translateY(-2px);background:var(--ed-teal-deep)}
+.az-cta-float svg{width:17px;height:17px}
 @media print{.az-cta-float{display:none}}
 </style>
 
-<section class="az-hero" aria-label="Aziz Saif — GCC SME Advisor">
-  <div class="az-hero-inner">
-    <div class="az-hero-eyebrow">GCC SME Advisor &middot; 37+ Years &middot; Dubai</div>
-    <h1 class="az-hero-headline">I help GCC SMEs streamline operations, launch faster and scale with <em>AI-backed systems</em>.</h1>
-    <p class="az-hero-sub">Thirty-seven years growing retail from one store to thirty-five across five GCC countries &mdash; now combined with hands-on AI automation for SMEs that want to operate without the bloat.</p>
-    <div class="az-hero-ctas">
-      <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20talk%20about%20my%20business." target="_blank" rel="noopener" class="az-cta-primary">WhatsApp Aziz &rarr;</a>
-      <a href="#services" class="az-cta-secondary">See the 4 Services</a>
+<section class="ed-hero" aria-label="Aziz Saif — GCC Business Operator">
+  <div class="ed-hero-inner">
+    <div class="ed-hero-masthead">
+      <div class="mh-left"><span class="mh-dot"></span><span>Aziz Saif &middot; Dubai</span></div>
+      <div class="mh-right"><span>Volume XXXVII</span><span>&middot;</span><span>Since 1989</span></div>
     </div>
-    <div class="az-hero-metrics">
-      <div class="az-metric"><div class="n">37+</div><div class="l">Years in the GCC</div></div>
-      <div class="az-metric"><div class="n">35</div><div class="l">Stores Scaled</div></div>
-      <div class="az-metric"><div class="n">5</div><div class="l">GCC Countries</div></div>
+
+    <div class="ed-hero-eyebrow">GCC Business Operator &middot; Advisory &amp; AI Execution</div>
+    <h1 class="ed-hero-headline">Building businesses across the Gulf &mdash; with <em>operating discipline, market depth, and practical AI execution</em>.</h1>
+    <p class="ed-hero-sub">Thirty-seven years across five GCC markets. One-hundred-plus SMEs in the working network. A live bench of AI workflow tools built for the region's real operating conditions &mdash; not a template.</p>
+
+    <div class="ed-hero-cta-row">
+      <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20UAE%2FGulf%20growth%20plan." target="_blank" rel="noopener" class="ed-cta-primary">Discuss a UAE / Gulf growth plan</a>
+      <div class="ed-hero-meta"><strong>Based in Dubai</strong> &nbsp;&middot;&nbsp; UAE, KSA, Oman, Bahrain, Qatar, Kuwait</div>
     </div>
   </div>
 </section>
 
-<!-- Floating WhatsApp CTA (repeats across the page) -->
-<a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20talk%20about%20my%20business." target="_blank" rel="noopener" class="az-cta-float" aria-label="WhatsApp Aziz">
+<!-- 4 BUSINESS SIGNAL CARDS -->
+<section class="ed-signals" aria-label="Business signals">
+  <div class="ed-signals-inner">
+    <div class="ed-signals-label">Business Signals &middot; The Operator&rsquo;s Record</div>
+    <div class="ed-signals-grid">
+      <div class="ed-signal">
+        <span class="s-label">01 &middot; Tenure</span>
+        <div class="s-num">37<em>yrs</em></div>
+        <div class="s-title">In Business Operations</div>
+        <p class="s-note">From the stockroom to VP of Operations &mdash; thirty-seven years of running stores, payrolls, landlords and supplier books across the Gulf.</p>
+      </div>
+      <div class="ed-signal">
+        <span class="s-label">02 &middot; Footprint</span>
+        <div class="s-num">6</div>
+        <div class="s-title">Across GCC Markets</div>
+        <p class="s-note">UAE, Saudi Arabia, Oman, Bahrain, Qatar, Kuwait &mdash; direct operating experience in each, not a desk-research map.</p>
+      </div>
+      <div class="ed-signal">
+        <span class="s-label">03 &middot; Craft</span>
+        <div class="s-num">Retail<em>&rarr;</em></div>
+        <div class="s-title">Retail, SME &amp; Growth Systems</div>
+        <p class="s-note">Multi-location retail, franchise rollouts, SME operating systems &mdash; and the playbooks that travel between them.</p>
+      </div>
+      <div class="ed-signal">
+        <span class="s-label">04 &middot; Today</span>
+        <div class="s-num">AI<em>ready</em></div>
+        <div class="s-title">AI Workflow Adoption for the Gulf</div>
+        <p class="s-note">Hands-on implementation of Claude, GPT and custom agents for real Gulf SMEs &mdash; invoicing, CRM, reporting, operations. No IT team required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating WhatsApp CTA (deep teal, editorial palette) -->
+<a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20UAE%2FGulf%20growth%20plan." target="_blank" rel="noopener" class="az-cta-float" aria-label="WhatsApp Aziz">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.84 9.84 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.36c0-4.54 3.69-8.22 8.23-8.22 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 012.41 5.82c0 4.54-3.69 8.21-8.22 8.21zm4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.23-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.77-1.84-.2-.48-.41-.42-.56-.42-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.68 4.24 3.76.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
   WhatsApp
 </a>
