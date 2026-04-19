@@ -167,6 +167,24 @@ a{color:inherit;text-decoration:none}
 .chapter-grid-cell a{display:block;height:100%;color:inherit}
 .chapter-grid-cell a:hover{color:inherit}
 
+/* RICH CELL — landmark photo + large flag chip */
+.chapter-grid-cell.cgc-rich{padding:0;border:1px solid var(--gray-100);border-radius:8px;overflow:hidden;background:var(--white);transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;display:flex;flex-direction:column}
+.chapter-grid-cell.cgc-rich:hover{transform:translateY(-4px);box-shadow:0 22px 42px rgba(10,22,40,.12);border-color:var(--gray-200);background:var(--white)}
+.chapter-grid-cell.cgc-rich::before{display:none}
+.cgc-hero{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,#0a1628,var(--accent-dark));background-size:cover;background-position:center;transition:filter .4s, background-image .4s}
+.cgc-hero.loaded{filter:saturate(1.04)}
+.cgc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(10,22,40,.62) 100%);pointer-events:none}
+.cgc-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.18),transparent 55%);pointer-events:none;opacity:0;transition:opacity .4s}
+.chapter-grid-cell.cgc-rich:hover .cgc-hero::before{opacity:1}
+.cgc-flag{position:absolute;top:14px;left:14px;width:72px;height:auto;box-shadow:0 6px 18px rgba(0,0,0,.45);border:2px solid rgba(255,255,255,.9);border-radius:4px;overflow:hidden;z-index:2;background:#fff;display:block}
+.cgc-hero-label{position:absolute;left:16px;right:16px;bottom:12px;z-index:2;display:flex;flex-direction:column;gap:2px}
+.cgc-hero-label .cgc-country-full{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;line-height:1.2;color:#fff;letter-spacing:.3px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.cgc-hero-label .cgc-country-tag{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--accent-light);text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.chapter-grid-cell.cgc-rich .cgc-body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+.chapter-grid-cell.cgc-rich h5{display:none}
+.chapter-grid-cell.cgc-rich .cgc-num{display:none}
+.chapter-grid-cell.cgc-rich .cgc-facts{margin-bottom:14px}
+
 /* CTA SECTION */
 .cta-section{background:var(--primary);color:var(--white);padding:140px 48px;text-align:center;position:relative;overflow:hidden}
 .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,.15),transparent 60%)}
