@@ -472,17 +472,17 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 .blog-list a::before{content:'\2192';margin-right:8px;color:var(--accent);font-size:.7rem}
 
 /* FOOTER */
-.footer{background:#0d1117;padding:64px 56px 28px;color:rgba(255,255,255,.5)}
+.footer{background:var(--ed-ivory-deep);padding:72px 56px 32px;color:var(--ed-muted);border-top:1px solid var(--ed-stone-line)}
 .footer-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
-.footer-brand{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:12px}
-.footer-desc{color:rgba(255,255,255,.4);font-size:.8rem;line-height:1.7;max-width:300px}
-.footer h4{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;color:var(--ed-charcoal);margin-bottom:12px;letter-spacing:.3px}
+.footer-desc{color:var(--ed-muted);font-size:.8rem;line-height:1.75;max-width:320px;font-weight:400}
+.footer h4{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ed-teal);margin-bottom:14px}
 .footer ul{list-style:none}
 .footer li{margin-bottom:8px}
-.footer a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.8rem;transition:color .2s}
-.footer a:hover{color:var(--accent)}
-.footer-bottom{max-width:1400px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.footer-bottom p{color:rgba(255,255,255,.25);font-size:.74rem}
+.footer a{color:var(--ed-charcoal-soft);text-decoration:none;font-size:.82rem;transition:color .2s}
+.footer a:hover{color:var(--ed-teal)}
+.footer-bottom{max-width:1400px;margin:0 auto;padding-top:24px;border-top:1px solid var(--ed-stone-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{color:var(--ed-muted);font-size:.74rem;letter-spacing:.3px}
 
 /* WHATSAPP & CHATBOT */
 .whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:900;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(37,211,102,.3);transition:transform .3s;text-decoration:none}
@@ -546,18 +546,18 @@ a.tool-cell{text-decoration:none;color:inherit;display:block}
 }
 
 /* ============ NEW CORPORATE NAV (Tata-Elxsi inspired) ============ */
-.corp-utility{background:var(--primary);color:rgba(255,255,255,.78);font-size:.7rem;font-weight:500;letter-spacing:.4px;height:34px;display:flex;align-items:center}
+.corp-utility{background:var(--ed-charcoal);color:rgba(247,242,232,.82);font-size:.7rem;font-weight:500;letter-spacing:.4px;height:34px;display:flex;align-items:center;border-bottom:1px solid rgba(215,227,226,.08)}
 .corp-utility-inner{max-width:1440px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px}
-.corp-utility-left{display:flex;align-items:center;gap:18px;color:rgba(255,255,255,.55)}
+.corp-utility-left{display:flex;align-items:center;gap:18px;color:rgba(247,242,232,.6)}
 .corp-utility-tag{display:inline-flex;align-items:center;gap:6px}
-.corp-utility-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;animation:cu-pulse 2s infinite}
+.corp-utility-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ed-teal-tint);display:inline-block;animation:cu-pulse 2s infinite}
 @keyframes cu-pulse{0%,100%{opacity:.5}50%{opacity:1}}
 .corp-utility-right{display:flex;align-items:center;gap:6px}
-.corp-utility-right a{color:rgba(255,255,255,.7);text-decoration:none;padding:0 12px;border-right:1px solid rgba(255,255,255,.15);transition:color .2s}
+.corp-utility-right a{color:rgba(247,242,232,.72);text-decoration:none;padding:0 12px;border-right:1px solid rgba(247,242,232,.12);transition:color .2s}
 .corp-utility-right a:last-child{border-right:none;padding-right:0}
-.corp-utility-right a:hover{color:var(--accent)}
-.corp-utility-right .cu-cta{background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:3px;border-right:none;font-weight:600;letter-spacing:.6px;text-transform:uppercase;font-size:.62rem;margin-left:8px}
-.corp-utility-right .cu-cta:hover{background:var(--accent-light);color:var(--primary)}
+.corp-utility-right a:hover{color:var(--ed-teal-tint)}
+.corp-utility-right .cu-cta{background:var(--ed-teal);color:#fff;padding:6px 14px;border-radius:0;border-right:none;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;font-size:.6rem;margin-left:8px;transition:background .2s}
+.corp-utility-right .cu-cta:hover{background:var(--ed-teal-deep);color:#fff}
 .corp-main{position:fixed;top:34px;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.05);transition:all .3s}
 .corp-main.scrolled{box-shadow:0 1px 18px rgba(10,22,40,.07);top:0}
 .corp-main.scrolled ~ .corp-utility{transform:translateY(-100%)}
@@ -2693,7 +2693,7 @@ body.has-corp-nav{padding-top:0}
 </section>
 
 <!-- CALENDLY INLINE BOOKING -->
-<section id="book" style="background:var(--off-white);padding:64px 0 80px">
+<section id="book" style="background:var(--ed-ivory);padding:72px 0 88px;border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)">
   <div class="section-inner">
     <div class="section-header reveal" style="text-align:center;margin-bottom:24px">
       <div style="width:100%">
