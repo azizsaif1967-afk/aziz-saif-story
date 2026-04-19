@@ -1102,6 +1102,136 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
+<!-- ============ PROOF / RESULTS / CASE STUDIES ============ -->
+<style>
+.proof-section{background:linear-gradient(180deg,var(--off-white),var(--white));padding:clamp(72px,9vw,120px) 48px;border-top:1px solid var(--gray-100)}
+.proof-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--gray-100);margin:48px 0 64px;border:1px solid var(--gray-100)}
+.proof-metric{background:var(--white);padding:28px 22px;text-align:center;transition:background .3s}
+.proof-metric:hover{background:var(--off-white)}
+.proof-metric .n{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:700;color:var(--primary);line-height:1;margin-bottom:6px}
+.proof-metric .n em{color:var(--accent-dark);font-style:normal;font-weight:600;font-size:.8em}
+.proof-metric .l{font-size:.62rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--gray-500);font-weight:600;line-height:1.45}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.case-card{background:var(--white);border:1px solid var(--gray-100);padding:0;display:flex;flex-direction:column;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;overflow:hidden}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(10,22,40,.10);border-color:var(--gray-200)}
+.case-hero{padding:22px 26px 18px;background:var(--primary);color:#fff;position:relative;overflow:hidden}
+.case-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent)}
+.case-hero .case-tag{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:8px}
+.case-hero h3{font-family:'Playfair Display',serif;font-size:1.32rem;font-weight:600;line-height:1.2;color:#fff;margin-bottom:6px}
+.case-hero .case-domain{font-size:.7rem;color:rgba(255,255,255,.55);letter-spacing:.3px;font-weight:400}
+.case-body{padding:22px 26px 24px;flex:1;display:flex;flex-direction:column;gap:14px}
+.case-row{display:grid;grid-template-columns:86px 1fr;gap:10px;align-items:flex-start}
+.case-row .k{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--accent-dark);padding-top:3px}
+.case-row .v{font-size:.82rem;color:var(--gray-700);line-height:1.6}
+.case-results{margin-top:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--gray-100);padding-top:14px}
+.case-results .r{text-align:left}
+.case-results .r:last-child{text-align:right}
+.case-results .n{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--accent-dark);line-height:1}
+.case-results .l{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);font-weight:600;margin-top:4px;line-height:1.4}
+.proof-testimonial{margin-top:56px;padding:32px 40px;background:var(--white);border:1px solid var(--gray-100);border-left:4px solid var(--accent);max-width:820px;margin-left:auto;margin-right:auto}
+.proof-testimonial p{font-family:'Playfair Display',serif;font-size:1.08rem;font-style:italic;color:var(--gray-700);line-height:1.65;margin-bottom:14px}
+.proof-testimonial .who{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-500);font-weight:600}
+.proof-testimonial .who strong{color:var(--primary);font-weight:700}
+@media (max-width:640px){.proof-section{padding:56px 24px}.case-hero,.case-body{padding-left:22px;padding-right:22px}}
+</style>
+
+<section id="proof" class="proof-section" aria-label="Proof and Results">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> Proof &amp; Results</div>
+        <h2 class="section-title">37 years, counted &mdash; <em>not just claimed</em></h2>
+        <p class="section-subtitle">The numbers behind the positioning. Each one is a real project, a real rollout, or a real line in a P&amp;L &mdash; not a marketing claim.</p>
+      </div>
+    </div>
+
+    <!-- METRICS STRIP -->
+    <div class="proof-metrics reveal" role="list">
+      <div class="proof-metric" role="listitem"><div class="n">37<em>+</em></div><div class="l">Years in GCC Retail</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">35</div><div class="l">Stores Scaled (Sana)</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">5</div><div class="l">GCC Markets Operated</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">15</div><div class="l">KSA Stores (YOYOSO)</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">26</div><div class="l">Countries Travelled</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">10<em>+</em></div><div class="l">Live Websites Built</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">38<em>+</em></div><div class="l">AI Reports Published</div></div>
+      <div class="proof-metric" role="listitem"><div class="n">100<em>+</em></div><div class="l">Chefs &amp; SMEs Networked</div></div>
+    </div>
+
+    <!-- CASE STUDIES -->
+    <div class="section-header reveal" style="margin-bottom:28px">
+      <div>
+        <div class="section-label"><span class="line"></span> Case Studies</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:600;color:var(--primary);line-height:1.2">Three engagements, <em style="color:var(--accent-dark);font-style:italic">three outcomes</em></h3>
+      </div>
+    </div>
+
+    <div class="cases-grid reveal">
+
+      <!-- CASE 1: YOYOSO KSA -->
+      <article class="case-card">
+        <div class="case-hero">
+          <div class="case-tag">Master Franchise &middot; KSA</div>
+          <h3>YOYOSO Saudi Arabia</h3>
+          <div class="case-domain">Korean-style lifestyle &amp; fashion &middot; 5,000+ SKUs</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="k">Problem</div><div class="v">An Asian lifestyle brand needed a credible master-franchisee to open the Saudi market &mdash; no store footprint, no GCC supply chain, no local team.</div></div>
+          <div class="case-row"><div class="k">Approach</div><div class="v">Negotiated the master-franchise agreement, built the opening-store model, recruited local operations staff and ran the first-year expansion plan mall-by-mall.</div></div>
+          <div class="case-row"><div class="k">Outcome</div><div class="v">15 mall stores live across KSA within the rollout window &mdash; anchoring the brand's GCC presence.</div></div>
+          <div class="case-results">
+            <div class="r"><div class="n">15 stores</div><div class="l">Year-1 rollout</div></div>
+            <div class="r"><div class="n">Kingdom-wide</div><div class="l">Coverage</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 2: Le Pearl -->
+      <article class="case-card">
+        <div class="case-hero">
+          <div class="case-tag">Multi-Brand Retail &middot; Oman/UAE</div>
+          <h3>Le Pearl Fashion</h3>
+          <div class="case-domain">Men's, women's &amp; kids' &middot; Disney, Marvel, Minoti</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="k">Problem</div><div class="v">Turn a multi-brand retailer into a cross-border presence in Oman and the UAE &mdash; consistent merchandising, shared supply chain, unified store model.</div></div>
+          <div class="case-row"><div class="k">Approach</div><div class="v">Negotiated licensed-brand sourcing (Disney, Marvel, Minoti), built the store-opening playbook and set up the Oman-UAE operations cadence.</div></div>
+          <div class="case-row"><div class="k">Outcome</div><div class="v">A 10+ store footprint across two GCC markets with full catalogue, online handoff and live social shopfront.</div></div>
+          <div class="case-results">
+            <div class="r"><div class="n">10+ stores</div><div class="l">2 countries</div></div>
+            <div class="r"><div class="n">3 brands</div><div class="l">Licensed in</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 3: Sana Fashions -->
+      <article class="case-card">
+        <div class="case-hero">
+          <div class="case-tag">Retail Scale-Up &middot; 5 GCC Countries</div>
+          <h3>Sana Fashions</h3>
+          <div class="case-domain">From one Dubai store to a GCC retail chain</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="k">Problem</div><div class="v">A single-store Dubai retailer needed to scale &mdash; not just more locations, but an operations, sourcing and franchise model that could survive five different markets.</div></div>
+          <div class="case-row"><div class="k">Approach</div><div class="v">Joined at 18 as one of the first employees; rose to VP Operations while building the multi-location ops, sourcing network (Turkey, Subcontinent, SE Asia) and franchise pathway into KSA.</div></div>
+          <div class="case-row"><div class="k">Outcome</div><div class="v">1 &rarr; 35 stores across 5 GCC countries over a 20-year arc &mdash; the retail foundation behind everything I do now.</div></div>
+          <div class="case-results">
+            <div class="r"><div class="n">35 stores</div><div class="l">Peak footprint</div></div>
+            <div class="r"><div class="n">5 countries</div><div class="l">GCC span</div></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Testimonial slot (placeholder, ready for real quotes) -->
+    <div class="proof-testimonial reveal">
+      <p>&ldquo;Aziz is the operator you want in the room when a Gulf rollout is at stake &mdash; he's run the stores, chased the landlords, and closed the franchise paperwork himself. That's rare.&rdquo;</p>
+      <div class="who">&mdash; <strong>Placeholder</strong> &middot; testimonial to be added</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ============ 4 PRODUCTIZED SERVICES (primary offer) ============ -->
 <style>
 .svc-section{background:var(--white);padding:clamp(72px,9vw,120px) 48px;border-top:1px solid var(--gray-100)}
