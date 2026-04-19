@@ -1015,6 +1015,150 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
+<!-- ============ OPERATING FOOTPRINT · MARKETS & SECTORS ============ -->
+<style>
+.ed-footprint{background:var(--ed-ivory-deep);color:var(--ed-charcoal);padding:clamp(72px,8vw,104px) 48px;border-bottom:1px solid var(--ed-stone-line)}
+.ed-footprint-inner{max-width:1120px;margin:0 auto}
+.ed-section-head{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;margin-bottom:48px;padding-bottom:28px;border-bottom:1px solid var(--ed-stone-line)}
+.ed-section-head .ed-kicker{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);padding-top:8px}
+.ed-section-head .ed-kicker::before{content:'\2014';margin-right:8px;color:var(--ed-stone-line)}
+.ed-section-head .ed-head-body h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:500;line-height:1.12;letter-spacing:-.01em;color:var(--ed-charcoal);margin:0 0 14px;max-width:720px}
+.ed-section-head .ed-head-body h2 em{font-style:italic;color:var(--ed-teal);font-weight:500}
+.ed-section-head .ed-head-body p{font-size:.95rem;color:var(--ed-muted);line-height:1.75;max-width:640px;font-weight:400;margin:0}
+.ed-fp-grid{display:grid;grid-template-columns:1.1fr 1.3fr;gap:0;border:1px solid var(--ed-stone-line);background:var(--ed-ivory)}
+.ed-fp-col{padding:36px 36px 32px}
+.ed-fp-col.ed-fp-markets{border-right:1px solid var(--ed-stone-line)}
+.ed-fp-col .ed-fp-label{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-muted);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.ed-fp-col .ed-fp-label::before{content:'';width:18px;height:1px;background:var(--ed-teal)}
+.ed-fp-markets-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ed-fp-markets-list li{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--ed-charcoal);padding:12px 0;border-bottom:1px dashed var(--ed-stone-line);display:flex;align-items:baseline;gap:10px}
+.ed-fp-markets-list li:nth-last-child(-n+2){border-bottom:none}
+.ed-fp-markets-list li .mk-idx{font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:1.5px;font-weight:700;color:var(--ed-teal);min-width:22px}
+.ed-fp-markets-list li .mk-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--ed-muted);font-weight:400;letter-spacing:.3px;margin-left:auto}
+.ed-fp-sectors-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
+.ed-fp-sector{border-left:2px solid var(--ed-teal);padding:2px 0 2px 14px}
+.ed-fp-sector .sec-title{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:600;color:var(--ed-charcoal);line-height:1.3;margin-bottom:4px}
+.ed-fp-sector .sec-note{font-size:.74rem;color:var(--ed-muted);line-height:1.55;font-weight:400}
+.ed-fp-note{margin-top:24px;padding:20px 28px;background:var(--ed-ivory);border:1px solid var(--ed-stone-line);font-size:.8rem;color:var(--ed-charcoal-soft);line-height:1.7;font-style:italic;font-family:'Playfair Display',serif}
+.ed-fp-note strong{color:var(--ed-charcoal);font-weight:600;font-style:normal;font-family:'Inter',sans-serif}
+
+/* 4-STEP ADVISORY PROCESS */
+.ed-process{background:var(--ed-ivory);color:var(--ed-charcoal);padding:clamp(72px,8vw,104px) 48px;border-bottom:1px solid var(--ed-stone-line)}
+.ed-process-inner{max-width:1120px;margin:0 auto}
+.ed-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)}
+.ed-step{padding:36px 28px 40px;border-right:1px solid var(--ed-stone-line);position:relative;transition:background .4s}
+.ed-step:last-child{border-right:none}
+.ed-step:hover{background:var(--ed-ivory-deep)}
+.ed-step::before{content:'';position:absolute;top:-1px;left:0;height:3px;width:0;background:var(--ed-teal);transition:width .5s ease}
+.ed-step:hover::before{width:100%}
+.ed-step .step-idx{font-family:'Playfair Display',serif;font-style:italic;font-size:.8rem;color:var(--ed-muted);letter-spacing:.3px;margin-bottom:18px;display:block}
+.ed-step .step-idx strong{color:var(--ed-teal);font-weight:700;font-style:normal;margin-right:6px}
+.ed-step h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:500;color:var(--ed-charcoal);line-height:1.2;margin-bottom:16px;letter-spacing:-.01em}
+.ed-step h3 em{font-style:italic;color:var(--ed-teal);font-weight:500}
+.ed-step p{font-size:.82rem;color:var(--ed-muted);line-height:1.7;font-weight:400;margin-bottom:0}
+.ed-process-foot{margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--ed-muted);font-weight:600}
+.ed-process-foot a{color:var(--ed-teal);text-decoration:none;border-bottom:1px solid var(--ed-teal);padding-bottom:2px;transition:color .3s}
+.ed-process-foot a:hover{color:var(--ed-teal-deep)}
+
+@media (max-width:900px){
+  .ed-section-head{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
+  .ed-fp-grid{grid-template-columns:1fr}
+  .ed-fp-col.ed-fp-markets{border-right:none;border-bottom:1px solid var(--ed-stone-line)}
+  .ed-steps{grid-template-columns:repeat(2,1fr)}
+  .ed-step:nth-child(1),.ed-step:nth-child(2){border-bottom:1px solid var(--ed-stone-line)}
+  .ed-step:nth-child(2){border-right:none}
+}
+@media (max-width:560px){
+  .ed-footprint,.ed-process{padding:56px 24px}
+  .ed-fp-markets-list{grid-template-columns:1fr}
+  .ed-fp-markets-list li{border-bottom:1px dashed var(--ed-stone-line)!important}
+  .ed-fp-sectors-grid{grid-template-columns:1fr}
+  .ed-steps{grid-template-columns:1fr}
+  .ed-step{border-right:none!important;border-bottom:1px solid var(--ed-stone-line)}
+  .ed-step:last-child{border-bottom:none}
+}
+</style>
+
+<section class="ed-footprint" id="footprint" aria-label="Operating footprint">
+  <div class="ed-footprint-inner">
+    <div class="ed-section-head">
+      <div class="ed-kicker">Section III &middot; Footprint</div>
+      <div class="ed-head-body">
+        <h2>Where the operator has actually <em>worked</em>.</h2>
+        <p>Six GCC markets, seven business categories. Each one a real payroll, a real landlord, a real supplier &mdash; not a target-list for a pitch deck.</p>
+      </div>
+    </div>
+
+    <div class="ed-fp-grid">
+      <div class="ed-fp-col ed-fp-markets">
+        <div class="ed-fp-label">Markets Operated</div>
+        <ul class="ed-fp-markets-list">
+          <li><span class="mk-idx">01</span>United Arab Emirates<span class="mk-sub">Home base</span></li>
+          <li><span class="mk-idx">02</span>Saudi Arabia<span class="mk-sub">Master franchise</span></li>
+          <li><span class="mk-idx">03</span>Oman<span class="mk-sub">Flagship retail</span></li>
+          <li><span class="mk-idx">04</span>Bahrain<span class="mk-sub">Cross-causeway</span></li>
+          <li><span class="mk-idx">05</span>Qatar<span class="mk-sub">Premium sector</span></li>
+          <li><span class="mk-idx">06</span>Kuwait<span class="mk-sub">Mall retail</span></li>
+        </ul>
+      </div>
+      <div class="ed-fp-col ed-fp-sectors">
+        <div class="ed-fp-label">Sectors Worked In</div>
+        <div class="ed-fp-sectors-grid">
+          <div class="ed-fp-sector"><div class="sec-title">Multi-Location Retail</div><div class="sec-note">1&rarr;35 stores, five GCC markets, apparel &amp; lifestyle.</div></div>
+          <div class="ed-fp-sector"><div class="sec-title">Master Franchise</div><div class="sec-note">Asian lifestyle brand rollout across Saudi Arabia.</div></div>
+          <div class="ed-fp-sector"><div class="sec-title">Fashion Sourcing</div><div class="sec-note">Turkey, Subcontinent, SE Asia &mdash; direct factory relationships.</div></div>
+          <div class="ed-fp-sector"><div class="sec-title">F&amp;B &amp; Chef Network</div><div class="sec-note">100+ Gulf chef &amp; food operator relationships.</div></div>
+          <div class="ed-fp-sector"><div class="sec-title">Investor Feasibility</div><div class="sec-note">38+ AI-built feasibility studies across 20+ industries.</div></div>
+          <div class="ed-fp-sector"><div class="sec-title">AI Workflow Setup</div><div class="sec-note">Claude, GPT and custom-agent rollouts for Gulf SMEs.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ed-fp-note"><strong>Note to the reader:</strong> every sector on this list is backed by a live or recent engagement. See Section V &mdash; Selected Projects &mdash; for the receipts.</div>
+  </div>
+</section>
+
+<!-- ============ 4-STEP ADVISORY PROCESS ============ -->
+<section class="ed-process" id="process" aria-label="Advisory process">
+  <div class="ed-process-inner">
+    <div class="ed-section-head">
+      <div class="ed-kicker">Section IV &middot; Process</div>
+      <div class="ed-head-body">
+        <h2>An operator&rsquo;s process, not a <em>consultant&rsquo;s deck</em>.</h2>
+        <p>Every engagement follows the same four moves. Short, specific, and executed alongside your team &mdash; so the business owns the result, not the memo.</p>
+      </div>
+    </div>
+
+    <div class="ed-steps">
+      <div class="ed-step">
+        <span class="step-idx"><strong>01</strong> Listen</span>
+        <h3>Diagnose &mdash; <em>the real picture</em></h3>
+        <p>Read the numbers, walk the store or the floor, sit with the team. Map the reality against what the founder believes. The two are almost never the same.</p>
+      </div>
+      <div class="ed-step">
+        <span class="step-idx"><strong>02</strong> Sort</span>
+        <h3>Prioritise &mdash; <em>the next 90 days</em></h3>
+        <p>Three highest-leverage moves, sized for what the team can actually absorb. Everything else goes on a parking list. Focus is the product, not a 40-slide strategy.</p>
+      </div>
+      <div class="ed-step">
+        <span class="step-idx"><strong>03</strong> Build</span>
+        <h3>Execute &mdash; <em>alongside the team</em></h3>
+        <p>Install the systems, run the rollouts, train the operators. Not a deck handed over &mdash; a working change installed with the people who have to live with it after.</p>
+      </div>
+      <div class="ed-step">
+        <span class="step-idx"><strong>04</strong> Leave</span>
+        <h3>Hand over &mdash; <em>your team owns it</em></h3>
+        <p>SOPs, dashboards, automation scripts, playbooks &mdash; written plain, documented, and transferred. The engagement ends with the business running better without me.</p>
+      </div>
+    </div>
+
+    <div class="ed-process-foot">
+      <div>Typical engagement &middot; <strong style="color:var(--ed-charcoal)">4&ndash;6 weeks</strong> &middot; Scoped before we start</div>
+      <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20UAE%2FGulf%20growth%20plan." target="_blank" rel="noopener">Discuss an engagement on WhatsApp &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- Floating WhatsApp CTA (deep teal, editorial palette) -->
 <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20UAE%2FGulf%20growth%20plan." target="_blank" rel="noopener" class="az-cta-float" aria-label="WhatsApp Aziz">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.84 9.84 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.36c0-4.54 3.69-8.22 8.23-8.22 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 012.41 5.82c0 4.54-3.69 8.21-8.22 8.21zm4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.23-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.77-1.84-.2-.48-.41-.42-.56-.42-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.68 4.24 3.76.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
