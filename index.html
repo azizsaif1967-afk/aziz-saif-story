@@ -1159,6 +1159,93 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
+<!-- ============ SECTION VI · STACKBIRDS GULF LAUNCH ============ -->
+<style>
+.ed-stackbirds{background:var(--ed-charcoal);color:var(--ed-ivory);padding:clamp(72px,8vw,104px) 48px;border-bottom:1px solid var(--ed-stone-line);position:relative;overflow:hidden}
+.ed-stackbirds::before{content:'';position:absolute;top:-200px;right:-200px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(21,94,94,.28),transparent 65%);pointer-events:none}
+.ed-stackbirds-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.ed-stackbirds .ed-section-head{border-bottom-color:rgba(215,227,226,.14)}
+.ed-stackbirds .ed-section-head .ed-kicker{color:var(--ed-teal-tint)}
+.ed-stackbirds .ed-section-head .ed-kicker::before{color:rgba(215,227,226,.3)}
+.ed-stackbirds .ed-section-head .ed-head-body h2{color:var(--ed-ivory)}
+.ed-stackbirds .ed-section-head .ed-head-body h2 em{color:var(--ed-teal-tint)}
+.ed-stackbirds .ed-section-head .ed-head-body p{color:rgba(215,227,226,.66)}
+.ed-sb-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:44px;align-items:start}
+.ed-sb-body{font-size:.95rem;line-height:1.8;color:rgba(215,227,226,.82);font-weight:400;max-width:640px}
+.ed-sb-body p{margin-bottom:18px}
+.ed-sb-body strong{color:var(--ed-ivory);font-weight:600}
+.ed-sb-connect{margin-top:24px;padding:20px 24px;background:rgba(21,94,94,.14);border-left:2px solid var(--ed-teal-tint);font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--ed-ivory);line-height:1.55}
+.ed-sb-stats{background:rgba(255,255,255,.04);border:1px solid rgba(215,227,226,.1);padding:28px 30px}
+.ed-sb-stats .s-row{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;padding:14px 0;border-bottom:1px dashed rgba(215,227,226,.12)}
+.ed-sb-stats .s-row:last-child{border-bottom:none}
+.ed-sb-stats .s-row .k{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:500;color:var(--ed-teal-tint);letter-spacing:-.01em;line-height:1}
+.ed-sb-stats .s-row .v{font-size:.78rem;color:rgba(215,227,226,.72);line-height:1.55;font-weight:400}
+.ed-sb-stats .s-row .v strong{color:var(--ed-ivory);font-weight:600;display:block;margin-bottom:2px}
+.ed-sb-cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.ed-sb-cta-row a{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid var(--ed-teal-tint);transition:all .3s}
+.ed-sb-cta-row a.primary{background:var(--ed-teal-tint);color:var(--ed-charcoal)}
+.ed-sb-cta-row a.primary:hover{background:#fff}
+.ed-sb-cta-row a.ghost{color:var(--ed-ivory);background:transparent}
+.ed-sb-cta-row a.ghost:hover{background:rgba(215,227,226,.08)}
+@media (max-width:900px){
+  .ed-sb-grid{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:560px){
+  .ed-stackbirds{padding:56px 24px}
+  .ed-sb-cta-row{flex-direction:column;align-items:stretch}
+  .ed-sb-cta-row a{justify-content:center}
+}
+
+/* ============ SECTION VII · FINAL CTA (editorial close) ============ */
+.ed-close{background:var(--ed-ivory);color:var(--ed-charcoal);padding:clamp(88px,10vw,140px) 48px;text-align:center;border-top:4px double var(--ed-stone-line);position:relative;overflow:hidden}
+.ed-close::before{content:'';position:absolute;top:32px;left:50%;transform:translateX(-50%);width:44px;height:1px;background:var(--ed-teal)}
+.ed-close::after{content:'';position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:44px;height:1px;background:var(--ed-teal)}
+.ed-close-inner{max-width:820px;margin:0 auto;position:relative;z-index:2}
+.ed-close-eyebrow{font-size:.66rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);margin-bottom:22px;display:inline-block}
+.ed-close h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.2vw,3rem);font-weight:500;line-height:1.12;letter-spacing:-.01em;color:var(--ed-charcoal);margin:0 0 20px}
+.ed-close h2 em{font-style:italic;color:var(--ed-teal);font-weight:500}
+.ed-close p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.08rem;color:var(--ed-charcoal-soft);line-height:1.6;max-width:620px;margin:0 auto 40px;font-weight:400}
+.ed-close .ed-cta-primary{font-size:.78rem;padding:18px 36px}
+.ed-close-sig{margin-top:48px;padding-top:28px;border-top:1px solid var(--ed-stone-line);font-size:.66rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--ed-muted);font-weight:600;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+.ed-close-sig strong{color:var(--ed-charcoal);font-weight:700}
+.ed-close-sig .sep{width:4px;height:4px;border-radius:50%;background:var(--ed-teal);display:inline-block}
+@media (max-width:560px){.ed-close{padding:64px 24px}}
+</style>
+
+<section class="ed-stackbirds" id="stackbirds-gulf" aria-label="Stackbirds Gulf launch">
+  <div class="ed-stackbirds-inner">
+    <div class="ed-section-head">
+      <div class="ed-kicker">Section VI &middot; Gulf Launch</div>
+      <div class="ed-head-body">
+        <h2>Stackbirds &mdash; <em>practical AI agents</em> for the Gulf SME.</h2>
+        <p>Why this project sits on the operator&rsquo;s desk, not on the side. A strategic rollout built for real businesses &mdash; not a demo, not a template.</p>
+      </div>
+    </div>
+
+    <div class="ed-sb-grid">
+      <div class="ed-sb-body">
+        <p><strong>The problem:</strong> Gulf SMEs are running the largest share of the region&rsquo;s commerce on spreadsheets, WhatsApp and manual workflows. The tech isn&rsquo;t missing &mdash; the translation layer is.</p>
+        <p><strong>What Stackbirds does:</strong> Self-trained AI agents for the six jobs every SME actually runs &mdash; Accountant, Sales, Inventory, HR, Marketing, and Retail Ops. Show the agent once on your screen; it learns the workflow and runs it from there.</p>
+        <p><strong>Why it&rsquo;s here, not on a side page:</strong> Stackbirds is the live Gulf launch vehicle for my advisory practice. Every engagement that needs workflow automation lands here. I&rsquo;m the operator between the platform and the Gulf SMEs that will actually run it.</p>
+
+        <div class="ed-sb-connect">Stackbirds is the natural extension of thirty-seven years of operating: I know what the accountant, the store manager, and the inventory clerk actually do all day. The agents are built around that &mdash; not around a Silicon Valley assumption.</div>
+
+        <div class="ed-sb-cta-row">
+          <a href="https://stackbirds.xyz" target="_blank" rel="noopener" class="primary">Visit stackbirds.xyz &rarr;</a>
+          <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20explore%20Stackbirds%20for%20my%20business." target="_blank" rel="noopener" class="ghost">Explore for your business</a>
+        </div>
+      </div>
+
+      <div class="ed-sb-stats">
+        <div class="s-row"><div class="k">6</div><div class="v"><strong>Role agents</strong>Accountant &middot; Sales &middot; Inventory &middot; HR &middot; Marketing &middot; Retail Ops</div></div>
+        <div class="s-row"><div class="k">0</div><div class="v"><strong>Code required</strong>Trained by screen recording &amp; narration, not prompts.</div></div>
+        <div class="s-row"><div class="k">6</div><div class="v"><strong>GCC markets targeted</strong>UAE first, then KSA, Oman, Bahrain, Qatar, Kuwait.</div></div>
+        <div class="s-row"><div class="k">Q1<em style="color:var(--ed-teal-tint);font-style:normal;font-size:.5em;font-weight:600;margin-left:4px;letter-spacing:0">&rsquo;27</em></div><div class="v"><strong>Launch window</strong>Gulf SME rollout with Aziz Saif as launch operator.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Floating WhatsApp CTA (deep teal, editorial palette) -->
 <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20UAE%2FGulf%20growth%20plan." target="_blank" rel="noopener" class="az-cta-float" aria-label="WhatsApp Aziz">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.84 9.84 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.36c0-4.54 3.69-8.22 8.23-8.22 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 012.41 5.82c0 4.54-3.69 8.21-8.22 8.21zm4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.23-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.77-1.84-.2-.48-.41-.42-.56-.42-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.68 4.24 3.76.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
@@ -2797,6 +2884,23 @@ body.has-corp-nav{padding-top:0}
       </script>
 
       <p style="font-size:.72rem;color:rgba(255,255,255,.4);margin-top:16px;letter-spacing:.5px">&#128274; Your email stays private. Double opt-in verification. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION VII · FINAL EDITORIAL CLOSE ============ -->
+<section class="ed-close" id="close" aria-label="Closing">
+  <div class="ed-close-inner">
+    <div class="ed-close-eyebrow">Section VII &middot; The Close</div>
+    <h2>Let&rsquo;s talk about the <em>next move</em> for your Gulf business.</h2>
+    <p>Thirty-seven years of operating discipline, a live bench of AI tools, and one honest WhatsApp conversation &mdash; that&rsquo;s how every good engagement starts.</p>
+    <a href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20discuss%20a%20UAE%2FGulf%20growth%20plan." target="_blank" rel="noopener" class="ed-cta-primary">Discuss a UAE / Gulf growth plan</a>
+    <div class="ed-close-sig">
+      <span><strong>Aziz Saif</strong></span>
+      <span class="sep"></span>
+      <span>Dubai, UAE</span>
+      <span class="sep"></span>
+      <span>Since 1989</span>
     </div>
   </div>
 </section>
