@@ -2823,25 +2823,124 @@ body.has-corp-nav{padding-top:0}
         <a href="https://azizsaif.xyz" target="_blank" class="btn-primary" style="white-space:nowrap">Visit Full Blog &rarr;</a>
       </div>
     </div>
-    <a href="pages/blog.html" class="reveal" style="display:block;margin-top:16px;border:1px solid var(--ed-stone-line);background:var(--ed-ivory);color:var(--ed-charcoal);padding:44px 40px;position:relative;overflow:hidden;transition:all .4s;text-decoration:none" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 42px rgba(10,22,40,.08)';this.style.borderColor='var(--ed-teal)'" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--ed-stone-line)'">
-      <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;z-index:2">
+    <style>
+    .blog-card{margin-top:16px;border:1px solid var(--ed-stone-line);background:var(--ed-ivory);color:var(--ed-charcoal);padding:44px 40px;position:relative;overflow:hidden;transition:all .4s}
+    .blog-card:hover{border-color:var(--ed-teal);box-shadow:0 22px 42px rgba(10,22,40,.08)}
+    .blog-head{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+    .blog-stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
+    .blog-stats .bs strong{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600;display:block}
+    .blog-stats .bs span{font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600;display:block}
+    .blog-themes{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:32px}
+    @media(max-width:960px){.blog-themes{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.blog-themes{grid-template-columns:1fr}}
+    .blog-theme{display:flex;flex-direction:column;gap:10px;padding:20px 18px;background:#fff;border:1px solid var(--ed-stone-line);transition:all .3s;text-decoration:none;color:inherit}
+    .blog-theme:hover{border-color:var(--ed-teal);transform:translateY(-3px);box-shadow:0 12px 28px rgba(10,22,40,.08)}
+    .blog-theme-head{display:flex;align-items:center;gap:10px}
+    .blog-theme-ico{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--ed-ivory);border:1px solid var(--ed-stone-line);font-size:1.2rem;flex-shrink:0}
+    .blog-theme-name{font-size:.82rem;font-weight:700;color:var(--ed-charcoal);letter-spacing:.1px;line-height:1.25}
+    .blog-theme-count{font-size:.54rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--ed-teal);font-weight:700;margin-top:2px}
+    .blog-theme-list{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:6px}
+    .blog-theme-list li{font-size:.72rem;line-height:1.45;color:var(--ed-muted);padding-left:10px;position:relative}
+    .blog-theme-list li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:1px;background:var(--ed-teal)}
+    .blog-theme-list li strong{font-weight:600;color:var(--ed-charcoal)}
+    .blog-foot{margin-top:28px;padding-top:20px;border-top:1px solid var(--ed-stone-line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-foot .full-link{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);text-decoration:none;padding:10px 18px;border:1px solid var(--ed-teal);transition:all .3s}
+    .blog-foot .full-link:hover{background:var(--ed-teal);color:#fff}
+    @media(max-width:640px){.blog-head{grid-template-columns:1fr}}
+    </style>
+    <div class="blog-card reveal">
+      <div class="blog-head">
         <div>
           <div style="font-size:.62rem;letter-spacing:3px;font-weight:700;text-transform:uppercase;color:var(--ed-teal);margin-bottom:14px">&#128214; Blog Library</div>
           <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;margin-bottom:12px;line-height:1.15;color:var(--ed-charcoal);letter-spacing:-.01em">Thoughts across 5 themes &mdash; <em style="color:var(--ed-teal);font-style:italic;font-weight:500">business, tech, history, faith.</em></h3>
-          <p style="color:var(--ed-muted);font-size:.92rem;line-height:1.75;font-weight:400;max-width:640px">VLCC, Stackbirds, Telegram&rsquo;s valuation, oil history, Iran timeline, Imam Mehdi, quotes collections &mdash; full archive on azizsaif.xyz. Click to see the categorised index.</p>
-          <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap">
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600">13+</div><div style="font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600">Articles</div></div>
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600">5</div><div style="font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600">Themes</div></div>
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600">Weekly</div><div style="font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600">Updates</div></div>
+          <p style="color:var(--ed-muted);font-size:.92rem;line-height:1.75;font-weight:400;max-width:640px">Click any theme to jump straight to the articles &mdash; full archive on azizsaif.xyz, updated weekly.</p>
+          <div class="blog-stats">
+            <div class="bs"><strong>13+</strong><span>Articles</span></div>
+            <div class="bs"><strong>5</strong><span>Themes</span></div>
+            <div class="bs"><strong>Weekly</strong><span>Updates</span></div>
           </div>
         </div>
-        <div style="font-size:5rem;opacity:.85;line-height:1">&#9998;&#65039;</div>
       </div>
-      <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--ed-stone-line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;position:relative;z-index:2">
-        <div style="font-size:.78rem;color:var(--ed-muted);letter-spacing:.3px">Business &middot; Technology &amp; AI &middot; Geopolitics &amp; Energy &middot; Inspiration &middot; Faith &amp; History</div>
-        <span style="font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);white-space:nowrap;margin-left:16px">Open Blog Page &rarr;</span>
+
+      <!-- Theme tiles -->
+      <div class="blog-themes">
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener" class="blog-theme">
+          <div class="blog-theme-head">
+            <div class="blog-theme-ico">&#128188;</div>
+            <div>
+              <div class="blog-theme-name">Business</div>
+              <div class="blog-theme-count">4 Articles</div>
+            </div>
+          </div>
+          <ul class="blog-theme-list">
+            <li><strong>VLCC Global Fleet</strong> &mdash; case study</li>
+            <li><strong>Stackbirds.xyz</strong> &mdash; AI for Gulf SMEs</li>
+            <li><strong>Eat Cook Joy</strong> &mdash; food venture</li>
+          </ul>
+        </a>
+
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener" class="blog-theme">
+          <div class="blog-theme-head">
+            <div class="blog-theme-ico">&#129302;</div>
+            <div>
+              <div class="blog-theme-name">Technology &amp; AI</div>
+              <div class="blog-theme-count">2 Articles</div>
+            </div>
+          </div>
+          <ul class="blog-theme-list">
+            <li><strong>Telegram's Valuation</strong> &mdash; the real numbers</li>
+            <li><strong>Why $72B Can't Buy Direction</strong></li>
+          </ul>
+        </a>
+
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener" class="blog-theme">
+          <div class="blog-theme-head">
+            <div class="blog-theme-ico">&#127757;</div>
+            <div>
+              <div class="blog-theme-name">Geopolitics &amp; Energy</div>
+              <div class="blog-theme-count">4 Articles</div>
+            </div>
+          </div>
+          <ul class="blog-theme-list">
+            <li><strong>Oil History</strong> &mdash; a century of flows</li>
+            <li><strong>Iran</strong> &mdash; timeline through history</li>
+            <li><strong>War Preparedness</strong> &mdash; for families</li>
+          </ul>
+        </a>
+
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener" class="blog-theme">
+          <div class="blog-theme-head">
+            <div class="blog-theme-ico">&#10024;</div>
+            <div>
+              <div class="blog-theme-name">Inspiration</div>
+              <div class="blog-theme-count">2 Articles</div>
+            </div>
+          </div>
+          <ul class="blog-theme-list">
+            <li><strong>Quotes (Overdose)</strong> &mdash; living library</li>
+            <li><strong>Stop Tolerating</strong> &mdash; Gaur Gopal Das</li>
+          </ul>
+        </a>
+
+        <a href="https://azizsaif.xyz" target="_blank" rel="noopener" class="blog-theme">
+          <div class="blog-theme-head">
+            <div class="blog-theme-ico">&#129728;</div>
+            <div>
+              <div class="blog-theme-name">Faith &amp; History</div>
+              <div class="blog-theme-count">1+ Articles</div>
+            </div>
+          </div>
+          <ul class="blog-theme-list">
+            <li><strong>Coming of Imam Mehdi</strong> &mdash; traditions</li>
+          </ul>
+        </a>
       </div>
-    </a>
+
+      <div class="blog-foot">
+        <div style="font-size:.78rem;color:var(--ed-muted);letter-spacing:.3px">Curated reads across 5 themes &mdash; updated weekly on azizsaif.xyz.</div>
+        <a href="pages/blog.html" class="full-link">Open Blog Page &rarr;</a>
+      </div>
+    </div>
   </div>
 </div>
 
