@@ -1695,7 +1695,30 @@ body.has-corp-nav{padding-top:0}
   </div>
 </div>
 
-<!-- ===== LE PEARL (corporate teaser) ===== -->
+<!-- ===== MY RETAIL OPERATION (Le Pearl + YOYOSO + Sana, combined) ===== -->
+<style>
+.retail-brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+@media(max-width:960px){.retail-brand-grid{grid-template-columns:1fr}}
+.retail-brand{background:#fff;border:1px solid var(--gray-100);padding:30px 26px;display:flex;flex-direction:column;scroll-margin-top:80px;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.retail-brand:hover{border-color:var(--primary);box-shadow:0 18px 38px rgba(10,22,40,.08);transform:translateY(-3px)}
+.retail-brand-head{text-align:center;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--gray-100)}
+.retail-brand-head img{max-height:52px;width:auto;max-width:200px;display:block;margin:0 auto 10px;object-fit:contain}
+.retail-brand-tag{font-size:.56rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--accent-dark);font-weight:700}
+.retail-brand-label{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray-500);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.retail-brand-label::before{content:'';width:18px;height:1px;background:var(--accent-dark)}
+.retail-brand h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;margin:0 0 12px;line-height:1.3;color:var(--primary);letter-spacing:-.01em}
+.retail-brand h3 em{font-style:italic;color:var(--accent-dark);font-weight:500}
+.retail-brand .rb-desc{font-size:.86rem;color:var(--gray-500);line-height:1.65;margin-bottom:16px;flex:0 1 auto}
+.retail-brand .rb-stats{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.retail-brand .rb-stats div{line-height:1.1}
+.retail-brand .rb-stats strong{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;display:block;color:var(--primary)}
+.retail-brand .rb-stats span{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-top:4px;display:block;font-weight:600}
+.retail-brand .rb-links{margin-top:auto;padding-top:16px;border-top:1px solid var(--gray-100);display:flex;gap:8px;flex-wrap:wrap}
+.retail-brand .rb-links a{font-size:.68rem;padding:7px 12px;text-decoration:none;border:1px solid var(--gray-100);color:var(--gray-500);transition:all .2s;font-weight:600;letter-spacing:.2px}
+.retail-brand .rb-links a:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.retail-brand .rb-links a.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.retail-brand .rb-links a.primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+</style>
 <div class="gallery-section white-bg" id="lepearl-section">
   <div class="gallery-inner">
     <!-- Section heading -->
@@ -1703,159 +1726,79 @@ body.has-corp-nav{padding-top:0}
       <div>
         <div class="section-label" style="justify-content:center"><span class="line"></span> My Retail Operation</div>
         <h2 class="section-title">The Retail <em>Business</em></h2>
-        <p class="section-subtitle">Day-to-day operator of a multi-brand fashion retail chain across the Gulf &mdash; kids, men &amp; women, with international licences.</p>
-      </div>
-    </div>
-    <!-- Brand logo block -->
-    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
-      <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl Fashion" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
-      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Fashion Retail &middot; 10+ Stores &middot; Oman &amp; UAE</div>
-    </div>
-    <div class="section-header reveal">
-      <div>
-        <div class="section-label"><span class="line"></span> Le Pearl Fashion</div>
-        <h2 class="section-title">&ldquo;Quality Fashion, <em>Trending Style</em>, Affordable Price.&rdquo;</h2>
-        <p class="section-subtitle">10+ stores across Oman &amp; UAE. Kids, Men, Women &mdash; with international brand partners including Disney, Marvel, Minoti &amp; Hello Kitty.</p>
+        <p class="section-subtitle">Three brands, three roles &mdash; 60+ stores across the GCC, built and operated over 37 years.</p>
       </div>
     </div>
 
-    <!-- Two corporate teaser cards: Store Gallery + Brand Brochure -->
-    <a href="pages/store-gallery.html" class="reveal corp-teaser-card">
-      <div class="ctc-img"><img src="https://lepearlfashion.com/wp-content/uploads/2021/10/slide-1-alt-min-1024x819.webp" alt="Le Pearl store front" loading="lazy"></div>
-      <div class="ctc-body">
-        <div class="ctc-tag">Store &amp; Product Gallery &middot; 8 Chapters</div>
-        <h3 class="ctc-title">Inside Our <em>Stores</em></h3>
-        <p class="ctc-desc">A floating walk-through of the store front, customer segments, seasonal drops &amp; best-sellers &mdash; with full-screen lightbox navigation.</p>
-        <div class="ctc-stats">
+    <div class="retail-brand-grid reveal">
+      <!-- LE PEARL -->
+      <div class="retail-brand">
+        <div class="retail-brand-head">
+          <img src="brand-logos/lepearl-logo.jpg" alt="Le Pearl Fashion">
+          <div class="retail-brand-tag">Fashion Retail &middot; 10+ Stores &middot; Oman &amp; UAE</div>
+        </div>
+        <div class="retail-brand-label">Le Pearl Fashion</div>
+        <h3>&ldquo;Quality Fashion, <em>Trending Style</em>, Affordable Price.&rdquo;</h3>
+        <p class="rb-desc">Day-to-day operator &mdash; kids, men &amp; women across Oman &amp; UAE with international licences including Disney, Marvel, Minoti &amp; Hello Kitty.</p>
+        <div class="rb-stats">
           <div><strong>10+</strong><span>Stores</span></div>
           <div><strong>18+</strong><span>Brands</span></div>
           <div><strong>2</strong><span>Countries</span></div>
         </div>
-        <div class="ctc-cta">Open Store Gallery &rarr;</div>
-      </div>
-    </a>
-
-    <a href="catalogues/le-pearl.html" class="reveal corp-teaser-card reverse" style="margin-top:24px">
-      <div class="ctc-img"><img src="lepearl-catalogue/page-01.jpg" alt="Le Pearl Catalogue cover" loading="lazy"></div>
-      <div class="ctc-body">
-        <div class="ctc-tag">Brand Brochure &middot; 16 Pages</div>
-        <h3 class="ctc-title">The <em>Brand Story</em></h3>
-        <p class="ctc-desc">Full company profile &mdash; collections, store locations, brand partnerships, expansion roadmap &amp; investment opportunities across Oman, UAE &amp; KSA.</p>
-        <div class="ctc-stats">
-          <div><strong>16</strong><span>Pages</span></div>
-          <div><strong>3</strong><span>Markets</span></div>
-          <div><strong>Live</strong><span>Catalogue</span></div>
+        <div class="rb-links">
+          <a href="pages/store-gallery.html" class="primary">Store Gallery &rarr;</a>
+          <a href="catalogues/le-pearl.html">Brochure</a>
+          <a href="https://lepearlfashion.com" target="_blank" rel="noopener">Shop</a>
+          <a href="https://www.instagram.com/lepearlfashion_oman/" target="_blank" rel="noopener">Instagram</a>
         </div>
-        <div class="ctc-cta">Open Brochure &rarr;</div>
       </div>
-    </a>
 
-    <!-- Quick links bar -->
-    <div class="reveal" style="margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--gray-100)">
-      <a href="https://le-pearl.com" target="_blank" rel="noopener" class="social-btn website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> le-pearl.com</a>
-      <a href="https://lepearlfashion.com" target="_blank" rel="noopener" class="social-btn website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Shop Online</a>
-      <a href="https://www.instagram.com/lepearlfashion_oman/" target="_blank" rel="noopener" class="social-btn instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg> @lepearlfashion_oman</a>
-    </div>
-  </div>
-</div>
-
-<!-- ===== YOYOSO (corporate teaser) ===== -->
-<div class="gallery-section" id="yoyoso-section">
-  <div class="gallery-inner">
-    <!-- Brand logo block -->
-    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
-      <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
-      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Master Franchise &middot; Saudi Arabia &middot; 15 Mall Stores</div>
-    </div>
-    <div class="section-header reveal">
-      <div>
-        <div class="section-label"><span class="line"></span> YOYOSO KSA</div>
-        <h2 class="section-title">Master Franchise &mdash; <em>KSA Signing</em></h2>
-        <p class="section-subtitle">&ldquo;Aesthetics Life Designer Brand&rdquo; &mdash; strategic cooperation signing for the YOYOSO Master Franchise in Saudi Arabia. 15 mall stores, 5,000+ lifestyle products across the Kingdom.</p>
-      </div>
-    </div>
-
-    <!-- Two corporate teaser cards: Signing Ceremony + Franchise Catalogue -->
-    <a href="pages/yoyoso-ceremony.html" class="reveal corp-teaser-card">
-      <div class="ctc-img"><img src="yoyoso-photos/signing-ceremony-1.jpeg" alt="YOYOSO KSA signing ceremony" loading="lazy"></div>
-      <div class="ctc-body">
-        <div class="ctc-tag">Signing Ceremony &middot; 20 Photos</div>
-        <h3 class="ctc-title">The <em>Yiwu Ceremony</em></h3>
-        <p class="ctc-desc">Strategic cooperation signing at YOYOSO HQ in Yiwu, China &mdash; the moment the KSA Master Franchise was sealed. Full photo essay with stage, contract &amp; team shots.</p>
-        <div class="ctc-stats">
-          <div><strong>20</strong><span>Photos</span></div>
+      <!-- YOYOSO -->
+      <div class="retail-brand" id="yoyoso-section">
+        <div class="retail-brand-head">
+          <img src="brand-logos/yoyoso-logo.jpg" alt="YOYOSO">
+          <div class="retail-brand-tag">Master Franchise &middot; KSA &middot; 15 Mall Stores</div>
+        </div>
+        <div class="retail-brand-label">YOYOSO KSA</div>
+        <h3>Master Franchise &mdash; <em>KSA Signing</em></h3>
+        <p class="rb-desc">&ldquo;Aesthetics Life Designer Brand.&rdquo; Strategic cooperation signing at YOYOSO HQ in Yiwu &mdash; 15 mall stores and 5,000+ lifestyle SKUs across the Kingdom.</p>
+        <div class="rb-stats">
+          <div><strong>15</strong><span>Mall Stores</span></div>
+          <div><strong>5K+</strong><span>Products</span></div>
           <div><strong>2019</strong><span>Sealed</span></div>
-          <div><strong>15</strong><span>Stores Live</span></div>
         </div>
-        <div class="ctc-cta">View Ceremony Gallery &rarr;</div>
-      </div>
-    </a>
-
-    <a href="catalogues/yoyoso.html" class="reveal corp-teaser-card reverse" style="margin-top:24px">
-      <div class="ctc-img"><img src="yoyoso-catalogue/page-01.jpg" alt="YOYOSO Franchise Catalogue cover" loading="lazy"></div>
-      <div class="ctc-body">
-        <div class="ctc-tag">Franchise Catalogue &middot; 16 Pages</div>
-        <h3 class="ctc-title">The <em>Franchise Pitch</em></h3>
-        <p class="ctc-desc">Investor-ready franchise guide &mdash; brand overview, store concepts, product categories, investment model &amp; ROI projections for YOYOSO KSA.</p>
-        <div class="ctc-stats">
-          <div><strong>16</strong><span>Pages</span></div>
-          <div><strong>5,000<em>+</em></strong><span>Products</span></div>
-          <div><strong>KSA</strong><span>Market</span></div>
+        <div class="rb-links">
+          <a href="pages/yoyoso-ceremony.html" class="primary">Ceremony &rarr;</a>
+          <a href="catalogues/yoyoso.html">Franchise Pitch</a>
+          <a href="https://www.instagram.com/yoyoso.sa/" target="_blank" rel="noopener">@yoyoso.sa</a>
+          <a href="https://www.instagram.com/yoyosome/" target="_blank" rel="noopener">@yoyosome</a>
         </div>
-        <div class="ctc-cta">Open Franchise Catalogue &rarr;</div>
       </div>
-    </a>
 
-    <!-- Quick links bar -->
-    <div class="reveal" style="margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--gray-100)">
-      <a href="https://www.instagram.com/yoyoso.sa/" target="_blank" rel="noopener" class="social-btn instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg> @yoyoso.sa</a>
-      <a href="https://www.instagram.com/yoyosome/" target="_blank" rel="noopener" class="social-btn instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg> @yoyosome GCC</a>
+      <!-- SANA FASHIONS -->
+      <div class="retail-brand" id="sana-section">
+        <div class="retail-brand-head">
+          <img src="brand-logos/sana-logo.jpg" alt="Sana Fashions">
+          <div class="retail-brand-tag">VP Operations &middot; 35 Stores &middot; 5 Countries</div>
+        </div>
+        <div class="retail-brand-label">Sana Fashions &middot; 1987&ndash;2017</div>
+        <h3>GCC Retail Chain &mdash; <em>30 Year Legacy</em></h3>
+        <p class="rb-desc">VP Operations and one of the first employees. Built the chain from a single store to 35 locations across UAE, KSA, Oman, Bahrain &amp; Qatar &mdash; sourcing from 25+ countries.</p>
+        <div class="rb-stats">
+          <div><strong>35</strong><span>Stores</span></div>
+          <div><strong>5</strong><span>Countries</span></div>
+          <div><strong>30yr</strong><span>Legacy</span></div>
+        </div>
+        <div class="rb-links">
+          <a href="pages/tech/sanaconsult.html" class="primary">Full Story &rarr;</a>
+          <a href="#proof-gallery">Case Study</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ===== SANA FASHIONS ===== -->
-<section id="sana-section" style="background:var(--ed-ivory-deep);border-top:1px solid var(--ed-stone-line)">
-  <div class="section-inner">
-    <!-- Brand logo block (above heading) -->
-    <div class="reveal" style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-100)">
-      <img src="brand-logos/sana-logo.jpg" alt="Sana Fashions" style="max-height:64px;width:auto;max-width:280px;display:block;margin:0 auto 14px;object-fit:contain">
-      <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700">Fashion &amp; Retail Consultancy</div>
-    </div>
-    <div class="section-header reveal">
-      <div>
-        <div class="section-label"><span class="line"></span> Sana Fashions</div>
-        <h2 class="section-title">GCC Retail Chain &mdash; 35 Stores, 5 Countries</h2>
-        <p class="section-subtitle">VP Operations &mdash; One of the First Employees. 30 years building the chain from a single store to 35 locations.</p>
-      </div>
-      <div style="display:flex;gap:12px">
-        <span style="font-size:.72rem;font-weight:600;color:var(--gray-500);background:var(--off-white);padding:6px 14px;border:1px solid var(--gray-100)">1987&ndash;2017</span>
-        <span style="font-size:.72rem;font-weight:600;color:#8e44ad;background:rgba(142,68,173,.08);padding:6px 14px;border:1px solid rgba(142,68,173,.15)">30 Year Legacy</span>
-      </div>
-    </div>
-    <div class="info-grid reveal">
-      <div class="info-box"><div class="ib-icon">&#128202;</div><h4>VP Operations &amp; Inventory</h4><p>Full supply chain, stock control, merchandising &amp; vendor negotiations across all 35 locations in 5 countries.</p></div>
-      <div class="info-box"><div class="ib-icon">&#127978;</div><h4>35 Retail Stores</h4><p>Site selection, fit-outs, mall lease negotiations &amp; store openings across UAE, KSA, Oman, Bahrain &amp; Qatar.</p></div>
-      <div class="info-box"><div class="ib-icon">&#128101;</div><h4>Team &amp; Operations</h4><p>Multi-location team leadership, staff training, commission structures, P&amp;L management &amp; retail scaling.</p></div>
-    </div>
-    <div class="reveal" style="margin-top:36px">
-      <h3 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:14px">&#127758; Procurement &amp; Sourcing Countries</h3>
-      <div class="flags-row">
-        <span class="flag-chip">&#127470;&#127475; India</span><span class="flag-chip">&#127464;&#127475; China</span><span class="flag-chip">&#127463;&#127465; Bangladesh</span><span class="flag-chip">&#127483;&#127475; Vietnam</span><span class="flag-chip">&#127472;&#127469; Cambodia</span><span class="flag-chip">&#127473;&#127472; Sri Lanka</span><span class="flag-chip">&#127477;&#127469; Philippines</span><span class="flag-chip">&#127468;&#127463; United Kingdom</span><span class="flag-chip">&#127462;&#127466; UAE</span><span class="flag-chip">&#127482;&#127480; Americas</span><span class="flag-chip">&#127466;&#127480; Spain</span><span class="flag-chip">&#127467;&#127479; France</span><span class="flag-chip">&#127465;&#127466; Germany</span><span class="flag-chip">&#127463;&#127466; Belgium</span><span class="flag-chip">&#127470;&#127481; Italy</span><span class="flag-chip">&#127477;&#127481; Portugal</span><span class="flag-chip">&#127475;&#127473; Netherlands</span><span class="flag-chip">&#127468;&#127479; Greece</span><span class="flag-chip">&#127481;&#127479; Turkey</span><span class="flag-chip">&#127477;&#127473; Poland</span><span class="flag-chip">&#127464;&#127487; Czech Republic</span><span class="flag-chip">&#127462;&#127481; Austria</span><span class="flag-chip">&#127480;&#127466; Sweden</span><span class="flag-chip">&#127465;&#127472; Denmark</span><span class="flag-chip">&#127477;&#127472; Pakistan</span>
-      </div>
-    </div>
-    <div class="reveal" style="margin-top:32px">
-      <h3 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:14px">&#128205; Store Locations (35 Stores, 5 Countries)</h3>
-      <div class="stores-row">
-        <div class="store-card"><div class="sc-flag">&#127462;&#127466;</div><h5>UAE</h5><p>Multiple Locations</p></div>
-        <div class="store-card"><div class="sc-flag">&#127480;&#127462;</div><h5>Saudi Arabia</h5><p>Major Cities</p></div>
-        <div class="store-card"><div class="sc-flag">&#127476;&#127474;</div><h5>Oman</h5><p>Muscat &amp; More</p></div>
-        <div class="store-card"><div class="sc-flag">&#127463;&#127469;</div><h5>Bahrain</h5><p>Manama</p></div>
-        <div class="store-card"><div class="sc-flag">&#127478;&#127462;</div><h5>Qatar</h5><p>Doha</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- YOYOSO + Sana Fashions now folded into the consolidated #lepearl-section 3-column grid above -->
 
 <!-- AI SERVICES HUB (renamed from #services to avoid duplicate id with the new 4-offer section above) -->
 <section id="ai-services-hub" style="background:var(--ed-ivory-deep);padding:96px 0;border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)">
