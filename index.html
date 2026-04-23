@@ -1308,6 +1308,112 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
+<!-- ============ INVESTMENT OPPORTUNITY ============ -->
+<style>
+.ed-invest{background:var(--ed-charcoal);color:var(--ed-ivory);padding:clamp(72px,8vw,104px) 48px;border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line);position:relative;overflow:hidden}
+.ed-invest::before{content:'';position:absolute;top:-160px;left:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.18),transparent 65%);pointer-events:none}
+.ed-invest::after{content:'';position:absolute;bottom:-200px;right:-200px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(21,94,94,.22),transparent 65%);pointer-events:none}
+.ed-invest-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.ed-invest-head{margin-bottom:48px;padding-bottom:28px;border-bottom:1px solid rgba(215,227,226,.14);display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+.ed-invest-head .kicker{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:8px}
+.ed-invest-head .kicker::before{content:'\2014';color:rgba(215,227,226,.3);margin-right:8px}
+.ed-invest-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:500;line-height:1.1;letter-spacing:-.01em;color:var(--ed-ivory);margin:0 0 14px}
+.ed-invest-head h2 em{font-style:italic;color:var(--accent);font-weight:500}
+.ed-invest-head p{font-size:.95rem;color:rgba(215,227,226,.72);line-height:1.75;max-width:640px;font-weight:400;margin:0}
+.ed-invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:36px}
+@media(max-width:960px){.ed-invest-grid{grid-template-columns:1fr}}
+.inv-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(215,227,226,.12);padding:32px 28px;transition:all .35s;text-decoration:none;color:inherit;position:relative}
+.inv-card:hover{border-color:var(--accent);background:rgba(255,255,255,.07);transform:translateY(-4px)}
+.inv-card .inv-stage{font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--ed-charcoal);background:var(--accent);display:inline-block;padding:6px 12px;align-self:flex-start;margin-bottom:22px}
+.inv-card h3{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:600;line-height:1.1;color:var(--ed-ivory);margin:0 0 4px;letter-spacing:-.01em}
+.inv-card h3 .tld{color:var(--accent);font-weight:500}
+.inv-card .inv-tag{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--ed-teal-tint);font-weight:700;margin-bottom:16px}
+.inv-card .inv-pitch{font-size:.9rem;color:rgba(215,227,226,.82);line-height:1.65;font-weight:400;margin-bottom:22px;flex-grow:0}
+.inv-card .inv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 0;border-top:1px dashed rgba(215,227,226,.16);border-bottom:1px dashed rgba(215,227,226,.16);margin-bottom:18px}
+.inv-card .inv-stats .s{text-align:center;line-height:1.2}
+.inv-card .inv-stats .sk{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--accent);display:block}
+.inv-card .inv-stats .sl{font-size:.54rem;letter-spacing:1.4px;text-transform:uppercase;color:rgba(215,227,226,.55);margin-top:4px;display:block;font-weight:600}
+.inv-card .inv-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:14px}
+.inv-card .inv-foot .inv-link{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.inv-card .inv-foot .inv-ask{font-size:.66rem;color:rgba(215,227,226,.55);font-weight:500;letter-spacing:.3px}
+.ed-invest-cta{margin-top:12px;padding:28px 32px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.28);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+@media(max-width:720px){.ed-invest-cta{grid-template-columns:1fr;text-align:center}.ed-invest-head{grid-template-columns:1fr;gap:14px}}
+.ed-invest-cta .cta-body{font-size:.88rem;color:var(--ed-ivory);line-height:1.6;font-weight:400}
+.ed-invest-cta .cta-body strong{color:var(--accent);font-weight:700}
+.ed-invest-cta .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--ed-charcoal);border:1px solid var(--accent);transition:all .3s;white-space:nowrap}
+.ed-invest-cta .cta-btn:hover{background:transparent;color:var(--accent)}
+@media (max-width:560px){.ed-invest{padding:56px 24px}}
+</style>
+<section class="ed-invest" id="invest" aria-label="Investment Opportunity">
+  <div class="ed-invest-inner">
+    <div class="ed-invest-head reveal">
+      <div class="kicker">Section V<span style="letter-spacing:0;margin-left:2px">b</span> &middot; Capital Call</div>
+      <div>
+        <h2>Investment <em>opportunity</em>.</h2>
+        <p>Three founder-operated ventures open to strategic capital &mdash; Gulf-region focused, AI-native, all with live product footprints. Decks available on request; qualified investors only.</p>
+      </div>
+    </div>
+
+    <div class="ed-invest-grid reveal">
+      <!-- EatCookJoy.xyz -->
+      <a class="inv-card" href="https://eatcookjoy.xyz" target="_blank" rel="noopener">
+        <span class="inv-stage">Pre-Seed &middot; Open</span>
+        <h3>EatCookJoy<span class="tld">.xyz</span></h3>
+        <div class="inv-tag">AI Cooking Assistant</div>
+        <p class="inv-pitch">15K+ recipes, pantry tracking, grocery deal-finder &amp; chef coordination for Gulf households. Onboarding D2C through UAE launch; app + web native.</p>
+        <div class="inv-stats">
+          <div class="s"><span class="sk">$2B</span><span class="sl">GCC Food-Tech TAM</span></div>
+          <div class="s"><span class="sk">15K+</span><span class="sl">Recipes Live</span></div>
+          <div class="s"><span class="sk">2026</span><span class="sl">UAE Launch</span></div>
+        </div>
+        <div class="inv-foot">
+          <span class="inv-link">Visit eatcookjoy.xyz &rarr;</span>
+          <span class="inv-ask">Request Deck</span>
+        </div>
+      </a>
+
+      <!-- Stackbirds.xyz -->
+      <a class="inv-card" href="https://stackbirds.xyz" target="_blank" rel="noopener">
+        <span class="inv-stage">Seed &middot; Open</span>
+        <h3>Stackbirds<span class="tld">.xyz</span></h3>
+        <div class="inv-tag">AI Agents for SMEs</div>
+        <p class="inv-pitch">Self-trained AI agents for the six roles every SME runs &mdash; Accountant, Sales, Inventory, HR, Marketing, Retail Ops. No prompts, no code. Q1 &rsquo;27 Gulf rollout.</p>
+        <div class="inv-stats">
+          <div class="s"><span class="sk">6</span><span class="sl">Role Agents</span></div>
+          <div class="s"><span class="sk">6</span><span class="sl">GCC Markets</span></div>
+          <div class="s"><span class="sk">Q1 &rsquo;27</span><span class="sl">Launch</span></div>
+        </div>
+        <div class="inv-foot">
+          <span class="inv-link">Visit stackbirds.xyz &rarr;</span>
+          <span class="inv-ask">Request Deck</span>
+        </div>
+      </a>
+
+      <!-- BikeStarGlobal.com -->
+      <a class="inv-card" href="https://bikestarglobal.com" target="_blank" rel="noopener">
+        <span class="inv-stage">Growth &middot; Open</span>
+        <h3>BikeStar<span class="tld">Global.com</span></h3>
+        <div class="inv-tag">Mobility &amp; E-Bike Retail</div>
+        <p class="inv-pitch">Global e-bike &amp; urban mobility retail venture &mdash; distributor network, GCC flagship stores and D2C e-commerce. Ready for regional expansion capital.</p>
+        <div class="inv-stats">
+          <div class="s"><span class="sk">Global</span><span class="sl">Footprint</span></div>
+          <div class="s"><span class="sk">E-Bike</span><span class="sl">Category</span></div>
+          <div class="s"><span class="sk">GCC</span><span class="sl">Focus</span></div>
+        </div>
+        <div class="inv-foot">
+          <span class="inv-link">Visit bikestarglobal.com &rarr;</span>
+          <span class="inv-ask">Request Deck</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="ed-invest-cta reveal">
+      <div class="cta-body">All three ventures are operated or co-operated by <strong>Aziz Saif</strong> from Dubai. Investor conversations start with a one-line note &mdash; decks and financials follow under NDA.</div>
+      <a class="cta-btn" href="https://wa.me/971556492370?text=Hi%20Aziz%2C%20I%27d%20like%20to%20see%20the%20investor%20decks%20for%20EatCookJoy%2C%20Stackbirds%20and%20BikeStar." target="_blank" rel="noopener">Request Investor Pack &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- STORY -->
 <section id="story" style="background:var(--ed-ivory);border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)">
   <div class="section-inner">
