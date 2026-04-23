@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Signature &mdash; Dr. A. Hadi Shahid</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lora:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2740;--navy-dark:#081629;--gold:#b8892a;--gold-light:#d5a947;--parchment:#fbf8f0;--ivory:#f5f0e4;--line:#e4dcc5;--muted:#6b6659;--charcoal:#2c2a26}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--parchment);font-family:'Inter',-apple-system,sans-serif;color:var(--charcoal);padding:48px 24px;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+  .wrap{max-width:820px;margin:0 auto}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+  .toolbar .brand{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);font-weight:700}
+  .toolbar .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .toolbar button,.toolbar a{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;padding:9px 16px;border:1px solid var(--navy);background:#fff;color:var(--navy);cursor:pointer;text-decoration:none;transition:all .25s}
+  .toolbar button:hover,.toolbar a:hover{background:var(--navy);color:#fff}
+  .toolbar button.copy{background:var(--navy);color:#fff}
+  .toolbar button.copy:hover{background:var(--navy-dark)}
+
+  .kicker{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;display:inline-flex;align-items:center;gap:10px}
+  .kicker::before{content:'';width:22px;height:1px;background:var(--gold)}
+  h1{font-family:'Cinzel',serif;font-size:1.7rem;line-height:1.15;color:var(--navy);font-weight:600;margin-bottom:8px;letter-spacing:.02em}
+  .lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;color:var(--muted);margin-bottom:32px}
+
+  /* The live preview area — renders the signature */
+  .preview-box{background:#fff;border:1px solid var(--line);padding:28px;margin-bottom:8px;position:relative}
+  .preview-box .preview-tag{position:absolute;top:-10px;left:16px;background:var(--navy);color:#fff;font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 10px}
+
+  /* The actual email signature below uses table layout + inline styles
+     so it survives Gmail / Outlook / Apple Mail stripping. The wrapper
+     class is just a preview scope. */
+
+  /* Code-copy box */
+  .code-wrap{margin-top:32px;margin-bottom:40px}
+  .code-wrap h2{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:12px}
+  .code{background:#1a2f48;color:#e8dcb4;font-family:'SFMono-Regular',Menlo,Consolas,monospace;font-size:.78rem;line-height:1.55;padding:20px 22px;border:1px solid var(--navy-dark);max-height:360px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+
+  /* Instructions cards */
+  .how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  @media(max-width:760px){.how{grid-template-columns:1fr}}
+  .how-card{background:#fff;border:1px solid var(--line);padding:20px;font-size:.85rem;line-height:1.65}
+  .how-card h3{font-family:'Cinzel',serif;font-size:.86rem;letter-spacing:.04em;color:var(--navy);font-weight:600;margin-bottom:8px;text-transform:uppercase}
+  .how-card ol{padding-left:16px;color:var(--charcoal)}
+  .how-card ol li{margin-bottom:5px}
+
+  .foot{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:.74rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="brand">Dr. A. Hadi Shahid &middot; Email Signature</div>
+    <div class="actions">
+      <a href="index.html">&larr; Back</a>
+      <button class="copy" onclick="copySig()">Copy signature</button>
+    </div>
+  </div>
+
+  <div class="kicker">Email Signature &middot; Plug &amp; Play</div>
+  <h1>Navy &amp; gold signature for Gmail, Outlook &amp; Apple Mail.</h1>
+  <p class="lede">Rendered once on this page so you can preview it exactly as a recipient will see it. Copy the block below, or paste directly from the preview.</p>
+
+  <!-- LIVE PREVIEW (this block is what gets copied) -->
+  <div class="preview-box">
+    <span class="preview-tag">Preview &middot; as it will arrive</span>
+
+    <div id="sigSource">
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Georgia,'Times New Roman',serif;color:#2c2a26;font-size:13px;line-height:1.5;">
+        <tr>
+          <td style="padding:0 18px 0 0;vertical-align:top;border-right:3px solid #b8892a;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
+              <tr>
+                <td style="font-family:'Cinzel',Georgia,serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#b8892a;font-weight:700;padding-bottom:4px;">
+                  Chartered Accountants &amp; Consultancy
+                </td>
+              </tr>
+              <tr>
+                <td style="font-family:'Cinzel',Georgia,serif;font-size:20px;letter-spacing:1px;color:#0f2740;font-weight:700;line-height:1.1;padding-bottom:2px;">
+                  Dr. A. Hadi Shahid
+                </td>
+              </tr>
+              <tr>
+                <td style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:12px;color:#b8892a;font-weight:500;padding-bottom:6px;">
+                  Ph.D. &middot; FCA &middot; ICAP &middot; CFE
+                </td>
+              </tr>
+              <tr>
+                <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.7px;text-transform:uppercase;color:#2c2a26;font-weight:600;padding-bottom:3px;">
+                  Founder &amp; Managing Partner
+                </td>
+              </tr>
+              <tr>
+                <td style="font-family:Georgia,'Times New Roman',serif;font-size:13px;color:#0f2740;font-weight:600;padding-bottom:10px;">
+                  Alliott Hadi Shahid
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="padding:0 0 0 18px;vertical-align:top;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.55;color:#2c2a26;">
+              <tr>
+                <td style="padding-bottom:3px;">
+                  <span style="color:#b8892a;font-weight:700;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;">Office</span>&nbsp;&nbsp;04A, Dubai Creek Towers, Baniyas Road, Deira, Dubai, UAE
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:3px;">
+                  <span style="color:#b8892a;font-weight:700;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;">Phone</span>&nbsp;&nbsp;<a href="tel:+97142227355" style="color:#2c2a26;text-decoration:none;">+971 4 222 7355</a>&nbsp;&middot;&nbsp;<a href="https://wa.me/97142227355" style="color:#2c2a26;text-decoration:none;">WhatsApp</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:3px;">
+                  <span style="color:#b8892a;font-weight:700;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;">Fax</span>&nbsp;&nbsp;&nbsp;&nbsp;+971 4 299 9206
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:3px;">
+                  <span style="color:#b8892a;font-weight:700;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;">Email</span>&nbsp;&nbsp;<a href="mailto:me@drhadishahid.com" style="color:#0f2740;font-weight:600;text-decoration:none;">me@drhadishahid.com</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:3px;">
+                  <span style="color:#b8892a;font-weight:700;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;">Web</span>&nbsp;&nbsp;&nbsp;<a href="https://drhadishahid.com" style="color:#0f2740;font-weight:600;text-decoration:none;">drhadishahid.com</a>&nbsp;&middot;&nbsp;<a href="https://www.linkedin.com/in/dr-a-hadi-shahid-64314055/" style="color:#0f2740;font-weight:600;text-decoration:none;">LinkedIn</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding-top:10px;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
+              <tr>
+                <td style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:11px;color:#b8892a;border-top:1px solid #e4dcc5;padding-top:8px;">
+                  &ldquo;In trust we audit, in truth we advise.&rdquo; &nbsp;&middot;&nbsp; Abu Dhabi &middot; Dubai &middot; Sharjah &middot; Al Ain
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Raw code for manual paste -->
+  <div class="code-wrap">
+    <h2>Raw HTML (if you need to paste into a signature editor)</h2>
+    <div class="code" id="codeBox"></div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="how">
+    <div class="how-card">
+      <h3>Gmail</h3>
+      <ol>
+        <li>Click the <strong>Copy signature</strong> button above.</li>
+        <li>Open Gmail &rarr; Settings &rarr; See all settings &rarr; General.</li>
+        <li>Scroll to Signature &rarr; Create new &rarr; paste.</li>
+        <li>Set as default for New mail &amp; Reply/Forward.</li>
+        <li>Save changes.</li>
+      </ol>
+    </div>
+    <div class="how-card">
+      <h3>Outlook (desktop)</h3>
+      <ol>
+        <li>File &rarr; Options &rarr; Mail &rarr; Signatures.</li>
+        <li>New &rarr; paste the copied signature.</li>
+        <li>Assign to New &amp; Replies accounts.</li>
+        <li>OK to save.</li>
+      </ol>
+    </div>
+    <div class="how-card">
+      <h3>Apple Mail</h3>
+      <ol>
+        <li>Mail &rarr; Settings &rarr; Signatures.</li>
+        <li>Create a new signature, paste, and uncheck <em>Always match my default font</em>.</li>
+        <li>Drag the signature to the account you want.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="foot">
+    Source of truth: <a href="index.html" style="color:#b8892a;font-weight:600;text-decoration:none">identity package hub</a>.
+    Contact details verified against drhadishahid.com.
+  </div>
+</div>
+
+<script>
+function copySig(){
+  var src = document.getElementById('sigSource').innerHTML;
+  // Put it on the clipboard as BOTH text/html (for rich paste) and text/plain
+  var plain = document.getElementById('sigSource').innerText;
+  if(navigator.clipboard && navigator.clipboard.write){
+    var item = new ClipboardItem({
+      'text/html': new Blob([src], {type:'text/html'}),
+      'text/plain': new Blob([plain], {type:'text/plain'})
+    });
+    navigator.clipboard.write([item]).then(function(){
+      flash('Copied &mdash; paste into Gmail, Outlook or Apple Mail');
+    }, function(){ fallback(src); });
+  } else { fallback(src); }
+}
+function fallback(html){
+  var range = document.createRange();
+  range.selectNode(document.getElementById('sigSource'));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  try{ document.execCommand('copy'); flash('Copied &mdash; paste into your mail client'); }
+  catch(e){ flash('Copy failed &mdash; please select manually'); }
+  window.getSelection().removeAllRanges();
+}
+function flash(msg){
+  var btn = document.querySelector('.toolbar button.copy');
+  var original = btn.textContent;
+  btn.innerHTML = msg;
+  setTimeout(function(){ btn.textContent = original; }, 2800);
+}
+
+// Render the raw HTML into the code box (escaped)
+document.addEventListener('DOMContentLoaded', function(){
+  var src = document.getElementById('sigSource').innerHTML.trim();
+  // Collapse multiple blank lines for readability
+  src = src.replace(/^\s+/gm,'').replace(/\n\s*\n/g,'\n');
+  document.getElementById('codeBox').textContent = src;
+});
+</script>
+</body>
+</html>
