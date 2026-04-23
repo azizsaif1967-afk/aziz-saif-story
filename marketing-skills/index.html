@@ -29,11 +29,14 @@
   .btn.ghost:hover{background:rgba(21,94,94,.06)}
   .divider{height:1px;background:var(--ed-stone);margin:8px 0 40px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:48px}
-  .topic{background:#fff;border:1px solid var(--ed-stone);padding:22px 20px;transition:all .25s}
-  .topic:hover{border-color:var(--ed-teal);transform:translateY(-2px);box-shadow:0 12px 28px rgba(10,22,40,.06)}
+  a.topic{background:#fff;border:1px solid var(--ed-stone);padding:22px 20px;transition:all .25s;text-decoration:none;color:inherit;display:block;position:relative}
+  a.topic:hover{border-color:var(--ed-teal);transform:translateY(-2px);box-shadow:0 12px 28px rgba(10,22,40,.06)}
+  a.topic:hover h3{color:var(--ed-teal)}
+  a.topic:hover .t-cta{color:var(--ed-teal);gap:8px}
   .topic .t-ico{font-size:1.4rem;margin-bottom:10px;display:block}
-  .topic h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--ed-charcoal);margin-bottom:6px;line-height:1.25}
-  .topic p{font-size:.82rem;color:#666;line-height:1.55}
+  .topic h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--ed-charcoal);margin-bottom:6px;line-height:1.25;transition:color .25s}
+  .topic p{font-size:.82rem;color:#666;line-height:1.55;margin-bottom:14px}
+  .topic .t-cta{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ed-muted);display:inline-flex;align-items:center;gap:5px;transition:all .25s}
   .featured{background:#fff;border:1px solid var(--ed-stone);padding:28px;margin-bottom:32px}
   .featured h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:16px;color:var(--ed-charcoal)}
   .featured ul{list-style:none;padding:0}
@@ -52,7 +55,7 @@
 
   <div class="eyebrow">Library &middot; AI Marketing Skills</div>
   <h1>AI Marketing <em>Skills</em> Library.</h1>
-  <p class="lede">A curated collection of AI-powered marketing playbooks, prompts and workflows &mdash; tailored for Gulf SMEs. Practical skills I use across retail, fashion, F&amp;B and services, packaged for operators to apply directly.</p>
+  <p class="lede">A curated collection of AI-powered marketing playbooks, prompts and workflows &mdash; tailored for Gulf SMEs. Practical skills I use across retail, fashion, F&amp;B and services, packaged for SME teams to apply directly.</p>
 
   <div class="cta-row">
     <a href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener" class="btn primary">Open Library &rarr;</a>
@@ -77,12 +80,12 @@
 
   <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:16px">What&rsquo;s in the library</h2>
   <div class="grid">
-    <div class="topic"><span class="t-ico">&#128241;</span><h3>Social Automation</h3><p>Instagram, TikTok &amp; LinkedIn content engines &mdash; calendar, prompts, scheduling stack.</p></div>
-    <div class="topic"><span class="t-ico">&#127912;</span><h3>Content Generation</h3><p>Brand-voice prompts, hero images, product photography &amp; video scripts.</p></div>
-    <div class="topic"><span class="t-ico">&#128200;</span><h3>Paid Launch Playbooks</h3><p>Meta &amp; Google ads launch frameworks with tested creative patterns.</p></div>
-    <div class="topic"><span class="t-ico">&#128269;</span><h3>SEO &amp; Search</h3><p>Keyword research, content briefs &amp; on-page optimisation built with AI.</p></div>
-    <div class="topic"><span class="t-ico">&#129309;</span><h3>Creator Partnerships</h3><p>UAE &amp; GCC influencer outreach, negotiation &amp; campaign tracking templates.</p></div>
-    <div class="topic"><span class="t-ico">&#128231;</span><h3>Email &amp; CRM</h3><p>Segmented lifecycle emails, WhatsApp Business flows &amp; re-engagement sequences.</p></div>
+    <a class="topic" href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener"><span class="t-ico">&#128241;</span><h3>Social Automation</h3><p>Instagram, TikTok &amp; LinkedIn content engines &mdash; calendar, prompts, scheduling stack.</p><span class="t-cta">Read on GitHub &rarr;</span></a>
+    <a class="topic" href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener"><span class="t-ico">&#127912;</span><h3>Content Generation</h3><p>Brand-voice prompts, hero images, product photography &amp; video scripts.</p><span class="t-cta">Read on GitHub &rarr;</span></a>
+    <a class="topic" href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener"><span class="t-ico">&#128200;</span><h3>Paid Launch Playbooks</h3><p>Meta &amp; Google ads launch frameworks with tested creative patterns.</p><span class="t-cta">Read on GitHub &rarr;</span></a>
+    <a class="topic" href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener"><span class="t-ico">&#128269;</span><h3>SEO &amp; Search</h3><p>Keyword research, content briefs &amp; on-page optimisation built with AI.</p><span class="t-cta">Read on GitHub &rarr;</span></a>
+    <a class="topic" href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener"><span class="t-ico">&#129309;</span><h3>Creator Partnerships</h3><p>UAE &amp; GCC influencer outreach, negotiation &amp; campaign tracking templates.</p><span class="t-cta">Read on GitHub &rarr;</span></a>
+    <a class="topic" href="https://github.com/coreyhaines31/marketingskills" target="_blank" rel="noopener"><span class="t-ico">&#128231;</span><h3>Email &amp; CRM</h3><p>Segmented lifecycle emails, WhatsApp Business flows &amp; re-engagement sequences.</p><span class="t-cta">Read on GitHub &rarr;</span></a>
   </div>
 
   <div class="foot">
