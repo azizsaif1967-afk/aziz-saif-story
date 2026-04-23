@@ -2277,55 +2277,103 @@ body.has-corp-nav{padding-top:0}
 <section id="ai-tools" style="background:var(--ed-ivory);border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)">
   <div class="section-inner">
     <div class="section-header reveal"><div><div class="section-label"><span class="line"></span> AI Toolkit</div><h2 class="section-title">Tools I Use &amp; Trust</h2><p class="section-subtitle">The stack that powers every build &mdash; Manus, Claude, Gamma, Perplexity &amp; more.</p></div><a href="pages/tools.html" class="view-all">View Full Page &rarr;</a></div>
-    <a href="pages/tools.html" class="reveal" style="display:block;margin-top:16px;border:1px solid var(--ed-stone-line);background:var(--ed-ivory);color:var(--ed-charcoal);padding:44px 40px;position:relative;overflow:hidden;transition:all .4s;text-decoration:none" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 42px rgba(10,22,40,.08)';this.style.borderColor='var(--ed-teal)'" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--ed-stone-line)'">
-      <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;z-index:2">
+    <style>
+    .ai-tools-card{margin-top:16px;border:1px solid var(--ed-stone-line);background:var(--ed-ivory);color:var(--ed-charcoal);padding:44px 40px;position:relative;overflow:hidden;transition:all .4s}
+    .ai-tools-card:hover{border-color:var(--ed-teal);box-shadow:0 22px 42px rgba(10,22,40,.08)}
+    .ai-tools-head{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+    .ai-tools-stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
+    .ai-tools-stats .tool-stat strong{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600;display:block}
+    .ai-tools-stats .tool-stat span{font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600;display:block}
+    .ai-tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:14px;margin-top:32px}
+    .ai-tool-chip{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding:18px 12px;background:#fff;border:1px solid var(--ed-stone-line);transition:all .3s;text-decoration:none;color:inherit;text-align:center}
+    .ai-tool-chip:hover{border-color:var(--ed-teal);transform:translateY(-3px);box-shadow:0 12px 28px rgba(10,22,40,.08)}
+    .ai-tool-chip .tool-ico{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--ed-ivory);border:1px solid var(--ed-stone-line);overflow:hidden}
+    .ai-tool-chip .tool-ico img{width:28px;height:28px;object-fit:contain}
+    .ai-tool-chip .tool-name{font-size:.82rem;font-weight:600;color:var(--ed-charcoal);letter-spacing:.1px;margin-top:2px}
+    .ai-tool-chip .tool-use{font-size:.56rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--ed-muted);font-weight:600}
+    .ai-tools-foot{margin-top:28px;padding-top:20px;border-top:1px solid var(--ed-stone-line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .ai-tools-foot .full-link{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);text-decoration:none;padding:10px 18px;border:1px solid var(--ed-teal);transition:all .3s}
+    .ai-tools-foot .full-link:hover{background:var(--ed-teal);color:#fff}
+    @media(max-width:640px){.ai-tools-head{grid-template-columns:1fr}}
+    </style>
+    <div class="ai-tools-card reveal">
+      <div class="ai-tools-head">
         <div>
           <div style="font-size:.62rem;letter-spacing:3px;font-weight:700;text-transform:uppercase;color:var(--ed-teal);margin-bottom:14px;display:inline-flex;align-items:center;gap:10px"><span style="width:18px;height:1px;background:var(--ed-teal)"></span>AI Toolkit</div>
           <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;margin-bottom:12px;line-height:1.15;color:var(--ed-charcoal);letter-spacing:-.01em">8 tools, one stack, <em style="color:var(--ed-teal);font-style:italic;font-weight:500">every project.</em></h3>
-          <p style="color:var(--ed-muted);font-size:.92rem;line-height:1.75;font-weight:400;max-width:640px">Manus.ai for agents, Claude for reports &amp; VBAs, Gamma for decks, Perplexity for research, Minimax for video, Apollo for lead-gen, plus Zapier, Buffer, Wix. Click to see how each one fits into the workflow.</p>
-          <div style="display:flex;gap:28px;margin-top:22px;flex-wrap:wrap">
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600">8<em style="font-style:normal;color:var(--ed-teal);font-size:.7em;margin-left:2px">+</em></div><div style="font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600">Core Tools</div></div>
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600">No-Code</div><div style="font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600">Workflows</div></div>
-            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ed-charcoal);font-weight:600">Daily</div><div style="font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--ed-muted);margin-top:4px;font-weight:600">In-Use</div></div>
+          <p style="color:var(--ed-muted);font-size:.92rem;line-height:1.75;font-weight:400;max-width:640px">Manus.ai for agents, Claude for reports &amp; VBAs, Gamma for decks, Perplexity for research, Minimax for video, Apollo for lead-gen, plus Zapier, Buffer, Wix. Click any logo to see how that tool fits into the workflow.</p>
+          <div class="ai-tools-stats">
+            <div class="tool-stat"><strong>8<em style="font-style:normal;color:var(--ed-teal);font-size:.7em;margin-left:2px">+</em></strong><span>Core Tools</span></div>
+            <div class="tool-stat"><strong>No-Code</strong><span>Workflows</span></div>
+            <div class="tool-stat"><strong>Daily</strong><span>In-Use</span></div>
           </div>
         </div>
       </div>
-      <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--ed-stone-line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;position:relative;z-index:2">
-        <div style="font-size:.78rem;color:var(--ed-muted);letter-spacing:.3px">Manus &middot; Claude &middot; Minimax &middot; Apollo &middot; Gamma &middot; Perplexity &middot; Stackbirds &middot; +More</div>
-        <span style="font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ed-teal)">Open Tools Page &rarr;</span>
+
+      <!-- Tool logos grid -->
+      <div class="ai-tools-grid">
+        <a href="pages/tools.html#chapter-01" class="ai-tool-chip" title="Manus.ai — AI agents">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=manus.im&sz=128" alt="Manus" loading="lazy" onerror="this.parentElement.innerHTML='M'"></div>
+          <div class="tool-name">Manus</div>
+          <div class="tool-use">AI Agents</div>
+        </a>
+        <a href="pages/tools.html#chapter-02" class="ai-tool-chip" title="Claude.ai — reports &amp; code">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude" loading="lazy" onerror="this.parentElement.innerHTML='C'"></div>
+          <div class="tool-name">Claude</div>
+          <div class="tool-use">Reports + Code</div>
+        </a>
+        <a href="pages/tools.html#chapter-03" class="ai-tool-chip" title="Minimax — image &amp; video AI">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=minimaxi.com&sz=128" alt="Minimax" loading="lazy" onerror="this.parentElement.innerHTML='Mx'"></div>
+          <div class="tool-name">Minimax</div>
+          <div class="tool-use">Video + Image</div>
+        </a>
+        <a href="pages/tools.html#chapter-04" class="ai-tool-chip" title="Apollo.io — lead gen">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=apollo.io&sz=128" alt="Apollo" loading="lazy" onerror="this.parentElement.innerHTML='A'"></div>
+          <div class="tool-name">Apollo</div>
+          <div class="tool-use">Lead Gen</div>
+        </a>
+        <a href="pages/tools.html#chapter-05" class="ai-tool-chip" title="Gamma.app — AI slide decks">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=gamma.app&sz=128" alt="Gamma" loading="lazy" onerror="this.parentElement.innerHTML='G'"></div>
+          <div class="tool-name">Gamma</div>
+          <div class="tool-use">Slide Decks</div>
+        </a>
+        <a href="pages/tools.html#chapter-06" class="ai-tool-chip" title="Perplexity — cited research">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" alt="Perplexity" loading="lazy" onerror="this.parentElement.innerHTML='P'"></div>
+          <div class="tool-name">Perplexity</div>
+          <div class="tool-use">Research</div>
+        </a>
+        <a href="pages/tools.html" class="ai-tool-chip" title="Zapier — workflow automation">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=zapier.com&sz=128" alt="Zapier" loading="lazy" onerror="this.parentElement.innerHTML='Z'"></div>
+          <div class="tool-name">Zapier</div>
+          <div class="tool-use">Automation</div>
+        </a>
+        <a href="pages/tools.html" class="ai-tool-chip" title="Buffer — social scheduling">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=buffer.com&sz=128" alt="Buffer" loading="lazy" onerror="this.parentElement.innerHTML='B'"></div>
+          <div class="tool-name">Buffer</div>
+          <div class="tool-use">Social</div>
+        </a>
+        <a href="pages/tools.html" class="ai-tool-chip" title="Wix — web hosting">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=wix.com&sz=128" alt="Wix" loading="lazy" onerror="this.parentElement.innerHTML='W'"></div>
+          <div class="tool-name">Wix</div>
+          <div class="tool-use">Hosting</div>
+        </a>
+        <a href="pages/tech/stackbirds.html" class="ai-tool-chip" title="Stackbirds — in-house AI agents">
+          <div class="tool-ico"><img src="https://www.google.com/s2/favicons?domain=stackbirds.com&sz=128" alt="Stackbirds" loading="lazy" onerror="this.parentElement.innerHTML='SB'"></div>
+          <div class="tool-name">Stackbirds</div>
+          <div class="tool-use">In-House</div>
+        </a>
       </div>
-    </a>
+
+      <div class="ai-tools-foot">
+        <div style="font-size:.78rem;color:var(--ed-muted);letter-spacing:.3px">10 tools mapped to the services I deliver &mdash; feasibility, pitches, lead-gen, websites &amp; agents.</div>
+        <a href="pages/tools.html" class="full-link">Open Tools Page &rarr;</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- SETUP -->
-<section id="setup" style="background:var(--ed-ivory-deep);border-top:1px solid var(--ed-stone-line)">
-  <div class="section-inner">
-    <div class="section-header reveal"><div><div class="section-label"><span class="line"></span> Business Setup A-Z</div><h2 class="section-title">Full Business Setup &mdash; UAE</h2></div></div>
-    <div class="setup-grid reveal">
-      <div class="setup-cell"><div class="se-icon">&#128196;</div><h4>Trade Licence</h4><p>Mainland, Free Zone &amp; offshore</p></div>
-      <div class="setup-cell"><div class="se-icon">&#127974;</div><h4>Bank Account</h4><p>Corporate, fast-tracked</p></div>
-      <div class="setup-cell"><div class="se-icon">&#128178;</div><h4>VAT &amp; Tax</h4><p>Registration &amp; filing</p></div>
-      <div class="setup-cell"><div class="se-icon">&#128230;</div><h4>Procurement</h4><p>Sourcing &amp; stock</p></div>
-      <div class="setup-cell"><div class="se-icon">&#128101;</div><h4>HR &amp; Visa</h4><p>Staff, contracts, payroll</p></div>
-      <div class="setup-cell"><div class="se-icon">&#128200;</div><h4>Accounting</h4><p>QB / Zoho / Tally</p></div>
-      <div class="setup-cell"><div class="se-icon">&#128188;</div><h4>Day-to-Day</h4><p>Full ops managed</p></div>
-      <div class="setup-cell"><div class="se-icon">&#129309;</div><h4>Buy &amp; Sell</h4><p>Valuation &amp; deals</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONSULTING -->
-<section id="consulting" style="background:var(--ed-ivory);border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)">
-  <div class="section-inner">
-    <div class="section-header reveal"><div><div class="section-label"><span class="line"></span> Consulting</div><h2 class="section-title">Deep-Domain Advisory</h2></div></div>
-    <div class="consult-grid reveal">
-      <div class="consult-card"><h3>Retail Scaling</h3><p>1 store to multi-location across GCC. Site selection, CAPEX, margin control &amp; team structure.</p></div>
-      <div class="consult-card"><h3>Franchise Feasibility</h3><p>Master franchise setup, KSA/Oman/GCC rollout, franchisee onboarding &amp; brand compliance.</p></div>
-      <div class="consult-card"><h3>eCommerce for Partners</h3><p>Amazon.ae, Noon, marketplace launch. A-Z UAE ops for overseas suppliers.</p></div>
-    </div>
-  </div>
-</section>
+<!-- Business Setup + Deep-Domain Advisory moved below Websites Built, combined into #setup-advisory -->
 
 <!-- PROCESS -->
 <!-- Legacy "4 Simple Steps" process removed: superseded by the new
@@ -2592,6 +2640,67 @@ body.has-corp-nav{padding-top:0}
               <p style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5">AI-generated social media, product descriptions, email campaigns &amp; menu engineering &mdash; in Arabic &amp; English</p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUSINESS SETUP + DEEP-DOMAIN ADVISORY (combined, compact) ===== -->
+<style>
+.setup-advisory{background:var(--ed-ivory-deep);border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)}
+.setup-advisory .sa-split{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-top:24px;align-items:start}
+@media(max-width:960px){.setup-advisory .sa-split{grid-template-columns:1fr;gap:40px}}
+.sa-col-head{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent-dark);font-weight:700;margin-bottom:10px;display:inline-flex;align-items:center;gap:10px}
+.sa-col-head::before{content:'';width:18px;height:1px;background:var(--accent-dark)}
+.sa-col h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:500;line-height:1.25;color:var(--primary);margin-bottom:18px;letter-spacing:-.01em}
+.sa-col h3 em{color:var(--accent-dark);font-style:italic;font-weight:500}
+.sa-setup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:640px){.sa-setup-grid{grid-template-columns:repeat(2,1fr)}}
+.sa-setup-cell{background:#fff;border:1px solid var(--gray-100);padding:14px 12px;text-align:center;transition:all .25s}
+.sa-setup-cell:hover{border-color:var(--primary);transform:translateY(-2px)}
+.sa-setup-cell .ico{font-size:1.25rem;margin-bottom:6px;display:block}
+.sa-setup-cell h4{font-size:.78rem;font-weight:700;color:var(--primary);margin-bottom:3px;letter-spacing:.1px}
+.sa-setup-cell p{font-size:.64rem;color:var(--gray-500);line-height:1.4;font-weight:400}
+.sa-advisory-list{display:flex;flex-direction:column;gap:10px}
+.sa-advisory-card{background:#fff;border:1px solid var(--gray-100);padding:16px 18px;transition:all .25s;border-left:3px solid var(--accent-dark)}
+.sa-advisory-card:hover{border-color:var(--primary);border-left-color:var(--primary);transform:translateX(2px)}
+.sa-advisory-card h4{font-size:.88rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+.sa-advisory-card p{font-size:.78rem;color:var(--gray-500);line-height:1.55}
+</style>
+<section id="setup" class="setup-advisory">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label"><span class="line"></span> Operate &amp; Advise</div>
+        <h2 class="section-title">Business Setup + <em>Deep-Domain Advisory</em></h2>
+        <p class="section-subtitle">The two things I'm hired for &mdash; stand up a UAE company end-to-end, or advise on the retail, franchise &amp; eCommerce playbook I've run for 37 years.</p>
+      </div>
+    </div>
+    <div class="sa-split reveal">
+      <!-- LEFT: Business Setup A-Z -->
+      <div class="sa-col">
+        <div class="sa-col-head">Business Setup A-Z &middot; UAE</div>
+        <h3>Full UAE setup &mdash; <em>trade licence to day-to-day</em></h3>
+        <div class="sa-setup-grid">
+          <div class="sa-setup-cell"><span class="ico">&#128196;</span><h4>Trade Licence</h4><p>Mainland, Free Zone &amp; offshore</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#127974;</span><h4>Bank Account</h4><p>Corporate, fast-tracked</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#128178;</span><h4>VAT &amp; Tax</h4><p>Registration &amp; filing</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#128230;</span><h4>Procurement</h4><p>Sourcing &amp; stock</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#128101;</span><h4>HR &amp; Visa</h4><p>Staff, contracts, payroll</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#128200;</span><h4>Accounting</h4><p>QB / Zoho / Tally</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#128188;</span><h4>Day-to-Day</h4><p>Full ops managed</p></div>
+          <div class="sa-setup-cell"><span class="ico">&#129309;</span><h4>Buy &amp; Sell</h4><p>Valuation &amp; deals</p></div>
+        </div>
+      </div>
+      <!-- RIGHT: Deep-Domain Advisory -->
+      <div class="sa-col" id="consulting">
+        <div class="sa-col-head">Consulting &middot; Deep-Domain Advisory</div>
+        <h3>Where I've been <em>in the seat</em></h3>
+        <div class="sa-advisory-list">
+          <div class="sa-advisory-card"><h4>Retail Scaling</h4><p>1 store to multi-location across GCC. Site selection, CAPEX, margin control &amp; team structure.</p></div>
+          <div class="sa-advisory-card"><h4>Franchise Feasibility</h4><p>Master franchise setup, KSA/Oman/GCC rollout, franchisee onboarding &amp; brand compliance.</p></div>
+          <div class="sa-advisory-card"><h4>eCommerce for Partners</h4><p>Amazon.ae, Noon, marketplace launch. A-Z UAE ops for overseas suppliers.</p></div>
         </div>
       </div>
     </div>
