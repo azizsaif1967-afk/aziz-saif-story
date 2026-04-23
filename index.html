@@ -1165,6 +1165,128 @@ body.has-corp-nav{padding-top:0}
   </div>
 </section>
 
+<!-- ============ STORY + CORE EXPERTISE (redesigned, repositioned) ============ -->
+<style>
+.ed-story{background:var(--ed-ivory);border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line);padding:clamp(72px,8vw,104px) 48px;position:relative;overflow:hidden}
+.ed-story::before{content:'';position:absolute;top:-160px;right:-160px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08),transparent 65%);pointer-events:none}
+.ed-story-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.ed-story-head{margin-bottom:48px;padding-bottom:28px;border-bottom:1px solid var(--ed-stone-line);display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+.ed-story-head .kicker{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);padding-top:8px}
+.ed-story-head .kicker::before{content:'\2014';color:var(--ed-stone-line);margin-right:8px}
+.ed-story-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:500;line-height:1.12;letter-spacing:-.01em;color:var(--ed-charcoal);margin:0 0 14px}
+.ed-story-head h2 em{font-style:italic;color:var(--ed-teal);font-weight:500}
+.ed-story-head p{font-size:.95rem;color:var(--ed-muted);line-height:1.75;max-width:640px;font-weight:400;margin:0}
+
+.ed-story-grid{display:grid;grid-template-columns:minmax(260px,320px) 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.ed-story-grid{grid-template-columns:1fr;gap:40px}.ed-story-head{grid-template-columns:1fr;gap:14px}}
+
+.ed-story-left{display:flex;flex-direction:column;gap:20px}
+.ed-story-portrait{width:100%;max-width:260px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--ed-stone-line);background:var(--ed-ivory-deep);box-shadow:0 12px 32px rgba(10,22,40,.08);margin:0}
+.ed-story-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}
+.ed-story-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--ed-charcoal);line-height:1.15;margin-top:4px}
+.ed-story-role{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ed-teal)}
+.ed-story-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.08rem;line-height:1.5;color:var(--ed-charcoal);padding:16px 0 16px 18px;border-left:2px solid var(--ed-teal);margin:6px 0}
+.ed-story-bio{font-size:.94rem;color:var(--ed-charcoal-soft);line-height:1.75;font-weight:400;margin:0}
+.ed-story-journey{display:inline-flex;align-items:center;gap:8px;padding:10px 0;font-size:.72rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--ed-teal);text-decoration:none;border-bottom:1px solid var(--ed-teal);transition:gap .3s;width:fit-content}
+.ed-story-journey:hover{gap:12px}
+.ed-story-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.ed-story-chip{font-size:.66rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;color:var(--ed-muted);background:#fff;border:1px solid var(--ed-stone-line);padding:7px 12px;line-height:1.2}
+.ed-story-chip strong{color:var(--ed-charcoal);font-weight:700;margin-right:4px;font-size:.6rem}
+
+.ed-story-right{background:var(--ed-charcoal);color:var(--ed-ivory);padding:36px 34px;position:relative;overflow:hidden}
+.ed-story-right::before{content:'';position:absolute;top:-140px;right:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.16),transparent 60%);pointer-events:none}
+.ed-exp-head{position:relative;z-index:2;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ed-gold);margin-bottom:10px;display:inline-flex;align-items:center;gap:10px}
+.ed-exp-head::before{content:'';width:20px;height:1px;background:var(--ed-gold)}
+.ed-exp-title{position:relative;z-index:2;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:500;line-height:1.2;color:var(--ed-ivory);margin-bottom:22px;letter-spacing:-.01em}
+.ed-exp-title em{font-style:italic;color:var(--ed-gold);font-weight:500}
+.ed-exp-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+@media(max-width:560px){.ed-exp-grid{grid-template-columns:1fr}}
+.ed-exp-cell{padding:14px 0;border-top:1px solid rgba(215,227,226,.14);display:flex;gap:10px;align-items:flex-start}
+.ed-exp-cell .dot{width:5px;height:5px;background:var(--ed-gold);border-radius:50%;margin-top:9px;flex-shrink:0}
+.ed-exp-cell h4{font-size:.82rem;font-weight:700;color:var(--ed-ivory);margin-bottom:4px;line-height:1.3;letter-spacing:.1px}
+.ed-exp-cell p{font-size:.72rem;color:rgba(215,227,226,.68);line-height:1.55;font-weight:400}
+.ed-exp-flags{position:relative;z-index:2;padding-top:18px;border-top:1px solid rgba(215,227,226,.18);display:flex;gap:8px;flex-wrap:wrap}
+.ed-exp-flags span{font-size:.68rem;letter-spacing:.6px;color:rgba(215,227,226,.78);background:rgba(255,255,255,.04);border:1px solid rgba(215,227,226,.12);padding:5px 10px;font-weight:500}
+</style>
+<section class="ed-story" id="story" aria-label="My Story & Core Expertise">
+  <div class="ed-story-inner">
+    <div class="ed-story-head reveal">
+      <div class="kicker">My Story</div>
+      <div>
+        <h2>37 years in the Gulf &mdash; now paired with <em>AI</em>.</h2>
+        <p>The portrait, the short quote and the seven practice areas I&rsquo;ve spent a career building &mdash; what I bring to every engagement.</p>
+      </div>
+    </div>
+
+    <div class="ed-story-grid">
+      <!-- LEFT: Portrait + bio -->
+      <div class="ed-story-left reveal">
+        <figure class="ed-story-portrait">
+          <img src="images/aziz-portrait.jpg" alt="Aziz Saif" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'">
+        </figure>
+        <div>
+          <div class="ed-story-name">Aziz Saif</div>
+          <div class="ed-story-role">GCC Practitioner &middot; Dubai</div>
+        </div>
+        <blockquote class="ed-story-quote">&ldquo;Implement in Hours. Not Days. In sha Allah.&rdquo;</blockquote>
+        <p class="ed-story-bio">Thirty-seven years across GCC retail and franchise &mdash; now paired with AI automation to help SMEs get set up, scale smartly, and operate without the bloat.</p>
+        <a href="pages/journey.html" class="ed-story-journey">&#9992;&#65039; 26 countries travelled &mdash; a story from each <span style="font-size:.9rem">&rarr;</span></a>
+        <div class="ed-story-chips">
+          <span class="ed-story-chip"><strong>Nationality</strong>&#127470;&#127475; Indian</span>
+          <span class="ed-story-chip"><strong>Languages</strong>Arabic &middot; English &middot; Hindi &middot; Urdu</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Core Expertise (dark panel, 2-col compact grid) -->
+      <div class="ed-story-right reveal">
+        <div class="ed-exp-head">Core Expertise</div>
+        <h3 class="ed-exp-title">Seven practice areas &mdash; <em>all hands-on</em>.</h3>
+
+        <div class="ed-exp-grid">
+          <div class="ed-exp-cell">
+            <span class="dot"></span>
+            <div><h4>Retail Scaling &amp; Multi-Location Ops</h4><p>Playbooks for opening, staffing and controlling multi-store ops across the GCC.</p></div>
+          </div>
+          <div class="ed-exp-cell">
+            <span class="dot"></span>
+            <div><h4>Franchise Development &amp; Onboarding</h4><p>Franchise model design, training manuals and launch support.</p></div>
+          </div>
+          <div class="ed-exp-cell">
+            <span class="dot"></span>
+            <div><h4>B2B Sourcing &amp; Supply Chain</h4><p>Vendor selection, negotiation and logistics that cut stock-outs.</p></div>
+          </div>
+          <div class="ed-exp-cell">
+            <span class="dot"></span>
+            <div><h4>AI Business Automation</h4><p>Replace spreadsheets &amp; WhatsApp chaos with CRM, ERP &amp; workflow AI.</p></div>
+          </div>
+          <div class="ed-exp-cell">
+            <span class="dot"></span>
+            <div><h4>Investor Pitch Decks &amp; Feasibility</h4><p>Bank-ready feasibility studies and decks lenders actually read.</p></div>
+          </div>
+          <div class="ed-exp-cell">
+            <span class="dot"></span>
+            <div><h4>eCommerce &amp; Digital Transformation</h4><p>Legacy ops &rarr; measurable online funnels with full fulfilment.</p></div>
+          </div>
+          <div class="ed-exp-cell" style="grid-column:1 / -1">
+            <span class="dot"></span>
+            <div><h4>Accounting &amp; Financial Reports</h4><p>One-page cash, margin and risk reporting &mdash; not buried in files.</p></div>
+          </div>
+        </div>
+
+        <div class="ed-exp-flags">
+          <span>&#127462;&#127466; UAE</span>
+          <span>&#127480;&#127462; KSA</span>
+          <span>&#127476;&#127474; Oman</span>
+          <span>&#127463;&#127469; Bahrain</span>
+          <span>&#127478;&#127462; Qatar</span>
+          <span>&#127470;&#127475; India</span>
+          <span>&#127463;&#127465; Bangladesh</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SECTION VI · STACKBIRDS GULF LAUNCH ============ -->
 <style>
 .ed-stackbirds{background:var(--ed-charcoal);color:var(--ed-ivory);padding:clamp(72px,8vw,104px) 48px;border-bottom:1px solid var(--ed-stone-line);position:relative;overflow:hidden}
@@ -1393,12 +1515,12 @@ body.has-corp-nav{padding-top:0}
       <a class="inv-card" href="https://bikesterglobal.com" target="_blank" rel="noopener">
         <span class="inv-stage">Growth &middot; Open</span>
         <h3>Bikester<span class="tld">Global.com</span></h3>
-        <div class="inv-tag">Mobility &amp; E-Bike Retail</div>
-        <p class="inv-pitch">Global e-bike &amp; urban mobility retail venture &mdash; distributor network, GCC flagship stores and D2C e-commerce. Ready for regional expansion capital.</p>
+        <div class="inv-tag">Motorcycle Gear &amp; Accessories</div>
+        <p class="inv-pitch">D2C e-commerce retailer for motorcycle helmets, riding jackets, gloves, boots, protective gear &amp; parts. India-anchored with international shipping to 50+ countries including the UAE.</p>
         <div class="inv-stats">
-          <div class="s"><span class="sk">Global</span><span class="sl">Footprint</span></div>
-          <div class="s"><span class="sk">E-Bike</span><span class="sl">Category</span></div>
-          <div class="s"><span class="sk">GCC</span><span class="sl">Focus</span></div>
+          <div class="s"><span class="sk">50+</span><span class="sl">Countries Shipped</span></div>
+          <div class="s"><span class="sk">20+</span><span class="sl">Brand Partners</span></div>
+          <div class="s"><span class="sk">India</span><span class="sl">HQ</span></div>
         </div>
         <div class="inv-foot">
           <span class="inv-link">Visit bikesterglobal.com &rarr;</span>
@@ -1415,99 +1537,7 @@ body.has-corp-nav{padding-top:0}
 </section>
 
 <!-- STORY -->
-<section id="story" style="background:var(--ed-ivory);border-top:1px solid var(--ed-stone-line);border-bottom:1px solid var(--ed-stone-line)">
-  <div class="section-inner">
-    <div class="story-grid">
-      <div class="story-left reveal">
-        <figure style="margin:0 0 28px;width:160px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--ed-stone-line);background:var(--ed-ivory-deep);box-shadow:0 8px 24px rgba(10,22,40,.06)">
-          <img src="images/aziz-portrait.jpg" alt="Aziz Saif" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block" onerror="this.parentElement.style.display='none'">
-        </figure>
-        <div class="section-label"><span class="line"></span> My Story</div>
-        <div class="story-quote" style="margin-top:16px">"Implement in Hours. Not Days. In sha Allah."</div>
-        <p style="color:var(--gray-600);font-size:.94rem;line-height:1.8">Today, I combine 37+ years of real-world business expertise with AI automation to help SMEs get set up, scale smartly, and operate without the bloat.</p>
-        <a href="pages/journey.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 0;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--accent);transition:gap .3s" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">&#9992;&#65039; 26 countries travelled &middot; a short story from each <span style="font-size:.9rem">&rarr;</span></a>
-      </div>
-      <div class="story-right reveal">
-        <div class="expertise-card">
-          <h3 class="expertise-title">Core Expertise</h3>
-          <ul class="expertise-list">
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">Retail Scaling &amp; Multi-Location Ops</div>
-                <div class="exp-benefit">Playbooks for opening, staffing, and controlling multi-store operations across the GCC, with clear KPIs and dashboards.</div>
-              </div>
-            </li>
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">Franchise Development &amp; Onboarding</div>
-                <div class="exp-benefit">From franchise model design to training manuals and launch support so new locations execute from day one.</div>
-              </div>
-            </li>
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">B2B Sourcing &amp; Supply Chain</div>
-                <div class="exp-benefit">Vendor selection, negotiation, and logistics flows that reduce stock-outs and working-capital stress.</div>
-              </div>
-            </li>
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">AI Business Automation</div>
-                <div class="exp-benefit">Replace manual spreadsheets and WhatsApp chaos with integrated CRM, ERP, and workflow automations customised to your business.</div>
-              </div>
-            </li>
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">Investor Pitch Decks &amp; Feasibility</div>
-                <div class="exp-benefit">Bank-ready feasibility studies and decks that speak the language of serious investors and lenders.</div>
-              </div>
-            </li>
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">eCommerce &amp; Digital Transformation</div>
-                <div class="exp-benefit">Turn legacy operations into measurable online funnels, with end-to-end order, inventory, and fulfilment systems.</div>
-              </div>
-            </li>
-            <li>
-              <span class="expertise-dot"></span>
-              <div class="exp-body">
-                <div class="exp-title">Accounting &amp; Financial Reports</div>
-                <div class="exp-benefit">Practical reporting structures so owners see cash, margins, and risks in one page &mdash; not buried in files.</div>
-              </div>
-            </li>
-          </ul>
-          <div class="expertise-tags">
-            <span class="expertise-tag">&#127462;&#127466; UAE</span>
-            <span class="expertise-tag">&#127480;&#127462; KSA</span>
-            <span class="expertise-tag">&#127476;&#127474; Oman</span>
-            <span class="expertise-tag">&#127463;&#127469; Bahrain</span>
-            <span class="expertise-tag">&#127478;&#127462; Qatar</span>
-            <span class="expertise-tag">&#127470;&#127475; India</span>
-            <span class="expertise-tag">&#127463;&#127465; Bangladesh</span>
-          </div>
-        </div>
-
-        <!-- Personal Info Cards -->
-        <div class="personal-row">
-          <div class="personal-card">
-            <div class="personal-label">Nationality</div>
-            <div class="personal-value">&#127470;&#127475; Indian</div>
-          </div>
-          <div class="personal-card">
-            <div class="personal-label">Languages</div>
-            <div class="personal-value small">&#127480;&#127462; Arabic &bull; &#127468;&#127463; English &bull; &#127470;&#127475; Hindi &bull; &#127477;&#127472; Urdu</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+<!-- Story section moved up to right after Process — new placement + redesign. See new #story below the ed-process section. -->
 
 <!-- ============ PROOF / RESULTS / CASE STUDIES ============ -->
 <style>
@@ -2509,6 +2539,18 @@ body.has-corp-nav{padding-top:0}
 
     <!-- LARGE BOLD BRAND CARDS GRID -->
     <div class="reveal sites-brand-grid">
+      <a href="pages/tech/drhadishahid.html" class="site-brand-card">
+        <div class="sbc-thumb"><img src="portfolio-thumbs/drhadishahid.jpg" alt="Dr. A. Hadi Shahid &mdash; Legacy Journey" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
+        <div class="sbc-body">
+          <div class="sbc-tag">Biography Legacy &middot; Dr. Abdul Hadi Shahid</div>
+          <h3 class="sbc-brand">Dr. Hadi Shahid</h3>
+          <div class="sbc-domain">drhadishahid.com</div>
+          <p class="sbc-desc">Official legacy journey for Dr. A. Hadi Shahid &mdash; Founder &amp; Managing Partner of Alliott Hadi Shahid Chartered Accountants &amp; Consultancy, Abu Dhabi. Fifty years of audit, commercial law, forensic accounting, arbitration &amp; philanthropic service across the UAE, Pakistan &amp; Afghanistan. <em>&ldquo;A tribute to five decades of excellence.&rdquo;</em></p>
+          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Schema.org</span><span>SEO</span></div>
+          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
+        </div>
+      </a>
+
       <a href="pages/tech/azizsaif.html" class="site-brand-card">
         <div class="sbc-thumb"><img src="portfolio-thumbs/azizsaif.jpg" alt="Aziz Saif" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
         <div class="sbc-body">
@@ -2626,18 +2668,6 @@ body.has-corp-nav{padding-top:0}
           <p class="sbc-desc">A full property listings &amp; agent CRM platform for the UAE market &mdash; built end-to-end with deep AI automation across listings ingestion, lead routing &amp; agent workflows.</p>
           <div class="sbc-tech-row"><span>Next.js</span><span>Supabase</span><span>AI Agents</span><span>Manus</span><span>Automation</span></div>
           <div class="sbc-cta">See How We Automated It &rarr;</div>
-        </div>
-      </a>
-
-      <a href="pages/tech/drhadishahid.html" class="site-brand-card">
-        <div class="sbc-thumb"><img src="portfolio-thumbs/drhadishahid.jpg" alt="Dr. A. Hadi Shahid &mdash; Legacy Journey" loading="lazy" onerror="this.parentElement.classList.add('no-img')"></div>
-        <div class="sbc-body">
-          <div class="sbc-tag">Legacy Biography &middot; Chartered Accountants</div>
-          <h3 class="sbc-brand">Dr. Hadi Shahid</h3>
-          <div class="sbc-domain">drhadishahid.com</div>
-          <p class="sbc-desc">Official legacy journey for Dr. A. Hadi Shahid &mdash; Founder &amp; Managing Partner of Alliott Hadi Shahid Chartered Accountants, Abu Dhabi. Fifty years of audit, advisory, forensic accounting &amp; philanthropic service across the UAE, Pakistan &amp; Afghanistan. <em>&ldquo;A tribute to five decades of excellence.&rdquo;</em></p>
-          <div class="sbc-tech-row"><span>HTML</span><span>CSS</span><span>JS</span><span>Schema.org</span><span>SEO</span></div>
-          <div class="sbc-cta">View Tech Stack &amp; Build Notes &rarr;</div>
         </div>
       </a>
 
