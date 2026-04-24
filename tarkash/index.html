@@ -1,31 +1,1149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarkash FZE &mdash; HR Recruitment &amp; Consultancy | Aziz Saif</title>
-<meta name="description" content="Tarkash FZE — UAE-based HR & recruitment consultancy. Executive search, workforce staffing, training & HR compliance across the GCC.">
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://azizsaif.com/tarkash/">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tarkash FZE — Workforce Solutions with Purpose, Integrity &amp; Impact</title>
+<meta name="description" content="Tarkash FZE is a trusted workforce solutions partner in Sharjah, UAE — ethical labour recruitment brokerage, on-demand labour supply, and permanent recruitment aligned with Sustainability, DEI & ESG." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  html, body { margin: 0; padding: 0; height: 100%; background: #FAF7F2; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  .site-frame { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; }
-  .fallback { display: none; padding: 48px; text-align: center; color: #2C2C2C; }
-  .fallback a { color: #6B2737; font-weight: 600; }
+  :root{
+    --ink:#2A1810;
+    --cream:#F5EDE0;
+    --cream-deep:#EFE4D2;
+    --hot:#F47A1F;
+    --burgundy:#8B1A1A;
+    --gold:#E8C77E;
+    --sage:#A8B89E;
+    --wine:#6B2737;
+    --mist:#8FB4C7;
+    --white:#FFFBF3;
+    --muted:rgba(42,24,16,.62);
+    --line:rgba(42,24,16,.12);
+    --sage-tint:#DDE4D7;
+    --mist-tint:#D8E5ED;
+    --gold-tint:#F5E7C4;
+    --wine-tint:#E9D4D7;
+    --burgundy-tint:#EBCECE;
+    --hot-tint:#FBD9BE;
+    --brand-red:#D6312C;
+    --brand-blue:#1C3A7A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--cream);color:var(--ink);
+    font-weight:400;line-height:1.6;overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+  h1{font-size:clamp(2.5rem,5.4vw,4.75rem);line-height:1.05}
+  h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.1}
+  h3{font-size:clamp(1.35rem,2vw,1.75rem)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1240px;margin:0 auto;padding:0 28px}
+  section{padding:110px 0;position:relative}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--burgundy);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--burgundy)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;border-radius:999px;font-weight:600;
+    font-size:.95rem;letter-spacing:.02em;
+    transition:all .25s ease;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--ink);color:var(--cream)}
+  .btn-primary:hover{background:var(--burgundy);transform:translateY(-2px)}
+  .btn-accent{background:var(--hot);color:#fff}
+  .btn-accent:hover{background:var(--burgundy);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+
+  /* ==== PALETTE STRIP ==== */
+  .palette-strip{display:flex;width:100%;height:8px}
+  .palette-strip i{flex:1;display:block}
+
+  /* ==== NAV ==== */
+  .nav{position:sticky;top:0;z-index:100;background:rgba(245,237,224,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1240px;margin:0 auto;gap:24px}
+  .logo{display:flex;align-items:center;gap:12px;font-family:'Inter',sans-serif}
+  .logo-mark{
+    width:56px;height:40px;
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .logo-mark svg{width:100%;height:100%;display:block}
+  .logo-mark .swoosh{stroke:var(--brand-red);stroke-linecap:round;fill:none}
+  .logo-word{font-size:1.65rem;font-weight:800;color:var(--brand-blue);letter-spacing:.02em;line-height:1;font-family:'Inter',sans-serif}
+  .logo-sub{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--wine);font-family:'Inter',sans-serif;margin-top:3px;font-weight:600}
+  .nav-links{display:flex;gap:30px;font-size:.94rem;font-weight:500}
+  .nav-links a{color:var(--ink);opacity:.82;transition:opacity .2s}
+  .nav-links a:hover{opacity:1;color:var(--burgundy)}
+  .nav-cta{display:flex;gap:10px;align-items:center}
+  .hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+
+  /* ==== HERO ==== */
+  .hero{
+    padding:110px 0 90px;position:relative;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(232,199,126,.3), transparent 60%),
+      radial-gradient(900px 500px at -10% 100%, rgba(143,180,199,.28), transparent 60%),
+      linear-gradient(180deg,var(--cream) 0%,var(--cream-deep) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+  .hero h1 span{color:var(--burgundy);font-style:italic}
+  .hero h1 em{font-style:italic;color:var(--wine);position:relative;display:inline-block}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:var(--gold);opacity:.5;z-index:-1;border-radius:4px}
+  .hero-lede{font-size:1.18rem;color:var(--muted);max-width:540px;margin:26px 0 34px;line-height:1.65}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:54px;padding-top:30px;border-top:1px solid var(--line)}
+  .hero-meta-item{padding:0 14px;border-left:3px solid}
+  .hero-meta-item:nth-child(1){border-color:var(--burgundy)}
+  .hero-meta-item:nth-child(2){border-color:var(--hot)}
+  .hero-meta-item:nth-child(3){border-color:var(--sage)}
+  .hero-meta-item:nth-child(4){border-color:var(--mist)}
+  .hero-meta-item:first-child{padding-left:0}
+  .hero-meta-item .n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;line-height:1}
+  .hero-meta-item:nth-child(1) .n{color:var(--burgundy)}
+  .hero-meta-item:nth-child(2) .n{color:var(--hot)}
+  .hero-meta-item:nth-child(3) .n{color:#4a5f3d}
+  .hero-meta-item:nth-child(4) .n{color:#3f5e70}
+  .hero-meta-item .l{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+  /* Hero visual */
+  .hero-visual{position:relative;height:580px}
+  .hero-photo{
+    position:absolute;top:0;right:0;width:70%;height:420px;
+    border-radius:24px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(42,24,16,.2);
+    background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=900') center/cover;
+  }
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(42,24,16,.35))}
+  .hero-photo .pb{position:absolute;bottom:18px;left:18px;right:18px;color:var(--cream);z-index:2}
+  .hero-photo .pb b{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;display:block;line-height:1.15}
+  .hero-photo .pb span{font-size:.78rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+  .card-float{position:absolute;background:var(--white);border-radius:22px;padding:22px;box-shadow:0 20px 60px rgba(42,24,16,.18);border:1px solid rgba(42,24,16,.06);z-index:3}
+  .card-a{top:350px;right:20px;width:280px;border-top:4px solid var(--hot)}
+  .card-a .tag{display:inline-block;background:var(--sage-tint);color:#4a5f3d;padding:4px 10px;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.08em}
+  .card-a h4{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;margin:10px 0 4px}
+  .card-a p{font-size:.85rem;color:var(--muted)}
+  .card-a .meter{margin-top:14px;height:6px;background:rgba(42,24,16,.08);border-radius:99px;overflow:hidden}
+  .card-a .meter i{display:block;height:100%;width:84%;background:linear-gradient(90deg,var(--hot),var(--burgundy));border-radius:99px}
+  .card-b{bottom:0;left:0;width:320px;padding:22px;border-top:4px solid var(--burgundy)}
+  .card-b .row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .card-b .row:last-child{border-bottom:none}
+  .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
+  .card-b .info{flex:1;min-width:0}
+  .card-b .info b{font-size:.88rem;font-weight:600;display:block}
+  .card-b .info span{font-size:.75rem;color:var(--muted)}
+  .card-b .badge{font-size:.68rem;padding:3px 8px;border-radius:99px;font-weight:600;white-space:nowrap}
+  .b-green{background:var(--sage-tint);color:#3e5533}
+  .b-gold{background:var(--gold-tint);color:#7a5c1f}
+  .b-mist{background:var(--mist-tint);color:#2e4657}
+  .card-c{position:absolute;top:60px;left:0;width:190px;padding:22px;background:var(--ink);color:var(--cream);border-radius:20px;border-top:4px solid var(--gold)}
+  .card-c .big{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold);line-height:1;font-weight:700}
+  .card-c .lbl{font-size:.72rem;margin-top:8px;opacity:.9;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
+
+  /* ==== TRUSTED BAR ==== */
+  .trusted{padding:44px 0;background:var(--ink);color:var(--cream);overflow:hidden;border-top:4px solid var(--hot)}
+  .trusted-title{text-align:center;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  .marquee{display:flex;gap:70px;animation:scroll 38s linear infinite;white-space:nowrap;align-items:center}
+  .marquee .mi{display:inline-flex;gap:14px;align-items:center;font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;opacity:.9}
+  .marquee svg{width:28px;height:28px;flex-shrink:0;color:var(--hot)}
+  .marquee .mi:nth-child(8n+2) svg{color:var(--gold)}
+  .marquee .mi:nth-child(8n+3) svg{color:var(--sage)}
+  .marquee .mi:nth-child(8n+4) svg{color:var(--mist)}
+  .marquee .mi:nth-child(8n+5) svg{color:var(--hot)}
+  .marquee .mi:nth-child(8n+6) svg{color:var(--gold)}
+  .marquee .mi:nth-child(8n+7) svg{color:var(--sage)}
+  .marquee .mi:nth-child(8n) svg{color:var(--mist)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ==== ABOUT ==== */
+  .about{background:var(--sage-tint);position:relative;overflow:hidden}
+  .about::before{content:"";position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,199,126,.4),transparent 70%)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:center;position:relative;z-index:2}
+  .about-visual{aspect-ratio:4/5;border-radius:28px;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(42,24,16,.18)}
+  .about-visual img{width:100%;height:100%;object-fit:cover}
+  .about-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,24,16,.2) 0%,rgba(107,39,55,.55) 100%)}
+  .founder-card{position:absolute;left:24px;right:24px;bottom:24px;background:rgba(245,237,224,.96);border-radius:18px;padding:22px;backdrop-filter:blur(10px);z-index:2;border-left:4px solid var(--gold)}
+  .founder-card h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:2px}
+  .founder-card p{font-size:.82rem;color:var(--wine);letter-spacing:.02em;font-weight:600}
+  .founder-card .quote{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:.82rem;font-style:italic;color:var(--ink);line-height:1.5}
+  .about-text h2 span{color:var(--burgundy);font-style:italic}
+  .about-text p{color:var(--muted);margin-top:20px;font-size:1.03rem}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  .pillar{background:var(--white);border-radius:14px;padding:20px;border-top:4px solid;position:relative}
+  .pillar:nth-child(1){border-color:var(--sage)}
+  .pillar:nth-child(2){border-color:var(--burgundy)}
+  .pillar:nth-child(3){border-color:var(--mist)}
+  .pillar .pi{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:#fff;margin-bottom:10px}
+  .pillar:nth-child(1) .pi{background:#667e58}
+  .pillar:nth-child(2) .pi{background:var(--burgundy)}
+  .pillar:nth-child(3) .pi{background:#3f5e70}
+  .pillar b{display:block;font-size:.9rem;font-weight:600;margin-bottom:4px;color:var(--ink)}
+  .pillar span{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+  /* ==== CORE SERVICES ==== */
+  .core{background:linear-gradient(180deg,var(--cream-deep),var(--cream))}
+  .section-head{text-align:center;max-width:760px;margin:0 auto 70px}
+  .section-head p{color:var(--muted);margin-top:16px;font-size:1.05rem}
+  .services{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .service{background:var(--white);border-radius:22px;padding:0;border:1px solid var(--line);transition:all .3s ease;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .service:hover{transform:translateY(-6px);box-shadow:0 25px 50px rgba(42,24,16,.12)}
+  .service-top{padding:30px 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;color:#fff}
+  .service:nth-child(1) .service-top{background:linear-gradient(135deg,var(--hot),var(--burgundy))}
+  .service:nth-child(2) .service-top{background:linear-gradient(135deg,var(--wine),var(--ink))}
+  .service:nth-child(3) .service-top{background:linear-gradient(135deg,var(--mist),#2d4556);color:#fff}
+  .service:nth-child(4) .service-top{background:linear-gradient(135deg,#3d2a4a,var(--burgundy));color:#fff}
+  .service-icon{width:58px;height:58px;border-radius:14px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);display:grid;place-items:center;flex-shrink:0}
+  .service .num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:rgba(255,255,255,.9);line-height:1;font-weight:700}
+  .service-body{padding:28px 32px 34px;flex:1;display:flex;flex-direction:column}
+  .service h3{margin:0 0 12px}
+  .service p{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+  .service ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:18px}
+  .service ul li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--ink)}
+  .service ul li .tick{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;color:#fff;margin-top:2px}
+  .service:nth-child(1) ul li .tick{background:var(--hot)}
+  .service:nth-child(2) ul li .tick{background:var(--wine)}
+  .service:nth-child(3) ul li .tick{background:var(--mist);color:var(--ink)}
+  .service:nth-child(4) ul li .tick{background:#6b3f55}
+  .service .outcome{margin-top:18px;padding:14px 16px;border-radius:12px;font-size:.84rem;color:var(--ink)}
+  .service:nth-child(1) .outcome{background:var(--hot-tint)}
+  .service:nth-child(2) .outcome{background:var(--wine-tint)}
+  .service:nth-child(3) .outcome{background:var(--mist-tint)}
+  .service:nth-child(4) .outcome{background:rgba(107,63,85,.10)}
+  .service .outcome b{color:var(--burgundy)}
+  .service:nth-child(3) .outcome b{color:#2d4556}
+  .service:nth-child(4) .outcome b{color:#6b3f55}
+
+  /* ==== ESG ==== */
+  .esg{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+  .esg::before{content:"";position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,199,126,.15),transparent 70%)}
+  .esg::after{content:"";position:absolute;bottom:-120px;left:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(143,180,199,.15),transparent 70%)}
+  .esg .section-head h2{color:var(--cream)}
+  .esg .section-head h2 span{color:var(--gold);font-style:italic}
+  .esg .section-head p{color:rgba(245,237,224,.78)}
+  .esg .eyebrow{color:var(--gold)}
+  .esg .eyebrow::before{background:var(--gold)}
+  .esg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative;z-index:2}
+  .esg-card{background:rgba(245,237,224,.04);border:1px solid rgba(245,237,224,.12);border-radius:18px;padding:28px 22px;transition:all .3s;border-top:4px solid}
+  .esg-card:nth-child(1){border-top-color:var(--sage)}
+  .esg-card:nth-child(2){border-top-color:var(--hot)}
+  .esg-card:nth-child(3){border-top-color:var(--burgundy)}
+  .esg-card:nth-child(4){border-top-color:var(--gold)}
+  .esg-card:nth-child(5){border-top-color:var(--mist)}
+  .esg-card:hover{background:rgba(245,237,224,.08);transform:translateY(-4px)}
+  .esg-icon{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;color:#fff}
+  .esg-card:nth-child(1) .esg-icon{background:#4a6040}
+  .esg-card:nth-child(2) .esg-icon{background:var(--hot)}
+  .esg-card:nth-child(3) .esg-icon{background:var(--burgundy)}
+  .esg-card:nth-child(4) .esg-icon{background:#9e7b2d;color:var(--ink)}
+  .esg-card:nth-child(5) .esg-icon{background:#3f5e70}
+  .esg-card h4{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:10px;line-height:1.25}
+  .esg-card p{font-size:.85rem;color:rgba(245,237,224,.78);line-height:1.55}
+
+  /* ==== INDUSTRIES ==== */
+  .industries{background:var(--mist-tint);position:relative}
+  .industries::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 80% 20%,rgba(245,237,224,.6),transparent 60%)}
+  .industries .section-head{position:relative;z-index:2}
+  .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:2}
+  .ind{
+    padding:0;background:var(--white);border-radius:18px;
+    border:1px solid var(--line);overflow:hidden;
+    transition:all .3s;position:relative;display:flex;flex-direction:column;
+  }
+  .ind:hover{transform:translateY(-6px);box-shadow:0 25px 50px rgba(42,24,16,.14)}
+  .ind-photo{aspect-ratio:16/10;position:relative;overflow:hidden}
+  .ind-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .ind:hover .ind-photo img{transform:scale(1.08)}
+  .ind-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(42,24,16,.55))}
+  .ind-badge{position:absolute;top:12px;left:12px;z-index:2;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .ind:nth-child(1) .ind-badge{background:var(--hot)}
+  .ind:nth-child(2) .ind-badge{background:var(--mist);color:var(--ink)}
+  .ind:nth-child(3) .ind-badge{background:var(--burgundy)}
+  .ind:nth-child(4) .ind-badge{background:var(--wine)}
+  .ind:nth-child(5) .ind-badge{background:var(--gold);color:var(--ink)}
+  .ind:nth-child(6) .ind-badge{background:#4a6040}
+  .ind:nth-child(7) .ind-badge{background:var(--burgundy)}
+  .ind:nth-child(8) .ind-badge{background:var(--ink);color:var(--gold)}
+  .ind-body{padding:16px 20px 18px}
+  .ind b{font-size:1rem;font-weight:600;letter-spacing:-.01em;display:block}
+  .ind span.sm{font-size:.78rem;color:var(--muted);display:block;margin-top:3px}
+
+  /* ==== WHY CHOOSE ==== */
+  .why{background:var(--gold-tint);position:relative;overflow:hidden}
+  .why::before{content:"";position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(600px 400px at 10% 50%,rgba(245,237,224,.6),transparent 65%)}
+  .why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:flex-start;position:relative;z-index:2}
+  .why-side h2 span{color:var(--burgundy);font-style:italic}
+  .why-side p{color:var(--muted);margin-top:16px}
+  .why-stats{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .why-stat{background:var(--white);border-radius:16px;padding:22px;border-top:4px solid}
+  .why-stat:nth-child(1){border-color:var(--burgundy)}
+  .why-stat:nth-child(2){border-color:var(--hot)}
+  .why-stat:nth-child(3){border-color:var(--sage)}
+  .why-stat:nth-child(4){border-color:var(--mist)}
+  .why-stat .v{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:700;line-height:1}
+  .why-stat:nth-child(1) .v{color:var(--burgundy)}
+  .why-stat:nth-child(2) .v{color:var(--hot)}
+  .why-stat:nth-child(3) .v{color:#4a6040}
+  .why-stat:nth-child(4) .v{color:#3f5e70}
+  .why-stat .l{font-size:.8rem;color:var(--muted);margin-top:6px}
+  .accordion{display:flex;flex-direction:column;gap:12px}
+  .acc-item{background:var(--white);border-radius:14px;border:1px solid var(--line);overflow:hidden;transition:all .25s}
+  .acc-item.open{border-color:var(--hot);box-shadow:0 14px 34px rgba(42,24,16,.1)}
+  .acc-h{padding:22px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px}
+  .acc-h b{font-size:1rem;font-weight:600;color:var(--ink);flex:1}
+  .acc-num{font-family:'Cormorant Garamond',serif;color:var(--burgundy);font-weight:700;font-size:1rem;width:26px}
+  .acc-icon{width:30px;height:30px;border-radius:50%;background:var(--cream-deep);display:grid;place-items:center;font-weight:600;transition:all .25s;flex-shrink:0}
+  .acc-item.open .acc-icon{background:var(--hot);color:#fff;transform:rotate(45deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .acc-item.open .acc-body{max-height:300px}
+  .acc-body-inner{padding:0 24px 24px;color:var(--muted);font-size:.95rem;line-height:1.65}
+
+  /* ==== TESTIMONIALS ==== */
+  .testimonials{background:var(--cream)}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .t-card{background:var(--white);border-radius:22px;padding:32px 28px;position:relative;border-top:5px solid}
+  .t-card:nth-child(1){border-color:var(--burgundy);background:linear-gradient(180deg,var(--burgundy-tint) 0%,var(--white) 30%)}
+  .t-card:nth-child(2){border-color:var(--hot);background:linear-gradient(180deg,var(--hot-tint) 0%,var(--white) 30%)}
+  .t-card:nth-child(3){border-color:var(--wine);background:linear-gradient(180deg,var(--wine-tint) 0%,var(--white) 30%)}
+  .t-card:nth-child(4){border-color:var(--sage);background:linear-gradient(180deg,var(--sage-tint) 0%,var(--white) 30%)}
+  .t-card:nth-child(5){border-color:var(--mist);background:linear-gradient(180deg,var(--mist-tint) 0%,var(--white) 30%)}
+  .t-card:nth-child(6){border-color:var(--gold);background:linear-gradient(180deg,var(--gold-tint) 0%,var(--white) 30%)}
+  .t-card::before{content:"“";position:absolute;top:10px;left:24px;font-family:'Cormorant Garamond',serif;font-size:5rem;opacity:.3;line-height:1}
+  .t-card:nth-child(1)::before{color:var(--burgundy)}
+  .t-card:nth-child(2)::before{color:var(--hot)}
+  .t-card:nth-child(3)::before{color:var(--wine)}
+  .t-card:nth-child(4)::before{color:#4a6040}
+  .t-card:nth-child(5)::before{color:#3f5e70}
+  .t-card:nth-child(6)::before{color:#9e7b2d}
+  .t-card p{font-size:.98rem;color:var(--ink);line-height:1.7;margin:22px 0 20px;position:relative;z-index:2}
+  .t-person{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--line)}
+  .t-av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700}
+  .t-person b{display:block;font-size:.95rem;font-weight:600}
+  .t-person span{font-size:.82rem;color:var(--muted)}
+  .stars{color:var(--hot);letter-spacing:3px;margin-bottom:8px;font-size:.88rem}
+  .t-card:nth-child(4) .stars{color:#4a6040}
+  .t-card:nth-child(5) .stars{color:#3f5e70}
+  .t-card:nth-child(6) .stars{color:#9e7b2d}
+
+  /* ==== FAQ ==== */
+  .faq{background:var(--wine-tint);position:relative}
+  .faq::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 90% 50%,rgba(245,237,224,.7),transparent 65%)}
+  .faq .container{position:relative;z-index:2}
+  .faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+  .faq-list .acc-item{background:var(--white)}
+
+  /* ==== CONTACT ==== */
+  .contact{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+  .contact::before{content:"";position:absolute;inset:0;background:radial-gradient(1000px 500px at 20% 30%,rgba(244,122,31,.18),transparent 60%)}
+  .contact::after{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 90% 80%,rgba(143,180,199,.15),transparent 60%)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;position:relative;z-index:2}
+  .contact h2{color:var(--cream)}
+  .contact h2 span{color:var(--gold);font-style:italic}
+  .contact .eyebrow{color:var(--hot)}
+  .contact .eyebrow::before{background:var(--hot)}
+  .contact-info p{color:rgba(245,237,224,.78);margin:16px 0 32px}
+  .ci-block{padding:20px 0;border-bottom:1px solid rgba(245,237,224,.12);display:flex;gap:16px;align-items:flex-start}
+  .ci-block:last-child{border-bottom:none}
+  .ci-ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:#fff;flex-shrink:0}
+  .ci-block:nth-child(1) .ci-ico{background:var(--hot)}
+  .ci-block:nth-child(2) .ci-ico{background:var(--sage);color:var(--ink)}
+  .ci-block:nth-child(3) .ci-ico{background:var(--mist);color:var(--ink)}
+  .ci-block .lbl{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .ci-block .val{font-size:1.02rem;line-height:1.5}
+  .ci-block a{color:var(--cream);border-bottom:1px dashed rgba(245,237,224,.3);transition:all .2s}
+  .ci-block a:hover{border-color:var(--hot);color:var(--hot)}
+  .form-card{background:rgba(245,237,224,.04);border:1px solid rgba(245,237,224,.12);border-radius:22px;padding:38px;backdrop-filter:blur(10px);border-top:4px solid var(--hot)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .field{display:flex;flex-direction:column}
+  .field label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .field input,.field select,.field textarea{background:rgba(245,237,224,.06);border:1px solid rgba(245,237,224,.18);color:var(--cream);padding:13px 16px;border-radius:10px;font-family:inherit;font-size:.95rem;outline:none;transition:all .2s}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--hot);background:rgba(245,237,224,.09)}
+  .field textarea{resize:vertical;min-height:110px}
+  .field select option{background:var(--ink);color:var(--cream)}
+  .check{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(245,237,224,.8);margin:10px 0}
+  .check input{width:16px;height:16px;accent-color:var(--hot)}
+  .form-card button{width:100%;margin-top:14px;padding:16px;border-radius:12px}
+
+  /* ==== FOOTER ==== */
+  footer{background:#1a0d06;color:var(--cream);padding:80px 0 30px;border-top:4px solid var(--gold)}
+  .f-grid{display:grid;grid-template-columns:1.4fr .9fr .9fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(245,237,224,.1)}
+  .f-col h5{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:600}
+  .f-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .f-col a{color:rgba(245,237,224,.72);font-size:.94rem;transition:color .2s}
+  .f-col a:hover{color:var(--hot)}
+  .f-brand p{color:rgba(245,237,224,.7);margin-top:16px;font-size:.92rem;line-height:1.65;max-width:340px}
+  .socials{display:flex;gap:12px;margin-top:22px}
+  .socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:all .2s}
+  .socials a.li{background:#0A66C2}
+  .socials a.ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+  .socials a.fb{background:#1877F2}
+  .socials a.x{background:#000}
+  .socials a:hover{transform:translateY(-3px)}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .badges span{font-size:.72rem;padding:6px 12px;border-radius:99px;font-weight:500}
+  .badges span:nth-child(1){background:var(--hot-tint);color:var(--burgundy)}
+  .badges span:nth-child(2){background:var(--sage-tint);color:#3e5533}
+  .badges span:nth-child(3){background:var(--mist-tint);color:#2e4657}
+  .badges span:nth-child(4){background:var(--gold-tint);color:#7a5c1f}
+  .f-bottom{padding-top:30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:rgba(245,237,224,.5);font-size:.85rem}
+  .f-bottom a{color:rgba(245,237,224,.62)}
+
+  /* ==== WHATSAPP FLOAT ==== */
+  .whatsapp{position:fixed;right:24px;bottom:24px;z-index:50;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .2s;color:#fff}
+  .whatsapp:hover{transform:scale(1.08)}
+  .whatsapp::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #25D366;opacity:0;animation:pulse 2s infinite}
+  @keyframes pulse{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
+
+  /* ==== RESPONSIVE ==== */
+  @media (max-width:1180px){
+    .services{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:960px){
+    section{padding:72px 0}
+    .hero{padding:64px 0 70px}
+    .hero-grid,.about-grid,.why-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+    .hero-visual{height:auto;display:grid;gap:16px}
+    .hero-photo,.card-a,.card-b,.card-c{position:relative;inset:auto;width:100%}
+    .hero-photo{height:260px}
+    .services,.t-grid,.esg-grid{grid-template-columns:1fr}
+    .ind-grid{grid-template-columns:repeat(2,1fr)}
+    .pillars{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .hamburger{display:block}
+    .nav-mobile-open .nav-links{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:20px 28px;gap:16px;border-bottom:1px solid var(--line)}
+    .f-grid{grid-template-columns:1fr 1fr;gap:30px}
+    .form-row{grid-template-columns:1fr}
+    .hero-meta{grid-template-columns:1fr 1fr;gap:16px 0}
+  }
+  @media (max-width:560px){
+    .ind-grid,.f-grid{grid-template-columns:1fr}
+    h1{font-size:2.3rem}
+  }
+
+  /* shared SVG sizing */
+  .isvg{width:20px;height:20px}
+  .isvg-lg{width:30px;height:30px}
 </style>
 </head>
 <body>
-<iframe class="site-frame"
-        src="https://azizsaif1967-afk.github.io/savitha-dhiman-investor-pitch/tarkash/"
-        title="Tarkash FZE"
-        loading="eager"
-        allow="fullscreen"
-        allowfullscreen></iframe>
-<noscript>
-  <div class="fallback" style="display:block">
-    <h1>Tarkash FZE</h1>
-    <p><a href="https://azizsaif1967-afk.github.io/savitha-dhiman-investor-pitch/tarkash/">Open the site &rarr;</a></p>
+
+<!-- top palette strip -->
+<div class="palette-strip" aria-hidden="true">
+  <i style="background:var(--ink)"></i>
+  <i style="background:var(--cream)"></i>
+  <i style="background:var(--hot)"></i>
+  <i style="background:var(--burgundy)"></i>
+  <i style="background:var(--gold)"></i>
+  <i style="background:var(--sage)"></i>
+  <i style="background:var(--wine)"></i>
+  <i style="background:var(--mist)"></i>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top" aria-label="Tarkash FZE home">
+      <div class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 44" xmlns="http://www.w3.org/2000/svg">
+          <path class="swoosh" d="M3 38 C 20 12, 40 8, 61 10" stroke-width="6"/>
+          <path class="swoosh" d="M6 29 C 20 12, 36 10, 55 12" stroke-width="5"/>
+          <path class="swoosh" d="M11 21 C 22 12, 32 11, 46 14" stroke-width="4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-word">Tarkash</div>
+        <div class="logo-sub">FZE · Workforce</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#esg">ESG HR</a>
+      <a href="#industries">Industries</a>
+      <a href="blog.html">Blog</a>
+      <a href="social.html">Social</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Hire with Tarkash</a>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu" onclick="document.getElementById('nav').classList.toggle('nav-mobile-open')">☰</button>
   </div>
-</noscript>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Talent in Mind · People at Heart</div>
+        <h1>Workforce Solutions<br/>with <span>Purpose</span>, <em>Integrity</em><br/>&amp; Impact.</h1>
+        <p class="hero-lede">
+          Tarkash FZE is a trusted workforce solutions partner based in Sharjah, UAE — delivering ethical labour recruitment brokerage, on-demand labour supply, and permanent recruitment solutions aligned with Sustainability, DEI and ESG principles.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-accent">Start a Conversation →</a>
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item"><div class="n">30+</div><div class="l">Years UAE Experience</div></div>
+          <div class="hero-meta-item"><div class="n">13+</div><div class="l">Yrs HR Consulting</div></div>
+          <div class="hero-meta-item"><div class="n">100%</div><div class="l">UAE Labour Compliance</div></div>
+          <div class="hero-meta-item"><div class="n">GCC</div><div class="l">Regional Reach</div></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-photo">
+          <div class="pb"><span>On-site · Construction</span><b>A vetted workforce, ready on day one.</b></div>
+        </div>
+        <div class="card-float card-c">
+          <div class="big">96%</div>
+          <div class="lbl">12-month retention</div>
+        </div>
+        <div class="card-float card-a">
+          <span class="tag">LIVE PLACEMENT</span>
+          <h4>Sourcing in Progress</h4>
+          <p>Site Supervisor · Construction</p>
+          <div class="meter"><i></i></div>
+          <div style="display:flex;justify-content:space-between;font-size:.72rem;margin-top:6px;color:var(--muted)"><span>84% matched</span><span>12 vetted</span></div>
+        </div>
+        <div class="card-float card-b">
+          <div class="row">
+            <div class="avatar" style="background:var(--burgundy)">RS</div>
+            <div class="info"><b>Rashid Al Shamsi</b><span>Warehouse Lead · Logistics</span></div>
+            <span class="badge b-green">Placed</span>
+          </div>
+          <div class="row">
+            <div class="avatar" style="background:var(--mist);color:var(--ink)">FK</div>
+            <div class="info"><b>Fatima Khan</b><span>HR Partner · Retail</span></div>
+            <span class="badge b-gold">Interview</span>
+          </div>
+          <div class="row">
+            <div class="avatar" style="background:var(--sage);color:var(--ink)">MA</div>
+            <div class="info"><b>Mohammed Ali</b><span>Facility Tech</span></div>
+            <span class="badge b-mist">Vetted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TRUSTED / SECTORS ============ -->
+<div class="trusted">
+  <div class="container"><div class="trusted-title">Sectors We Serve Across the UAE &amp; GCC</div></div>
+  <div class="marquee" aria-hidden="true">
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M6 21V10l6-5 6 5v11M9 21v-6h6v6"/></svg>Construction</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 16h11V6H2zM13 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Logistics</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h12v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM15 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2M7 4v3M11 4v3"/></svg>Hospitality</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20V8l6-3 6 3v12M15 8l6 3v9M7 20v-4h4v4M17 20v-4h3v4"/></svg>Manufacturing</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18l-1 12H4zM8 7V5a4 4 0 0 1 8 0v2"/></svg>Retail</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/><circle cx="12" cy="11" r="1.5"/></svg>Facility Mgmt</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 21 11c0 5.5-9 10-9 10zM12 8v6M9 11h6"/></svg>Healthcare</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></svg>Oil &amp; Gas</span>
+    <!-- duplicate for infinite scroll -->
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M6 21V10l6-5 6 5v11M9 21v-6h6v6"/></svg>Construction</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 16h11V6H2zM13 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Logistics</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h12v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM15 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2M7 4v3M11 4v3"/></svg>Hospitality</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20V8l6-3 6 3v12M15 8l6 3v9M7 20v-4h4v4M17 20v-4h3v4"/></svg>Manufacturing</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18l-1 12H4zM8 7V5a4 4 0 0 1 8 0v2"/></svg>Retail</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/><circle cx="12" cy="11" r="1.5"/></svg>Facility Mgmt</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 21 11c0 5.5-9 10-9 10zM12 8v6M9 11h6"/></svg>Healthcare</span>
+    <span class="mi"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></svg>Oil &amp; Gas</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=900" alt="Team of workforce professionals" />
+        <div class="founder-card">
+          <h4>Dr. Syed Aftab Ahmed</h4>
+          <p>Founder · Tarkash FZE</p>
+          <div class="quote">"A strong workforce is not just hired — it is built responsibly, inclusively, and sustainably."</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="eyebrow">About Tarkash FZE</div>
+        <h2>Empowering Workforces.<br/>Elevating <span>Businesses</span>.<br/>Building a Responsible Future.</h2>
+        <p>
+          Tarkash FZE is a trusted transnational workforce solutions partner based in Sharjah, UAE, delivering ethical, reliable, and future-ready labour recruitment and staffing services across the region. For years we have supported organisations with Labour Recruitment Brokerage, On-Demand Labour Supply and Permanent Recruitment Solutions that are fast, compliant, and built on integrity.
+        </p>
+        <p>
+          At Tarkash FZE, we integrate Sustainability, DEI and ESG principles into every core HR function — transforming people practices into engines of long-term resilience, fairness and organisational strength. From talent acquisition to workforce planning, we help businesses build people-centric systems that advance social responsibility, ethical governance and inclusive growth.
+        </p>
+        <p>
+          Our story is shaped by the vision of our Founder, <b>Dr. Syed Aftab Ahmed</b>, who has lived and worked in the UAE for over 30 years. With senior leadership experience in global organisations and more than 13 years successfully running HR &amp; Management Consulting firms in UAE, he brings deep regional insight, strong governance values and a people-first philosophy to every service we deliver.
+        </p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pi"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v7c0 5 4 8 9 8s9-3 9-8V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <b>Sustainability</b><span>Ethical recruitment, fair treatment and long-term workforce wellbeing.</span>
+          </div>
+          <div class="pillar">
+            <div class="pi"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="9" r="3.5"/><circle cx="16" cy="14" r="3"/><circle cx="6" cy="16" r="3"/></svg></div>
+            <b>DEI</b><span>Inclusive teams where every individual feels valued and empowered.</span>
+          </div>
+          <div class="pillar">
+            <div class="pi"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/></svg></div>
+            <b>ESG</b><span>Transparent governance, social responsibility and environmental awareness.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORE SERVICES ============ -->
+<section class="core" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center">Our Core Services</div>
+      <h2>Four pillars. One <i style="color:var(--burgundy)">responsible</i> workforce partner.</h2>
+      <p>We connect businesses with the right workforce through streamlined, compliant and ethical processes — built for both short-term demand and long-term success, from frontline labour to C-suite leadership.</p>
+    </div>
+    <div class="services">
+
+      <article class="service">
+        <div class="service-top">
+          <div class="service-icon">
+            <svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6M8 12l-3 3M16 12l3 3"/></svg>
+          </div>
+          <span class="num">01</span>
+        </div>
+        <div class="service-body">
+          <h3>Labour Recruitment Brokerage</h3>
+          <p>We connect businesses with the right workforce through a streamlined, compliant and ethical recruitment process.</p>
+          <ul>
+            <li><span class="tick">✓</span>Verified and vetted candidates</li>
+            <li><span class="tick">✓</span>Transparent documentation &amp; onboarding</li>
+            <li><span class="tick">✓</span>Full compliance with UAE labour regulations</li>
+            <li><span class="tick">✓</span>Ethical recruitment protecting employers &amp; workers</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> The right talent, the right way — zero compromise on compliance or integrity.</div>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-top">
+          <div class="service-icon">
+            <svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <span class="num">02</span>
+        </div>
+        <div class="service-body">
+          <h3>On-Demand Labour Supply</h3>
+          <p>When your business needs manpower quickly, Tarkash FZE delivers — at scale, without drop in quality.</p>
+          <ul>
+            <li><span class="tick">✓</span>Flexible, scalable labour supply</li>
+            <li><span class="tick">✓</span>Short-term, project-based or seasonal workforce</li>
+            <li><span class="tick">✓</span>Rapid mobilisation when it matters</li>
+            <li><span class="tick">✓</span>Trained, reliable workers ready from day one</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> Operations stay smooth, efficient and uninterrupted — even during peak demand.</div>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-top">
+          <div class="service-icon">
+            <svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V10l9-6 9 6v11M9 21v-6h6v6"/><circle cx="12" cy="12" r="1.6"/></svg>
+          </div>
+          <span class="num">03</span>
+        </div>
+        <div class="service-body">
+          <h3>Permanent Recruitment</h3>
+          <p>We help you build strong, stable teams with long-term potential — hires who stay, grow and contribute.</p>
+          <ul>
+            <li><span class="tick">✓</span>End-to-end recruitment support</li>
+            <li><span class="tick">✓</span>Industry-specific talent sourcing</li>
+            <li><span class="tick">✓</span>Skill-based and behavioural assessments</li>
+            <li><span class="tick">✓</span>Fast turnaround, consistently high quality</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> You hire people who stay, grow and contribute to your organisation's success.</div>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-top">
+          <div class="service-icon">
+            <svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2"/><circle cx="12" cy="8" r="4"/><path d="m16 3 1.5 1.5L20 2"/></svg>
+          </div>
+          <span class="num">04</span>
+        </div>
+        <div class="service-body">
+          <h3>Executive Search</h3>
+          <p>A dedicated vertical for hiring high-impact leaders who shape strategy, culture and long-term performance.</p>
+          <ul>
+            <li><span class="tick">✓</span>Targeted C-suite &amp; senior leadership hiring</li>
+            <li><span class="tick">✓</span>Research-driven, confidential search process</li>
+            <li><span class="tick">✓</span>Deep industry insight &amp; global talent mapping</li>
+            <li><span class="tick">✓</span>Rigorous leadership assessment for cultural fit</li>
+            <li><span class="tick">✓</span>End-to-end management from role definition to onboarding</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> Transformational leaders who accelerate growth, strengthen decision-making and deliver measurable business results.</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESG HR ============ -->
+<section class="esg" id="esg">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center">ESG-Driven HR Solutions</div>
+      <h2>Building responsible, inclusive and <span>future-ready</span> workforces.</h2>
+      <p>We help organisations embed Sustainability, ESG and DEI principles across every HR function — strengthening culture, reducing risk and creating workplaces where people and performance thrive together.</p>
+    </div>
+    <div class="esg-grid">
+      <div class="esg-card">
+        <div class="esg-icon"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-7-3-7-10a7 7 0 0 1 14 0c0 7-7 10-7 10zM12 6v12M6 12c2 0 4-2 6-2s4 2 6 2"/></svg></div>
+        <h4>Green HR &amp; Digital Transformation</h4>
+        <p>Paperless HR — e-onboarding, digital files, cloud payroll — plus remote/hybrid work policies and office sustainability programmes.</p>
+      </div>
+      <div class="esg-card">
+        <div class="esg-icon"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+        <h4>ESG-Linked Performance &amp; Rewards</h4>
+        <p>KPIs and reward structures tied to sustainability, ethical conduct and inclusive hiring; fair-pay audits and leadership scorecards.</p>
+      </div>
+      <div class="esg-card">
+        <div class="esg-icon"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <h4>Social Sustainability &amp; Labour Compliance</h4>
+        <p>Human-rights due diligence across supply chains, Emiratisation pathways and full UAE Labour Law alignment on non-discrimination.</p>
+      </div>
+      <div class="esg-card">
+        <div class="esg-icon"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.5 6h6l-5 4 2 7-5.5-4-5.5 4 2-7-5-4h6z"/></svg></div>
+        <h4>Sustainable Talent Management</h4>
+        <p>Embed purpose, wellbeing and equity into your EVP; design internal mobility and succession programmes that reduce turnover.</p>
+      </div>
+      <div class="esg-card">
+        <div class="esg-icon"><svg class="isvg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 3-5 5-5s5 2 5 5M11 20c0-3 3-5 5-5s5 2 5 5"/></svg></div>
+        <h4>DEI Integration Across Lifecycle</h4>
+        <p>DEI diagnostics, representation-gap analysis, inclusive leadership and cultural-intelligence training across every stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES ============ -->
+<section class="industries" id="industries">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center">Industries We Serve</div>
+      <h2>Trusted workforce across every major sector in the GCC.</h2>
+      <p>From on-site construction teams to hospital wards, we mobilise workers who meet sector-specific skill, safety and compliance standards.</p>
+    </div>
+    <div class="ind-grid">
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V10l6-5 6 5v11M9 21v-6h6v6"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=700" alt="Construction site workers"/>
+        </div>
+        <div class="ind-body"><b>Construction</b><span class="sm">Site labour · supervisors · skilled trades</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16h11V6H2zM13 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=700" alt="Logistics and warehouse"/>
+        </div>
+        <div class="ind-body"><b>Logistics &amp; Warehousing</b><span class="sm">Forklift · loaders · fleet support</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h12v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM15 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2M7 4v3M11 4v3"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=700" alt="Hospitality staff"/>
+        </div>
+        <div class="ind-body"><b>Hospitality</b><span class="sm">F&amp;B · housekeeping · front-of-house</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V8l6-3 6 3v12M15 8l6 3v9M7 20v-4h4v4M17 20v-4h3v4"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1565939941962-1c35753e6e5e?q=80&w=700" alt="Manufacturing floor"/>
+        </div>
+        <div class="ind-body"><b>Manufacturing</b><span class="sm">Line operators · QA · maintenance</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18l-1 12H4zM8 7V5a4 4 0 0 1 8 0v2"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=700" alt="Retail associates"/>
+        </div>
+        <div class="ind-body"><b>Retail</b><span class="sm">Store staff · merchandisers · cashiers</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/><circle cx="12" cy="11" r="1.5"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=700" alt="Facility management team"/>
+        </div>
+        <div class="ind-body"><b>Facility Management</b><span class="sm">Cleaning · HVAC · security · technical</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 21 11c0 5.5-9 10-9 10zM12 8v6M9 11h6"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?q=80&w=700" alt="Healthcare staff"/>
+        </div>
+        <div class="ind-body"><b>Healthcare</b><span class="sm">Nurses · attendants · allied staff</span></div>
+      </div>
+
+      <div class="ind">
+        <div class="ind-photo">
+          <span class="ind-badge"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></svg></span>
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=700" alt="Oil and gas"/>
+        </div>
+        <div class="ind-body"><b>Oil, Gas &amp; Energy</b><span class="sm">Field ops · safety · technicians</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE ============ -->
+<section class="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-side">
+        <div class="eyebrow">Why Tarkash FZE</div>
+        <h2>A workforce partner that takes <span>responsibility</span> seriously.</h2>
+        <p>We don't just supply labour — we build partnerships that support sustainable growth, ethical practices and long-term success for both employers and workers.</p>
+        <div class="why-stats">
+          <div class="why-stat"><div class="v">30+</div><div class="l">Years in the UAE market</div></div>
+          <div class="why-stat"><div class="v">13+</div><div class="l">Years HR consulting</div></div>
+          <div class="why-stat"><div class="v">100%</div><div class="l">MOHRE compliant processes</div></div>
+          <div class="why-stat"><div class="v">24h</div><div class="l">Rapid mobilisation</div></div>
+        </div>
+      </div>
+      <div class="accordion" id="whyAcc">
+        <div class="acc-item open">
+          <div class="acc-h"><span class="acc-num">01</span><b>Trusted Manpower Partner Across the UAE</b><span class="acc-icon">+</span></div>
+          <div class="acc-body"><div class="acc-body-inner">Decades of regional insight, governance values and a people-first philosophy applied to every placement across Dubai, Sharjah, Abu Dhabi and the wider UAE.</div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-h"><span class="acc-num">02</span><b>Fast, Compliant &amp; Ethical Recruitment</b><span class="acc-icon">+</span></div>
+          <div class="acc-body"><div class="acc-body-inner">Transparent documentation, vetted candidates and zero-tolerance for unethical practices — every step aligned with UAE labour regulations.</div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-h"><span class="acc-num">03</span><b>Deep Understanding of UAE Labour Laws</b><span class="acc-icon">+</span></div>
+          <div class="acc-body"><div class="acc-body-inner">From contracts to accommodation standards, we translate complex regulatory requirements into simple, safe processes so your business never carries hidden risk.</div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-h"><span class="acc-num">04</span><b>Commitment to Worker Welfare</b><span class="acc-icon">+</span></div>
+          <div class="acc-body"><div class="acc-body-inner">Fair wages, safe working conditions and dignified treatment. We protect workers as rigorously as we protect our clients — because that's what ethical recruitment looks like.</div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-h"><span class="acc-num">05</span><b>Workforce Solutions Aligned with ESG</b><span class="acc-icon">+</span></div>
+          <div class="acc-body"><div class="acc-body-inner">Sustainability, DEI and ESG principles are woven into every service so your workforce practices meet the modern expectations of investors, regulators and employees.</div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-h"><span class="acc-num">06</span><b>Short-Term &amp; Long-Term Hiring Support</b><span class="acc-icon">+</span></div>
+          <div class="acc-body"><div class="acc-body-inner">Whether you need 50 workers in 48 hours or a senior hire to lead a function for 10 years — one partner, one process, one standard of integrity.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center">Client Voices</div>
+      <h2>Partnerships built on trust, <i style="color:var(--burgundy)">results</i> that stay.</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Tarkash mobilised 60+ workers within 72 hours for our port expansion project. Every candidate was vetted, documented, and ready on day one. Compliance-grade work.</p>
+        <div class="t-person"><div class="t-av" style="background:var(--burgundy)">RK</div><div><b>Rohit Khanna</b><span>Operations Head · Logistics</span></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Dr. Aftab and his team understood our ESG reporting gaps better than our own consultants. Their inclusive-sourcing playbook reshaped our talent pipeline.</p>
+        <div class="t-person"><div class="t-av" style="background:var(--hot)">SA</div><div><b>Sarah Al Nuaimi</b><span>Group HR Director · Retail</span></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>We've used three agencies in Sharjah. Tarkash is the only one where zero workers went back in the first six months. Retention speaks louder than promises.</p>
+        <div class="t-person"><div class="t-av" style="background:var(--wine)">JM</div><div><b>James Mathew</b><span>Project Director · Construction</span></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>The Green HR transition they ran for us cut onboarding paperwork by 82% in 90 days. A proper modern HR partner, not a paper-shuffler.</p>
+        <div class="t-person"><div class="t-av" style="background:#4a6040">PT</div><div><b>Priya Thomas</b><span>CHRO · Manufacturing</span></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Their DEI diagnostic exposed representation gaps we'd been ignoring for three years. The action plan was practical, board-ready, and genuinely enforceable.</p>
+        <div class="t-person"><div class="t-av" style="background:#3f5e70">AK</div><div><b>Aisha Kamil</b><span>Head of People · Hospitality</span></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Ethical recruitment used to feel like a compliance checkbox. With Tarkash, it's become a competitive advantage we talk about openly with investors.</p>
+        <div class="t-person"><div class="t-av" style="background:#9e7b2d">MV</div><div><b>Marcus Valente</b><span>CEO · Facility Management Group</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center">Frequently Asked</div>
+      <h2>Clear answers. No <i style="color:var(--burgundy)">fine print</i>.</h2>
+    </div>
+    <div class="faq-list accordion" id="faqAcc">
+      <div class="acc-item open"><div class="acc-h"><b>Which industries does Tarkash FZE serve?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">We proudly serve clients across construction, logistics, hospitality, manufacturing, retail, facility management, healthcare and energy — anywhere workforce quality and compliance matter.</div></div></div>
+      <div class="acc-item"><div class="acc-h"><b>How quickly can you mobilise labour?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">For on-demand supply, our trained, documented talent pool allows us to mobilise workers within 24–72 hours depending on scale, role and location.</div></div></div>
+      <div class="acc-item"><div class="acc-h"><b>Do you handle UAE visas and documentation?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">Yes. Our brokerage service covers transparent documentation, visa compliance and onboarding aligned with UAE labour regulations — so you carry no hidden risk.</div></div></div>
+      <div class="acc-item"><div class="acc-h"><b>What guarantees do you offer on permanent hires?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">All permanent placements are backed by a structured replacement guarantee and our retention-focused assessment process, which prioritises long-term cultural fit over speed alone.</div></div></div>
+      <div class="acc-item"><div class="acc-h"><b>Can you scale for bulk hiring and project peaks?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">Absolutely. We regularly mobilise 50+ workers for short-term project peaks across construction, logistics and facility management, with dedicated deployment coordinators.</div></div></div>
+      <div class="acc-item"><div class="acc-h"><b>How do you integrate ESG and DEI into recruitment?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">Through inclusive sourcing strategies, bias-free assessments, fair-pay audits, pay-equity reviews and ESG-linked leadership scorecards — practical, measurable, board-ready.</div></div></div>
+      <div class="acc-item"><div class="acc-h"><b>How do I request a consultation?</b><span class="acc-icon">+</span></div><div class="acc-body"><div class="acc-body-inner">Use the contact form below, email <a href="mailto:florina@tarkash.com" style="color:var(--burgundy)">florina@tarkash.com</a>, or WhatsApp us on <a href="tel:+971507696221" style="color:var(--burgundy)">+971 50 769 6221</a>. We respond within one working day.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow">Start a Conversation</div>
+        <h2>Let's build a workforce<br/>that <span>stays</span>.</h2>
+        <p>Talk to us about brokerage, on-demand supply, permanent recruitment or ESG HR consultancy. One partner, one process, one standard of integrity.</p>
+
+        <div class="ci-block">
+          <div class="ci-ico"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></div>
+          <div>
+            <div class="lbl">Head Office</div>
+            <div class="val">Tarkash FZE<br/>Business Centre, Sharjah Publishing City Free Zone<br/>Sharjah, United Arab Emirates</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-ico"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <div>
+            <div class="lbl">Florina John · Contact Person</div>
+            <div class="val">
+              <a href="mailto:florina@tarkash.com">florina@tarkash.com</a><br/>
+              Mobile: <a href="tel:+971552990425">+971 55 299 0425</a>
+            </div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-ico"><svg class="isvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+          <div>
+            <div class="lbl">Dr. Syed Aftab Ahmed · Founder</div>
+            <div class="val">
+              <a href="mailto:aftab@tarkash.com">aftab@tarkash.com</a><br/>
+              Mobile / WhatsApp: <a href="tel:+971507696221">+971 50 769 6221</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-card" id="enquiryForm" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Enquiry received — we will reply within one working day';">
+        <div class="form-row">
+          <div class="field"><label>Full name *</label><input name="name" required placeholder="Your full name" /></div>
+          <div class="field"><label>Company *</label><input name="company" required placeholder="Company name" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Work email *</label><input name="email" required type="email" placeholder="name@company.com" /></div>
+          <div class="field"><label>Contact number *</label><input name="phone" required type="tel" placeholder="+971 50 ..." /></div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Service you're interested in *</label>
+            <select name="service" id="serviceSelect" required onchange="toggleOther('service')">
+              <option value="">— Select a service —</option>
+              <option>Labour Recruitment Brokerage</option>
+              <option>On-Demand Labour Supply</option>
+              <option>Permanent Recruitment</option>
+              <option>ESG-Driven HR Consultancy</option>
+              <option>Emiratisation Strategy</option>
+              <option>DEI Diagnostic &amp; Action Plan</option>
+              <option>Green HR &amp; Digital Transformation</option>
+              <option>Performance &amp; Rewards Design</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input name="service_other" id="serviceOther" placeholder="Type the service you need" style="display:none;margin-top:8px" />
+          </div>
+          <div class="field">
+            <label>Industry *</label>
+            <select name="industry" id="industrySelect" required onchange="toggleOther('industry')">
+              <option value="">— Select your industry —</option>
+              <option>Construction</option>
+              <option>Logistics &amp; Warehousing</option>
+              <option>Hospitality</option>
+              <option>Manufacturing</option>
+              <option>Retail</option>
+              <option>Facility Management</option>
+              <option>Healthcare</option>
+              <option>Oil, Gas &amp; Energy</option>
+              <option>Banking &amp; Financial Services</option>
+              <option>Real Estate &amp; Property</option>
+              <option>Education</option>
+              <option>Government &amp; Public Sector</option>
+              <option>Aviation &amp; Airports</option>
+              <option>IT &amp; Technology</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input name="industry_other" id="industryOther" placeholder="Type your industry" style="display:none;margin-top:8px" />
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:14px"><label>Headcount / role count (approx.)</label>
+          <select name="headcount">
+            <option>1 – 5</option>
+            <option>6 – 20</option>
+            <option>21 – 50</option>
+            <option>51 – 100</option>
+            <option>100+</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field"><label>Tell us about your workforce need</label><textarea name="message" placeholder="Role, headcount, timeline, location, any special requirements…"></textarea></div>
+        <label class="check"><input type="checkbox" required /> I agree to the Privacy Policy and consent to being contacted.</label>
+        <label class="check"><input type="checkbox" checked /> Send me Tarkash's monthly HR &amp; workforce insights newsletter.</label>
+        <button type="submit" class="btn btn-accent">Send Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-col f-brand">
+        <div class="logo">
+          <div class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 44" xmlns="http://www.w3.org/2000/svg">
+              <path class="swoosh" d="M3 38 C 20 12, 40 8, 61 10" stroke-width="6"/>
+              <path class="swoosh" d="M6 29 C 20 12, 36 10, 55 12" stroke-width="5"/>
+              <path class="swoosh" d="M11 21 C 22 12, 32 11, 46 14" stroke-width="4"/>
+            </svg>
+          </div>
+          <div><div class="logo-word" style="color:var(--cream)">Tarkash</div><div class="logo-sub" style="color:var(--gold)">FZE · Workforce</div></div>
+        </div>
+        <p>Talent in Mind. People at Heart. Ethical workforce solutions across the UAE &amp; GCC — aligned with Sustainability, DEI and ESG.</p>
+        <div class="badges">
+          <span>MOHRE Licensed</span><span>UAE Compliant</span><span>ISO 9001 Aligned</span><span>ESG-Driven HR</span>
+        </div>
+        <div class="socials">
+          <a class="li" href="https://www.linkedin.com/company/tarkash-fze" aria-label="LinkedIn" target="_blank" rel="noopener"><svg class="isvg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.99 0 1.78-.77 1.78-1.72V1.72C24 .77 23.21 0 22.22 0z"/></svg></a>
+          <a class="ig" href="https://www.instagram.com/tarkash.fze" aria-label="Instagram" target="_blank" rel="noopener"><svg class="isvg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.36 2.67.94 3.34.64 4.13.33 4.9.13 5.77.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.92.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.77.3 1.64.5 2.92.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.92-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.77.5-1.64.56-2.92.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.92-.3-.79-.72-1.46-1.38-2.12-.66-.66-1.33-1.08-2.12-1.38-.77-.3-1.64-.5-2.92-.56C15.67.01 15.26 0 12 0m0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84m0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4M18.41 4.15a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44"/></svg></a>
+          <a class="fb" href="https://www.facebook.com/tarkashfze" aria-label="Facebook" target="_blank" rel="noopener"><svg class="isvg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.47h-1.27c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a class="x" href="https://twitter.com/tarkashfze" aria-label="X / Twitter" target="_blank" rel="noopener"><svg class="isvg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.5 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Labour Recruitment Brokerage</a></li>
+          <li><a href="#services">On-Demand Labour Supply</a></li>
+          <li><a href="#services">Permanent Recruitment</a></li>
+          <li><a href="#esg">ESG-Driven HR</a></li>
+          <li><a href="#esg">DEI Diagnostics</a></li>
+          <li><a href="#esg">Emiratisation Strategy</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About Tarkash FZE</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="blog.html">HR Insights Blog</a></li>
+          <li><a href="social.html">Social Content</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Business Centre, Sharjah Publishing City Free Zone, Sharjah</li>
+          <li><a href="mailto:florina@tarkash.com">florina@tarkash.com</a></li>
+          <li><a href="mailto:aftab@tarkash.com">aftab@tarkash.com</a></li>
+          <li><a href="tel:+971552990425">+971 55 299 0425</a></li>
+          <li><a href="tel:+971507696221">+971 50 769 6221</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-bottom">
+      <div>© <span id="yr"></span> Tarkash FZE. All rights reserved. Talent in Mind. People at Heart.</div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+  <div class="palette-strip" style="margin-top:40px" aria-hidden="true">
+    <i style="background:var(--ink)"></i>
+    <i style="background:var(--cream)"></i>
+    <i style="background:var(--hot)"></i>
+    <i style="background:var(--burgundy)"></i>
+    <i style="background:var(--gold)"></i>
+    <i style="background:var(--sage)"></i>
+    <i style="background:var(--wine)"></i>
+    <i style="background:var(--mist)"></i>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="whatsapp" href="https://wa.me/971507696221?text=Hi%20Tarkash%20FZE%2C%20I%27d%20like%20to%20discuss%20workforce%20solutions." target="_blank" rel="noopener" aria-label="Chat with Tarkash on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.33.16 11.89a11.8 11.8 0 0 0 1.6 5.94L0 24l6.36-1.67a11.9 11.9 0 0 0 5.7 1.45h.01c6.55 0 11.89-5.33 11.89-11.89a11.82 11.82 0 0 0-3.44-8.41zM12.06 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.77.99 1-3.67-.23-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.46 4.45-9.9 9.91-9.9 2.65 0 5.14 1.03 7.01 2.9a9.84 9.84 0 0 1 2.9 7.02c0 5.46-4.45 9.89-9.92 9.89zm5.45-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.34.22-.64.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.29.3-.49.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('#whyAcc .acc-item, #faqAcc .acc-item').forEach(item=>{
+    item.querySelector('.acc-h').addEventListener('click',()=>{
+      const open = item.classList.contains('open');
+      item.parentElement.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
+      if(!open) item.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('nav-mobile-open')));
+
+  function toggleOther(kind){
+    const sel = document.getElementById(kind+'Select');
+    const txt = document.getElementById(kind+'Other');
+    if(sel.value === '__other__'){
+      txt.style.display = 'block';
+      txt.required = true;
+      txt.focus();
+    } else {
+      txt.style.display = 'none';
+      txt.required = false;
+      txt.value = '';
+    }
+  }
+</script>
+
 </body>
 </html>
