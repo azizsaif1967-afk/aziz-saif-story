@@ -33,6 +33,55 @@
     --brand-red-3:#FF6F61;
     --brand-blue:#0057B7;
   }
+
+  /* ==== BRAND INTRO ==== */
+  .intro{
+    position:fixed;inset:0;z-index:9999;
+    background:radial-gradient(1200px 700px at 50% 40%, #FBF2E3, var(--cream) 70%, var(--cream-deep));
+    display:grid;place-items:center;
+    animation:introFadeOut .75s ease-in 2.55s forwards;
+    will-change:opacity,visibility;
+  }
+  .intro-logo{
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+    transform-origin:50% 50%;
+    animation:introSettle .9s cubic-bezier(.6,0,.3,1) 2.15s forwards;
+  }
+  .intro-mark{width:min(38vw,320px);aspect-ratio:94/60;}
+  .intro-mark svg{width:100%;height:100%;overflow:visible}
+  .intro-mark .swoosh{fill:none;stroke-linecap:round;stroke-dasharray:160;stroke-dashoffset:160;animation:introDraw 1s cubic-bezier(.5,0,.2,1) forwards}
+  .intro-mark .s1{stroke:var(--brand-red-1);animation-delay:.15s}
+  .intro-mark .s2{stroke:var(--brand-red-2);animation-delay:.35s}
+  .intro-mark .s3{stroke:var(--brand-red-3);animation-delay:.55s}
+  .intro-word{
+    font-family:'Inter',sans-serif;font-weight:900;
+    font-size:clamp(2.6rem,8vw,5.5rem);color:var(--brand-blue);
+    letter-spacing:-.01em;line-height:1;text-transform:uppercase;
+    font-style:italic;font-stretch:90%;
+    opacity:0;transform:translateY(18px);
+    animation:introWord .75s cubic-bezier(.2,.9,.25,1) 1.15s forwards;
+  }
+  .intro-sub{
+    font-family:'Inter',sans-serif;font-weight:600;
+    font-size:clamp(.7rem,1vw,.85rem);
+    letter-spacing:.32em;text-transform:uppercase;color:var(--wine);
+    opacity:0;animation:introFade .55s ease-out 1.65s forwards;
+  }
+  @keyframes introDraw{to{stroke-dashoffset:0}}
+  @keyframes introFade{to{opacity:1}}
+  @keyframes introWord{to{opacity:1;transform:translateY(0)}}
+  @keyframes introSettle{
+    to{transform:translateY(-18px) scale(.82);opacity:.9}
+  }
+  @keyframes introFadeOut{
+    to{opacity:0;visibility:hidden;pointer-events:none}
+  }
+  body.intro-done .intro{display:none}
+  body.intro-active{overflow:hidden}
+  @media (prefers-reduced-motion:reduce){
+    .intro{animation:introFadeOut .3s linear .3s forwards}
+    .intro-logo, .intro-mark .swoosh, .intro-word, .intro-sub{animation:none;opacity:1;transform:none;stroke-dashoffset:0}
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -446,6 +495,37 @@
 </style>
 </head>
 <body>
+
+<!-- ============ BRAND INTRO ============ -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-logo">
+    <div class="intro-mark">
+      <svg viewBox="0 0 94 60" xmlns="http://www.w3.org/2000/svg">
+        <path class="swoosh s1" d="M6 52 C 22 46, 38 42, 56 38" stroke-width="6"/>
+        <path class="swoosh s2" d="M6 52 C 26 34, 50 24, 74 18" stroke-width="6"/>
+        <path class="swoosh s3" d="M6 52 C 30 20, 58 8, 90 4" stroke-width="6"/>
+      </svg>
+    </div>
+    <div class="intro-word">Tarkash</div>
+    <div class="intro-sub">FZE · Workforce</div>
+  </div>
+</div>
+<script>
+  (function(){
+    var intro = document.getElementById('intro');
+    if (!intro) return;
+    if (sessionStorage.getItem('tarkash-intro-v1')) {
+      intro.parentNode.removeChild(intro);
+      return;
+    }
+    sessionStorage.setItem('tarkash-intro-v1', '1');
+    document.body.classList.add('intro-active');
+    setTimeout(function(){
+      document.body.classList.add('intro-done');
+      document.body.classList.remove('intro-active');
+    }, 3400);
+  })();
+</script>
 
 <!-- top palette strip -->
 <div class="palette-strip" aria-hidden="true">
