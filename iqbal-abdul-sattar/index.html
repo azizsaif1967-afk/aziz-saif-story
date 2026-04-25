@@ -108,20 +108,19 @@
 
   /* Portrait medallion */
   .portrait{position:relative;padding:18px;max-width:440px;margin:0 auto}
-  .portrait::before{content:"";position:absolute;inset:0;border:1px solid var(--gold);pointer-events:none}
-  .portrait::after{content:"";position:absolute;inset:10px;border:1px solid var(--gold-light);pointer-events:none}
+  .portrait::before{content:"";position:absolute;inset:0;border:1px solid var(--gold);pointer-events:none;border-radius:50%}
+  .portrait::after{content:"";position:absolute;inset:10px;border:1px solid var(--gold-light);pointer-events:none;border-radius:50%}
   .portrait .frame{
-    width:100%;aspect-ratio:1/1;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(206,173,114,.45), transparent 60%),
-      linear-gradient(135deg,#0e0e16,#1a1024);
-    box-shadow:var(--shadow);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-    position:relative;overflow:hidden;
+    width:100%;aspect-ratio:1/1;border-radius:50%;
+    background:linear-gradient(135deg,#0e0e16,#1a1024);
+    box-shadow:0 30px 70px -25px rgba(14,14,22,.55), inset 0 0 0 1px rgba(206,173,114,.2);
+    border:3px solid var(--gold);
+    position:relative;overflow:hidden;isolation:isolate;
   }
-  .portrait .frame::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center, transparent 50%, rgba(7,7,16,.7) 100%)}
-  .portrait .mono{font-family:'Cormorant Garamond',serif;font-size:84pt;color:var(--gold);font-style:italic;font-weight:500;line-height:1;text-shadow:0 4px 24px rgba(0,0,0,.5);position:relative}
-  .portrait .stamp{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);position:relative}
+  .portrait .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:32% 28%;z-index:1;transition:transform .6s ease}
+  .portrait:hover .frame img{transform:scale(1.04)}
+  .portrait .frame::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center, transparent 60%, rgba(7,7,16,.45) 100%);z-index:2;pointer-events:none}
+  .portrait .stamp{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);z-index:3;text-shadow:0 2px 12px rgba(0,0,0,.8)}
   .portrait .caption{text-align:center;margin-top:18px;font-family:'Cormorant Garamond',serif;font-style:italic;color:#5a4e2e;font-size:16px}
 
   /* ===== Stats strip ===== */
@@ -263,8 +262,8 @@
     <div>
       <div class="portrait">
         <div class="frame">
-          <span class="mono">M I</span>
-          <span class="stamp">Master Perfumer</span>
+          <img src="./photo.jpg" alt="Mohamed Iqbal Abdul Sattar — Founder &amp; Master Perfumer, Khadlaj Perfumes"/>
+          <span class="stamp">Founder &middot; Master Perfumer</span>
         </div>
         <div class="caption">&ldquo;Started out as a passion and a dream &mdash; to create unique and unforgettable fragrances.&rdquo;</div>
       </div>
