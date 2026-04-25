@@ -3103,10 +3103,42 @@ body.has-corp-nav{padding-top:0}
         var msg=document.getElementById('subMsg');
         function showMsg(text,ok){msg.style.display='block';msg.style.background=ok?'rgba(21,94,94,.08)':'rgba(180,64,64,.08)';msg.style.border='1px solid '+(ok?'rgba(21,94,94,.35)':'rgba(180,64,64,.35)');msg.style.color=ok?'#155e5e':'#b44040';msg.innerHTML=text;}
 
+        // Email validation: format + obvious-garbage block + common typo suggestion.
+        var EMAIL_RX=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var GARBAGE_RX=/^(test|admin|asdf|qwerty|abc+|user|name|email|noreply|no-reply|sample|example|fake|spam|temp|temporary)@/i;
+        var DOMAIN_TYPOS={
+          'gmial.com':'gmail.com','gnail.com':'gmail.com','gmai.com':'gmail.com','gmal.com':'gmail.com','gmaill.com':'gmail.com','gmail.con':'gmail.com','gmail.co':'gmail.com',
+          'yaho.com':'yahoo.com','yhaoo.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.con':'yahoo.com','yahooo.co':'yahoo.com',
+          'hotnail.com':'hotmail.com','hotmial.com':'hotmail.com','homail.com':'hotmail.com','hotmail.con':'hotmail.com',
+          'outlok.com':'outlook.com','outloook.com':'outlook.com','outlook.con':'outlook.com',
+          'iclod.com':'icloud.com','icoud.com':'icloud.com','iclould.com':'icloud.com'
+        };
+        function validateEmail(e){
+          if(!EMAIL_RX.test(e))return{ok:false,reason:'Please enter a valid email address.'};
+          if(GARBAGE_RX.test(e))return{ok:false,reason:'Please use your real email address.'};
+          var d=e.split('@')[1];
+          if(DOMAIN_TYPOS[d]){
+            var corrected=e.replace(d,DOMAIN_TYPOS[d]);
+            return{ok:false,suggest:corrected,reason:'Did you mean <strong>'+corrected+'</strong>? <a href="#" id="useSuggest" style="color:#155e5e;text-decoration:underline">Yes, use this</a>'};
+          }
+          return{ok:true};
+        }
+
         form.addEventListener('submit',async function(e){
           e.preventDefault();
           var email=emailIn.value.trim().toLowerCase();
           if(!email)return;
+          var v=validateEmail(email);
+          if(!v.ok){
+            showMsg(v.reason,false);
+            if(v.suggest){
+              setTimeout(function(){
+                var link=document.getElementById('useSuggest');
+                if(link)link.addEventListener('click',function(ev){ev.preventDefault();emailIn.value=v.suggest;msg.style.display='none';form.dispatchEvent(new Event('submit'));});
+              },0);
+            }
+            return;
+          }
           btn.disabled=true;btn.textContent='Subscribing...';
           try{
             var {data,error}=await sb.from('subscribers').insert({email:email}).select().single();
@@ -3120,6 +3152,8 @@ body.has-corp-nav{padding-top:0}
                   await sb.rpc('send_verification_email',{p_email:email,p_token:data.verify_token});
                 }catch(e){console.log('Verify email error:',e);}
               }
+              // Admin notification fires automatically from the AFTER INSERT trigger on public.subscribers
+              // (see admin/supabase-setup.sql section 12). No client-side call needed.
               showMsg('&#10004; Thanks for subscribing! Check your inbox for a verification email to confirm.',true);
               emailIn.value='';
             }
@@ -3218,7 +3252,7 @@ body.has-corp-nav{padding-top:0}
       Many services are outsourced with reliable partners &amp; companies &mdash; we remain your <strong style="color:var(--ed-charcoal);font-weight:600">single point of contact</strong>.
     </p>
   </div>
-  <div class="footer-bottom"><p>&copy; 2026 Aziz Saif. All rights reserved.</p><p style="font-style:italic;color:var(--accent);font-size:.74rem;opacity:.5">We build every system with Itqan &mdash; excellence in work.</p></div>
+  <div class="footer-bottom"><p>&copy; 2026 Aziz Saif. All rights reserved. <span style="opacity:.4;margin:0 6px">&middot;</span> <a href="admin/newsletter.html" style="color:var(--ed-muted);font-size:.72rem;text-decoration:none;opacity:.55;letter-spacing:.4px" onmouseover="this.style.opacity='1';this.style.color='var(--ed-teal)'" onmouseout="this.style.opacity='.55';this.style.color='var(--ed-muted)'">Admin</a></p><p style="font-style:italic;color:var(--accent);font-size:.74rem;opacity:.5">We build every system with Itqan &mdash; excellence in work.</p></div>
 </footer>
 
 <!-- LIGHTBOX MODAL -->
