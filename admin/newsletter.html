@@ -295,9 +295,17 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
   <div class="tab-content" id="tab-compose">
     <div class="container">
       <div class="compose-toolbar">
+        <label style="display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text);cursor:pointer;padding:8px 14px;border:1px solid var(--gold);border-radius:var(--radius);background:rgba(201,168,76,.06)">
+          <input type="checkbox" id="simpleMode" onchange="toggleSimpleMode()" style="margin:0">
+          Simple Markdown Mode
+        </label>
         <button class="btn btn-outline btn-sm" onclick="insertTemplate('basic')">Basic Template</button>
         <button class="btn btn-outline btn-sm" onclick="insertTemplate('newsletter')">Newsletter Template</button>
         <button class="btn btn-outline btn-sm" id="togglePreview" onclick="togglePreview()">Hide Preview</button>
+      </div>
+      <div id="simpleHelp" style="display:none;background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:14px 18px;margin-bottom:16px;font-size:.82rem;line-height:1.6;color:var(--text)">
+        <strong style="color:var(--gold)">Simple mode is on.</strong> Just type your newsletter as plain text — it'll be wrapped in the gold/navy styled template automatically when you preview, test, or send.<br>
+        <span style="color:var(--text-muted);font-size:.78rem">Supports: <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px"># Heading</code> &nbsp; <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px">## Subheading</code> &nbsp; <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px">**bold**</code> &nbsp; <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px">*italic*</code> &nbsp; <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px">[link](url)</code> &nbsp; <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px">&gt; quote</code> &nbsp; <code style="background:var(--bg-input);padding:1px 6px;border-radius:3px">---</code> for divider. Blank line = new paragraph.</span>
       </div>
       <div class="form-group">
         <label>Subject Line</label>
@@ -683,9 +691,77 @@ function togglePreview() {
   document.getElementById('togglePreview').textContent = previewVisible ? 'Hide Preview' : 'Show Preview';
 }
 
+// Simple Markdown mode: type plain text, get the styled newsletter on send/preview.
+function toggleSimpleMode() {
+  const on = document.getElementById('simpleMode').checked;
+  document.getElementById('simpleHelp').style.display = on ? 'block' : 'none';
+  const body = document.getElementById('composeBody');
+  body.placeholder = on
+    ? "# This Week's Insights\n\nWelcome to this edition. Here's what I've been thinking about.\n\n## Topic One\n\nWrite your first thought here. **Bold** and *italic* work too.\n\n> A memorable quote or key takeaway goes here.\n\n## Topic Two\n\nAnother section. [Link example](https://azizsaif.com).\n\n---\n\nUntil next time."
+    : "Write or paste your HTML email here...";
+  updatePreview();
+}
+
+function escapeHtmlText(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function inlineMd(s) {
+  s = escapeHtmlText(s);
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#c9a84c;text-decoration:underline">$1</a>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return s;
+}
+
+function markdownToNewsletterHtml(md) {
+  const lines = md.split(/\r?\n/);
+  let body = '', para = [];
+  const flush = () => {
+    if (!para.length) return;
+    const t = inlineMd(para.join(' ').trim());
+    if (t) body += '<p style="margin:0 0 16px">' + t + '</p>\n';
+    para = [];
+  };
+  for (let line of lines) {
+    if (/^\s*$/.test(line)) { flush(); }
+    else if (/^##\s+/.test(line)) { flush(); body += '<h3 style="color:#0a1628;font-family:Georgia,serif;font-size:18px;margin:28px 0 12px">' + inlineMd(line.replace(/^##\s+/,'')) + '</h3>\n'; }
+    else if (/^#\s+/.test(line))  { flush(); body += '<h2 style="color:#0a1628;font-family:Georgia,serif;font-size:22px;margin:0 0 16px">' + inlineMd(line.replace(/^#\s+/,'')) + '</h2>\n'; }
+    else if (/^>\s+/.test(line))  { flush(); body += '<div style="background:#fef9ee;border-left:3px solid #c9a84c;padding:16px 20px;margin:20px 0;border-radius:0 6px 6px 0">' + inlineMd(line.replace(/^>\s+/,'')) + '</div>\n'; }
+    else if (/^---+\s*$/.test(line)) { flush(); body += '<hr style="border:none;border-top:1px solid #e4e7eb;margin:28px 0">\n'; }
+    else { para.push(line); }
+  }
+  flush();
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f7f8fa;font-family:-apple-system,'Segoe UI',sans-serif">
+<div style="max-width:600px;margin:0 auto;background:#ffffff">
+  <div style="background:#0a1628;padding:36px 40px">
+    <h1 style="color:#c9a84c;font-family:Georgia,serif;font-size:26px;margin:0 0 4px">Aziz Saif</h1>
+    <p style="color:#64748b;font-size:13px;margin:0">Insights on Business, Leadership &amp; Growth</p>
+  </div>
+  <div style="height:3px;background:linear-gradient(90deg,#c9a84c,#e8d5a0,#c9a84c)"></div>
+  <div style="padding:40px;color:#374151;font-size:16px;line-height:1.7">
+    ${body}
+    <p style="margin:28px 0 0">— <strong>Aziz Saif</strong><br><span style="color:#64748b;font-size:14px">VP Operations · Managing Partner · AI Business Builder</span></p>
+    <p style="margin-top:24px"><a href="https://azizsaif.com" style="display:inline-block;background:#c9a84c;color:#0a1628;padding:12px 32px;text-decoration:none;font-weight:600;border-radius:6px">Visit azizsaif.com</a></p>
+  </div>
+  <div style="background:#0a1628;padding:28px 40px;text-align:center;font-size:13px;color:#64748b">
+    <a href="https://azizsaif.com" style="color:#c9a84c;text-decoration:none;margin:0 8px">Website</a>
+    <a href="https://www.linkedin.com/in/aziz-akbar-853698225" style="color:#c9a84c;text-decoration:none;margin:0 8px">LinkedIn</a>
+    <p style="margin-top:16px"><a href="{{unsubscribe_url}}" style="color:#c9a84c;text-decoration:none">Unsubscribe</a> from this newsletter</p>
+  </div>
+</div></body></html>`;
+}
+
+// Returns the HTML that should actually be sent/previewed — converted from markdown if Simple Mode is on.
+function getRenderedHtml() {
+  const raw = document.getElementById('composeBody').value;
+  return document.getElementById('simpleMode').checked ? markdownToNewsletterHtml(raw) : raw;
+}
+
 document.getElementById('composeBody').addEventListener('input', updatePreview);
 function updatePreview() {
-  const html = document.getElementById('composeBody').value;
+  const html = getRenderedHtml();
   const frame = document.getElementById('previewFrame');
   const doc = frame.contentDocument || frame.contentWindow.document;
   doc.open();
@@ -818,8 +894,9 @@ async function getResendConfig() {
 
 async function sendCampaign() {
   const subject = document.getElementById('composeSubject').value.trim();
-  const htmlBody = document.getElementById('composeBody').value.trim();
-  if (!subject || !htmlBody) { showToast('Subject and body are required.', 'error'); return; }
+  const rawBody = document.getElementById('composeBody').value.trim();
+  const htmlBody = getRenderedHtml().trim();
+  if (!subject || !rawBody) { showToast('Subject and body are required.', 'error'); return; }
 
   const config = await getResendConfig();
   if (!config.resendKey) {
@@ -887,8 +964,9 @@ async function sendCampaign() {
 
 async function sendTestEmail() {
   const subject = document.getElementById('composeSubject').value.trim();
-  const htmlBody = document.getElementById('composeBody').value.trim();
-  if (!subject || !htmlBody) { showToast('Subject and body are required.', 'error'); return; }
+  const rawBody = document.getElementById('composeBody').value.trim();
+  const htmlBody = getRenderedHtml().trim();
+  if (!subject || !rawBody) { showToast('Subject and body are required.', 'error'); return; }
 
   const config = await getResendConfig();
   if (!config.resendKey) {
@@ -923,8 +1001,9 @@ async function sendTestEmail() {
 
 async function saveDraft() {
   const subject = document.getElementById('composeSubject').value.trim();
-  const htmlBody = document.getElementById('composeBody').value.trim();
-  if (!subject && !htmlBody) { showToast('Nothing to save.', 'error'); return; }
+  const htmlBody = getRenderedHtml().trim();
+  const rawBody = document.getElementById('composeBody').value.trim();
+  if (!subject && !rawBody) { showToast('Nothing to save.', 'error'); return; }
 
   const { error } = await sb.from('campaigns').insert({
     subject: subject || '(no subject)',

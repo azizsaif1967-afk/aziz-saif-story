@@ -80,4 +80,140 @@ CREATE INDEX IF NOT EXISTS idx_subscribers_verify_token ON public.subscribers (v
 CREATE INDEX IF NOT EXISTS idx_subscribers_verified ON public.subscribers (verified);
 CREATE INDEX IF NOT EXISTS idx_campaigns_created_at ON public.campaigns (created_at DESC);
 
+-- =============================================
+-- ADMIN SIGNUP NOTIFICATION — already deployed in production.
+-- Mirror of /Users/azizsaif/Downloads/supabase-notification-setup.sql.
+-- Safe to re-run. Idempotent.
+-- =============================================
+
+-- 11. HTTP from Postgres
+CREATE EXTENSION IF NOT EXISTS pg_net;
+
+-- 12. Notification log (per-attempt audit trail)
+CREATE TABLE IF NOT EXISTS public.notification_log (
+  id              bigserial PRIMARY KEY,
+  created_at      timestamptz NOT NULL DEFAULT now(),
+  subscriber_email text NOT NULL,
+  status          text NOT NULL,                 -- 'sent' | 'skipped_no_key' | 'error'
+  request_id      bigint,                        -- pg_net request id
+  http_status     int,
+  resend_id       text,
+  error_message   text
+);
+
+CREATE INDEX IF NOT EXISTS notification_log_created_at_idx
+  ON public.notification_log (created_at DESC);
+
+ALTER TABLE public.notification_log ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "no public access" ON public.notification_log;
+CREATE POLICY "no public access" ON public.notification_log FOR ALL USING (false) WITH CHECK (false);
+
+-- 13. Configurable recipient. Resend test mode currently restricts the destination
+--     to the Resend account email; switch to aziz@azizsaif.com after verifying the
+--     azizsaif.com sending domain at resend.com/domains.
+INSERT INTO public.settings (key, value) VALUES ('notification_recipient', 'azizsaif1967@gmail.com')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
+
+-- 14. Notification function — called by the trigger below.
+CREATE OR REPLACE FUNCTION public.send_admin_notification(p_email text)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $func$
+DECLARE
+  v_resend_key text;
+  v_from_email text;
+  v_to_email   text;
+  v_total      int;
+  v_request_id bigint;
+  v_html       text;
+  v_subject    text;
+BEGIN
+  SELECT value INTO v_resend_key FROM public.settings WHERE key = 'resend_api_key';
+  SELECT value INTO v_from_email FROM public.settings WHERE key = 'sender_email';
+  SELECT value INTO v_to_email   FROM public.settings WHERE key = 'notification_recipient';
+
+  IF v_resend_key IS NULL OR length(trim(v_resend_key)) = 0 THEN
+    INSERT INTO public.notification_log (subscriber_email, status, error_message)
+    VALUES (p_email, 'skipped_no_key', 'resend_api_key not set in settings');
+    RETURN;
+  END IF;
+
+  IF v_from_email IS NULL OR length(trim(v_from_email)) = 0 THEN v_from_email := 'onboarding@resend.dev'; END IF;
+  IF v_to_email   IS NULL OR length(trim(v_to_email))   = 0 THEN v_to_email   := 'azizsaif1967@gmail.com'; END IF;
+
+  BEGIN
+    SELECT count(*) INTO v_total FROM public.subscribers;
+  EXCEPTION WHEN undefined_table THEN v_total := NULL; END;
+
+  v_subject := 'New Newsletter Signup: ' || p_email;
+  v_html :=
+    '<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;background:#fff;color:#000;padding:32px;max-width:560px;margin:0 auto;border:1px solid #eee;border-radius:8px;">' ||
+    '<h1 style="margin:0 0 16px;color:#000;font-size:22px;">New Newsletter Signup</h1>' ||
+    '<p style="margin:0 0 24px;color:#555;font-size:14px;">A new subscriber just joined azizsaif.com.</p>' ||
+    '<table style="width:100%;border-collapse:collapse;font-size:14px;">' ||
+    '<tr><td style="padding:8px 0;color:#888;width:140px;">Email</td><td style="padding:8px 0;color:#000;font-weight:600;">' || p_email || '</td></tr>' ||
+    '<tr><td style="padding:8px 0;color:#888;">Time</td><td style="padding:8px 0;color:#000;">' || to_char(now() AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI:SS') || ' UTC</td></tr>' ||
+    '<tr><td style="padding:8px 0;color:#888;">Total subscribers</td><td style="padding:8px 0;color:#cc0000;font-weight:700;">' || coalesce(v_total::text, 'n/a') || '</td></tr>' ||
+    '</table>' ||
+    '<p style="margin:24px 0 0;color:#888;font-size:12px;">Manage list: <a href="https://azizsaif.com/admin/newsletter.html" style="color:#cc0000;text-decoration:none;">Admin Console</a></p>' ||
+    '</div>';
+
+  BEGIN
+    SELECT net.http_post(
+      url := 'https://api.resend.com/emails',
+      headers := jsonb_build_object('Authorization','Bearer ' || v_resend_key,'Content-Type','application/json'),
+      body := jsonb_build_object('from', v_from_email,'to', jsonb_build_array(v_to_email),'subject', v_subject,'html', v_html)
+    ) INTO v_request_id;
+
+    INSERT INTO public.notification_log (subscriber_email, status, request_id) VALUES (p_email, 'sent', v_request_id);
+  EXCEPTION WHEN OTHERS THEN
+    INSERT INTO public.notification_log (subscriber_email, status, error_message) VALUES (p_email, 'error', SQLERRM);
+  END;
+END;
+$func$;
+
+GRANT EXECUTE ON FUNCTION public.send_admin_notification(text) TO anon, authenticated;
+
+-- 15. AFTER INSERT trigger on subscribers — fires the notification automatically
+--     for every signup path (frontend form, admin console, raw API).
+CREATE OR REPLACE FUNCTION public._tg_subscribers_notify()
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $tg$
+BEGIN
+  PERFORM public.send_admin_notification(NEW.email);
+  RETURN NEW;
+EXCEPTION WHEN OTHERS THEN
+  INSERT INTO public.notification_log (subscriber_email, status, error_message)
+  VALUES (NEW.email, 'error', 'trigger error: ' || SQLERRM);
+  RETURN NEW;
+END;
+$tg$;
+
+DROP TRIGGER IF EXISTS subscribers_admin_notify ON public.subscribers;
+CREATE TRIGGER subscribers_admin_notify
+  AFTER INSERT ON public.subscribers
+  FOR EACH ROW EXECUTE FUNCTION public._tg_subscribers_notify();
+
+-- ============================================================
+-- USEFUL QUERIES
+-- ============================================================
+-- See recent attempts + Resend response:
+--   SELECT l.id, l.created_at, l.subscriber_email, l.status, r.status_code, r.content::text
+--   FROM public.notification_log l
+--   LEFT JOIN net._http_response r ON r.id = l.request_id
+--   ORDER BY l.created_at DESC LIMIT 20;
+--
+-- After verifying azizsaif.com at resend.com/domains, point notifications to aziz@:
+--   UPDATE public.settings SET value='aziz@azizsaif.com' WHERE key='notification_recipient';
+--   UPDATE public.settings SET value='noreply@azizsaif.com' WHERE key='sender_email';
+--
+-- Disable / re-enable the trigger:
+--   ALTER TABLE public.subscribers DISABLE TRIGGER subscribers_admin_notify;
+--   ALTER TABLE public.subscribers ENABLE  TRIGGER subscribers_admin_notify;
+
 -- Done! Your newsletter database is ready.
