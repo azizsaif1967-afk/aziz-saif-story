@@ -3288,8 +3288,32 @@ const openCat=()=>openModal('catalogueModal');
 $('#downloadCatalogue')?.addEventListener('click',e=>{e.preventDefault();openCat()});
 $('#downloadCatalogue2')?.addEventListener('click',e=>{e.preventDefault();openCat()});
 /* Generate real PDF catalogue using jsPDF (live product data + quantity column for orders) */
-const generateCataloguePDF=(buyer={})=>{
+/* Image preloader for PDF — fetches via fetch() so we can read pixels (canvas tainting workaround) */
+const _imgCache={};
+const preloadImage=url=>new Promise(resolve=>{
+  if(_imgCache[url])return resolve(_imgCache[url]);
+  const img=new Image();
+  img.crossOrigin='anonymous';
+  const t=setTimeout(()=>resolve(null),4000);
+  img.onload=()=>{clearTimeout(t);try{const cv=document.createElement('canvas');cv.width=img.naturalWidth;cv.height=img.naturalHeight;cv.getContext('2d').drawImage(img,0,0);const data=cv.toDataURL('image/jpeg',.7);_imgCache[url]=data;resolve(data)}catch(e){resolve(null)}};
+  img.onerror=()=>{clearTimeout(t);resolve(null)};
+  img.src=url;
+});
+const preloadAllImages=async list=>{
+  const batchSize=10,results=[];
+  for(let i=0;i<list.length;i+=batchSize){
+    const batch=list.slice(i,i+batchSize);
+    const data=await Promise.all(batch.map(p=>preloadImage(p.image)));
+    results.push(...data);
+    /* Update progress toast */
+    if(i%30===0)showToast('Building PDF',`Loading thumbnails… ${Math.min(i+batchSize,list.length)}/${list.length}`);
+  }
+  return results;
+};
+
+const generateCataloguePDF=async(buyer={})=>{
   if(!window.jspdf){showToast('Loading…','PDF library still loading, try again in 1 sec');return false}
+  showToast('Building PDF','Loading product photos · this takes 10-20 seconds');
   const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'pt',format:'a4'});const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight();
   /* Cover */
   doc.setFillColor(26,26,26);doc.rect(0,0,W,H,'F');
@@ -3318,15 +3342,34 @@ const generateCataloguePDF=(buyer={})=>{
   const fullList=(FULL_CATALOG&&FULL_CATALOG.length>=PRODUCTS.length)?FULL_CATALOG:PRODUCTS;
   /* Sort alphabetically by name for catalogue */
   const sorted=[...fullList].sort((a,b)=>a.name.localeCompare(b.name));
-  /* Columns: # | Product | Brand | For | Size | Unit Price | Qty (fillable) | Line Total (fillable) — NO RATINGS */
-  const rows=sorted.map((p,i)=>[i+1,p.name,p.brand||'Khadlaj',p.gender||'Unisex',p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),'AED '+p.price,'','']);
+  /* Pre-load all product images for thumbnails */
+  const imageData=await preloadAllImages(sorted);
+  /* Columns: # | Photo | Product | Brand | For | Size | Unit Price | Qty (fillable) | Line Total (fillable) */
+  const rows=sorted.map((p,i)=>[i+1,'',p.name,p.brand||'Khadlaj',p.gender||'Unisex',p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),'AED '+p.price,'','']);
   doc.autoTable({
-    head:[['#','Product','Brand','For','Size','Unit Price','Qty','Line Total']],
+    head:[['#','Photo','Product','Brand','For','Size','Unit Price','Qty','Line Total']],
     body:rows,startY:380,margin:{left:40,right:40},
-    styles:{fontSize:9,cellPadding:6,lineColor:[230,230,230]},
-    headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold'},
+    styles:{fontSize:9,cellPadding:4,lineColor:[230,230,230],minCellHeight:36,valign:'middle'},
+    headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold',minCellHeight:18},
     alternateRowStyles:{fillColor:[252,250,245]},
-    columnStyles:{0:{cellWidth:22,halign:'center'},1:{cellWidth:180,fontStyle:'bold'},2:{cellWidth:65},3:{cellWidth:46,halign:'center'},4:{cellWidth:46,halign:'center'},5:{cellWidth:60,halign:'right'},6:{cellWidth:46,halign:'center',fillColor:[255,248,230],lineWidth:.6,lineColor:[212,168,71]},7:{cellWidth:60,halign:'right',fillColor:[255,248,230],lineWidth:.6,lineColor:[212,168,71]}},
+    columnStyles:{
+      0:{cellWidth:18,halign:'center'},
+      1:{cellWidth:38,halign:'center'},
+      2:{cellWidth:148,fontStyle:'bold'},
+      3:{cellWidth:55},
+      4:{cellWidth:38,halign:'center'},
+      5:{cellWidth:42,halign:'center'},
+      6:{cellWidth:50,halign:'right'},
+      7:{cellWidth:42,halign:'center',fillColor:[255,248,230],lineWidth:.6,lineColor:[212,168,71]},
+      8:{cellWidth:54,halign:'right',fillColor:[255,248,230],lineWidth:.6,lineColor:[212,168,71]}
+    },
+    didDrawCell:d=>{
+      /* Draw product thumbnail in Photo column (index 1) for body rows */
+      if(d.section==='body'&&d.column.index===1){
+        const img=imageData[d.row.index];
+        if(img){try{doc.addImage(img,'JPEG',d.cell.x+4,d.cell.y+4,30,30)}catch(e){/* skip */}}
+      }
+    },
     didDrawPage:d=>{doc.setFontSize(8);doc.setTextColor(150,150,150);doc.text(`Khadlaj Perfumes · Spring 2026 Catalogue · Page ${d.pageNumber}`,40,H-20);doc.text('khadlaj-perfumes.com',W-40,H-20,{align:'right'});doc.text('▌ Fill the gold cells (Qty + Line Total) and send back via WhatsApp +971 52 121 1992',W/2,H-32,{align:'center'})}
   });
 
@@ -3342,11 +3385,13 @@ const generateCataloguePDF=(buyer={})=>{
   return true;
 };
 
-$('#catalogueForm').addEventListener('submit',e=>{
+$('#catalogueForm').addEventListener('submit',async e=>{
   e.preventDefault();const f=new FormData(e.target),email=f.get('email'),name=f.get('name'),phone=f.get('phone'),sub=f.get('newsletter')==='on';
   if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showToast('Hmm','Valid email required');return}
   addSubscriber({email,name,phone,source:'catalogue-download',consent:sub});
-  if(generateCataloguePDF({name,email,phone})){
+  const submitBtn=e.target.querySelector('button[type=submit]');if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='⏳ Building PDF with photos…'}
+  if(await generateCataloguePDF({name,email,phone})){
+    if(submitBtn){submitBtn.disabled=false;submitBtn.textContent='📥 Email me the catalogue'}
     closeModal($('#catalogueModal'));
     showToast('PDF downloaded','Personalised catalogue saved · also sent to '+email);
     e.target.reset();
