@@ -233,6 +233,7 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
     <div class="tab active" data-tab="dashboard">Dashboard</div>
     <div class="tab" data-tab="subscribers">Subscribers</div>
     <div class="tab" data-tab="compose">Compose</div>
+    <div class="tab" data-tab="bcc">BCC Bulk</div>
     <div class="tab" data-tab="settings">Settings</div>
   </nav>
 
@@ -327,6 +328,48 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
         <button class="btn btn-gold" onclick="sendCampaign()">Send Campaign</button>
         <button class="btn btn-outline" onclick="sendTestEmail()">Send Test Email</button>
         <button class="btn btn-outline" onclick="saveDraft()">Save Draft</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BCC Bulk Tab -->
+  <div class="tab-content" id="tab-bcc">
+    <div class="container">
+      <div style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:14px 18px;margin-bottom:20px;font-size:.84rem;line-height:1.6;color:var(--text)">
+        <strong style="color:var(--gold)">BCC Bulk Send.</strong> Paste your HTML and a list of recipient emails. Resend caps each email at <strong>50 BCC recipients</strong>, so larger lists are auto-batched. Each batch is one Resend API call &mdash; e.g. 200 emails = 4 calls.<br>
+        <span style="color:var(--text-muted);font-size:.78rem">Heads up: BCC sends do <strong>not</strong> include a per-recipient unsubscribe link. Use the Compose tab for proper newsletters with personalized unsubscribes.</span>
+      </div>
+
+      <div class="form-group">
+        <label>Subject Line</label>
+        <input type="text" id="bccSubject" placeholder="Subject of your email...">
+      </div>
+
+      <div class="form-group">
+        <label>HTML Body (paste your styled HTML)</label>
+        <textarea id="bccBody" placeholder="&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;  &lt;body&gt;&#10;    &lt;p&gt;Your email body here...&lt;/p&gt;&#10;  &lt;/body&gt;&#10;&lt;/html&gt;" style="min-height:280px;font-family:'SF Mono','Fira Code',monospace;font-size:.82rem;line-height:1.6;resize:vertical"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>BCC Recipients (paste emails &mdash; comma, space, or newline separated)</label>
+        <textarea id="bccList" placeholder="alice@example.com, bob@example.com&#10;carol@example.com&#10;..." style="min-height:160px;font-family:'SF Mono','Fira Code',monospace;font-size:.82rem;line-height:1.6;resize:vertical"></textarea>
+        <div style="font-size:.75rem;color:var(--text-muted);margin-top:6px" id="bccCount">0 recipients &middot; 0 batches</div>
+      </div>
+
+      <div class="form-group">
+        <label>"To" Address (visible to recipients &mdash; usually your own address)</label>
+        <input type="email" id="bccToAddr" placeholder="aziz@azizsaif.com">
+        <div style="font-size:.75rem;color:var(--text-muted);margin-top:6px">Resend requires a "To" header. Your address is used so the BCC list stays hidden.</div>
+      </div>
+
+      <div class="compose-actions">
+        <button class="btn btn-gold" onclick="sendBccBulk()">Send to All (BCC, batched 50)</button>
+        <button class="btn btn-outline" onclick="sendBccTest()">Send Test to Me</button>
+        <button class="btn btn-outline" onclick="previewBccHtml()">Preview HTML</button>
+      </div>
+
+      <div id="bccPreviewWrap" style="display:none;margin-top:24px">
+        <div class="compose-preview"><div class="preview-header">HTML Preview</div><iframe id="bccPreviewFrame" style="width:100%;min-height:450px;border:none;background:#fff"></iframe></div>
       </div>
     </div>
   </div>
@@ -525,6 +568,11 @@ function switchTab(name) {
   if (name === 'subscribers') { currentPage = 1; loadSubscribers(); }
   if (name === 'dashboard') loadDashboard();
   if (name === 'settings') { loadSettings(); loadCampaigns(); }
+  if (name === 'bcc') {
+    const toEl = document.getElementById('bccToAddr');
+    if (toEl && !toEl.value) toEl.value = document.getElementById('userEmail').textContent || '';
+    refreshBccCount();
+  }
 }
 
 // ========== DASHBOARD ==========
@@ -1080,6 +1128,136 @@ async function testConnection() {
     showToast('Network error: ' + e.message, 'error');
   }
 }
+
+// ========== BCC BULK ==========
+const BCC_BATCH = 50;
+
+function parseBccList(raw) {
+  if (!raw) return [];
+  const re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
+  const matches = raw.match(re) || [];
+  const seen = new Set();
+  const out = [];
+  for (const m of matches) {
+    const e = m.toLowerCase();
+    if (!seen.has(e)) { seen.add(e); out.push(e); }
+  }
+  return out;
+}
+
+function refreshBccCount() {
+  const list = parseBccList(document.getElementById('bccList').value);
+  const batches = Math.ceil(list.length / BCC_BATCH);
+  document.getElementById('bccCount').textContent =
+    `${list.length} unique recipient${list.length === 1 ? '' : 's'} · ${batches} batch${batches === 1 ? '' : 'es'} of up to ${BCC_BATCH}`;
+}
+
+function previewBccHtml() {
+  const html = document.getElementById('bccBody').value;
+  if (!html.trim()) { showToast('Paste HTML first.', 'error'); return; }
+  const wrap = document.getElementById('bccPreviewWrap');
+  wrap.style.display = 'block';
+  const frame = document.getElementById('bccPreviewFrame');
+  const doc = frame.contentDocument || frame.contentWindow.document;
+  doc.open(); doc.write(html); doc.close();
+}
+
+async function sendBccTest() {
+  const subject = document.getElementById('bccSubject').value.trim();
+  const html = document.getElementById('bccBody').value.trim();
+  if (!subject || !html) { showToast('Subject and HTML body are required.', 'error'); return; }
+  const config = await getResendConfig();
+  if (!config.resendKey) { alert('Add your Resend API key in Settings first.'); return; }
+  const me = document.getElementById('userEmail').textContent;
+  try {
+    const resp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${config.resendKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: `${config.senderName} <${config.senderEmail}>`,
+        to: [me],
+        subject: `[TEST] ${subject}`,
+        html
+      })
+    });
+    if (resp.ok) showToast(`Test sent to ${me}`);
+    else { const err = await resp.json().catch(() => ({})); showToast('Test failed: ' + (err.message || resp.statusText), 'error'); }
+  } catch (e) { showToast('Network error: ' + e.message, 'error'); }
+}
+
+async function sendBccBulk() {
+  const subject = document.getElementById('bccSubject').value.trim();
+  const html = document.getElementById('bccBody').value.trim();
+  const list = parseBccList(document.getElementById('bccList').value);
+  let toAddr = document.getElementById('bccToAddr').value.trim().toLowerCase();
+
+  if (!subject || !html) { showToast('Subject and HTML body are required.', 'error'); return; }
+  if (list.length === 0) { showToast('No valid recipient emails found.', 'error'); return; }
+
+  const config = await getResendConfig();
+  if (!config.resendKey) { alert('Add your Resend API key in Settings first.'); return; }
+  if (!toAddr) toAddr = (config.senderEmail || document.getElementById('userEmail').textContent);
+
+  const batches = [];
+  for (let i = 0; i < list.length; i += BCC_BATCH) batches.push(list.slice(i, i + BCC_BATCH));
+
+  if (!confirm(`Send "${subject}"\n\nTo: ${toAddr}\nBCC: ${list.length} recipient(s) across ${batches.length} batch(es) of up to ${BCC_BATCH}.\n\nProceed?`)) return;
+
+  const overlay = document.getElementById('progressOverlay');
+  const fill = document.getElementById('progressFill');
+  const text = document.getElementById('progressText');
+  document.querySelector('#progressOverlay h3').textContent = 'Sending BCC Bulk';
+  overlay.classList.add('visible');
+
+  let okBatches = 0, failBatches = 0, sent = 0, failed = 0;
+
+  for (let i = 0; i < batches.length; i++) {
+    const batch = batches[i];
+    try {
+      const resp = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${config.resendKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: `${config.senderName} <${config.senderEmail}>`,
+          to: [toAddr],
+          bcc: batch,
+          subject,
+          html
+        })
+      });
+      if (resp.ok) { okBatches++; sent += batch.length; }
+      else { failBatches++; failed += batch.length; const err = await resp.json().catch(() => ({})); console.error('Batch', i + 1, 'failed:', err); }
+    } catch (e) {
+      failBatches++; failed += batch.length;
+      console.error('Batch', i + 1, 'network error:', e);
+    }
+    const pct = Math.round(((i + 1) / batches.length) * 100);
+    fill.style.width = pct + '%';
+    text.textContent = `Batch ${i + 1} of ${batches.length} · ${sent} sent${failed ? ` · ${failed} failed` : ''}`;
+    // Tiny pause between batches to avoid rate limits
+    if (i < batches.length - 1) await new Promise(r => setTimeout(r, 250));
+  }
+
+  // Save campaign record
+  await sb.from('campaigns').insert({
+    subject: `[BCC] ${subject}`,
+    html_body: html,
+    created_at: new Date().toISOString(),
+    sent_at: new Date().toISOString(),
+    sent_count: sent
+  });
+
+  overlay.classList.remove('visible');
+  fill.style.width = '0%';
+  document.querySelector('#progressOverlay h3').textContent = 'Sending Campaign';
+  showToast(`BCC bulk done: ${sent} sent, ${failed} failed across ${batches.length} batch(es).`, failed ? 'error' : 'success');
+  loadCampaigns();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const bccList = document.getElementById('bccList');
+  if (bccList) bccList.addEventListener('input', refreshBccCount);
+});
 
 // ========== CAMPAIGNS ==========
 async function loadCampaigns() {
