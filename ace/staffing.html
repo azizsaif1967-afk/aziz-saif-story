@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hire with ACE MC — AI-assisted workforce briefs | Ace Management Concepts</title>
+<meta name="description" content="Tell us about your workforce need. ACE MC's AI assistant drafts a complete, UAE-compliant staffing brief in seconds — construction, warehouse, hospitality, facility management or executive search." />
+<link rel="icon" type="image/svg+xml" href="logo.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar"><span>&#9670;</span> HIRE WITH AMC &nbsp;&middot;&nbsp; AI-ASSISTED WORKFORCE BRIEFS &nbsp;&middot;&nbsp; DUBAI &middot; UAE <span>&#9670;</span></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand-lockup" href="index.html">
+      <img class="brand-logo" src="logo.svg" alt="Ace Management Concepts" />
+      <div class="brand-text">
+        <div class="brand-name">Ace Management <em>Concepts</em></div>
+        <div class="brand-sub">HR &middot; Strategy &middot; People &middot; Systems</div>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#leadership">Dr. Aftab</a></li>
+        <li><a href="blog.html">Insights</a></li>
+        <li><a href="staffing.html" style="color:#fff;border-bottom:1px solid var(--gold-light)">Hire with us</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hire-hero">
+  <div class="container">
+    <div class="section-eyebrow">&#9670; Staff a project &middot; AI-assisted</div>
+    <h1 class="section-title">Tell us about your <em>workforce need.</em></h1>
+    <p class="section-lede">Use the assistant below to draft a complete UAE-compliant staffing brief in seconds &mdash; or write your own. We reply with shortlisted candidates and a fixed-scope quote within one business day.</p>
+  </div>
+</section>
+
+<section class="section hire-shell">
+  <div class="container">
+    <form class="hire-form" id="hireForm" autocomplete="on">
+
+      <!-- Chips -->
+      <div class="field">
+        <label class="field-label">Choose a preset &middot; <span class="field-hint">we&apos;ll draft the brief for you</span></label>
+        <div class="chip-row" role="tablist">
+          <button type="button" class="chip" data-role="construction" data-icon="&#9873;">Construction crew</button>
+          <button type="button" class="chip" data-role="warehouse"    data-icon="&#9636;">Warehouse team</button>
+          <button type="button" class="chip" data-role="hospitality"  data-icon="&#9749;">Hospitality staff</button>
+          <button type="button" class="chip" data-role="facility"     data-icon="&#9881;">Facility technicians</button>
+          <button type="button" class="chip" data-role="executive"    data-icon="&#9734;">Executive search</button>
+          <button type="button" class="chip chip-custom" data-role="custom" data-icon="+">Custom brief</button>
+        </div>
+      </div>
+
+      <!-- Brief textarea -->
+      <div class="field">
+        <label class="field-label" for="briefBox">Your workforce brief</label>
+        <div class="brief-wrap">
+          <textarea id="briefBox" name="brief" rows="10" placeholder="Pick a preset above, click &quot;AI Assist &mdash; Draft for me&quot;, or type your own brief here&hellip;" required></textarea>
+          <div class="brief-meta">
+            <span id="charCount">0 chars</span>
+            <span id="aiBadge" class="ai-badge" hidden>&#9670; AI draft ready &mdash; you can edit</span>
+          </div>
+        </div>
+        <div class="brief-actions">
+          <button type="button" id="aiDraftBtn" class="btn-ai" disabled>
+            <span class="ai-spark">&#10022;</span>
+            <span>AI Assist &mdash; Draft for me</span>
+          </button>
+          <button type="button" id="clearBtn" class="btn-ghost-sm">Clear</button>
+        </div>
+      </div>
+
+      <!-- Contact fields -->
+      <div class="field-grid">
+        <div class="field"><label>Your name<input type="text" name="name" required placeholder="Full name" autocomplete="name" /></label></div>
+        <div class="field"><label>Company<input type="text" name="company" required placeholder="Company" autocomplete="organization" /></label></div>
+        <div class="field"><label>Work email<input type="email" name="email" required placeholder="you@company.com" autocomplete="email" /></label></div>
+        <div class="field"><label>Mobile<input type="tel" name="mobile" required placeholder="+971 50 000 0000" autocomplete="tel" /></label></div>
+        <div class="field"><label>No. of positions
+          <select name="positions" required>
+            <option value="">Select&hellip;</option>
+            <option>1</option><option>2&ndash;5</option><option>6&ndash;20</option>
+            <option>21&ndash;50</option><option>51&ndash;200</option><option>200+</option>
+          </select>
+        </label></div>
+        <div class="field"><label>When do you need them?
+          <select name="urgency" required>
+            <option value="">Select&hellip;</option>
+            <option>This week</option><option>Within 2 weeks</option>
+            <option>Within 1 month</option><option>1&ndash;3 months</option>
+            <option>Flexible / exploratory</option>
+          </select>
+        </label></div>
+      </div>
+
+      <!-- Hidden metadata for FormSubmit -->
+      <input type="hidden" name="_subject" value="New staffing brief &middot; ACE MC website" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="source_page" value="staffing.html" />
+      <input type="hidden" name="selected_preset" id="selectedPreset" value="" />
+
+      <div class="submit-row">
+        <button type="submit" class="btn-primary">
+          Send brief to Dr. Aftab&rsquo;s team
+          <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <div class="submit-status" id="submitStatus" aria-live="polite"></div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- AI Wizard Modal -->
+<div id="aiWizard" class="wiz">
+  <div class="wiz-backdrop" data-close></div>
+  <div class="wiz-card" role="dialog" aria-modal="true" aria-labelledby="wizTitle">
+    <button class="wiz-close" data-close aria-label="Close">&times;</button>
+    <div class="wiz-kicker">&#9670; AI Assist</div>
+    <h2 id="wizTitle" class="wiz-title">Four quick questions &mdash; <em>then I&rsquo;ll draft your brief.</em></h2>
+    <div class="wiz-progress"><span class="wiz-dot active"></span><span class="wiz-dot"></span><span class="wiz-dot"></span><span class="wiz-dot"></span></div>
+
+    <div class="wiz-step" data-step="1">
+      <label>1 &middot; Location of the work</label>
+      <div class="wiz-choices">
+        <button class="wiz-choice" data-val="Dubai">Dubai</button>
+        <button class="wiz-choice" data-val="Abu Dhabi">Abu Dhabi</button>
+        <button class="wiz-choice" data-val="Sharjah">Sharjah</button>
+        <button class="wiz-choice" data-val="Multi-emirate">Multi-emirate</button>
+        <button class="wiz-choice" data-val="Remote">Remote / hybrid</button>
+      </div>
+    </div>
+
+    <div class="wiz-step" data-step="2" hidden>
+      <label>2 &middot; How many people?</label>
+      <div class="wiz-choices">
+        <button class="wiz-choice" data-val="1">1</button>
+        <button class="wiz-choice" data-val="2&ndash;5">2&ndash;5</button>
+        <button class="wiz-choice" data-val="6&ndash;20">6&ndash;20</button>
+        <button class="wiz-choice" data-val="21&ndash;50">21&ndash;50</button>
+        <button class="wiz-choice" data-val="50+">50+</button>
+      </div>
+    </div>
+
+    <div class="wiz-step" data-step="3" hidden>
+      <label>3 &middot; Timeline</label>
+      <div class="wiz-choices">
+        <button class="wiz-choice" data-val="This week">This week</button>
+        <button class="wiz-choice" data-val="Within 2 weeks">Within 2 weeks</button>
+        <button class="wiz-choice" data-val="Within 1 month">Within 1 month</button>
+        <button class="wiz-choice" data-val="1&ndash;3 months">1&ndash;3 months</button>
+      </div>
+    </div>
+
+    <div class="wiz-step" data-step="4" hidden>
+      <label>4 &middot; Contract type</label>
+      <div class="wiz-choices">
+        <button class="wiz-choice" data-val="Full-time permanent">Full-time permanent</button>
+        <button class="wiz-choice" data-val="Fixed-term contract">Fixed-term contract</button>
+        <button class="wiz-choice" data-val="Temporary / project">Temporary / project</button>
+        <button class="wiz-choice" data-val="Executive retained search">Executive retained search</button>
+      </div>
+    </div>
+
+    <div class="wiz-foot">
+      <button class="wiz-back" type="button" hidden>&larr; Back</button>
+      <span class="wiz-hint">Pick an option to continue &rarr;</span>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="f-brand">
+      <div class="brand-name">Ace Management <em>Concepts</em></div>
+      <p>Strategic HR &amp; management advisory. Dubai, UAE. Since 2013.</p>
+    </div>
+    <div><h5>Firm</h5><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#leadership">Dr. Aftab</a></li><li><a href="blog.html">Insights</a></li></ul></div>
+    <div><h5>Contact</h5><ul>
+      <li><a href="tel:+971507696221">Dr. Aftab &middot; +971 50 769 6221</a></li>
+      <li><a href="tel:+971551705560">Florina &middot; +971 55 170 5560</a></li>
+      <li><a href="mailto:aftab@acemcdubai.com">aftab@acemcdubai.com</a></li>
+    </ul></div>
+  </div>
+  <div class="f-bar">&copy; 2026 Ace Management Concepts LLC &middot; Dubai, UAE</div>
+</footer>
+
+<script src="staffing.js" defer></script>
+</body>
+</html>

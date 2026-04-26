@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>ACE MC · One-Page Flyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --ink:#0b1220; --ink-soft:#3a4a66; --paper:#fff;
+    --cream:#f1ead8; --cream-deep:#e9dec1;
+    --navy:#0e2a47; --navy-deep:#071a30;
+    --gold:#b58a34; --gold-light:#d7b36a; --gold-deep:#8a6418; --rule:#d9cdab;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5}
+  em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-light)}
+  .page{width:210mm;height:297mm;margin:0 auto;background:var(--paper);overflow:hidden;position:relative}
+
+  /* ====== HERO BAND ====== */
+  .hero{
+    height:78mm;padding:10mm 14mm 0;color:#fff;position:relative;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(181,138,52,.3), transparent 55%),
+      radial-gradient(ellipse at 90% 100%, rgba(215,179,106,.18), transparent 60%),
+      linear-gradient(135deg,#0e2a47 0%, #071a30 100%);
+    border-bottom:2mm double var(--gold)
+  }
+  .hero::before{content:"";position:absolute;left:6mm;top:6mm;right:6mm;bottom:8mm;border:0.3mm solid rgba(215,179,106,.28);pointer-events:none}
+  .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10mm;position:relative;z-index:2}
+  .hero-brand{display:flex;align-items:center;gap:6mm}
+  .hero-logo{width:28mm;height:28mm}
+  .hero-name{font-family:'Playfair Display',serif;color:#fff;font-size:32pt;font-weight:600;line-height:1;letter-spacing:-.01em;margin:0}
+  .hero-name em{color:var(--gold-light)}
+  .hero-sub{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-size:8pt;letter-spacing:.3em;text-transform:uppercase;margin-top:2.5mm}
+  .hero-seal{width:20mm;height:20mm;border:0.5mm solid var(--gold-light);border-radius:50%;display:grid;place-items:center;color:var(--gold-light);font-family:'Playfair Display',serif;font-size:9pt;letter-spacing:1px;text-align:center;line-height:1.2}
+  .hero-seal span{font-size:14pt;display:block;font-style:italic}
+  .hero-tag{margin-top:8mm;font-family:'Playfair Display',serif;font-size:34pt;line-height:1;color:#fff;font-weight:600;max-width:150mm;position:relative;z-index:2}
+  .hero-tag em{color:var(--gold-light)}
+  .hero-lede{margin-top:5mm;font-size:10pt;color:rgba(255,255,255,.82);max-width:140mm;line-height:1.55;position:relative;z-index:2}
+
+  /* ====== Stats strip ====== */
+  .stats{background:var(--cream-deep);border-bottom:0.3mm solid var(--gold);padding:5mm 14mm;display:grid;grid-template-columns:repeat(4,1fr);gap:8mm;text-align:center}
+  .stat b{display:block;font-family:'Playfair Display',serif;font-size:22pt;color:var(--navy-deep);line-height:1}
+  .stat span{font-family:'JetBrains Mono',monospace;font-size:6.5pt;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);margin-top:1mm;display:block}
+
+  /* ====== Concepts row ====== */
+  .section{padding:8mm 14mm 0}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:10mm;margin-bottom:4mm}
+  .sec-kicker{font-family:'JetBrains Mono',monospace;font-size:7.5pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep)}
+  .sec-title{font-family:'Playfair Display',serif;font-size:20pt;color:var(--navy-deep);font-weight:600;margin:0;line-height:1.1}
+  .sec-title em{color:var(--gold-deep);font-style:italic}
+
+  .concepts{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm;margin-top:3mm}
+  .concept{background:var(--cream);border:0.3mm solid var(--rule);border-top:1mm solid var(--gold);padding:4mm 3.5mm;min-height:30mm}
+  .concept-num{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.25em;color:var(--gold-deep);margin-bottom:1.5mm}
+  .concept h3{font-family:'Playfair Display',serif;font-size:12pt;color:var(--navy-deep);margin:0 0 1.5mm;line-height:1.15}
+  .concept p{font-size:7.5pt;color:var(--ink-soft);margin:0;line-height:1.5}
+
+  /* ====== Services grid ====== */
+  .services{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;margin-top:3mm}
+  .svc{background:var(--paper);border:0.3mm solid var(--rule);padding:3mm 3mm;display:flex;flex-direction:column;justify-content:space-between;min-height:22mm;position:relative}
+  .svc-num{font-family:'JetBrains Mono',monospace;font-size:6.5pt;letter-spacing:.24em;color:var(--gold-deep)}
+  .svc h4{font-family:'Playfair Display',serif;font-size:10pt;color:var(--navy-deep);margin:1mm 0 0;line-height:1.15;font-weight:600}
+
+  /* ====== Dr. Aftab strip ====== */
+  .leader{margin:8mm 14mm 0;padding:5mm 6mm;background:linear-gradient(135deg,#0e2a47 0%, #071a30 100%);color:#fff;display:grid;grid-template-columns:32mm 1fr;gap:6mm;border:0.3mm solid var(--gold);position:relative}
+  .leader::before{content:"";position:absolute;left:2mm;top:2mm;right:2mm;bottom:2mm;border:0.3mm solid rgba(215,179,106,.3);pointer-events:none}
+  .leader-avatar{width:32mm;height:32mm;border:0.5mm solid var(--gold-light);position:relative;overflow:hidden;background:var(--navy)}
+  .leader-avatar img{width:100%;height:100%;object-fit:cover}
+  .leader-body{position:relative;z-index:2}
+  .leader-name{font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:600;line-height:1.05;margin:0}
+  .leader-name em{color:var(--gold-light)}
+  .leader-title{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin:2mm 0 3mm}
+  .leader-bio{font-size:8pt;color:rgba(255,255,255,.82);line-height:1.55;margin:0}
+  .leader-cred{margin-top:3mm;display:flex;gap:4mm;flex-wrap:wrap}
+  .leader-cred span{font-family:'JetBrains Mono',monospace;font-size:6.5pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);border:0.3mm solid var(--gold);padding:1.5mm 3mm}
+
+  /* ====== Footer contact band ====== */
+  .foot{position:absolute;left:0;right:0;bottom:0;background:var(--cream);border-top:0.5mm solid var(--gold);padding:6mm 14mm;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:6mm}
+  .foot-col strong{display:block;font-family:'JetBrains Mono',monospace;font-size:6.5pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:1.5mm;font-weight:600}
+  .foot-col{font-size:8pt;color:var(--navy-deep);line-height:1.55}
+  .foot-col a{color:var(--navy-deep);text-decoration:none}
+  .foot-col.web{font-family:'Playfair Display',serif;font-size:12pt;color:var(--navy-deep);font-style:italic}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-brand">
+        <img class="hero-logo" src="../logo.svg" alt="ACE MC"/>
+        <div>
+          <div class="hero-name">Ace Management <em>Concepts</em></div>
+          <div class="hero-sub">◆ AMC · Dubai · Since 2013 · UAE 2040 Vision-Aligned</div>
+        </div>
+      </div>
+      <div class="hero-seal"><span>◆</span>Est.<br/>2013</div>
+    </div>
+    <div class="hero-tag">Transforming the <em>workplace</em>,<br/>one organisation at a time.</div>
+    <div class="hero-lede">Strategic HR &amp; management consultancy based in Deira, Dubai. We partner with founders, boards and HR leaders across the UAE and wider GCC to redesign their business model, culture, strategy, people and systems.</div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat"><b>400+</b><span>Clients · GCC</span></div>
+    <div class="stat"><b>25+</b><span>Industries served</span></div>
+    <div class="stat"><b>12</b><span>Years in practice</span></div>
+    <div class="stat"><b>60k+</b><span>Employees touched</span></div>
+  </section>
+
+  <!-- CONCEPTS -->
+  <section class="section">
+    <div class="sec-head">
+      <div><div class="sec-kicker">◆ How we work</div><h2 class="sec-title">Five concepts that shape <em>every engagement.</em></h2></div>
+    </div>
+    <div class="concepts">
+      <div class="concept"><div class="concept-num">01</div><h3>Business Model</h3><p>How the firm actually makes money — every HR decision downstream depends on it.</p></div>
+      <div class="concept"><div class="concept-num">02</div><h3>Culture</h3><p>Behaviours, not values-posters — the culture you have, not the one described.</p></div>
+      <div class="concept"><div class="concept-num">03</div><h3>Strategy</h3><p>Translate the 3-year business plan into a 3-year people plan.</p></div>
+      <div class="concept"><div class="concept-num">04</div><h3>People</h3><p>Hiring, performance &amp; development redesigned as one connected flow.</p></div>
+      <div class="concept"><div class="concept-num">05</div><h3>Systems</h3><p>HRIS · payroll · WPS · learning — the plumbing that accelerates your strategy.</p></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="sec-head">
+      <div><div class="sec-kicker">◆ What we do</div><h2 class="sec-title">Ten <em>practice areas.</em></h2></div>
+    </div>
+    <div class="services">
+      <div class="svc"><div class="svc-num">01</div><h4>HR Consulting</h4></div>
+      <div class="svc"><div class="svc-num">02</div><h4>Policy &amp; Handbook</h4></div>
+      <div class="svc"><div class="svc-num">03</div><h4>Agile Talent</h4></div>
+      <div class="svc"><div class="svc-num">04</div><h4>Organisational Design</h4></div>
+      <div class="svc"><div class="svc-num">05</div><h4>Performance Mgmt</h4></div>
+      <div class="svc"><div class="svc-num">06</div><h4>Compensation</h4></div>
+      <div class="svc"><div class="svc-num">07</div><h4>Learning &amp; Development</h4></div>
+      <div class="svc"><div class="svc-num">08</div><h4>Emiratisation Advisory</h4></div>
+      <div class="svc"><div class="svc-num">09</div><h4>HR Audits &amp; Compliance</h4></div>
+      <div class="svc"><div class="svc-num">10</div><h4>Culture &amp; Engagement</h4></div>
+    </div>
+  </section>
+
+  <!-- LEADER -->
+  <div class="leader">
+    <div class="leader-avatar leader-mono">
+      <img class="leader-mono-logo" src="../logo.svg" alt="ACE MC"/>
+      <div class="leader-mono-initials">A·A</div>
+      <div class="leader-mono-label">Dr. Aftab Ahmed</div>
+    </div>
+    <div class="leader-body">
+      <div class="leader-name">Dr. Aftab <em>Ahmed</em></div>
+      <div class="leader-title">Director · Ace Management Concepts · Ph.D. Consumer Behavior</div>
+      <p class="leader-bio">Over six years as Director Consultant at Galaxy BNI, North Dubai and more than a decade leading ACE MC. Specialises in business strategy, DEI, team-building, organisational culture and decision-making. Visiting Professor at leading universities in the UAE and India for 9+ years.</p>
+      <div class="leader-cred">
+        <span>◆ 10+ yrs · ACE MC</span>
+        <span>◆ 6+ yrs · Galaxy BNI</span>
+        <span>◆ 9+ yrs · Visiting Prof.</span>
+        <span>◆ 26K+ LinkedIn</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="foot-col">
+      <strong>Office</strong>
+      MB-20, Mezzanine Floor, City Avenue Building<br/>
+      Opposite Deira City Centre, Port Saeed<br/>
+      P.O. Box 47942 · Deira · Dubai · UAE
+    </div>
+    <div class="foot-col">
+      <strong>Talk to us</strong>
+      Mobile · <a href="tel:+971507696221">+971 50 769 6221</a><br/>
+      Tel · <a href="tel:+97145465799">04-5465799</a><br/>
+      <a href="mailto:aftab@acemcdubai.com">aftab@acemcdubai.com</a>
+    </div>
+    <div class="foot-col web">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:6.5pt;color:var(--gold-deep);letter-spacing:.24em;font-style:normal;text-transform:uppercase">Online</strong>
+      www.acemcdubai.com<br/>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;letter-spacing:.1em;font-style:normal">LinkedIn · BNI Galaxy · WhatsApp</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

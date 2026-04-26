@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>ACE MC · Letterhead — Aftab Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --ink:#0b1220; --ink-soft:#3a4a66;
+    --paper:#fff; --cream:#f1ead8;
+    --navy:#0e2a47; --navy-deep:#071a30;
+    --gold:#b58a34; --gold-light:#d7b36a; --gold-deep:#8a6418;
+    --rule:#d9cdab;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6}
+  em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-deep)}
+
+  .page{width:210mm;min-height:297mm;margin:0 auto;background:var(--paper);padding:0 22mm 22mm;display:flex;flex-direction:column}
+
+  /* ===== HEADER BAND ===== */
+  .lh-band{
+    margin:0 -22mm 0;padding:14mm 22mm 10mm;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(181,138,52,.25), transparent 55%),
+      radial-gradient(ellipse at 80% 100%, rgba(215,179,106,.15), transparent 60%),
+      linear-gradient(180deg,#0e2a47 0%, #071a30 100%);
+    color:#f1e4bf;border-bottom:2.5mm double var(--gold);position:relative
+  }
+  .lh-band::before{content:"";position:absolute;left:6mm;right:6mm;top:6mm;bottom:6mm;border-top:1px solid rgba(215,179,106,.35);border-bottom:1px solid rgba(215,179,106,.35);pointer-events:none}
+  .lh-top{display:flex;align-items:center;justify-content:space-between;gap:14mm;position:relative;z-index:2}
+  .lh-brand{display:flex;align-items:center;gap:6mm}
+  .lh-logo{width:22mm;height:22mm;flex-shrink:0}
+  .lh-name{font-family:'Playfair Display',serif;color:#fff;font-size:28pt;font-weight:600;line-height:1.02;letter-spacing:-.01em;margin:0}
+  .lh-name em{color:var(--gold-light)}
+  .lh-sub{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-size:8pt;letter-spacing:.32em;text-transform:uppercase;margin-top:2mm}
+  .lh-tag{text-align:right;font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-size:7.5pt;letter-spacing:.3em;text-transform:uppercase;line-height:1.8}
+  .lh-tag strong{color:#fff;font-weight:500}
+
+  /* ===== Contact strip (right-aligned, navy band footer of header) ===== */
+  .lh-contact{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;margin-top:6mm;padding-top:5mm;border-top:1px solid rgba(215,179,106,.3);position:relative;z-index:2}
+  .lh-contact div{font-size:8pt;line-height:1.5;color:rgba(255,255,255,.85)}
+  .lh-contact strong{display:block;font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5mm;font-weight:600}
+
+  /* ===== Body ===== */
+  .lh-body{flex:1;padding:16mm 2mm 0;font-size:11pt;line-height:1.75;color:var(--ink)}
+  .lh-body .placeholder{color:#9aa3b2;font-style:italic;font-size:10pt}
+
+  /* ===== Footer ===== */
+  .lh-foot{margin:0 -22mm;padding:7mm 22mm 9mm;border-top:0.6mm solid var(--gold);background:var(--cream);display:flex;align-items:center;justify-content:space-between;gap:8mm;position:relative}
+  .lh-foot::before{content:"";position:absolute;top:-2mm;left:0;right:0;height:0.4mm;background:var(--gold-deep)}
+  .lh-foot .addr{font-size:8.5pt;color:var(--navy-deep);line-height:1.55;max-width:120mm}
+  .lh-foot .meta{text-align:right;font-family:'JetBrains Mono',monospace;font-size:7.5pt;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
+  .lh-foot .meta strong{display:block;color:var(--navy-deep);font-size:10pt;font-family:'Playfair Display',serif;font-style:italic;letter-spacing:0;text-transform:none;margin-bottom:1mm}
+  .lh-foot .seal{width:14mm;height:14mm;border:0.5mm solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold-deep);font-family:'Playfair Display',serif;font-size:13pt;font-weight:600;background:#fff}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER BAND -->
+  <header class="lh-band">
+    <div class="lh-top">
+      <div class="lh-brand">
+        <img class="lh-logo" src="../logo.svg" alt="ACE MC"/>
+        <div>
+          <div class="lh-name">Ace Management <em>Concepts</em></div>
+          <div class="lh-sub">AMC · HR · Strategy · People · Systems · Since 2013</div>
+        </div>
+      </div>
+      <div class="lh-tag">
+        <strong>Dubai · UAE</strong><br/>
+        Transforming<br/>the Workplace
+      </div>
+    </div>
+
+    <div class="lh-contact">
+      <div><strong>Office</strong>MB-20, Mezzanine Floor<br/>City Avenue Building<br/>Opposite Deira City Centre<br/>Port Saeed, Deira, Dubai</div>
+      <div><strong>Telephone</strong>Mobile · +971 50 769 6221<br/>Landline · 04-5465799<br/>P.O. Box 47942 · Dubai · UAE</div>
+      <div><strong>Online</strong>aftab@acemcdubai.com<br/>www.acemcdubai.com<br/>LinkedIn · in/aftab-ahmed-06759b10</div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <main class="lh-body">
+    <p class="placeholder">[ Date ]</p>
+    <p class="placeholder">[ Recipient name ]<br/>[ Company ]<br/>[ Address ]</p>
+    <p class="placeholder">Dear [ Name ],</p>
+    <p class="placeholder">[ Body of the letter. This template is pre-formatted — just replace this text with your content. Margins, header and footer are print-safe at A4. ]</p>
+    <p class="placeholder">Yours sincerely,</p>
+    <div style="margin-top:14mm">
+      <p style="font-family:'Playfair Display',serif;font-size:16pt;margin:0;color:var(--navy-deep)"><em>Dr. Aftab Ahmed</em></p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);margin:1mm 0 0">Director · Ace Management Concepts</p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="lh-foot">
+    <div class="addr">
+      <strong style="color:var(--navy-deep);font-family:'Playfair Display',serif;font-size:11pt;font-weight:600">Ace Management Concepts LLC</strong><br/>
+      MB-20, Mezzanine Floor, City Avenue Building, Opposite Deira City Centre, Port Saeed, Deira · P.O. Box 47942 · Dubai · UAE
+    </div>
+    <div class="seal">◆</div>
+    <div class="meta">
+      <strong>www.acemcdubai.com</strong>
+      +971 50 769 6221 · 04-5465799<br/>
+      aftab@acemcdubai.com
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

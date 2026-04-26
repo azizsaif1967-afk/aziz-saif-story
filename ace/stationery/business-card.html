@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>ACE MC · Business Card — Dr. Aftab Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Print target: A4 with two 85 x 55 mm cards (front + back) */
+  @page { size: A4; margin: 0; }
+  :root{
+    --navy:#0e2a47; --navy-deep:#071a30;
+    --gold:#b58a34; --gold-light:#d7b36a; --gold-deep:#8a6418;
+    --cream:#f1ead8; --ink:#0b1220; --ink-soft:#3a4a66; --rule:#d9cdab;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{margin:0;padding:0;background:#eee;font-family:'Inter',sans-serif;color:var(--ink)}
+  em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-light)}
+
+  .sheet{width:210mm;height:297mm;padding:30mm 60mm;background:#eee;display:flex;flex-direction:column;align-items:center;gap:12mm}
+
+  /* ===== Card base ===== */
+  .card{width:85mm;height:55mm;overflow:hidden;position:relative;box-shadow:0 4mm 10mm rgba(0,0,0,.15)}
+
+  /* ===== FRONT ===== */
+  .front{
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(181,138,52,.35), transparent 55%),
+      radial-gradient(ellipse at 85% 100%, rgba(215,179,106,.2), transparent 60%),
+      linear-gradient(135deg,#0e2a47 0%, #071a30 100%);
+    color:#fff;padding:6mm 7mm;display:flex;align-items:center;justify-content:space-between;gap:5mm
+  }
+  .front::before{content:"";position:absolute;left:2.5mm;top:2.5mm;right:2.5mm;bottom:2.5mm;border:0.4mm solid rgba(215,179,106,.45);pointer-events:none}
+  .front::after{content:"";position:absolute;left:4mm;top:4mm;right:4mm;bottom:4mm;border:0.3mm solid rgba(215,179,106,.25);pointer-events:none}
+  .front-left{display:flex;flex-direction:column;gap:2mm;position:relative;z-index:2}
+  .front-logo{width:16mm;height:16mm}
+  .front-brand{font-family:'Playfair Display',serif;font-size:11pt;line-height:1;color:#fff;font-weight:600}
+  .front-brand em{color:var(--gold-light)}
+  .front-abbr{font-family:'JetBrains Mono',monospace;font-size:6pt;letter-spacing:.32em;color:var(--gold-light);text-transform:uppercase;margin-top:1mm}
+
+  .front-right{text-align:right;position:relative;z-index:2}
+  .name{font-family:'Playfair Display',serif;font-size:18pt;line-height:1;color:#fff;font-weight:600;letter-spacing:-.01em}
+  .name em{color:var(--gold-light);font-style:italic}
+  .title{font-family:'JetBrains Mono',monospace;font-size:6.5pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-top:2mm;line-height:1.5}
+
+  /* ===== BACK ===== */
+  .back{background:var(--cream);padding:6mm 7mm;display:flex;gap:5mm;color:var(--ink)}
+  .back::before{content:"";position:absolute;left:2.5mm;top:2.5mm;right:2.5mm;bottom:2.5mm;border:0.4mm solid var(--gold);pointer-events:none}
+  .back::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2.5mm;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%)}
+  .back-left{width:28%;display:flex;flex-direction:column;justify-content:space-between;padding-left:2mm;position:relative;z-index:2}
+  .back-logo{width:14mm;height:14mm}
+  .back-seal{font-family:'JetBrains Mono',monospace;font-size:6pt;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);line-height:1.5}
+  .back-seal strong{display:block;font-family:'Playfair Display',serif;font-size:10pt;font-style:italic;color:var(--navy-deep);letter-spacing:0;text-transform:none;margin-bottom:1mm}
+  .back-right{flex:1;font-size:7.5pt;line-height:1.55;color:var(--ink-soft);position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:1.2mm}
+  .back-row{display:flex;gap:2.5mm;align-items:flex-start}
+  .back-ico{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--navy);color:var(--gold-light);display:grid;place-items:center;font-size:6pt;font-family:'JetBrains Mono',monospace;flex-shrink:0;margin-top:0.3mm}
+  .back-row strong{color:var(--navy-deep);font-weight:500}
+  .back-web{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.08em;color:var(--gold-deep);font-weight:600}
+
+  /* labels */
+  .label{position:absolute;top:6mm;right:-20mm;font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.32em;text-transform:uppercase;color:#888}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- Card FRONT -->
+  <div class="card front">
+    <div class="front-left">
+      <img class="front-logo" src="../logo.svg" alt="ACE MC"/>
+      <div>
+        <div class="front-brand">Ace Management<br/><em>Concepts</em></div>
+        <div class="front-abbr">◆ AMC · Dubai · Since 2013</div>
+      </div>
+    </div>
+    <div class="front-right">
+      <div class="name">Dr. Aftab <em>Ahmed</em></div>
+      <div class="title">
+        Director · Ace Management Concepts<br/>
+        Ph.D. Consumer Behavior<br/>
+        Director Consultant · Galaxy BNI, N. Dubai
+      </div>
+    </div>
+    <span class="label">FRONT</span>
+  </div>
+
+  <!-- Card BACK -->
+  <div class="card back">
+    <div class="back-left">
+      <img class="back-logo" src="../logo.svg" alt="ACE MC"/>
+      <div class="back-seal">
+        <strong>AMC</strong>
+        Est. 2013<br/>Dubai · UAE
+      </div>
+    </div>
+    <div class="back-right">
+      <div class="back-row"><span class="back-ico">M</span><span><strong>+971 50 769 6221</strong> &nbsp;·&nbsp; +971 4 546 5799</span></div>
+      <div class="back-row"><span class="back-ico">@</span><span>aftab@acemcdubai.com</span></div>
+      <div class="back-row"><span class="back-ico">W</span><span class="back-web">www.acemcdubai.com</span></div>
+      <div class="back-row"><span class="back-ico">L</span><span>linkedin.com/in/aftab-ahmed-06759b10</span></div>
+      <div class="back-row" style="margin-top:1mm;border-top:0.3mm dashed var(--rule);padding-top:1.5mm">
+        <span class="back-ico" style="background:var(--gold);color:#fff">◆</span>
+        <span style="font-size:6.8pt;line-height:1.45">MB-20, Mezzanine Floor, City Avenue Building<br/>Opposite Deira City Centre, Port Saeed<br/>P.O. Box 47942, Deira, Dubai, UAE</span>
+      </div>
+    </div>
+    <span class="label">BACK</span>
+  </div>
+
+</div>
+
+</body>
+</html>
