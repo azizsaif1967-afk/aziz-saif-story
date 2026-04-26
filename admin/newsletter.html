@@ -351,8 +351,15 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
       </div>
 
       <div class="form-group">
-        <label>BCC Recipients (paste emails &mdash; comma, space, or newline separated)</label>
-        <textarea id="bccList" placeholder="alice@example.com, bob@example.com&#10;carol@example.com&#10;..." style="min-height:160px;font-family:'SF Mono','Fira Code',monospace;font-size:.82rem;line-height:1.6;resize:vertical"></textarea>
+        <label>BCC Recipients</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+          <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('bccFile').click()">Import from File</button>
+          <input type="file" id="bccFile" accept=".csv,.txt,.tsv,.eml,text/*" multiple style="display:none" onchange="importBccFile(event)">
+          <button type="button" class="btn btn-outline btn-sm" onclick="importFromSubscribers()">Import Verified Subscribers</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="dedupeBccList()">Dedupe &amp; Clean</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('bccList').value='';refreshBccCount();">Clear</button>
+        </div>
+        <textarea id="bccList" placeholder="alice@example.com, bob@example.com&#10;carol@example.com&#10;...&#10;&#10;Or click 'Import from File' above to upload a CSV/TXT file (any column layout — emails are auto-extracted)." style="min-height:180px;font-family:'SF Mono','Fira Code',monospace;font-size:.82rem;line-height:1.6;resize:vertical"></textarea>
         <div style="font-size:.75rem;color:var(--text-muted);margin-top:6px" id="bccCount">0 recipients &middot; 0 batches</div>
       </div>
 
@@ -367,6 +374,9 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
         <button class="btn btn-outline" onclick="sendBccTest()">Send Test to Me</button>
         <button class="btn btn-outline" onclick="previewBccHtml()">Preview HTML</button>
       </div>
+
+      <!-- Persistent error / status panel -->
+      <div id="bccStatus" style="display:none;margin-top:20px;padding:16px 20px;border-radius:var(--radius);font-size:.86rem;line-height:1.55;white-space:pre-wrap;font-family:inherit"></div>
 
       <div id="bccPreviewWrap" style="display:none;margin-top:24px">
         <div class="compose-preview"><div class="preview-header">HTML Preview</div><iframe id="bccPreviewFrame" style="width:100%;min-height:450px;border:none;background:#fff"></iframe></div>
@@ -1154,6 +1164,79 @@ async function testConnection() {
 // ========== BCC BULK ==========
 const BCC_BATCH = 50;
 
+function showBccStatus(html, kind = 'error') {
+  const el = document.getElementById('bccStatus');
+  if (!el) return;
+  const colors = {
+    error:   { bg: 'rgba(239,68,68,.12)', border: 'rgba(239,68,68,.3)', text: '#fca5a5' },
+    success: { bg: 'rgba(34,197,94,.12)', border: 'rgba(34,197,94,.3)', text: '#86efac' },
+    info:    { bg: 'rgba(59,130,246,.12)', border: 'rgba(59,130,246,.3)', text: '#93c5fd' }
+  };
+  const c = colors[kind] || colors.error;
+  el.style.background = c.bg;
+  el.style.border = `1px solid ${c.border}`;
+  el.style.color = c.text;
+  el.innerHTML = html;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function hideBccStatus() { const el = document.getElementById('bccStatus'); if (el) el.style.display = 'none'; }
+
+async function importBccFile(event) {
+  const files = Array.from(event.target.files || []);
+  if (!files.length) return;
+  let combined = '';
+  for (const f of files) {
+    try {
+      const text = await f.text();
+      combined += '\n' + text;
+    } catch (e) {
+      showBccStatus(`Could not read file <strong>${escapeHtml(f.name)}</strong>: ${escapeHtml(e.message)}`);
+    }
+  }
+  const found = parseBccList(combined);
+  if (!found.length) {
+    showBccStatus(`No email addresses found in the file(s). Make sure they contain text-readable emails (CSV, TXT, TSV all work).`);
+    event.target.value = '';
+    return;
+  }
+  // Merge with existing — dedupe
+  const existing = parseBccList(document.getElementById('bccList').value);
+  const merged = parseBccList(existing.join('\n') + '\n' + found.join('\n'));
+  document.getElementById('bccList').value = merged.join('\n');
+  refreshBccCount();
+  showBccStatus(`Imported <strong>${found.length}</strong> email(s) from ${files.length} file(s). Total unique recipients now: <strong>${merged.length}</strong>.`, 'success');
+  event.target.value = '';
+}
+
+async function importFromSubscribers() {
+  try {
+    const { data, error } = await sb.from('subscribers')
+      .select('email,verified,unsubscribed')
+      .eq('verified', true).eq('unsubscribed', false);
+    if (error) throw error;
+    if (!data || !data.length) {
+      showBccStatus('No verified, non-unsubscribed subscribers found in the database.');
+      return;
+    }
+    const emails = data.map(r => r.email.toLowerCase());
+    const existing = parseBccList(document.getElementById('bccList').value);
+    const merged = parseBccList(existing.join('\n') + '\n' + emails.join('\n'));
+    document.getElementById('bccList').value = merged.join('\n');
+    refreshBccCount();
+    showBccStatus(`Imported <strong>${emails.length}</strong> verified subscriber(s). Total unique recipients now: <strong>${merged.length}</strong>.`, 'success');
+  } catch (e) {
+    showBccStatus(`Could not load subscribers: ${escapeHtml(e.message)}`);
+  }
+}
+
+function dedupeBccList() {
+  const list = parseBccList(document.getElementById('bccList').value);
+  document.getElementById('bccList').value = list.join('\n');
+  refreshBccCount();
+  showBccStatus(`Cleaned. <strong>${list.length}</strong> unique valid email(s).`, 'info');
+}
+
 function parseBccList(raw) {
   if (!raw) return [];
   const re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
@@ -1184,12 +1267,36 @@ function previewBccHtml() {
   doc.open(); doc.write(html); doc.close();
 }
 
+function explainResendError(status, errBody, config) {
+  const name = (errBody && (errBody.name || errBody.error)) || '';
+  const msg  = (errBody && errBody.message) || '';
+  const lower = (name + ' ' + msg).toLowerCase();
+  let hint = '';
+
+  if (status === 401 || /unauthorized|invalid_api_key|api key/.test(lower)) {
+    hint = `Your Resend API key is wrong or revoked. Go to <a href="https://resend.com/api-keys" target="_blank" style="color:inherit;text-decoration:underline">resend.com/api-keys</a>, generate a new one, and paste it in <strong>Settings → Resend API Key</strong>.`;
+  } else if (/domain is not verified|from address|not verified|domain_not_verified/.test(lower)) {
+    hint = `Your sender domain is not verified in Resend. Right now you're sending from <code>${escapeHtml(config.senderEmail)}</code>. Go to <a href="https://resend.com/domains" target="_blank" style="color:inherit;text-decoration:underline">resend.com/domains</a>, add <strong>azizsaif.com</strong>, and add the DNS records (SPF, DKIM, DMARC) it shows you. Until verified, you can only send from the test address <code>onboarding@resend.dev</code>.`;
+  } else if (/testing|restricted|only send.*own/.test(lower)) {
+    hint = `Resend's test mode only lets you send to your own verified email. Either verify your sender domain at <a href="https://resend.com/domains" target="_blank" style="color:inherit;text-decoration:underline">resend.com/domains</a>, or send the test only to the email you signed up to Resend with.`;
+  } else if (/rate|limit|too many/.test(lower)) {
+    hint = `You hit Resend's rate limit. Free tier = 100/day, 3000/month, ~2 per second. Wait a moment and retry.`;
+  } else if (/from|invalid_from/.test(lower)) {
+    hint = `The "From" address is invalid or not allowed. Check <strong>Settings → Sender Email</strong> and use an address on a verified domain.`;
+  }
+  return hint;
+}
+
 async function sendBccTest() {
+  hideBccStatus();
   const subject = document.getElementById('bccSubject').value.trim();
   const html = document.getElementById('bccBody').value.trim();
-  if (!subject || !html) { showToast('Subject and HTML body are required.', 'error'); return; }
+  if (!subject || !html) { showBccStatus('Subject and HTML body are required.'); return; }
   const config = await getResendConfig();
-  if (!config.resendKey) { alert('Add your Resend API key in Settings first.'); return; }
+  if (!config.resendKey) {
+    showBccStatus('No Resend API key set. Open the <strong>Settings</strong> tab, paste your key from <a href="https://resend.com/api-keys" target="_blank" style="color:inherit;text-decoration:underline">resend.com/api-keys</a>, and click Save.');
+    return;
+  }
   const me = document.getElementById('userEmail').textContent;
   try {
     const resp = await fetch('https://api.resend.com/emails', {
@@ -1202,22 +1309,39 @@ async function sendBccTest() {
         html
       })
     });
-    if (resp.ok) showToast(`Test sent to ${me}`);
-    else { const err = await resp.json().catch(() => ({})); showToast('Test failed: ' + (err.message || resp.statusText), 'error'); }
-  } catch (e) { showToast('Network error: ' + e.message, 'error'); }
+    const body = await resp.json().catch(() => ({}));
+    if (resp.ok) {
+      showBccStatus(`Test email sent to <strong>${escapeHtml(me)}</strong>. Check your inbox (and spam folder). Resend message id: <code>${escapeHtml(body.id || 'n/a')}</code>`, 'success');
+    } else {
+      const hint = explainResendError(resp.status, body, config);
+      showBccStatus(
+        `<strong>Test failed</strong> (HTTP ${resp.status})<br>` +
+        `<strong>Resend says:</strong> ${escapeHtml(body.message || resp.statusText || 'no message')}` +
+        (body.name ? ` <span style="opacity:.7">(${escapeHtml(body.name)})</span>` : '') +
+        (hint ? `<br><br><strong>What to do:</strong><br>${hint}` : '') +
+        `<br><br><span style="opacity:.7;font-size:.8em">From: ${escapeHtml(config.senderEmail)} &middot; To: ${escapeHtml(me)}</span>`
+      );
+    }
+  } catch (e) {
+    showBccStatus(`<strong>Network error:</strong> ${escapeHtml(e.message)}<br><br>This usually means a browser ad-blocker or extension is blocking <code>api.resend.com</code>. Try disabling extensions or using a different browser.`);
+  }
 }
 
 async function sendBccBulk() {
+  hideBccStatus();
   const subject = document.getElementById('bccSubject').value.trim();
   const html = document.getElementById('bccBody').value.trim();
   const list = parseBccList(document.getElementById('bccList').value);
   let toAddr = document.getElementById('bccToAddr').value.trim().toLowerCase();
 
-  if (!subject || !html) { showToast('Subject and HTML body are required.', 'error'); return; }
-  if (list.length === 0) { showToast('No valid recipient emails found.', 'error'); return; }
+  if (!subject || !html) { showBccStatus('Subject and HTML body are required.'); return; }
+  if (list.length === 0) { showBccStatus('No valid recipient emails found.'); return; }
 
   const config = await getResendConfig();
-  if (!config.resendKey) { alert('Add your Resend API key in Settings first.'); return; }
+  if (!config.resendKey) {
+    showBccStatus('No Resend API key set. Open the <strong>Settings</strong> tab and add it first.');
+    return;
+  }
   if (!toAddr) toAddr = (config.senderEmail || document.getElementById('userEmail').textContent);
 
   const batches = [];
@@ -1232,6 +1356,7 @@ async function sendBccBulk() {
   overlay.classList.add('visible');
 
   let okBatches = 0, failBatches = 0, sent = 0, failed = 0;
+  const errors = [];
 
   for (let i = 0; i < batches.length; i++) {
     const batch = batches[i];
@@ -1247,20 +1372,23 @@ async function sendBccBulk() {
           html
         })
       });
+      const body = await resp.json().catch(() => ({}));
       if (resp.ok) { okBatches++; sent += batch.length; }
-      else { failBatches++; failed += batch.length; const err = await resp.json().catch(() => ({})); console.error('Batch', i + 1, 'failed:', err); }
+      else {
+        failBatches++; failed += batch.length;
+        errors.push({ batch: i + 1, status: resp.status, body });
+        console.error('Batch', i + 1, 'failed:', body);
+      }
     } catch (e) {
       failBatches++; failed += batch.length;
-      console.error('Batch', i + 1, 'network error:', e);
+      errors.push({ batch: i + 1, status: 0, body: { message: e.message, name: 'NetworkError' } });
     }
     const pct = Math.round(((i + 1) / batches.length) * 100);
     fill.style.width = pct + '%';
     text.textContent = `Batch ${i + 1} of ${batches.length} · ${sent} sent${failed ? ` · ${failed} failed` : ''}`;
-    // Tiny pause between batches to avoid rate limits
     if (i < batches.length - 1) await new Promise(r => setTimeout(r, 250));
   }
 
-  // Save campaign record
   await sb.from('campaigns').insert({
     subject: `[BCC] ${subject}`,
     html_body: html,
@@ -1272,7 +1400,23 @@ async function sendBccBulk() {
   overlay.classList.remove('visible');
   fill.style.width = '0%';
   document.querySelector('#progressOverlay h3').textContent = 'Sending Campaign';
-  showToast(`BCC bulk done: ${sent} sent, ${failed} failed across ${batches.length} batch(es).`, failed ? 'error' : 'success');
+
+  if (failed === 0) {
+    showBccStatus(`<strong>Done.</strong> ${sent} email(s) sent across ${okBatches} batch(es).`, 'success');
+  } else {
+    const first = errors[0];
+    const hint = first ? explainResendError(first.status, first.body, config) : '';
+    const detail = errors.slice(0, 3).map(e =>
+      `Batch ${e.batch} (HTTP ${e.status}): ${escapeHtml(e.body.message || 'no message')}` +
+      (e.body.name ? ` (${escapeHtml(e.body.name)})` : '')
+    ).join('<br>');
+    showBccStatus(
+      `<strong>Sent ${sent}, failed ${failed}.</strong> ${okBatches} batch(es) succeeded, ${failBatches} failed.<br><br>` +
+      `<strong>First errors:</strong><br>${detail}` +
+      (errors.length > 3 ? `<br><span style="opacity:.7">+ ${errors.length - 3} more (see browser console).</span>` : '') +
+      (hint ? `<br><br><strong>What to do:</strong><br>${hint}` : '')
+    );
+  }
   loadCampaigns();
 }
 
