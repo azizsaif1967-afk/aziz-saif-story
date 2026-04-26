@@ -1069,9 +1069,9 @@ input,select{font:inherit}
 <header class="header">
   <div class="container">
     <div class="header-row">
-      <a href="#" class="logo" aria-label="Khadlaj Perfumes home">
-        <span class="logo-mark">K</span>
-        <span><b>KHADLAJ</b><small>Perfumes · Est. 1997</small></span>
+      <a href="#" class="logo" aria-label="Khadlaj Perfumes home" style="display:flex;align-items:center;gap:12px">
+        <img src="https://khadlaj-perfumes.com/cdn/shop/files/Khadlaj_logo_2026--2_160x.png?v=1773752104" srcset="https://khadlaj-perfumes.com/cdn/shop/files/Khadlaj_logo_2026--2_160x.png?v=1773752104 1x, https://khadlaj-perfumes.com/cdn/shop/files/Khadlaj_logo_9cee155f-4431-4444-8d79-406024fbf173_1200x1200.png?v=1716903729 2x" alt="Khadlaj Perfumes" height="48" style="height:48px;width:auto;display:block" />
+        <span style="display:none">KHADLAJ</span>
       </a>
 
       <div class="search-mega" role="search">
@@ -2307,7 +2307,7 @@ input,select{font:inherit}
   <div class="container">
     <div class="footer-grid">
       <div class="foot-brand">
-        <div class="logo"><span class="logo-mark">K</span><span><b style="color:#fff">KHADLAJ</b><small>Perfumes · Est. 1997</small></span></div>
+        <div class="logo" style="display:flex;align-items:center;gap:10px"><img src="https://khadlaj-perfumes.com/cdn/shop/files/Khadlaj_logo_9cee155f-4431-4444-8d79-406024fbf173_1200x1200.png?v=1716903729" alt="Khadlaj Perfumes" height="56" style="height:56px;width:auto;filter:brightness(0) invert(1) opacity(.95);display:block" /></div>
         <p>Heritage Arabian perfumery, hand-blended in Sharjah since 1997 by Mohamed Iqbal Abdul Sattar. Authentic oud, rare attars, and luxury fragrances — now in 80+ countries.</p>
         <div class="foot-contact">
           <a href="tel:+97165340753">📞 +971 6 5340753</a>
@@ -2649,24 +2649,66 @@ input,select{font:inherit}
     <button class="modal-close" data-modal-close aria-label="Close">
       <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
     </button>
-    <h1 id="acc-h" style="margin:24px 36px 14px;font-size:24px;font-weight:800">Your account</h1>
-    <div class="acc-tabs">
-      <button class="acc-tab active" data-tab="orders">Orders</button>
-      <button class="acc-tab" data-tab="wishlist">Wishlist</button>
-      <button class="acc-tab" data-tab="profile">Profile</button>
+    <h1 id="acc-h" style="margin:24px 36px 14px;font-size:24px;font-weight:800">Your Account</h1>
+
+    <!-- LOGGED-OUT VIEW -->
+    <div id="accountAuthView">
+      <div class="acc-tabs">
+        <button class="acc-tab active" data-auth-tab="signin">Sign In</button>
+        <button class="acc-tab" data-auth-tab="register">Create Account</button>
+      </div>
+      <div class="acc-content">
+        <div class="acc-pane active" data-auth-pane="signin">
+          <p style="color:var(--txt-mute);font-size:13px;margin:0 0 18px">Welcome back. Sign in to track orders, manage your wishlist, and check out faster.</p>
+          <form id="signinForm" style="display:grid;gap:12px;max-width:420px">
+            <div class="co-field"><label>Email</label><input type="email" name="email" required autocomplete="email" placeholder="your@email.com" /></div>
+            <div class="co-field"><label>Password</label><input type="password" name="password" required autocomplete="current-password" placeholder="••••••••" /></div>
+            <button class="btn btn-red" type="submit">Sign in</button>
+            <small style="color:var(--txt-mute);font-size:12px">Don't have an account? <a href="#" data-auth-switch="register" style="color:var(--lux-gold,#a98842);text-decoration:underline">Create one</a> · or <a href="#" id="forgotPwLink" style="color:var(--lux-gold,#a98842);text-decoration:underline">reset password via WhatsApp</a></small>
+          </form>
+        </div>
+        <div class="acc-pane" data-auth-pane="register">
+          <p style="color:var(--txt-mute);font-size:13px;margin:0 0 18px">Create your Khadlaj account · 25% off your first order, exclusive launches, faster checkout.</p>
+          <form id="registerForm" style="display:grid;gap:12px;max-width:520px">
+            <div class="co-row"><div class="co-field"><label>First name</label><input type="text" name="firstName" required /></div><div class="co-field"><label>Last name</label><input type="text" name="lastName" required /></div></div>
+            <div class="co-field"><label>Email</label><input type="email" name="email" required autocomplete="email" /></div>
+            <div class="co-field"><label>WhatsApp / phone</label><input type="tel" name="phone" required placeholder="+971 50 ..." /></div>
+            <div class="co-field"><label>Country</label><select name="country" required>
+              <option value="">Select…</option><option>UAE</option><option>Saudi Arabia</option><option>Kuwait</option><option>Qatar</option><option>Bahrain</option><option>Oman</option><option>India</option><option>UK</option><option>USA</option><option>Other</option>
+            </select></div>
+            <div class="co-field"><label>Password</label><input type="password" name="password" required autocomplete="new-password" minlength="6" placeholder="At least 6 characters" /></div>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt-mute);text-transform:none;letter-spacing:0;font-weight:400"><input type="checkbox" name="newsletter" checked /> Email me launches and seasonal offers</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt-mute);text-transform:none;letter-spacing:0;font-weight:400"><input type="checkbox" name="terms" required /> I agree to the Terms and Privacy Policy</label>
+            <button class="btn btn-red" type="submit">Create account · Get 25% off</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="acc-content">
-      <div class="acc-pane active" data-pane="orders" id="paneOrders"></div>
-      <div class="acc-pane" data-pane="wishlist" id="paneWishlist"></div>
-      <div class="acc-pane" data-pane="profile" id="paneProfile">
-        <p style="color:var(--txt-mute);font-size:13px;margin:0 0 18px">Save your details for faster checkout. Stored only on this device.</p>
-        <form id="profileForm" style="display:grid;gap:12px;max-width:480px">
-          <div class="co-field"><label>Full name</label><input type="text" name="name" /></div>
-          <div class="co-field"><label>Email</label><input type="email" name="email" /></div>
-          <div class="co-field"><label>WhatsApp / phone</label><input type="tel" name="phone" /></div>
-          <div class="co-field"><label>Default address</label><textarea name="address" rows="2"></textarea></div>
-          <button class="btn btn-red" type="submit" style="margin-top:8px">Save profile</button>
-        </form>
+
+    <!-- LOGGED-IN VIEW -->
+    <div id="accountDashView" style="display:none">
+      <div style="padding:14px 36px;background:linear-gradient(90deg,#fff8e6,#fff);border-bottom:1px solid #d6c8a8;font-size:13px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span>Welcome back, <b id="acctName" style="color:var(--lux-ink,#0d0d0d);font-family:'Marcellus',serif">—</b></span>
+        <button id="signOutBtn" type="button" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:600;background:transparent">Sign out</button>
+      </div>
+      <div class="acc-tabs">
+        <button class="acc-tab active" data-tab="orders">Orders</button>
+        <button class="acc-tab" data-tab="wishlist">Wishlist</button>
+        <button class="acc-tab" data-tab="profile">Profile</button>
+      </div>
+      <div class="acc-content">
+        <div class="acc-pane active" data-pane="orders" id="paneOrders"></div>
+        <div class="acc-pane" data-pane="wishlist" id="paneWishlist"></div>
+        <div class="acc-pane" data-pane="profile" id="paneProfile">
+          <p style="color:var(--txt-mute);font-size:13px;margin:0 0 18px">Update your details — auto-fills at checkout.</p>
+          <form id="profileForm" style="display:grid;gap:12px;max-width:480px">
+            <div class="co-field"><label>Full name</label><input type="text" name="name" /></div>
+            <div class="co-field"><label>Email</label><input type="email" name="email" readonly style="background:#f5f0e6" /></div>
+            <div class="co-field"><label>WhatsApp / phone</label><input type="tel" name="phone" /></div>
+            <div class="co-field"><label>Default address</label><textarea name="address" rows="2"></textarea></div>
+            <button class="btn btn-red" type="submit">Save profile</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -2832,7 +2874,8 @@ input,select{font:inherit}
 .admin-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 24px;background:var(--ink);color:#fff}
 .admin-tab{padding:18px 22px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);border-bottom:3px solid transparent;cursor:pointer;transition:all .2s}
 .admin-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:#fff}
+.admin-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding:24px;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:#fff}
+@media (max-width:780px){.admin-stats{grid-template-columns:repeat(2,1fr)}}
 .admin-stat{padding:14px;background:rgba(255,255,255,.06);border-radius:8px;border-left:3px solid var(--gold)}
 .admin-stat b{font-size:26px;font-weight:800;color:var(--gold);font-family:'Poppins',serif;display:block;line-height:1}
 .admin-stat small{font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.7;display:block;margin-top:5px}
@@ -2887,14 +2930,16 @@ input,select{font:inherit}
       <h1 id="ad-h" style="margin:24px 24px 14px;font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px">⚙️ Admin Dashboard <small style="font-size:12px;color:var(--txt-mute);font-weight:500">khadlaj-perfumes.com</small></h1>
 
       <div class="admin-stats">
+        <div class="admin-stat"><b id="adStatCust">0</b><small>Registered Customers</small></div>
         <div class="admin-stat"><b id="adStatSubs">0</b><small>Email Subscribers</small></div>
         <div class="admin-stat"><b id="adStatOrders">0</b><small>Online Orders</small></div>
         <div class="admin-stat"><b id="adStatBulk">0</b><small>Wholesale Enquiries</small></div>
-        <div class="admin-stat"><b id="adStatRevenue">AED 0</b><small>Revenue (this period)</small></div>
+        <div class="admin-stat"><b id="adStatRevenue">AED 0</b><small>Revenue</small></div>
       </div>
 
       <div class="admin-tabs">
         <button class="admin-tab active" data-atab="subscribers">📧 Subscribers</button>
+        <button class="admin-tab" data-atab="customers">👤 Customers</button>
         <button class="admin-tab" data-atab="newsletter">✉️ Send Newsletter</button>
         <button class="admin-tab" data-atab="orders">🛍️ Orders</button>
         <button class="admin-tab" data-atab="bulk">🏪 Wholesale</button>
@@ -2919,6 +2964,25 @@ input,select{font:inherit}
             <tbody id="adSubsBody"></tbody>
           </table>
           <div class="admin-empty" id="adSubsEmpty" style="display:none">No subscribers yet. Sign-ups from the catalogue download, newsletter form, and checkout will appear here.</div>
+        </div>
+
+        <!-- Customers (registered clients) -->
+        <div class="admin-pane" data-apane="customers">
+          <div class="admin-banner">
+            <b>Registered customers.</b> Anyone who creates an account on the storefront. Includes profile details, signup date, total orders, lifetime spend.
+          </div>
+          <div class="admin-toolbar">
+            <input type="search" id="adSearchCust" placeholder="Search by name, email, phone, country…" />
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-outline btn-sm" id="adExportCust" style="padding:8px 14px;font-size:11px">⬇ Export CSV</button>
+              <button class="btn btn-outline btn-sm" id="adWhatsappBlast" style="padding:8px 14px;font-size:11px;background:#25d366;color:#fff;border-color:#25d366">💬 Bulk WhatsApp</button>
+            </div>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Orders</th><th>Spend</th><th>Joined</th><th>Actions</th></tr></thead>
+            <tbody id="adCustBody"></tbody>
+          </table>
+          <div class="admin-empty" id="adCustEmpty" style="display:none">No registered customers yet. They'll appear here when they sign up.</div>
         </div>
 
         <!-- Send Newsletter -->
@@ -3402,18 +3466,112 @@ $('#checkoutForm').addEventListener('submit',e=>{
 });
 
 /* ──────────────  ACCOUNT MODAL  ────────────── */
-const renderAccount=()=>{
-  const orders=ls.get('khadlaj_orders',[]);
-  $('#paneOrders').innerHTML=orders.length?orders.map(o=>`<div class="acc-order"><div class="acc-order-head"><div><span class="acc-order-id">${o.id}</span> <span class="acc-order-status ${o.status==='confirmed'||o.status==='completed'?'completed':'pending'}">${o.status}</span></div><div style="font-size:12px;color:var(--txt-mute)">${new Date(o.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div></div><div class="acc-order-meta">Payment: ${o.payment.toUpperCase()} · ${o.items.length} item${o.items.length>1?'s':''}</div><div class="acc-order-items">${o.items.map(i=>`<div class="acc-order-item"><span>${i.name} (${i.ml}ml) × ${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')}</div><div class="acc-order-foot"><span style="font-size:13px;color:var(--txt-mute)">Total</span><b>${fmt(o.total)}</b></div></div>`).join(''):'<div class="acc-empty"><h4>No orders yet</h4><p>When you place your first order, it will appear here.</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>';
-  /* wishlist */
-  const items=wishlist.map(id=>findP(id)).filter(Boolean);
-  $('#paneWishlist').innerHTML=items.length?`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${items.map(p=>`<article class="product"><div class="product-media"><img src="${p.image}" alt=""></div><div class="p-body"><div class="p-brand">${p.brand}</div><p class="p-name">${p.name}</p><div class="p-price"><span class="now">${fmt(p.price)}</span></div><button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" data-add-id="${p.id}">Add to Cart</button></div></article>`).join('')}</div>`:'<div class="acc-empty"><h4>Your wishlist is empty</h4><p>Tap the heart on any fragrance to save it here.</p></div>';
-  /* profile */
-  const prof=ls.get('khadlaj_profile',{});const f=$('#profileForm');if(prof.name)f.name.value=prof.name;if(prof.email)f.email.value=prof.email;if(prof.phone)f.phone.value=prof.phone;if(prof.address)f.address.value=prof.address;
+/* ══════════════════  CUSTOMER ACCOUNTS (register / sign in / database) ══════════════════ */
+const hashPw=p=>btoa(unescape(encodeURIComponent('khadlaj·'+p+'·2026'))); /* simple obfuscation, NOT real security — replace with bcrypt server-side */
+const getCustomers=()=>ls.get('khadlaj_customers',[]);
+const saveCustomers=cs=>ls.set('khadlaj_customers',cs);
+const getSession=()=>ls.get('khadlaj_session',null);
+const setSession=s=>{if(s)ls.set('khadlaj_session',s);else localStorage.removeItem('khadlaj_session')};
+
+const registerCustomer=({firstName,lastName,email,phone,country,password,newsletter})=>{
+  const cs=getCustomers();const em=email.trim().toLowerCase();
+  if(cs.find(c=>c.email===em))return{ok:false,msg:'An account with this email already exists. Try signing in.'};
+  if((password||'').length<6)return{ok:false,msg:'Password must be at least 6 characters'};
+  const c={id:'C-'+Date.now().toString(36).toUpperCase().slice(-6),firstName:firstName.trim(),lastName:lastName.trim(),name:`${firstName.trim()} ${lastName.trim()}`,email:em,phone:phone.trim(),country:country||'',password:hashPw(password),joined:Date.now(),lastSeen:Date.now(),newsletter:!!newsletter,address:''};
+  cs.push(c);saveCustomers(cs);
+  /* Also add to subscribers DB so newsletter campaigns reach them */
+  addSubscriber({email:em,name:c.name,phone:c.phone,source:'registered-customer',consent:!!newsletter});
+  /* Auto sign-in */
+  const sess={id:c.id,email:em,name:c.name,firstName:c.firstName,lastName:c.lastName,phone:c.phone,country:c.country};
+  setSession(sess);
+  /* Sync to legacy profile slot for checkout autofill */
+  ls.set('khadlaj_profile',{name:c.name,email:em,phone:c.phone,address:''});
+  return{ok:true,customer:c};
 };
-$$('.h-action').forEach(a=>{if(/Account|Wishlist|Sign in/i.test(a.textContent)){a.addEventListener('click',e=>{e.preventDefault();renderAccount();openModal('accountModal');if(/Wishlist/i.test(a.textContent)){$$('.acc-tab').forEach(x=>x.classList.remove('active'));$('.acc-tab[data-tab=wishlist]').classList.add('active');$$('.acc-pane').forEach(x=>x.classList.remove('active'));$('#paneWishlist').classList.add('active')}})}});
-$$('.acc-tab').forEach(t=>t.addEventListener('click',()=>{$$('.acc-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');$$('.acc-pane').forEach(x=>x.classList.remove('active'));$('[data-pane="'+t.dataset.tab+'"]').classList.add('active')}));
-$('#profileForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),p={};f.forEach((v,k)=>p[k]=v);ls.set('khadlaj_profile',p);showToast('Profile saved','Will be used at checkout')});
+const signinCustomer=(email,password)=>{
+  const cs=getCustomers();const em=email.trim().toLowerCase();
+  const c=cs.find(x=>x.email===em);
+  if(!c)return{ok:false,msg:'No account found with this email. Create one?'};
+  if(c.password!==hashPw(password))return{ok:false,msg:'Wrong password. Try again or reset via WhatsApp.'};
+  c.lastSeen=Date.now();saveCustomers(cs);
+  const sess={id:c.id,email:em,name:c.name,firstName:c.firstName,lastName:c.lastName,phone:c.phone,country:c.country};
+  setSession(sess);
+  ls.set('khadlaj_profile',{name:c.name,email:em,phone:c.phone,address:c.address||''});
+  return{ok:true,customer:c};
+};
+const signoutCustomer=()=>{setSession(null);showAccountAuthView()};
+
+/* Toggle the right view (auth vs dashboard) */
+const showAccountAuthView=()=>{$('#accountAuthView').style.display='';$('#accountDashView').style.display='none'};
+const showAccountDashView=()=>{const s=getSession();if(!s)return showAccountAuthView();$('#accountAuthView').style.display='none';$('#accountDashView').style.display='';$('#acctName').textContent=s.firstName||s.name||s.email;updateHeaderAuth(s)};
+
+/* Update header to show "Hi, {first}" when signed in */
+const updateHeaderAuth=s=>{const a=$$('.h-action')[0];if(!a)return;const lbl=a.querySelector('span'),val=a.querySelector('b');if(s){if(lbl)lbl.textContent='Hi, '+(s.firstName||s.name.split(' ')[0]);if(val)val.textContent='Account'}else{if(lbl)lbl.textContent='Sign In';if(val)val.textContent='Account'}};
+
+const renderAccount=()=>{
+  /* Sync logged-in detection */
+  const s=getSession();
+  if(!s){showAccountAuthView();return}
+  showAccountDashView();
+  /* Orders for this customer (filter by email) */
+  const allOrders=ls.get('khadlaj_orders',[]);
+  const orders=allOrders.filter(o=>o.customer?.email?.toLowerCase()===s.email.toLowerCase());
+  $('#paneOrders').innerHTML=orders.length?orders.map(o=>`<div class="acc-order"><div class="acc-order-head"><div><span class="acc-order-id">${o.id}</span> <span class="acc-order-status ${o.status==='confirmed'||o.status==='completed'?'completed':'pending'}">${o.status}</span></div><div style="font-size:12px;color:var(--txt-mute)">${new Date(o.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div></div><div class="acc-order-meta">Payment: ${(o.payment||'').toUpperCase()} · ${o.items.length} item${o.items.length>1?'s':''}</div><div class="acc-order-items">${o.items.map(i=>`<div class="acc-order-item"><span>${i.name} (${i.ml}ml) × ${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')}</div><div class="acc-order-foot"><span style="font-size:13px;color:var(--txt-mute)">Total</span><b>${fmt(o.total)}</b></div></div>`).join(''):'<div class="acc-empty"><h4>No orders yet</h4><p>When you place your first order, it will appear here.</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>';
+  /* Wishlist */
+  const items=wishlist.map(id=>lookupP(id)).filter(Boolean);
+  $('#paneWishlist').innerHTML=items.length?`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${items.map(p=>`<article class="product"><div class="product-media"><img src="${p.image}" alt=""></div><div class="p-body"><div class="p-brand">${p.brand}</div><p class="p-name">${p.name}</p><div class="p-price"><span class="now">${fmt(p.price)}</span></div><button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" data-add-id="${p.id}">Add to Cart</button></div></article>`).join('')}</div>`:'<div class="acc-empty"><h4>Your wishlist is empty</h4><p>Tap the heart on any fragrance to save it here.</p></div>';
+  /* Profile */
+  const cs=getCustomers();const me=cs.find(c=>c.email===s.email)||{};
+  const f=$('#profileForm');
+  f.name.value=me.name||s.name||'';
+  f.email.value=me.email||s.email||'';
+  f.phone.value=me.phone||s.phone||'';
+  f.address.value=me.address||'';
+};
+
+/* Header click → open account modal (signs you in if you already have a session) */
+$$('.h-action').forEach(a=>{const t=a.textContent;if(/Account|Wishlist|Sign in|Hi,/i.test(t)){a.addEventListener('click',e=>{e.preventDefault();renderAccount();openModal('accountModal');if(/Wishlist/i.test(t)){$$('.acc-tab').forEach(x=>x.classList.remove('active'));$('.acc-tab[data-tab=wishlist]')?.classList.add('active');$$('.acc-pane[data-pane]').forEach(x=>x.classList.remove('active'));$('#paneWishlist')?.classList.add('active')}})}});
+
+/* Switch between Sign In and Register tabs (logged-out view) */
+$$('[data-auth-tab]').forEach(t=>t.addEventListener('click',()=>{$$('[data-auth-tab]').forEach(x=>x.classList.remove('active'));t.classList.add('active');$$('[data-auth-pane]').forEach(x=>x.classList.remove('active'));$(`[data-auth-pane="${t.dataset.authTab}"]`)?.classList.add('active')}));
+document.addEventListener('click',e=>{const sw=e.target.closest('[data-auth-switch]');if(sw){e.preventDefault();$(`[data-auth-tab="${sw.dataset.authSwitch}"]`)?.click()}});
+
+/* Dashboard tabs (Orders / Wishlist / Profile) */
+$$('.acc-tab[data-tab]').forEach(t=>t.addEventListener('click',()=>{$$('.acc-tab[data-tab]').forEach(x=>x.classList.remove('active'));t.classList.add('active');$$('.acc-pane[data-pane]').forEach(x=>x.classList.remove('active'));$('[data-pane="'+t.dataset.tab+'"]')?.classList.add('active')}));
+
+/* Sign In submit */
+$('#signinForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target);
+  const r=signinCustomer(f.get('email'),f.get('password'));
+  if(r.ok){showToast('Welcome back','Signed in as '+r.customer.firstName);renderAccount()}
+  else showToast('Sign in failed',r.msg);
+});
+
+/* Register submit */
+$('#registerForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target);const v={};f.forEach((val,k)=>v[k]=val);v.newsletter=f.get('newsletter')==='on';
+  if(!v.terms){showToast('Almost there','Please accept the Terms to register');return}
+  const r=registerCustomer(v);
+  if(r.ok){showToast('Account created · 25% off',`Welcome ${r.customer.firstName}! Use code KHADLAJ25 at checkout.`);coupon='KHADLAJ25';ls.set('khadlaj_coupon','KHADLAJ25');renderAccount();renderCart()}
+  else showToast('Could not register',r.msg);
+});
+
+/* Sign out */
+$('#signOutBtn').addEventListener('click',()=>{signoutCustomer();updateHeaderAuth(null);showToast('Signed out','See you soon')});
+
+/* Profile save (logged-in) */
+$('#profileForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target),p={};f.forEach((v,k)=>p[k]=v);
+  const s=getSession();if(s){const cs=getCustomers();const me=cs.find(c=>c.email===s.email);if(me){me.name=p.name;me.phone=p.phone;me.address=p.address;saveCustomers(cs)}}
+  ls.set('khadlaj_profile',p);
+  showToast('Profile saved','Will autofill at checkout');
+});
+
+/* Forgot password → WhatsApp */
+$('#forgotPwLink')?.addEventListener('click',e=>{e.preventDefault();window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi Khadlaj — I forgot my account password. Please help me reset.")}`,'_blank')});
+
+/* On load: restore session display */
+if(getSession())updateHeaderAuth(getSession());
 
 /* ──────────────  BULK ORDER  ────────────── */
 const bulkTable=$('#bulkTable');
@@ -3553,7 +3711,14 @@ const intents={
   shipping:async()=>{await chatTyping();await chatSay('bot',`📦 <b>Shipping:</b> Free across the UAE on orders over AED 150. Worldwide delivery available — calculated at checkout.<br><br>🕐 Most UAE orders ship within 24 hours and arrive in 1–3 business days.<br><br>Want me to find the right size for you?`+chatQuick('Show bestsellers','Talk to a human'))},
   returns:async()=>{await chatTyping();await chatSay('bot',`Our policy: <b>24-hour cancellation</b> on sealed items, replacements only. Read the full terms:`+chatHandoff('Open return policy'))},
   human:async()=>{await chatTyping();await chatSay('bot',`Of course — connecting you with a human now. Tap below to continue on WhatsApp where our team can take orders, send payment links, and arrange delivery:`+chatHandoff('💬 Continue on WhatsApp'))},
-  default:async(q)=>{await chatTyping();const matches=PRODUCTS.filter(p=>(p.name+' '+p.brand+' '+p.family+' '+p.notes.top.concat(p.notes.heart,p.notes.base).join(' ')).toLowerCase().includes(q.toLowerCase())).slice(0,3);if(matches.length){await chatSay('bot',`I found these for "<b>${q}</b>":`+matches.map(chatProduct).join('')+chatQuick('Show more','Talk to a human'))}else{await chatSay('bot',`I'm not sure — but a real perfumer can help. Want me to connect you on WhatsApp?`+chatHandoff('💬 Open WhatsApp'))}}
+  location:async()=>{await chatTyping();await chatSay('bot',`📍 <b>Khadlaj Perfumes LLC</b> · Head office &amp; manufacturing<br><br>🇦🇪 <b>UAE</b><br>Industrial Area 11, Sharjah · PO Box 66347<br>☎ +971 6 5340753 · 💬 +971 52 121 1992<br>🕐 Mon–Sat 8am–6pm · closed Sundays<br>Manufacturing: Ras Al Khaimah · ISO 9001:2015 certified<br><br>🇴🇲 <b>Oman showrooms (4 visible):</b><br>• <b>Seeb</b> — Saouk Seeb, Opp HSBC Bank, 121<br>• <b>Sohar</b> — Souk Al Humber, near HBL Bank, 311<br>• <b>Saham</b> — Al Huail, Opp Grand Hypermarket, 319<br>• <b>Al Suwayq</b><br><br>We're in 80+ countries — 10 showrooms total (5 UAE + 5 Oman).`+chatQuick('Get WhatsApp directions','Browse products'))},
+  hours:async()=>{await chatTyping();await chatSay('bot',`🕐 <b>Office hours:</b><br>Monday – Saturday: 8:00am – 6:00pm GST<br>Sunday: Closed<br><br>For urgent help outside hours, message us on WhatsApp — our team checks regularly.`+chatHandoff('💬 WhatsApp anytime'))},
+  contact:async()=>{await chatTyping();await chatSay('bot',`Here's how to reach us:<br><br>💬 <b>WhatsApp</b> — +971 52 121 1992 (fastest)<br>☎ <b>Phone</b> — +971 6 5340753<br>✉ <b>Email</b> — customercare@khadlaj-perfumes.com<br>📍 Industrial Area 11, Sharjah, UAE · PO Box 66347`+chatHandoff('💬 Open WhatsApp now'))},
+  founder:async()=>{await chatTyping();await chatSay('bot',`👨‍💼 <b>Mohamed Iqbal Abdul Sattar</b> founded Khadlaj in <b>January 1997</b> in Sharjah, drawing on 45+ years of master-perfumer experience.<br><br>Today the family business is led by his son <b>Asif Mohamed Iqbal Katchi</b>, Managing Director (18+ years experience).<br><br>Every fragrance is still hand-blended in our Sharjah atelier and signed off by the family.`+chatQuick('Read full heritage','Browse signature scents'))},
+  manufacturing:async()=>{await chatTyping();await chatSay('bot',`🏭 Our manufacturing facility is in <b>Ras Al Khaimah, UAE</b> — fully <b>ISO 9001:2015 certified</b>.<br><br>We hand-blend, age, and macerate every fragrance for up to 18 months before bottling. We source Cambodian oud, Bulgarian rose, Indian sandalwood and rare attars direct from harvesters.<br><br>Two generations have signed off every blend since 1997.`+chatQuick('Inside the atelier','Show top oud'))},
+  global:async()=>{await chatTyping();await chatSay('bot',`🌍 Khadlaj fragrances ship to <b>80+ countries</b>.<br><br>We have <b>10 showrooms</b> total — 5 across the UAE and 5 across Oman — plus a head office in Sharjah and manufacturing in Ras Al Khaimah.`+chatQuick('Find a showroom','Worldwide shipping'))},
+  social:async()=>{await chatTyping();await chatSay('bot',`Follow us — daily fragrance content, behind-the-scenes, launches:<br><br>📸 <b>Instagram</b> — @khadlajperfumes<br>🎵 <b>TikTok</b> — @khadlajperfumes<br>📘 <b>Facebook</b> — @Khadlajperfume<br>▶ <b>YouTube</b> — Khadlaj Perfumes<br>💼 <b>LinkedIn</b> — Khadlaj Perfumes UAE`+chatQuick('Browse bestsellers','Talk to a human'))},
+  default:async(q)=>{await chatTyping();const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRODUCTS;const matches=all.filter(p=>(p.name+' '+(p.brand||'')+' '+(p.family||'')).toLowerCase().includes(q.toLowerCase())).slice(0,3);if(matches.length){await chatSay('bot',`I found these for "<b>${q}</b>":`+matches.map(chatProduct).join('')+chatQuick('Show more','Talk to a human'))}else{await chatSay('bot',`I'm not sure — but a real perfumer can help. Want me to connect you on WhatsApp?`+chatHandoff('💬 Open WhatsApp'))}}
 };
 const detectIntent=t=>{t=t.toLowerCase();if(/^(hi|hello|hey|salam|salaam)/.test(t))return 'greeting';if(/(gift|present|surprise|birthday)/.test(t))return 'gift';if(/(her|woman|women|wife|girl|female|abaya)/.test(t))return 'women';if(/( him|man|men|husband|boy|male|guy)/.test(t))return 'men';if(/oud|aoud|attar|cambodian|hindi/.test(t))return 'oud';if(/rose|floral|jasmine|peony/.test(t))return 'rose';if(/(cheap|under|budget|cheapest|inexpensive|less than|aed [0-9])/.test(t))return 'budget';if(/(fresh|summer|aquatic|light|day|office|citrus)/.test(t))return 'fresh';if(/(gourmand|sweet|vanilla|coffee|cream|caffe|latte|peach)/.test(t))return 'gourmand';if(/(ship|deliver|arrive|how long|track)/.test(t))return 'shipping';if(/(return|refund|cancel|exchange|replace)/.test(t))return 'returns';if(/(human|person|agent|whatsapp|talk to|call)/.test(t))return 'human';return 'default'};
 
@@ -3579,11 +3744,46 @@ $('#adSignOut')?.addEventListener('click',()=>{adminAuthed=false;ls.set('khadlaj
 $$('.admin-tab').forEach(t=>t.addEventListener('click',()=>{$$('.admin-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');$$('.admin-pane').forEach(x=>x.classList.remove('active'));$('[data-apane="'+t.dataset.atab+'"]').classList.add('active')}));
 
 const renderAdmin=()=>{
-  const subs=ls.get('khadlaj_subscribers',[]),orders=ls.get('khadlaj_orders',[]),bulk=ls.get('khadlaj_bulk',[]);
+  const subs=ls.get('khadlaj_subscribers',[]),orders=ls.get('khadlaj_orders',[]),bulk=ls.get('khadlaj_bulk',[]),custs=getCustomers();
+  $('#adStatCust')&&($('#adStatCust').textContent=custs.length);
   $('#adStatSubs').textContent=subs.length;
   $('#adStatOrders').textContent=orders.length;
   $('#adStatBulk').textContent=bulk.length;
   $('#adStatRevenue').textContent=fmt(orders.reduce((s,o)=>s+(o.total||0),0));
+  /* Customers tab */
+  const drawCust=q=>{
+    const filtered=q?custs.filter(c=>(c.name+' '+c.email+' '+c.phone+' '+c.country).toLowerCase().includes(q.toLowerCase())):custs;
+    const tb=$('#adCustBody');
+    tb.innerHTML=filtered.map(c=>{
+      const oc=orders.filter(o=>o.customer?.email?.toLowerCase()===c.email);
+      const spend=oc.reduce((s,o)=>s+(o.total||0),0);
+      return `<tr>
+        <td><b>${c.name}</b><br><small style="color:var(--txt-mute);font-size:11px">${c.id}</small></td>
+        <td>${c.email}</td>
+        <td>${c.phone||'—'}</td>
+        <td>${c.country||'—'}</td>
+        <td>${oc.length}</td>
+        <td><b>${fmt(spend)}</b></td>
+        <td style="font-size:11px;color:var(--txt-mute)">${new Date(c.joined).toLocaleDateString('en-GB')}</td>
+        <td><a href="https://wa.me/${(c.phone||'').replace(/\D/g,'')}" target="_blank" rel="noopener" style="color:#25d366;font-size:11px;font-weight:700;letter-spacing:.06em">WA</a> · <a href="mailto:${c.email}" style="color:var(--lux-gold,#a98842);font-size:11px;font-weight:700;letter-spacing:.06em">EMAIL</a></td>
+      </tr>`;
+    }).join('');
+    $('#adCustEmpty').style.display=filtered.length?'none':'block';
+  };
+  drawCust('');
+  $('#adSearchCust').oninput=e=>drawCust(e.target.value);
+  $('#adExportCust').onclick=()=>{
+    const csv='ID,Name,Email,Phone,Country,Joined,LastSeen,Newsletter\n'+custs.map(c=>[c.id,c.name,c.email,c.phone||'',c.country||'',new Date(c.joined).toISOString(),new Date(c.lastSeen).toISOString(),c.newsletter].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+    const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='khadlaj-customers-'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+    showToast('Exported',custs.length+' customers downloaded as CSV');
+  };
+  $('#adWhatsappBlast').onclick=()=>{
+    if(!custs.length){showToast('No customers','Empty list');return}
+    const msg=prompt('Message to send to all customers via WhatsApp Web (will open one tab per recipient — confirm before sending):','Hi {firstName}, this is Khadlaj Perfumes 🌹 — exclusive 25% off this week with code KHADLAJ25');
+    if(!msg)return;
+    custs.slice(0,5).forEach(c=>{const m=msg.replace('{firstName}',c.firstName||c.name.split(' ')[0]);const num=(c.phone||'').replace(/\D/g,'');if(num)window.open(`https://wa.me/${num}?text=${encodeURIComponent(m)}`,'_blank')});
+    showToast('Opening WhatsApp','First 5 customers opened — repeat to send to next batch');
+  };
   /* Subs */
   const drawSubs=q=>{const f=q?subs.filter(s=>(s.email+' '+s.name).toLowerCase().includes(q.toLowerCase())):subs;const tb=$('#adSubsBody');tb.innerHTML=f.map(s=>`<tr><td><b>${s.email}</b></td><td>${s.name||'—'}</td><td><span class="src ${s.source==='catalogue-download'?'cat':s.source.includes('newsletter')?'news':s.source==='wholesale'?'bulk':''}">${s.source}</span></td><td style="font-size:11px;color:var(--txt-mute)">${new Date(s.joined).toLocaleDateString('en-GB')}</td><td>${s.phone||'—'}</td></tr>`).join('');$('#adSubsEmpty').style.display=f.length?'none':'block'};
   drawSubs('');
