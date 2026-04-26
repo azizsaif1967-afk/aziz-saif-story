@@ -164,7 +164,13 @@ body{background:var(--lux-paper);color:var(--lux-ink);font-weight:400}
 .p-tag.deal{background:var(--lux-rose);color:var(--lux-cream)}
 .p-wishlist{background:var(--lux-paper);box-shadow:none;border:1px solid var(--lux-line)}
 .p-wishlist:hover{background:var(--lux-ink);color:var(--lux-cream-2);border-color:var(--lux-ink)}
-.p-quick{background:var(--lux-ink);color:var(--lux-cream);border-radius:0;letter-spacing:.18em;font-weight:500;font-size:10px}
+.p-quick{background:var(--lux-ink);color:var(--lux-cream);border-radius:0;letter-spacing:.18em;font-weight:500;font-size:10px;opacity:1 !important;cursor:pointer;pointer-events:auto}
+.p-quick:hover{background:var(--lux-gold);color:var(--lux-ink)}
+.banner-cta,.side-card .banner-cta{display:inline-block;padding:8px 16px;background:rgba(255,255,255,.95);color:var(--lux-ink);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-radius:0;cursor:pointer;transition:all .2s;text-decoration:none;border:1px solid rgba(255,255,255,.95)}
+.banner:hover .banner-cta,.side-card:hover .banner-cta{background:var(--lux-gold);color:var(--lux-ink);border-color:var(--lux-gold)}
+.banner,.side-card{cursor:pointer}
+.banner-content p{font-size:13px;opacity:.9;margin:0 0 14px;color:rgba(255,255,255,.85)}
+.banner img{display:block}
 .product-media{background:var(--lux-cream)}
 .p-brand{font-family:var(--sans);font-size:9px;letter-spacing:.24em;color:var(--lux-gold);font-weight:500}
 .p-name{font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.005em;line-height:1.35;color:var(--lux-ink);text-align:center}
@@ -1094,7 +1100,7 @@ input,select{font:inherit}
         <button class="h-action" aria-label="Cart, 2 items" id="cartBtn">
           <svg viewBox="0 0 24 24"><path d="M6 7h12l-1.5 12a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
           <span class="h-badge" id="cartBadge">2</span>
-          <span>Bag</span><b>AED 280</b>
+          <span>Cart</span><b>AED 280</b>
         </button>
       </div>
     </div>
@@ -1216,20 +1222,20 @@ input,select{font:inherit}
       </div>
 
       <div class="hero-side">
-        <a href="#" class="side-card side-1">
+        <div class="side-card side-1" data-filter="deals" role="link" tabindex="0">
           <small>Today's Deal</small>
           <h3>Rose Attar Royale</h3>
           <p>12ml · Bulgarian rose absolute</p>
           <div class="price-flash">AED 95</div>
-          <span class="btn-mock"><a href="#">Shop · Save 30%</a></span>
-        </a>
-        <a href="#" class="side-card side-2">
+          <span class="banner-cta">Shop · Save 30%</span>
+        </div>
+        <div class="side-card side-2" data-filter="gifts" role="link" tabindex="0">
           <small>Gift of the Week</small>
           <h3>Saffron Royale Trio</h3>
           <p>3× 50ml gift wrapped</p>
           <div class="price-flash">AED 520</div>
-          <span><a href="#">Buy as gift →</a></span>
-        </a>
+          <span class="banner-cta">Buy as gift →</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1345,7 +1351,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">#1 Top Seller</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="cream-velvet"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70" alt="Cream Velvet 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="cream-velvet">Quick Add</button></div>
+              <button class="p-quick" data-add-id="cream-velvet">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Women</div>
               <p class="p-name">Cream Velvet 100 ML Extrait de Parfum</p>
@@ -1359,7 +1365,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">#2 Bestseller</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="khadlaj-island"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="Khadlaj Island 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="khadlaj-island">Quick Add</button></div>
+              <button class="p-quick" data-add-id="khadlaj-island">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · Unisex</div>
               <p class="p-name">Khadlaj Island 100 ML EDP Spray</p>
@@ -1373,7 +1379,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">#3 Bestseller</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="caffe-latte"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Caffe Latte 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="caffe-latte">Quick Add</button></div>
+              <button class="p-quick" data-add-id="caffe-latte">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · Unisex</div>
               <p class="p-name">Caffe Latte 100 ML Extrait de Parfum</p>
@@ -1387,7 +1393,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">#4 Bestseller</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="peach-velvet"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Peach Velvet 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="peach-velvet">Quick Add</button></div>
+              <button class="p-quick" data-add-id="peach-velvet">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Women</div>
               <p class="p-name">Peach Velvet 100 ML Extrait de Parfum</p>
@@ -1401,7 +1407,7 @@ input,select{font:inherit}
             <span class="p-tag deal">−25%</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="hareem-al-sultan-gold-35"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=70" alt="Hareem Al Sultan Gold 35ml" loading="lazy" />
-              <button class="p-quick" data-add-id="hareem-al-sultan-gold-35">Quick Add</button></div>
+              <button class="p-quick" data-add-id="hareem-al-sultan-gold-35">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Hareem Al Sultan</div>
               <p class="p-name">Hareem Al Sultan Gold 35 ML</p>
@@ -1415,7 +1421,7 @@ input,select{font:inherit}
             <span class="p-tag new">NEW</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="island-dreams"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70" alt="Khadlaj Island Dreams 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="island-dreams">Quick Add</button></div>
+              <button class="p-quick" data-add-id="island-dreams">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · Unisex</div>
               <p class="p-name">Khadlaj Island Dreams 100 ML EDP</p>
@@ -1429,7 +1435,7 @@ input,select{font:inherit}
             <span class="p-tag">For Men</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="fursan-white"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=400&auto=format&fit=crop&q=70" alt="Fursan White 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="fursan-white">Quick Add</button></div>
+              <button class="p-quick" data-add-id="fursan-white">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Men</div>
               <p class="p-name">Fursan White 100 ML EDP Spray</p>
@@ -1443,7 +1449,7 @@ input,select{font:inherit}
             <span class="p-tag new">Special Edition</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="shiyaaka-snow"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&auto=format&fit=crop&q=70" alt="Shiyaaka Snow 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="shiyaaka-snow">Quick Add</button></div>
+              <button class="p-quick" data-add-id="shiyaaka-snow">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Men</div>
               <p class="p-name">Shiyaaka Snow Special Edition 100 ML</p>
@@ -1457,7 +1463,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">Editor's Pick</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="panache-angel-dust"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="Panache Angel Dust 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="panache-angel-dust">Quick Add</button></div>
+              <button class="p-quick" data-add-id="panache-angel-dust">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Panache · For Women</div>
               <p class="p-name">Panache Angel Dust 100 ML EDP</p>
@@ -1471,7 +1477,7 @@ input,select{font:inherit}
             <span class="p-tag deal">Best Value</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="shiyaaka-men"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Shiyaaka for Men 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="shiyaaka-men">Quick Add</button></div>
+              <button class="p-quick" data-add-id="shiyaaka-men">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Men</div>
               <p class="p-name">Shiyaaka for Men 100 ML EDP Spray</p>
@@ -1484,7 +1490,7 @@ input,select{font:inherit}
           <article class="product" data-product-id="cloud-candy">
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="cloud-candy"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70" alt="Cloud Candy 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="cloud-candy">Quick Add</button></div>
+              <button class="p-quick" data-add-id="cloud-candy">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Women</div>
               <p class="p-name">Cloud Candy 100 ML EDP for Women</p>
@@ -1498,7 +1504,7 @@ input,select{font:inherit}
             <span class="p-tag new">Just In</span>
             <button class="p-wishlist" aria-label="Add to wishlist" data-wish="empire-victor"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Empire Victor 100ml" loading="lazy" />
-              <button class="p-quick" data-add-id="empire-victor">Quick Add</button></div>
+              <button class="p-quick" data-add-id="empire-victor">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj · For Men</div>
               <p class="p-name">Empire Victor 100 ML EDP Spray</p>
@@ -1542,7 +1548,7 @@ input,select{font:inherit}
           <span class="p-tag deal">−60%</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
           <div class="product-media"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=70" alt="Hareem Al Sultan Gold" loading="lazy" />
-            <button class="p-quick" data-add="Hareem Al Sultan Gold">Add to Bag</button></div>
+            <button class="p-quick" data-add="Hareem Al Sultan Gold">Add to Cart</button></div>
           <div class="p-body">
             <div class="p-brand">Hareem Al Sultan</div>
             <p class="p-name">Hareem Al Sultan Gold 100ml EDP</p>
@@ -1556,7 +1562,7 @@ input,select{font:inherit}
           <span class="p-tag deal">−45%</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
           <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Onyx Silver" loading="lazy" />
-            <button class="p-quick" data-add="Onyx Silver">Add to Bag</button></div>
+            <button class="p-quick" data-add="Onyx Silver">Add to Cart</button></div>
           <div class="p-body">
             <div class="p-brand">La Fede</div>
             <p class="p-name">Onyx Silver Eau de Parfum 75ml</p>
@@ -1570,7 +1576,7 @@ input,select{font:inherit}
           <span class="p-tag deal">−50%</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
           <div class="product-media"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=400&auto=format&fit=crop&q=70" alt="Intoxicate Mystique" loading="lazy" />
-            <button class="p-quick" data-add="Intoxicate Mystique">Add to Bag</button></div>
+            <button class="p-quick" data-add="Intoxicate Mystique">Add to Cart</button></div>
           <div class="p-body">
             <div class="p-brand">Khadlaj Signature</div>
             <p class="p-name">Intoxicate Mystique 100ml EDP</p>
@@ -1584,7 +1590,7 @@ input,select{font:inherit}
           <span class="p-tag deal">−30%</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
           <div class="product-media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70" alt="Rose Attar Royale" loading="lazy" />
-            <button class="p-quick" data-add="Rose Attar Royale">Add to Bag</button></div>
+            <button class="p-quick" data-add="Rose Attar Royale">Add to Cart</button></div>
           <div class="p-body">
             <div class="p-brand">Khadlaj Attars</div>
             <p class="p-name">Rose Attar Royale 12ml Pure</p>
@@ -1598,7 +1604,7 @@ input,select{font:inherit}
           <span class="p-tag deal">−40%</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
           <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Aoud Mubakhar" loading="lazy" />
-            <button class="p-quick" data-add="Aoud Mubakhar">Add to Bag</button></div>
+            <button class="p-quick" data-add="Aoud Mubakhar">Add to Cart</button></div>
           <div class="p-body">
             <div class="p-brand">Khadlaj Heritage</div>
             <p class="p-name">Aoud Mubakhar 50ml Cambodi</p>
@@ -1612,7 +1618,7 @@ input,select{font:inherit}
           <span class="p-tag deal">−25%</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
           <div class="product-media"><img src="https://images.unsplash.com/photo-1557170334-a9086d21ed3a?w=400&auto=format&fit=crop&q=70" alt="Musk Tahara" loading="lazy" />
-            <button class="p-quick" data-add="Musk Tahara">Add to Bag</button></div>
+            <button class="p-quick" data-add="Musk Tahara">Add to Cart</button></div>
           <div class="p-body">
             <div class="p-brand">Khadlaj Attars</div>
             <p class="p-name">Musk Tahara White 30ml</p>
@@ -1630,24 +1636,24 @@ input,select{font:inherit}
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="banner-strip">
-      <a href="#" class="banner">
-        <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=900&auto=format&fit=crop&q=70" alt="" />
+      <div class="banner" data-filter="men" role="link" tabindex="0">
+        <img src="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/Shiyaaka.2.jpg" alt="" loading="lazy" />
         <div class="banner-content">
           <small>For Him</small>
           <h3>The Modern Gentleman</h3>
-          <p>Bold ouds, leather, and amberwood</p>
-          <span><a href="#">Shop Men →</a></span>
+          <p>Bold ouds, leather and amberwood</p>
+          <span class="banner-cta">Shop Men →</span>
         </div>
-      </a>
-      <a href="#" class="banner">
-        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=900&auto=format&fit=crop&q=70" alt="" />
+      </div>
+      <div class="banner" data-filter="women" role="link" tabindex="0">
+        <img src="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CreamVelvet01_4f0dfae6-16ce-4ced-b614-2cb1ef0b8aa6.jpg?v=1726140516" alt="" loading="lazy" />
         <div class="banner-content">
           <small>For Her</small>
           <h3>Floral & Feminine</h3>
           <p>Rose, jasmine, saffron, musk</p>
-          <span><a href="#">Shop Women →</a></span>
+          <span class="banner-cta">Shop Women →</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1669,7 +1675,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">#1 Bestseller</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=70" alt="Hareem Al Sultan Gold" loading="lazy" />
-              <button class="p-quick" data-add="Hareem Al Sultan Gold">Quick Add</button></div>
+              <button class="p-quick" data-add="Hareem Al Sultan Gold">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Hareem Al Sultan</div>
               <p class="p-name">Hareem Al Sultan Gold 100ml</p>
@@ -1683,7 +1689,7 @@ input,select{font:inherit}
             <span class="p-tag new">NEW</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="ICON EDP" loading="lazy" />
-              <button class="p-quick" data-add="ICON EDP">Quick Add</button></div>
+              <button class="p-quick" data-add="ICON EDP">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">La Fede</div>
               <p class="p-name">ICON Eau de Parfum 100ml</p>
@@ -1697,7 +1703,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">Top Rated</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=400&auto=format&fit=crop&q=70" alt="Intoxicate Mystique" loading="lazy" />
-              <button class="p-quick" data-add="Intoxicate Mystique">Quick Add</button></div>
+              <button class="p-quick" data-add="Intoxicate Mystique">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj Signature</div>
               <p class="p-name">Intoxicate Mystique 100ml</p>
@@ -1711,7 +1717,7 @@ input,select{font:inherit}
             <span class="p-tag deal">−40%</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Aoud Mubakhar" loading="lazy" />
-              <button class="p-quick" data-add="Aoud Mubakhar">Quick Add</button></div>
+              <button class="p-quick" data-add="Aoud Mubakhar">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj Heritage</div>
               <p class="p-name">Aoud Mubakhar 50ml Cambodi</p>
@@ -1725,7 +1731,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">4 left</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&auto=format&fit=crop&q=70" alt="Leather Saffron" loading="lazy" />
-              <button class="p-quick" data-add="Leather Saffron">Quick Add</button></div>
+              <button class="p-quick" data-add="Leather Saffron">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj Heritage</div>
               <p class="p-name">Leather Saffron 75ml EDP</p>
@@ -1739,7 +1745,7 @@ input,select{font:inherit}
             <span class="p-tag deal">3 for 2</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70" alt="Rose Attar Royale" loading="lazy" />
-              <button class="p-quick" data-add="Rose Attar Royale">Quick Add</button></div>
+              <button class="p-quick" data-add="Rose Attar Royale">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj Attars</div>
               <p class="p-name">Rose Attar Royale 12ml</p>
@@ -1753,7 +1759,7 @@ input,select{font:inherit}
             <span class="p-tag new">NEW</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70" alt="Saffron Trio" loading="lazy" />
-              <button class="p-quick" data-add="Saffron Trio">Quick Add</button></div>
+              <button class="p-quick" data-add="Saffron Trio">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Gift Sets</div>
               <p class="p-name">Saffron Royale Trio 3×50ml</p>
@@ -1767,7 +1773,7 @@ input,select{font:inherit}
             <span class="p-tag deal">−25%</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1557170334-a9086d21ed3a?w=400&auto=format&fit=crop&q=70" alt="Musk Tahara" loading="lazy" />
-              <button class="p-quick" data-add="Musk Tahara White">Quick Add</button></div>
+              <button class="p-quick" data-add="Musk Tahara White">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj Attars</div>
               <p class="p-name">Musk Tahara White 30ml</p>
@@ -1781,7 +1787,7 @@ input,select{font:inherit}
             <span class="p-tag bestseller">Editor's Pick</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Onyx Silver" loading="lazy" />
-              <button class="p-quick" data-add="Onyx Silver">Quick Add</button></div>
+              <button class="p-quick" data-add="Onyx Silver">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">La Fede</div>
               <p class="p-name">Onyx Silver EDP 75ml</p>
@@ -1795,7 +1801,7 @@ input,select{font:inherit}
             <span class="p-tag deal">−35%</span>
             <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
             <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="Amber Oud" loading="lazy" />
-              <button class="p-quick" data-add="Amber Oud">Quick Add</button></div>
+              <button class="p-quick" data-add="Amber Oud">Add to Cart</button></div>
             <div class="p-body">
               <div class="p-brand">Khadlaj Heritage</div>
               <p class="p-name">Amber Oud 100ml Concentrate</p>
@@ -1968,37 +1974,37 @@ input,select{font:inherit}
         <div class="rail-item"><article class="product">
           <span class="p-tag new">NEW</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-          <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Onyx Silver" loading="lazy" /><button class="p-quick" data-add="Onyx Silver">Add to Bag</button></div>
+          <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Onyx Silver" loading="lazy" /><button class="p-quick" data-add="Onyx Silver">Add to Cart</button></div>
           <div class="p-body"><div class="p-brand">La Fede</div><p class="p-name">Onyx Silver Eau de Parfum 75ml</p><span class="p-rating">4.8 ★ · 412</span><div class="p-price"><span class="now">AED 245</span></div></div>
         </article></div>
         <div class="rail-item"><article class="product">
           <span class="p-tag new">NEW</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-          <div class="product-media"><img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70" alt="Saffron Trio" loading="lazy" /><button class="p-quick" data-add="Saffron Trio">Add to Bag</button></div>
+          <div class="product-media"><img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70" alt="Saffron Trio" loading="lazy" /><button class="p-quick" data-add="Saffron Trio">Add to Cart</button></div>
           <div class="p-body"><div class="p-brand">Gift Sets</div><p class="p-name">Saffron Royale Trio 3×50ml</p><span class="p-rating">4.9 ★ · 478</span><div class="p-price"><span class="now">AED 520</span></div></div>
         </article></div>
         <div class="rail-item"><article class="product">
           <span class="p-tag new">NEW</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-          <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="ICON EDP" loading="lazy" /><button class="p-quick" data-add="ICON EDP">Add to Bag</button></div>
+          <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="ICON EDP" loading="lazy" /><button class="p-quick" data-add="ICON EDP">Add to Cart</button></div>
           <div class="p-body"><div class="p-brand">La Fede</div><p class="p-name">ICON Eau de Parfum 100ml</p><span class="p-rating">4.8 ★ · 1,841</span><div class="p-price"><span class="now">AED 270</span></div></div>
         </article></div>
         <div class="rail-item"><article class="product">
           <span class="p-tag new">NEW</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-          <div class="product-media"><img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&auto=format&fit=crop&q=70" alt="Leather Saffron" loading="lazy" /><button class="p-quick" data-add="Leather Saffron">Add to Bag</button></div>
+          <div class="product-media"><img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&auto=format&fit=crop&q=70" alt="Leather Saffron" loading="lazy" /><button class="p-quick" data-add="Leather Saffron">Add to Cart</button></div>
           <div class="p-body"><div class="p-brand">Khadlaj Heritage</div><p class="p-name">Leather Saffron 75ml EDP</p><span class="p-rating">4.9 ★ · 287</span><div class="p-price"><span class="now">AED 380</span></div></div>
         </article></div>
         <div class="rail-item"><article class="product">
           <span class="p-tag new">NEW</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-          <div class="product-media"><img src="https://images.unsplash.com/photo-1557170334-a9086d21ed3a?w=400&auto=format&fit=crop&q=70" alt="Musk Tahara" loading="lazy" /><button class="p-quick" data-add="Musk Tahara">Add to Bag</button></div>
+          <div class="product-media"><img src="https://images.unsplash.com/photo-1557170334-a9086d21ed3a?w=400&auto=format&fit=crop&q=70" alt="Musk Tahara" loading="lazy" /><button class="p-quick" data-add="Musk Tahara">Add to Cart</button></div>
           <div class="p-body"><div class="p-brand">Khadlaj Attars</div><p class="p-name">Musk Tahara White 30ml</p><span class="p-rating">4.8 ★ · 972</span><div class="p-price"><span class="now">AED 65</span></div></div>
         </article></div>
         <div class="rail-item"><article class="product">
           <span class="p-tag new">NEW</span>
           <button class="p-wishlist" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-          <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Aoud Mubakhar" loading="lazy" /><button class="p-quick" data-add="Aoud Mubakhar">Add to Bag</button></div>
+          <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Aoud Mubakhar" loading="lazy" /><button class="p-quick" data-add="Aoud Mubakhar">Add to Cart</button></div>
           <div class="p-body"><div class="p-brand">Khadlaj Heritage</div><p class="p-name">Aoud Mubakhar 50ml</p><span class="p-rating">4.9 ★ · 3,201</span><div class="p-price"><span class="now">AED 410</span></div></div>
         </article></div>
       </div>
@@ -2985,9 +2991,9 @@ Spring is here, and so is our new ICON collection..."></textarea></div>
 
 <!-- ─────────────────────────  CART DRAWER  ───────────────────────── -->
 <div class="drawer-overlay" id="drawerOverlay" tabindex="-1"></div>
-<aside class="drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
   <div class="drawer-head">
-    <h3>Your Bag <span style="opacity:.6;font-weight:400">(<span id="drawerCount">2</span>)</span></h3>
+    <h3>Your Cart <span style="opacity:.6;font-weight:400">(<span id="drawerCount">2</span>)</span></h3>
     <button class="drawer-close" aria-label="Close bag" id="drawerClose">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18 18 6"/></svg>
     </button>
@@ -3050,7 +3056,7 @@ Spring is here, and so is our new ICON collection..."></textarea></div>
 
 <!-- ─────────────────────────  TOAST  ───────────────────────── -->
 <div class="toast" id="toast" role="status" aria-live="polite">
-  <b id="toastTitle">Added to bag</b>
+  <b id="toastTitle">Added to cart</b>
   <span id="toastMsg">Hareem Al Sultan Gold</span>
 </div>
 
@@ -3107,8 +3113,8 @@ const addToCart=(id,size,opts={})=>{
   else cart.push({id,name:p.name,brand:p.brand||'Khadlaj',image:p.image,ml:sz.ml,price:sz.price,qty:1});
   ls.set('khadlaj_cart',cart);
   renderCart();
-  showToast('Added to bag',p.name);
-  /* Auto-open cart drawer briefly so customer sees the item land in the bag */
+  showToast('Added to cart',p.name);
+  /* Auto-open cart drawer briefly so customer sees the item land in the cart */
   if(!opts.silent){openCart();setTimeout(()=>{/* leave open — user closes manually */},2500)}
   return true;
 };
@@ -3122,7 +3128,7 @@ const renderCart=()=>{
   const drawerCt=$('#drawerCount');if(drawerCt)drawerCt.textContent=count;
   const headerTotal=$$('.h-action b')[2];if(headerTotal)headerTotal.textContent=count?fmt(sub):'Empty';
   const items=$('.cart-items');if(items){
-    if(!cart.length){items.innerHTML='<div style="padding:40px 20px;text-align:center;color:var(--txt-mute)"><p style="font-size:14px;margin:0 0 14px">Your bag is empty</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>'}
+    if(!cart.length){items.innerHTML='<div style="padding:40px 20px;text-align:center;color:var(--txt-mute)"><p style="font-size:14px;margin:0 0 14px">Your cart is empty</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>'}
     else{items.innerHTML=cart.map((i,x)=>`<div class="cart-item"><img src="${i.image}" alt=""><div><h4>${i.name}</h4><small>${i.ml} ml · ${i.brand}</small><div class="qty"><button data-qty="${x}" data-d="-1" aria-label="Decrease">−</button><span>${i.qty}</span><button data-qty="${x}" data-d="1" aria-label="Increase">+</button></div></div><div><div class="ci-price">${fmt(i.price*i.qty)}</div><button class="ci-remove" data-rm="${x}">Remove</button></div></div>`).join('')}
   }
   /* shipping bar */
@@ -3310,7 +3316,7 @@ const openProduct=id=>{const p=findP(id);if(!p)return;const off=p.compare?Math.r
         <div class="pd-bnpl">💜 or 4 interest-free of <b>${fmt(p.price/4)}</b> with tabby · tamara</div>
         <div class="pd-section"><h4>Size · ${p.sizes.length} option${p.sizes.length>1?'s':''}</h4><div class="pd-sizes">${p.sizes.map((s,i)=>`<button class="pd-size${i===0?' active':''}" data-pd-size="${s.ml}">${s.ml} ml<small>${fmt(s.price)}</small></button>`).join('')}</div></div>
         <div class="pd-section"><h4>Quantity</h4><div class="pd-qty-row"><div class="pd-qty"><button data-pd-qty="-1">−</button><span id="pdQty">1</span><button data-pd-qty="1">+</button></div><span style="font-size:12px;color:var(--txt-mute)">In stock · Ships in 24 hrs</span></div></div>
-        <div class="pd-actions"><button class="btn btn-red btn-cart" id="pdAddCart">Add to bag · <span id="pdTotal">${fmt(p.price)}</span></button><button class="pd-wish-btn ${isWish?'active':''}" id="pdWish" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button></div>
+        <div class="pd-actions"><button class="btn btn-red btn-cart" id="pdAddCart">Add to Cart · <span id="pdTotal">${fmt(p.price)}</span></button><button class="pd-wish-btn ${isWish?'active':''}" id="pdWish" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button></div>
         <div class="pd-perks"><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Free UAE shipping over AED 150</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>100% authentic from atelier</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>24-hr cancellation policy</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Pay in 4 with Tabby/Tamara</div></div>
       </div>
     </div>
@@ -3335,7 +3341,7 @@ const openProduct=id=>{const p=findP(id);if(!p)return;const off=p.compare?Math.r
 /* ──────────────  CHECKOUT  ────────────── */
 const renderCheckout=()=>{
   const sub=cartTotal();
-  $('#coItems').innerHTML=cart.length?cart.map(i=>`<div class="co-item"><img src="${i.image}" alt=""><div><h5>${i.name}</h5><small>${i.ml}ml × ${i.qty}</small></div><span class="price">${fmt(i.price*i.qty)}</span></div>`).join(''):'<p style="color:var(--txt-mute);font-size:13px">Your bag is empty.</p>';
+  $('#coItems').innerHTML=cart.length?cart.map(i=>`<div class="co-item"><img src="${i.image}" alt=""><div><h5>${i.name}</h5><small>${i.ml}ml × ${i.qty}</small></div><span class="price">${fmt(i.price*i.qty)}</span></div>`).join(''):'<p style="color:var(--txt-mute);font-size:13px">Your cart is empty.</p>';
   recalcCheckout();
   /* Pre-fill from saved profile */
   const prof=ls.get('khadlaj_profile',{});const f=$('#checkoutForm');if(prof.name){const [fn,...rest]=prof.name.split(' ');f.firstName.value=fn||'';f.lastName.value=rest.join(' ')||''}if(prof.email)f.email.value=prof.email;if(prof.phone)f.phone.value=prof.phone;if(prof.address)f.address1.value=prof.address;
@@ -3363,7 +3369,7 @@ $('#checkoutForm').addEventListener('submit',e=>{
   const fields=['firstName','lastName','email','phone','address1','city','country'];let ok=true;
   fields.forEach(name=>{const el=e.target[name];if(!el.value.trim()||(name==='email'&&!/^[^@]+@[^@]+\.[^@]+$/.test(el.value))){el.classList.add('error');el.parentElement.classList.add('error');ok=false}else{el.classList.remove('error');el.parentElement.classList.remove('error')}});
   if(!ok){showToast('Almost there','Please complete the highlighted fields');return}
-  if(!cart.length){showToast('Empty bag','Add fragrances first');return}
+  if(!cart.length){showToast('Empty cart','Add fragrances first');return}
   const orderId='KH-'+Date.now().toString(36).toUpperCase().slice(-6);
   const sub=cartTotal(),disc=getDiscount(sub),pay=v.payment;const ship=sub>=FREE_SHIP?0:25;const codFee=pay==='cod'?COD_FEE:0;const vat=Math.round((sub-disc)*VAT_RATE);const total=sub-disc+ship+codFee+vat;
   const order={id:orderId,date:Date.now(),customer:{...v,name:v.firstName+' '+v.lastName},items:[...cart],subtotal:sub,discount:disc,coupon:coupon,shipping:ship,vat,total,payment:pay,status:pay==='whatsapp'?'awaiting-payment':pay==='cod'?'confirmed':'pending'};
@@ -3401,7 +3407,7 @@ const renderAccount=()=>{
   $('#paneOrders').innerHTML=orders.length?orders.map(o=>`<div class="acc-order"><div class="acc-order-head"><div><span class="acc-order-id">${o.id}</span> <span class="acc-order-status ${o.status==='confirmed'||o.status==='completed'?'completed':'pending'}">${o.status}</span></div><div style="font-size:12px;color:var(--txt-mute)">${new Date(o.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div></div><div class="acc-order-meta">Payment: ${o.payment.toUpperCase()} · ${o.items.length} item${o.items.length>1?'s':''}</div><div class="acc-order-items">${o.items.map(i=>`<div class="acc-order-item"><span>${i.name} (${i.ml}ml) × ${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')}</div><div class="acc-order-foot"><span style="font-size:13px;color:var(--txt-mute)">Total</span><b>${fmt(o.total)}</b></div></div>`).join(''):'<div class="acc-empty"><h4>No orders yet</h4><p>When you place your first order, it will appear here.</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>';
   /* wishlist */
   const items=wishlist.map(id=>findP(id)).filter(Boolean);
-  $('#paneWishlist').innerHTML=items.length?`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${items.map(p=>`<article class="product"><div class="product-media"><img src="${p.image}" alt=""></div><div class="p-body"><div class="p-brand">${p.brand}</div><p class="p-name">${p.name}</p><div class="p-price"><span class="now">${fmt(p.price)}</span></div><button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" data-add-id="${p.id}">Add to bag</button></div></article>`).join('')}</div>`:'<div class="acc-empty"><h4>Your wishlist is empty</h4><p>Tap the heart on any fragrance to save it here.</p></div>';
+  $('#paneWishlist').innerHTML=items.length?`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${items.map(p=>`<article class="product"><div class="product-media"><img src="${p.image}" alt=""></div><div class="p-body"><div class="p-brand">${p.brand}</div><p class="p-name">${p.name}</p><div class="p-price"><span class="now">${fmt(p.price)}</span></div><button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" data-add-id="${p.id}">Add to Cart</button></div></article>`).join('')}</div>`:'<div class="acc-empty"><h4>Your wishlist is empty</h4><p>Tap the heart on any fragrance to save it here.</p></div>';
   /* profile */
   const prof=ls.get('khadlaj_profile',{});const f=$('#profileForm');if(prof.name)f.name.value=prof.name;if(prof.email)f.email.value=prof.email;if(prof.phone)f.phone.value=prof.phone;if(prof.address)f.address.value=prof.address;
 };
@@ -3814,7 +3820,7 @@ const productCard=p=>{
     ${tag}
     <button class="p-wishlist${isWish?' active':''}" aria-label="Add to wishlist" data-wish="${p.id}"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
     <div class="product-media"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=70'">
-      <button class="p-quick" data-add-id="${p.id}">Quick Add</button></div>
+      <button class="p-quick" data-add-id="${p.id}">Add to Cart</button></div>
     <div class="p-body">
       <div class="p-brand">${p.brand} · ${p.gender}</div>
       <p class="p-name">${p.name}</p>
