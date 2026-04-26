@@ -2587,7 +2587,8 @@ Spring is here, and so is our new ICON collection..."></textarea></div>
 
 <script>
 /* ═══════════════════  KHADLAJ ECOMMERCE ENGINE  ═══════════════════ */
-const WA_NUMBER='971521211992', WA_HUMAN='+971 52 121 1992', VAT_RATE=0.05, FREE_SHIP=150, COD_FEE=15;
+const SETTINGS=(()=>{const s={WA_NUMBER:'971521211992',WA_HUMAN:'+971 52 121 1992',MERCHANT_EMAIL:'customercare@khadlaj-perfumes.com',VAT_RATE:0.05,FREE_SHIP:150,COD_FEE:15};Object.assign(s,JSON.parse(localStorage.getItem('khadlaj_settings')||'{}'));return s})();
+let WA_NUMBER=SETTINGS.WA_NUMBER, WA_HUMAN=SETTINGS.WA_HUMAN, VAT_RATE=SETTINGS.VAT_RATE, FREE_SHIP=SETTINGS.FREE_SHIP, COD_FEE=SETTINGS.COD_FEE;
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 const fmt=n=>'AED '+Math.round(n).toLocaleString();
 const ls={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
@@ -3009,6 +3010,53 @@ $$('[data-route]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();
 
 /* Header search button → open overlay */
 $('.search-mega button')?.addEventListener('click',e=>{e.preventDefault();openSearch()});
+
+/* ──────────────  REAL PRODUCT IMAGES (from khadlaj-perfumes.com Shopify CDN)  ────────────── */
+const REAL_IMAGES={
+  'cream-velvet':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CreamVelvet01_4f0dfae6-16ce-4ced-b614-2cb1ef0b8aa6.jpg?v=1726140516',
+  'khadlaj-island':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/Island2.jpg?v=1767168643',
+  'caffe-latte':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CafeLatte01.jpg?v=1732860304',
+  'peach-velvet':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/PeachVelvet-01_c39a3e0c-3aad-4734-9a59-92f4fb71e0e1.jpg?v=1726140600',
+  'hareem-al-sultan-gold-35':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/HAREEM_AL_SULTAN_GOLD_35ML.jpg',
+  'island-dreams':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/IslandDreams-1.jpg?v=1754913255',
+  'fursan-white':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/1_08ca34cd-f744-4dd8-b81b-8f1a33b48ec2.jpg',
+  'shiyaaka-snow':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/ShiyaakaShadow-1_c641c095-1e28-4c58-94df-c1088c88e02b.jpg?v=1761113119',
+  'panache-angel-dust':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/Panache_2_jpg_0bc7a1f3-8af9-4188-98f1-c58151159f55.jpg?v=1771333283',
+  'shiyaaka-men':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/Shiyaaka.2.jpg',
+  'cloud-candy':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CloudCandy-1.jpg?v=1746078194',
+  'empire-victor':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/EMPIRE_VICTOR_100_ML_EDP_SPRAY.jpg',
+  'shiyaaka-shadow':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/ShiyaakaShadow-1.jpg?v=1751436581'
+};
+/* Swap card images + update PRODUCTS images */
+$$('[data-product-id]').forEach(card=>{const id=card.dataset.productId;if(REAL_IMAGES[id]){const img=card.querySelector('img');if(img)img.src=REAL_IMAGES[id]}});
+PRODUCTS.forEach(p=>{if(REAL_IMAGES[p.id])p.image=REAL_IMAGES[p.id]});
+
+/* ──────────────  LOAD FULL CATALOG (325+ real products from khadlaj-perfumes.com)  ────────────── */
+let FULL_CATALOG=[];
+fetch('./catalog.json').then(r=>r.ok?r.json():[]).then(data=>{
+  FULL_CATALOG=data.map(p=>({...p,sizes:[{ml:parseInt(p.size)||100,price:p.price}],rating:4.7+Math.random()*.2,reviews:Math.floor(Math.random()*2500+50),notes:{top:['Bergamot'],heart:['Floral'],base:['Musk','Amber']},description:p.name+' — authentic Khadlaj fragrance. Hand-blended in Sharjah, UAE.'}));
+  /* Merge real catalog into PRODUCTS for search/AI (keep manual entries first for hero cards) */
+  const ids=new Set(PRODUCTS.map(p=>p.id));
+  FULL_CATALOG.forEach(p=>{if(!ids.has(p.id)){PRODUCTS.push(p);ids.add(p.id)}});
+  console.log('Loaded full Khadlaj catalog:',PRODUCTS.length,'products');
+}).catch(e=>console.warn('Catalog fetch failed, using hardcoded products:',e));
+
+/* ──────────────  SETTINGS: persist WhatsApp number + admin fields  ────────────── */
+const settingsBox=$$('[data-apane="settings"] input');
+if(settingsBox.length){
+  /* Pre-fill */
+  const apiInput=settingsBox[0],stripeInput=settingsBox[1],waInput=settingsBox[2];
+  apiInput.value=ls.get('khadlaj_settings_api','');
+  stripeInput.value=ls.get('khadlaj_settings_stripe','');
+  if(waInput)waInput.value='+'+WA_NUMBER;
+  $$('[data-apane="settings"] .btn-red').forEach(b=>b.addEventListener('click',()=>{
+    ls.set('khadlaj_settings_api',apiInput.value);
+    ls.set('khadlaj_settings_stripe',stripeInput.value);
+    const newWa=(waInput.value||'').replace(/\D/g,'');
+    if(newWa.length>=8){WA_NUMBER=newWa;WA_HUMAN=waInput.value;ls.set('khadlaj_settings',{...SETTINGS,WA_NUMBER:newWa,WA_HUMAN:waInput.value})}
+    showToast('Settings saved','WhatsApp orders will now route to '+WA_HUMAN);
+  }));
+}
 
 /* ──────────────  INITIAL RENDER  ────────────── */
 renderCart();updateWishCount();
