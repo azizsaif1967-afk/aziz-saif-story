@@ -1100,6 +1100,47 @@ input,select{font:inherit}
     </div>
   </div>
 
+  <!-- MEGAMENU PANEL — drops down with products in selected category -->
+  <style>
+    .mega-panel{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--lux-line,#d6c8a8);border-bottom:1px solid var(--lux-line,#d6c8a8);box-shadow:0 16px 40px -16px rgba(0,0,0,.15);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.2,.8,.2,1);z-index:60}
+    .mega-panel.open{max-height:640px}
+    .mega-inner{max-width:1400px;margin:0 auto;padding:24px 32px}
+    .mega-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--lux-line,#d6c8a8);padding-bottom:14px;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+    .mega-head h3{font-family:var(--display,'Marcellus',serif);font-weight:500;font-size:24px;margin:0;letter-spacing:.005em;color:var(--lux-ink,#0d0d0d)}
+    .mega-head h3 em{font-style:italic;color:var(--lux-gold,#a98842);font-family:'Cormorant Garamond',serif;font-weight:500;margin-left:8px}
+    .mega-count{font-size:11px;color:var(--lux-gold,#a98842);letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+    .mega-close{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:transparent;color:#6a6052;border:1px solid var(--lux-line,#d6c8a8)}
+    .mega-close:hover{background:var(--lux-ink,#0d0d0d);color:#fff;border-color:var(--lux-ink,#0d0d0d)}
+    .mega-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+    .mega-tile{cursor:pointer;text-align:center;background:#fbf8f1;padding:10px;border:1px solid transparent;transition:all .2s}
+    .mega-tile:hover{border-color:var(--lux-gold,#a98842);background:#fff;transform:translateY(-2px)}
+    .mega-tile-img{aspect-ratio:1;background:#ede5d3;overflow:hidden;margin-bottom:8px}
+    .mega-tile img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .mega-tile:hover img{transform:scale(1.06)}
+    .mega-tile h4{font-family:var(--display,'Marcellus',serif);font-size:12px;font-weight:500;margin:0 0 4px;line-height:1.25;color:var(--lux-ink,#0d0d0d);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px}
+    .mega-tile small{font-size:11px;color:var(--lux-gold,#a98842);font-weight:600;font-family:var(--display,'Marcellus',serif)}
+    .mega-tile-brand{font-size:9px;letter-spacing:.18em;color:#6a6052;text-transform:uppercase;font-weight:500;margin-bottom:4px}
+    .mega-foot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--lux-line,#d6c8a8)}
+    .mega-foot .btn-outline{padding:10px 22px;font-size:11px;letter-spacing:.18em}
+    .mega-empty{text-align:center;padding:40px;color:#6a6052;font-style:italic}
+    @media (max-width:1080px){.mega-grid{grid-template-columns:repeat(4,1fr)}}
+    @media (max-width:780px){.mega-grid{grid-template-columns:repeat(2,1fr)}.mega-inner{padding:16px}.mega-panel.open{max-height:80vh;overflow-y:auto}}
+  </style>
+  <div class="mega-panel" id="megaPanel" aria-hidden="true">
+    <div class="mega-inner">
+      <div class="mega-head">
+        <h3 id="megaTitle">Eau de Parfum <em>Spray fragrances</em></h3>
+        <span class="mega-count" id="megaCount">— fragrances</span>
+        <button class="mega-close" id="megaClose" aria-label="Close menu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18 18 6"/></svg></button>
+      </div>
+      <div class="mega-grid" id="megaGrid"></div>
+      <div class="mega-foot">
+        <small style="font-size:11px;color:#6a6052;letter-spacing:.04em">Click any product to view details · or browse the full section below</small>
+        <button class="btn btn-outline" id="megaBrowseAll">Browse all →</button>
+      </div>
+    </div>
+  </div>
+
   <nav class="primary-nav" aria-label="Primary">
     <div class="container">
       <ul class="nav-list">
@@ -3020,6 +3061,8 @@ let WA_NUMBER=SETTINGS.WA_NUMBER, WA_HUMAN=SETTINGS.WA_HUMAN, VAT_RATE=SETTINGS.
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 const fmt=n=>'AED '+Math.round(n).toLocaleString();
 const ls={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+/* Resolve a product id from PRODUCTS first, then FULL_CATALOG (which loads async) — keeps Quick Add working even before the merge completes */
+const lookupP=id=>PRODUCTS.find(p=>p.id===id)||(FULL_CATALOG||[]).find(p=>p.id===id)||null;
 
 /* ──────────────  PRODUCT CATALOG (real Khadlaj products) ────────────── */
 const PRODUCTS=[
@@ -3052,7 +3095,23 @@ const showToast=(title,msg)=>{toastTitle.textContent=title;toastMsg.textContent=
 /* ──────────────  CART  ────────────── */
 const cartTotal=()=>cart.reduce((s,i)=>s+i.price*i.qty,0);
 const cartCount=()=>cart.reduce((s,i)=>s+i.qty,0);
-const addToCart=(id,size)=>{const p=findP(id);if(!p){showToast('Oops','Product not found');return}const ml=size||p.sizes[0].ml;const sz=p.sizes.find(s=>s.ml===ml)||p.sizes[0];const ex=cart.find(i=>i.id===id&&i.ml===sz.ml);if(ex)ex.qty++;else cart.push({id,name:p.name,brand:p.brand,image:p.image,ml:sz.ml,price:sz.price,qty:1});ls.set('khadlaj_cart',cart);renderCart();showToast('Added to bag',p.name)};
+const addToCart=(id,size,opts={})=>{
+  const p=lookupP(id);
+  if(!p){showToast('Oops','Product not found — please refresh');return false}
+  /* Ensure sizes array exists on catalog products */
+  const sizes=p.sizes&&p.sizes.length?p.sizes:[{ml:parseInt(p.size)||100,price:p.price}];
+  const ml=size||sizes[0].ml;
+  const sz=sizes.find(s=>s.ml===ml)||sizes[0];
+  const ex=cart.find(i=>i.id===id&&i.ml===sz.ml);
+  if(ex)ex.qty++;
+  else cart.push({id,name:p.name,brand:p.brand||'Khadlaj',image:p.image,ml:sz.ml,price:sz.price,qty:1});
+  ls.set('khadlaj_cart',cart);
+  renderCart();
+  showToast('Added to bag',p.name);
+  /* Auto-open cart drawer briefly so customer sees the item land in the bag */
+  if(!opts.silent){openCart();setTimeout(()=>{/* leave open — user closes manually */},2500)}
+  return true;
+};
 const updateQty=(idx,d)=>{cart[idx].qty=Math.max(0,cart[idx].qty+d);if(cart[idx].qty===0)cart.splice(idx,1);ls.set('khadlaj_cart',cart);renderCart()};
 const removeItem=idx=>{cart.splice(idx,1);ls.set('khadlaj_cart',cart);renderCart()};
 const clearCart=()=>{cart=[];ls.set('khadlaj_cart',cart);renderCart()};
@@ -3073,13 +3132,23 @@ const renderCart=()=>{
 };
 const getDiscount=sub=>{if(!coupon||!COUPONS[coupon])return 0;const c=COUPONS[coupon];if(c.type==='pct')return Math.round(sub*c.val/100);if(c.type==='fix')return Math.min(c.val,sub);return 0};
 
-/* delegated cart drawer events */
+/* Delegated product/cart events — uses closest() so clicks on child elements still register */
 document.body.addEventListener('click',e=>{
-  if(e.target.matches('[data-qty]')){const idx=+e.target.dataset.qty,d=+e.target.dataset.d;updateQty(idx,d)}
-  if(e.target.matches('[data-rm]')){removeItem(+e.target.dataset.rm)}
-  if(e.target.matches('[data-add-id]')){e.preventDefault();e.stopPropagation();addToCart(e.target.dataset.addId)}
-  if(e.target.closest('[data-product-id]')&&!e.target.matches('button')&&!e.target.closest('button')){const card=e.target.closest('[data-product-id]');openProduct(card.dataset.productId)}
-  if(e.target.matches('[data-wish]')||e.target.closest('[data-wish]')){const b=e.target.closest('[data-wish]');toggleWish(b.dataset.wish);b.classList.toggle('active',wishlist.includes(b.dataset.wish));e.stopPropagation()}
+  /* Quick Add → cart (priority over card click) */
+  const addBtn=e.target.closest('[data-add-id]');
+  if(addBtn){e.preventDefault();e.stopPropagation();addToCart(addBtn.dataset.addId);return}
+  /* Wishlist */
+  const wishBtn=e.target.closest('[data-wish]');
+  if(wishBtn){e.preventDefault();e.stopPropagation();toggleWish(wishBtn.dataset.wish);wishBtn.classList.toggle('active',wishlist.includes(wishBtn.dataset.wish));return}
+  /* Cart drawer qty buttons */
+  const qtyBtn=e.target.closest('[data-qty]');
+  if(qtyBtn){updateQty(+qtyBtn.dataset.qty,+qtyBtn.dataset.d);return}
+  /* Cart drawer remove */
+  const rmBtn=e.target.closest('[data-rm]');
+  if(rmBtn){removeItem(+rmBtn.dataset.rm);return}
+  /* Click anywhere on a product card (not a button) → open detail modal */
+  const card=e.target.closest('[data-product-id]');
+  if(card&&!e.target.closest('button')&&!e.target.closest('a')){openProduct(card.dataset.productId);return}
 });
 
 /* ──────────────  WISHLIST  ────────────── */
@@ -3550,6 +3619,145 @@ $$('[data-route]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();
 /* Header search button → open overlay */
 $('.search-mega button')?.addEventListener('click',e=>{e.preventDefault();openSearch()});
 
+/* ══════════════════  GLOBAL CTA WIRING — turn every dead # link into a real action  ══════════════════ */
+const ctaRules=[
+  {test:/buy as gift|gift of the week|gift guide|eid|gift set/i,fn:()=>applyFilter('gifts')},
+  {test:/shop men|for him|men's signature/i,fn:()=>applyFilter('men')},
+  {test:/shop women|for her|feminine/i,fn:()=>applyFilter('women')},
+  {test:/save 30%|today's deal|deals 60|^deals$/i,fn:()=>applyFilter('deals')},
+  {test:/build my trio|build a trio|build your trio|start building|quick order|three fragrances/i,fn:()=>openQuickOrder()},
+  {test:/discover icon|icon collection/i,fn:()=>{QO.search='icon';applyFilter('all')}},
+  {test:/cambodi|hindi|oud guide|the oud edit|oud & amber/i,fn:()=>applyFilter('oud')},
+  {test:/inside the atelier|40 years of craft|our heritage|heritage|founder|process/i,fn:()=>document.querySelector('#story,[id*=founder]')?.scrollIntoView({behavior:'smooth',block:'start'})},
+  {test:/take the scent quiz|find my fragrance|find your fragrance/i,fn:()=>{$('#chatFab')?.click()}},
+  {test:/write a review|leave a review|tell us/i,fn:()=>window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi Khadlaj — I'd like to leave a review for a fragrance I bought.")}`,'_blank')},
+  {test:/track order|track your order/i,fn:()=>window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hi Khadlaj — please help me track my order.')}`,'_blank')},
+  {test:/customer care|contact us|help|reach us|support/i,fn:()=>window.open(`https://wa.me/${WA_NUMBER}`,'_blank')},
+  {test:/showroom|find a store/i,fn:()=>window.open('https://khadlaj-perfumes.com/pages/showrooms','_blank')},
+  {test:/wholesale|distribution|distributor/i,fn:()=>document.querySelector('#bulk-h')?.scrollIntoView({behavior:'smooth',block:'start'})},
+  {test:/journal|read article|all articles/i,fn:()=>document.querySelector('.journal,.edit-row')?.scrollIntoView({behavior:'smooth',block:'start'})},
+  {test:/sign in|account|sign up|register/i,fn:()=>{renderAccount&&renderAccount();openModal('accountModal')}},
+  {test:/wishlist/i,fn:()=>{renderAccount&&renderAccount();openModal('accountModal');$$('.acc-tab').forEach(x=>x.classList.remove('active'));$('.acc-tab[data-tab=wishlist]')?.classList.add('active');$$('.acc-pane').forEach(x=>x.classList.remove('active'));$('#paneWishlist')?.classList.add('active')}},
+  {test:/cart|bag|basket/i,fn:()=>openCart()},
+  {test:/return|refund|cancellation/i,fn:()=>openModal('returnModal')},
+  {test:/privacy|terms|policy|cookies|sitemap/i,fn:()=>showToast('Coming soon','Page will be available shortly')},
+  {test:/eau de parfum|edp/i,fn:()=>applyFilter('edp')},
+  {test:/perfume oil|attar/i,fn:()=>applyFilter('oils')},
+  {test:/home & ambianc|home and ambianc|bakhoor|incense|burner/i,fn:()=>applyFilter('home')},
+  {test:/bestseller|top selling|most loved/i,fn:()=>applyFilter('bestsellers')},
+  {test:/spring 2026|new arrival|just dropped|new in/i,fn:()=>applyFilter('new')},
+  {test:/all (collection|fragrance|product|412)|view all|browse all|shop all|view collection|continue shopping|shop now/i,fn:()=>applyFilter('all')},
+  {test:/follow|tag #khadlaj/i,fn:()=>window.open('https://www.instagram.com/khadlajperfumes','_blank')},
+  {test:/affiliate program/i,fn:()=>window.open(`mailto:customercare@khadlaj-perfumes.com?subject=${encodeURIComponent('Affiliate program enquiry')}`,'_self')},
+  {test:/careers|jobs|hiring/i,fn:()=>window.open(`mailto:customercare@khadlaj-perfumes.com?subject=${encodeURIComponent('Careers enquiry')}`,'_self')}
+];
+const tryCTA=(el,e)=>{
+  /* Skip if element is already wired */
+  if(el.dataset.modalClose!==undefined)return false;
+  if(el.dataset.cta)return false;
+  if(el.dataset.route)return false;
+  if(el.dataset.filter)return false;
+  if(el.dataset.tab)return false;
+  if(el.dataset.atab)return false;
+  if(el.dataset.pdtab)return false;
+  if(el.dataset.apane)return false;
+  if(el.dataset.code)return false;
+  if(el.dataset.add)return false;
+  if(el.dataset.addId)return false;
+  if(el.dataset.wish)return false;
+  if(el.dataset.searchPick)return false;
+  if(el.dataset.chatPick)return false;
+  if(el.dataset.chatQ)return false;
+  if(el.dataset.chatWa!==undefined)return false;
+  if(el.id&&['cartBtn','drawerClose','searchBtn','menuToggle','chatFab','chatClose','cookAccept','cookReject','adminLogin','adSignOut','quickOrderBtn','downloadCatalogue','downloadCatalogue2','bulkPDF','bulkWhatsapp','applyCoupon','adPreview','adSaveDraft','adExportSubs','adClearSubs','qoProforma','qoWA','qoToCart','qoClear','adOnlyConsented','placeOrderBtn','ocWhatsapp','bulkAddRow'].includes(el.id))return false;
+  /* Form submit buttons handled by their forms */
+  if(el.tagName==='BUTTON'&&el.type==='submit')return false;
+  /* Ignore if href is a real anchor (#shop, #story, #admin) — let scroll happen */
+  const href=el.getAttribute&&el.getAttribute('href');
+  if(href&&href.length>1&&href!=='#')return false;
+
+  const own=el.textContent.trim();
+  const parent=el.closest('.banner,.side-card,.edit-card,.cat-tile,.article');
+  const ctx=parent?parent.textContent.trim():own;
+
+  for(const rule of ctaRules){
+    if(rule.test.test(own)||rule.test.test(ctx)){
+      e.preventDefault();
+      console.log('[Khadlaj cta]',own.slice(0,40));
+      rule.fn();
+      return true;
+    }
+  }
+  /* Final fallback for any href="#" — prevent jumping to top */
+  if(href==='#'){e.preventDefault();applyFilter('all');return true}
+  return false;
+};
+document.addEventListener('click',e=>{
+  /* Only intercept simple anchor + button.btn that aren't already handled */
+  const a=e.target.closest('a[href="#"], a[href="#shop"], button.btn:not([type=submit])');
+  if(!a)return;
+  /* If the click also matches a button-with-data-handler, let those run first by checking inside */
+  if(a.closest('[data-add-id],[data-wish],[data-qty],[data-rm],[data-modal-close]'))return;
+  tryCTA(a,e);
+},true);
+/* Make .side-card, .banner, .edit-card themselves clickable as a whole */
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.side-card,.banner,.edit-card');
+  if(c&&!e.target.closest('a:not(.side-card):not(.banner):not(.edit-card),button')){tryCTA(c,e)}
+});
+
+/* ══════════════════  CURSOR-TRACKED HOVER ZOOM  ══════════════════ */
+/* Hovering any product card zooms the image toward the cursor.
+   Moving cursor to a neighbouring card smoothly shifts the zoom there.
+   On touch devices: tap-and-hold zooms briefly. */
+(()=>{
+  const style=document.createElement('style');
+  style.textContent=`
+    .product .product-media{cursor:zoom-in;overflow:hidden}
+    .product .product-media img{transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s;will-change:transform;transform-origin:center center}
+    .product:not(.zooming):hover .product-media img{transform:scale(1.06)}
+    .product.zooming{z-index:5}
+    .product.zooming .product-media img{transform:scale(1.85);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+    .product.zooming{box-shadow:0 24px 60px -20px rgba(0,0,0,.35)}
+    .product.zooming .product-media::after{content:'';position:absolute;inset:0;border:1px solid rgba(212,168,71,.5);pointer-events:none;z-index:3}
+    @media (hover:none){.product .product-media{cursor:default}.product:not(.zooming):hover .product-media img{transform:none}}
+  `;
+  document.head.appendChild(style);
+
+  let activeCard=null,raf=null;
+  const onMove=(card,e)=>{
+    if(raf)cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      const media=card.querySelector('.product-media');if(!media)return;
+      const img=media.querySelector('img');if(!img)return;
+      const r=media.getBoundingClientRect();
+      const cx=((e.clientX-r.left)/r.width)*100;
+      const cy=((e.clientY-r.top)/r.height)*100;
+      img.style.transformOrigin=`${Math.max(10,Math.min(90,cx))}% ${Math.max(10,Math.min(90,cy))}%`;
+    });
+  };
+  const enter=card=>{
+    if(activeCard&&activeCard!==card)activeCard.classList.remove('zooming');
+    card.classList.add('zooming');
+    activeCard=card;
+  };
+  const leave=card=>{
+    card.classList.remove('zooming');
+    const img=card.querySelector('.product-media img');
+    if(img)img.style.transformOrigin='center center';
+    if(activeCard===card)activeCard=null;
+  };
+
+  /* Delegate from document so this works for cards rendered later (filters, search, etc.) */
+  document.addEventListener('mouseover',e=>{const card=e.target.closest('.product');if(card&&!card.classList.contains('zooming'))enter(card)});
+  document.addEventListener('mousemove',e=>{const card=e.target.closest('.product');if(card)onMove(card,e)});
+  document.addEventListener('mouseout',e=>{const card=e.target.closest('.product');if(!card)return;const next=e.relatedTarget&&e.relatedTarget.closest&&e.relatedTarget.closest('.product');if(next!==card)leave(card)});
+  /* Touch: long-press to zoom, release to unzoom */
+  let touchTimer=null;
+  document.addEventListener('touchstart',e=>{const card=e.target.closest('.product');if(!card)return;clearTimeout(touchTimer);touchTimer=setTimeout(()=>enter(card),250)},{passive:true});
+  document.addEventListener('touchend',()=>{clearTimeout(touchTimer);if(activeCard)leave(activeCard)},{passive:true});
+})();
+
 /* ──────────────  REAL PRODUCT IMAGES (from khadlaj-perfumes.com Shopify CDN)  ────────────── */
 const REAL_IMAGES={
   'cream-velvet':'https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CreamVelvet01_4f0dfae6-16ce-4ced-b614-2cb1ef0b8aa6.jpg?v=1726140516',
@@ -3665,14 +3873,48 @@ const applyFilter=key=>{
   $$('.nav-list a[data-filter="'+key+'"]').forEach(a=>a.style.color='var(--lux-gold,#a98842)');
 };
 
+/* MEGAMENU — drops down with preview of products in selected category */
+const showMega=(key,navEl)=>{
+  const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRODUCTS;
+  const fn=FILTERS[key]||FILTERS.all;
+  const list=fn(all);
+  /* Title — use nav label + a luxe italic descriptor */
+  const labels={all:['All Fragrances','Heritage perfumery'],deals:['Deals','Selected sale'],edp:['Eau de Parfum','Spray fragrances'],oils:['Perfume Oils','Pure attars'],oud:['Oud & Attars','Heritage'],women:['For Her',"Women's fragrances"],men:['For Him',"Men's fragrances"],unisex:['Unisex','For everyone'],gifts:['Gift Sets','Curated bundles'],home:['Home & Ambiance','Bakhoor & freshener'],bestsellers:['Bestsellers','Top selling now'],new:['Spring 2026','New arrivals']};
+  const [main,sub]=labels[key]||['Browse','All fragrances'];
+  $('#megaTitle').innerHTML=`${main} <em>${sub}</em>`;
+  $('#megaCount').textContent=list.length+' fragrance'+(list.length===1?'':'s');
+  /* Render up to 12 preview tiles */
+  $('#megaGrid').innerHTML=list.length?list.slice(0,12).map(p=>`<div class="mega-tile" data-product-id="${p.id}"><div class="mega-tile-img"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.opacity=.3"></div><div class="mega-tile-brand">${p.brand||'Khadlaj'} · ${p.gender||'Unisex'}</div><h4>${p.name}</h4><small>${fmt(p.price)}</small></div>`).join(''):`<div class="mega-empty" style="grid-column:1/-1">No products yet in this section. Try another category from the menu.</div>`;
+  /* Store key for "Browse all" button */
+  $('#megaBrowseAll').dataset.filter=key;
+  /* Show panel */
+  $('#megaPanel').classList.add('open');
+  $('#megaPanel').setAttribute('aria-hidden','false');
+  /* Highlight active nav */
+  $$('.nav-list a[data-filter]').forEach(a=>a.style.color='');
+  if(navEl)navEl.style.color='var(--lux-gold,#a98842)';
+};
+const hideMega=()=>{$('#megaPanel').classList.remove('open');$('#megaPanel').setAttribute('aria-hidden','true');$$('.nav-list a[data-filter]').forEach(a=>a.style.color='')};
+$('#megaClose').addEventListener('click',hideMega);
+
+/* Browse all → close mega + apply filter on main grid + scroll to it */
+$('#megaBrowseAll').addEventListener('click',()=>{const k=$('#megaBrowseAll').dataset.filter||'all';hideMega();applyFilter(k)});
+
+/* Click a tile in the megamenu → open product modal */
+$('#megaGrid').addEventListener('click',e=>{const t=e.target.closest('[data-product-id]');if(!t)return;hideMega();openProduct(t.dataset.productId)});
+
+/* Close mega when clicking outside */
+document.addEventListener('click',e=>{if(!$('#megaPanel').classList.contains('open'))return;if(e.target.closest('#megaPanel,.nav-list a[data-filter],.primary-nav'))return;hideMega()});
+addEventListener('keydown',e=>{if(e.key==='Escape')hideMega()});
+
 /* Wire nav clicks via event delegation (works even after re-renders) */
 document.addEventListener('click',e=>{
   const navLink=e.target.closest('.nav-list a[data-filter]');
-  if(navLink){e.preventDefault();const f=navLink.dataset.filter;console.log('[Khadlaj nav] filter:',f);applyFilter(f);return}
+  if(navLink){e.preventDefault();const f=navLink.dataset.filter;console.log('[Khadlaj nav] mega:',f);showMega(f,navLink);return}
   const cc=e.target.closest('.cc-item');
-  if(cc){e.preventDefault();const idx=Array.from(cc.parentNode.children).indexOf(cc);const map=['oud','women','men','all','oils','gifts','home','all'];applyFilter(map[idx]||'all');return}
+  if(cc){e.preventDefault();const idx=Array.from(cc.parentNode.children).indexOf(cc);const map=['oud','women','men','all','oils','gifts','home','all'];showMega(map[idx]||'all');return}
   const brand=e.target.closest('.brand');
-  if(brand){e.preventDefault();applyFilter('all');return}
+  if(brand){e.preventDefault();showMega('all');return}
 });
 console.log('[Khadlaj] Filter engine ready · '+$$('.nav-list a[data-filter]').length+' nav items wired');
 /* When catalog finishes loading, log it */
