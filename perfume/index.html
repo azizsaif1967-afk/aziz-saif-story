@@ -2056,10 +2056,13 @@ input,select{font:inherit}
           <li>Full HS codes, COA, MSDS for customs</li>
         </ul>
 
-        <div style="margin-top:14px;padding:14px;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:#fff;border-radius:8px;font-size:13px">
-          <b style="color:var(--gold);display:block;margin-bottom:4px">Already a wholesale partner?</b>
-          <span style="opacity:.8">Sign in to access your tier pricing.</span>
-        </div>
+        <button type="button" id="wholesaleSignInBtn" style="margin-top:14px;padding:14px 18px;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:#fff;border:0;border-left:3px solid var(--lux-gold,#a98842);border-radius:0;font-size:13px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:all .2s;width:100%;font-family:inherit">
+          <span>
+            <b style="color:var(--lux-gold,#c9a961);display:block;margin-bottom:4px;font-family:var(--display,'Marcellus',serif);font-weight:500;letter-spacing:.04em">Already a wholesale partner?</b>
+            <span style="opacity:.8">Sign in to access your tier pricing →</span>
+          </span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;color:var(--lux-gold,#c9a961)"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+        </button>
       </div>
 
       <form class="bulk-form" id="bulkForm" novalidate>
@@ -3666,9 +3669,82 @@ $('#forgotPwLink')?.addEventListener('click',e=>{e.preventDefault();window.open(
 /* On load: restore session display */
 if(getSession())updateHeaderAuth(getSession());
 
+/* Wholesale "Already a partner? Sign in" button */
+$('#wholesaleSignInBtn')?.addEventListener('click',()=>{renderAccount();openModal('accountModal');/* If logged out, focus sign-in tab */if(!getSession()){$('[data-auth-tab="signin"]')?.click();setTimeout(()=>$('#signinForm input[name=email]')?.focus(),300)}});
+
 /* ──────────────  BULK ORDER  ────────────── */
 const bulkTable=$('#bulkTable');
-const newRow=()=>{const r=document.createElement('div');r.className='bulk-table-row';r.innerHTML=`<input type="text" placeholder="Product name or SKU" data-bk="name"><select data-bk="size"><option value="">Size…</option><option>10 ml</option><option>30 ml</option><option>50 ml</option>${PRODUCTS[0].sizes.map(s=>``).join('')}<option>100 ml</option><option>Mixed</option></select><input type="number" min="1" placeholder="Qty (e.g. 24)" data-bk="qty"><button type="button" class="rm" aria-label="Remove">×</button>`;r.querySelector('.rm').addEventListener('click',()=>{r.remove();updateBulkTotals()});r.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',updateBulkTotals));bulkTable.appendChild(r);updateBulkTotals()};
+/* Searchable product dropdown for wholesale rows */
+const _pickerStyle=document.createElement('style');
+_pickerStyle.textContent=`
+.bulk-pp{position:relative}
+.bulk-pp input[data-bk=name]{width:100%;cursor:pointer;background:#fff;padding:8px 10px;border:0;font-size:13px;outline:0}
+.bulk-pp .pp-pop{position:absolute;top:100%;left:0;right:0;z-index:30;background:#fff;border:1px solid #d6c8a8;max-height:340px;overflow:hidden;box-shadow:0 12px 32px -8px rgba(0,0,0,.18);display:none;flex-direction:column}
+.bulk-pp.open .pp-pop{display:flex}
+.bulk-pp .pp-search{width:100%;padding:10px 14px;border:0;border-bottom:1px solid #ede5d3;font-size:13px;outline:0;background:#fbf8f1}
+.bulk-pp .pp-list{flex:1;overflow-y:auto}
+.bulk-pp .pp-item{display:grid;grid-template-columns:36px 1fr auto;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid #ede5d3;align-items:center}
+.bulk-pp .pp-item:hover,.bulk-pp .pp-item.kbd{background:#fff8e6}
+.bulk-pp .pp-item img{width:36px;height:36px;object-fit:cover;background:#ede5d3}
+.bulk-pp .pp-item b{display:block;font-size:12px;font-weight:600;line-height:1.2;color:#0d0d0d}
+.bulk-pp .pp-item small{font-size:10px;color:#a98842;letter-spacing:.06em;text-transform:uppercase}
+.bulk-pp .pp-item .pp-price{font-size:12px;font-weight:700;color:#0d0d0d}
+.bulk-pp .pp-empty{padding:24px;text-align:center;color:#6a6052;font-size:12px}
+`;
+document.head.appendChild(_pickerStyle);
+
+const newRow=()=>{
+  const r=document.createElement('div');r.className='bulk-table-row';
+  r.innerHTML=`
+    <div class="bulk-pp">
+      <input type="text" data-bk="name" placeholder="Click to pick a product…" readonly autocomplete="off">
+      <div class="pp-pop">
+        <input type="search" class="pp-search" placeholder="Search 325 products…" autocomplete="off">
+        <div class="pp-list"></div>
+      </div>
+    </div>
+    <select data-bk="size"><option value="">Size…</option></select>
+    <input type="number" min="1" placeholder="Qty (e.g. 24)" data-bk="qty">
+    <button type="button" class="rm" aria-label="Remove">×</button>
+  `;
+  bulkTable.appendChild(r);
+  const pp=r.querySelector('.bulk-pp'),input=r.querySelector('[data-bk=name]'),pop=r.querySelector('.pp-pop'),search=r.querySelector('.pp-search'),list=r.querySelector('.pp-list'),sizeSel=r.querySelector('[data-bk=size]'),qtyInput=r.querySelector('[data-bk=qty]');
+  let kbdIdx=-1,filtered=[];
+  const renderList=(q='')=>{
+    const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRODUCTS;
+    filtered=q?all.filter(p=>(p.name+' '+(p.brand||'')+' '+(p.gender||'')+' '+(p.family||'')).toLowerCase().includes(q.toLowerCase())):all;
+    filtered=filtered.slice(0,80);
+    list.innerHTML=filtered.length?filtered.map((p,i)=>`<div class="pp-item ${i===kbdIdx?'kbd':''}" data-pp-pick="${p.id}"><img src="${p.image}" alt="" loading="lazy" onerror="this.style.opacity=.3"><div><b>${p.name}</b><small>${p.brand||'Khadlaj'} · ${p.gender||'Unisex'}${p.size?' · '+p.size:''}</small></div><span class="pp-price">${fmt(p.price)}</span></div>`).join(''):'<div class="pp-empty">No products match. Try another keyword.</div>';
+  };
+  const openPP=()=>{pp.classList.add('open');renderList(search.value);setTimeout(()=>search.focus(),30)};
+  const closePP=()=>{pp.classList.remove('open');kbdIdx=-1};
+  input.addEventListener('click',openPP);
+  input.addEventListener('focus',openPP);
+  search.addEventListener('input',e=>{kbdIdx=-1;renderList(e.target.value)});
+  search.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();kbdIdx=Math.min(filtered.length-1,kbdIdx+1);renderList(search.value)}
+    else if(e.key==='ArrowUp'){e.preventDefault();kbdIdx=Math.max(0,kbdIdx-1);renderList(search.value)}
+    else if(e.key==='Enter'&&filtered[kbdIdx]){e.preventDefault();selectProduct(filtered[kbdIdx])}
+    else if(e.key==='Escape'){closePP();input.blur()}
+  });
+  const selectProduct=p=>{
+    input.value=p.name;input.dataset.productId=p.id;
+    /* Populate sizes from the product (if it has multiple) */
+    const sizes=p.sizes&&p.sizes.length?p.sizes.map(s=>s.ml+' ml'):[p.size||'100 ml'];
+    sizeSel.innerHTML=sizes.map(s=>`<option ${s===(p.size||'100 ml')?'selected':''}>${s}</option>`).concat(['10 ml','30 ml','50 ml','75 ml','100 ml','Mixed'].filter(s=>!sizes.includes(s)).map(s=>`<option>${s}</option>`)).join('');
+    closePP();updateBulkTotals();
+    /* Move focus to qty for fast entry */
+    qtyInput.focus();qtyInput.select();
+  };
+  list.addEventListener('click',e=>{const it=e.target.closest('[data-pp-pick]');if(!it)return;const p=lookupP(it.dataset.ppPick);if(p)selectProduct(p)});
+  /* Click outside closes */
+  document.addEventListener('click',e=>{if(!pp.contains(e.target))closePP()});
+  /* Other handlers */
+  r.querySelector('.rm').addEventListener('click',()=>{r.remove();updateBulkTotals()});
+  qtyInput.addEventListener('input',updateBulkTotals);
+  sizeSel.addEventListener('change',updateBulkTotals);
+  updateBulkTotals();
+};
 const updateBulkTotals=()=>{let units=0;$$('#bulkTable [data-bk=qty]').forEach(i=>{units+=+i.value||0});$('#bulkUnits').textContent=units.toLocaleString()};
 newRow();newRow();newRow();
 $('#bulkAddRow').addEventListener('click',newRow);
