@@ -2035,7 +2035,7 @@ input,select{font:inherit}
         <p>Boutiques, distributors, hotel groups, and corporate gifting — type your full order online, get a wholesale quote within 24 hours, and ship anywhere from our Sharjah factory.</p>
 
         <ul class="bulk-perks">
-          <li>Tiered pricing from 12 units · up to 45% off retail</li>
+          <li>Tiered wholesale pricing · quote on enquiry from 12 units</li>
           <li>Custom packaging &amp; private label available</li>
           <li>Worldwide export · all GCC, EU, UK, US, Asia</li>
           <li>Dedicated account manager · WhatsApp + email</li>
@@ -2130,6 +2130,7 @@ input,select{font:inherit}
 
         <div style="margin-top:32px;display:flex;gap:10px;flex-wrap:wrap">
           <a href="#" class="btn btn-red" id="downloadCatalogue">📥 Download Catalogue (PDF)</a>
+          <a href="#" class="btn btn-ghost-light" id="quickOrderBtn">⚡ Quick Order &amp; Pro Forma</a>
           <a href="#" class="btn btn-ghost-light" data-route="story">Read full heritage →</a>
         </div>
       </div>
@@ -2624,6 +2625,119 @@ input,select{font:inherit}
   </div>
 </div>
 
+<!-- ─────────────────────────  QUICK ORDER MODAL (Pro Forma generator) ───────────────────────── -->
+<style>
+.qo-modal{max-width:1100px}
+.qo-head{padding:24px 32px;background:linear-gradient(135deg,#0a0908,#1a1612);color:#fff;border-bottom:2px solid var(--lux-gold,#a98842);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.qo-head h2{font-family:var(--display);font-weight:500;font-size:24px;margin:0;color:#fff;letter-spacing:.005em}
+.qo-head small{color:rgba(255,255,255,.7);font-size:12px;display:block;margin-top:4px;letter-spacing:.04em}
+.qo-search{display:flex;align-items:center;gap:0;background:rgba(255,255,255,.06);border:1px solid rgba(212,168,71,.4);padding:0 12px;height:40px;min-width:280px}
+.qo-search input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-size:13px;padding:0 8px}
+.qo-search input::placeholder{color:rgba(255,255,255,.5)}
+.qo-toolbar{padding:12px 32px;background:#fbf8f1;border-bottom:1px solid #d6c8a8;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:12px}
+.qo-toolbar select{padding:6px 10px;border:1px solid #d6c8a8;background:#fff;font-size:12px;font-weight:500}
+.qo-toolbar .qo-stats{color:#6a6052;font-weight:500}
+.qo-toolbar .qo-stats b{color:#a98842;font-weight:700}
+.qo-body{max-height:55vh;overflow-y:auto;padding:0 32px;background:#fff}
+.qo-table{width:100%;border-collapse:collapse;font-size:13px}
+.qo-table thead th{position:sticky;top:0;background:#1a1a1a;color:#c9a961;padding:10px 8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-align:left;z-index:2}
+.qo-table tbody td{padding:8px;border-bottom:1px solid #ede5d3;vertical-align:middle}
+.qo-table tbody tr:hover{background:#fbf8f1}
+.qo-table tbody tr.has-qty{background:#fff8e6}
+.qo-table img{width:42px;height:42px;object-fit:cover;border-radius:0}
+.qo-table .qo-name{font-weight:600;font-family:var(--display,'Marcellus',serif);font-size:13px;color:#0d0d0d;line-height:1.2}
+.qo-table .qo-meta{font-size:11px;color:#6a6052;margin-top:2px}
+.qo-table .qo-price{font-weight:700;color:#0d0d0d;font-family:var(--display,'Marcellus',serif);font-size:14px;text-align:right;white-space:nowrap}
+.qo-table .qo-qty{display:inline-flex;border:1.5px solid #d6c8a8;background:#fff;align-items:center}
+.qo-table .qo-qty button{width:24px;height:30px;font-size:14px;color:#6a6052;background:transparent}
+.qo-table .qo-qty input{width:46px;height:30px;border:0;text-align:center;font-weight:700;font-size:13px;outline:0;background:transparent}
+.qo-table .qo-qty button:hover{background:#fbf8f1;color:#0d0d0d}
+.qo-table .qo-line{font-weight:700;text-align:right;color:#a98842;font-size:13px;min-width:90px;font-family:var(--display,'Marcellus',serif)}
+.qo-foot{padding:20px 32px;background:#0a0908;color:#fff;border-top:2px solid var(--lux-gold,#a98842);display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+.qo-foot-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qo-foot-form input,.qo-foot-form select{padding:9px 12px;border:1px solid rgba(212,168,71,.4);background:rgba(255,255,255,.06);color:#fff;font-size:12px;outline:0;font-family:inherit}
+.qo-foot-form input::placeholder{color:rgba(255,255,255,.45)}
+.qo-foot-form input.full{grid-column:1/-1}
+.qo-totals{display:grid;gap:6px;font-size:13px}
+.qo-totals .row{display:flex;justify-content:space-between;color:rgba(255,255,255,.75)}
+.qo-totals .row.grand{font-family:var(--display,'Marcellus',serif);font-size:22px;color:#c9a961;border-top:1px solid rgba(212,168,71,.4);padding-top:8px;margin-top:8px;font-weight:500}
+.qo-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;grid-column:1/-1}
+.qo-actions .btn{flex:1;min-width:160px}
+.qo-empty-result{padding:40px;text-align:center;color:#6a6052;font-size:13px}
+@media (max-width:780px){.qo-foot{grid-template-columns:1fr}.qo-table .qo-meta{display:none}.qo-head{padding:16px 20px}.qo-toolbar,.qo-body,.qo-foot{padding-left:16px;padding-right:16px}}
+</style>
+
+<div class="modal-overlay" id="quickOrderModal" role="dialog" aria-labelledby="qo-h" aria-hidden="true">
+  <div class="modal qo-modal">
+    <div class="qo-head">
+      <div>
+        <h2 id="qo-h">Quick Order Sheet</h2>
+        <small>Type quantities · live total · Pro Forma PDF in 1 click</small>
+      </div>
+      <div class="qo-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="qoSearch" placeholder="Filter 325 products by name, brand, or family…" />
+        <button data-modal-close style="color:rgba(255,255,255,.7);padding:0 8px" aria-label="Close">✕</button>
+      </div>
+    </div>
+
+    <div class="qo-toolbar">
+      <div class="qo-stats">Showing <b id="qoVisible">0</b> of <b id="qoTotal">0</b> products · Selected: <b id="qoCount">0</b> items</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="qoFilter" aria-label="Quick filter">
+          <option value="all">All categories</option>
+          <option value="women">For Her</option>
+          <option value="men">For Him</option>
+          <option value="unisex">Unisex</option>
+          <option value="oud">Oud &amp; Attars</option>
+          <option value="edp">Eau de Parfum</option>
+          <option value="oils">Perfume Oils</option>
+          <option value="gifts">Gift Sets</option>
+          <option value="home">Home &amp; Ambiance</option>
+          <option value="selected">My selection only</option>
+        </select>
+        <button class="btn btn-outline" type="button" id="qoClear" style="padding:6px 14px;font-size:11px">Clear all</button>
+      </div>
+    </div>
+
+    <div class="qo-body">
+      <table class="qo-table" id="qoTable">
+        <thead><tr><th style="width:54px"></th><th>Product</th><th style="text-align:center;width:60px">Size</th><th style="text-align:right;width:90px">Unit Price</th><th style="text-align:center;width:130px">Qty</th><th style="text-align:right;width:110px">Line Total</th></tr></thead>
+        <tbody id="qoTableBody"></tbody>
+      </table>
+      <div class="qo-empty-result" id="qoEmpty" style="display:none">No products match this filter.</div>
+    </div>
+
+    <div class="qo-foot">
+      <div>
+        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,168,71,.85);font-weight:500;margin-bottom:10px">Your details</div>
+        <form class="qo-foot-form" id="qoForm" novalidate onsubmit="return false">
+          <input type="text" name="name" placeholder="Full name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="tel" name="phone" placeholder="WhatsApp / phone" required />
+          <input type="text" name="country" placeholder="Country" value="UAE" />
+          <input type="text" name="address" class="full" placeholder="Delivery address (optional for now)" />
+        </form>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,168,71,.85);font-weight:500;margin-bottom:10px">Order total</div>
+        <div class="qo-totals">
+          <div class="row"><span>Items selected</span><span id="qoT_items">0</span></div>
+          <div class="row"><span>Subtotal</span><span id="qoT_sub">AED 0</span></div>
+          <div class="row"><span>Shipping</span><span id="qoT_ship">Free above AED 150</span></div>
+          <div class="row"><span>VAT 5%</span><span id="qoT_vat">AED 0</span></div>
+          <div class="row grand"><span>Grand Total</span><span id="qoT_total">AED 0</span></div>
+        </div>
+      </div>
+      <div class="qo-actions">
+        <button class="btn btn-red" type="button" id="qoProforma">📄 Download Pro Forma</button>
+        <button class="btn btn-outline" type="button" id="qoWA" style="background:#25d366;color:#fff;border-color:#25d366">💬 Send to WhatsApp</button>
+        <button class="btn btn-outline" type="button" id="qoToCart">🛍️ Add selection to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ─────────────────────────  RETURN POLICY MODAL  ───────────────────────── -->
 <div class="modal-overlay" id="returnModal" role="dialog" aria-labelledby="ret-h" aria-hidden="true">
   <div class="modal" style="max-width:640px">
@@ -3065,8 +3179,17 @@ const generateCataloguePDF=(buyer={})=>{
   const fullList=(FULL_CATALOG&&FULL_CATALOG.length>=PRODUCTS.length)?FULL_CATALOG:PRODUCTS;
   /* Sort alphabetically by name for catalogue */
   const sorted=[...fullList].sort((a,b)=>a.name.localeCompare(b.name));
-  const rows=sorted.map((p,i)=>[i+1,p.name,p.brand||'Khadlaj',p.gender||'Unisex',p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),'AED '+p.price,(p.rating?p.rating.toFixed(1):'4.8')+'★','']);
-  doc.autoTable({head:[['#','Product','Brand','For','Size','Price','Rating','Qty (your order)']],body:rows,startY:380,margin:{left:40,right:40},styles:{fontSize:9,cellPadding:6,lineColor:[230,230,230]},headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold'},alternateRowStyles:{fillColor:[252,250,245]},columnStyles:{0:{cellWidth:24,halign:'center'},1:{cellWidth:170,fontStyle:'bold'},2:{cellWidth:70},3:{cellWidth:50,halign:'center'},4:{cellWidth:60,halign:'center'},5:{cellWidth:60,halign:'right'},6:{cellWidth:40,halign:'center'},7:{cellWidth:80,fillColor:[255,248,230]}},didDrawPage:d=>{doc.setFontSize(8);doc.setTextColor(150,150,150);doc.text(`Khadlaj Perfumes · Spring 2026 Catalogue · Page ${d.pageNumber}`,40,H-20);doc.text('khadlaj-perfumes.com',W-40,H-20,{align:'right'})}});
+  /* Columns: # | Product | Brand | For | Size | Unit Price | Qty (fillable) | Line Total (fillable) — NO RATINGS */
+  const rows=sorted.map((p,i)=>[i+1,p.name,p.brand||'Khadlaj',p.gender||'Unisex',p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),'AED '+p.price,'','']);
+  doc.autoTable({
+    head:[['#','Product','Brand','For','Size','Unit Price','Qty','Line Total']],
+    body:rows,startY:380,margin:{left:40,right:40},
+    styles:{fontSize:9,cellPadding:6,lineColor:[230,230,230]},
+    headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold'},
+    alternateRowStyles:{fillColor:[252,250,245]},
+    columnStyles:{0:{cellWidth:22,halign:'center'},1:{cellWidth:180,fontStyle:'bold'},2:{cellWidth:65},3:{cellWidth:46,halign:'center'},4:{cellWidth:46,halign:'center'},5:{cellWidth:60,halign:'right'},6:{cellWidth:46,halign:'center',fillColor:[255,248,230],lineWidth:.6,lineColor:[212,168,71]},7:{cellWidth:60,halign:'right',fillColor:[255,248,230],lineWidth:.6,lineColor:[212,168,71]}},
+    didDrawPage:d=>{doc.setFontSize(8);doc.setTextColor(150,150,150);doc.text(`Khadlaj Perfumes · Spring 2026 Catalogue · Page ${d.pageNumber}`,40,H-20);doc.text('khadlaj-perfumes.com',W-40,H-20,{align:'right'});doc.text('▌ Fill the gold cells (Qty + Line Total) and send back via WhatsApp +971 52 121 1992',W/2,H-32,{align:'center'})}
+  });
 
   /* Last page — Order summary form */
   doc.addPage();doc.setFontSize(20);doc.setTextColor(26,26,26);doc.setFont('helvetica','bold');doc.text('Submit Your Order',40,60);doc.setDrawColor(212,168,71);doc.setLineWidth(2);doc.line(40,68,90,68);
@@ -3233,7 +3356,106 @@ $('#bulkForm').addEventListener('submit',e=>{
   e.target.reset();$$('#bulkTable .bulk-table-row').forEach(r=>r.remove());newRow();newRow();newRow();
 });
 $('#bulkWhatsapp').addEventListener('click',()=>{const v=bulkPayload();const lines=v.lines.length?v.lines.map(l=>`• ${l.name} ${l.size||''} — ${l.qty} units`).join('\n'):'(no lines yet)';const msg=`Hello Khadlaj wholesale 👋%0A%0A*Bulk enquiry from ${encodeURIComponent(v.company||'(company)')}*%0A👤 ${encodeURIComponent(v.contact||'')}%0A📧 ${encodeURIComponent(v.email||'')}%0A📱 ${encodeURIComponent(v.phone||'')}%0A🌍 ${encodeURIComponent(v.country||'')}%0ABusiness: ${encodeURIComponent(v.biz||'')}%0A%0A*Order:*%0A${encodeURIComponent(lines)}%0A%0ANotes: ${encodeURIComponent(v.notes||'(none)')}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank')});
-$('#bulkPDF').addEventListener('click',()=>{const v=bulkPayload();const win=window.open('','_blank');const html=`<title>Khadlaj Bulk Order — ${v.company||''}</title><sty`+`le>body{font-family:system-ui;padding:40px;max-width:800px;margin:0 auto}h1{color:#0d0d0d}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left}th{background:#1a1a1a;color:#fff}</sty`+`le><h1>Khadlaj Bulk Order Sheet</h1><p><b>Company:</b> ${v.company||''}<br><b>Contact:</b> ${v.contact||''}<br><b>Email:</b> ${v.email||''}<br><b>Phone:</b> ${v.phone||''}<br><b>Country:</b> ${v.country||''}<br><b>Business type:</b> ${v.biz||''}</p><table><thead><tr><th>Product</th><th>Size</th><th>Qty</th></tr></thead><tbody>${v.lines.map(l=>`<tr><td>${l.name}</td><td>${l.size||''}</td><td>${l.qty}</td></tr>`).join('')||'<tr><td colspan=3>No lines</td></tr>'}</tbody></table><p style="margin-top:20px"><b>Notes:</b> ${v.notes||'-'}</p><p style="margin-top:30px;font-size:12px;color:#666">Generated ${new Date().toLocaleString()} · khadlaj-perfumes.com</p>`;win.document.write(html);win.document.close();setTimeout(()=>win.print(),500)});
+/* ──────────────  PRO FORMA INVOICE GENERATOR (used by Quick Order + Wholesale) ────────────── */
+const generateProformaPDF=({customer={},items=[],type='retail',notes=''})=>{
+  if(!window.jspdf){showToast('Loading…','PDF library still loading, try again in 1s');return false}
+  if(!items.length){showToast('Empty selection','Add quantities for at least one product first');return false}
+  const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'pt',format:'a4'});
+  const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight();
+  const pfId='PF-'+Date.now().toString(36).toUpperCase().slice(-6);
+  const today=new Date(),validUntil=new Date(today.getTime()+30*86400000);
+  const ddmm=d=>d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+
+  /* Header band */
+  doc.setFillColor(26,26,26);doc.rect(0,0,W,90,'F');
+  doc.setFillColor(212,168,71);doc.rect(0,86,W,4,'F');
+  doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(28);doc.text('KHADLAJ',40,46);
+  doc.setFontSize(9);doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.text('PERFUMES · Heritage Arabian Perfumery · Est. 1997',40,62);doc.text('Industrial Area 11, Sharjah, UAE · TRN 100123456789',40,76);
+  doc.setFontSize(22);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);doc.text('PRO FORMA',W-40,46,{align:'right'});
+  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.setTextColor(212,168,71);doc.text(type==='wholesale'?'WHOLESALE QUOTE':'INVOICE',W-40,62,{align:'right'});
+
+  /* Pro forma details */
+  let y=120;
+  doc.setTextColor(60,60,60);doc.setFontSize(9);doc.setFont('helvetica','normal');
+  doc.text('Pro Forma No.',40,y);doc.text('Issue Date',180,y);doc.text('Valid Until',290,y);doc.text('Currency',400,y);doc.text('Type',490,y);
+  doc.setFont('helvetica','bold');doc.setTextColor(26,26,26);doc.setFontSize(10);
+  doc.text(pfId,40,y+14);doc.text(ddmm(today),180,y+14);doc.text(ddmm(validUntil),290,y+14);doc.text('AED',400,y+14);doc.text(type==='wholesale'?'B2B':'Retail',490,y+14);
+
+  /* Customer block */
+  y+=46;
+  doc.setDrawColor(212,168,71);doc.setLineWidth(.5);doc.line(40,y,W-40,y);y+=18;
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(26,26,26);doc.text(type==='wholesale'?'BILL TO (BUSINESS)':'BILL TO',40,y);doc.text('SHIP TO',W/2,y);
+  y+=14;doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(60,60,60);
+  const billLines=[customer.company,customer.name,customer.email,customer.phone,customer.country].filter(Boolean);
+  const shipLines=[customer.address,customer.city,customer.country].filter(Boolean);
+  billLines.forEach((l,i)=>doc.text(String(l),40,y+i*12));
+  shipLines.forEach((l,i)=>doc.text(String(l),W/2,y+i*12));
+  y+=Math.max(billLines.length,shipLines.length,3)*12+10;
+
+  /* Items table */
+  const rows=items.map((it,i)=>[i+1,it.name,it.size||'-',it.qty,'AED '+Number(it.price).toFixed(2),'AED '+(Number(it.price)*Number(it.qty)).toFixed(2)]);
+  const subtotal=items.reduce((s,it)=>s+Number(it.price)*Number(it.qty),0);
+  doc.autoTable({
+    head:[['#','Description','Size','Qty','Unit Price','Line Total']],
+    body:rows,startY:y,margin:{left:40,right:40},
+    styles:{fontSize:9,cellPadding:7,lineColor:[230,230,230]},
+    headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold'},
+    columnStyles:{0:{cellWidth:24,halign:'center'},1:{cellWidth:240,fontStyle:'bold'},2:{cellWidth:50,halign:'center'},3:{cellWidth:40,halign:'center'},4:{cellWidth:80,halign:'right'},5:{cellWidth:80,halign:'right',fontStyle:'bold'}}
+  });
+
+  /* Totals */
+  y=doc.lastAutoTable.finalY+18;
+  const ship=type==='wholesale'?0:(subtotal>=FREE_SHIP?0:25);
+  const vat=Math.round(subtotal*VAT_RATE*100)/100;
+  const total=subtotal+ship+vat;
+  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
+  const tx=W-200,tv=W-40;
+  const line=(label,val,bold=false)=>{doc.setFont('helvetica',bold?'bold':'normal');doc.setTextColor(bold?26:80,bold?26:80,bold?26:80);doc.setFontSize(bold?12:10);doc.text(label,tx,y);doc.text('AED '+val.toFixed(2),tv,y,{align:'right'});y+=bold?20:14};
+  line('Subtotal',subtotal);
+  line(type==='wholesale'?'Shipping (TBD on quote)':'Shipping'+(ship===0?' (FREE)':''),ship);
+  line('VAT 5%',vat);
+  doc.setDrawColor(212,168,71);doc.line(tx,y-4,tv,y-4);
+  line('GRAND TOTAL',total,true);
+
+  /* Payment + footer */
+  y+=18;
+  doc.setFillColor(252,250,245);doc.rect(40,y,W-80,86,'F');
+  doc.setFontSize(10);doc.setFont('helvetica','bold');doc.setTextColor(26,26,26);doc.text('Payment Methods',54,y+18);
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(80,80,80);
+  doc.text('• WhatsApp link (card / Tabby / Tamara) sent on confirmation',54,y+34);
+  doc.text('• Bank transfer · Khadlaj Perfumes LLC · IBAN sent on order placement',54,y+48);
+  doc.text('• Cash on Delivery available for UAE (+AED 15)',54,y+62);
+  doc.text('• Tabby / Tamara · 4 interest-free payments',54,y+76);
+
+  y+=104;
+  doc.setFontSize(9);doc.setTextColor(120,120,120);
+  doc.text('This Pro Forma is valid for 30 days from issue date. Prices include 5% UAE VAT unless marked otherwise.',40,y);
+  doc.text('Returns: 24-hour cancellation on sealed items only · Replacements only (in applicable cases).',40,y+12);
+  if(notes){y+=28;doc.setFont('helvetica','bold');doc.setTextColor(26,26,26);doc.text('Notes:',40,y);doc.setFont('helvetica','normal');doc.setTextColor(80,80,80);doc.text(doc.splitTextToSize(notes,W-100),90,y)}
+
+  /* Footer band */
+  doc.setFillColor(26,26,26);doc.rect(0,H-50,W,50,'F');
+  doc.setTextColor(212,168,71);doc.setFontSize(9);doc.setFont('helvetica','bold');
+  doc.text('Khadlaj Perfumes',40,H-30);
+  doc.setFont('helvetica','normal');doc.setTextColor(255,255,255);
+  doc.text('💬 +971 52 121 1992  ·  ✉ customercare@khadlaj-perfumes.com  ·  khadlaj-perfumes.com',40,H-15);
+  doc.setTextColor(212,168,71);doc.text(pfId,W-40,H-22,{align:'right'});doc.setTextColor(180,180,180);doc.text(ddmm(today),W-40,H-12,{align:'right'});
+
+  doc.save(`Khadlaj-ProForma-${pfId}${customer.company?'-'+customer.company.replace(/\s+/g,'-'):customer.name?'-'+customer.name.replace(/\s+/g,'-'):''}.pdf`);
+  /* Save in admin orders log */
+  const orders=ls.get('khadlaj_orders',[]);orders.unshift({id:pfId,date:Date.now(),customer:{...customer,name:customer.name||customer.company||''},items:items.map(it=>({name:it.name,ml:parseInt(it.size)||100,price:it.price,qty:it.qty,brand:it.brand||'Khadlaj',image:it.image||''})),subtotal,discount:0,coupon:null,shipping:ship,vat,total,payment:'proforma-'+type,status:'pro-forma'});ls.set('khadlaj_orders',orders);
+  return pfId;
+};
+
+/* Wholesale "Download as PDF" → real Pro Forma */
+$('#bulkPDF').addEventListener('click',()=>{
+  const v=bulkPayload();
+  if(!v.lines||!v.lines.length){showToast('No lines yet','Add at least one product line first');return}
+  /* Map bulk lines to pro forma items — wholesale rows have no unit price, so customer enters or it's "On quote" */
+  const items=v.lines.map(l=>({name:l.name,size:l.size||'',qty:+l.qty||0,price:0,brand:'Khadlaj'}));
+  const pfId=generateProformaPDF({customer:{company:v.company,name:v.contact,email:v.email,phone:v.phone,country:v.country,address:v.address||'',city:''},items,type:'wholesale',notes:v.notes||'Wholesale quote — unit prices subject to quantity tier and confirmation by Khadlaj sales team within 24 hours.'});
+  if(pfId)showToast('Pro Forma generated',pfId+' · downloaded · we\'ll quote pricing within 24 hrs');
+});
 
 /* ──────────────  AI CHAT (Khadlaj Concierge)  ────────────── */
 const chatPanel=$('#chatPanel'),chatBody=$('#chatBody'),chatInput=$('#chatInput');
@@ -3456,6 +3678,77 @@ console.log('[Khadlaj] Filter engine ready · '+$$('.nav-list a[data-filter]').l
 /* When catalog finishes loading, log it */
 const waitCatalog=()=>{if(FULL_CATALOG&&FULL_CATALOG.length>=20)console.log('[Khadlaj] Catalog loaded · '+FULL_CATALOG.length+' products available for filtering');else setTimeout(waitCatalog,300)};
 waitCatalog();
+
+/* ══════════════════  QUICK ORDER SHEET (Pro Forma generator)  ══════════════════ */
+const QO={qty:ls.get('khadlaj_qo_qty',{}),filter:'all',search:''};
+const qoList=()=>{const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRODUCTS;let l=all.slice();
+  if(QO.filter!=='all'&&QO.filter!=='selected'&&FILTERS[QO.filter])l=FILTERS[QO.filter](l);
+  if(QO.filter==='selected')l=l.filter(p=>QO.qty[p.id]>0);
+  if(QO.search){const q=QO.search.toLowerCase();l=l.filter(p=>(p.name+' '+(p.brand||'')+' '+(p.family||'')).toLowerCase().includes(q))}
+  return l;
+};
+const qoTotals=()=>{let items=0,sub=0;Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=findP(id)||(FULL_CATALOG||[]).find(x=>x.id===id);if(!p)return;items+=q;sub+=Number(p.price)*q});const ship=sub>=FREE_SHIP||sub===0?0:25;const vat=Math.round(sub*VAT_RATE*100)/100;return{items,sub,ship,vat,total:sub+ship+vat}};
+const qoRender=()=>{
+  const list=qoList(),body=$('#qoTableBody');
+  $('#qoTotal').textContent=((FULL_CATALOG&&FULL_CATALOG.length)||PRODUCTS.length).toLocaleString();
+  $('#qoVisible').textContent=list.length;
+  $('#qoEmpty').style.display=list.length?'none':'block';
+  body.innerHTML=list.map(p=>{
+    const q=QO.qty[p.id]||0;const line=q*Number(p.price);
+    return `<tr class="${q>0?'has-qty':''}" data-qo-row="${p.id}">
+      <td><img src="${p.image}" alt="" loading="lazy" onerror="this.style.opacity=.3"></td>
+      <td><div class="qo-name">${p.name}</div><div class="qo-meta">${p.brand||'Khadlaj'} · ${p.gender||'Unisex'}</div></td>
+      <td style="text-align:center">${p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-')}</td>
+      <td class="qo-price">AED ${Number(p.price).toFixed(0)}</td>
+      <td style="text-align:center"><div class="qo-qty"><button data-qo="-" data-id="${p.id}">−</button><input type="number" min="0" max="999" value="${q}" data-qo-input="${p.id}" inputmode="numeric"><button data-qo="+" data-id="${p.id}">+</button></div></td>
+      <td class="qo-line">${line>0?'AED '+line.toFixed(2):'—'}</td>
+    </tr>`;
+  }).join('');
+  qoUpdateTotals();
+};
+const qoUpdateTotals=()=>{const t=qoTotals();$('#qoCount').textContent=t.items;$('#qoT_items').textContent=t.items;$('#qoT_sub').textContent=fmt(t.sub);$('#qoT_ship').textContent=t.sub===0?'Free above AED 150':(t.ship?fmt(t.ship):'FREE 🎉');$('#qoT_vat').textContent=fmt(t.vat);$('#qoT_total').textContent=fmt(t.total)};
+const qoSetQty=(id,q)=>{q=Math.max(0,Math.min(999,+q||0));if(q===0)delete QO.qty[id];else QO.qty[id]=q;ls.set('khadlaj_qo_qty',QO.qty);
+  /* In-place row update without re-rendering whole table (preserves focus) */
+  const row=document.querySelector(`[data-qo-row="${id}"]`);if(row){const inp=row.querySelector('input');if(inp&&+inp.value!==q)inp.value=q;row.classList.toggle('has-qty',q>0);const p=(FULL_CATALOG||[]).find(x=>x.id===id)||findP(id);if(p){const line=q*Number(p.price);row.querySelector('.qo-line').textContent=line>0?'AED '+line.toFixed(2):'—'}}
+  qoUpdateTotals();
+};
+const openQuickOrder=()=>{qoRender();openModal('quickOrderModal')};
+$('#quickOrderBtn').addEventListener('click',e=>{e.preventDefault();openQuickOrder()});
+
+/* Delegated qty buttons + input changes */
+document.addEventListener('click',e=>{const b=e.target.closest('[data-qo]');if(b){const id=b.dataset.id,cur=+(QO.qty[id]||0);qoSetQty(id,b.dataset.qo==='+'?cur+1:cur-1)}});
+document.addEventListener('input',e=>{if(e.target.matches('[data-qo-input]'))qoSetQty(e.target.dataset.qoInput,+e.target.value)});
+$('#qoSearch').addEventListener('input',e=>{QO.search=e.target.value;qoRender()});
+$('#qoFilter').addEventListener('change',e=>{QO.filter=e.target.value;qoRender()});
+$('#qoClear').addEventListener('click',()=>{QO.qty={};ls.set('khadlaj_qo_qty',QO.qty);qoRender();showToast('Cleared','Selection reset')});
+
+const qoBuildItems=()=>{const items=[];Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=findP(id)||(FULL_CATALOG||[]).find(x=>x.id===id);if(p)items.push({id:p.id,name:p.name,size:p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),price:p.price,qty:q,brand:p.brand,image:p.image})});return items};
+const qoCustomer=()=>{const f=$('#qoForm');const v={};new FormData(f).forEach((val,k)=>v[k]=val);return v};
+
+$('#qoProforma').addEventListener('click',()=>{
+  const items=qoBuildItems();if(!items.length){showToast('Add quantities','Type at least one quantity above');return}
+  const cust=qoCustomer();if(!cust.name||!cust.email||!cust.phone){showToast('Almost there','Fill name, email and phone in the bottom-left form');return}
+  const pfId=generateProformaPDF({customer:cust,items,type:'retail'});
+  if(pfId){addSubscriber({email:cust.email,name:cust.name,phone:cust.phone,source:'quick-order'});showToast('Pro Forma '+pfId,'PDF downloaded · also send to us via WhatsApp to confirm')}
+});
+
+$('#qoWA').addEventListener('click',()=>{
+  const items=qoBuildItems();if(!items.length){showToast('Add quantities','Type at least one quantity above');return}
+  const cust=qoCustomer();
+  const t=qoTotals();
+  const lines=items.map(it=>`• ${it.name} (${it.size}) × ${it.qty} = AED ${(it.price*it.qty).toFixed(2)}`).join('%0A');
+  const txt=`Hello Khadlaj 👋%0A%0A*New order enquiry*%0A👤 ${encodeURIComponent(cust.name||'')}%0A📧 ${encodeURIComponent(cust.email||'')}%0A📱 ${encodeURIComponent(cust.phone||'')}%0A🌍 ${encodeURIComponent(cust.country||'')}%0A%0A*Items:*%0A${lines}%0A%0ASubtotal: AED ${t.sub.toFixed(2)}%0AShipping: ${t.ship?'AED '+t.ship.toFixed(2):'FREE'}%0AVAT 5%25: AED ${t.vat.toFixed(2)}%0A*Total: AED ${t.total.toFixed(2)}*%0A%0APlease send payment link to confirm.`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${txt}`,'_blank');
+  if(cust.email)addSubscriber({email:cust.email,name:cust.name,phone:cust.phone,source:'quick-order-wa'});
+});
+
+$('#qoToCart').addEventListener('click',()=>{
+  const items=qoBuildItems();if(!items.length){showToast('Add quantities','Type at least one quantity above');return}
+  let added=0;items.forEach(it=>{for(let i=0;i<it.qty;i++){addToCart(it.id,parseInt(it.size)||100);added++}});
+  closeModal($('#quickOrderModal'));openCart();
+  showToast(`Added ${added} items`,'Continue to checkout from your bag');
+  QO.qty={};ls.set('khadlaj_qo_qty',QO.qty);
+});
 
 /* ──────────────  TIKTOK VIDEO AUTOPLAY (handle browser policies) ────────────── */
 const playVideos=()=>$$('.tt-tile video').forEach(v=>{v.muted=true;v.playsInline=true;const p=v.play();if(p&&p.catch)p.catch(()=>{/* silently ignore — poster shows */})});
