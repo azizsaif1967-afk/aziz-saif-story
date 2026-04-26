@@ -3326,12 +3326,27 @@ $$('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)c
 /* ──────────────  SUBSCRIBERS DB  ────────────── */
 const addSubscriber=({email,name='',phone='',source='newsletter',consent=true})=>{const subs=ls.get('khadlaj_subscribers',[]);const ex=subs.find(s=>s.email.toLowerCase()===email.toLowerCase());if(ex){ex.sources=Array.from(new Set([...ex.sources||[ex.source],source]));ex.lastSeen=Date.now()}else{subs.push({email,name,phone,source,sources:[source],consent,joined:Date.now(),lastSeen:Date.now()})}ls.set('khadlaj_subscribers',subs);return subs.length};
 
-/* ──────────────  NEWSLETTER FORM  ────────────── */
+/* ──────────────  NEWSLETTER FORM (Join button + reconfirm subscriber capture) ────────────── */
 $('#newsForm').addEventListener('submit',e=>{
-  e.preventDefault();const email=e.target.querySelector('input').value.trim();
-  if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showToast('Hmm','Please enter a valid email');return}
-  addSubscriber({email,source:'newsletter-footer'});
-  showToast("You're in",'Code KHADLAJ25 sent to '+email);e.target.reset();
+  e.preventDefault();
+  const input=e.target.querySelector('input');
+  const email=input.value.trim();
+  const btn=e.target.querySelector('button[type=submit]');
+  if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showToast('Hmm','Please enter a valid email');input.focus();return}
+  /* Capture subscriber */
+  const total=addSubscriber({email,source:'newsletter-footer',consent:true});
+  /* Persist + confirm */
+  showToast('You\'re in! 🌹','KHADLAJ25 sent to '+email+' · subscriber #'+total);
+  /* Visual confirmation in the form itself */
+  if(btn){const orig=btn.textContent;btn.textContent='✓ Subscribed';btn.style.background='var(--green,#0a8a3f)';btn.style.color='#fff';setTimeout(()=>{btn.textContent=orig;btn.style.background='';btn.style.color=''},3500)}
+  /* Replace form with thank you message briefly */
+  const wrap=e.target.parentElement;
+  const thanks=document.createElement('div');
+  thanks.style.cssText='padding:16px 20px;background:rgba(212,168,71,.15);border:1px solid var(--lux-gold,#a98842);color:var(--lux-gold-l,#c9a961);font-size:13px;text-align:center;margin-top:12px;line-height:1.5';
+  thanks.innerHTML=`<b>Welcome to the Khadlaj circle.</b><br>Use code <b style="color:#fff;letter-spacing:.16em">KHADLAJ25</b> at checkout for 25% off your first order.`;
+  wrap.appendChild(thanks);
+  setTimeout(()=>thanks.remove(),8000);
+  e.target.reset();
 });
 
 /* ──────────────  CATALOGUE DOWNLOAD  ────────────── */
@@ -3341,6 +3356,9 @@ $('#downloadCatalogue2')?.addEventListener('click',e=>{e.preventDefault();openCa
 /* Generate real PDF catalogue using jsPDF (live product data + quantity column for orders) */
 /* Image preloader for PDF — fetches via fetch() so we can read pixels (canvas tainting workaround) */
 const _imgCache={};
+let _khadlajLogoData=null;
+const KHADLAJ_LOGO_URL='https://khadlaj-perfumes.com/cdn/shop/files/Khadlaj_logo_9cee155f-4431-4444-8d79-406024fbf173_1200x1200.png?v=1716903729';
+const ensureKhadlajLogo=async()=>{if(_khadlajLogoData)return _khadlajLogoData;_khadlajLogoData=await preloadImage(KHADLAJ_LOGO_URL);return _khadlajLogoData};
 const preloadImage=url=>new Promise(resolve=>{
   if(_imgCache[url])return resolve(_imgCache[url]);
   const img=new Image();
@@ -3366,18 +3384,26 @@ const generateCataloguePDF=async(buyer={})=>{
   if(!window.jspdf){showToast('Loading…','PDF library still loading, try again in 1 sec');return false}
   showToast('Building PDF','Loading product photos · this takes 10-20 seconds');
   const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'pt',format:'a4'});const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight();
+  const logo=await ensureKhadlajLogo();
   /* Cover */
   doc.setFillColor(26,26,26);doc.rect(0,0,W,H,'F');
   doc.setFillColor(212,168,71);doc.rect(0,0,W,8,'F');doc.rect(0,H-8,W,8,'F');
-  doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(48);doc.text('KHADLAJ',W/2,200,{align:'center'});
-  doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','normal');doc.text('PERFUMES',W/2,228,{align:'center',charSpace:8});
-  doc.setDrawColor(212,168,71);doc.setLineWidth(.5);doc.line(W/2-60,250,W/2+60,250);
-  doc.setFontSize(11);doc.setTextColor(180,180,180);doc.text('Heritage Arabian Perfumery · Est. 1997 · Sharjah, UAE',W/2,275,{align:'center'});
-  doc.setFontSize(28);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.text('Spring 2026',W/2,360,{align:'center'});
-  doc.setFontSize(14);doc.setFont('helvetica','normal');doc.text('Product Catalogue & Order Form',W/2,385,{align:'center'});
-  doc.setTextColor(212,168,71);doc.setFontSize(10);doc.text(`${PRODUCTS.length} fragrances · From AED ${Math.min(...PRODUCTS.map(p=>p.price))} · Worldwide delivery`,W/2,420,{align:'center'});
-  if(buyer.name||buyer.email){doc.setFontSize(10);doc.setTextColor(255,255,255);doc.text('PREPARED FOR',W/2,520,{align:'center'});doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text(buyer.name||buyer.email,W/2,540,{align:'center'});if(buyer.email&&buyer.name){doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text(buyer.email,W/2,556,{align:'center'})}}
-  doc.setFontSize(9);doc.setTextColor(150,150,150);doc.text('Founded by Mohamed Iqbal Abdul Sattar · Master Perfumer',W/2,H-80,{align:'center'});doc.text('80+ countries · 10 showrooms · WhatsApp: +971 52 121 1992',W/2,H-65,{align:'center'});doc.text('khadlaj-perfumes.com · customercare@khadlaj-perfumes.com',W/2,H-50,{align:'center'});
+  if(logo){try{doc.addImage(logo,'JPEG',W/2-72,140,144,144)}catch(e){doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(48);doc.text('KHADLAJ',W/2,200,{align:'center'})}}
+  else{doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(48);doc.text('KHADLAJ',W/2,200,{align:'center'});doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','normal');doc.text('PERFUMES',W/2,228,{align:'center',charSpace:8})}
+  doc.setDrawColor(212,168,71);doc.setLineWidth(.5);doc.line(W/2-60,304,W/2+60,304);
+  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(212,168,71);doc.text('KHADLAJ PERFUMES LLC',W/2,322,{align:'center'});
+  doc.setFontSize(10);doc.setTextColor(180,180,180);doc.setFont('helvetica','normal');doc.text('Heritage Arabian Perfumery · Established 1997 · Sharjah, UAE',W/2,338,{align:'center'});
+  doc.setFontSize(26);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.text('Spring 2026',W/2,400,{align:'center'});
+  doc.setFontSize(13);doc.setFont('helvetica','normal');doc.text('Product Catalogue & Order Form',W/2,422,{align:'center'});
+  const cnt=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG.length:PRODUCTS.length;
+  const minP=Math.min(...((FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRODUCTS).map(p=>p.price));
+  doc.setTextColor(212,168,71);doc.setFontSize(10);doc.text(`${cnt} fragrances · From AED ${minP} · 80+ countries · Worldwide delivery`,W/2,452,{align:'center'});
+  if(buyer.name||buyer.email){doc.setFontSize(9);doc.setTextColor(180,180,180);doc.text('PREPARED FOR',W/2,560,{align:'center',charSpace:4});doc.setFontSize(13);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.text(buyer.name||buyer.email,W/2,582,{align:'center'});if(buyer.email&&buyer.name){doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(180,180,180);doc.text(buyer.email,W/2,600,{align:'center'})}}
+  doc.setFontSize(9);doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.text('KHADLAJ PERFUMES LLC',W/2,H-92,{align:'center'});
+  doc.setFont('helvetica','normal');doc.setTextColor(180,180,180);doc.text('Industrial Area 11, Sharjah, UAE · PO Box 66347',W/2,H-78,{align:'center'});
+  doc.text('Founded by Mohamed Iqbal Abdul Sattar · Managing Director: Asif Mohamed Iqbal Katchi',W/2,H-64,{align:'center'});
+  doc.text('+971 6 5340753  ·  WhatsApp +971 52 121 1992  ·  customercare@khadlaj-perfumes.com',W/2,H-50,{align:'center'});
+  doc.setTextColor(150,150,150);doc.text('khadlaj-perfumes.com  ·  ISO 9001:2015 certified manufacturing in Ras Al Khaimah',W/2,H-36,{align:'center'});
 
   /* Page 2 — About */
   doc.addPage();doc.setTextColor(26,26,26);doc.setFontSize(20);doc.setFont('helvetica','bold');doc.text('About Khadlaj Perfumes',40,60);
@@ -3759,7 +3785,7 @@ $('#bulkForm').addEventListener('submit',e=>{
 });
 $('#bulkWhatsapp').addEventListener('click',()=>{const v=bulkPayload();const lines=v.lines.length?v.lines.map(l=>`• ${l.name} ${l.size||''} — ${l.qty} units`).join('\n'):'(no lines yet)';const msg=`Hello Khadlaj wholesale 👋%0A%0A*Bulk enquiry from ${encodeURIComponent(v.company||'(company)')}*%0A👤 ${encodeURIComponent(v.contact||'')}%0A📧 ${encodeURIComponent(v.email||'')}%0A📱 ${encodeURIComponent(v.phone||'')}%0A🌍 ${encodeURIComponent(v.country||'')}%0ABusiness: ${encodeURIComponent(v.biz||'')}%0A%0A*Order:*%0A${encodeURIComponent(lines)}%0A%0ANotes: ${encodeURIComponent(v.notes||'(none)')}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank')});
 /* ──────────────  PRO FORMA INVOICE GENERATOR (used by Quick Order + Wholesale) ────────────── */
-const generateProformaPDF=({customer={},items=[],type='retail',notes=''})=>{
+const generateProformaPDF=async({customer={},items=[],type='retail',notes=''})=>{
   if(!window.jspdf){showToast('Loading…','PDF library still loading, try again in 1s');return false}
   if(!items.length){showToast('Empty selection','Add quantities for at least one product first');return false}
   const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'pt',format:'a4'});
@@ -3767,17 +3793,23 @@ const generateProformaPDF=({customer={},items=[],type='retail',notes=''})=>{
   const pfId='PF-'+Date.now().toString(36).toUpperCase().slice(-6);
   const today=new Date(),validUntil=new Date(today.getTime()+30*86400000);
   const ddmm=d=>d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  const logo=await ensureKhadlajLogo();
 
-  /* Header band */
-  doc.setFillColor(26,26,26);doc.rect(0,0,W,90,'F');
-  doc.setFillColor(212,168,71);doc.rect(0,86,W,4,'F');
-  doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(28);doc.text('KHADLAJ',40,46);
-  doc.setFontSize(9);doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.text('PERFUMES · Heritage Arabian Perfumery · Est. 1997',40,62);doc.text('Industrial Area 11, Sharjah, UAE · TRN 100123456789',40,76);
+  /* Header band — real Khadlaj logo + verified info */
+  doc.setFillColor(26,26,26);doc.rect(0,0,W,100,'F');
+  doc.setFillColor(212,168,71);doc.rect(0,96,W,4,'F');
+  if(logo){try{doc.addImage(logo,'JPEG',40,18,68,68)}catch(e){doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(28);doc.text('KHADLAJ',40,52)}}
+  else{doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(28);doc.text('KHADLAJ',40,52)}
+  doc.setFontSize(11);doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.text('KHADLAJ PERFUMES LLC',122,42);
+  doc.setFontSize(8.5);doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');
+  doc.text('Heritage Arabian Perfumery · Established 1997',122,56);
+  doc.text('Industrial Area 11, Sharjah, UAE · PO Box 66347',122,68);
+  doc.text('+971 6 5340753  ·  +971 52 121 1992  ·  customercare@khadlaj-perfumes.com',122,80);
   doc.setFontSize(22);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);doc.text('PRO FORMA',W-40,46,{align:'right'});
   doc.setFontSize(10);doc.setFont('helvetica','normal');doc.setTextColor(212,168,71);doc.text(type==='wholesale'?'WHOLESALE QUOTE':'INVOICE',W-40,62,{align:'right'});
 
   /* Pro forma details */
-  let y=120;
+  let y=130;
   doc.setTextColor(60,60,60);doc.setFontSize(9);doc.setFont('helvetica','normal');
   doc.text('Pro Forma No.',40,y);doc.text('Issue Date',180,y);doc.text('Valid Until',290,y);doc.text('Currency',400,y);doc.text('Type',490,y);
   doc.setFont('helvetica','bold');doc.setTextColor(26,26,26);doc.setFontSize(10);
@@ -3850,12 +3882,11 @@ const generateProformaPDF=({customer={},items=[],type='retail',notes=''})=>{
 };
 
 /* Wholesale "Download as PDF" → real Pro Forma */
-$('#bulkPDF').addEventListener('click',()=>{
+$('#bulkPDF').addEventListener('click',async()=>{
   const v=bulkPayload();
   if(!v.lines||!v.lines.length){showToast('No lines yet','Add at least one product line first');return}
-  /* Map bulk lines to pro forma items — wholesale rows have no unit price, so customer enters or it's "On quote" */
   const items=v.lines.map(l=>({name:l.name,size:l.size||'',qty:+l.qty||0,price:0,brand:'Khadlaj'}));
-  const pfId=generateProformaPDF({customer:{company:v.company,name:v.contact,email:v.email,phone:v.phone,country:v.country,address:v.address||'',city:''},items,type:'wholesale',notes:v.notes||'Wholesale quote — unit prices subject to quantity tier and confirmation by Khadlaj sales team within 24 hours.'});
+  const pfId=await generateProformaPDF({customer:{company:v.company,name:v.contact,email:v.email,phone:v.phone,country:v.country,address:v.address||'',city:''},items,type:'wholesale',notes:v.notes||'Wholesale quote — unit prices subject to quantity tier and confirmation by Khadlaj sales team within 24 hours.'});
   if(pfId)showToast('Pro Forma generated',pfId+' · downloaded · we\'ll quote pricing within 24 hrs');
 });
 
@@ -4345,10 +4376,12 @@ $('#qoClear').addEventListener('click',()=>{QO.qty={};ls.set('khadlaj_qo_qty',QO
 const qoBuildItems=()=>{const items=[];Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=findP(id)||(FULL_CATALOG||[]).find(x=>x.id===id);if(p)items.push({id:p.id,name:p.name,size:p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),price:p.price,qty:q,brand:p.brand,image:p.image})});return items};
 const qoCustomer=()=>{const f=$('#qoForm');const v={};new FormData(f).forEach((val,k)=>v[k]=val);return v};
 
-$('#qoProforma').addEventListener('click',()=>{
+$('#qoProforma').addEventListener('click',async()=>{
   const items=qoBuildItems();if(!items.length){showToast('Add quantities','Type at least one quantity above');return}
   const cust=qoCustomer();if(!cust.name||!cust.email||!cust.phone){showToast('Almost there','Fill name, email and phone in the bottom-left form');return}
-  const pfId=generateProformaPDF({customer:cust,items,type:'retail'});
+  const btn=$('#qoProforma');btn.disabled=true;const orig=btn.textContent;btn.textContent='⏳ Generating Pro Forma…';
+  const pfId=await generateProformaPDF({customer:cust,items,type:'retail'});
+  btn.disabled=false;btn.textContent=orig;
   if(pfId){addSubscriber({email:cust.email,name:cust.name,phone:cust.phone,source:'quick-order'});showToast('Pro Forma '+pfId,'PDF downloaded · also send to us via WhatsApp to confirm')}
 });
 
