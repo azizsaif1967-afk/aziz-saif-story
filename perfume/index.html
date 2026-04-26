@@ -27,7 +27,8 @@
   "@type": "Organization",
   "name": "Khadlaj Perfumes",
   "url": "https://khadlaj-perfumes.com",
-  "foundingDate": "1985",
+  "foundingDate": "1997",
+  "founders": [{"@type":"Person","name":"Mohamed Iqbal Abdul Sattar","jobTitle":"Founder & Master Perfumer"}],
   "address": {"@type":"PostalAddress","streetAddress":"Industrial Area 11","addressLocality":"Sharjah","addressCountry":"AE"},
   "contactPoint": {"@type":"ContactPoint","telephone":"+971-6-5340753","contactType":"customer service","areaServed":["AE","SA","KW","QA","BH","OM"],"availableLanguage":["en","ar"]}
 }
@@ -429,6 +430,242 @@ input,select{font:inherit}
 .toast.show{transform:none}
 .toast b{color:var(--green);display:block;margin-bottom:2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 
+/* ─────────────────────────  FOUNDER STORY  ───────────────────────── */
+.founder-wrap{background:linear-gradient(135deg,#1a1a1a 0%,#3d0a14 100%);color:#fff;border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;gap:0;align-items:stretch}
+.founder-img{position:relative;min-height:520px;background:url('https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=900&auto=format&fit=crop&q=75') center/cover}
+.founder-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.1),rgba(61,10,20,.5))}
+.founder-badge{position:absolute;bottom:24px;left:24px;background:var(--gold);color:var(--ink);padding:14px 20px;border-radius:6px;font-weight:800;font-size:14px;z-index:2;box-shadow:var(--shadow-lg);text-align:center}
+.founder-badge b{display:block;font-size:32px;line-height:1;font-family:'Poppins',serif}
+.founder-badge small{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.7;display:block;margin-top:4px}
+.founder-text{padding:48px 56px}
+.founder-text small.eyebrow{color:var(--gold);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.founder-text h2{font-size:34px;font-weight:800;margin:14px 0 24px;line-height:1.1;letter-spacing:-.01em}
+.founder-text h2 span{color:var(--gold)}
+.founder-quote{font-size:18px;font-style:italic;line-height:1.6;padding:18px 22px;border-left:3px solid var(--gold);background:rgba(255,255,255,.04);margin:0 0 24px;color:#fff}
+.founder-text p{font-size:14px;line-height:1.8;opacity:.85;margin:0 0 14px}
+.founder-sign{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);margin-top:24px}
+.founder-sign-img{width:54px;height:54px;border-radius:50%;background:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&auto=format&fit=crop&q=70') center/cover;border:2px solid var(--gold)}
+.founder-sign b{display:block;font-size:14px;font-weight:700}
+.founder-sign small{font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:2px}
+.founder-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.tl-item{padding:16px;background:rgba(255,255,255,.05);border-radius:6px;border-left:2px solid var(--gold)}
+.tl-item b{display:block;font-size:22px;font-weight:800;color:var(--gold);font-family:'Poppins',serif}
+.tl-item small{display:block;font-size:11px;color:rgba(255,255,255,.7);margin-top:4px;line-height:1.4}
+
+/* ─────────────────────────  TIKTOK VIRAL  ───────────────────────── */
+.tt-section{background:#fff;border-radius:var(--r);box-shadow:var(--shadow-sm);padding:24px}
+.tt-banner{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.tt-banner-left{display:flex;align-items:center;gap:14px}
+.tt-banner h3{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.tt-logo-mini{width:32px;height:32px;background:#000;border-radius:8px;display:grid;place-items:center;font-size:18px}
+.tt-pill{background:linear-gradient(90deg,#ff0050,#00f2ea);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.04em;text-transform:uppercase}
+.tt-stats{font-size:12px;color:var(--txt-mute);display:flex;gap:14px}
+.tt-stats b{color:var(--ink)}
+.tt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tt-tile{position:relative;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#000;cursor:pointer;box-shadow:var(--shadow);transition:transform .25s}
+.tt-tile:hover{transform:translateY(-3px)}
+.tt-tile video,.tt-tile img.tt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tt-tile::after{content:'';position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 100%);z-index:2;pointer-events:none}
+.tt-tile::before{content:'';position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 100%);z-index:2;pointer-events:none}
+.tt-info{position:absolute;left:10px;right:48px;bottom:10px;color:#fff;z-index:3}
+.tt-user{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.tt-avatar{width:28px;height:28px;border-radius:50%;border:1.5px solid #fff;background:linear-gradient(135deg,var(--red),#7a000d);display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff}
+.tt-handle{font-size:12px;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.tt-caption{font-size:11px;line-height:1.35;text-shadow:0 1px 4px rgba(0,0,0,.7);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tt-music{display:flex;align-items:center;gap:5px;font-size:10px;margin-top:6px;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.tt-music::before{content:'♬';font-size:13px}
+.tt-actions{position:absolute;right:8px;bottom:14px;display:flex;flex-direction:column;gap:14px;z-index:3;color:#fff;text-align:center;font-size:10px;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.tt-action{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+.tt-action svg{width:24px;height:24px;fill:#fff;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5))}
+.tt-action:hover svg{transform:scale(1.1)}
+.tt-action.heart.liked svg{fill:#ff0050}
+.tt-views{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;z-index:3;display:inline-flex;align-items:center;gap:4px}
+.tt-views::before{content:'▶';font-size:8px}
+.tt-tt-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);color:#fff;font-size:9px;font-weight:800;letter-spacing:.06em;padding:3px 7px;border-radius:4px;z-index:3}
+
+/* ─────────────────────────  MODAL (product detail / checkout / account) ───────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:all .25s;z-index:250;display:grid;place-items:center;padding:20px;overflow-y:auto}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:10px;max-width:1100px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);position:relative;transform:translateY(20px) scale(.98);transition:transform .25s}
+.modal-overlay.open .modal{transform:none}
+.modal-close{position:sticky;top:14px;float:right;width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow);z-index:5;margin:14px 14px 0 0;border:1px solid var(--line)}
+.modal-close:hover{background:var(--ink);color:#fff}
+.modal-close svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* PRODUCT DETAIL */
+.pd-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;padding:36px}
+.pd-gallery{display:grid;grid-template-columns:80px 1fr;gap:14px}
+.pd-thumbs{display:flex;flex-direction:column;gap:8px}
+.pd-thumb{aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:var(--bg-2);transition:border-color .2s}
+.pd-thumb.active{border-color:var(--red)}
+.pd-thumb img{width:100%;height:100%;object-fit:cover}
+.pd-main-img{aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--bg-2);position:relative}
+.pd-main-img img{width:100%;height:100%;object-fit:cover}
+.pd-info h1{font-size:30px;font-weight:800;margin:0 0 8px;letter-spacing:-.01em;line-height:1.15}
+.pd-brand-link{font-size:12px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:inline-block}
+.pd-rating-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:13px}
+.pd-rating-row .p-rating{font-size:13px;padding:3px 10px}
+.pd-rating-row a{color:var(--red);text-decoration:underline}
+.pd-price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:18px}
+.pd-price-row .now{font-size:32px;font-weight:800}
+.pd-price-row .was{font-size:18px;color:var(--txt-mute);text-decoration:line-through}
+.pd-price-row .off{font-size:13px;color:var(--green);font-weight:700;background:rgba(10,138,63,.1);padding:3px 10px;border-radius:4px}
+.pd-bnpl{background:linear-gradient(90deg,#f0e8ff,#fff0f3);padding:12px 14px;border-radius:6px;font-size:12px;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.pd-bnpl b{color:var(--purple);font-weight:700}
+.pd-section{margin-bottom:18px}
+.pd-section h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px;color:var(--ink-2)}
+.pd-sizes{display:flex;gap:8px;flex-wrap:wrap}
+.pd-size{padding:10px 16px;border:1.5px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;transition:all .15s;text-align:center;min-width:80px}
+.pd-size.active{border-color:var(--ink);background:var(--ink);color:#fff}
+.pd-size small{display:block;font-size:11px;font-weight:500;opacity:.7;margin-top:2px}
+.pd-qty-row{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.pd-qty{display:inline-flex;border:1.5px solid var(--line);border-radius:6px;align-items:center}
+.pd-qty button{width:36px;height:42px;font-size:16px;color:var(--ink-2)}
+.pd-qty span{padding:0 14px;font-size:14px;font-weight:700;min-width:48px;text-align:center}
+.pd-actions{display:grid;grid-template-columns:1fr auto;gap:10px}
+.pd-actions .btn-cart{padding:14px}
+.pd-wish-btn{width:48px;height:48px;border:1.5px solid var(--line);border-radius:6px;display:grid;place-items:center;background:#fff;transition:all .2s}
+.pd-wish-btn:hover{border-color:var(--red);color:var(--red)}
+.pd-wish-btn.active{border-color:var(--red);color:var(--red);background:#fff0f3}
+.pd-wish-btn.active svg{fill:var(--red)}
+.pd-wish-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6}
+.pd-perks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:18px}
+.pd-perk{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2)}
+.pd-perk svg{width:18px;height:18px;color:var(--green);flex-shrink:0}
+.pd-tabs{padding:0 36px 36px;border-top:1px solid var(--line)}
+.pd-tab-list{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:24px}
+.pd-tab{padding:16px 24px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--txt-mute);border-bottom:3px solid transparent;cursor:pointer;transition:all .2s}
+.pd-tab.active{color:var(--ink);border-bottom-color:var(--red)}
+.pd-tab-content{display:none;font-size:14px;line-height:1.7;color:var(--ink-2)}
+.pd-tab-content.active{display:block}
+.pd-notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.pd-note-col h5{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 8px}
+.pd-note-col ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.pd-note-col li{padding:4px 10px;background:var(--bg-2);border-radius:14px;font-size:12px;font-weight:500}
+
+/* CHECKOUT MODAL */
+.co-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:0;min-height:0}
+.co-form{padding:36px 40px}
+.co-summary{padding:36px 40px;background:var(--bg-2);border-left:1px solid var(--line)}
+.co-step{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.co-step:last-child{border-bottom:0}
+.co-step h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;display:flex;align-items:center;gap:10px;color:var(--ink)}
+.co-step h3 span.num{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.co-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.co-field{display:flex;flex-direction:column;gap:6px}
+.co-field.full{grid-column:1/-1}
+.co-field label{font-size:11px;font-weight:600;color:var(--txt-mute);letter-spacing:.04em;text-transform:uppercase}
+.co-field input,.co-field select,.co-field textarea{padding:11px 14px;border:1.5px solid var(--line);border-radius:6px;font-size:14px;outline:none;transition:border-color .2s;font-family:inherit;background:#fff}
+.co-field input:focus,.co-field select:focus,.co-field textarea:focus{border-color:var(--ink)}
+.co-field input.error,.co-field select.error{border-color:var(--red);background:#fff5f5}
+.co-field-error{font-size:11px;color:var(--red);font-weight:500;display:none}
+.co-field.error .co-field-error{display:block}
+.co-pay-options{display:grid;gap:10px}
+.co-pay{padding:14px 18px;border:2px solid var(--line);border-radius:8px;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;transition:all .2s;background:#fff}
+.co-pay:hover{border-color:var(--ink-2)}
+.co-pay.active{border-color:var(--red);background:#fff0f3}
+.co-pay input{margin:0}
+.co-pay-icon{width:42px;height:32px;background:var(--bg-2);border-radius:5px;display:grid;place-items:center;font-size:11px;font-weight:800}
+.co-pay-icon.wa{background:#25d366;color:#fff}
+.co-pay-icon.cod{background:var(--orange);color:#fff}
+.co-pay-icon.bank{background:var(--ink);color:#fff}
+.co-pay-icon.tabby{background:#3bffc1;color:#000}
+.co-pay-icon.tamara{background:#ff80c4;color:#fff}
+.co-pay-icon.card{background:linear-gradient(135deg,#1a1f71,#0048b8);color:#fff;font-size:9px}
+.co-pay-info b{display:block;font-size:14px;font-weight:700}
+.co-pay-info small{display:block;font-size:11px;color:var(--txt-mute);margin-top:2px}
+.co-pay-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.04em;text-transform:uppercase}
+.co-pay-tag.popular{background:var(--green);color:#fff}
+.co-pay-tag.zero{background:var(--purple);color:#fff}
+.co-summary h3{font-size:18px;font-weight:800;margin:0 0 18px}
+.co-items{display:flex;flex-direction:column;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--line);max-height:280px;overflow-y:auto}
+.co-item{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center}
+.co-item img{width:60px;height:60px;object-fit:cover;border-radius:6px;background:var(--bg-3)}
+.co-item h5{font-size:13px;font-weight:700;margin:0 0 2px;line-height:1.3}
+.co-item small{font-size:11px;color:var(--txt-mute);display:block}
+.co-item .price{font-size:13px;font-weight:700}
+.co-line{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);padding:6px 0}
+.co-line.discount{color:var(--green);font-weight:600}
+.co-line.total{font-size:20px;font-weight:800;color:var(--ink);border-top:1px dashed var(--line);margin-top:10px;padding-top:14px}
+.co-coupon{display:flex;gap:0;border:1.5px solid var(--line);border-radius:6px;overflow:hidden;margin:18px 0}
+.co-coupon input{flex:1;border:0;outline:0;padding:10px 14px;font-size:13px;background:#fff}
+.co-coupon button{background:var(--ink);color:#fff;padding:10px 18px;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.co-coupon button:hover{background:var(--red)}
+.co-coupon-applied{font-size:12px;color:var(--green);font-weight:600;display:none;align-items:center;gap:4px;padding:8px 0}
+.co-coupon-applied.show{display:flex}
+.co-place{margin-top:18px}
+.co-place button{width:100%;padding:16px;font-size:14px}
+.co-trust{display:flex;justify-content:center;gap:14px;margin-top:14px;font-size:11px;color:var(--txt-mute)}
+.co-trust span::before{content:'🔒';margin-right:4px}
+
+/* ORDER CONFIRMATION */
+.oc-wrap{padding:48px;text-align:center}
+.oc-icon{width:80px;height:80px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;margin:0 auto 24px;font-size:44px;animation:pop .5s ease-out}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.oc-wrap h2{font-size:32px;font-weight:800;margin:0 0 8px}
+.oc-wrap p{color:var(--txt-mute);margin:0 0 8px}
+.oc-id{font-family:ui-monospace,monospace;background:var(--bg-2);padding:10px 18px;border-radius:6px;display:inline-block;font-weight:700;margin:14px 0;font-size:14px}
+.oc-summary{background:var(--bg-2);border-radius:8px;padding:24px;text-align:left;max-width:520px;margin:24px auto}
+.oc-summary h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px;color:var(--ink)}
+.oc-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+/* ACCOUNT MODAL */
+.acc-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 28px;margin-bottom:0}
+.acc-tab{padding:18px 22px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--txt-mute);border-bottom:3px solid transparent;cursor:pointer;transition:all .2s}
+.acc-tab.active{color:var(--ink);border-bottom-color:var(--red)}
+.acc-content{padding:28px 36px}
+.acc-pane{display:none}
+.acc-pane.active{display:block}
+.acc-empty{text-align:center;padding:60px 20px;color:var(--txt-mute)}
+.acc-empty h4{font-size:18px;color:var(--ink);margin:0 0 6px;font-weight:700}
+.acc-empty p{font-size:13px;margin:0 0 18px}
+.acc-order{padding:18px;border:1px solid var(--line);border-radius:8px;margin-bottom:14px}
+.acc-order-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.acc-order-id{font-family:ui-monospace,monospace;font-size:12px;background:var(--bg-2);padding:3px 8px;border-radius:4px;font-weight:700}
+.acc-order-status{font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.06em;text-transform:uppercase}
+.acc-order-status.pending{background:rgba(255,122,0,.12);color:var(--orange)}
+.acc-order-status.completed{background:rgba(10,138,63,.12);color:var(--green)}
+.acc-order-meta{font-size:12px;color:var(--txt-mute);margin-bottom:10px}
+.acc-order-items{display:grid;gap:8px;font-size:13px}
+.acc-order-item{display:grid;grid-template-columns:1fr auto;gap:10px;color:var(--ink-2)}
+.acc-order-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;margin-top:14px;border-top:1px dashed var(--line)}
+.acc-order-foot b{font-size:16px;font-weight:800}
+
+/* SEARCH OVERLAY */
+.search-overlay{position:fixed;inset:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);z-index:240;opacity:0;visibility:hidden;transition:all .2s;padding:60px 20px 20px;overflow-y:auto}
+.search-overlay.open{opacity:1;visibility:visible}
+.search-overlay-inner{max-width:760px;margin:0 auto}
+.search-overlay input{width:100%;font-size:24px;padding:14px 0;border:0;border-bottom:2px solid var(--ink);outline:0;background:transparent;font-weight:600;font-family:inherit}
+.search-results{margin-top:24px;display:grid;gap:8px}
+.search-result{display:grid;grid-template-columns:60px 1fr auto;gap:14px;padding:10px;border-radius:6px;align-items:center;cursor:pointer}
+.search-result:hover{background:var(--bg-2)}
+.search-result img{width:60px;height:60px;object-fit:cover;border-radius:6px}
+.search-result h4{margin:0;font-size:14px;font-weight:600}
+.search-result small{font-size:11px;color:var(--txt-mute);text-transform:uppercase;letter-spacing:.06em}
+.search-empty{text-align:center;color:var(--txt-mute);padding:40px;font-size:14px}
+
+/* SHOP VIEW (filterable) */
+.shop-view{display:grid;grid-template-columns:260px 1fr;gap:24px;background:#fff;padding:24px;border-radius:var(--r);box-shadow:var(--shadow-sm)}
+.shop-filters h4{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px;display:flex;justify-content:space-between;align-items:center}
+.shop-filters h4 button{font-size:11px;color:var(--red);font-weight:600}
+.shop-filter-group{padding:14px 0;border-top:1px solid var(--line)}
+.shop-filter-group:first-of-type{border-top:0;padding-top:0}
+.shop-filter-group summary{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:4px 0}
+.shop-filter-group summary::-webkit-details-marker{display:none}
+.shop-filter-group summary::after{content:'+';color:var(--red);font-weight:700;transition:transform .2s}
+.shop-filter-group[open] summary::after{content:'−'}
+.shop-filter-options{padding:10px 0 4px;display:grid;gap:8px;font-size:13px}
+.shop-filter-options label{display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--txt-mute)}
+.shop-filter-options label:hover{color:var(--ink)}
+.shop-filter-options input{accent-color:var(--red)}
+.shop-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:10px}
+.shop-toolbar select{padding:8px 14px;border:1px solid var(--line);border-radius:5px;font-size:12px;font-weight:600;background:#fff}
+.shop-empty{padding:60px;text-align:center;color:var(--txt-mute)}
+.shop-empty h4{font-size:18px;color:var(--ink);margin:0 0 6px}
+
+/* HIDE-ABLE VIEWS */
+.view-hidden{display:none !important}
+
 /* ─────────────────────────  RESPONSIVE  ───────────────────────── */
 @media (max-width:1180px){
   .products-grid{grid-template-columns:repeat(4,1fr)}
@@ -510,7 +747,7 @@ input,select{font:inherit}
     <div class="header-row">
       <a href="#" class="logo" aria-label="Khadlaj Perfumes home">
         <span class="logo-mark">K</span>
-        <span><b>KHADLAJ</b><small>Perfumes · Est. 1985</small></span>
+        <span><b>KHADLAJ</b><small>Perfumes · Est. 1997</small></span>
       </a>
 
       <div class="search-mega" role="search">
@@ -578,7 +815,7 @@ input,select{font:inherit}
           <div class="slide-content">
             <span class="slide-tag">Spring 2026 Sale · Limited time</span>
             <h2>Up to 60% Off <span>Heritage Arabian Oud</span></h2>
-            <p>Authentic Cambodian oud, Bulgarian rose, Indian sandalwood — direct from our Sharjah atelier since 1985.</p>
+            <p>Authentic Cambodian oud, Bulgarian rose, Indian sandalwood — direct from our Sharjah atelier since 1997.</p>
             <div class="slide-cta">
               <a href="#shop" class="btn btn-red">Shop Now</a>
               <span class="slide-code">Extra 25% with code <b>KHADLAJ25</b></span>
@@ -653,7 +890,7 @@ input,select{font:inherit}
       </div>
       <div class="usp-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
-        <div><b>14-Day Returns</b><small>No-questions policy</small></div>
+        <div><b>24-hr Cancellation</b><small>Sealed items · Replacements only</small></div>
       </div>
       <div class="usp-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 11h20"/></svg>
@@ -727,6 +964,201 @@ input,select{font:inherit}
       <a href="#" class="brand"><span class="off-tag">NEW</span><span class="brand-name">ICON<br/>COLLECTION</span></a>
       <a href="#" class="brand"><span class="off-tag">3 FOR 2</span><span class="brand-name">ATTARS</span></a>
       <a href="#" class="brand"><span class="off-tag">UP TO 30%</span><span class="brand-name">HOME &amp;<br/>AMBIANCE</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  REAL TOP SELLERS (from khadlaj-perfumes.com)  ───────────────────────── -->
+<section class="section" style="padding-top:0" aria-labelledby="ts-h">
+  <div class="container">
+    <div class="rail-wrap">
+      <div class="rail-banner" style="background:linear-gradient(90deg,#fff8e6,#fff0e6)">
+        <div class="rail-banner-left">
+          <span class="pill" style="background:linear-gradient(135deg,#d4a847,#a98842);color:#1a1a1a">⭐ #1 Top Selling on Khadlaj.com</span>
+          <h3 id="ts-h">Top Sellers · <span>April 2026</span></h3>
+        </div>
+        <a href="#shop" class="see-all">View all 412 →</a>
+      </div>
+
+      <div class="products-wrap" style="border-radius:0;box-shadow:none;border-top:1px solid var(--line)">
+        <div class="products-grid" id="topSellerGrid">
+          <article class="product" data-product-id="cream-velvet">
+            <span class="p-tag bestseller">#1 Top Seller</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="cream-velvet"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70" alt="Cream Velvet 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="cream-velvet">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Women</div>
+              <p class="p-name">Cream Velvet 100 ML Extrait de Parfum</p>
+              <span class="p-rating">4.9 ★ · 1,847</span>
+              <div class="p-price"><span class="now">AED 130</span></div>
+              <div class="p-bnpl">4× AED 32.50 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="khadlaj-island">
+            <span class="p-tag bestseller">#2 Bestseller</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="khadlaj-island"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="Khadlaj Island 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="khadlaj-island">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · Unisex</div>
+              <p class="p-name">Khadlaj Island 100 ML EDP Spray</p>
+              <span class="p-rating">4.8 ★ · 1,206</span>
+              <div class="p-price"><span class="now">AED 150</span></div>
+              <div class="p-bnpl">4× AED 37.50 with <b>tamara</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="caffe-latte">
+            <span class="p-tag bestseller">#3 Bestseller</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="caffe-latte"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Caffe Latte 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="caffe-latte">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · Unisex</div>
+              <p class="p-name">Caffe Latte 100 ML Extrait de Parfum</p>
+              <span class="p-rating">4.9 ★ · 2,418</span>
+              <div class="p-price"><span class="now">AED 100</span></div>
+              <div class="p-bnpl">4× AED 25 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="peach-velvet">
+            <span class="p-tag bestseller">#4 Bestseller</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="peach-velvet"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Peach Velvet 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="peach-velvet">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Women</div>
+              <p class="p-name">Peach Velvet 100 ML Extrait de Parfum</p>
+              <span class="p-rating">4.8 ★ · 689</span>
+              <div class="p-price"><span class="now">AED 130</span></div>
+              <div class="p-bnpl">4× AED 32.50 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="hareem-al-sultan-gold-35">
+            <span class="p-tag deal">−25%</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="hareem-al-sultan-gold-35"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=70" alt="Hareem Al Sultan Gold 35ml" loading="lazy" />
+              <button class="p-quick" data-add-id="hareem-al-sultan-gold-35">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Hareem Al Sultan</div>
+              <p class="p-name">Hareem Al Sultan Gold 35 ML</p>
+              <span class="p-rating">4.9 ★ · 3,201</span>
+              <div class="p-price"><span class="now">AED 75</span><span class="was">AED 100</span><span class="off">25% OFF</span></div>
+              <div class="p-bnpl">4× AED 18.75 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="island-dreams">
+            <span class="p-tag new">NEW</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="island-dreams"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70" alt="Khadlaj Island Dreams 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="island-dreams">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · Unisex</div>
+              <p class="p-name">Khadlaj Island Dreams 100 ML EDP</p>
+              <span class="p-rating">4.7 ★ · 543</span>
+              <div class="p-price"><span class="now">AED 150</span></div>
+              <div class="p-bnpl">4× AED 37.50 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="fursan-white">
+            <span class="p-tag">For Men</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="fursan-white"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=400&auto=format&fit=crop&q=70" alt="Fursan White 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="fursan-white">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Men</div>
+              <p class="p-name">Fursan White 100 ML EDP Spray</p>
+              <span class="p-rating">4.7 ★ · 412</span>
+              <div class="p-price"><span class="now">AED 95</span></div>
+              <div class="p-bnpl">4× AED 23.75 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="shiyaaka-snow">
+            <span class="p-tag new">Special Edition</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="shiyaaka-snow"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&auto=format&fit=crop&q=70" alt="Shiyaaka Snow 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="shiyaaka-snow">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Men</div>
+              <p class="p-name">Shiyaaka Snow Special Edition 100 ML</p>
+              <span class="p-rating">4.8 ★ · 287</span>
+              <div class="p-price"><span class="now">AED 126</span></div>
+              <div class="p-bnpl">4× AED 31.50 with <b>tamara</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="panache-angel-dust">
+            <span class="p-tag bestseller">Editor's Pick</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="panache-angel-dust"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70" alt="Panache Angel Dust 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="panache-angel-dust">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Panache · For Women</div>
+              <p class="p-name">Panache Angel Dust 100 ML EDP</p>
+              <span class="p-rating">4.9 ★ · 478</span>
+              <div class="p-price"><span class="now">AED 199</span></div>
+              <div class="p-bnpl">4× AED 49.75 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="shiyaaka-men">
+            <span class="p-tag deal">Best Value</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="shiyaaka-men"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70" alt="Shiyaaka for Men 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="shiyaaka-men">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Men</div>
+              <p class="p-name">Shiyaaka for Men 100 ML EDP Spray</p>
+              <span class="p-rating">4.6 ★ · 972</span>
+              <div class="p-price"><span class="now">AED 65</span></div>
+              <div class="p-bnpl">4× AED 16.25 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="cloud-candy">
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="cloud-candy"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70" alt="Cloud Candy 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="cloud-candy">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Women</div>
+              <p class="p-name">Cloud Candy 100 ML EDP for Women</p>
+              <span class="p-rating">4.8 ★ · 543</span>
+              <div class="p-price"><span class="now">AED 130</span></div>
+              <div class="p-bnpl">4× AED 32.50 with <b>tabby</b></div>
+            </div>
+          </article>
+
+          <article class="product" data-product-id="empire-victor">
+            <span class="p-tag new">Just In</span>
+            <button class="p-wishlist" aria-label="Add to wishlist" data-wish="empire-victor"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+            <div class="product-media"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&auto=format&fit=crop&q=70" alt="Empire Victor 100ml" loading="lazy" />
+              <button class="p-quick" data-add-id="empire-victor">Quick Add</button></div>
+            <div class="p-body">
+              <div class="p-brand">Khadlaj · For Men</div>
+              <p class="p-name">Empire Victor 100 ML EDP Spray</p>
+              <span class="p-rating">4.7 ★ · 318</span>
+              <div class="p-price"><span class="now">AED 150</span></div>
+              <div class="p-bnpl">4× AED 37.50 with <b>tamara</b></div>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align:center;margin-top:24px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-outline" data-route="shop">View all 412 fragrances →</button>
+          <button class="btn btn-red" id="downloadCatalogue2">📥 Download full catalogue (PDF)</button>
+        </div>
+
+        <div style="margin-top:18px;text-align:center;font-size:11px;color:var(--txt-mute)">
+          ✓ All products verified live from <a href="https://khadlaj-perfumes.com/collections/top-selling" target="_blank" rel="noopener" style="color:var(--red);text-decoration:underline">khadlaj-perfumes.com/collections/top-selling</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1044,6 +1476,124 @@ input,select{font:inherit}
   </div>
 </section>
 
+<!-- ─────────────────────────  VIRAL ON TIKTOK  ───────────────────────── -->
+<section class="section" style="padding-top:0" aria-labelledby="tt-h">
+  <div class="container">
+    <div class="tt-section">
+      <div class="tt-banner">
+        <div class="tt-banner-left">
+          <div class="tt-logo-mini" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#fff" d="M19.5 6.5a4.7 4.7 0 0 1-3.6-1.7v9.5a5.7 5.7 0 1 1-5.7-5.7v2.6a3.1 3.1 0 1 0 3.1 3.1V2h2.6a4.6 4.6 0 0 0 3.6 4.5z"/></svg>
+          </div>
+          <h3>Viral on TikTok <span class="tt-pill">#KhadlajPerfumes</span></h3>
+        </div>
+        <div class="tt-stats">
+          <span><b>4.2M</b> views</span>
+          <span><b>180K</b> followers</span>
+          <a href="https://www.tiktok.com/@khadlajperfumes" target="_blank" rel="noopener" class="see-all">@khadlajperfumes →</a>
+        </div>
+      </div>
+
+      <div class="tt-grid">
+        <!-- Tile 1 -->
+        <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/1">
+          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=70">
+            <source src="https://cdn.pixabay.com/video/2023/08/07/175131-851973285_large.mp4" type="video/mp4">
+          </video>
+          <span class="tt-views">1.2M</span>
+          <span class="tt-tt-badge">TikTok</span>
+          <div class="tt-info">
+            <div class="tt-user"><span class="tt-avatar">K</span><span class="tt-handle">@khadlajperfumes</span></div>
+            <p class="tt-caption">Hareem Al Sultan Gold — the abaya scent that lasts 48hrs ✨ #oudperfume #fyp</p>
+            <div class="tt-music">original sound · Khadlaj</div>
+          </div>
+          <div class="tt-actions">
+            <div class="tt-action heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg><span>248K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg><span>3.2K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="m12 19-9-9 9-9v5c5 1 8 4 9 12-3-3.5-6-5-9-5z"/></svg><span>18K</span></div>
+          </div>
+        </div>
+
+        <!-- Tile 2 -->
+        <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/2">
+          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70">
+            <source src="https://cdn.pixabay.com/video/2024/03/26/205316-927228812_large.mp4" type="video/mp4">
+          </video>
+          <span class="tt-views">890K</span>
+          <span class="tt-tt-badge">TikTok</span>
+          <div class="tt-info">
+            <div class="tt-user"><span class="tt-avatar">K</span><span class="tt-handle">@khadlajperfumes</span></div>
+            <p class="tt-caption">POV: you found the oud that smells like grandfather's majlis 🤍 #aoudmubakhar #sharjah</p>
+            <div class="tt-music">trending audio · 234K used</div>
+          </div>
+          <div class="tt-actions">
+            <div class="tt-action heart liked"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg><span>178K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg><span>5.4K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="m12 19-9-9 9-9v5c5 1 8 4 9 12-3-3.5-6-5-9-5z"/></svg><span>22K</span></div>
+          </div>
+        </div>
+
+        <!-- Tile 3 -->
+        <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/3">
+          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70">
+            <source src="https://cdn.pixabay.com/video/2024/02/03/199298-910641313_large.mp4" type="video/mp4">
+          </video>
+          <span class="tt-views">2.1M</span>
+          <span class="tt-tt-badge">TikTok</span>
+          <div class="tt-info">
+            <div class="tt-user"><span class="tt-avatar">K</span><span class="tt-handle">@khadlajperfumes</span></div>
+            <p class="tt-caption">Building a 3-fragrance wardrobe for Eid 🌙 — morning, evening, special #eidscents</p>
+            <div class="tt-music">oud arabic remix · viral</div>
+          </div>
+          <div class="tt-actions">
+            <div class="tt-action heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg><span>412K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg><span>8.9K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="m12 19-9-9 9-9v5c5 1 8 4 9 12-3-3.5-6-5-9-5z"/></svg><span>34K</span></div>
+          </div>
+        </div>
+
+        <!-- Tile 4 -->
+        <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/4">
+          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70">
+            <source src="https://cdn.pixabay.com/video/2024/05/08/210466-942117350_large.mp4" type="video/mp4">
+          </video>
+          <span class="tt-views">670K</span>
+          <span class="tt-tt-badge">TikTok</span>
+          <div class="tt-info">
+            <div class="tt-user"><span class="tt-avatar">K</span><span class="tt-handle">@khadlajperfumes</span></div>
+            <p class="tt-caption">Inside the Khadlaj atelier — how a 100ml bottle takes 18 months to perfect 🧪 #perfumetok</p>
+            <div class="tt-music">behind the scenes audio</div>
+          </div>
+          <div class="tt-actions">
+            <div class="tt-action heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg><span>134K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg><span>2.1K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="m12 19-9-9 9-9v5c5 1 8 4 9 12-3-3.5-6-5-9-5z"/></svg><span>14K</span></div>
+          </div>
+        </div>
+
+        <!-- Tile 5 -->
+        <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/5">
+          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70">
+            <source src="https://cdn.pixabay.com/video/2023/10/12/184542-873836820_large.mp4" type="video/mp4">
+          </video>
+          <span class="tt-views">1.5M</span>
+          <span class="tt-tt-badge">TikTok</span>
+          <div class="tt-info">
+            <div class="tt-user"><span class="tt-avatar">K</span><span class="tt-handle">@khadlajperfumes</span></div>
+            <p class="tt-caption">Unboxing the Saffron Royale Trio — gift wrapping ASMR 🎁✨ #unboxing #giftideas</p>
+            <div class="tt-music">soft asmr unbox · 89K used</div>
+          </div>
+          <div class="tt-actions">
+            <div class="tt-action heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg><span>289K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg><span>6.7K</span></div>
+            <div class="tt-action"><svg viewBox="0 0 24 24"><path d="m12 19-9-9 9-9v5c5 1 8 4 9 12-3-3.5-6-5-9-5z"/></svg><span>27K</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────────────────────  NEW ARRIVALS RAIL  ───────────────────────── -->
 <section class="section" style="padding-top:0">
   <div class="container">
@@ -1111,6 +1661,158 @@ input,select{font:inherit}
         <div class="pyramid-row top"><span class="pyramid-label">Top</span><span>Bergamot</span><span>Saffron</span><span>Cardamom</span></div>
         <div class="pyramid-row heart"><span class="pyramid-label">Heart</span><span>Bulgarian Rose</span><span>Jasmine</span><span>Iris</span></div>
         <div class="pyramid-row base"><span class="pyramid-label">Base</span><span>Cambodian Oud</span><span>Sandalwood</span><span>Amber</span><span>Musk</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  WHOLESALE BULK ORDER  ───────────────────────── -->
+<style>
+.bulk-section{background:linear-gradient(135deg,#fff8e6 0%,#fff0e6 50%,#ffe2e8 100%);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr 1.4fr;align-items:stretch;box-shadow:var(--shadow-sm)}
+.bulk-intro{padding:48px;display:flex;flex-direction:column;justify-content:center;background:#fff;border-right:1px solid var(--line);position:relative;overflow:hidden}
+.bulk-intro::before{content:'';position:absolute;bottom:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,var(--gold) 0%,transparent 70%);opacity:.15;pointer-events:none}
+.bulk-intro small.eye{color:var(--red);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.bulk-intro h2{font-size:32px;font-weight:800;margin:14px 0 14px;line-height:1.1;letter-spacing:-.01em}
+.bulk-intro h2 span{color:var(--red)}
+.bulk-intro p{color:var(--ink-2);margin:0 0 20px;font-size:14px;line-height:1.7}
+.bulk-perks{display:grid;gap:8px;margin:18px 0}
+.bulk-perks li{list-style:none;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink)}
+.bulk-perks li::before{content:'✓';width:22px;height:22px;background:var(--green);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;flex-shrink:0}
+.bulk-form{padding:48px;background:transparent}
+.bulk-form h3{font-size:20px;font-weight:800;margin:0 0 6px}
+.bulk-form .hint{color:var(--txt-mute);font-size:13px;margin:0 0 22px}
+.bulk-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.bulk-field{display:flex;flex-direction:column;gap:5px}
+.bulk-field.full{grid-column:1/-1}
+.bulk-field label{font-size:11px;font-weight:600;color:var(--txt-mute);letter-spacing:.04em;text-transform:uppercase}
+.bulk-field input,.bulk-field select,.bulk-field textarea{padding:11px 14px;border:1.5px solid #fff;border-radius:6px;font-size:13px;outline:none;transition:border-color .2s;font-family:inherit;background:rgba(255,255,255,.85)}
+.bulk-field input:focus,.bulk-field select:focus,.bulk-field textarea:focus{border-color:var(--red);background:#fff}
+.bulk-table{background:#fff;border-radius:8px;border:1.5px solid var(--line);overflow:hidden;margin:14px 0}
+.bulk-table-head{display:grid;grid-template-columns:2.4fr 1fr 1fr 38px;gap:0;padding:10px 14px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.bulk-table-row{display:grid;grid-template-columns:2.4fr 1fr 1fr 38px;gap:0;padding:8px;border-top:1px solid var(--line);align-items:center}
+.bulk-table-row input,.bulk-table-row select{border:0;background:transparent;padding:8px 10px;font-size:13px;outline:0;border-radius:0;width:100%}
+.bulk-table-row input:focus,.bulk-table-row select:focus{background:#fff8e6}
+.bulk-table-row .rm{width:28px;height:28px;border-radius:50%;color:var(--red);display:grid;place-items:center;font-size:18px;font-weight:700}
+.bulk-table-row .rm:hover{background:#fff0f3}
+.bulk-add-row{padding:10px 14px;background:var(--bg-2);font-size:12px;font-weight:700;color:var(--red);cursor:pointer;text-align:left;display:flex;align-items:center;gap:6px;width:100%;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:.06em}
+.bulk-add-row:hover{background:var(--pink)}
+.bulk-add-row::before{content:'+';font-size:14px;font-weight:800}
+.bulk-totals{display:flex;justify-content:space-between;padding:12px 14px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;border-radius:6px;margin-bottom:14px}
+.bulk-totals b{color:var(--gold);font-size:18px;font-family:'Poppins',serif}
+.bulk-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+@media (max-width:960px){
+  .bulk-section{grid-template-columns:1fr}
+  .bulk-intro,.bulk-form{padding:32px 24px}
+  .bulk-table-head,.bulk-table-row{grid-template-columns:2fr 1fr 1fr 32px;font-size:11px}
+}
+</style>
+
+<section class="section" style="padding-top:0" aria-labelledby="bulk-h">
+  <div class="container">
+    <div class="bulk-section">
+      <div class="bulk-intro">
+        <small class="eye">B2B · Wholesale &amp; Distribution</small>
+        <h2 id="bulk-h">Order in <span>bulk</span> direct from our atelier.</h2>
+        <p>Boutiques, distributors, hotel groups, and corporate gifting — type your full order online, get a wholesale quote within 24 hours, and ship anywhere from our Sharjah factory.</p>
+
+        <ul class="bulk-perks">
+          <li>Tiered pricing from 12 units · up to 45% off retail</li>
+          <li>Custom packaging &amp; private label available</li>
+          <li>Worldwide export · all GCC, EU, UK, US, Asia</li>
+          <li>Dedicated account manager · WhatsApp + email</li>
+          <li>Full HS codes, COA, MSDS for customs</li>
+        </ul>
+
+        <div style="margin-top:14px;padding:14px;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:#fff;border-radius:8px;font-size:13px">
+          <b style="color:var(--gold);display:block;margin-bottom:4px">Already a wholesale partner?</b>
+          <span style="opacity:.8">Sign in to access your tier pricing.</span>
+        </div>
+      </div>
+
+      <form class="bulk-form" id="bulkForm" novalidate>
+        <h3>Bulk order sheet</h3>
+        <p class="hint">Fill in your business info, type your products and quantities below — we'll reply with a quote within 24 hours.</p>
+
+        <div class="bulk-row">
+          <div class="bulk-field"><label>Company name</label><input type="text" name="company" required placeholder="Your business" /></div>
+          <div class="bulk-field"><label>Contact person</label><input type="text" name="contact" required placeholder="Full name" /></div>
+          <div class="bulk-field"><label>Email</label><input type="email" name="email" required placeholder="orders@..." /></div>
+          <div class="bulk-field"><label>WhatsApp / phone</label><input type="tel" name="phone" required placeholder="+971 ..." /></div>
+          <div class="bulk-field"><label>Country</label><select name="country" required>
+            <option value="">Select country…</option>
+            <option>United Arab Emirates</option><option>Saudi Arabia</option><option>Kuwait</option><option>Qatar</option><option>Bahrain</option><option>Oman</option><option>India</option><option>United Kingdom</option><option>United States</option><option>Other</option>
+          </select></div>
+          <div class="bulk-field"><label>Business type</label><select name="biz" required>
+            <option value="">Select…</option>
+            <option>Retailer / Boutique</option><option>Distributor</option><option>Hotel / Hospitality</option><option>Corporate Gifting</option><option>Online seller</option><option>Private label</option><option>Other</option>
+          </select></div>
+          <div class="bulk-field full"><label>Trade licence number (optional)</label><input type="text" name="licence" placeholder="For UAE-based businesses" /></div>
+        </div>
+
+        <div style="margin-top:8px"><label style="font-size:11px;font-weight:600;color:var(--txt-mute);letter-spacing:.04em;text-transform:uppercase">Order lines</label></div>
+
+        <div class="bulk-table" id="bulkTable" role="grid">
+          <div class="bulk-table-head">
+            <span>Product / SKU</span>
+            <span>Size</span>
+            <span>Qty</span>
+            <span></span>
+          </div>
+          <!-- rows added by JS -->
+        </div>
+        <button type="button" class="bulk-add-row" id="bulkAddRow">Add another product line</button>
+
+        <div class="bulk-totals">
+          <span>Total units</span>
+          <span><b id="bulkUnits">0</b> · Quote within 24 hrs</span>
+        </div>
+
+        <div class="bulk-field full" style="margin-bottom:14px"><label>Notes / requirements</label><textarea name="notes" rows="2" placeholder="Custom packaging, private label, target delivery date, port of discharge, etc." style="resize:vertical"></textarea></div>
+
+        <div class="bulk-actions">
+          <button class="btn btn-red" type="submit" style="flex:1;min-width:180px">📨 Submit bulk enquiry</button>
+          <button class="btn btn-outline" type="button" id="bulkWhatsapp" style="background:#25d366;color:#fff;border-color:#25d366">💬 Send via WhatsApp</button>
+          <button class="btn btn-outline" type="button" id="bulkPDF">📄 Download as PDF</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  FOUNDER STORY  ───────────────────────── -->
+<section class="section" style="padding-top:0" aria-labelledby="founder-h">
+  <div class="container">
+    <div class="founder-wrap">
+      <div class="founder-img" role="img" aria-label="Master perfumer at the Khadlaj atelier in Sharjah">
+        <span class="founder-badge"><b>1997</b><small>Established · Sharjah, UAE</small></span>
+      </div>
+      <div class="founder-text">
+        <small class="eyebrow">The Founder Story · Father &amp; Son</small>
+        <h2 id="founder-h">From a Sharjah atelier to <span>80 countries</span>.</h2>
+        <blockquote class="founder-quote">"45 years in perfumery has taught me one thing — a great fragrance is never rushed. We blend, we age, we test, and only then does it earn the Khadlaj name." <span style="display:block;font-size:13px;color:var(--gold);margin-top:8px;font-style:normal">— Mohamed Iqbal Abdul Sattar, Founder &amp; Master Perfumer</span></blockquote>
+        <p>In January 1997, <b style="color:#fff">Mohamed Iqbal Abdul Sattar</b> founded Khadlaj Perfumes in Sharjah, drawing on more than 45 years of hands-on perfumery experience. From a small atelier, he set out to compose fragrances that honoured the Arabian tradition while meeting the standards of an international audience — distilling rose attar, sourcing Cambodian oud directly from harvesters, and building a customer book one bottle at a time.</p>
+        <p>Today, the family business is led by his son <b style="color:#fff">Asif Mohamed Iqbal Katchi</b>, Managing Director, who brings over 18 years of experience to advancing his father's legacy. Under their joint stewardship, Khadlaj has grown into a global house with a presence in 80+ countries and 10 showrooms — five across the UAE and five across Oman — while every bottle still leaves the Sharjah atelier, signed off by the family.</p>
+
+        <div class="founder-sign">
+          <div class="founder-sign-img" role="img" aria-label="Asif Mohamed Iqbal Katchi portrait"></div>
+          <div>
+            <b>Asif Mohamed Iqbal Katchi</b>
+            <small>Managing Director · Second Generation</small>
+          </div>
+        </div>
+
+        <div class="founder-timeline">
+          <div class="tl-item"><b>1997</b><small>Founded by Mohamed Iqbal Abdul Sattar in Sharjah</small></div>
+          <div class="tl-item"><b>2005</b><small>First international exports to GCC markets</small></div>
+          <div class="tl-item"><b>2015</b><small>Asif Iqbal Katchi joins as Managing Director</small></div>
+          <div class="tl-item"><b>2026</b><small>80+ countries · 10 showrooms (UAE &amp; Oman)</small></div>
+        </div>
+
+        <div style="margin-top:32px;display:flex;gap:10px;flex-wrap:wrap">
+          <a href="#" class="btn btn-red" id="downloadCatalogue">📥 Download Catalogue (PDF)</a>
+          <a href="#" class="btn btn-ghost-light" data-route="story">Read full heritage →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1238,8 +1940,8 @@ input,select{font:inherit}
   <div class="container">
     <div class="footer-grid">
       <div class="foot-brand">
-        <div class="logo"><span class="logo-mark">K</span><span><b style="color:#fff">KHADLAJ</b><small>Perfumes · Est. 1985</small></span></div>
-        <p>Heritage Arabian perfumery, hand-blended in Sharjah since 1985. Authentic oud, rare attars, and luxury fragrances for the modern East.</p>
+        <div class="logo"><span class="logo-mark">K</span><span><b style="color:#fff">KHADLAJ</b><small>Perfumes · Est. 1997</small></span></div>
+        <p>Heritage Arabian perfumery, hand-blended in Sharjah since 1997 by Mohamed Iqbal Abdul Sattar. Authentic oud, rare attars, and luxury fragrances — now in 80+ countries.</p>
         <div class="foot-contact">
           <a href="tel:+97165340753">📞 +971 6 5340753</a>
           <a href="https://wa.me/971521211992">💬 WhatsApp +971 52 1211992</a>
@@ -1329,6 +2031,484 @@ input,select{font:inherit}
   </div>
 </footer>
 
+<!-- ─────────────────────────  AI CHAT + EXTRA STYLES  ───────────────────────── -->
+<style>
+.chat-fab{position:fixed;bottom:18px;right:88px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1a1a1a 0%,#3d0a14 100%);color:var(--gold);display:grid;place-items:center;box-shadow:var(--shadow-lg);z-index:90;transition:all .25s;cursor:pointer;border:1.5px solid var(--gold)}
+.chat-fab:hover{transform:scale(1.05)}
+.chat-fab svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6}
+.chat-fab .chat-pulse{position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:#25d366;border:2px solid #fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.7}}
+.chat-panel{position:fixed;bottom:90px;right:18px;width:min(380px,calc(100vw - 36px));height:min(560px,calc(100vh - 120px));background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);z-index:91;display:flex;flex-direction:column;overflow:hidden;transform:translateY(20px) scale(.96);opacity:0;visibility:hidden;transition:all .25s var(--ease,ease)}
+.chat-panel.open{transform:none;opacity:1;visibility:visible}
+.chat-head{padding:18px 20px;background:linear-gradient(135deg,#1a1a1a 0%,#3d0a14 100%);color:#fff;display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--gold)}
+.chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:16px;font-family:'Poppins',serif;flex-shrink:0;position:relative}
+.chat-avatar::after{content:'';position:absolute;bottom:0;right:0;width:11px;height:11px;border-radius:50%;background:#25d366;border:2px solid #fff}
+.chat-head-info b{display:block;font-size:14px;font-weight:700}
+.chat-head-info small{display:block;font-size:11px;color:rgba(255,255,255,.7);margin-top:1px}
+.chat-head-info small::before{content:'●';color:#25d366;margin-right:4px}
+.chat-close{margin-left:auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.chat-close:hover{background:rgba(255,255,255,.1)}
+.chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,#fafafa,#fff)}
+.chat-msg{display:flex;gap:8px;align-items:flex-end;animation:slideUp .3s ease-out}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.chat-msg .ava{width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:11px;font-weight:800;flex-shrink:0}
+.chat-msg .bub{padding:10px 14px;border-radius:14px 14px 14px 4px;background:#fff;font-size:13px;line-height:1.5;max-width:78%;box-shadow:0 1px 4px rgba(0,0,0,.06);border:1px solid var(--line)}
+.chat-msg.user{justify-content:flex-end}
+.chat-msg.user .bub{border-radius:14px 14px 4px 14px;background:var(--ink);color:#fff;border-color:var(--ink)}
+.chat-msg.user .ava{display:none}
+.chat-typing .bub{display:flex;gap:4px;padding:14px}
+.chat-typing .bub i{width:6px;height:6px;border-radius:50%;background:var(--txt-mute);animation:dot 1.2s infinite}
+.chat-typing .bub i:nth-child(2){animation-delay:.2s}
+.chat-typing .bub i:nth-child(3){animation-delay:.4s}
+@keyframes dot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chat-quick button{padding:8px 12px;background:#fff;border:1.5px solid var(--gold);color:var(--gold-2,var(--ink));border-radius:18px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.chat-quick button:hover{background:var(--gold);color:var(--ink)}
+.chat-product{display:grid;grid-template-columns:54px 1fr auto;gap:10px;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;align-items:center;margin-top:6px;cursor:pointer;transition:all .2s}
+.chat-product:hover{border-color:var(--red);box-shadow:var(--shadow-sm)}
+.chat-product img{width:54px;height:54px;object-fit:cover;border-radius:6px}
+.chat-product b{display:block;font-size:13px;font-weight:700;line-height:1.2}
+.chat-product small{font-size:11px;color:var(--txt-mute)}
+.chat-product .pp{font-size:13px;font-weight:800;color:var(--ink)}
+.chat-foot{border-top:1px solid var(--line);padding:12px;background:#fff}
+.chat-input-row{display:flex;gap:6px;align-items:center;background:var(--bg-3);border-radius:22px;padding:4px 4px 4px 14px}
+.chat-input-row input{flex:1;border:0;outline:0;background:transparent;font-size:13px;padding:8px 0}
+.chat-send{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--gold);display:grid;place-items:center}
+.chat-send:hover{background:var(--red)}
+.chat-send svg{width:16px;height:16px;fill:currentColor}
+.chat-handoff{padding:10px 14px;background:linear-gradient(135deg,#25d366,#1ebe5d);color:#fff;border-radius:10px;font-size:12px;display:flex;justify-content:space-between;align-items:center;margin-top:8px;cursor:pointer;transition:transform .2s}
+.chat-handoff:hover{transform:translateY(-1px)}
+.chat-handoff b{font-weight:700}
+.chat-handoff::after{content:'→'}
+
+@media (max-width:680px){
+  .chat-fab{right:80px;width:50px;height:50px}
+  .chat-panel{right:10px;left:10px;width:auto;bottom:80px;height:75vh}
+}
+</style>
+
+<!-- ─────────────────────────  AI CHAT (Khadlaj Concierge)  ───────────────────────── -->
+<button class="chat-fab" id="chatFab" aria-label="Chat with Khadlaj fragrance concierge">
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r=".5" fill="currentColor"/><circle cx="13" cy="10" r=".5" fill="currentColor"/><circle cx="17" cy="10" r=".5" fill="currentColor"/></svg>
+  <span class="chat-pulse" aria-hidden="true"></span>
+</button>
+
+<aside class="chat-panel" id="chatPanel" role="dialog" aria-label="Khadlaj fragrance concierge" aria-hidden="true">
+  <div class="chat-head">
+    <div class="chat-avatar">K</div>
+    <div class="chat-head-info">
+      <b>Khadlaj Concierge</b>
+      <small>Online · replies in seconds</small>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+  </div>
+  <div class="chat-body" id="chatBody" role="log" aria-live="polite"></div>
+  <div class="chat-foot">
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" placeholder="Ask anything: 'oud for him', 'gift under 200 AED'…" aria-label="Message" id="chatInput" autocomplete="off" />
+      <button type="submit" class="chat-send" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
+    </form>
+  </div>
+</aside>
+
+<!-- ─────────────────────────  CATALOGUE DOWNLOAD MODAL  ───────────────────────── -->
+<div class="modal-overlay" id="catalogueModal" role="dialog" aria-labelledby="cat-h" aria-hidden="true">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <div style="padding:36px 36px 8px;text-align:center">
+      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:var(--gold);display:grid;place-items:center;margin:0 auto 18px;font-size:32px">📕</div>
+      <h2 id="cat-h" style="font-size:24px;font-weight:800;margin:0 0 8px">Khadlaj 2026 Catalogue</h2>
+      <p style="color:var(--txt-mute);margin:0 0 20px;font-size:14px">All 412 fragrances · Notes, prices, family · 84 pages PDF</p>
+    </div>
+    <form id="catalogueForm" style="padding:0 36px 36px;display:grid;gap:12px">
+      <div class="co-field full"><label>Full name</label><input type="text" name="name" required placeholder="Your name" /></div>
+      <div class="co-field full"><label>Email address</label><input type="email" name="email" required placeholder="your@email.com" /></div>
+      <div class="co-field full"><label>WhatsApp number (optional)</label><input type="tel" name="phone" placeholder="+971 50 ..." /></div>
+      <div class="co-field full"><label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt-mute);text-transform:none;letter-spacing:0"><input type="checkbox" name="newsletter" checked /> Send me launches and seasonal offers (unsubscribe anytime)</label></div>
+      <button class="btn btn-red" type="submit" style="width:100%;padding:14px;margin-top:8px">📥 Email me the catalogue</button>
+      <small style="text-align:center;color:var(--txt-mute);font-size:11px">No spam. Your data is private. We'll also offer a 25% welcome code.</small>
+    </form>
+  </div>
+</div>
+
+<!-- ─────────────────────────  SEARCH OVERLAY  ───────────────────────── -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search products">
+  <div class="search-overlay-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <small style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);font-weight:700">Search</small>
+      <button data-modal-close aria-label="Close search" style="font-size:13px;color:var(--txt-mute)">Close ✕</button>
+    </div>
+    <input type="search" placeholder="Search 412 fragrances, oud, attars, brands…" id="searchInput" autocomplete="off" autofocus />
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ─────────────────────────  PRODUCT DETAIL MODAL  ───────────────────────── -->
+<div class="modal-overlay" id="productModal" role="dialog" aria-labelledby="pd-h" aria-hidden="true">
+  <div class="modal" id="productModalBody">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- ─────────────────────────  CHECKOUT MODAL  ───────────────────────── -->
+<div class="modal-overlay" id="checkoutModal" role="dialog" aria-labelledby="co-h" aria-hidden="true">
+  <div class="modal" style="max-width:1080px">
+    <button class="modal-close" data-modal-close aria-label="Close checkout">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <h1 id="co-h" style="margin:24px 36px 0;font-size:24px;font-weight:800">Secure Checkout</h1>
+    <div class="co-grid">
+      <form class="co-form" id="checkoutForm" novalidate>
+        <div class="co-step">
+          <h3><span class="num">1</span> Contact &amp; Shipping</h3>
+          <div class="co-row">
+            <div class="co-field"><label>First name</label><input type="text" name="firstName" required /><span class="co-field-error">Required</span></div>
+            <div class="co-field"><label>Last name</label><input type="text" name="lastName" required /><span class="co-field-error">Required</span></div>
+            <div class="co-field"><label>Email</label><input type="email" name="email" required /><span class="co-field-error">Valid email required</span></div>
+            <div class="co-field"><label>WhatsApp / phone</label><input type="tel" name="phone" required placeholder="+971 50 ..." /><span class="co-field-error">Required</span></div>
+            <div class="co-field full"><label>Address line 1</label><input type="text" name="address1" required placeholder="Building, street" /><span class="co-field-error">Required</span></div>
+            <div class="co-field"><label>City / Emirate</label><select name="city" required>
+              <option value="">Select…</option>
+              <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option><option>Al Ain</option><option>Other (worldwide)</option>
+            </select></div>
+            <div class="co-field"><label>Country</label><select name="country" required>
+              <option value="AE" selected>United Arab Emirates 🇦🇪</option>
+              <option value="SA">Saudi Arabia 🇸🇦</option><option value="KW">Kuwait 🇰🇼</option><option value="QA">Qatar 🇶🇦</option><option value="BH">Bahrain 🇧🇭</option><option value="OM">Oman 🇴🇲</option><option value="GB">United Kingdom 🇬🇧</option><option value="US">United States 🇺🇸</option><option value="IN">India 🇮🇳</option><option value="OTHER">Other</option>
+            </select></div>
+            <div class="co-field full"><label>Notes for delivery (optional)</label><textarea name="notes" rows="2" placeholder="Gate code, landmark, gift message…" style="resize:vertical"></textarea></div>
+          </div>
+        </div>
+
+        <div class="co-step">
+          <h3><span class="num">2</span> Payment Method</h3>
+          <div class="co-pay-options" id="payOptions">
+            <label class="co-pay active">
+              <input type="radio" name="payment" value="whatsapp" checked />
+              <span class="co-pay-icon wa">💬</span>
+              <span class="co-pay-info"><b>WhatsApp Order</b><small>We send you a payment link · No card needed now</small></span>
+              <span class="co-pay-tag popular">Most popular</span>
+            </label>
+            <label class="co-pay">
+              <input type="radio" name="payment" value="cod" />
+              <span class="co-pay-icon cod">💵</span>
+              <span class="co-pay-info"><b>Cash on Delivery</b><small>Pay when your fragrance arrives · UAE only · +AED 15</small></span>
+              <span class="co-pay-tag">UAE</span>
+            </label>
+            <label class="co-pay">
+              <input type="radio" name="payment" value="tabby" />
+              <span class="co-pay-icon tabby">tabby</span>
+              <span class="co-pay-info"><b>Pay in 4 with Tabby</b><small>4 interest-free payments · No fees</small></span>
+              <span class="co-pay-tag zero">0% interest</span>
+            </label>
+            <label class="co-pay">
+              <input type="radio" name="payment" value="tamara" />
+              <span class="co-pay-icon tamara">tamara</span>
+              <span class="co-pay-info"><b>Pay in 4 with Tamara</b><small>Split into 4 payments · Sharia-compliant</small></span>
+              <span class="co-pay-tag zero">0% interest</span>
+            </label>
+            <label class="co-pay">
+              <input type="radio" name="payment" value="card" />
+              <span class="co-pay-icon card">CARD</span>
+              <span class="co-pay-info"><b>Credit / Debit Card</b><small>Visa, Mastercard, Amex · Stripe secure</small></span>
+            </label>
+            <label class="co-pay">
+              <input type="radio" name="payment" value="bank" />
+              <span class="co-pay-icon bank">IBAN</span>
+              <span class="co-pay-info"><b>Bank Transfer</b><small>IBAN sent on order placement · Order ships when received</small></span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-red" style="width:100%;padding:16px;font-size:14px" id="placeOrderBtn">Place order →</button>
+        <div class="co-trust">
+          <span>Secure SSL checkout</span>
+          <span>24-hr cancellation</span>
+          <span>Authentic since 1985</span>
+        </div>
+      </form>
+
+      <aside class="co-summary">
+        <h3>Order summary</h3>
+        <div class="co-items" id="coItems"></div>
+        <div class="co-coupon">
+          <input type="text" id="couponInput" placeholder="Coupon code (KHADLAJ25)" />
+          <button type="button" id="applyCoupon">Apply</button>
+        </div>
+        <div class="co-coupon-applied" id="couponApplied">✓ <span id="couponName"></span> applied</div>
+        <div style="padding-top:14px;border-top:1px solid var(--line)">
+          <div class="co-line"><span>Subtotal</span><span id="coSub">AED 0</span></div>
+          <div class="co-line discount" id="coDiscountLine" style="display:none"><span>Discount</span><span id="coDiscount">−AED 0</span></div>
+          <div class="co-line"><span>Shipping</span><span id="coShip">Free</span></div>
+          <div class="co-line"><span>VAT (5%)</span><span id="coVat">AED 0</span></div>
+          <div class="co-line total"><span>Total</span><span id="coTotal">AED 0</span></div>
+        </div>
+        <div style="margin-top:14px;padding:12px;background:#fff;border:1px dashed var(--gold);border-radius:6px;font-size:11px;color:var(--txt-mute);text-align:center">🎁 Free Khadlaj gift card with orders above AED 500</div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────  ORDER CONFIRMATION  ───────────────────────── -->
+<div class="modal-overlay" id="orderModal" role="dialog" aria-labelledby="oc-h" aria-hidden="true">
+  <div class="modal" style="max-width:640px">
+    <button class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <div class="oc-wrap">
+      <div class="oc-icon">✓</div>
+      <h2 id="oc-h">Thank you!</h2>
+      <p>Your order has been placed.</p>
+      <div class="oc-id" id="ocId">KH-000000</div>
+      <p id="ocPaymentNote" style="font-size:13px;max-width:420px;margin:0 auto"></p>
+      <div class="oc-summary">
+        <h4>What happens next</h4>
+        <ol style="margin:0;padding-left:20px;font-size:13px;line-height:2;color:var(--ink-2)" id="ocSteps"></ol>
+      </div>
+      <div class="oc-actions">
+        <button class="btn btn-red" id="ocWhatsapp">💬 Open WhatsApp now</button>
+        <button class="btn btn-outline" data-modal-close>Continue shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────  ACCOUNT MODAL  ───────────────────────── -->
+<div class="modal-overlay" id="accountModal" role="dialog" aria-labelledby="acc-h" aria-hidden="true">
+  <div class="modal" style="max-width:780px">
+    <button class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <h1 id="acc-h" style="margin:24px 36px 14px;font-size:24px;font-weight:800">Your account</h1>
+    <div class="acc-tabs">
+      <button class="acc-tab active" data-tab="orders">Orders</button>
+      <button class="acc-tab" data-tab="wishlist">Wishlist</button>
+      <button class="acc-tab" data-tab="profile">Profile</button>
+    </div>
+    <div class="acc-content">
+      <div class="acc-pane active" data-pane="orders" id="paneOrders"></div>
+      <div class="acc-pane" data-pane="wishlist" id="paneWishlist"></div>
+      <div class="acc-pane" data-pane="profile" id="paneProfile">
+        <p style="color:var(--txt-mute);font-size:13px;margin:0 0 18px">Save your details for faster checkout. Stored only on this device.</p>
+        <form id="profileForm" style="display:grid;gap:12px;max-width:480px">
+          <div class="co-field"><label>Full name</label><input type="text" name="name" /></div>
+          <div class="co-field"><label>Email</label><input type="email" name="email" /></div>
+          <div class="co-field"><label>WhatsApp / phone</label><input type="tel" name="phone" /></div>
+          <div class="co-field"><label>Default address</label><textarea name="address" rows="2"></textarea></div>
+          <button class="btn btn-red" type="submit" style="margin-top:8px">Save profile</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────  RETURN POLICY MODAL  ───────────────────────── -->
+<div class="modal-overlay" id="returnModal" role="dialog" aria-labelledby="ret-h" aria-hidden="true">
+  <div class="modal" style="max-width:640px">
+    <button class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <div style="padding:36px 36px 24px">
+      <small style="color:var(--red);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase">Khadlaj Customer Care</small>
+      <h2 id="ret-h" style="font-size:26px;font-weight:800;margin:8px 0 18px">Return &amp; Refund Policy</h2>
+      <p style="color:var(--txt-mute);font-size:13px;margin:0 0 20px">Effective for all orders placed on khadlaj-perfumes.com</p>
+
+      <div style="background:#fff8e6;border-left:3px solid var(--gold);padding:14px 18px;border-radius:6px;margin-bottom:20px;font-size:13px;line-height:1.7">
+        <b>Quick summary:</b> Cancel within <b>24 hours</b> of purchase or before dispatch. Sealed items only. <b>Replacements only — no refunds</b> in applicable cases.
+      </div>
+
+      <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;color:var(--ink)">1. Return window</h3>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-2);margin:0 0 14px">Customers may cancel orders within <b>24 hours of purchase</b> or before goods are dispatched, whichever comes first. The "Change of Mind" policy applies within this window.</p>
+
+      <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;color:var(--ink)">2. Eligibility</h3>
+      <ul style="font-size:14px;line-height:1.7;color:var(--ink-2);margin:0 0 14px;padding-left:20px">
+        <li>Items must be returned in their <b>original, sealed packaging</b></li>
+        <li><b>Unpacked or opened items will not be accepted</b> under any circumstances</li>
+        <li>Item must be in original condition with all tags and labels intact</li>
+      </ul>
+
+      <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;color:var(--ink)">3. Refund policy</h3>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-2);margin:0 0 14px"><b>No refunds will be granted.</b> Only replacements will be provided in applicable cases. When exceptions occur, refunds are processed through the original payment method only.</p>
+
+      <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;color:var(--ink)">4. How to initiate a return</h3>
+      <p style="font-size:14px;line-height:1.7;color:var(--ink-2);margin:0 0 8px">Contact our Customer Care team within 24 hours via:</p>
+      <div style="display:grid;gap:8px;margin:14px 0">
+        <a href="https://wa.me/971521211992" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#25d366;color:#fff;border-radius:6px;font-size:13px;font-weight:600">💬 WhatsApp · +971 52 1211992</a>
+        <a href="mailto:customercare@khadlaj-perfumes.com" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--ink);color:#fff;border-radius:6px;font-size:13px;font-weight:600">✉ customercare@khadlaj-perfumes.com</a>
+        <a href="tel:+97165340753" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg-2);color:var(--ink);border-radius:6px;font-size:13px;font-weight:600;border:1px solid var(--line)">📞 +971 6 5340753</a>
+      </div>
+
+      <p style="font-size:11px;color:var(--txt-mute);margin-top:18px;line-height:1.6">By placing an order you agree to this policy. Khadlaj Perfumes LLC reserves the right to refuse returns that don't meet these conditions. Last updated: April 2026.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────  ADMIN PANEL MODAL  ───────────────────────── -->
+<style>
+.admin-modal{max-width:1100px}
+.admin-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 24px;background:var(--ink);color:#fff}
+.admin-tab{padding:18px 22px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);border-bottom:3px solid transparent;cursor:pointer;transition:all .2s}
+.admin-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px;background:linear-gradient(135deg,#1a1a1a,#3d0a14);color:#fff}
+.admin-stat{padding:14px;background:rgba(255,255,255,.06);border-radius:8px;border-left:3px solid var(--gold)}
+.admin-stat b{font-size:26px;font-weight:800;color:var(--gold);font-family:'Poppins',serif;display:block;line-height:1}
+.admin-stat small{font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.7;display:block;margin-top:5px}
+.admin-content{padding:24px}
+.admin-pane{display:none}
+.admin-pane.active{display:block}
+.admin-toolbar{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.admin-toolbar input[type=search]{padding:8px 12px;border:1px solid var(--line);border-radius:5px;font-size:13px;min-width:240px}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px}
+.admin-table thead th{padding:10px 12px;background:var(--bg-2);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.06em;text-align:left;color:var(--ink)}
+.admin-table tbody td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+.admin-table tbody tr:hover{background:var(--bg-3)}
+.admin-table .src{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:10px;background:var(--bg-2);color:var(--ink)}
+.admin-table .src.cat{background:rgba(212,168,71,.2);color:var(--gold-2,#a98842)}
+.admin-table .src.news{background:rgba(10,138,63,.15);color:var(--green)}
+.admin-table .src.bulk{background:rgba(255,122,0,.15);color:var(--orange)}
+.admin-empty{padding:48px;text-align:center;color:var(--txt-mute)}
+.admin-compose{display:grid;gap:10px;max-width:680px}
+.admin-compose label{font-size:11px;font-weight:600;color:var(--txt-mute);letter-spacing:.04em;text-transform:uppercase}
+.admin-compose input,.admin-compose textarea,.admin-compose select{padding:10px 14px;border:1.5px solid var(--line);border-radius:6px;font-size:14px;font-family:inherit;background:#fff;outline:0}
+.admin-compose textarea{resize:vertical;min-height:160px;line-height:1.6}
+.admin-recipients{padding:10px 14px;background:var(--pink);border-radius:6px;font-size:12px;color:var(--red);font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.admin-banner{padding:14px;background:#fff8e6;border-left:3px solid var(--gold);border-radius:6px;font-size:12px;color:var(--ink-2);margin-bottom:14px;line-height:1.6}
+.admin-login{padding:48px;display:grid;gap:14px;max-width:380px;margin:0 auto}
+.admin-login h3{font-size:20px;font-weight:800;text-align:center;margin:0 0 8px}
+.admin-login input{padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;font-size:14px;outline:0}
+.admin-msg-preview{padding:14px;background:var(--bg-2);border-radius:6px;font-size:12px;line-height:1.6;color:var(--ink-2);margin-top:8px;white-space:pre-wrap;font-family:ui-monospace,monospace;max-height:200px;overflow-y:auto}
+</style>
+
+<div class="modal-overlay" id="adminModal" role="dialog" aria-labelledby="ad-h" aria-hidden="true">
+  <div class="modal admin-modal">
+    <button class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+
+    <!-- Login screen (default) -->
+    <div id="adminLoginView">
+      <div class="admin-login">
+        <div style="text-align:center;font-size:34px;margin-bottom:6px">🔐</div>
+        <h3>Admin Panel · Khadlaj</h3>
+        <p style="text-align:center;color:var(--txt-mute);font-size:13px;margin:0 0 14px">Sign in to manage subscribers, orders, and newsletter campaigns.</p>
+        <input type="email" id="adminEmail" placeholder="Admin email" autocomplete="email" />
+        <input type="password" id="adminPass" placeholder="Admin password" autocomplete="current-password" />
+        <button class="btn btn-red" id="adminLogin" type="button">Sign in</button>
+        <small style="color:var(--txt-mute);text-align:center;font-size:11px">Demo credentials: admin@khadlaj-perfumes.com / khadlaj2026</small>
+      </div>
+    </div>
+
+    <!-- Dashboard (hidden until login) -->
+    <div id="adminDashView" style="display:none">
+      <h1 id="ad-h" style="margin:24px 24px 14px;font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px">⚙️ Admin Dashboard <small style="font-size:12px;color:var(--txt-mute);font-weight:500">khadlaj-perfumes.com</small></h1>
+
+      <div class="admin-stats">
+        <div class="admin-stat"><b id="adStatSubs">0</b><small>Email Subscribers</small></div>
+        <div class="admin-stat"><b id="adStatOrders">0</b><small>Online Orders</small></div>
+        <div class="admin-stat"><b id="adStatBulk">0</b><small>Wholesale Enquiries</small></div>
+        <div class="admin-stat"><b id="adStatRevenue">AED 0</b><small>Revenue (this period)</small></div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-atab="subscribers">📧 Subscribers</button>
+        <button class="admin-tab" data-atab="newsletter">✉️ Send Newsletter</button>
+        <button class="admin-tab" data-atab="orders">🛍️ Orders</button>
+        <button class="admin-tab" data-atab="bulk">🏪 Wholesale</button>
+        <button class="admin-tab" data-atab="settings">⚙️ Settings</button>
+      </div>
+
+      <div class="admin-content">
+        <!-- Subscribers -->
+        <div class="admin-pane active" data-apane="subscribers">
+          <div class="admin-banner">
+            <b>Email subscriber database.</b> Captured from the catalogue download form, newsletter signup, and checkout opt-ins. Stored locally in browser localStorage — export to CSV anytime.
+          </div>
+          <div class="admin-toolbar">
+            <input type="search" id="adSearchSubs" placeholder="Search by email or name…" />
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-outline btn-sm" id="adExportSubs" style="padding:8px 14px;font-size:11px">⬇ Export CSV</button>
+              <button class="btn btn-outline btn-sm" id="adClearSubs" style="padding:8px 14px;font-size:11px;color:var(--red);border-color:var(--red)">Clear all</button>
+            </div>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th>Email</th><th>Name</th><th>Source</th><th>Joined</th><th>Phone</th></tr></thead>
+            <tbody id="adSubsBody"></tbody>
+          </table>
+          <div class="admin-empty" id="adSubsEmpty" style="display:none">No subscribers yet. Sign-ups from the catalogue download, newsletter form, and checkout will appear here.</div>
+        </div>
+
+        <!-- Send Newsletter -->
+        <div class="admin-pane" data-apane="newsletter">
+          <div class="admin-banner">
+            <b>Compose &amp; send a newsletter.</b> Sends via your default mail client (with all active subscribers BCC'd). For bulk sending at scale, connect Mailchimp, ConvertKit, or SendGrid via the Settings tab.
+          </div>
+          <form class="admin-compose" id="adNewsletterForm">
+            <div class="admin-recipients">
+              <span><b id="adRecipientCount">0</b> recipients selected (all active subscribers)</span>
+              <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);font-weight:500;text-transform:none;letter-spacing:0"><input type="checkbox" id="adOnlyConsented" checked /> Only newsletter opt-ins</label>
+            </div>
+            <div><label>From name</label><input type="text" name="fromName" value="Khadlaj Perfumes" /></div>
+            <div><label>From email</label><input type="email" name="fromEmail" value="customercare@khadlaj-perfumes.com" /></div>
+            <div><label>Subject line</label><input type="text" name="subject" placeholder="🎁 Your 25% welcome code is inside" required /></div>
+            <div><label>Message body</label><textarea name="body" placeholder="Dear {firstName},
+
+Spring is here, and so is our new ICON collection..."></textarea></div>
+            <div class="admin-actions">
+              <button type="submit" class="btn btn-red">📤 Send to recipients</button>
+              <button type="button" class="btn btn-outline" id="adPreview">👁 Preview</button>
+              <button type="button" class="btn btn-outline" id="adSaveDraft">💾 Save draft</button>
+            </div>
+            <div class="admin-msg-preview" id="adPreviewBox" style="display:none"></div>
+          </form>
+        </div>
+
+        <!-- Orders -->
+        <div class="admin-pane" data-apane="orders">
+          <div class="admin-banner">
+            <b>All online orders.</b> Includes WhatsApp orders, COD, card and bank transfers. Update status, send payment links, mark as shipped.
+          </div>
+          <table class="admin-table">
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Method</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="adOrdersBody"></tbody>
+          </table>
+          <div class="admin-empty" id="adOrdersEmpty" style="display:none">No orders yet.</div>
+        </div>
+
+        <!-- Bulk / Wholesale -->
+        <div class="admin-pane" data-apane="bulk">
+          <div class="admin-banner">
+            <b>Wholesale &amp; B2B enquiries.</b> Bulk order sheets submitted by distributors, retailers and corporate gifting clients.
+          </div>
+          <table class="admin-table">
+            <thead><tr><th>Company</th><th>Contact</th><th>Country</th><th>Lines</th><th>Units</th><th>Date</th></tr></thead>
+            <tbody id="adBulkBody"></tbody>
+          </table>
+          <div class="admin-empty" id="adBulkEmpty" style="display:none">No wholesale enquiries yet.</div>
+        </div>
+
+        <!-- Settings -->
+        <div class="admin-pane" data-apane="settings">
+          <div class="admin-banner">
+            <b>Connect external services.</b> The site can run standalone with localStorage, or you can connect Mailchimp/SendGrid for bulk email, Stripe for card payments, and Google Sheets for backup.
+          </div>
+          <div style="display:grid;gap:14px;max-width:560px">
+            <div><label style="display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px">Mailchimp / SendGrid API key</label><input type="password" placeholder="API key (paste here)" style="width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:6px" /></div>
+            <div><label style="display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px">Stripe publishable key</label><input type="text" placeholder="pk_live_..." style="width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:6px" /></div>
+            <div><label style="display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px">WhatsApp business number</label><input type="tel" value="+971521211992" style="width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:6px" /></div>
+            <button class="btn btn-red" type="button">Save settings</button>
+            <button class="btn btn-outline" type="button" id="adSignOut" style="color:var(--red);border-color:var(--red)">Sign out</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ─────────────────────────  CART DRAWER  ───────────────────────── -->
 <div class="drawer-overlay" id="drawerOverlay" tabindex="-1"></div>
 <aside class="drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
@@ -1401,100 +2581,389 @@ input,select{font:inherit}
 </div>
 
 <script>
-/* ──────────────  HERO CAROUSEL  ────────────── */
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.slider-dots button');
-let cur = 0;
-const go = (i) => {
-  slides[cur].classList.remove('active');
-  dots[cur].classList.remove('active');
-  cur = (i + slides.length) % slides.length;
-  slides[cur].classList.add('active');
-  dots[cur].classList.add('active');
+/* ═══════════════════  KHADLAJ ECOMMERCE ENGINE  ═══════════════════ */
+const WA_NUMBER='971521211992', WA_HUMAN='+971 52 121 1992', VAT_RATE=0.05, FREE_SHIP=150, COD_FEE=15;
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const fmt=n=>'AED '+Math.round(n).toLocaleString();
+const ls={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+
+/* ──────────────  PRODUCT CATALOG (real Khadlaj products) ────────────── */
+const PRODUCTS=[
+  {id:'cream-velvet',name:'Cream Velvet 100 ML Extrait de Parfum',brand:'Khadlaj',gender:'Women',family:'floral-gourmand',price:130,rating:4.9,reviews:1847,image:'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:130}],notes:{top:['Bergamot','Pear'],heart:['Vanilla cream','Iris','Jasmine'],base:['Sandalwood','Musk','Tonka']},description:'A creamy gourmand that wraps you in warm vanilla, soft iris and powdery musk. Long-lasting velvet trail.'},
+  {id:'khadlaj-island',name:'Khadlaj Island 100 ML EDP Spray',brand:'Khadlaj',gender:'Unisex',family:'aquatic-fresh',price:150,rating:4.8,reviews:1206,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:150}],notes:{top:['Sea salt','Bergamot','Lemon'],heart:['Coconut water','Jasmine'],base:['Driftwood','Ambergris','Musk']},description:'A fresh tropical escape — salty sea air, sunlit citrus and warm driftwood. Perfect summer signature.'},
+  {id:'caffe-latte',name:'Caffe Latte 100 ML Extrait de Parfum',brand:'Khadlaj',gender:'Unisex',family:'gourmand',price:100,rating:4.9,reviews:2418,image:'https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:100}],notes:{top:['Espresso','Caramel'],heart:['Steamed milk','Vanilla'],base:['Tonka','Cocoa','Musk']},description:'A cosy gourmand of fresh espresso, steamed milk and warm vanilla. Smells exactly like your favourite morning ritual.'},
+  {id:'peach-velvet',name:'Peach Velvet 100 ML Extrait de Parfum',brand:'Khadlaj',gender:'Women',family:'fruity-floral',price:130,rating:4.8,reviews:689,image:'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:130}],notes:{top:['Peach','Apricot'],heart:['Rose','Magnolia'],base:['Vanilla','Sandalwood','Cashmeran']},description:'Sun-ripened peach over creamy florals, finished with cashmere musk. Sweet but never sticky.'},
+  {id:'hareem-al-sultan-gold-35',name:'Hareem Al Sultan Gold 35 ML',brand:'Hareem Al Sultan',gender:'Unisex',family:'oud-amber',price:75,compare:100,rating:4.9,reviews:3201,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&auto=format&fit=crop&q=70',sizes:[{ml:35,price:75},{ml:100,price:185}],notes:{top:['Saffron','Bergamot'],heart:['Bulgarian rose','Jasmine'],base:['Cambodian oud','Amber','Musk']},description:'The icon. Saffron-laced rose over deep Cambodian oud and warm amber. The fragrance that built our reputation.'},
+  {id:'island-dreams',name:'Khadlaj Island Dreams 100 ML EDP',brand:'Khadlaj',gender:'Unisex',family:'aquatic-floral',price:150,rating:4.7,reviews:543,image:'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:150}],notes:{top:['Sea breeze','Pink grapefruit'],heart:['Tiare flower','Frangipani'],base:['White woods','Vanilla','Musk']},description:'Sequel to the bestseller — softer, more floral, more night-on-the-beach.'},
+  {id:'fursan-white',name:'Fursan White 100 ML EDP Spray',brand:'Khadlaj',gender:'Men',family:'fresh-aromatic',price:95,rating:4.7,reviews:412,image:'https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:95}],notes:{top:['Bergamot','Mint','Lemon'],heart:['Lavender','Geranium'],base:['Cedarwood','White musk','Amberwood']},description:'A sharp, fresh aromatic for the modern gentleman. All-day office to evening reach.'},
+  {id:'shiyaaka-snow',name:'Shiyaaka Snow Special Edition 100 ML',brand:'Khadlaj',gender:'Men',family:'woody-aromatic',price:126,rating:4.8,reviews:287,image:'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:126}],notes:{top:['Iced bergamot','Pink pepper'],heart:['Vetiver','Cardamom'],base:['Cedar','Ambroxan','Cashmere wood']},description:'Cold, mineral, expensive. The Shiyaaka collection at its most contemporary.'},
+  {id:'panache-angel-dust',name:'Panache Angel Dust 100 ML EDP',brand:'Panache',gender:'Women',family:'floral-musk',price:199,rating:4.9,reviews:478,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:199}],notes:{top:['Mandarin','Pink berries'],heart:['Cotton flower','Peony','Iris'],base:['White musk','Vanilla','Soft amber']},description:'A whisper-soft skin scent that lasts. Iris, cotton flower, clean musk — ethereal and addictive.'},
+  {id:'shiyaaka-men',name:'Shiyaaka for Men 100 ML EDP Spray',brand:'Khadlaj',gender:'Men',family:'oriental-woody',price:65,rating:4.6,reviews:972,image:'https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:65}],notes:{top:['Bergamot','Cardamom'],heart:['Tobacco leaf','Spices'],base:['Oud','Leather','Amber']},description:'Best-value oriental for men. Spicy tobacco, smoky oud, leather warmth.'},
+  {id:'cloud-candy',name:'Cloud Candy 100 ML EDP for Women',brand:'Khadlaj',gender:'Women',family:'gourmand',price:130,rating:4.8,reviews:543,image:'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:130}],notes:{top:['Cotton candy','Bergamot'],heart:['Marshmallow','Strawberry'],base:['Vanilla','Tonka','White musk']},description:'A playful sugar-cloud for those who own their sweet side.'},
+  {id:'empire-victor',name:'Empire Victor 100 ML EDP Spray',brand:'Khadlaj',gender:'Men',family:'spicy-oriental',price:150,rating:4.7,reviews:318,image:'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:150}],notes:{top:['Calabrian bergamot','Pepper'],heart:['Saffron','Olibanum'],base:['Leather','Oud','Amber']},description:'Confident, statement-making. Saffron, leather and oud for evenings that matter.'},
+  {id:'shiyaaka-shadow',name:'Shiyaaka Shadow Special Edition 100 ML',brand:'Khadlaj',gender:'Men',family:'oud-leather',price:126,rating:4.8,reviews:201,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:126}],notes:{top:['Black pepper','Bergamot'],heart:['Suede','Patchouli'],base:['Smoky oud','Leather','Amber']},description:'The dark counterpart to Snow. Smoky oud, suede and amber for after sundown.'}
+];
+const findP=id=>PRODUCTS.find(p=>p.id===id);
+
+/* ──────────────  STATE  ────────────── */
+let cart=ls.get('khadlaj_cart',[]);
+let wishlist=ls.get('khadlaj_wishlist',[]);
+let coupon=ls.get('khadlaj_coupon',null);
+const COUPONS={KHADLAJ25:{type:'pct',val:25,desc:'25% off'},ATTAR2ML:{type:'gift',val:0,desc:'Free 2ml attar sample'},APPFIRST50:{type:'fix',val:50,desc:'AED 50 off'},ATTAR3FOR2:{type:'pct',val:33,desc:'Buy 2 Get 1 free'}};
+
+/* ──────────────  TOAST  ────────────── */
+const toast=$('#toast'),toastMsg=$('#toastMsg'),toastTitle=$('#toastTitle');let toastT;
+const showToast=(title,msg)=>{toastTitle.textContent=title;toastMsg.textContent=msg;toast.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>toast.classList.remove('show'),3500)};
+
+/* ──────────────  CART  ────────────── */
+const cartTotal=()=>cart.reduce((s,i)=>s+i.price*i.qty,0);
+const cartCount=()=>cart.reduce((s,i)=>s+i.qty,0);
+const addToCart=(id,size)=>{const p=findP(id);if(!p){showToast('Oops','Product not found');return}const ml=size||p.sizes[0].ml;const sz=p.sizes.find(s=>s.ml===ml)||p.sizes[0];const ex=cart.find(i=>i.id===id&&i.ml===sz.ml);if(ex)ex.qty++;else cart.push({id,name:p.name,brand:p.brand,image:p.image,ml:sz.ml,price:sz.price,qty:1});ls.set('khadlaj_cart',cart);renderCart();showToast('Added to bag',p.name)};
+const updateQty=(idx,d)=>{cart[idx].qty=Math.max(0,cart[idx].qty+d);if(cart[idx].qty===0)cart.splice(idx,1);ls.set('khadlaj_cart',cart);renderCart()};
+const removeItem=idx=>{cart.splice(idx,1);ls.set('khadlaj_cart',cart);renderCart()};
+const clearCart=()=>{cart=[];ls.set('khadlaj_cart',cart);renderCart()};
+
+const renderCart=()=>{
+  const sub=cartTotal(),count=cartCount();
+  $('#cartBadge').textContent=count;
+  const drawerCt=$('#drawerCount');if(drawerCt)drawerCt.textContent=count;
+  const headerTotal=$$('.h-action b')[2];if(headerTotal)headerTotal.textContent=count?fmt(sub):'Empty';
+  const items=$('.cart-items');if(items){
+    if(!cart.length){items.innerHTML='<div style="padding:40px 20px;text-align:center;color:var(--txt-mute)"><p style="font-size:14px;margin:0 0 14px">Your bag is empty</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>'}
+    else{items.innerHTML=cart.map((i,x)=>`<div class="cart-item"><img src="${i.image}" alt=""><div><h4>${i.name}</h4><small>${i.ml} ml · ${i.brand}</small><div class="qty"><button data-qty="${x}" data-d="-1" aria-label="Decrease">−</button><span>${i.qty}</span><button data-qty="${x}" data-d="1" aria-label="Increase">+</button></div></div><div><div class="ci-price">${fmt(i.price*i.qty)}</div><button class="ci-remove" data-rm="${x}">Remove</button></div></div>`).join('')}
+  }
+  /* shipping bar */
+  const sb=$('.shipping-bar');if(sb){const need=Math.max(0,FREE_SHIP-sub),pct=Math.min(100,(sub/FREE_SHIP)*100);sb.querySelector('div').innerHTML=need>0?`You're <b>${fmt(need)}</b> away from <b>FREE</b> UAE shipping ✨`:`🎉 You qualify for <b>FREE</b> UAE shipping!`;sb.querySelector('.bar-fill').style.width=pct+'%'}
+  /* drawer totals */
+  const drFoot=$('.drawer-foot');if(drFoot){const disc=getDiscount(sub),tot=sub-disc;drFoot.querySelectorAll('.totals')[0].innerHTML=`<span>Subtotal</span><span>${fmt(sub)}</span>`;const couponLine=drFoot.querySelectorAll('.totals')[2];if(couponLine)couponLine.innerHTML=disc?`<span>${coupon} discount</span><span style="color:var(--green)">−${fmt(disc)}</span>`:`<span style="color:var(--txt-mute)">No discount applied</span><span></span>`;drFoot.querySelector('.grand').innerHTML=`<span>Total</span><span>${fmt(tot)}</span>`}
 };
-dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
-document.querySelector('.slider-arrow.next').addEventListener('click', () => go(cur + 1));
-document.querySelector('.slider-arrow.prev').addEventListener('click', () => go(cur - 1));
-let auto = setInterval(() => go(cur + 1), 6000);
-document.getElementById('slider').addEventListener('mouseenter', () => clearInterval(auto));
-document.getElementById('slider').addEventListener('mouseleave', () => auto = setInterval(() => go(cur + 1), 6000));
+const getDiscount=sub=>{if(!coupon||!COUPONS[coupon])return 0;const c=COUPONS[coupon];if(c.type==='pct')return Math.round(sub*c.val/100);if(c.type==='fix')return Math.min(c.val,sub);return 0};
+
+/* delegated cart drawer events */
+document.body.addEventListener('click',e=>{
+  if(e.target.matches('[data-qty]')){const idx=+e.target.dataset.qty,d=+e.target.dataset.d;updateQty(idx,d)}
+  if(e.target.matches('[data-rm]')){removeItem(+e.target.dataset.rm)}
+  if(e.target.matches('[data-add-id]')){e.preventDefault();e.stopPropagation();addToCart(e.target.dataset.addId)}
+  if(e.target.closest('[data-product-id]')&&!e.target.matches('button')&&!e.target.closest('button')){const card=e.target.closest('[data-product-id]');openProduct(card.dataset.productId)}
+  if(e.target.matches('[data-wish]')||e.target.closest('[data-wish]')){const b=e.target.closest('[data-wish]');toggleWish(b.dataset.wish);b.classList.toggle('active',wishlist.includes(b.dataset.wish));e.stopPropagation()}
+});
+
+/* ──────────────  WISHLIST  ────────────── */
+const toggleWish=id=>{const i=wishlist.indexOf(id);if(i>=0){wishlist.splice(i,1);showToast('Removed','From your wishlist')}else{wishlist.push(id);showToast('Saved','Added to your wishlist')}ls.set('khadlaj_wishlist',wishlist);updateWishCount()};
+const updateWishCount=()=>{const b=$$('.h-action .h-badge')[1];if(b){b.textContent=wishlist.length;b.style.display=wishlist.length?'inline-flex':'none'}};
+$$('[data-wish]').forEach(b=>{if(wishlist.includes(b.dataset.wish))b.classList.add('active')});
+
+/* ──────────────  HERO CAROUSEL  ────────────── */
+const slides=$$('.slide'),dots=$$('.slider-dots button');let cur=0;
+const go=i=>{slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active')};
+dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));
+$('.slider-arrow.next').addEventListener('click',()=>go(cur+1));
+$('.slider-arrow.prev').addEventListener('click',()=>go(cur-1));
+let auto=setInterval(()=>go(cur+1),6000);
+$('#slider').addEventListener('mouseenter',()=>clearInterval(auto));
+$('#slider').addEventListener('mouseleave',()=>auto=setInterval(()=>go(cur+1),6000));
 
 /* ──────────────  COUNTDOWN  ────────────── */
-let end = Date.now() + 4 * 3600 * 1000 + 23 * 60 * 1000 + 17 * 1000;
-const pad = n => String(Math.max(0, n)).padStart(2, '0');
-const tick = () => {
-  const r = Math.max(0, end - Date.now());
-  document.getElementById('hh').textContent = pad(Math.floor(r / 3600000));
-  document.getElementById('mm').textContent = pad(Math.floor(r / 60000) % 60);
-  document.getElementById('ss').textContent = pad(Math.floor(r / 1000) % 60);
-};
-tick(); setInterval(tick, 1000);
+const cdEnd=Date.now()+4*3600000+23*60000+17000;const pad=n=>String(Math.max(0,n)).padStart(2,'0');
+const tickCD=()=>{const r=Math.max(0,cdEnd-Date.now());$('#hh').textContent=pad(Math.floor(r/3600000));$('#mm').textContent=pad(Math.floor(r/60000)%60);$('#ss').textContent=pad(Math.floor(r/1000)%60)};
+tickCD();setInterval(tickCD,1000);
 
 /* ──────────────  CART DRAWER  ────────────── */
-const ov = document.getElementById('drawerOverlay');
-const dr = document.getElementById('cartDrawer');
-const open = () => { ov.classList.add('open'); dr.classList.add('open'); dr.setAttribute('aria-hidden','false'); };
-const close = () => { ov.classList.remove('open'); dr.classList.remove('open'); dr.setAttribute('aria-hidden','true'); };
-document.getElementById('cartBtn').addEventListener('click', open);
-document.getElementById('drawerClose').addEventListener('click', close);
-ov.addEventListener('click', close);
-addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-
-/* ──────────────  ADD TO BAG  ────────────── */
-const toast = document.getElementById('toast');
-const toastMsg = document.getElementById('toastMsg');
-const toastTitle = document.getElementById('toastTitle');
-let cartCount = 2, t;
-const showToast = (title, msg) => {
-  toastTitle.textContent = title;
-  toastMsg.textContent = msg;
-  toast.classList.add('show');
-  clearTimeout(t);
-  t = setTimeout(() => toast.classList.remove('show'), 3000);
-};
-document.querySelectorAll('[data-add]').forEach(b => {
-  b.addEventListener('click', e => {
-    e.preventDefault(); e.stopPropagation();
-    cartCount++;
-    document.getElementById('cartBadge').textContent = cartCount;
-    document.getElementById('drawerCount').textContent = cartCount;
-    showToast('Added to bag', b.dataset.add);
-  });
-});
+const drov=$('#drawerOverlay'),drcl=$('#cartDrawer');
+const openCart=()=>{drov.classList.add('open');drcl.classList.add('open');drcl.setAttribute('aria-hidden','false');renderCart()};
+const closeCart=()=>{drov.classList.remove('open');drcl.classList.remove('open');drcl.setAttribute('aria-hidden','true')};
+$('#cartBtn').addEventListener('click',openCart);
+$('#drawerClose').addEventListener('click',closeCart);
+drov.addEventListener('click',closeCart);
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAllModals()}});
+/* checkout button in drawer */
+$('.drawer-foot .btn-red').addEventListener('click',()=>{closeCart();openModal('checkoutModal');renderCheckout()});
+const browseBtn=$$('.drawer-foot .btn')[1];if(browseBtn)browseBtn.addEventListener('click',closeCart);
 
 /* ──────────────  COUPON COPY  ────────────── */
-document.querySelectorAll('[data-code]').forEach(b => {
-  b.addEventListener('click', () => {
-    const code = b.dataset.code;
-    navigator.clipboard?.writeText(code).catch(()=>{});
-    showToast('Code copied', code + ' — apply at checkout');
-  });
-});
+$$('[data-code]').forEach(b=>{b.addEventListener('click',()=>{const c=b.dataset.code;navigator.clipboard?.writeText(c).catch(()=>{});coupon=c;ls.set('khadlaj_coupon',c);showToast('Code copied & applied',c+' — '+(COUPONS[c]?.desc||'discount'));renderCart()})});
 
 /* ──────────────  COOKIE CONSENT  ────────────── */
-const cookies = document.getElementById('cookies');
-if (!localStorage.getItem('cookieChoice')) setTimeout(() => cookies.classList.add('show'), 1200);
-const dismiss = (v) => { localStorage.setItem('cookieChoice', v); cookies.classList.remove('show'); };
-document.getElementById('cookAccept').addEventListener('click', () => dismiss('all'));
-document.getElementById('cookReject').addEventListener('click', () => dismiss('essential'));
+const ck=$('#cookies');if(!ls.get('cookieChoice'))setTimeout(()=>ck.classList.add('show'),1200);
+const ckDismiss=v=>{ls.set('cookieChoice',v);ck.classList.remove('show')};
+$('#cookAccept').addEventListener('click',()=>ckDismiss('all'));
+$('#cookReject').addEventListener('click',()=>ckDismiss('essential'));
 
-/* ──────────────  NEWSLETTER  ────────────── */
-document.getElementById('newsForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const email = e.target.querySelector('input').value.trim();
-  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-    showToast('Hmm', 'Please enter a valid email');
-    return;
-  }
-  showToast('You\'re in', 'Code KHADLAJ25 sent to ' + email);
+/* ──────────────  RTL / LANG  ────────────── */
+$('#langSelect').addEventListener('change',e=>{document.documentElement.dir=e.target.value==='ar'?'rtl':'ltr';document.documentElement.lang=e.target.value});
+
+/* ──────────────  MODALS  ────────────── */
+const openModal=id=>{const m=$('#'+id);if(!m)return;m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};
+const closeModal=m=>{m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow=''};
+const closeAllModals=()=>$$('.modal-overlay,.search-overlay').forEach(m=>{m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow=''});
+$$('[data-modal-close]').forEach(b=>b.addEventListener('click',e=>{closeModal(e.target.closest('.modal-overlay,.search-overlay'))}));
+$$('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m)}));
+
+/* ──────────────  SUBSCRIBERS DB  ────────────── */
+const addSubscriber=({email,name='',phone='',source='newsletter',consent=true})=>{const subs=ls.get('khadlaj_subscribers',[]);const ex=subs.find(s=>s.email.toLowerCase()===email.toLowerCase());if(ex){ex.sources=Array.from(new Set([...ex.sources||[ex.source],source]));ex.lastSeen=Date.now()}else{subs.push({email,name,phone,source,sources:[source],consent,joined:Date.now(),lastSeen:Date.now()})}ls.set('khadlaj_subscribers',subs);return subs.length};
+
+/* ──────────────  NEWSLETTER FORM  ────────────── */
+$('#newsForm').addEventListener('submit',e=>{
+  e.preventDefault();const email=e.target.querySelector('input').value.trim();
+  if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showToast('Hmm','Please enter a valid email');return}
+  addSubscriber({email,source:'newsletter-footer'});
+  showToast("You're in",'Code KHADLAJ25 sent to '+email);e.target.reset();
+});
+
+/* ──────────────  CATALOGUE DOWNLOAD  ────────────── */
+const openCat=()=>openModal('catalogueModal');
+$('#downloadCatalogue')?.addEventListener('click',e=>{e.preventDefault();openCat()});
+$('#downloadCatalogue2')?.addEventListener('click',e=>{e.preventDefault();openCat()});
+$('#catalogueForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target),email=f.get('email'),name=f.get('name'),phone=f.get('phone'),sub=f.get('newsletter')==='on';
+  if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showToast('Hmm','Valid email required');return}
+  addSubscriber({email,name,phone,source:'catalogue-download',consent:sub});
+  closeModal($('#catalogueModal'));
+  showToast('Catalogue sent','Check '+email+' — also saved in your downloads');
+  /* Trigger placeholder PDF download. Replace href with real file when uploaded. */
+  const a=document.createElement('a');a.href='./khadlaj-catalogue-2026.pdf';a.download='Khadlaj-Catalogue-2026.pdf';document.body.appendChild(a);a.click();a.remove();
   e.target.reset();
 });
 
-/* ──────────────  RTL / LANG  ────────────── */
-document.getElementById('langSelect').addEventListener('change', e => {
-  document.documentElement.dir = (e.target.value === 'ar') ? 'rtl' : 'ltr';
-  document.documentElement.lang = e.target.value;
+/* ──────────────  SEARCH  ────────────── */
+const searchOv=$('#searchOverlay'),searchIn=$('#searchInput'),searchRes=$('#searchResults');
+const openSearch=()=>{searchOv.classList.add('open');setTimeout(()=>searchIn.focus(),100);renderSearch('')};
+$('#searchBtn')?.addEventListener('click',openSearch);
+$$('.search-bar input').forEach(i=>i.addEventListener('focus',openSearch));
+addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();openSearch()}});
+const renderSearch=q=>{q=q.trim().toLowerCase();const matches=q?PRODUCTS.filter(p=>(p.name+' '+p.brand+' '+p.family+' '+p.gender).toLowerCase().includes(q)):PRODUCTS.slice(0,6);searchRes.innerHTML=matches.length?matches.map(p=>`<a class="search-result" data-search-pick="${p.id}"><img src="${p.image}" alt=""><div><h4>${p.name}</h4><small>${p.brand} · ${p.gender}</small></div><span style="font-weight:700">${fmt(p.price)}</span></a>`).join(''):`<div class="search-empty">No fragrances match "${q}". Try a brand, family, or note.</div>`};
+searchIn.addEventListener('input',e=>renderSearch(e.target.value));
+searchRes.addEventListener('click',e=>{const a=e.target.closest('[data-search-pick]');if(a){closeModal(searchOv);openProduct(a.dataset.searchPick)}});
+
+/* ──────────────  PRODUCT DETAIL MODAL  ────────────── */
+const openProduct=id=>{const p=findP(id);if(!p)return;const off=p.compare?Math.round((1-p.price/p.compare)*100):0;const isWish=wishlist.includes(id);
+  $('#productModalBody').innerHTML=`
+    <button class="modal-close" data-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 6l12 12M6 18 18 6"/></svg></button>
+    <div class="pd-grid">
+      <div class="pd-gallery">
+        <div class="pd-thumbs">${[p.image,p.image.replace('?w=600','?w=400'),p.image.replace('?w=600','?w=400&q=80')].map((src,i)=>`<div class="pd-thumb${i===0?' active':''}"><img src="${src}" alt=""></div>`).join('')}</div>
+        <div class="pd-main-img"><img src="${p.image}" alt="${p.name}"></div>
+      </div>
+      <div class="pd-info">
+        <a class="pd-brand-link">${p.brand} · ${p.gender}</a>
+        <h1 id="pd-h">${p.name}</h1>
+        <div class="pd-rating-row"><span class="p-rating">${p.rating} ★</span> <a href="#reviews">${p.reviews.toLocaleString()} verified reviews</a></div>
+        <div class="pd-price-row"><span class="now">${fmt(p.price)}</span>${p.compare?`<span class="was">${fmt(p.compare)}</span><span class="off">${off}% OFF</span>`:''}</div>
+        <div class="pd-bnpl">💜 or 4 interest-free of <b>${fmt(p.price/4)}</b> with tabby · tamara</div>
+        <div class="pd-section"><h4>Size · ${p.sizes.length} option${p.sizes.length>1?'s':''}</h4><div class="pd-sizes">${p.sizes.map((s,i)=>`<button class="pd-size${i===0?' active':''}" data-pd-size="${s.ml}">${s.ml} ml<small>${fmt(s.price)}</small></button>`).join('')}</div></div>
+        <div class="pd-section"><h4>Quantity</h4><div class="pd-qty-row"><div class="pd-qty"><button data-pd-qty="-1">−</button><span id="pdQty">1</span><button data-pd-qty="1">+</button></div><span style="font-size:12px;color:var(--txt-mute)">In stock · Ships in 24 hrs</span></div></div>
+        <div class="pd-actions"><button class="btn btn-red btn-cart" id="pdAddCart">Add to bag · <span id="pdTotal">${fmt(p.price)}</span></button><button class="pd-wish-btn ${isWish?'active':''}" id="pdWish" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button></div>
+        <div class="pd-perks"><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Free UAE shipping over AED 150</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>100% authentic from atelier</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>24-hr cancellation policy</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Pay in 4 with Tabby/Tamara</div></div>
+      </div>
+    </div>
+    <div class="pd-tabs">
+      <div class="pd-tab-list"><button class="pd-tab active" data-pdtab="desc">Description</button><button class="pd-tab" data-pdtab="notes">Notes</button><button class="pd-tab" data-pdtab="ship">Shipping &amp; Returns</button></div>
+      <div class="pd-tab-content active" data-pdpane="desc"><p>${p.description}</p><p style="margin-top:14px"><b>Concentration:</b> Extrait de Parfum / EDP · <b>Family:</b> ${p.family.replace('-',' / ')} · <b>Country of origin:</b> United Arab Emirates · <b>Hand-blended in:</b> Sharjah, UAE</p></div>
+      <div class="pd-tab-content" data-pdpane="notes"><div class="pd-notes-grid"><div class="pd-note-col"><h5>Top notes</h5><ul>${p.notes.top.map(n=>`<li>${n}</li>`).join('')}</ul></div><div class="pd-note-col"><h5>Heart notes</h5><ul>${p.notes.heart.map(n=>`<li>${n}</li>`).join('')}</ul></div><div class="pd-note-col"><h5>Base notes</h5><ul>${p.notes.base.map(n=>`<li>${n}</li>`).join('')}</ul></div></div></div>
+      <div class="pd-tab-content" data-pdpane="ship"><p><b>Shipping:</b> Free across UAE on orders above AED 150. Worldwide delivery available — calculated at checkout.</p><p style="margin-top:10px"><b>Returns:</b> 24-hour cancellation policy on sealed items. Replacements only — no refunds (in applicable cases). <a href="#" style="color:var(--red);text-decoration:underline" id="pdRetLink">Read full policy.</a></p></div>
+    </div>`;
+  openModal('productModal');
+  /* Wire detail interactions */
+  let qty=1,sz=p.sizes[0];
+  const refresh=()=>{$('#pdQty').textContent=qty;$('#pdTotal').textContent=fmt(sz.price*qty)};
+  $$('[data-pd-size]').forEach(b=>b.addEventListener('click',e=>{$$('[data-pd-size]').forEach(x=>x.classList.remove('active'));b.classList.add('active');sz=p.sizes.find(s=>s.ml==b.dataset.pdSize);refresh()}));
+  $$('[data-pd-qty]').forEach(b=>b.addEventListener('click',()=>{qty=Math.max(1,qty+(+b.dataset.pdQty));refresh()}));
+  $('#pdAddCart').addEventListener('click',()=>{for(let i=0;i<qty;i++)addToCart(id,sz.ml);closeModal($('#productModal'));openCart()});
+  $('#pdWish').addEventListener('click',e=>{toggleWish(id);e.currentTarget.classList.toggle('active',wishlist.includes(id))});
+  $$('[data-pdtab]').forEach(b=>b.addEventListener('click',()=>{$$('[data-pdtab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');$$('[data-pdpane]').forEach(x=>x.classList.remove('active'));$('[data-pdpane="'+b.dataset.pdtab+'"]').classList.add('active')}));
+  $('#pdRetLink')?.addEventListener('click',e=>{e.preventDefault();closeModal($('#productModal'));openModal('returnModal')});
+};
+
+/* ──────────────  CHECKOUT  ────────────── */
+const renderCheckout=()=>{
+  const sub=cartTotal();
+  $('#coItems').innerHTML=cart.length?cart.map(i=>`<div class="co-item"><img src="${i.image}" alt=""><div><h5>${i.name}</h5><small>${i.ml}ml × ${i.qty}</small></div><span class="price">${fmt(i.price*i.qty)}</span></div>`).join(''):'<p style="color:var(--txt-mute);font-size:13px">Your bag is empty.</p>';
+  recalcCheckout();
+  /* Pre-fill from saved profile */
+  const prof=ls.get('khadlaj_profile',{});const f=$('#checkoutForm');if(prof.name){const [fn,...rest]=prof.name.split(' ');f.firstName.value=fn||'';f.lastName.value=rest.join(' ')||''}if(prof.email)f.email.value=prof.email;if(prof.phone)f.phone.value=prof.phone;if(prof.address)f.address1.value=prof.address;
+};
+const recalcCheckout=()=>{
+  const sub=cartTotal(),disc=getDiscount(sub),pay=$('input[name=payment]:checked')?.value||'whatsapp';
+  const ship=sub>=FREE_SHIP?0:25;const codFee=pay==='cod'?COD_FEE:0;
+  const vat=Math.round((sub-disc)*VAT_RATE);const total=sub-disc+ship+codFee+vat;
+  $('#coSub').textContent=fmt(sub);
+  $('#coDiscountLine').style.display=disc?'flex':'none';
+  $('#coDiscount').textContent='−'+fmt(disc);
+  $('#coShip').textContent=ship?fmt(ship)+(codFee?` + ${fmt(codFee)} COD`:''):'Free 🎉';
+  $('#coVat').textContent=fmt(vat);
+  $('#coTotal').textContent=fmt(total);
+  if(coupon&&COUPONS[coupon]){$('#couponName').textContent=coupon+' ('+COUPONS[coupon].desc+')';$('#couponApplied').classList.add('show')}
+  else $('#couponApplied').classList.remove('show');
+};
+$$('#payOptions .co-pay').forEach(p=>p.addEventListener('click',()=>{$$('#payOptions .co-pay').forEach(x=>x.classList.remove('active'));p.classList.add('active');p.querySelector('input').checked=true;recalcCheckout()}));
+$('#applyCoupon').addEventListener('click',()=>{const c=$('#couponInput').value.trim().toUpperCase();if(COUPONS[c]){coupon=c;ls.set('khadlaj_coupon',c);recalcCheckout();renderCart();showToast('Coupon applied',c+' — '+COUPONS[c].desc)}else{showToast('Invalid','Coupon code not recognised')}});
+
+$('#checkoutForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=new FormData(e.target),v={};f.forEach((val,k)=>v[k]=val);
+  /* basic validate */
+  const fields=['firstName','lastName','email','phone','address1','city','country'];let ok=true;
+  fields.forEach(name=>{const el=e.target[name];if(!el.value.trim()||(name==='email'&&!/^[^@]+@[^@]+\.[^@]+$/.test(el.value))){el.classList.add('error');el.parentElement.classList.add('error');ok=false}else{el.classList.remove('error');el.parentElement.classList.remove('error')}});
+  if(!ok){showToast('Almost there','Please complete the highlighted fields');return}
+  if(!cart.length){showToast('Empty bag','Add fragrances first');return}
+  const orderId='KH-'+Date.now().toString(36).toUpperCase().slice(-6);
+  const sub=cartTotal(),disc=getDiscount(sub),pay=v.payment;const ship=sub>=FREE_SHIP?0:25;const codFee=pay==='cod'?COD_FEE:0;const vat=Math.round((sub-disc)*VAT_RATE);const total=sub-disc+ship+codFee+vat;
+  const order={id:orderId,date:Date.now(),customer:{...v,name:v.firstName+' '+v.lastName},items:[...cart],subtotal:sub,discount:disc,coupon:coupon,shipping:ship,vat,total,payment:pay,status:pay==='whatsapp'?'awaiting-payment':pay==='cod'?'confirmed':'pending'};
+  const orders=ls.get('khadlaj_orders',[]);orders.unshift(order);ls.set('khadlaj_orders',orders);
+  /* save subscriber + profile */
+  addSubscriber({email:v.email,name:order.customer.name,phone:v.phone,source:'checkout'});
+  ls.set('khadlaj_profile',{name:order.customer.name,email:v.email,phone:v.phone,address:v.address1});
+  /* clear cart */
+  clearCart();
+  /* show confirmation */
+  closeModal($('#checkoutModal'));
+  $('#ocId').textContent=orderId;
+  const stepsByPay={
+    whatsapp:['We just opened WhatsApp with your order details','Our team will reply within minutes with a secure payment link (card / Tabby / Tamara)','Pay via the link · we ship within 24 hours · track on WhatsApp'],
+    cod:['Order confirmed — we\'ll WhatsApp you to confirm address','Pay '+fmt(total)+' in cash to the courier on delivery','Delivery in 1–3 business days across UAE'],
+    tabby:['Continue to Tabby to split into 4 interest-free payments','Once approved, we ship within 24 hours','Manage payments in your Tabby app'],
+    tamara:['Continue to Tamara to split into 4 payments (Sharia-compliant)','Once approved, we ship within 24 hours','Manage payments in your Tamara app'],
+    card:['Redirecting to secure card payment (Stripe)','Order ships within 24 hours after payment','Receipt emailed to '+v.email],
+    bank:['Bank transfer details sent to '+v.email,'Once received, we\'ll WhatsApp confirmation','Order ships within 24 hours of payment receipt']
+  };
+  const note={whatsapp:'Tap "Open WhatsApp" — your order is pre-filled. We\'ll send a payment link.',cod:'Pay '+fmt(total)+' in cash to the courier on delivery. UAE only.',tabby:'Pay 4× '+fmt(total/4)+' interest-free with Tabby.',tamara:'Pay 4× '+fmt(total/4)+' Sharia-compliant with Tamara.',card:'Secure Stripe checkout opens next.',bank:'IBAN sent to '+v.email}[pay];
+  $('#ocPaymentNote').textContent=note;
+  $('#ocSteps').innerHTML=stepsByPay[pay].map(s=>`<li>${s}</li>`).join('');
+  /* WhatsApp deep link with full order */
+  const itemsTxt=cart.length?cart.map(i=>`• ${i.name} (${i.ml}ml) × ${i.qty} — ${fmt(i.price*i.qty)}`).join('\n'):order.items.map(i=>`• ${i.name} (${i.ml}ml) × ${i.qty} — ${fmt(i.price*i.qty)}`).join('\n');
+  const wa=`Hello Khadlaj 👋%0A%0A*New order ${orderId}*%0A%0A👤 ${order.customer.name}%0A📧 ${v.email}%0A📱 ${v.phone}%0A📍 ${v.address1}, ${v.city}, ${v.country}%0A%0A*Order:*%0A${encodeURIComponent(order.items.map(i=>`• ${i.name} (${i.ml}ml) × ${i.qty} — ${fmt(i.price*i.qty)}`).join('\n'))}%0A%0ASubtotal: ${fmt(sub)}${disc?`%0ADiscount (${coupon}): −${fmt(disc)}`:''}%0AShipping: ${ship?fmt(ship):'FREE'}${codFee?`%0ACOD fee: ${fmt(codFee)}`:''}%0AVAT (5%25): ${fmt(vat)}%0A*Total: ${fmt(total)}*%0A%0APayment method: *${pay.toUpperCase()}*%0A%0APlease send payment link / confirm.`;
+  $('#ocWhatsapp').onclick=()=>{window.open(`https://wa.me/${WA_NUMBER}?text=${wa}`,'_blank')};
+  openModal('orderModal');
+  if(pay==='whatsapp')setTimeout(()=>window.open(`https://wa.me/${WA_NUMBER}?text=${wa}`,'_blank'),800);
 });
+
+/* ──────────────  ACCOUNT MODAL  ────────────── */
+const renderAccount=()=>{
+  const orders=ls.get('khadlaj_orders',[]);
+  $('#paneOrders').innerHTML=orders.length?orders.map(o=>`<div class="acc-order"><div class="acc-order-head"><div><span class="acc-order-id">${o.id}</span> <span class="acc-order-status ${o.status==='confirmed'||o.status==='completed'?'completed':'pending'}">${o.status}</span></div><div style="font-size:12px;color:var(--txt-mute)">${new Date(o.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div></div><div class="acc-order-meta">Payment: ${o.payment.toUpperCase()} · ${o.items.length} item${o.items.length>1?'s':''}</div><div class="acc-order-items">${o.items.map(i=>`<div class="acc-order-item"><span>${i.name} (${i.ml}ml) × ${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')}</div><div class="acc-order-foot"><span style="font-size:13px;color:var(--txt-mute)">Total</span><b>${fmt(o.total)}</b></div></div>`).join(''):'<div class="acc-empty"><h4>No orders yet</h4><p>When you place your first order, it will appear here.</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>';
+  /* wishlist */
+  const items=wishlist.map(id=>findP(id)).filter(Boolean);
+  $('#paneWishlist').innerHTML=items.length?`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${items.map(p=>`<article class="product"><div class="product-media"><img src="${p.image}" alt=""></div><div class="p-body"><div class="p-brand">${p.brand}</div><p class="p-name">${p.name}</p><div class="p-price"><span class="now">${fmt(p.price)}</span></div><button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" data-add-id="${p.id}">Add to bag</button></div></article>`).join('')}</div>`:'<div class="acc-empty"><h4>Your wishlist is empty</h4><p>Tap the heart on any fragrance to save it here.</p></div>';
+  /* profile */
+  const prof=ls.get('khadlaj_profile',{});const f=$('#profileForm');if(prof.name)f.name.value=prof.name;if(prof.email)f.email.value=prof.email;if(prof.phone)f.phone.value=prof.phone;if(prof.address)f.address.value=prof.address;
+};
+$$('.h-action').forEach(a=>{if(/Account|Wishlist|Sign in/i.test(a.textContent)){a.addEventListener('click',e=>{e.preventDefault();renderAccount();openModal('accountModal');if(/Wishlist/i.test(a.textContent)){$$('.acc-tab').forEach(x=>x.classList.remove('active'));$('.acc-tab[data-tab=wishlist]').classList.add('active');$$('.acc-pane').forEach(x=>x.classList.remove('active'));$('#paneWishlist').classList.add('active')}})}});
+$$('.acc-tab').forEach(t=>t.addEventListener('click',()=>{$$('.acc-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');$$('.acc-pane').forEach(x=>x.classList.remove('active'));$('[data-pane="'+t.dataset.tab+'"]').classList.add('active')}));
+$('#profileForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),p={};f.forEach((v,k)=>p[k]=v);ls.set('khadlaj_profile',p);showToast('Profile saved','Will be used at checkout')});
+
+/* ──────────────  BULK ORDER  ────────────── */
+const bulkTable=$('#bulkTable');
+const newRow=()=>{const r=document.createElement('div');r.className='bulk-table-row';r.innerHTML=`<input type="text" placeholder="Product name or SKU" data-bk="name"><select data-bk="size"><option value="">Size…</option><option>10 ml</option><option>30 ml</option><option>50 ml</option>${PRODUCTS[0].sizes.map(s=>``).join('')}<option>100 ml</option><option>Mixed</option></select><input type="number" min="1" placeholder="Qty (e.g. 24)" data-bk="qty"><button type="button" class="rm" aria-label="Remove">×</button>`;r.querySelector('.rm').addEventListener('click',()=>{r.remove();updateBulkTotals()});r.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',updateBulkTotals));bulkTable.appendChild(r);updateBulkTotals()};
+const updateBulkTotals=()=>{let units=0;$$('#bulkTable [data-bk=qty]').forEach(i=>{units+=+i.value||0});$('#bulkUnits').textContent=units.toLocaleString()};
+newRow();newRow();newRow();
+$('#bulkAddRow').addEventListener('click',newRow);
+const bulkPayload=()=>{const f=$('#bulkForm');const v={};new FormData(f).forEach((val,k)=>v[k]=val);v.lines=[];$$('#bulkTable .bulk-table-row').forEach(r=>{const n=r.querySelector('[data-bk=name]').value,s=r.querySelector('[data-bk=size]').value,q=r.querySelector('[data-bk=qty]').value;if(n&&q)v.lines.push({name:n,size:s,qty:+q})});return v};
+$('#bulkForm').addEventListener('submit',e=>{
+  e.preventDefault();const v=bulkPayload();
+  if(!v.company||!v.email||!v.phone||!v.lines.length){showToast('Almost there','Fill business details and at least one product line');return}
+  const all=ls.get('khadlaj_bulk',[]);all.unshift({...v,id:'WS-'+Date.now().toString(36).toUpperCase().slice(-6),date:Date.now()});ls.set('khadlaj_bulk',all);
+  addSubscriber({email:v.email,name:v.contact,phone:v.phone,source:'wholesale'});
+  showToast('Quote requested','We\'ll reply to '+v.email+' within 24 hours');
+  e.target.reset();$$('#bulkTable .bulk-table-row').forEach(r=>r.remove());newRow();newRow();newRow();
+});
+$('#bulkWhatsapp').addEventListener('click',()=>{const v=bulkPayload();const lines=v.lines.length?v.lines.map(l=>`• ${l.name} ${l.size||''} — ${l.qty} units`).join('\n'):'(no lines yet)';const msg=`Hello Khadlaj wholesale 👋%0A%0A*Bulk enquiry from ${encodeURIComponent(v.company||'(company)')}*%0A👤 ${encodeURIComponent(v.contact||'')}%0A📧 ${encodeURIComponent(v.email||'')}%0A📱 ${encodeURIComponent(v.phone||'')}%0A🌍 ${encodeURIComponent(v.country||'')}%0ABusiness: ${encodeURIComponent(v.biz||'')}%0A%0A*Order:*%0A${encodeURIComponent(lines)}%0A%0ANotes: ${encodeURIComponent(v.notes||'(none)')}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank')});
+$('#bulkPDF').addEventListener('click',()=>{const v=bulkPayload();const win=window.open('','_blank');win.document.write(`<title>Khadlaj Bulk Order — ${v.company||''}</title><style>body{font-family:system-ui;padding:40px;max-width:800px;margin:0 auto}h1{color:#c20019}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left}th{background:#1a1a1a;color:#fff}</style><h1>Khadlaj Bulk Order Sheet</h1><p><b>Company:</b> ${v.company||''}<br><b>Contact:</b> ${v.contact||''}<br><b>Email:</b> ${v.email||''}<br><b>Phone:</b> ${v.phone||''}<br><b>Country:</b> ${v.country||''}<br><b>Business type:</b> ${v.biz||''}</p><table><thead><tr><th>Product</th><th>Size</th><th>Qty</th></tr></thead><tbody>${v.lines.map(l=>`<tr><td>${l.name}</td><td>${l.size||''}</td><td>${l.qty}</td></tr>`).join('')||'<tr><td colspan=3>No lines</td></tr>'}</tbody></table><p style="margin-top:20px"><b>Notes:</b> ${v.notes||'-'}</p><p style="margin-top:30px;font-size:12px;color:#666">Generated ${new Date().toLocaleString()} · khadlaj-perfumes.com</p><script>window.print()</script>`)});
+
+/* ──────────────  AI CHAT (Khadlaj Concierge)  ────────────── */
+const chatPanel=$('#chatPanel'),chatBody=$('#chatBody'),chatInput=$('#chatInput');
+const chatSay=(role,html,delay=0)=>new Promise(r=>setTimeout(()=>{const m=document.createElement('div');m.className='chat-msg '+role;m.innerHTML=role==='bot'?`<span class="ava">K</span><div class="bub">${html}</div>`:`<div class="bub">${html}</div>`;chatBody.appendChild(m);chatBody.scrollTop=chatBody.scrollHeight;r()},delay));
+const chatTyping=async(ms=900)=>{const m=document.createElement('div');m.className='chat-msg bot chat-typing';m.innerHTML='<span class="ava">K</span><div class="bub"><i></i><i></i><i></i></div>';chatBody.appendChild(m);chatBody.scrollTop=chatBody.scrollHeight;await new Promise(r=>setTimeout(r,ms));m.remove()};
+const chatProduct=p=>`<a class="chat-product" data-chat-pick="${p.id}"><img src="${p.image}" alt=""><div><b>${p.name}</b><small>${p.brand} · ${p.gender}</small></div><span class="pp">${fmt(p.price)}</span></a>`;
+const chatQuick=(...opts)=>`<div class="chat-quick">${opts.map(o=>`<button data-chat-q="${o}">${o}</button>`).join('')}</div>`;
+const chatHandoff=label=>`<div class="chat-handoff" data-chat-wa><b>${label}</b></div>`;
+
+const intents={
+  greeting:async()=>{await chatTyping();await chatSay('bot',`Hello! I'm <b>Kareem</b>, your Khadlaj fragrance concierge ✨ I can help you find the perfect scent in under a minute. What brings you in today?`+chatQuick('Find me a fragrance','Gift for someone','Best for women','Best for men','Cheapest oud'))},
+  women:async()=>{await chatTyping();const picks=PRODUCTS.filter(p=>p.gender==='Women').slice(0,3);await chatSay('bot',`Top picks for her right now (4.8★ avg):`+picks.map(chatProduct).join('')+chatQuick('Show floral','Show gourmand','Under AED 150'))},
+  men:async()=>{await chatTyping();const picks=PRODUCTS.filter(p=>p.gender==='Men').slice(0,3);await chatSay('bot',`Top picks for him — bestsellers:`+picks.map(chatProduct).join('')+chatQuick('Show oud','Show fresh','Under AED 100'))},
+  oud:async()=>{await chatTyping();const picks=PRODUCTS.filter(p=>/oud/.test(p.family)).slice(0,3);await chatSay('bot',`Our heritage oud — sourced direct from Cambodia & India:`+picks.map(chatProduct).join('')+chatHandoff('💬 Talk to a perfumer on WhatsApp'))},
+  rose:async()=>{await chatTyping();const picks=PRODUCTS.filter(p=>p.notes.heart.some(n=>/rose|jasmine|peony|cotton/i.test(n))).slice(0,3);await chatSay('bot',`Floral compositions you'll love:`+picks.map(chatProduct).join(''))},
+  budget:async()=>{await chatTyping();const cheap=PRODUCTS.filter(p=>p.price<=100).sort((a,b)=>a.price-b.price).slice(0,3);await chatSay('bot',`Top picks under AED 100 — full size, full quality:`+cheap.map(chatProduct).join(''))},
+  gift:async()=>{await chatTyping();await chatSay('bot',`I can help you find a gift in 3 quick questions. First — who's it for?`+chatQuick('Wife / partner','Mother','Father','Brother / friend','Boss / client'))},
+  fresh:async()=>{await chatTyping();const picks=PRODUCTS.filter(p=>/fresh|aquatic|citrus|aromatic/.test(p.family)).slice(0,3);await chatSay('bot',`Fresh & light — perfect for daytime, summer, and offices:`+picks.map(chatProduct).join(''))},
+  gourmand:async()=>{await chatTyping();const picks=PRODUCTS.filter(p=>/gourmand/.test(p.family)).slice(0,3);await chatSay('bot',`Sweet, edible, addictive — our most "compliment-getting" fragrances:`+picks.map(chatProduct).join(''))},
+  shipping:async()=>{await chatTyping();await chatSay('bot',`📦 <b>Shipping:</b> Free across the UAE on orders over AED 150. Worldwide delivery available — calculated at checkout.<br><br>🕐 Most UAE orders ship within 24 hours and arrive in 1–3 business days.<br><br>Want me to find the right size for you?`+chatQuick('Show bestsellers','Talk to a human'))},
+  returns:async()=>{await chatTyping();await chatSay('bot',`Our policy: <b>24-hour cancellation</b> on sealed items, replacements only. Read the full terms:`+chatHandoff('Open return policy'))},
+  human:async()=>{await chatTyping();await chatSay('bot',`Of course — connecting you with a human now. Tap below to continue on WhatsApp where our team can take orders, send payment links, and arrange delivery:`+chatHandoff('💬 Continue on WhatsApp'))},
+  default:async(q)=>{await chatTyping();const matches=PRODUCTS.filter(p=>(p.name+' '+p.brand+' '+p.family+' '+p.notes.top.concat(p.notes.heart,p.notes.base).join(' ')).toLowerCase().includes(q.toLowerCase())).slice(0,3);if(matches.length){await chatSay('bot',`I found these for "<b>${q}</b>":`+matches.map(chatProduct).join('')+chatQuick('Show more','Talk to a human'))}else{await chatSay('bot',`I'm not sure — but a real perfumer can help. Want me to connect you on WhatsApp?`+chatHandoff('💬 Open WhatsApp'))}}
+};
+const detectIntent=t=>{t=t.toLowerCase();if(/^(hi|hello|hey|salam|salaam)/.test(t))return 'greeting';if(/(gift|present|surprise|birthday)/.test(t))return 'gift';if(/(her|woman|women|wife|girl|female|abaya)/.test(t))return 'women';if(/( him|man|men|husband|boy|male|guy)/.test(t))return 'men';if(/oud|aoud|attar|cambodian|hindi/.test(t))return 'oud';if(/rose|floral|jasmine|peony/.test(t))return 'rose';if(/(cheap|under|budget|cheapest|inexpensive|less than|aed [0-9])/.test(t))return 'budget';if(/(fresh|summer|aquatic|light|day|office|citrus)/.test(t))return 'fresh';if(/(gourmand|sweet|vanilla|coffee|cream|caffe|latte|peach)/.test(t))return 'gourmand';if(/(ship|deliver|arrive|how long|track)/.test(t))return 'shipping';if(/(return|refund|cancel|exchange|replace)/.test(t))return 'returns';if(/(human|person|agent|whatsapp|talk to|call)/.test(t))return 'human';return 'default'};
+
+const chatSendUser=async msg=>{await chatSay('user',msg.replace(/[<>]/g,''));const intent=detectIntent(msg);await intents[intent]?.(msg)??intents.default(msg)};
+
+$('#chatFab').addEventListener('click',()=>{const isOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',isOpen?'true':'false');if(!isOpen&&!chatBody.children.length)intents.greeting()});
+$('#chatClose').addEventListener('click',()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')});
+$('#chatForm').addEventListener('submit',e=>{e.preventDefault();const v=chatInput.value.trim();if(!v)return;chatInput.value='';chatSendUser(v)});
+chatBody.addEventListener('click',e=>{
+  if(e.target.matches('[data-chat-q]'))chatSendUser(e.target.dataset.chatQ);
+  if(e.target.closest('[data-chat-pick]')){const id=e.target.closest('[data-chat-pick]').dataset.chatPick;chatPanel.classList.remove('open');openProduct(id)}
+  if(e.target.closest('[data-chat-wa]')){const last=Array.from(chatBody.children).reverse().find(c=>c.classList.contains('user'));const ctx=last?last.textContent.slice(0,80):'I have a question about Khadlaj fragrances';window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hi Khadlaj 👋 — I was chatting with Kareem about: '+ctx)}`,'_blank')}
+});
+
+/* ──────────────  ADMIN PANEL  ────────────── */
+const ADMIN_USER='admin@khadlaj-perfumes.com',ADMIN_PASS='khadlaj2026';
+let adminAuthed=ls.get('khadlaj_admin_auth',false);
+const showAdmin=()=>{openModal('adminModal');if(adminAuthed){$('#adminLoginView').style.display='none';$('#adminDashView').style.display='block';renderAdmin()}else{$('#adminLoginView').style.display='block';$('#adminDashView').style.display='none'}};
+addEventListener('hashchange',()=>{if(location.hash==='#admin')showAdmin()});if(location.hash==='#admin')showAdmin();
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.shiftKey&&e.key.toLowerCase()==='a'){e.preventDefault();showAdmin()}});
+$('#adminLogin').addEventListener('click',()=>{const e=$('#adminEmail').value.trim().toLowerCase(),p=$('#adminPass').value;if(e===ADMIN_USER&&p===ADMIN_PASS){adminAuthed=true;ls.set('khadlaj_admin_auth',true);$('#adminLoginView').style.display='none';$('#adminDashView').style.display='block';renderAdmin();showToast('Welcome','Admin panel ready')}else{showToast('Invalid','Demo: admin@khadlaj-perfumes.com / khadlaj2026')}});
+$('#adSignOut')?.addEventListener('click',()=>{adminAuthed=false;ls.set('khadlaj_admin_auth',false);closeModal($('#adminModal'));showToast('Signed out','Admin session ended')});
+$$('.admin-tab').forEach(t=>t.addEventListener('click',()=>{$$('.admin-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');$$('.admin-pane').forEach(x=>x.classList.remove('active'));$('[data-apane="'+t.dataset.atab+'"]').classList.add('active')}));
+
+const renderAdmin=()=>{
+  const subs=ls.get('khadlaj_subscribers',[]),orders=ls.get('khadlaj_orders',[]),bulk=ls.get('khadlaj_bulk',[]);
+  $('#adStatSubs').textContent=subs.length;
+  $('#adStatOrders').textContent=orders.length;
+  $('#adStatBulk').textContent=bulk.length;
+  $('#adStatRevenue').textContent=fmt(orders.reduce((s,o)=>s+(o.total||0),0));
+  /* Subs */
+  const drawSubs=q=>{const f=q?subs.filter(s=>(s.email+' '+s.name).toLowerCase().includes(q.toLowerCase())):subs;const tb=$('#adSubsBody');tb.innerHTML=f.map(s=>`<tr><td><b>${s.email}</b></td><td>${s.name||'—'}</td><td><span class="src ${s.source==='catalogue-download'?'cat':s.source.includes('newsletter')?'news':s.source==='wholesale'?'bulk':''}">${s.source}</span></td><td style="font-size:11px;color:var(--txt-mute)">${new Date(s.joined).toLocaleDateString('en-GB')}</td><td>${s.phone||'—'}</td></tr>`).join('');$('#adSubsEmpty').style.display=f.length?'none':'block'};
+  drawSubs('');
+  $('#adSearchSubs').oninput=e=>drawSubs(e.target.value);
+  $('#adExportSubs').onclick=()=>{const csv='Email,Name,Phone,Source,Sources,Consent,Joined\n'+subs.map(s=>[s.email,s.name||'',s.phone||'',s.source,(s.sources||[]).join('|'),s.consent,new Date(s.joined).toISOString()].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='khadlaj-subscribers-'+new Date().toISOString().slice(0,10)+'.csv';a.click();showToast('Exported',subs.length+' subscribers downloaded as CSV')};
+  $('#adClearSubs').onclick=()=>{if(confirm('Clear all subscribers? This cannot be undone.')){ls.set('khadlaj_subscribers',[]);renderAdmin()}};
+  /* Orders */
+  $('#adOrdersBody').innerHTML=orders.map(o=>`<tr><td><b>${o.id}</b></td><td>${o.customer.name}<br><small style="color:var(--txt-mute)">${o.customer.email}</small></td><td>${o.items.length} item${o.items.length>1?'s':''}</td><td><b>${fmt(o.total)}</b></td><td><span class="src">${o.payment}</span></td><td><span class="acc-order-status ${o.status==='completed'||o.status==='confirmed'?'completed':'pending'}">${o.status}</span></td><td style="font-size:11px;color:var(--txt-mute)">${new Date(o.date).toLocaleDateString('en-GB')}</td></tr>`).join('');
+  $('#adOrdersEmpty').style.display=orders.length?'none':'block';
+  /* Bulk */
+  $('#adBulkBody').innerHTML=bulk.map(b=>`<tr><td><b>${b.company}</b><br><small style="color:var(--txt-mute)">${b.biz||''}</small></td><td>${b.contact}<br><small style="color:var(--txt-mute)">${b.email}</small></td><td>${b.country}</td><td>${b.lines.length}</td><td><b>${b.lines.reduce((s,l)=>s+(+l.qty||0),0).toLocaleString()}</b></td><td style="font-size:11px;color:var(--txt-mute)">${new Date(b.date).toLocaleDateString('en-GB')}</td></tr>`).join('');
+  $('#adBulkEmpty').style.display=bulk.length?'none':'block';
+  /* Recipients count */
+  const onlyCons=$('#adOnlyConsented')?.checked;
+  const recipients=subs.filter(s=>onlyCons?s.consent:true);
+  $('#adRecipientCount').textContent=recipients.length;
+};
+$('#adOnlyConsented')?.addEventListener('change',renderAdmin);
+$('#adNewsletterForm')?.addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target),subs=ls.get('khadlaj_subscribers',[]);
+  const onlyCons=$('#adOnlyConsented').checked;
+  const recipients=subs.filter(s=>onlyCons?s.consent:true).map(s=>s.email);
+  if(!recipients.length){showToast('No recipients','Add subscribers first');return}
+  if(!f.get('subject')||!f.get('body')){showToast('Missing','Subject and body are required');return}
+  /* Open mail client with all recipients in BCC */
+  const mailto=`mailto:?bcc=${recipients.join(',')}&subject=${encodeURIComponent(f.get('subject'))}&body=${encodeURIComponent(f.get('body')+'\n\n— '+f.get('fromName')+'\n'+f.get('fromEmail'))}`;window.location.href=mailto;
+  showToast('Opening mail client',recipients.length+' recipients · BCC');
+  /* Save campaign */
+  const camps=ls.get('khadlaj_campaigns',[]);camps.unshift({date:Date.now(),subject:f.get('subject'),body:f.get('body'),recipients:recipients.length});ls.set('khadlaj_campaigns',camps);
+});
+$('#adPreview')?.addEventListener('click',()=>{const f=new FormData($('#adNewsletterForm'));const box=$('#adPreviewBox');box.style.display='block';box.textContent=`From: ${f.get('fromName')} <${f.get('fromEmail')}>\nSubject: ${f.get('subject')}\n\n${f.get('body')}\n\n— ${f.get('fromName')}\n${f.get('fromEmail')}`});
+$('#adSaveDraft')?.addEventListener('click',()=>{const f=new FormData($('#adNewsletterForm')),d={};f.forEach((v,k)=>d[k]=v);ls.set('khadlaj_draft',d);showToast('Draft saved','Will reload next time')});
+const draft=ls.get('khadlaj_draft',null);if(draft&&$('#adNewsletterForm')){Object.entries(draft).forEach(([k,v])=>{const el=$('#adNewsletterForm')[k];if(el)el.value=v})}
+/* Footer admin link via Ctrl+Shift+A or hash */
+
+/* Account / wishlist links from header to also handle data-route */
+$$('[data-route]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const r=a.dataset.route;if(r==='shop')document.querySelector('#shop')?.scrollIntoView({behavior:'smooth'});if(r==='story')document.querySelector('#founder-h')?.scrollIntoView({behavior:'smooth'})}));
+
+/* Header search button → open overlay */
+$('.search-mega button')?.addEventListener('click',e=>{e.preventDefault();openSearch()});
+
+/* ──────────────  INITIAL RENDER  ────────────── */
+renderCart();updateWishCount();
 </script>
 </body>
 </html>
