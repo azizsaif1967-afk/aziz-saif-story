@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Retail Stores Operation Overview &mdash; SOP Manual Work Checklist | Aziz Saif</title>
+<meta name="description" content="Retail SOP for a 30-store chain — 13 departments, 187 documented manual processes, 500+ daily tasks, ERP/Excel/email data flow and 16 Excel templates.">
+<link rel="canonical" href="https://azizsaif.com/retail-sop-GCC/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retail Stores Operation Overview — SOP Manual Work Checklist">
+<meta property="og:description" content="30 stores • 13 departments • 187 manual processes • 500+ daily tasks • 16 Excel templates. Generic retail SOP & data-flow reference.">
+<meta property="og:url" content="https://azizsaif.com/retail-sop-GCC/">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#111;
+    --muted:#666;
+    --line:#e5e5e5;
+    --bg:#fff;
+    --tint:#f8f8f8;
+    --accent:#1F4E79;
+    --accent-2:#0F766E;
+    --warn:#B45309;
+    --crit:#B91C1C;
+  }
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:14px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1200px;margin:0 auto;padding:32px 24px 80px}
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:32px}
+  .topbar a{color:var(--accent);text-decoration:none;font-weight:600;font-size:13px}
+  .topbar a:hover{text-decoration:underline}
+  .topbar .pill{background:var(--tint);color:var(--muted);padding:4px 10px;border-radius:99px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600}
+
+  .header{text-align:center;border-bottom:3px solid var(--accent);padding-bottom:28px;margin-bottom:36px}
+  .header .kicker{font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .header h1{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-0.5px;margin-bottom:10px}
+  .header .sub{font-size:15px;color:var(--muted);max-width:780px;margin:0 auto}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:32px}
+  .stat{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:18px 14px;text-align:center}
+  .stat .num{font-size:30px;font-weight:800;color:var(--accent);line-height:1}
+  .stat .lbl{font-size:11px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;font-weight:600;margin-top:6px}
+  .stat .sub{font-size:11px;color:var(--muted);margin-top:4px}
+
+  .callout{background:#FEF7E6;border-left:4px solid var(--warn);border-radius:4px;padding:18px 22px;margin:24px 0;font-size:14px;line-height:1.6}
+  .callout strong{color:var(--warn);font-weight:700;letter-spacing:0.3px}
+  .callout.insight{background:#EFF6FF;border-left-color:var(--accent)}
+  .callout.insight strong{color:var(--accent)}
+
+  .flow{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;background:var(--tint);border-radius:8px;padding:20px;margin:24px 0;align-items:stretch}
+  .flow-step{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 10px;text-align:center;position:relative}
+  .flow-step .t{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .flow-step .d{font-size:10px;color:var(--muted);letter-spacing:0.4px}
+  .flow-arrow{display:flex;align-items:center;color:var(--accent);font-weight:800;font-size:18px}
+
+  .dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:20px 0 32px}
+  .dept-cell{background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px;text-align:center}
+  .dept-cell .d-num{font-size:24px;font-weight:800;color:var(--accent);line-height:1}
+  .dept-cell .d-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-top:4px;font-weight:600}
+
+  h2.section{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin:48px 0 6px;padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:14px}
+  h2.section .num{background:var(--accent);color:#fff;width:34px;height:34px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+  h2.section .tag{margin-left:auto;font-size:11px;letter-spacing:1.2px;color:var(--muted);font-weight:600;text-transform:uppercase}
+  .section-intro{color:var(--muted);font-size:13px;margin:10px 0 16px;max-width:900px}
+
+  h3.sub{font-size:15px;font-weight:700;margin:22px 0 10px;color:var(--accent);letter-spacing:0.2px}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:13px}
+  thead th{background:var(--ink);color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.6px;text-transform:uppercase}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:var(--tint)}
+  td.idx{font-weight:700;color:var(--accent);width:42px}
+  td.who{color:var(--muted);font-size:12px;width:160px}
+  td.freq{font-size:12px;width:130px}
+  td.sys{font-size:12px;color:var(--muted);width:140px}
+  .load{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:0.5px}
+  .load.crit{background:#FEE2E2;color:var(--crit)}
+  .load.high{background:#FEF3C7;color:var(--warn)}
+  .load.med{background:#DBEAFE;color:#1E40AF}
+  .load.low{background:#DCFCE7;color:#166534}
+
+  .summary{margin-top:48px}
+  .templates{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}
+  .tpl{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px;font-size:12px}
+  .tpl .badge{display:inline-block;background:var(--accent-2);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:0.5px;margin-bottom:8px}
+  .tpl .tpl-name{font-weight:700;font-size:13px;margin-bottom:6px}
+  .tpl .tpl-cols{color:var(--muted);font-size:11px;margin-bottom:6px;font-style:italic}
+  .tpl .tpl-rows{font-family:Menlo,Consolas,monospace;font-size:10.5px;background:var(--tint);padding:6px 8px;border-radius:3px;line-height:1.5;color:#333;white-space:pre-wrap}
+  .tpl .tpl-owner{margin-top:8px;color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:0.6px;font-weight:600}
+
+  .meta{margin-top:64px;background:var(--tint);border-radius:8px;padding:22px;font-size:13px;color:var(--muted)}
+  .meta .row{display:grid;grid-template-columns:160px 1fr;gap:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .meta .row:last-child{border-bottom:none}
+  .meta .lbl{font-weight:700;color:var(--ink);text-transform:uppercase;font-size:11px;letter-spacing:0.6px}
+
+  .footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:12px}
+  .footer a{color:var(--accent);text-decoration:none;font-weight:600}
+
+  @media (max-width:680px){
+    .topbar{flex-direction:column;gap:10px;align-items:flex-start}
+    table{font-size:12px}
+    td.who,td.sys{display:none}
+    h2.section{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="topbar">
+  <a href="/pages/reports.html">&larr; Back to Reports</a>
+  <span class="pill">SOP Reference Document</span>
+</div>
+
+<header class="header">
+  <div class="kicker">Standard Operating Procedures &middot; Manual Work Checklist</div>
+  <h1>Retail Stores Operation Overview</h1>
+  <p class="sub">30 retail stores &middot; head office &middot; warehouses &middot; distribution center. A complete reference of the manual work, Excel reports, and ERP processes that keep a regional retail chain running every day.</p>
+</header>
+
+<section class="stats">
+  <div class="stat"><div class="num">30</div><div class="lbl">Retail Stores</div><div class="sub">Across Region</div></div>
+  <div class="stat"><div class="num">450</div><div class="lbl">Store Staff</div><div class="sub">15 per Store</div></div>
+  <div class="stat"><div class="num">80</div><div class="lbl">Head Office</div><div class="sub">HO Headcount</div></div>
+  <div class="stat"><div class="num">530</div><div class="lbl">Total Staff</div><div class="sub">All Locations</div></div>
+  <div class="stat"><div class="num">187</div><div class="lbl">Manual Tasks</div><div class="sub">Documented</div></div>
+  <div class="stat"><div class="num">500+</div><div class="lbl">Daily Tasks</div><div class="sub">Org-wide</div></div>
+  <div class="stat"><div class="num">80+</div><div class="lbl">SOP Documents</div><div class="sub">All Departments</div></div>
+  <div class="stat"><div class="num">13</div><div class="lbl">Departments</div><div class="sub">Fully Covered</div></div>
+</section>
+
+<div class="callout">
+  <strong>DATA FLOW REALITY:</strong> ERP system (Microsoft Dynamics AX) is in place, but the majority of operational data moves via email and Excel files to feed the ERP. Store managers manually prepare Excel reports, email them to Head Office, and HO staff re-enters data into ERP. This creates significant duplication, delays, and error risks across 30 stores daily.
+</div>
+
+<h3 class="sub">Manual Tasks by Department</h3>
+<div class="dept-grid">
+  <div class="dept-cell"><div class="d-num">18</div><div class="d-lbl">POS</div></div>
+  <div class="dept-cell"><div class="d-num">20</div><div class="d-lbl">Reporting</div></div>
+  <div class="dept-cell"><div class="d-num">16</div><div class="d-lbl">Inventory</div></div>
+  <div class="dept-cell"><div class="d-num">12</div><div class="d-lbl">Transfers</div></div>
+  <div class="dept-cell"><div class="d-num">11</div><div class="d-lbl">Stock Take</div></div>
+  <div class="dept-cell"><div class="d-num">11</div><div class="d-lbl">Buying</div></div>
+  <div class="dept-cell"><div class="d-num">10</div><div class="d-lbl">Marketing</div></div>
+  <div class="dept-cell"><div class="d-num">17</div><div class="d-lbl">Finance</div></div>
+  <div class="dept-cell"><div class="d-num">15</div><div class="d-lbl">HR</div></div>
+  <div class="dept-cell"><div class="d-num">28</div><div class="d-lbl">IT</div></div>
+  <div class="dept-cell"><div class="d-num">12</div><div class="d-lbl">Logistics</div></div>
+  <div class="dept-cell"><div class="d-num">10</div><div class="d-lbl">Projects</div></div>
+  <div class="dept-cell"><div class="d-num">7</div><div class="d-lbl">BD</div></div>
+</div>
+
+<h3 class="sub">Current Data Flow</h3>
+<div class="flow">
+  <div class="flow-step"><div class="t">30 Stores</div><div class="d">POS + Manual</div></div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-step"><div class="t">Excel Files</div><div class="d">Reports &amp; Charts</div></div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-step"><div class="t">Email</div><div class="d">Daily Submission</div></div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-step"><div class="t">Head Office</div><div class="d">Data Collection</div></div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-step"><div class="t">ERP System</div><div class="d">AX Entry</div></div>
+</div>
+
+<!-- 1. POS -->
+<h2 class="section"><span class="num">1</span>POS Sales &amp; Store Operations<span class="tag">30 Stores Daily</span></h2>
+<p class="section-intro">Daily manual work performed by each store manager across all 30 retail stores using ERP Retail POS. Data collected via Excel and emailed to Head Office.</p>
+
+<h3 class="sub">1.1 Daily POS Cash &amp; Sales Management</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Open POS terminal &amp; verify starting float amount</td><td class="who">Store Manager</td><td class="freq">Daily &mdash; AM</td><td class="sys">POS System</td></tr>
+    <tr><td class="idx">02</td><td>Process all sales transactions (cash, card, credit)</td><td class="who">Sales Staff</td><td class="freq">Continuous</td><td class="sys">ERP POS</td></tr>
+    <tr><td class="idx">03</td><td>Issue POS receipts and handle duplicate receipt printing</td><td class="who">Sales Staff</td><td class="freq">Per Transaction</td><td class="sys">POS Printer</td></tr>
+    <tr><td class="idx">04</td><td>Process returns, exchanges &amp; credit notes</td><td class="who">Store Manager</td><td class="freq">As Needed</td><td class="sys">ERP POS</td></tr>
+    <tr><td class="idx">05</td><td>End-of-day POS closing &amp; Z-report generation</td><td class="who">Store Manager</td><td class="freq">Daily &mdash; PM</td><td class="sys">POS System</td></tr>
+    <tr><td class="idx">06</td><td>Cash counting &amp; reconciliation with Z-report</td><td class="who">Store Manager</td><td class="freq">Daily &mdash; PM</td><td class="sys">Manual + POS</td></tr>
+    <tr><td class="idx">07</td><td>Record cash discrepancies and prepare variance report</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel Template</td></tr>
+    <tr><td class="idx">08</td><td>Prepare bank deposit slip &amp; arrange cash pickup</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Bank Forms</td></tr>
+    <tr><td class="idx">09</td><td>Card payment terminal reconciliation (EDC machine)</td><td class="who">Store Manager</td><td class="freq">Daily &mdash; PM</td><td class="sys">EDC Terminal</td></tr>
+    <tr><td class="idx">10</td><td>Void transaction processing &amp; manager override logging</td><td class="who">Store Manager</td><td class="freq">As Needed</td><td class="sys">ERP POS</td></tr>
+    <tr><td class="idx">11</td><td>Handle customer complaints &amp; process refunds</td><td class="who">Store Manager</td><td class="freq">As Needed</td><td class="sys">Manual Log</td></tr>
+    <tr><td class="idx">12</td><td>Apply promotional discounts as per current sale campaign</td><td class="who">Sales Staff</td><td class="freq">Per Transaction</td><td class="sys">ERP POS</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">1.2 POS Report Upload &amp; Submission to Head Office</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">13</td><td>Upload daily POS sales report to Head Office via email</td><td class="who">Store Manager</td><td class="freq">Daily by 10PM</td><td class="sys">Excel + Email</td></tr>
+    <tr><td class="idx">14</td><td>Email daily sales summary to Regional Manager</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel + Email</td></tr>
+    <tr><td class="idx">15</td><td>Submit hourly sales tracking during peak / sale periods</td><td class="who">Store Manager</td><td class="freq">Hourly (Sale)</td><td class="sys">Excel + WhatsApp</td></tr>
+    <tr><td class="idx">16</td><td>Upload weekly POS performance comparison report</td><td class="who">Store Manager</td><td class="freq">Weekly</td><td class="sys">Excel Template</td></tr>
+    <tr><td class="idx">17</td><td>Prepare monthly POS sales analysis with category breakdown</td><td class="who">Store Manager</td><td class="freq">Monthly</td><td class="sys">Excel Template</td></tr>
+    <tr><td class="idx">18</td><td>Submit footfall count vs conversion rate report</td><td class="who">Store Manager</td><td class="freq">Daily / Weekly</td><td class="sys">Manual Count</td></tr>
+  </tbody>
+</table>
+
+<!-- 2. Daily Reporting -->
+<h2 class="section"><span class="num">2</span>Daily Reporting to Head Office<span class="tag">30 Managers &times; Daily</span></h2>
+<p class="section-intro">Each of the 30 store managers fills and submits multiple charts, forms, and Excel reports daily to Head Office via email. This is the highest volume of manual work in the organization.</p>
+<div class="callout">
+  <strong>DAILY VOLUME:</strong> 30 managers &times; 10+ charts/forms = 300+ manual Excel documents emailed per day. Each must be manually collated at Head Office before ERP entry.
+</div>
+
+<h3 class="sub">2.1 Daily Charts &amp; Forms (Per Store Manager)</h3>
+<table>
+  <thead><tr><th>#</th><th>Daily Chart / Form</th><th>Filled By</th><th>Frequency</th><th>Format</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Daily Sales Report Chart &mdash; Revenue by category, brand, department</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel Chart</td></tr>
+    <tr><td class="idx">02</td><td>Daily Cash Declaration Form &mdash; Cash count vs POS total</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel Form</td></tr>
+    <tr><td class="idx">03</td><td>Daily Footfall &amp; Conversion Report</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Manual Count</td></tr>
+    <tr><td class="idx">04</td><td>Daily Stock Receiving Log &mdash; Incoming goods from warehouse</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel Log</td></tr>
+    <tr><td class="idx">05</td><td>Daily Damage / Defective Report &mdash; Items found damaged</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel Form</td></tr>
+    <tr><td class="idx">06</td><td>Daily Staff Attendance &amp; Shift Schedule</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Excel Template</td></tr>
+    <tr><td class="idx">07</td><td>Daily Store Maintenance Checklist &mdash; Cleaning, lights, AC, displays</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Checklist Form</td></tr>
+    <tr><td class="idx">08</td><td>Daily Markdown / Promotion Compliance Report</td><td class="who">Store Manager</td><td class="freq">Daily (Sale)</td><td class="sys">Excel Form</td></tr>
+    <tr><td class="idx">09</td><td>Daily Customer Complaint / Feedback Log</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Log Book</td></tr>
+    <tr><td class="idx">10</td><td>Daily Inter-Store Transfer Request Form</td><td class="who">Store Manager</td><td class="freq">As Needed</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">11</td><td>Daily Visual Merchandising Compliance Checklist</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Photo + Form</td></tr>
+    <tr><td class="idx">12</td><td>Daily Security / Shrinkage Incident Report</td><td class="who">Store Manager</td><td class="freq">Daily</td><td class="sys">Incident Form</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">2.2 Weekly &amp; Monthly Reports (Per Store Manager)</h3>
+<table>
+  <thead><tr><th>#</th><th>Report / Chart</th><th>Filled By</th><th>Frequency</th><th>Format</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">13</td><td>Weekly Sales Performance vs Target Report</td><td class="who">Store Manager</td><td class="freq">Weekly</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">14</td><td>Weekly Slow-Moving Stock Report</td><td class="who">Store Manager</td><td class="freq">Weekly</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">15</td><td>Weekly Staff Performance Evaluation Chart</td><td class="who">Store Manager</td><td class="freq">Weekly</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">16</td><td>Monthly KPI Dashboard (Sales, Footfall, Conversion, ATV, UPT)</td><td class="who">Store Manager</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+    <tr><td class="idx">17</td><td>Monthly Stock Aging &amp; Dead Stock Report</td><td class="who">Store Manager</td><td class="freq">Monthly</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">18</td><td>Monthly P&amp;L Contribution Report per Store</td><td class="who">Store Manager</td><td class="freq">Monthly</td><td class="sys">Finance Template</td></tr>
+    <tr><td class="idx">19</td><td>Monthly Competitive Pricing Survey Report</td><td class="who">Store Manager</td><td class="freq">Monthly</td><td class="sys">Excel Form</td></tr>
+    <tr><td class="idx">20</td><td>Monthly Maintenance &amp; Facility Request Summary</td><td class="who">Store Manager</td><td class="freq">Monthly</td><td class="sys">Facility Form</td></tr>
+  </tbody>
+</table>
+
+<!-- 3. Inventory Control -->
+<h2 class="section"><span class="num">3</span>Inventory Control &amp; Data Management<span class="tag">Inventory Dept</span></h2>
+<p class="section-intro">Managed by the Inventory Control Department at Head Office. Covers stock data, item codes, price changes, and coordination across 30 stores and warehouses.</p>
+
+<h3 class="sub">3.1 Item Code &amp; Data Management</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>New item code creation in ERP system</td><td class="who">Inventory Operator</td><td class="freq">Per New Item</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">02</td><td>Merchandise Category Hierarchy (MCH) setup</td><td class="who">Inventory Operator</td><td class="freq">As Needed</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">03</td><td>Barcode label printing for all new items</td><td class="who">Inventory Team</td><td class="freq">Per Batch</td><td class="sys">Label Printer</td></tr>
+    <tr><td class="idx">04</td><td>Carton label creation and printing</td><td class="who">Inventory Team</td><td class="freq">Per Shipment</td><td class="sys">Excel + Print</td></tr>
+    <tr><td class="idx">05</td><td>Price change processing across all stores</td><td class="who">Inventory Coordinator</td><td class="freq">As Directed</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">06</td><td>Delete / deactivate obsolete item codes</td><td class="who">IT + Inventory</td><td class="freq">Periodic</td><td class="sys">ERP Backend</td></tr>
+    <tr><td class="idx">07</td><td>Item master data validation and cleanup</td><td class="who">Inventory Operator</td><td class="freq">Weekly</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">08</td><td>Supplier damage report processing</td><td class="who">Inventory Coordinator</td><td class="freq">Per Incident</td><td class="sys">Excel Form</td></tr>
+    <tr><td class="idx">09</td><td>Maintain bin location guide for warehouse</td><td class="who">Warehouse + Inventory</td><td class="freq">Ongoing</td><td class="sys">Excel Guide</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">3.2 Inventory Reporting &amp; Control</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">10</td><td>Daily stock level monitoring across all stores</td><td class="who">Inventory Coordinator</td><td class="freq">Daily</td><td class="sys">ERP Reports</td></tr>
+    <tr><td class="idx">11</td><td>Weekly dead stock / slow mover analysis</td><td class="who">Inventory Head</td><td class="freq">Weekly</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">12</td><td>Monthly inventory accuracy report</td><td class="who">Inventory Head</td><td class="freq">Monthly</td><td class="sys">ERP vs Physical</td></tr>
+    <tr><td class="idx">13</td><td>Shrinkage and loss report compilation</td><td class="who">Inventory Coordinator</td><td class="freq">Monthly</td><td class="sys">ERP + Store</td></tr>
+    <tr><td class="idx">14</td><td>Control documents maintenance and updates</td><td class="who">Inventory Team</td><td class="freq">Ongoing</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">15</td><td>Online marketplace inventory management</td><td class="who">Inventory Team</td><td class="freq">Daily</td><td class="sys">Excel + Portal</td></tr>
+    <tr><td class="idx">16</td><td>Fit-for-stock-take preparation and readiness reports</td><td class="who">Inventory Team</td><td class="freq">Pre-Stock Take</td><td class="sys">Excel</td></tr>
+  </tbody>
+</table>
+
+<!-- 4. Inventory Transfer -->
+<h2 class="section"><span class="num">4</span>Inventory Transfer &amp; Movement<span class="tag">Daily In/Out</span></h2>
+<p class="section-intro">Daily management of inventory movement between 30 stores, warehouses, and distribution center. All transfers require manual documentation, Excel tracking, and ERP entries.</p>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Create inter-store transfer order in ERP</td><td class="who">Inventory Coordinator</td><td class="freq">Daily</td><td class="sys">ERP Transfer</td></tr>
+    <tr><td class="idx">02</td><td>Process warehouse-to-store distribution orders</td><td class="who">Warehouse Team</td><td class="freq">Daily</td><td class="sys">ERP + Picking</td></tr>
+    <tr><td class="idx">03</td><td>Process store-to-warehouse return transfers</td><td class="who">Store Manager</td><td class="freq">As Needed</td><td class="sys">ERP Transfer</td></tr>
+    <tr><td class="idx">04</td><td>Record goods receiving at store (scan &amp; verify vs packing list)</td><td class="who">Store Manager</td><td class="freq">Per Delivery</td><td class="sys">PDT Scanner</td></tr>
+    <tr><td class="idx">05</td><td>Record goods dispatch from warehouse (pick, pack, ship)</td><td class="who">Warehouse Team</td><td class="freq">Daily</td><td class="sys">ERP + Manual</td></tr>
+    <tr><td class="idx">06</td><td>Inter-store transfer documentation and approval chain</td><td class="who">Regional Manager</td><td class="freq">Per Transfer</td><td class="sys">Transfer Form</td></tr>
+    <tr><td class="idx">07</td><td>Process store-to-store direct transfers for replenishment</td><td class="who">Store Managers</td><td class="freq">As Needed</td><td class="sys">ERP Transfer</td></tr>
+    <tr><td class="idx">08</td><td>Record inbound receiving from international suppliers</td><td class="who">Distribution Team</td><td class="freq">Per Container</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">09</td><td>Manage goods-in-transit tracking and exception reporting</td><td class="who">Logistics + Inventory</td><td class="freq">Daily</td><td class="sys">Excel Report</td></tr>
+    <tr><td class="idx">10</td><td>Transfer variance investigation and discrepancy resolution</td><td class="who">Inventory Coordinator</td><td class="freq">Per Incident</td><td class="sys">Investigation Form</td></tr>
+    <tr><td class="idx">11</td><td>Daily transfer summary report to Head Office</td><td class="who">Logistics Head</td><td class="freq">Daily</td><td class="sys">Excel + Email</td></tr>
+    <tr><td class="idx">12</td><td>Process return-to-vendor (RTV) documentation</td><td class="who">Inventory + Buying</td><td class="freq">As Needed</td><td class="sys">RTV Form</td></tr>
+  </tbody>
+</table>
+
+<!-- 5. Stock Take -->
+<h2 class="section"><span class="num">5</span>Stock Take &amp; Audit<span class="tag">Quarterly</span></h2>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Plan and schedule stock take calendar for all 30 stores</td><td class="who">Inventory Head</td><td class="freq">Quarterly</td><td class="sys">Master Calendar</td></tr>
+    <tr><td class="idx">02</td><td>Prepare store readiness checklist (fit for stock take)</td><td class="who">Store Manager</td><td class="freq">Pre-Count</td><td class="sys">Excel Checklist</td></tr>
+    <tr><td class="idx">03</td><td>Configure PDT (Portable Data Terminal) for stock take</td><td class="who">IT Team</td><td class="freq">Pre-Count</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">04</td><td>Physical count execution using PDT scanners</td><td class="who">Stock Take Team</td><td class="freq">Count Day</td><td class="sys">PDT Device</td></tr>
+    <tr><td class="idx">05</td><td>Upload PDT count data to ERP system</td><td class="who">IT + Inventory</td><td class="freq">Post-Count</td><td class="sys">ERP Upload</td></tr>
+    <tr><td class="idx">06</td><td>Generate variance report (physical vs system)</td><td class="who">Inventory Coordinator</td><td class="freq">Post-Count</td><td class="sys">ERP Report</td></tr>
+    <tr><td class="idx">07</td><td>Investigate high-variance items and document findings</td><td class="who">Inventory + Store Mgr</td><td class="freq">Post-Count</td><td class="sys">Investigation Form</td></tr>
+    <tr><td class="idx">08</td><td>Prepare stock take team assignments and rotations</td><td class="who">Inventory Head</td><td class="freq">Pre-Count</td><td class="sys">Excel Roster</td></tr>
+    <tr><td class="idx">09</td><td>Final stock take reconciliation and adjustment posting</td><td class="who">Inventory Head</td><td class="freq">Post-Count</td><td class="sys">ERP Adjustment</td></tr>
+    <tr><td class="idx">10</td><td>Stock take summary report to management</td><td class="who">Inventory Head</td><td class="freq">Post-Count</td><td class="sys">Excel Report</td></tr>
+    <tr><td class="idx">11</td><td>Store fittings and fixtures audit during stock take</td><td class="who">Store Mgr + Inventory</td><td class="freq">During Count</td><td class="sys">Fittings Guide</td></tr>
+  </tbody>
+</table>
+
+<!-- 6. Buying -->
+<h2 class="section"><span class="num">6</span>Buying &amp; Merchandising<span class="tag">Buying Dept</span></h2>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Create new Purchase Orders in ERP</td><td class="who">Buyer</td><td class="freq">Per Order</td><td class="sys">ERP PO Module</td></tr>
+    <tr><td class="idx">02</td><td>Vendor selection and price negotiation documentation</td><td class="who">Buying Head</td><td class="freq">Per Season</td><td class="sys">Manual</td></tr>
+    <tr><td class="idx">03</td><td>Sample evaluation and approval process</td><td class="who">Buying Team</td><td class="freq">Per Collection</td><td class="sys">Manual</td></tr>
+    <tr><td class="idx">04</td><td>Open-to-Buy (OTB) budget tracking and management</td><td class="who">Buying Head</td><td class="freq">Weekly</td><td class="sys">Excel OTB</td></tr>
+    <tr><td class="idx">05</td><td>Seasonal buying plan preparation</td><td class="who">Buying Head</td><td class="freq">Per Season</td><td class="sys">Excel Template</td></tr>
+    <tr><td class="idx">06</td><td>Margin analysis and pricing strategy documentation</td><td class="who">Buying Team</td><td class="freq">Per Category</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">07</td><td>Vendor performance scorecard maintenance</td><td class="who">Buying Coordinator</td><td class="freq">Monthly</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">08</td><td>ERP Buying module &mdash; order processing and tracking</td><td class="who">Buyer</td><td class="freq">Daily</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">09</td><td>Retail sale promotion definition in ERP</td><td class="who">Buying + IT</td><td class="freq">Per Promotion</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">10</td><td>KPI tracking for buying team performance</td><td class="who">Buying Head</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+    <tr><td class="idx">11</td><td>Wholesale sales order creation in ERP</td><td class="who">Buying Team</td><td class="freq">Per Order</td><td class="sys">ERP</td></tr>
+  </tbody>
+</table>
+
+<!-- 7. Marketing -->
+<h2 class="section"><span class="num">7</span>Marketing &amp; Promotions<span class="tag">Marketing Dept</span></h2>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Plan and execute SALE campaigns (Final Sale, Mid-Season)</td><td class="who">Marketing Head</td><td class="freq">Per Season</td><td class="sys">Campaign SOP</td></tr>
+    <tr><td class="idx">02</td><td>Star / VIP promotion planning and execution</td><td class="who">Marketing Team</td><td class="freq">Per Promotion</td><td class="sys">Promotion SOP</td></tr>
+    <tr><td class="idx">03</td><td>Competitors analysis and pricing survey</td><td class="who">Marketing Team</td><td class="freq">Monthly</td><td class="sys">Excel Report</td></tr>
+    <tr><td class="idx">04</td><td>Prepare sale promotional material and in-store signage</td><td class="who">Marketing Team</td><td class="freq">Per Campaign</td><td class="sys">Design Files</td></tr>
+    <tr><td class="idx">05</td><td>Coordinate sale markdown percentages with Buying team</td><td class="who">Marketing + Buying</td><td class="freq">Per Sale</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">06</td><td>Manage tie-up promotions with external partners</td><td class="who">Marketing Head</td><td class="freq">Per Tie-up</td><td class="sys">Partnership SOP</td></tr>
+    <tr><td class="idx">07</td><td>Visual merchandising guidelines and compliance tracking</td><td class="who">VM Team</td><td class="freq">Ongoing</td><td class="sys">VM Guidelines</td></tr>
+    <tr><td class="idx">08</td><td>Social media and digital marketing campaign tracking</td><td class="who">Marketing Team</td><td class="freq">Daily</td><td class="sys">Analytics</td></tr>
+    <tr><td class="idx">09</td><td>Marketing budget tracking and ROI analysis</td><td class="who">Marketing Head</td><td class="freq">Monthly</td><td class="sys">Excel Budget</td></tr>
+    <tr><td class="idx">10</td><td>KPI reporting for marketing team</td><td class="who">Marketing Head</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+  </tbody>
+</table>
+
+<!-- 8. Finance -->
+<h2 class="section"><span class="num">8</span>Finance &amp; Accounts<span class="tag">Finance Dept</span></h2>
+<p class="section-intro">Finance operations covering AP/AR, invoicing, reporting, and compliance. Data received via Excel from stores, manually processed and entered into ERP.</p>
+
+<h3 class="sub">8.1 Accounts Payable &amp; Receivable</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>AP Invoice workflow processing in ERP</td><td class="who">Accounts Team</td><td class="freq">Daily</td><td class="sys">ERP Workflow</td></tr>
+    <tr><td class="idx">02</td><td>Vendor invoice verification and approval routing</td><td class="who">Finance Team</td><td class="freq">Daily</td><td class="sys">ERP + Manual</td></tr>
+    <tr><td class="idx">03</td><td>Prepayment processing for supplier orders</td><td class="who">Finance Team</td><td class="freq">Per PO</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">04</td><td>Bank reconciliation and statement matching</td><td class="who">Accountant</td><td class="freq">Daily / Monthly</td><td class="sys">ERP + Bank</td></tr>
+    <tr><td class="idx">05</td><td>Credit card payment reconciliation across all stores</td><td class="who">Finance Team</td><td class="freq">Daily</td><td class="sys">EDC + ERP</td></tr>
+    <tr><td class="idx">06</td><td>Petty cash management and replenishment for stores</td><td class="who">Finance + Store Mgr</td><td class="freq">Monthly</td><td class="sys">Petty Cash Form</td></tr>
+    <tr><td class="idx">07</td><td>Accounts receivable tracking and aging report</td><td class="who">Finance Team</td><td class="freq">Weekly</td><td class="sys">ERP Report</td></tr>
+    <tr><td class="idx">08</td><td>Supplier payment scheduling and execution</td><td class="who">Finance Head</td><td class="freq">Weekly</td><td class="sys">ERP Payment</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">8.2 Financial Reporting &amp; Compliance</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">09</td><td>Monthly profit &amp; loss statement preparation</td><td class="who">Finance Head</td><td class="freq">Monthly</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">10</td><td>Quarterly financial review and variance analysis</td><td class="who">Finance Head</td><td class="freq">Quarterly</td><td class="sys">Excel</td></tr>
+    <tr><td class="idx">11</td><td>Annual budget preparation and department allocation</td><td class="who">Finance Head</td><td class="freq">Annual</td><td class="sys">Excel Budget</td></tr>
+    <tr><td class="idx">12</td><td>VAT / tax compliance reporting and filing</td><td class="who">Finance Team</td><td class="freq">Monthly / Qtr</td><td class="sys">Tax Portal</td></tr>
+    <tr><td class="idx">13</td><td>Audit preparation and document compilation</td><td class="who">Finance Head</td><td class="freq">Annual</td><td class="sys">Audit Files</td></tr>
+    <tr><td class="idx">14</td><td>Store-wise profitability analysis</td><td class="who">Finance Team</td><td class="freq">Monthly</td><td class="sys">ERP + Excel</td></tr>
+    <tr><td class="idx">15</td><td>Salary budget tracking (consolidated)</td><td class="who">Finance + HR</td><td class="freq">Monthly</td><td class="sys">Excel Budget</td></tr>
+    <tr><td class="idx">16</td><td>ERP Finance module document management</td><td class="who">Finance Team</td><td class="freq">Ongoing</td><td class="sys">ERP</td></tr>
+    <tr><td class="idx">17</td><td>KPI tracking for finance team members</td><td class="who">Finance Head</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+  </tbody>
+</table>
+
+<!-- 9. HR -->
+<h2 class="section"><span class="num">9</span>Human Resources &amp; Admin<span class="tag">HR Dept</span></h2>
+
+<h3 class="sub">9.1 Recruitment &amp; Onboarding</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Job posting, screening, and interview scheduling</td><td class="who">HR Recruitment</td><td class="freq">Ongoing</td><td class="sys">HR SOP</td></tr>
+    <tr><td class="idx">02</td><td>New joiner IT setup process (accounts, email, access)</td><td class="who">HR + IT</td><td class="freq">Per Joiner</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">03</td><td>Employment contract preparation and signing</td><td class="who">HR Manager</td><td class="freq">Per Hire</td><td class="sys">HR SOP</td></tr>
+    <tr><td class="idx">04</td><td>Visa processing and PRO documentation</td><td class="who">PRO Team</td><td class="freq">Per Hire</td><td class="sys">HR SOP</td></tr>
+    <tr><td class="idx">05</td><td>New employee orientation and induction program</td><td class="who">HR + L&amp;D</td><td class="freq">Per Hire</td><td class="sys">L&amp;D SOP</td></tr>
+    <tr><td class="idx">06</td><td>Staff ID card and access badge issuance</td><td class="who">HR Admin</td><td class="freq">Per Hire</td><td class="sys">Admin SOP</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">9.2 Payroll, Attendance &amp; Administration</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">07</td><td>Monthly payroll processing for all 530 employees</td><td class="who">HR Payroll</td><td class="freq">Monthly</td><td class="sys">Payroll System</td></tr>
+    <tr><td class="idx">08</td><td>Staff attendance tracking across 30 stores</td><td class="who">HR + Store Mgrs</td><td class="freq">Daily</td><td class="sys">Attendance System</td></tr>
+    <tr><td class="idx">09</td><td>Leave management and approval processing</td><td class="who">HR Manager</td><td class="freq">Ongoing</td><td class="sys">Leave Forms</td></tr>
+    <tr><td class="idx">10</td><td>Staff KPI evaluation and performance review</td><td class="who">HR + Dept Heads</td><td class="freq">Quarterly</td><td class="sys">Excel KPI</td></tr>
+    <tr><td class="idx">11</td><td>Training needs assessment and L&amp;D program execution</td><td class="who">L&amp;D Manager</td><td class="freq">Quarterly</td><td class="sys">L&amp;D SOP</td></tr>
+    <tr><td class="idx">12</td><td>HR budget tracking and headcount planning</td><td class="who">HR Manager</td><td class="freq">Monthly</td><td class="sys">Excel Budget</td></tr>
+    <tr><td class="idx">13</td><td>Employee grievance handling and documentation</td><td class="who">HR Manager</td><td class="freq">As Needed</td><td class="sys">HR SOP</td></tr>
+    <tr><td class="idx">14</td><td>SOP timelines tracking for each HR function</td><td class="who">HR Manager</td><td class="freq">Ongoing</td><td class="sys">Excel Timelines</td></tr>
+    <tr><td class="idx">15</td><td>Office administration (reception, maintenance, facilities)</td><td class="who">HR Admin</td><td class="freq">Daily</td><td class="sys">Admin SOP</td></tr>
+  </tbody>
+</table>
+
+<!-- 10. IT -->
+<h2 class="section"><span class="num">10</span>IT Systems &amp; Infrastructure<span class="tag">39 IT SOPs</span></h2>
+<p class="section-intro">IT department manages all technology: ERP, POS, networking, and BI across Head Office, 30 stores, warehouses, and regional offices.</p>
+
+<h3 class="sub">10.1 ERP &amp; POS System Support</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>ERP Retail POS support and troubleshooting for all stores</td><td class="who">IT Retail Support</td><td class="freq">Daily</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">02</td><td>POS receipt duplicate printing support</td><td class="who">IT Support</td><td class="freq">As Needed</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">03</td><td>ERP AP Invoice workflow configuration and support</td><td class="who">IT ERP Team</td><td class="freq">Ongoing</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">04</td><td>ERP Finance module support</td><td class="who">IT ERP Team</td><td class="freq">Ongoing</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">05</td><td>ERP Inventory and Logistics module support</td><td class="who">IT ERP Team</td><td class="freq">Ongoing</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">06</td><td>ERP Security roles management and access control</td><td class="who">IT Admin</td><td class="freq">Per Request</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">07</td><td>New item code creation support in ERP</td><td class="who">IT ERP Team</td><td class="freq">Per Request</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">08</td><td>SQL queries for data extraction and reporting</td><td class="who">IT DBA</td><td class="freq">Per Request</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">09</td><td>Retail sale promotion definition and setup in ERP</td><td class="who">IT + Marketing</td><td class="freq">Per Promotion</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">10</td><td>Purchase Order creation support in ERP</td><td class="who">IT + Buying</td><td class="freq">Per PO</td><td class="sys">IT SOP</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">10.2 Infrastructure &amp; Network Management</h3>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">11</td><td>IT inventory asset tracking and maintenance</td><td class="who">IT Team</td><td class="freq">Ongoing</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">12</td><td>IT asset request processing</td><td class="who">IT Admin</td><td class="freq">Per Request</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">13</td><td>Store server setup including OS installation</td><td class="who">IT Infrastructure</td><td class="freq">Per Store</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">14</td><td>WiFi configuration at stores and offices</td><td class="who">IT Network</td><td class="freq">Per Setup</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">15</td><td>VPN tunnel creation for store firewalls</td><td class="who">IT Network</td><td class="freq">Per Store</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">16</td><td>Networking &amp; VPN at Head Office</td><td class="who">IT Network</td><td class="freq">Per Request</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">17</td><td>Content filtering configuration by IP</td><td class="who">IT Network</td><td class="freq">Per Request</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">18</td><td>TV wall / digital signage setup at stores</td><td class="who">IT Support</td><td class="freq">Per Store</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">19</td><td>Cash drawer setup and troubleshooting</td><td class="who">IT Support</td><td class="freq">Per Store</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">20</td><td>Virtual server monitoring (VMware)</td><td class="who">IT Infrastructure</td><td class="freq">Daily</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">21</td><td>Backup management (Acronis)</td><td class="who">IT Infrastructure</td><td class="freq">Daily</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">22</td><td>Server shutdown and restart procedures</td><td class="who">IT Infrastructure</td><td class="freq">As Needed</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">23</td><td>PDT device installation and troubleshooting</td><td class="who">IT Support</td><td class="freq">Per Device</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">24</td><td>IT asset monitoring at HO, stores, warehouses</td><td class="who">IT Team</td><td class="freq">Weekly</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">25</td><td>IT Portal management</td><td class="who">IT Admin</td><td class="freq">Ongoing</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">26</td><td>SharePoint / collaboration tool management</td><td class="who">IT Admin</td><td class="freq">Ongoing</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">27</td><td>BI monitoring and maintenance</td><td class="who">IT BI Team</td><td class="freq">Daily</td><td class="sys">IT SOP</td></tr>
+    <tr><td class="idx">28</td><td>IT KPI tracking and reporting</td><td class="who">IT Head</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+  </tbody>
+</table>
+
+<!-- 11. Logistics -->
+<h2 class="section"><span class="num">11</span>Logistics &amp; Warehouse<span class="tag">Logistics Dept</span></h2>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Daily distribution planning and route scheduling</td><td class="who">Logistics Head</td><td class="freq">Daily</td><td class="sys">Distribution SOP</td></tr>
+    <tr><td class="idx">02</td><td>Distribution handover documentation (store deliveries)</td><td class="who">Warehouse Team</td><td class="freq">Per Delivery</td><td class="sys">Handover Form</td></tr>
+    <tr><td class="idx">03</td><td>Return-to-Vendor (RTV) handover processing</td><td class="who">Logistics + Buying</td><td class="freq">Per RTV</td><td class="sys">RTV Form</td></tr>
+    <tr><td class="idx">04</td><td>Warehouse receiving and put-away operations</td><td class="who">Warehouse Team</td><td class="freq">Daily</td><td class="sys">Warehouse SOP</td></tr>
+    <tr><td class="idx">05</td><td>Picking list generation and order fulfillment</td><td class="who">Warehouse Team</td><td class="freq">Daily</td><td class="sys">ERP + Manual</td></tr>
+    <tr><td class="idx">06</td><td>Delivery vehicle scheduling and driver assignment</td><td class="who">Logistics Coordinator</td><td class="freq">Daily</td><td class="sys">Manual Schedule</td></tr>
+    <tr><td class="idx">07</td><td>Proof of delivery collection and filing</td><td class="who">Drivers + Logistics</td><td class="freq">Per Delivery</td><td class="sys">POD Forms</td></tr>
+    <tr><td class="idx">08</td><td>Warehouse space management and bin location updates</td><td class="who">Warehouse Manager</td><td class="freq">Ongoing</td><td class="sys">Excel Guide</td></tr>
+    <tr><td class="idx">09</td><td>Inbound container receiving and checking</td><td class="who">Warehouse Team</td><td class="freq">Per Container</td><td class="sys">Receiving SOP</td></tr>
+    <tr><td class="idx">10</td><td>Logistics team KPI tracking</td><td class="who">Logistics Head</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+    <tr><td class="idx">11</td><td>Vehicle maintenance and fleet management logs</td><td class="who">Logistics Admin</td><td class="freq">Monthly</td><td class="sys">Fleet Forms</td></tr>
+    <tr><td class="idx">12</td><td>Delivery exception and shortage reporting</td><td class="who">Logistics Coordinator</td><td class="freq">Per Incident</td><td class="sys">Exception Form</td></tr>
+  </tbody>
+</table>
+
+<!-- 12. Projects -->
+<h2 class="section"><span class="num">12</span>Projects &amp; Facilities<span class="tag">Projects Dept</span></h2>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>New store opening project management</td><td class="who">Projects Head</td><td class="freq">Per Store</td><td class="sys">NSO SOP</td></tr>
+    <tr><td class="idx">02</td><td>Store renovation and refurbishment planning</td><td class="who">Projects Team</td><td class="freq">Per Project</td><td class="sys">Project Plan</td></tr>
+    <tr><td class="idx">03</td><td>Contractor management and vendor coordination</td><td class="who">Projects Head</td><td class="freq">Per Project</td><td class="sys">Vendor Docs</td></tr>
+    <tr><td class="idx">04</td><td>Store fixture and fittings procurement</td><td class="who">Projects + Buying</td><td class="freq">Per Store</td><td class="sys">Fittings Guide</td></tr>
+    <tr><td class="idx">05</td><td>Store layout design and planogram creation</td><td class="who">Projects + VM</td><td class="freq">Per Store</td><td class="sys">Design Files</td></tr>
+    <tr><td class="idx">06</td><td>Project budget tracking and cost management</td><td class="who">Projects Head</td><td class="freq">Per Project</td><td class="sys">Excel Budget</td></tr>
+    <tr><td class="idx">07</td><td>Facility maintenance scheduling and tracking</td><td class="who">Facilities Manager</td><td class="freq">Ongoing</td><td class="sys">Maintenance Log</td></tr>
+    <tr><td class="idx">08</td><td>Safety and compliance inspections</td><td class="who">Facilities Team</td><td class="freq">Monthly</td><td class="sys">Inspection Form</td></tr>
+    <tr><td class="idx">09</td><td>Lease management and landlord coordination</td><td class="who">Projects + Finance</td><td class="freq">Per Store</td><td class="sys">Lease Docs</td></tr>
+    <tr><td class="idx">10</td><td>Project progress reporting to management</td><td class="who">Projects Head</td><td class="freq">Weekly</td><td class="sys">Excel Report</td></tr>
+  </tbody>
+</table>
+
+<!-- 13. BD -->
+<h2 class="section"><span class="num">13</span>Business Development<span class="tag">BD Dept</span></h2>
+<table>
+  <thead><tr><th>#</th><th>Manual Task / Process</th><th>Responsible</th><th>Frequency</th><th>System / Ref</th></tr></thead>
+  <tbody>
+    <tr><td class="idx">01</td><td>Market research and new location scouting</td><td class="who">BD Head</td><td class="freq">Ongoing</td><td class="sys">Market Reports</td></tr>
+    <tr><td class="idx">02</td><td>Franchise inquiry evaluation and documentation</td><td class="who">BD Head</td><td class="freq">Per Inquiry</td><td class="sys">Franchise Docs</td></tr>
+    <tr><td class="idx">03</td><td>Business proposal and feasibility study preparation</td><td class="who">BD Head</td><td class="freq">Per Opportunity</td><td class="sys">Excel + Word</td></tr>
+    <tr><td class="idx">04</td><td>Competition mapping and market analysis reports</td><td class="who">BD Team</td><td class="freq">Quarterly</td><td class="sys">Excel Report</td></tr>
+    <tr><td class="idx">05</td><td>Revenue projection and store performance modeling</td><td class="who">BD + Finance</td><td class="freq">Per Location</td><td class="sys">Excel Model</td></tr>
+    <tr><td class="idx">06</td><td>Lease negotiation support and documentation</td><td class="who">BD + Legal</td><td class="freq">Per Store</td><td class="sys">Lease Docs</td></tr>
+    <tr><td class="idx">07</td><td>KPI tracking for business development</td><td class="who">BD Head</td><td class="freq">Monthly</td><td class="sys">Excel KPI</td></tr>
+  </tbody>
+</table>
+
+<!-- Summary -->
+<section class="summary">
+  <h2 class="section"><span class="num">&Sigma;</span>Summary &mdash; Total Manual Work Volume</h2>
+  <table>
+    <thead><tr><th>#</th><th>Department / Function</th><th>Tasks</th><th>Frequency</th><th>Team</th><th>Load</th></tr></thead>
+    <tbody>
+      <tr><td class="idx">1</td><td>POS Sales &amp; Store Operations</td><td>18</td><td class="freq">Daily / Per Transaction</td><td class="who">30 Stores</td><td><span class="load high">HIGH</span></td></tr>
+      <tr><td class="idx">2</td><td>Daily Reporting (Charts/Forms)</td><td>20</td><td class="freq">Daily / Weekly / Monthly</td><td class="who">30 Managers</td><td><span class="load crit">CRITICAL</span></td></tr>
+      <tr><td class="idx">3</td><td>Inventory Control &amp; Data</td><td>16</td><td class="freq">Daily / Weekly</td><td class="who">Inventory Team</td><td><span class="load high">HIGH</span></td></tr>
+      <tr><td class="idx">4</td><td>Inventory Transfer &amp; Movement</td><td>12</td><td class="freq">Daily</td><td class="who">Stores + WH</td><td><span class="load high">HIGH</span></td></tr>
+      <tr><td class="idx">5</td><td>Stock Take &amp; Audit</td><td>11</td><td class="freq">Quarterly + Prep</td><td class="who">All Stores</td><td><span class="load med">MEDIUM</span></td></tr>
+      <tr><td class="idx">6</td><td>Buying &amp; Merchandising</td><td>11</td><td class="freq">Per Season / Order</td><td class="who">Buying Team</td><td><span class="load med">MEDIUM</span></td></tr>
+      <tr><td class="idx">7</td><td>Marketing &amp; Promotions</td><td>10</td><td class="freq">Per Campaign</td><td class="who">Marketing Team</td><td><span class="load med">MEDIUM</span></td></tr>
+      <tr><td class="idx">8</td><td>Finance &amp; Accounts</td><td>17</td><td class="freq">Daily / Monthly</td><td class="who">Finance Team</td><td><span class="load high">HIGH</span></td></tr>
+      <tr><td class="idx">9</td><td>Human Resources &amp; Admin</td><td>15</td><td class="freq">Ongoing / Monthly</td><td class="who">HR Team</td><td><span class="load high">HIGH</span></td></tr>
+      <tr><td class="idx">10</td><td>IT Systems &amp; Infrastructure</td><td>28</td><td class="freq">Daily / Per Request</td><td class="who">IT Team</td><td><span class="load crit">CRITICAL</span></td></tr>
+      <tr><td class="idx">11</td><td>Logistics &amp; Warehouse</td><td>12</td><td class="freq">Daily</td><td class="who">Logistics Team</td><td><span class="load high">HIGH</span></td></tr>
+      <tr><td class="idx">12</td><td>Projects &amp; Facilities</td><td>10</td><td class="freq">Per Project</td><td class="who">Projects Team</td><td><span class="load med">MEDIUM</span></td></tr>
+      <tr><td class="idx">13</td><td>Business Development</td><td>7</td><td class="freq">Ongoing</td><td class="who">BD Head</td><td><span class="load low">LOW</span></td></tr>
+      <tr style="background:var(--ink);color:#fff"><td colspan="2" style="padding:14px 12px;font-weight:800;letter-spacing:0.5px">GRAND TOTAL</td><td style="font-weight:800">187</td><td colspan="2" style="font-weight:600">500+ Daily Tasks Across Organization</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout insight">
+    <strong>KEY INSIGHT:</strong> Despite having an ERP system in place, the daily reporting burden generates 300+ manual Excel documents per day across 30 store managers, all transmitted via email. Combined with POS operations, inventory transfers, and finance processing, the organization processes 500+ manual tasks daily. This represents massive opportunity for automation, digital transformation, and direct ERP integration to eliminate the Excel-to-email-to-ERP bottleneck.
+  </div>
+</section>
+
+<!-- Appendix A -->
+<h2 class="section"><span class="num">A</span>Appendix &mdash; Excel File Formats &amp; Templates<span class="tag">16 Core Templates</span></h2>
+<p class="section-intro">Below are the core Excel report formats, charts, and templates used across the retail operation. Each is multiplied across 30 stores and multiple departments, generating hundreds of Excel files daily that travel via email before being manually consolidated at Head Office for ERP entry.</p>
+
+<div class="templates">
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Daily Sales Report</div><div class="tpl-cols">Date &middot; Store &middot; Cash &middot; Card &middot; Total</div><div class="tpl-rows">28/03  Store 01  12,500  8,300  20,800
+28/03  Store 02   9,800 11,200  21,000
+28/03  Store 03  15,100  7,600  22,700</div><div class="tpl-owner">Store Operations</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Cash Declaration Form</div><div class="tpl-cols">Store &middot; POS Total &middot; Cash Count &middot; Variance &middot; Status</div><div class="tpl-rows">Store 01  12,500  12,480  -20  OK
+Store 02   9,800   9,800    0  OK
+Store 03  15,100  15,050  -50  CHECK</div><div class="tpl-owner">Store Operations</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Daily Stock Receiving Log</div><div class="tpl-cols">Date &middot; Supplier &middot; Items &middot; Qty &middot; Status</div><div class="tpl-rows">28/03  Vendor A  SKU-1001  250  Received
+28/03  Vendor B  SKU-2045  180  Checked
+28/03  WH-01     Transfer   95  Pending</div><div class="tpl-owner">Inventory</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Staff Attendance &amp; Shift</div><div class="tpl-cols">Emp ID &middot; Name &middot; Shift &middot; In &middot; Out</div><div class="tpl-rows">E-101  Staff 1  Morning  09:00  17:00
+E-102  Staff 2  Evening  14:00  22:00
+E-103  Staff 3  Morning  09:00  17:00</div><div class="tpl-owner">HR / Store</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Weekly KPI Dashboard</div><div class="tpl-cols">KPI &middot; Target &middot; Actual &middot; Var % &middot; RAG</div><div class="tpl-rows">Sales     100K   95K   -5%   AMBER
+Footfall  2,000  2,150 +7.5% GREEN
+Conv %     25%    22%   -3%   RED</div><div class="tpl-owner">Store Managers</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Inventory Transfer Tracker</div><div class="tpl-cols">Transfer # &middot; From &middot; To &middot; Items &middot; Status</div><div class="tpl-rows">TRF-001  WH-01     Store 05  120  Shipped
+TRF-002  Store 03  Store 12   35  In Transit
+TRF-003  Store 08  WH-01      60  RTV</div><div class="tpl-owner">Inventory / Logistics</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Stock Take Variance Report</div><div class="tpl-cols">Item Code &middot; System &middot; Physical &middot; Variance &middot; Action</div><div class="tpl-rows">SKU-3001  50  48  -2  Investigate
+SKU-3002  120 120  0  OK
+SKU-3003  30  28  -2  Shrinkage</div><div class="tpl-owner">Inventory Control</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Damage / Defective Report</div><div class="tpl-cols">Date &middot; Item &middot; Qty &middot; Type &middot; Action</div><div class="tpl-rows">28/03  SKU-4010  3  Damage     Write Off
+28/03  SKU-4022  1  Defective  RTV
+27/03  SKU-4033  5  Display    Markdown</div><div class="tpl-owner">Inventory / Store</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Open-to-Buy (OTB) Tracker</div><div class="tpl-cols">Category &middot; Budget &middot; Committed &middot; Balance &middot; % Used</div><div class="tpl-rows">Menswear  500K  380K  120K  76%
+Ladies    600K  520K   80K  87%
+Kids      200K  145K   55K  73%</div><div class="tpl-owner">Buying Dept</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">AP Invoice Register</div><div class="tpl-cols">Invoice # &middot; Vendor &middot; Amount &middot; Due Date &middot; Status</div><div class="tpl-rows">INV-501  Vendor A  45,000  15/04  Pending
+INV-502  Vendor B  28,500  20/04  Approved
+INV-503  Vendor C  12,000  10/04  Paid</div><div class="tpl-owner">Finance Dept</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Monthly P&amp;L by Store</div><div class="tpl-cols">Store &middot; Revenue &middot; COGS &middot; Gross % &middot; Net %</div><div class="tpl-rows">Store 01  250K  125K  50%  12%
+Store 02  180K   95K  47%   8%
+Store 03  310K  148K  52%  15%</div><div class="tpl-owner">Finance Dept</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Team KPI Tracker</div><div class="tpl-cols">Employee &middot; KPI 1 &middot; KPI 2 &middot; KPI 3 &middot; Score</div><div class="tpl-rows">Team Lead    95%  88%  92%  A
+Coordinator  82%  90%  78%  B+
+Associate    75%  80%  85%  B</div><div class="tpl-owner">All Departments</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Markdown / Sale Compliance</div><div class="tpl-cols">Store &middot; Items Tagged &middot; Compliance &middot; Issues &middot; Status</div><div class="tpl-rows">Store 01  450   98%  None        OK
+Store 02  380   92%  8 missing   Action
+Store 03  520  100%  None        OK</div><div class="tpl-owner">Marketing / Store</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">HR Budget &amp; Headcount</div><div class="tpl-cols">Dept &middot; Headcount &middot; Budget &middot; Actual &middot; Var</div><div class="tpl-rows">Stores  450  1.8M   1.75M  -2.8%
+HO       80   960K    980K  +2.1%
+Total   530  2.76M   2.73M  -1.1%</div><div class="tpl-owner">HR Dept</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Competitive Pricing Survey</div><div class="tpl-cols">Item Type &middot; Our Price &middot; Comp A &middot; Comp B &middot; Position</div><div class="tpl-rows">T-Shirts   89    79    99   Mid
+Jeans     149   139   159   Mid
+Shoes     199   189   219   Low</div><div class="tpl-owner">Marketing / Store</div></div>
+
+  <div class="tpl"><span class="badge">XLSX</span><div class="tpl-name">Delivery Route Schedule</div><div class="tpl-cols">Route &middot; Stores &middot; Driver &middot; Dept Time &middot; ETA</div><div class="tpl-rows">Route A  01,05,09  Driver 1  06:00  10:00
+Route B  02,07,11  Driver 2  06:30  11:00
+Route C  03,08,15  Driver 3  07:00  11:30</div><div class="tpl-owner">Logistics Dept</div></div>
+
+</div>
+
+<!-- Document Meta -->
+<section class="meta">
+  <div class="row"><div class="lbl">Document</div><div>Retail Stores Operation Overview &mdash; SOP Manual Work Checklist</div></div>
+  <div class="row"><div class="lbl">Scope</div><div>30 Retail Stores + Head Office + Warehouses + Distribution Center</div></div>
+  <div class="row"><div class="lbl">Staff</div><div>15 per Store (450 total) + 80 Head Office = 530 Total Staff</div></div>
+  <div class="row"><div class="lbl">ERP System</div><div>Microsoft Dynamics AX (Retail POS) &mdash; Data fed via Email + Excel</div></div>
+  <div class="row"><div class="lbl">Type</div><div>Generic Retail SOP &mdash; Information &amp; Reference Document</div></div>
+</section>
+
+<footer class="footer">
+  Retail Stores Operation Overview &mdash; SOP Manual Work Checklist &middot; For Information Purposes<br>
+  &copy; 2026 <a href="/index.html">Aziz Saif</a> &middot; <a href="/pages/reports.html">All Reports</a>
+</footer>
+
+</div>
+</body>
+</html>
