@@ -1103,20 +1103,20 @@ input,select{font:inherit}
   <nav class="primary-nav" aria-label="Primary">
     <div class="container">
       <ul class="nav-list">
-        <li><a href="#">Home</a></li>
-        <li><a href="#" class="deal-link">Deals 60%</a></li>
-        <li><a href="#">Eau de Parfum</a></li>
-        <li><a href="#">Perfume Oils</a></li>
-        <li><a href="#">Oud &amp; Attars</a></li>
-        <li><a href="#" class="new-link">Spring 2026</a></li>
-        <li><a href="#">For Her</a></li>
-        <li><a href="#">For Him</a></li>
-        <li><a href="#">Unisex</a></li>
-        <li><a href="#">Gift Sets</a></li>
-        <li><a href="#">Home &amp; Ambiance</a></li>
-        <li><a href="#">Brands</a></li>
-        <li><a href="#">Bestsellers</a></li>
-        <li><a href="#">Journal</a></li>
+        <li><a href="#shop" data-filter="all">Home</a></li>
+        <li><a href="#shop" data-filter="deals" class="deal-link">Deals 60%</a></li>
+        <li><a href="#shop" data-filter="edp">Eau de Parfum</a></li>
+        <li><a href="#shop" data-filter="oils">Perfume Oils</a></li>
+        <li><a href="#shop" data-filter="oud">Oud &amp; Attars</a></li>
+        <li><a href="#shop" data-filter="new" class="new-link">Spring 2026</a></li>
+        <li><a href="#shop" data-filter="women">For Her</a></li>
+        <li><a href="#shop" data-filter="men">For Him</a></li>
+        <li><a href="#shop" data-filter="unisex">Unisex</a></li>
+        <li><a href="#shop" data-filter="gifts">Gift Sets</a></li>
+        <li><a href="#shop" data-filter="home">Home &amp; Ambiance</a></li>
+        <li><a href="#shop" data-filter="all">Brands</a></li>
+        <li><a href="#shop" data-filter="bestsellers">Bestsellers</a></li>
+        <li><a href="#shop" data-filter="all">Journal</a></li>
       </ul>
     </div>
   </nav>
@@ -3371,6 +3371,86 @@ if(settingsBox.length){
     showToast('Settings saved','WhatsApp orders will now route to '+WA_HUMAN);
   }));
 }
+
+/* ──────────────  CATEGORY FILTER (top nav) — re-renders the Top Sellers grid live  ────────────── */
+const productCard=p=>{
+  const off=p.compare?Math.round((1-p.price/p.compare)*100):0;
+  const tag=p.compare?`<span class="p-tag deal">−${off}%</span>`:p.gender==='Women'?`<span class="p-tag">For Her</span>`:p.gender==='Men'?`<span class="p-tag">For Him</span>`:'';
+  const isWish=wishlist.includes(p.id);
+  return `<article class="product" data-product-id="${p.id}">
+    ${tag}
+    <button class="p-wishlist${isWish?' active':''}" aria-label="Add to wishlist" data-wish="${p.id}"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
+    <div class="product-media"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=70'">
+      <button class="p-quick" data-add-id="${p.id}">Quick Add</button></div>
+    <div class="p-body">
+      <div class="p-brand">${p.brand} · ${p.gender}</div>
+      <p class="p-name">${p.name}</p>
+      <span class="p-rating">${(p.rating||4.7).toFixed(1)} ★ · ${(p.reviews||100).toLocaleString()}</span>
+      <div class="p-price"><span class="now">${fmt(p.price)}</span>${p.compare?`<span class="was">${fmt(p.compare)}</span><span class="off">${off}% OFF</span>`:''}</div>
+      <div class="p-bnpl">4× ${fmt(p.price/4)} with <b>tabby</b></div>
+    </div>
+  </article>`;
+};
+const renderGrid=(list,heading)=>{
+  const grid=$('#topSellerGrid');if(!grid)return;
+  if(!list.length){grid.innerHTML=`<div style="grid-column:1/-1;padding:60px;text-align:center;color:var(--txt-mute)"><h3 style="font-size:20px;margin:0 0 8px">No fragrances match this filter</h3><p>Try another category from the top menu.</p></div>`;return}
+  grid.innerHTML=list.slice(0,24).map(productCard).join('');
+  if(heading)$('#ts-h').innerHTML=heading;
+  /* Update count message */
+  const cnt=$('#topSellerGrid').closest('.products-wrap')?.querySelector('div[style*="margin-top:18px"]');
+  if(cnt)cnt.innerHTML=`✓ Showing <b>${Math.min(24,list.length)}</b> of <b>${list.length}</b> matching fragrances · live from <a href="https://khadlaj-perfumes.com" target="_blank" rel="noopener" style="color:var(--lux-gold,#a98842);text-decoration:underline">khadlaj-perfumes.com</a>`;
+};
+const FILTERS={
+  all:l=>l,
+  deals:l=>l.filter(p=>p.compare&&p.compare>p.price),
+  edp:l=>l.filter(p=>/eau de parfum|edp|extrait/i.test(p.name)),
+  oils:l=>l.filter(p=>/perfume oil|attar|mukhalat/i.test(p.name)&&!/spray/i.test(p.name)),
+  oud:l=>l.filter(p=>/oud|aoud|attar|mukhalat|muattar|bakhoor/i.test(p.name)||p.family==='oud-amber'),
+  women:l=>l.filter(p=>p.gender==='Women'),
+  men:l=>l.filter(p=>p.gender==='Men'),
+  unisex:l=>l.filter(p=>p.gender==='Unisex'),
+  gifts:l=>l.filter(p=>/gift set|discovery|combo|trio|collection|gift box/i.test(p.name)),
+  home:l=>l.filter(p=>/bakhoor|freshener|home|ambianc|incense|burner/i.test(p.name)),
+  bestsellers:l=>l.slice(0,24),
+  new:l=>l.slice(0,24)
+};
+const FILTER_TITLES={
+  all:'All Fragrances · <span style="color:var(--lux-gold,#a98842)">325 in stock</span>',
+  deals:'Deals · <span style="color:var(--lux-gold,#a98842)">Up to 60% Off</span>',
+  edp:'Eau de Parfum · <span style="color:var(--lux-gold,#a98842)">Spray fragrances</span>',
+  oils:'Perfume Oils · <span style="color:var(--lux-gold,#a98842)">Pure attars</span>',
+  oud:'Oud &amp; Attars · <span style="color:var(--lux-gold,#a98842)">Heritage</span>',
+  women:'For Her · <span style="color:var(--lux-gold,#a98842)">Womens fragrances</span>',
+  men:'For Him · <span style="color:var(--lux-gold,#a98842)">Mens fragrances</span>',
+  unisex:'Unisex · <span style="color:var(--lux-gold,#a98842)">For everyone</span>',
+  gifts:'Gift Sets · <span style="color:var(--lux-gold,#a98842)">Curated bundles</span>',
+  home:'Home &amp; Ambiance · <span style="color:var(--lux-gold,#a98842)">Bakhoor &amp; freshener</span>',
+  bestsellers:'Bestsellers · <span style="color:var(--lux-gold,#a98842)">Top selling now</span>',
+  new:'Spring 2026 · <span style="color:var(--lux-gold,#a98842)">New arrivals</span>'
+};
+const applyFilter=key=>{
+  const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRODUCTS;
+  const fn=FILTERS[key]||FILTERS.all;
+  const list=fn(all);
+  renderGrid(list,FILTER_TITLES[key]||FILTER_TITLES.all);
+  /* Smooth scroll to grid */
+  setTimeout(()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth',block:'start'}),50);
+  /* Visual active state */
+  $$('.nav-list a[data-filter]').forEach(a=>a.style.color='');
+  $$('.nav-list a[data-filter="'+key+'"]').forEach(a=>a.style.color='var(--lux-gold,#a98842)');
+};
+
+/* Wire nav clicks */
+$$('.nav-list a[data-filter]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();applyFilter(a.dataset.filter)});
+});
+/* Wait for catalog.json to load, then refresh "all" filter to use full 325 list */
+const tryRender=()=>{if(FULL_CATALOG&&FULL_CATALOG.length>=20){console.log('Catalog ready, '+FULL_CATALOG.length+' products available for filtering')}else setTimeout(tryRender,300)};
+tryRender();
+
+/* Wire category circles + brand grid → filters */
+$$('.cc-item').forEach((c,i)=>{c.addEventListener('click',e=>{e.preventDefault();const map=['oud','women','men','all','oils','gifts','home','all'];applyFilter(map[i]||'all')})});
+$$('.brand').forEach(b=>{b.addEventListener('click',e=>{e.preventDefault();applyFilter('all')})});
 
 /* ──────────────  TIKTOK VIDEO AUTOPLAY (handle browser policies) ────────────── */
 const playVideos=()=>$$('.tt-tile video').forEach(v=>{v.muted=true;v.playsInline=true;const p=v.play();if(p&&p.catch)p.catch(()=>{/* silently ignore — poster shows */})});
