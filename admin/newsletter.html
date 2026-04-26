@@ -425,6 +425,8 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
 <script>
 const SUPABASE_URL = 'https://qtkvtwwtkxwigibockhi.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0a3Z0d3d0a3h3aWdpYm9ja2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MDQ0ODEsImV4cCI6MjA5MTk4MDQ4MX0.6vYtrBuOWf0u3a98E77ICyLe0MkFJUF4pYW19EkjNwI';
+// Add additional admin emails here (lowercase). Anyone signing in with an email
+// not in this list is signed out immediately, regardless of auth method.
 const ALLOWED_ADMINS = ['aziz@azizsaif.com'];
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -470,7 +472,18 @@ document.getElementById('googleSignIn').addEventListener('click', async () => {
       redirectTo: window.location.origin + window.location.pathname
     }
   });
-  if (error) showAuthAlert(error.message);
+  if (error) {
+    const msg = (error.message || '').toLowerCase();
+    if (msg.includes('provider is not enabled') || msg.includes('unsupported provider')) {
+      showAuthAlert(
+        'Google sign-in is not enabled yet in Supabase. ' +
+        'Enable it at <a href="https://supabase.com/dashboard/project/qtkvtwwtkxwigibockhi/auth/providers" target="_blank" style="color:#c9a84c;text-decoration:underline">Supabase &rarr; Auth &rarr; Providers &rarr; Google</a>, ' +
+        'or use the <strong>Magic Link</strong> or <strong>email + password</strong> options below.'
+      );
+    } else {
+      showAuthAlert(error.message);
+    }
+  }
 });
 
 // Magic Link toggle
@@ -548,7 +561,16 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
   if (session) showApp(session.user);
 })();
 
-function showApp(user) {
+async function showApp(user) {
+  // Enforce admin whitelist client-side (RLS still gates the data on the server).
+  const email = (user.email || '').toLowerCase();
+  if (!ALLOWED_ADMINS.includes(email)) {
+    await sb.auth.signOut();
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('authScreen').style.display = 'flex';
+    showAuthAlert(`The email <strong>${email || 'unknown'}</strong> is not on the admin whitelist. Ask the site owner to add it to ALLOWED_ADMINS.`);
+    return;
+  }
   document.getElementById('authScreen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   document.getElementById('userEmail').textContent = user.email;
