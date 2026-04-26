@@ -199,6 +199,107 @@ CREATE TRIGGER subscribers_admin_notify
   AFTER INSERT ON public.subscribers
   FOR EACH ROW EXECUTE FUNCTION public._tg_subscribers_notify();
 
+-- =============================================
+-- SUBSCRIBER DOUBLE OPT-IN — sends a verify link
+-- to the new subscriber automatically. Idempotent.
+-- =============================================
+
+-- 16. Function: send the subscriber a verify email with their unique link.
+CREATE OR REPLACE FUNCTION public.send_subscriber_verification(p_email text, p_token text)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $func$
+DECLARE
+  v_resend_key text;
+  v_from_email text;
+  v_from_name  text;
+  v_request_id bigint;
+  v_html       text;
+  v_subject    text;
+  v_verify_url text;
+BEGIN
+  SELECT value INTO v_resend_key FROM public.settings WHERE key = 'resend_api_key';
+  SELECT value INTO v_from_email FROM public.settings WHERE key = 'sender_email';
+  SELECT value INTO v_from_name  FROM public.settings WHERE key = 'sender_name';
+
+  IF v_resend_key IS NULL OR length(trim(v_resend_key)) = 0 THEN
+    INSERT INTO public.notification_log (subscriber_email, status, error_message)
+    VALUES (p_email, 'skipped_no_key', 'verify email skipped: resend_api_key not set');
+    RETURN;
+  END IF;
+
+  IF v_from_email IS NULL OR length(trim(v_from_email)) = 0 THEN v_from_email := 'onboarding@resend.dev'; END IF;
+  IF v_from_name  IS NULL OR length(trim(v_from_name))  = 0 THEN v_from_name  := 'Aziz Saif'; END IF;
+
+  v_verify_url := 'https://azizsaif.com/admin/verify.html?token=' || p_token;
+  v_subject    := 'Confirm your subscription to Aziz Saif';
+  v_html :=
+    '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f7f8fa;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif">' ||
+    '<div style="max-width:560px;margin:0 auto;background:#fff;padding:40px 36px;border:1px solid #e4e7eb;border-radius:8px">' ||
+      '<div style="background:#0a1628;margin:-40px -36px 32px;padding:28px 36px">' ||
+        '<h1 style="color:#c9a84c;font-family:Georgia,serif;font-size:22px;margin:0">Aziz Saif</h1>' ||
+      '</div>' ||
+      '<h2 style="color:#0a1628;font-family:Georgia,serif;font-size:20px;margin:0 0 16px">Confirm your subscription</h2>' ||
+      '<p style="color:#374151;font-size:15px;line-height:1.6;margin:0 0 24px">Thanks for signing up at <strong>azizsaif.com</strong>. Please click the button below to confirm your email so we can start sending you the newsletter.</p>' ||
+      '<p style="margin:0 0 28px"><a href="' || v_verify_url || '" style="display:inline-block;background:#c9a84c;color:#0a1628;padding:14px 32px;text-decoration:none;font-weight:600;border-radius:6px">Confirm my email &rarr;</a></p>' ||
+      '<p style="color:#64748b;font-size:13px;line-height:1.5;margin:0 0 8px">Or paste this link into your browser:</p>' ||
+      '<p style="color:#374151;font-size:12px;word-break:break-all;background:#f7f8fa;padding:10px 14px;border-radius:4px;margin:0 0 28px">' || v_verify_url || '</p>' ||
+      '<p style="color:#64748b;font-size:12px;line-height:1.5;margin:0">If you did not sign up, ignore this email — you will not be added.</p>' ||
+    '</div></body></html>';
+
+  BEGIN
+    SELECT net.http_post(
+      url := 'https://api.resend.com/emails',
+      headers := jsonb_build_object('Authorization','Bearer ' || v_resend_key,'Content-Type','application/json'),
+      body := jsonb_build_object(
+        'from', v_from_name || ' <' || v_from_email || '>',
+        'to', jsonb_build_array(p_email),
+        'subject', v_subject,
+        'html', v_html
+      )
+    ) INTO v_request_id;
+
+    INSERT INTO public.notification_log (subscriber_email, status, request_id)
+    VALUES (p_email, 'verify_sent', v_request_id);
+  EXCEPTION WHEN OTHERS THEN
+    INSERT INTO public.notification_log (subscriber_email, status, error_message)
+    VALUES (p_email, 'error', 'verify email failed: ' || SQLERRM);
+  END;
+END;
+$func$;
+
+GRANT EXECUTE ON FUNCTION public.send_subscriber_verification(text, text) TO anon, authenticated;
+
+-- 17. Replace the trigger so it sends BOTH the admin notification AND the
+--     subscriber verify email on each new INSERT.
+CREATE OR REPLACE FUNCTION public._tg_subscribers_notify()
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $tg$
+BEGIN
+  -- Notify the admin about the signup
+  PERFORM public.send_admin_notification(NEW.email);
+  -- Send the subscriber their verification link (skipped silently if unverified is false)
+  IF NEW.verified IS NOT TRUE THEN
+    PERFORM public.send_subscriber_verification(NEW.email, NEW.verify_token);
+  END IF;
+  RETURN NEW;
+EXCEPTION WHEN OTHERS THEN
+  INSERT INTO public.notification_log (subscriber_email, status, error_message)
+  VALUES (NEW.email, 'error', 'trigger error: ' || SQLERRM);
+  RETURN NEW;
+END;
+$tg$;
+
+DROP TRIGGER IF EXISTS subscribers_admin_notify ON public.subscribers;
+CREATE TRIGGER subscribers_admin_notify
+  AFTER INSERT ON public.subscribers
+  FOR EACH ROW EXECUTE FUNCTION public._tg_subscribers_notify();
+
 -- ============================================================
 -- USEFUL QUERIES
 -- ============================================================

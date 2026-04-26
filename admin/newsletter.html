@@ -270,6 +270,8 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
           <h3>All Subscribers</h3>
           <div class="search-bar">
             <input type="text" id="subscriberSearch" placeholder="Search by email...">
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('subImportFile').click()">Import CSV</button>
+            <input type="file" id="subImportFile" accept=".csv,.txt,.tsv,text/*" multiple style="display:none" onchange="importSubscribersFile(event)">
             <button class="btn btn-outline btn-sm" onclick="exportCSV()">Export CSV</button>
             <button class="btn btn-danger btn-sm" id="bulkDeleteBtn" style="display:none" onclick="bulkDelete()">Delete Selected</button>
           </div>
@@ -370,8 +372,9 @@ input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:po
       </div>
 
       <div class="compose-actions">
-        <button class="btn btn-gold" onclick="sendBccBulk()">Send to All (BCC, batched 50)</button>
+        <button class="btn btn-gold" onclick="sendBccBulk()">Send via Resend (BCC, batched 50)</button>
         <button class="btn btn-outline" onclick="sendBccTest()">Send Test to Me</button>
+        <button class="btn btn-outline" onclick="openInGmail()" style="border-color:#c9a84c;color:#c9a84c">Open in Gmail (use my Gmail to send) &rarr;</button>
         <button class="btn btn-outline" onclick="previewBccHtml()">Preview HTML</button>
       </div>
 
@@ -742,6 +745,63 @@ async function bulkDelete() {
   const { error } = await sb.from('subscribers').delete().in('id', ids);
   if (error) showToast(error.message, 'error');
   else { showToast(`${ids.length} subscriber(s) deleted`); selectedIds.clear(); loadSubscribers(); }
+}
+
+// ========== IMPORT CSV (Subscribers) ==========
+async function importSubscribersFile(event) {
+  const files = Array.from(event.target.files || []);
+  if (!files.length) return;
+
+  let combined = '';
+  for (const f of files) {
+    try { combined += '\n' + (await f.text()); }
+    catch (e) { showToast(`Could not read ${f.name}: ${e.message}`, 'error'); }
+  }
+  const emails = parseBccList(combined);
+  if (!emails.length) {
+    showToast('No valid emails found in the file(s).', 'error');
+    event.target.value = '';
+    return;
+  }
+
+  const markVerified = confirm(
+    `Found ${emails.length} unique email(s).\n\n` +
+    `OK = Mark them VERIFIED (you trust this list — they won't get a verify email).\n` +
+    `Cancel = Import as UNVERIFIED (they'll be sent a verify link if your trigger is set up).`
+  );
+
+  const rows = emails.map(e => ({
+    email: e,
+    verified: markVerified,
+    verified_at: markVerified ? new Date().toISOString() : null
+  }));
+
+  // Insert in chunks of 500 to avoid request size limits
+  let inserted = 0, dupes = 0, failed = 0;
+  const errors = [];
+  for (let i = 0; i < rows.length; i += 500) {
+    const chunk = rows.slice(i, i + 500);
+    const { data, error } = await sb.from('subscribers')
+      .upsert(chunk, { onConflict: 'email', ignoreDuplicates: true })
+      .select('id');
+    if (error) {
+      failed += chunk.length;
+      errors.push(error.message);
+    } else {
+      inserted += (data ? data.length : 0);
+      dupes    += chunk.length - (data ? data.length : 0);
+    }
+  }
+
+  event.target.value = '';
+  loadSubscribers();
+  loadDashboard();
+
+  let msg = `Imported: ${inserted} new`;
+  if (dupes)  msg += ` · ${dupes} already existed`;
+  if (failed) msg += ` · ${failed} failed`;
+  showToast(msg, failed ? 'error' : 'success');
+  if (errors.length) console.error('Import errors:', errors);
 }
 
 // ========== EXPORT CSV ==========
@@ -1227,6 +1287,82 @@ async function importFromSubscribers() {
     showBccStatus(`Imported <strong>${emails.length}</strong> verified subscriber(s). Total unique recipients now: <strong>${merged.length}</strong>.`, 'success');
   } catch (e) {
     showBccStatus(`Could not load subscribers: ${escapeHtml(e.message)}`);
+  }
+}
+
+// Strip HTML tags & decode entities for plain-text Gmail body.
+function htmlToText(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/p>/gi, '\n\n')
+    .replace(/<\/h[1-6]>/gi, '\n\n')
+    .replace(/<\/li>/gi, '\n')
+    .replace(/<li[^>]*>/gi, '• ')
+    .replace(/<\/(div|tr)>/gi, '\n');
+  return (tmp.textContent || tmp.innerText || '').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+async function openInGmail() {
+  hideBccStatus();
+  const subject = document.getElementById('bccSubject').value.trim();
+  const html = document.getElementById('bccBody').value.trim();
+  const list = parseBccList(document.getElementById('bccList').value);
+  let toAddr = document.getElementById('bccToAddr').value.trim().toLowerCase()
+            || document.getElementById('userEmail').textContent
+            || '';
+
+  if (!subject || !html) { showBccStatus('Subject and HTML body are required.'); return; }
+  if (list.length === 0) { showBccStatus('No valid recipient emails found.'); return; }
+
+  // Gmail compose URL takes plain text in body. Convert HTML → text.
+  const bodyText = htmlToText(html) +
+    '\n\n— — —\n(If you want the styled HTML version, copy your HTML from the editor above ' +
+    'and paste it into Gmail compose — Gmail preserves the formatting.)';
+
+  // Gmail compose URL has practical length limits (~6-8KB). Batch BCC by 50.
+  const batches = [];
+  for (let i = 0; i < list.length; i += BCC_BATCH) batches.push(list.slice(i, i + BCC_BATCH));
+
+  if (!confirm(
+    `This will open ${batches.length} Gmail compose tab(s) — one per batch of ${BCC_BATCH} BCC.\n\n` +
+    `To: ${toAddr}\nBCC total: ${list.length}\nSubject: ${subject}\n\n` +
+    `Each tab opens with subject + BCC + plain-text body pre-filled. Review and click Send in each tab.\n\n` +
+    `(Your browser may block popups — allow them for azizsaif.com if nothing opens.)\n\nProceed?`
+  )) return;
+
+  let opened = 0, blocked = 0;
+  for (let i = 0; i < batches.length; i++) {
+    const bcc = batches[i].join(',');
+    const params = new URLSearchParams({
+      view: 'cm',
+      fs: '1',
+      to: toAddr,
+      bcc,
+      su: subject + (batches.length > 1 ? ` (${i + 1}/${batches.length})` : ''),
+      body: bodyText
+    });
+    const url = 'https://mail.google.com/mail/?' + params.toString();
+    const win = window.open(url, '_blank', 'noopener');
+    if (win) opened++;
+    else blocked++;
+    // Small delay so browsers don't lump them as one popup burst
+    if (i < batches.length - 1) await new Promise(r => setTimeout(r, 400));
+  }
+
+  if (blocked > 0) {
+    showBccStatus(
+      `<strong>Popup blocker stopped ${blocked} of ${batches.length} tab(s).</strong><br>` +
+      `Opened: ${opened}. Allow popups for this site (browser address-bar icon) and click again.`
+    );
+  } else {
+    showBccStatus(
+      `<strong>${opened} Gmail compose tab(s) opened.</strong> Review each, paste the styled HTML into the body if you want formatting, then click Send.<br><br>` +
+      `<span style="opacity:.7;font-size:.85em">Tip: Gmail's free-account daily limit is ~500 recipients/day; Workspace is ~2,000.</span>`,
+      'success'
+    );
   }
 }
 
