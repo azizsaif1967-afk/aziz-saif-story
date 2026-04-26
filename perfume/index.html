@@ -3061,8 +3061,11 @@ const generateCataloguePDF=(buyer={})=>{
   doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(60,60,60);
   doc.text(['1. Browse the product list on the next pages and note your selections in the QTY column.','2. Send us your completed sheet via WhatsApp +971 52 121 1992 or email customercare@khadlaj-perfumes.com','3. We confirm pricing, send a secure payment link, and ship within 24 hours of payment.','4. Free UAE shipping above AED 150 · Worldwide express available · Tabby/Tamara accepted.'],40,280);
 
-  /* Pages 3+ — Product table */
-  const rows=PRODUCTS.map((p,i)=>[i+1,p.name,p.brand,p.gender,p.sizes.map(s=>s.ml+'ml').join(' / '),'AED '+p.price,p.rating+'★','']);
+  /* Pages 3+ — Product table — use FULL_CATALOG (all 325 products from khadlaj-perfumes.com) */
+  const fullList=(FULL_CATALOG&&FULL_CATALOG.length>=PRODUCTS.length)?FULL_CATALOG:PRODUCTS;
+  /* Sort alphabetically by name for catalogue */
+  const sorted=[...fullList].sort((a,b)=>a.name.localeCompare(b.name));
+  const rows=sorted.map((p,i)=>[i+1,p.name,p.brand||'Khadlaj',p.gender||'Unisex',p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),'AED '+p.price,(p.rating?p.rating.toFixed(1):'4.8')+'★','']);
   doc.autoTable({head:[['#','Product','Brand','For','Size','Price','Rating','Qty (your order)']],body:rows,startY:380,margin:{left:40,right:40},styles:{fontSize:9,cellPadding:6,lineColor:[230,230,230]},headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold'},alternateRowStyles:{fillColor:[252,250,245]},columnStyles:{0:{cellWidth:24,halign:'center'},1:{cellWidth:170,fontStyle:'bold'},2:{cellWidth:70},3:{cellWidth:50,halign:'center'},4:{cellWidth:60,halign:'center'},5:{cellWidth:60,halign:'right'},6:{cellWidth:40,halign:'center'},7:{cellWidth:80,fillColor:[255,248,230]}},didDrawPage:d=>{doc.setFontSize(8);doc.setTextColor(150,150,150);doc.text(`Khadlaj Perfumes · Spring 2026 Catalogue · Page ${d.pageNumber}`,40,H-20);doc.text('khadlaj-perfumes.com',W-40,H-20,{align:'right'})}});
 
   /* Last page — Order summary form */
@@ -3347,7 +3350,7 @@ PRODUCTS.forEach(p=>{if(REAL_IMAGES[p.id])p.image=REAL_IMAGES[p.id]});
 
 /* ──────────────  LOAD FULL CATALOG (325+ real products from khadlaj-perfumes.com)  ────────────── */
 let FULL_CATALOG=[];
-fetch('./catalog.json').then(r=>r.ok?r.json():[]).then(data=>{
+fetch('./catalog.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():[]).then(data=>{
   FULL_CATALOG=data.map(p=>({...p,sizes:[{ml:parseInt(p.size)||100,price:p.price}],rating:4.7+Math.random()*.2,reviews:Math.floor(Math.random()*2500+50),notes:{top:['Bergamot'],heart:['Floral'],base:['Musk','Amber']},description:p.name+' — authentic Khadlaj fragrance. Hand-blended in Sharjah, UAE.'}));
   /* Merge real catalog into PRODUCTS for search/AI (keep manual entries first for hero cards) */
   const ids=new Set(PRODUCTS.map(p=>p.id));
@@ -3440,17 +3443,19 @@ const applyFilter=key=>{
   $$('.nav-list a[data-filter="'+key+'"]').forEach(a=>a.style.color='var(--lux-gold,#a98842)');
 };
 
-/* Wire nav clicks */
-$$('.nav-list a[data-filter]').forEach(a=>{
-  a.addEventListener('click',e=>{e.preventDefault();applyFilter(a.dataset.filter)});
+/* Wire nav clicks via event delegation (works even after re-renders) */
+document.addEventListener('click',e=>{
+  const navLink=e.target.closest('.nav-list a[data-filter]');
+  if(navLink){e.preventDefault();const f=navLink.dataset.filter;console.log('[Khadlaj nav] filter:',f);applyFilter(f);return}
+  const cc=e.target.closest('.cc-item');
+  if(cc){e.preventDefault();const idx=Array.from(cc.parentNode.children).indexOf(cc);const map=['oud','women','men','all','oils','gifts','home','all'];applyFilter(map[idx]||'all');return}
+  const brand=e.target.closest('.brand');
+  if(brand){e.preventDefault();applyFilter('all');return}
 });
-/* Wait for catalog.json to load, then refresh "all" filter to use full 325 list */
-const tryRender=()=>{if(FULL_CATALOG&&FULL_CATALOG.length>=20){console.log('Catalog ready, '+FULL_CATALOG.length+' products available for filtering')}else setTimeout(tryRender,300)};
-tryRender();
-
-/* Wire category circles + brand grid → filters */
-$$('.cc-item').forEach((c,i)=>{c.addEventListener('click',e=>{e.preventDefault();const map=['oud','women','men','all','oils','gifts','home','all'];applyFilter(map[i]||'all')})});
-$$('.brand').forEach(b=>{b.addEventListener('click',e=>{e.preventDefault();applyFilter('all')})});
+console.log('[Khadlaj] Filter engine ready · '+$$('.nav-list a[data-filter]').length+' nav items wired');
+/* When catalog finishes loading, log it */
+const waitCatalog=()=>{if(FULL_CATALOG&&FULL_CATALOG.length>=20)console.log('[Khadlaj] Catalog loaded · '+FULL_CATALOG.length+' products available for filtering');else setTimeout(waitCatalog,300)};
+waitCatalog();
 
 /* ──────────────  TIKTOK VIDEO AUTOPLAY (handle browser policies) ────────────── */
 const playVideos=()=>$$('.tt-tile video').forEach(v=>{v.muted=true;v.playsInline=true;const p=v.play();if(p&&p.catch)p.catch(()=>{/* silently ignore — poster shows */})});
