@@ -72,15 +72,17 @@
   <div class="t-section-inner">
     <div class="t-section-label">Technology Stack</div>
     <h2>Built with the <em>essentials</em></h2>
-    <p class="t-section-lead">HTML5, custom CSS with deep red + dark steel palette to match the industrial product set. Vanilla JavaScript for the brand carousel &amp; WhatsApp inquiry button. Hosted on a custom domain with CDN.</p>
+    <p class="t-section-lead">React 19 + TypeScript on Vite 7, styled with Tailwind 4 and Radix/shadcn primitives. Deep red + dark steel palette to match the industrial product set, with framer-motion for the partner carousel and section reveals. Static build deployed to GitHub Pages on the maroten.com custom domain.</p>
 
     <div class="tech-grid">
-      <div class="tech-card"><div class="tech-card-tag">Frontend</div><div class="tech-card-name">HTML5 + custom CSS</div><div class="tech-card-desc">Heavy industrial palette (dark steel + accent red), no UI framework.</div></div>
-      <div class="tech-card"><div class="tech-card-tag">Interactions</div><div class="tech-card-name">Vanilla JavaScript</div><div class="tech-card-desc">Brand carousel, smooth scroll, WhatsApp deep-link handler.</div></div>
-      <div class="tech-card"><div class="tech-card-tag">Typography</div><div class="tech-card-name">Google Fonts</div><div class="tech-card-desc">Playfair Display for hero wordmark, Inter for body &mdash; readable on technical PDFs.</div></div>
-      <div class="tech-card"><div class="tech-card-tag">Hosting</div><div class="tech-card-name">Custom Domain + CDN</div><div class="tech-card-desc">maroten.com via CDN &mdash; instant load on UAE 4G/5G mobile.</div></div>
-      <div class="tech-card"><div class="tech-card-tag">Forms / Conversion</div><div class="tech-card-name">Quote Forms + WhatsApp</div><div class="tech-card-desc">Lead form pre-fills the product enquiry; WhatsApp shortcut for instant chat.</div></div>
-      <div class="tech-card"><div class="tech-card-tag">SEO</div><div class="tech-card-name">Schema.org + OG</div><div class="tech-card-desc">Organization schema + Open Graph for Google Maps &amp; LinkedIn previews.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Frontend</div><div class="tech-card-name">React 19 + TypeScript</div><div class="tech-card-desc">Component-driven SPA &mdash; routed with wouter, type-safe end-to-end.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Build</div><div class="tech-card-name">Vite 7</div><div class="tech-card-desc">Sub-second HMR in dev, ~225 KB gzipped JS bundle in prod.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Styling</div><div class="tech-card-name">Tailwind 4 + shadcn/Radix</div><div class="tech-card-desc">Industrial dark palette (#111113 + #C41E2A) on accessible Radix primitives.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Motion</div><div class="tech-card-name">framer-motion</div><div class="tech-card-desc">Partner-logo carousel, scroll-reveal sections, WhatsApp button micro-interactions.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Typography</div><div class="tech-card-name">Google Fonts</div><div class="tech-card-desc">Playfair Display for headlines, DM Sans for body, JetBrains Mono for spec callouts.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Hosting</div><div class="tech-card-name">GitHub Pages</div><div class="tech-card-desc">Auto-deploy via GitHub Actions on every push. Fastly edge (185.199.x.x), free Let&rsquo;s Encrypt SSL.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">Forms / Conversion</div><div class="tech-card-name">WhatsApp + Digital Card</div><div class="tech-card-desc">Sticky WhatsApp deep-link, plus a /card route with tap-to-call, email and .vcf save-to-contacts.</div></div>
+      <div class="tech-card"><div class="tech-card-tag">SEO</div><div class="tech-card-name">Schema.org + OG</div><div class="tech-card-desc">Organization schema + Open Graph for Google &amp; LinkedIn previews.</div></div>
     </div>
   </div>
 </section>
@@ -95,14 +97,14 @@
       <div class="build-step"><h4>Brief &amp; competitor scan</h4><p>Capture the company story, target customer, services &amp; competitive landscape.</p></div>
       <div class="build-step"><h4>Content &amp; copy extraction</h4><p>Convert existing brand assets, brochures &amp; messaging into web-ready copy &amp; imagery.</p></div>
       <div class="build-step"><h4>Design tokens &amp; system</h4><p>Establish colour palette, typography scale &amp; spacing rhythm before writing HTML.</p></div>
-      <div class="build-step"><h4>Build &amp; mobile-first responsive</h4><p>Hand-coded with mobile-first breakpoints. Tested on real devices.</p></div>
-      <div class="build-step"><h4>Deploy &amp; analytics</h4><p>Push to production with CDN, custom domain, SSL &amp; Google Analytics 4.</p></div>
+      <div class="build-step"><h4>Component build &amp; mobile-first responsive</h4><p>Section components in React + Tailwind with mobile-first breakpoints. Tested on real devices.</p></div>
+      <div class="build-step"><h4>Deploy &amp; analytics</h4><p>Push to GitHub &mdash; Actions builds &amp; publishes to Pages on the maroten.com custom domain with auto-renewing SSL.</p></div>
     </div>
 
     <div class="stats-row">
       <div><div class="stat-num">5 days</div><div class="stat-label">Build Time</div></div>
-      <div><div class="stat-num">0</div><div class="stat-label">Frameworks</div></div>
-      <div><div class="stat-num">100<em>%</em></div><div class="stat-label">Hand-Coded</div></div>
+      <div><div class="stat-num">React<em> 19</em></div><div class="stat-label">Frontend</div></div>
+      <div><div class="stat-num">~225<em>KB</em></div><div class="stat-label">JS gzipped</div></div>
       <div><div class="stat-num">A<em>+</em></div><div class="stat-label">Lighthouse</div></div>
     </div>
   </div>
