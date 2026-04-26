@@ -22,6 +22,320 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" />
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js" defer></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marcellus&display=swap" />
+
+<!-- ═══════════ LUXURY OVERRIDE (luxury.tatacliq.com inspired) ═══════════ -->
+<style>
+:root{
+  --lux-ink:#0d0d0d; --lux-ink-2:#1f1f1f;
+  --lux-cream:#f5f0e6; --lux-cream-2:#ede5d3; --lux-paper:#fbf8f1;
+  --lux-gold:#a98842; --lux-gold-l:#c9a961; --lux-gold-soft:#e6cf95;
+  --lux-rose:#a85a4a; --lux-line:#d6c8a8;
+  --serif:'Cormorant Garamond','Times New Roman',serif;
+  --display:'Marcellus','Cormorant Garamond',serif;
+}
+body{background:var(--lux-paper);color:var(--lux-ink);font-weight:400}
+
+/* Headlines — luxury serif */
+.section-title,.rail-banner h3,.bulk-intro h2,.founder-text h2,.news-content h2,.slide h2,.notes-info h2,.score-big,.modal h1,.modal h2,.pd-info h1,.foot-brand .logo b,h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:.005em}
+.serif-italic{font-family:var(--serif);font-style:italic;font-weight:500}
+.section-title{font-size:30px;line-height:1.1}
+.rail-banner h3{font-size:24px}
+.foot-brand .logo b{letter-spacing:.32em;font-weight:400}
+
+/* Top utility — black with gold accents */
+.utility{background:#000;border-bottom:1px solid var(--lux-gold)}
+.utility-left b{color:var(--lux-gold-l)}
+
+/* Header — paper background, refined */
+.header{background:rgba(251,248,241,.96);border-bottom:1px solid var(--lux-line)}
+.logo{font-weight:400;letter-spacing:.08em}
+.logo b{font-family:var(--display);letter-spacing:.32em;font-size:24px}
+.logo small{color:var(--lux-gold);letter-spacing:.32em}
+.logo-mark{background:var(--lux-ink) !important}
+.logo-mark{color:var(--lux-gold-l) !important}
+
+/* Mega search — quieter, gold border */
+.search-mega{border:1.5px solid var(--lux-ink);border-radius:0;height:48px;background:var(--lux-paper)}
+.search-mega select{background:var(--lux-paper);border-right:1px solid var(--lux-line);font-weight:500;letter-spacing:.04em;text-transform:uppercase;font-size:11px}
+.search-mega button{background:var(--lux-ink);width:64px}
+.search-mega button:hover{background:var(--lux-gold);color:var(--lux-ink)}
+
+/* Header icons — subtle */
+.h-action b{font-family:var(--serif);font-weight:600;letter-spacing:.04em}
+.h-badge{background:var(--lux-gold);color:var(--lux-ink)}
+
+/* Primary nav — refined */
+.primary-nav{background:var(--lux-paper);border-bottom:1px solid var(--lux-line)}
+.nav-list a{font-size:11px;letter-spacing:.24em;font-weight:400;text-transform:uppercase}
+.nav-list a:hover{color:var(--lux-gold)}
+.nav-list a::after{background:var(--lux-gold)}
+.nav-list .deal-link{color:var(--lux-gold) !important;font-weight:500}
+.nav-list .deal-link::before{display:none}
+.nav-list .new-link::after{background:var(--lux-ink);color:var(--lux-gold-l)}
+
+/* Hero — full-bleed editorial */
+.hero-wrap{padding:0;background:var(--lux-ink)}
+.hero-grid{grid-template-columns:1fr;gap:0}
+.hero-side{display:none}
+.hero-slider{height:78vh;min-height:560px;border-radius:0}
+.slide{padding:0;align-items:center;grid-template-columns:1fr 1fr}
+.slide-1{background:linear-gradient(135deg,#0a0908 0%,#1a1612 50%,#2a241d 100%) !important}
+.slide-2{background:linear-gradient(135deg,#0d0d0d 0%,#2a241d 100%) !important}
+.slide-3{background:linear-gradient(135deg,#1a1612 0%,#3d2f1f 100%) !important}
+.slide-content{padding:80px}
+.slide-tag{background:transparent;border:1px solid var(--lux-gold);color:var(--lux-gold-l);font-size:10px;letter-spacing:.3em;padding:6px 16px;border-radius:0}
+.slide h2{font-size:clamp(36px,5.5vw,72px);font-weight:400;letter-spacing:-.005em;line-height:1.05;margin:18px 0 24px}
+.slide h2 span{color:var(--lux-gold-l);font-style:italic;font-family:var(--serif);font-weight:400}
+.slide p{color:rgba(245,240,230,.75);font-size:15px;line-height:1.8;max-width:440px}
+.slide-cta{margin-top:32px}
+.slide-code{background:transparent;border:1px dashed var(--lux-gold);color:rgba(255,255,255,.7);font-size:11px;letter-spacing:.12em}
+.slide-code b{color:var(--lux-gold-soft)}
+.slider-dots button{background:rgba(255,255,255,.25);height:1px;width:48px}
+.slider-dots button.active{background:var(--lux-gold-l);height:1px}
+.slider-arrow{background:rgba(245,240,230,.08);border:1px solid rgba(255,255,255,.3);color:#fff;width:48px;height:48px}
+.slider-arrow:hover{background:var(--lux-gold);border-color:var(--lux-gold);color:var(--lux-ink)}
+
+/* Buttons — refined black/gold, no rounded */
+.btn{border-radius:0 !important;padding:14px 32px;font-weight:500;letter-spacing:.18em;font-size:11px;text-transform:uppercase}
+.btn-red{background:var(--lux-ink);color:var(--lux-cream);border-color:var(--lux-ink)}
+.btn-red:hover{background:var(--lux-gold);color:var(--lux-ink);border-color:var(--lux-gold)}
+.btn-dark{background:var(--lux-ink)}
+.btn-outline{border:1px solid var(--lux-ink);color:var(--lux-ink);background:transparent}
+.btn-outline:hover{background:var(--lux-ink);color:var(--lux-cream)}
+.btn-ghost-light{border:1px solid rgba(255,255,255,.6)}
+.btn-ghost-light:hover{background:transparent;color:var(--lux-gold);border-color:var(--lux-gold)}
+
+/* USP strip — minimal */
+.usp-strip{background:var(--lux-paper);border-color:var(--lux-line)}
+.usp-item{border-color:var(--lux-line);font-size:10px;letter-spacing:.2em}
+.usp-item svg{color:var(--lux-gold)}
+.usp-item b{font-family:var(--display);font-weight:500;letter-spacing:.02em;font-size:14px}
+
+/* Coupon bar — black with gold borders */
+.coupon-bar{background:var(--lux-cream-2)}
+.coupon{border:1px dashed var(--lux-gold);border-radius:0;background:var(--lux-paper)}
+.coupon::before,.coupon::after{background:var(--lux-cream-2)}
+.coupon-info b{font-family:var(--display);font-weight:500;letter-spacing:.04em}
+.coupon-code{background:var(--lux-ink);border-radius:0;letter-spacing:.18em}
+.coupon-code:hover{background:var(--lux-gold);color:var(--lux-ink)}
+
+/* Section spacing — luxe breathing room */
+.section{padding:64px 0}
+.section-head{margin-bottom:32px}
+.section-title small{background:transparent;color:var(--lux-gold);font-family:var(--sans);font-size:10px;letter-spacing:.24em;padding:0;border-radius:0;font-weight:500}
+.see-all{color:var(--lux-ink);border-bottom:1px solid var(--lux-gold);font-size:11px;letter-spacing:.24em;font-weight:500;padding-bottom:4px}
+.see-all:hover{color:var(--lux-gold)}
+
+/* Categories — luxury tile */
+.cat-circles{background:var(--lux-paper);border-radius:0;border:1px solid var(--lux-line);box-shadow:none;padding:32px}
+.cc-img{border:1px solid var(--lux-line);background:var(--lux-cream)}
+.cc-item:hover .cc-img{border-color:var(--lux-gold)}
+.cc-item b{font-family:var(--display);font-weight:500;letter-spacing:.04em;font-size:13px}
+.cc-item small{color:var(--lux-gold);letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+
+/* Brand grid — designer feel */
+.brand-grid{background:var(--lux-paper);border-radius:0;border:1px solid var(--lux-line);box-shadow:none;padding:32px}
+.brand{border:1px solid var(--lux-line);border-radius:0;background:var(--lux-paper);aspect-ratio:1.8}
+.brand:hover{border-color:var(--lux-gold);box-shadow:none}
+.brand-name{font-family:var(--display);font-weight:400;letter-spacing:.16em}
+.brand .off-tag{background:var(--lux-ink);color:var(--lux-gold-l);font-weight:400;letter-spacing:.1em;border-radius:0}
+
+/* Rails / wraps */
+.rail-wrap{border-radius:0;box-shadow:none;border:1px solid var(--lux-line)}
+.rail-banner{background:var(--lux-cream)}
+.rail-banner-left .pill{background:transparent;border:1px solid var(--lux-gold);color:var(--lux-gold);border-radius:0;letter-spacing:.18em;font-weight:500}
+.rail-banner-left .pill-fire{background:var(--lux-ink);color:var(--lux-gold-l);border:0}
+.rail-item{border-color:var(--lux-line)}
+
+/* Flash sale — quieter */
+.flash{background:linear-gradient(135deg,#0a0908,#1a1612);border-radius:0}
+.flash-cd b{background:var(--lux-gold-l);color:var(--lux-ink);border-radius:0;font-family:var(--display)}
+.flash-title h2{font-family:var(--display);font-weight:500;font-size:24px}
+.flash-title h2 span{color:var(--lux-gold-soft);font-style:italic;font-family:var(--serif)}
+.flash-title .fire{display:none}
+
+/* Products — quieter cards, no aggressive red */
+.product{border-color:var(--lux-line);border-radius:0;background:var(--lux-paper)}
+.product:hover{border-color:var(--lux-gold);transform:translateY(-2px);box-shadow:0 12px 30px -20px rgba(0,0,0,.18)}
+.p-tag{background:var(--lux-ink);color:var(--lux-gold-l);border-radius:0;font-weight:500;letter-spacing:.16em;font-size:9px;padding:3px 9px}
+.p-tag.bestseller{background:var(--lux-ink);color:var(--lux-gold-l)}
+.p-tag.new{background:var(--lux-gold);color:var(--lux-ink)}
+.p-tag.deal{background:var(--lux-rose);color:var(--lux-cream)}
+.p-wishlist{background:var(--lux-paper);box-shadow:none;border:1px solid var(--lux-line)}
+.p-wishlist:hover{background:var(--lux-ink);color:var(--lux-cream-2);border-color:var(--lux-ink)}
+.p-quick{background:var(--lux-ink);color:var(--lux-cream);border-radius:0;letter-spacing:.18em;font-weight:500;font-size:10px}
+.product-media{background:var(--lux-cream)}
+.p-brand{font-family:var(--sans);font-size:9px;letter-spacing:.24em;color:var(--lux-gold);font-weight:500}
+.p-name{font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.005em;line-height:1.35;color:var(--lux-ink);text-align:center}
+.p-rating{background:var(--lux-paper);color:var(--lux-ink);border:1px solid var(--lux-line);border-radius:0;font-weight:500}
+.p-rating svg{color:var(--lux-gold)}
+.p-price .now{font-family:var(--display);font-weight:500;font-size:18px}
+.p-price .was{font-size:11px}
+.p-price .off{background:transparent;color:var(--lux-rose);border:1px solid var(--lux-rose);border-radius:0;font-weight:500;letter-spacing:.04em;font-size:10px;padding:1px 7px}
+.p-bnpl b{color:var(--lux-gold)}
+.products-grid{gap:18px}
+.products-wrap{padding:32px;border-radius:0}
+.p-body{padding:18px;text-align:center}
+
+/* Banner strip — editorial */
+.banner{border-radius:0}
+.banner small{color:var(--lux-gold-soft);font-weight:500;letter-spacing:.24em}
+.banner h3{font-family:var(--display);font-weight:400;font-size:28px;letter-spacing:.005em}
+.banner a{background:transparent;color:#fff;border:1px solid #fff;border-radius:0;letter-spacing:.18em;padding:10px 22px}
+.banner a:hover{background:var(--lux-gold);border-color:var(--lux-gold);color:var(--lux-ink)}
+
+/* Editorial cards */
+.edit-card{border-radius:0}
+.edit-card small{color:var(--lux-gold-soft);font-weight:500;letter-spacing:.24em}
+.edit-card h3{font-family:var(--display);font-weight:400;letter-spacing:.005em}
+
+/* TikTok */
+.tt-section{border-radius:0;border:1px solid var(--lux-line);box-shadow:none}
+.tt-banner h3{font-family:var(--display);font-weight:500;letter-spacing:.005em}
+.tt-tile{border-radius:0}
+
+/* Notes / pyramid */
+.notes-section{border-radius:0;border:1px solid var(--lux-line);box-shadow:none;background:var(--lux-paper)}
+.notes-info h2 span{color:var(--lux-gold)}
+
+/* Bulk order */
+.bulk-section{background:linear-gradient(135deg,var(--lux-paper) 0%,var(--lux-cream) 100%);border:1px solid var(--lux-line);border-radius:0;box-shadow:none}
+.bulk-intro{background:var(--lux-paper);border-right:1px solid var(--lux-line)}
+.bulk-intro h2 span{color:var(--lux-gold);font-style:italic;font-family:var(--serif)}
+.bulk-perks li::before{background:var(--lux-gold);color:var(--lux-ink)}
+.bulk-table{border:1px solid var(--lux-line);border-radius:0}
+.bulk-table-head{background:var(--lux-ink);color:var(--lux-gold-l);letter-spacing:.18em;border-radius:0}
+.bulk-totals{background:var(--lux-ink);border-radius:0}
+.bulk-totals b{color:var(--lux-gold-l);font-family:var(--display);font-weight:500}
+.bulk-add-row{color:var(--lux-gold);background:var(--lux-paper)}
+.bulk-add-row:hover{background:var(--lux-cream)}
+
+/* Founder — luxe storytelling */
+.founder-wrap{background:linear-gradient(135deg,#0a0908 0%,#1a1612 50%,#2a241d 100%);border-radius:0}
+.founder-text small.eyebrow{color:var(--lux-gold-l);font-family:var(--sans);letter-spacing:.32em;font-weight:500}
+.founder-text h2 span{color:var(--lux-gold-l);font-style:italic;font-family:var(--serif);font-weight:400}
+.founder-quote{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.5;border-left:2px solid var(--lux-gold);background:transparent;padding:14px 24px}
+.founder-quote span{color:var(--lux-gold-l);font-family:var(--sans);font-size:11px;letter-spacing:.18em;font-style:normal !important;font-weight:500}
+.founder-badge{border-radius:0;background:var(--lux-gold-l);color:var(--lux-ink)}
+.founder-badge b{font-family:var(--display);font-weight:500}
+.founder-sign-img{border:2px solid var(--lux-gold-l)}
+.founder-sign b{font-family:var(--display);font-weight:500}
+.founder-sign small{color:var(--lux-gold-l);letter-spacing:.18em}
+.tl-item{background:rgba(255,255,255,.04);border-left:1px solid var(--lux-gold-l);border-radius:0}
+.tl-item b{color:var(--lux-gold-l);font-family:var(--display);font-weight:500}
+.founder-img-caption{border-left:2px solid var(--lux-gold)}
+.founder-img-caption b{color:var(--lux-gold-l);font-family:var(--display);font-weight:500}
+
+/* Reviews */
+.reviews-wrap{border:1px solid var(--lux-line);border-radius:0;box-shadow:none}
+.reviews-head{background:linear-gradient(90deg,var(--lux-cream),var(--lux-paper));border-color:var(--lux-line)}
+.score-big{font-family:var(--display);font-weight:500;color:var(--lux-ink)}
+.score-bar .fill{background:var(--lux-gold)}
+.review-card{border:1px solid var(--lux-line);background:var(--lux-paper);border-radius:0}
+.review-rating{background:var(--lux-ink);color:var(--lux-gold-l);border-radius:0;letter-spacing:.04em;font-weight:500}
+.review-avatar{background:var(--lux-ink);color:var(--lux-gold-l);font-family:var(--display)}
+
+/* Newsletter — black story */
+.news{background:linear-gradient(135deg,#0a0908,#1a1612);border-radius:0}
+.news-content h2 span{color:var(--lux-gold-l);font-style:italic;font-family:var(--serif)}
+.news-form{border-color:rgba(255,255,255,.25);border-radius:0;background:transparent}
+.news-form input{color:#fff}
+.news-form button{background:var(--lux-gold);color:var(--lux-ink);border-radius:0;letter-spacing:.18em;font-weight:500}
+.news-form button:hover{background:var(--lux-cream)}
+.news-perks span::before{color:var(--lux-gold-l)}
+
+/* Footer — ink */
+.footer{background:var(--lux-ink);padding-top:80px}
+.footer h5{font-family:var(--display);font-weight:500;letter-spacing:.18em;font-size:14px}
+.footer-brand .logo b,.foot-brand .logo b{color:var(--lux-cream)}
+.pay-icon{background:var(--lux-cream-2);color:var(--lux-ink);font-weight:500;border-radius:0;letter-spacing:.06em}
+.app-badges a{border-radius:0;border-color:rgba(255,255,255,.25)}
+.app-badges b{font-family:var(--display);font-weight:500}
+
+/* Cart drawer */
+.drawer{background:var(--lux-paper)}
+.drawer-head{background:var(--lux-ink);color:var(--lux-cream);border-bottom:2px solid var(--lux-gold)}
+.drawer-head h3{font-family:var(--display);font-weight:500;color:var(--lux-cream)}
+.shipping-bar{background:var(--lux-cream);font-family:var(--sans)}
+.shipping-bar b{color:var(--lux-gold)}
+.bar-fill{background:linear-gradient(90deg,var(--lux-gold-l),var(--lux-gold))}
+.cart-item h4{font-family:var(--display);font-weight:500}
+.ci-price{font-family:var(--display);font-weight:500}
+.grand{font-family:var(--display);font-weight:500;color:var(--lux-ink);font-size:22px;border-top-color:var(--lux-gold)}
+.totals.discount span:last-child{color:var(--lux-gold)}
+
+/* Modals */
+.modal{border-radius:0}
+.modal-close{border-radius:50%;border:1px solid var(--lux-line)}
+.pd-info h1{font-family:var(--display);font-weight:500;letter-spacing:.005em;font-size:34px}
+.pd-brand-link{color:var(--lux-gold) !important}
+.pd-price-row .now{font-family:var(--display);font-weight:500}
+.pd-size{border-radius:0;font-weight:500}
+.pd-size.active{background:var(--lux-ink);border-color:var(--lux-ink)}
+.pd-tab.active{border-bottom-color:var(--lux-gold)}
+.co-step h3 span.num{background:var(--lux-gold);color:var(--lux-ink)}
+.co-pay{border-radius:0}
+.co-pay.active{background:var(--lux-cream-2);border-color:var(--lux-gold)}
+.co-pay-tag.popular{background:var(--lux-gold);color:var(--lux-ink)}
+.co-line.total{font-family:var(--display);font-weight:500;color:var(--lux-ink)}
+
+/* AI chat — luxe */
+.chat-fab{background:var(--lux-ink);color:var(--lux-gold-l);border:1.5px solid var(--lux-gold-l)}
+.chat-fab:hover{background:var(--lux-gold);color:var(--lux-ink);border-color:var(--lux-gold)}
+.chat-head{background:var(--lux-ink);border-bottom:2px solid var(--lux-gold)}
+.chat-avatar{background:var(--lux-gold-l);color:var(--lux-ink);font-family:var(--display)}
+.chat-head-info b{font-family:var(--display);font-weight:500;letter-spacing:.04em;font-size:15px}
+.chat-quick button{border-color:var(--lux-gold);color:var(--lux-gold)}
+.chat-quick button:hover{background:var(--lux-gold);color:var(--lux-ink)}
+.chat-product{border-radius:0;border-color:var(--lux-line)}
+.chat-product:hover{border-color:var(--lux-gold)}
+.chat-product b{font-family:var(--display);font-weight:500}
+.chat-msg.user .bub{background:var(--lux-ink)}
+.chat-send{background:var(--lux-ink);color:var(--lux-gold-l)}
+.chat-send:hover{background:var(--lux-gold);color:var(--lux-ink)}
+
+/* Admin */
+.admin-stats{background:linear-gradient(135deg,var(--lux-ink),#1a1612)}
+.admin-stat{border-left-color:var(--lux-gold-l)}
+.admin-stat b{color:var(--lux-gold-l);font-family:var(--display)}
+.admin-tab.active{color:var(--lux-gold-l);border-bottom-color:var(--lux-gold-l)}
+.admin-tabs{background:var(--lux-ink)}
+
+/* Cookie + toast */
+.cookies{border-radius:0;background:var(--lux-paper);border:1px solid var(--lux-line)}
+.cookies h4{font-family:var(--display);font-weight:500}
+.toast{background:var(--lux-ink);border-left-color:var(--lux-gold);border-radius:0;color:var(--lux-cream)}
+.toast b{color:var(--lux-gold-l)}
+
+/* Hero meta override (since we hid it) */
+.hero-bg::after{display:none}
+
+/* Nav announce */
+.announce{background:var(--lux-ink);border-bottom:1px solid var(--lux-gold)}
+.announce-track .dot{color:var(--lux-gold-l)}
+.utility{background:var(--lux-ink);color:rgba(255,255,255,.78)}
+
+/* Search overlay */
+.search-overlay{background:rgba(251,248,241,.97)}
+.search-overlay input{font-family:var(--display);font-weight:500;border-bottom-color:var(--lux-ink)}
+.search-result h4{font-family:var(--display);font-weight:500}
+
+/* Order confirmation */
+.oc-icon{background:var(--lux-gold);color:var(--lux-ink)}
+.oc-id{background:var(--lux-cream)}
+
+/* Side cards (deal of week) — keep visible since hero side hidden  was a design choice. Re-enable for richness on desktop only */
+@media (min-width:961px){.hero-side{display:grid;position:absolute;right:24px;bottom:24px;width:280px;z-index:5;grid-template-rows:auto;grid-template-columns:1fr 1fr;gap:10px}.side-card{padding:14px;min-height:120px;border-radius:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid rgba(212,168,71,.4)}.side-card::before{display:none}.side-card h3{font-family:var(--display);font-weight:500;font-size:14px}.side-card .price-flash{font-family:var(--display);font-size:22px;color:var(--lux-gold-l)}.side-card a{background:transparent;border:1px solid var(--lux-gold-l);color:var(--lux-gold-l);padding:5px 10px;border-radius:0;font-size:9px;letter-spacing:.16em}.side-card a:hover{background:var(--lux-gold);color:var(--lux-ink)}.side-card small{color:rgba(255,255,255,.7);letter-spacing:.18em}}
+
+/* Tag & button hover refinements */
+.btn-gold{background:var(--lux-gold);color:var(--lux-ink);border-color:var(--lux-gold)}
+.btn-gold:hover{background:var(--lux-ink);color:var(--lux-gold-l)}
+
+/* Subtle texture/weight throughout */
+.product-body{background:var(--lux-paper)}
+</style>
+
 
 <script type="application/ld+json">
 {
