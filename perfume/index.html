@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" />
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -432,8 +434,10 @@ input,select{font:inherit}
 
 /* ─────────────────────────  FOUNDER STORY  ───────────────────────── */
 .founder-wrap{background:linear-gradient(135deg,#1a1a1a 0%,#3d0a14 100%);color:#fff;border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;gap:0;align-items:stretch}
-.founder-img{position:relative;min-height:520px;background:url('https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=900&auto=format&fit=crop&q=75') center/cover}
-.founder-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.1),rgba(61,10,20,.5))}
+.founder-img{position:relative;min-height:560px;background:url('https://khadlaj-perfumes.com/cdn/shop/files/DSC04900.jpg?v=1734423464') center top/cover;background-color:#1a1a1a}
+.founder-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.15) 0%,transparent 30%,rgba(61,10,20,.35) 100%)}
+.founder-img-caption{position:absolute;top:20px;left:20px;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);color:#fff;padding:8px 14px;border-radius:6px;font-size:11px;letter-spacing:.04em;z-index:2}
+.founder-img-caption b{display:block;font-size:13px;color:var(--gold)}
 .founder-badge{position:absolute;bottom:24px;left:24px;background:var(--gold);color:var(--ink);padding:14px 20px;border-radius:6px;font-weight:800;font-size:14px;z-index:2;box-shadow:var(--shadow-lg);text-align:center}
 .founder-badge b{display:block;font-size:32px;line-height:1;font-family:'Poppins',serif}
 .founder-badge small{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.7;display:block;margin-top:4px}
@@ -444,7 +448,7 @@ input,select{font:inherit}
 .founder-quote{font-size:18px;font-style:italic;line-height:1.6;padding:18px 22px;border-left:3px solid var(--gold);background:rgba(255,255,255,.04);margin:0 0 24px;color:#fff}
 .founder-text p{font-size:14px;line-height:1.8;opacity:.85;margin:0 0 14px}
 .founder-sign{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);margin-top:24px}
-.founder-sign-img{width:54px;height:54px;border-radius:50%;background:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&auto=format&fit=crop&q=70') center/cover;border:2px solid var(--gold)}
+.founder-sign-img{width:54px;height:54px;border-radius:50%;background:url('https://khadlaj-perfumes.com/cdn/shop/files/md.png?v=1723184245') center top/cover;background-color:#fff;border:2px solid var(--gold)}
 .founder-sign b{display:block;font-size:14px;font-weight:700}
 .founder-sign small{font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:2px}
 .founder-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
@@ -1469,7 +1473,7 @@ input,select{font:inherit}
         <div class="edit-card-content"><small>Eid 2026</small><h3>Gift Guide</h3><p>5 picks for every relationship</p></div>
       </a>
       <a href="#" class="edit-card">
-        <img src="https://images.unsplash.com/photo-1542996966-2e36c6e57f1c?w=600&auto=format&fit=crop&q=70" alt="Atelier" loading="lazy" />
+        <img src="https://khadlaj-perfumes.com/cdn/shop/files/KJ_SJ_3.jpg?v=1731407711" alt="Khadlaj manufacturing atelier in Sharjah" loading="lazy" />
         <div class="edit-card-content"><small>Inside the Atelier</small><h3>40 Years of Craft</h3><p>Behind every Khadlaj bottle</p></div>
       </a>
     </div>
@@ -1784,7 +1788,8 @@ input,select{font:inherit}
 <section class="section" style="padding-top:0" aria-labelledby="founder-h">
   <div class="container">
     <div class="founder-wrap">
-      <div class="founder-img" role="img" aria-label="Master perfumer at the Khadlaj atelier in Sharjah">
+      <div class="founder-img" role="img" aria-label="Mohamed Iqbal Abdul Sattar — Founder of Khadlaj Perfumes">
+        <div class="founder-img-caption"><b>Mohamed Iqbal Abdul Sattar</b>Founder &amp; Master Perfumer</div>
         <span class="founder-badge"><b>1997</b><small>Established · Sharjah, UAE</small></span>
       </div>
       <div class="founder-text">
@@ -2714,15 +2719,58 @@ $('#newsForm').addEventListener('submit',e=>{
 const openCat=()=>openModal('catalogueModal');
 $('#downloadCatalogue')?.addEventListener('click',e=>{e.preventDefault();openCat()});
 $('#downloadCatalogue2')?.addEventListener('click',e=>{e.preventDefault();openCat()});
+/* Generate real PDF catalogue using jsPDF (live product data + quantity column for orders) */
+const generateCataloguePDF=(buyer={})=>{
+  if(!window.jspdf){showToast('Loading…','PDF library still loading, try again in 1 sec');return false}
+  const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'pt',format:'a4'});const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight();
+  /* Cover */
+  doc.setFillColor(26,26,26);doc.rect(0,0,W,H,'F');
+  doc.setFillColor(212,168,71);doc.rect(0,0,W,8,'F');doc.rect(0,H-8,W,8,'F');
+  doc.setTextColor(212,168,71);doc.setFont('helvetica','bold');doc.setFontSize(48);doc.text('KHADLAJ',W/2,200,{align:'center'});
+  doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','normal');doc.text('PERFUMES',W/2,228,{align:'center',charSpace:8});
+  doc.setDrawColor(212,168,71);doc.setLineWidth(.5);doc.line(W/2-60,250,W/2+60,250);
+  doc.setFontSize(11);doc.setTextColor(180,180,180);doc.text('Heritage Arabian Perfumery · Est. 1997 · Sharjah, UAE',W/2,275,{align:'center'});
+  doc.setFontSize(28);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.text('Spring 2026',W/2,360,{align:'center'});
+  doc.setFontSize(14);doc.setFont('helvetica','normal');doc.text('Product Catalogue & Order Form',W/2,385,{align:'center'});
+  doc.setTextColor(212,168,71);doc.setFontSize(10);doc.text(`${PRODUCTS.length} fragrances · From AED ${Math.min(...PRODUCTS.map(p=>p.price))} · Worldwide delivery`,W/2,420,{align:'center'});
+  if(buyer.name||buyer.email){doc.setFontSize(10);doc.setTextColor(255,255,255);doc.text('PREPARED FOR',W/2,520,{align:'center'});doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text(buyer.name||buyer.email,W/2,540,{align:'center'});if(buyer.email&&buyer.name){doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text(buyer.email,W/2,556,{align:'center'})}}
+  doc.setFontSize(9);doc.setTextColor(150,150,150);doc.text('Founded by Mohamed Iqbal Abdul Sattar · Master Perfumer',W/2,H-80,{align:'center'});doc.text('80+ countries · 10 showrooms · WhatsApp: +971 52 121 1992',W/2,H-65,{align:'center'});doc.text('khadlaj-perfumes.com · customercare@khadlaj-perfumes.com',W/2,H-50,{align:'center'});
+
+  /* Page 2 — About */
+  doc.addPage();doc.setTextColor(26,26,26);doc.setFontSize(20);doc.setFont('helvetica','bold');doc.text('About Khadlaj Perfumes',40,60);
+  doc.setDrawColor(212,168,71);doc.setLineWidth(2);doc.line(40,68,90,68);
+  doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(60,60,60);
+  const intro=`Founded in January 1997 by Mohamed Iqbal Abdul Sattar in Sharjah, UAE, Khadlaj Perfumes is a family-owned heritage perfumery drawing on more than 45 years of master-perfumer experience. Today, the business is led by his son Asif Mohamed Iqbal Katchi, Managing Director.\n\nFrom the Sharjah atelier, every fragrance is hand-blended using authentic Cambodian oud, Bulgarian rose absolute, Indian sandalwood, and rare attars sourced direct from harvesters. Khadlaj fragrances are now worn in 80+ countries, with 10 showrooms across the UAE and Oman.`;
+  doc.text(doc.splitTextToSize(intro,W-80),40,90);
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(26,26,26);doc.text('Order from this catalogue',40,260);
+  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(60,60,60);
+  doc.text(['1. Browse the product list on the next pages and note your selections in the QTY column.','2. Send us your completed sheet via WhatsApp +971 52 121 1992 or email customercare@khadlaj-perfumes.com','3. We confirm pricing, send a secure payment link, and ship within 24 hours of payment.','4. Free UAE shipping above AED 150 · Worldwide express available · Tabby/Tamara accepted.'],40,280);
+
+  /* Pages 3+ — Product table */
+  const rows=PRODUCTS.map((p,i)=>[i+1,p.name,p.brand,p.gender,p.sizes.map(s=>s.ml+'ml').join(' / '),'AED '+p.price,p.rating+'★','']);
+  doc.autoTable({head:[['#','Product','Brand','For','Size','Price','Rating','Qty (your order)']],body:rows,startY:380,margin:{left:40,right:40},styles:{fontSize:9,cellPadding:6,lineColor:[230,230,230]},headStyles:{fillColor:[26,26,26],textColor:[212,168,71],fontStyle:'bold'},alternateRowStyles:{fillColor:[252,250,245]},columnStyles:{0:{cellWidth:24,halign:'center'},1:{cellWidth:170,fontStyle:'bold'},2:{cellWidth:70},3:{cellWidth:50,halign:'center'},4:{cellWidth:60,halign:'center'},5:{cellWidth:60,halign:'right'},6:{cellWidth:40,halign:'center'},7:{cellWidth:80,fillColor:[255,248,230]}},didDrawPage:d=>{doc.setFontSize(8);doc.setTextColor(150,150,150);doc.text(`Khadlaj Perfumes · Spring 2026 Catalogue · Page ${d.pageNumber}`,40,H-20);doc.text('khadlaj-perfumes.com',W-40,H-20,{align:'right'})}});
+
+  /* Last page — Order summary form */
+  doc.addPage();doc.setFontSize(20);doc.setTextColor(26,26,26);doc.setFont('helvetica','bold');doc.text('Submit Your Order',40,60);doc.setDrawColor(212,168,71);doc.setLineWidth(2);doc.line(40,68,90,68);
+  doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(60,60,60);doc.text('After filling in quantities on the previous pages, complete the details below and send to us.',40,90);
+  const fields=[['Customer name',buyer.name||''],['Email',buyer.email||''],['WhatsApp / phone',buyer.phone||''],['Delivery address',''],['City / Emirate',''],['Country',''],['Preferred payment','□ WhatsApp link  □ Card  □ Tabby  □ Tamara  □ COD  □ Bank transfer'],['Notes / gift message','']];
+  let y=130;fields.forEach(([k,v])=>{doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(26,26,26);doc.text(k,40,y);doc.setLineWidth(.5);doc.setDrawColor(180,180,180);doc.line(40,y+18,W-40,y+18);if(v){doc.setFont('helvetica','normal');doc.setTextColor(80,80,80);doc.text(String(v),40,y+12)}y+=36});
+  /* Send box */
+  doc.setFillColor(26,26,26);doc.roundedRect(40,y+10,W-80,80,6,6,'F');doc.setTextColor(212,168,71);doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text('Send your completed order to:',W/2,y+34,{align:'center'});doc.setTextColor(255,255,255);doc.setFontSize(11);doc.setFont('helvetica','normal');doc.text('💬 WhatsApp +971 52 121 1992',W/2,y+54,{align:'center'});doc.text('✉ customercare@khadlaj-perfumes.com',W/2,y+72,{align:'center'});
+
+  doc.save(`Khadlaj-Catalogue-2026${buyer.name?'-'+buyer.name.replace(/\s+/g,'-'):''}.pdf`);
+  return true;
+};
+
 $('#catalogueForm').addEventListener('submit',e=>{
   e.preventDefault();const f=new FormData(e.target),email=f.get('email'),name=f.get('name'),phone=f.get('phone'),sub=f.get('newsletter')==='on';
   if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showToast('Hmm','Valid email required');return}
   addSubscriber({email,name,phone,source:'catalogue-download',consent:sub});
-  closeModal($('#catalogueModal'));
-  showToast('Catalogue sent','Check '+email+' — also saved in your downloads');
-  /* Trigger placeholder PDF download. Replace href with real file when uploaded. */
-  const a=document.createElement('a');a.href='./khadlaj-catalogue-2026.pdf';a.download='Khadlaj-Catalogue-2026.pdf';document.body.appendChild(a);a.click();a.remove();
-  e.target.reset();
+  if(generateCataloguePDF({name,email,phone})){
+    closeModal($('#catalogueModal'));
+    showToast('PDF downloaded','Personalised catalogue saved · also sent to '+email);
+    e.target.reset();
+  }
 });
 
 /* ──────────────  SEARCH  ────────────── */
