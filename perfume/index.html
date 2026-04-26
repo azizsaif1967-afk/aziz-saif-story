@@ -1815,8 +1815,8 @@ input,select{font:inherit}
       <div class="tt-grid">
         <!-- Tile 1 -->
         <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/1">
-          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=70">
-            <source src="https://cdn.pixabay.com/video/2023/08/07/175131-851973285_large.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline preload="auto" poster="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CreamVelvet01_4f0dfae6-16ce-4ced-b614-2cb1ef0b8aa6.jpg?v=1726140516">
+            <source src="https://assets.mixkit.co/videos/4525/4525-720.mp4" type="video/mp4">
           </video>
           <span class="tt-views">1.2M</span>
           <span class="tt-tt-badge">TikTok</span>
@@ -1834,8 +1834,8 @@ input,select{font:inherit}
 
         <!-- Tile 2 -->
         <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/2">
-          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=400&auto=format&fit=crop&q=70">
-            <source src="https://cdn.pixabay.com/video/2024/03/26/205316-927228812_large.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline preload="auto" poster="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/HAREEM_AL_SULTAN_GOLD_35ML.jpg">
+            <source src="https://assets.mixkit.co/videos/4513/4513-720.mp4" type="video/mp4">
           </video>
           <span class="tt-views">890K</span>
           <span class="tt-tt-badge">TikTok</span>
@@ -1853,8 +1853,8 @@ input,select{font:inherit}
 
         <!-- Tile 3 -->
         <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/3">
-          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=70">
-            <source src="https://cdn.pixabay.com/video/2024/02/03/199298-910641313_large.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline preload="auto" poster="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/Panache_2_jpg_0bc7a1f3-8af9-4188-98f1-c58151159f55.jpg?v=1771333283">
+            <source src="https://assets.mixkit.co/videos/4517/4517-720.mp4" type="video/mp4">
           </video>
           <span class="tt-views">2.1M</span>
           <span class="tt-tt-badge">TikTok</span>
@@ -1872,8 +1872,8 @@ input,select{font:inherit}
 
         <!-- Tile 4 -->
         <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/4">
-          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=70">
-            <source src="https://cdn.pixabay.com/video/2024/05/08/210466-942117350_large.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline preload="auto" poster="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/CafeLatte01.jpg?v=1732860304">
+            <source src="https://assets.mixkit.co/videos/4519/4519-720.mp4" type="video/mp4">
           </video>
           <span class="tt-views">670K</span>
           <span class="tt-tt-badge">TikTok</span>
@@ -1891,8 +1891,8 @@ input,select{font:inherit}
 
         <!-- Tile 5 -->
         <div class="tt-tile" data-tt="https://www.tiktok.com/@khadlajperfumes/video/5">
-          <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&auto=format&fit=crop&q=70">
-            <source src="https://cdn.pixabay.com/video/2023/10/12/184542-873836820_large.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline preload="auto" poster="https://cdn.shopify.com/s/files/1/0626/6119/8023/files/Island2.jpg?v=1767168643">
+            <source src="https://assets.mixkit.co/videos/4521/4521-720.mp4" type="video/mp4">
           </video>
           <span class="tt-views">1.5M</span>
           <span class="tt-tt-badge">TikTok</span>
@@ -3371,6 +3371,16 @@ if(settingsBox.length){
     showToast('Settings saved','WhatsApp orders will now route to '+WA_HUMAN);
   }));
 }
+
+/* ──────────────  TIKTOK VIDEO AUTOPLAY (handle browser policies) ────────────── */
+const playVideos=()=>$$('.tt-tile video').forEach(v=>{v.muted=true;v.playsInline=true;const p=v.play();if(p&&p.catch)p.catch(()=>{/* silently ignore — poster shows */})});
+playVideos();
+addEventListener('load',playVideos);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)playVideos()});
+/* Tap-to-play fallback: any user click on the page triggers all videos */
+document.addEventListener('click',function once(){playVideos();document.removeEventListener('click',once)},{once:true});
+/* IntersectionObserver: only play when in view (saves battery) */
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const p=e.target.play();if(p&&p.catch)p.catch(()=>{})}else e.target.pause()}),{threshold:.2});$$('.tt-tile video').forEach(v=>io.observe(v))}
 
 /* ──────────────  INITIAL RENDER  ────────────── */
 renderCart();updateWishCount();
