@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Decision Management Consultants — Dubai, since 1990</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E0E0C;
+    --ink-2:#1c1c1a;
+    --paper:#F4EFE6;
+    --paper-2:#EAE3D6;
+    --paper-3:#DDD3C0;
+    --rule:#1c1c1a;
+    --red:#C0161C;
+    --red-deep:#8E0F14;
+    --serif:"Fraunces", "Times New Roman", serif;
+    --sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --arabic:"Reem Kufi", serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  body{overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--red);color:var(--paper);}
+
+  /* ---------- Print ---------- */
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { background: #fff !important; }
+    body::before { display: none !important; }
+    .util, header.nav, .wa-float, .nav-cta, nav.primary, .marquee { display: none !important; }
+    section, .quote, footer { padding: 24px 0 !important; break-inside: avoid; page-break-inside: avoid; }
+    .hero { padding: 0 !important; }
+    .hero-grid { grid-template-columns: 1.6fr 1fr !important; min-height: auto !important; gap: 24px !important; }
+    .hero-left { padding: 12px 24px 12px 0 !important; }
+    .hero-right { padding: 12px 0 !important; }
+    .hero h1 { font-size: 56px !important; line-height: .95 !important; }
+    .hero-stamp .big { font-size: 36px !important; }
+    .arabic-watermark { display: none !important; }
+    .sec-head { grid-template-columns: 1fr 2fr !important; gap: 32px !important; margin-bottom: 24px !important; }
+    .sec-head h2 { font-size: 36px !important; }
+    .ledger { grid-template-columns: repeat(4,1fr) !important; }
+    .ledger > div { padding: 18px !important; }
+    .ledger .num { font-size: 44px !important; }
+    .calc-wrap { grid-template-columns: 1.1fr 1fr !important; }
+    .calc-form, .calc-result { padding: 24px !important; }
+    .calc-result::before { display: none !important; }
+    .calc-result .est-num { font-size: 48px !important; }
+    .industries { grid-template-columns: repeat(4,1fr) !important; }
+    .ind { min-height: 130px !important; padding: 16px !important; break-inside: avoid; }
+    .ind-name { font-size: 17px !important; }
+    .ind .ar { display: none !important; }
+    .clients { grid-template-columns: repeat(6,1fr) !important; }
+    .client { aspect-ratio: 1.8/1 !important; font-size: 13px !important; }
+    .process { grid-template-columns: repeat(5,1fr) !important; }
+    .step { padding: 14px !important; }
+    .step h4 { font-size: 15px !important; }
+    .step p { font-size: 11px !important; line-height: 1.4 !important; }
+    .quote { padding: 36px 0 !important; }
+    .quote blockquote { font-size: 26px !important; }
+    .quote .mark { font-size: 80px !important; height: 44px !important; }
+    .contact-left, .contact-right { padding: 24px !important; }
+    .contact-left h3 { font-size: 32px !important; }
+    .contact-left::before { display: none !important; }
+    .foot-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; gap: 24px !important; padding-bottom: 16px !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .service { padding: 10px 0 !important; break-inside: avoid; }
+    .svc-name { font-size: 18px !important; }
+    .svc-desc { font-size: 11px !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    #services, #calculator, #industries, #process, #about, #contact { break-before: page; page-break-before: always; }
+  }
+
+  /* ---------- Grain / paper texture ---------- */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- Top utility bar ---------- */
+  .util{
+    position:relative;z-index:5;
+    border-bottom:1px solid rgba(14,14,12,.18);
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 32px;
+    background:var(--paper);
+  }
+  .util .pill{display:inline-flex;align-items:center;gap:8px;}
+  .util .dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+  .util .right{display:flex;gap:24px;}
+  .util a:hover{color:var(--red);}
+
+  /* ---------- Header ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav-inner{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;
+    padding:18px 32px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand-logo{height:52px;width:auto;display:block;}
+  @media (max-width:640px){ .brand-logo{height:40px;} }
+  nav.primary{display:flex;justify-content:center;gap:30px;font-size:14px;font-weight:500;}
+  nav.primary a{position:relative;padding:6px 0;}
+  nav.primary a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.7,0,.2,1);}
+  nav.primary a:hover::after{transform:scaleX(1);}
+  .nav-cta{display:flex;gap:10px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 20px;
+    font-size:13px;font-weight:600;letter-spacing:.02em;
+    border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    cursor:pointer;transition:all .25s ease;border-radius:0;
+  }
+  .btn:hover{background:var(--ink);color:var(--paper);}
+  .btn.primary{background:var(--red);border-color:var(--red);color:var(--paper);}
+  .btn.primary:hover{background:var(--ink);border-color:var(--ink);}
+  .btn .arrow{display:inline-block;transition:transform .3s;}
+  .btn:hover .arrow{transform:translateX(4px);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:0 32px 0;
+    border-bottom:1px solid var(--rule);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.5fr 1fr;gap:0;
+    min-height:78vh;
+  }
+  .hero-left{padding:60px 60px 60px 0;border-right:1px solid var(--rule);position:relative;}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;display:flex;gap:18px;align-items:center;margin-bottom:36px;}
+  .hero-eyebrow .num{color:var(--red);}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(56px, 9vw, 132px);
+    line-height:.92;
+    letter-spacing:-.035em;
+    font-variation-settings:"opsz" 144, "SOFT" 30;
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"opsz" 144, "SOFT" 100;}
+  .hero h1 .strike{position:relative;display:inline-block;}
+  .hero h1 .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:6px;background:var(--red);transform:rotate(-1.5deg);}
+  .hero-meta{
+    display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:end;
+    margin-top:48px;padding-top:28px;border-top:1px solid rgba(14,14,12,.2);
+  }
+  .hero-lede{
+    font-family:var(--serif);font-size:19px;font-weight:400;line-height:1.45;max-width:520px;text-wrap:pretty;
+  }
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+  .hero-stamp{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    text-align:right;line-height:1.6;color:var(--ink-2);
+  }
+  .hero-stamp .big{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--red);letter-spacing:-.02em;display:block;line-height:1;}
+
+  /* Right column — vertical ticker / spec sheet */
+  .hero-right{padding:60px 0 60px 60px;display:flex;flex-direction:column;gap:24px;position:relative;}
+  .spec{
+    display:grid;grid-template-columns:80px 1fr;gap:20px;
+    padding:18px 0;border-bottom:1px dashed rgba(14,14,12,.25);
+  }
+  .spec .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);padding-top:6px;}
+  .spec .v{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.2;letter-spacing:-.01em;}
+  .spec .v small{display:block;font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.04em;color:var(--ink-2);margin-top:6px;text-transform:none;}
+
+  .arabic-watermark{
+    position:absolute;
+    right:-30px;bottom:30px;
+    font-family:var(--arabic);
+    font-size:140px;
+    color:var(--red);
+    opacity:.08;
+    pointer-events:none;
+    line-height:1;
+    user-select:none;
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee{
+    border-bottom:1px solid var(--rule);
+    background:var(--ink);color:var(--paper);
+    overflow:hidden;
+  }
+  .marquee-track{
+    display:flex;gap:60px;
+    padding:18px 0;
+    white-space:nowrap;
+    animation:scroll 40s linear infinite;
+    font-family:var(--serif);font-size:28px;font-weight:300;letter-spacing:-.01em;
+  }
+  .marquee-track span{display:inline-flex;align-items:center;gap:60px;}
+  .marquee-track .star{color:var(--red);font-size:20px;}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- Section general ---------- */
+  section{padding:120px 32px;border-bottom:1px solid var(--rule);position:relative;}
+  .sec-head{display:grid;grid-template-columns:1fr 2fr;gap:80px;margin-bottom:80px;align-items:end;}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);}
+  .sec-num::before{content:"§ ";color:var(--red);}
+  .sec-head h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,5.5vw,84px);line-height:.95;letter-spacing:-.03em;
+    font-variation-settings:"opsz" 144, "SOFT" 30;
+  }
+  .sec-head h2 em{font-style:italic;color:var(--red);font-weight:400;}
+  .sec-head .lead{font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--ink-2);margin-top:18px;max-width:560px;text-wrap:pretty;}
+
+  /* ---------- Services (cards as ledger entries) ---------- */
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--rule);}
+  .service{
+    display:grid;grid-template-columns:80px 1fr 1.5fr 1fr 60px;gap:32px;align-items:center;
+    padding:36px 0;border-bottom:1px solid rgba(14,14,12,.2);
+    cursor:pointer;transition:all .4s cubic-bezier(.7,0,.2,1);position:relative;overflow:hidden;
+  }
+  .service::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);
+    transition:width .4s cubic-bezier(.7,0,.2,1);
+  }
+  .service:hover{padding-left:24px;}
+  .service:hover::before{width:6px;}
+  .service:hover .svc-arrow{transform:translateX(8px);color:var(--red);}
+  .service:hover .svc-name{color:var(--red);}
+  .svc-num{font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--ink-2);}
+  .svc-name{font-family:var(--serif);font-size:36px;font-weight:400;letter-spacing:-.02em;line-height:1.05;transition:color .3s;}
+  .svc-name em{font-style:italic;}
+  .svc-desc{font-size:14px;line-height:1.5;color:var(--ink-2);max-width:340px;}
+  .svc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .svc-tag{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:4px 8px;border:1px solid rgba(14,14,12,.3);}
+  .svc-arrow{font-family:var(--serif);font-size:32px;font-weight:300;transition:all .3s;text-align:right;}
+
+  /* ---------- Stats / Receipt ---------- */
+  .ledger{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--rule);
+    background:var(--paper-2);
+  }
+  .ledger > div{
+    padding:48px 36px;border-right:1px solid rgba(14,14,12,.15);position:relative;
+  }
+  .ledger > div:last-child{border-right:none;}
+  .ledger .num{
+    font-family:var(--serif);font-weight:300;font-size:88px;line-height:1;letter-spacing:-.04em;
+    font-variation-settings:"opsz" 144, "WONK" 1;
+  }
+  .ledger .num sup{font-size:32px;color:var(--red);font-weight:400;font-style:italic;vertical-align:top;line-height:1.5;margin-left:4px;}
+  .ledger .lab{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:14px;color:var(--ink-2);line-height:1.6;}
+  .ledger .tick{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--red);}
+
+  /* ---------- Calculator ---------- */
+  .calc-wrap{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid var(--rule);background:var(--paper);
+  }
+  .calc-form{padding:56px 56px;border-right:1px solid var(--rule);}
+  .calc-step{margin-bottom:36px;}
+  .calc-step:last-child{margin-bottom:0;}
+  .calc-step .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px;display:flex;justify-content:space-between;}
+  .calc-step .lbl span:last-child{color:var(--red);}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ink);}
+  .seg button{
+    background:transparent;border:none;border-right:1px solid var(--ink);
+    font-family:var(--serif);font-size:18px;font-weight:400;padding:18px 12px;cursor:pointer;
+    color:var(--ink);transition:all .2s;
+  }
+  .seg button:last-child{border-right:none;}
+  .seg button:hover{background:var(--paper-2);}
+  .seg button.active{background:var(--ink);color:var(--paper);}
+  .slider-row{display:flex;align-items:center;gap:18px;}
+  .slider-row input[type=range]{
+    flex:1;-webkit-appearance:none;appearance:none;height:1px;background:var(--ink);outline:none;
+  }
+  .slider-row input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:18px;height:18px;background:var(--red);border-radius:50%;cursor:pointer;border:2px solid var(--paper);
+  }
+  .slider-row input[type=range]::-moz-range-thumb{width:18px;height:18px;background:var(--red);border:2px solid var(--paper);border-radius:50%;cursor:pointer;}
+  .slider-val{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--red);min-width:60px;text-align:right;letter-spacing:-.02em;}
+  .calc-result{
+    background:var(--ink);color:var(--paper);
+    padding:56px;display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden;
+  }
+  .calc-result::before{
+    content:"الإمارات";position:absolute;top:30px;right:-40px;
+    font-family:var(--arabic);font-size:120px;color:var(--red);opacity:.08;
+    transform:rotate(-90deg);transform-origin:center;
+  }
+  .calc-result .stamp{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-2);opacity:.6;}
+  .calc-result .est-label{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:32px;color:var(--paper-2);opacity:.7;}
+  .calc-result .est-num{
+    font-family:var(--serif);font-weight:300;font-size:84px;letter-spacing:-.03em;line-height:1;margin-top:12px;
+    font-variation-settings:"opsz" 144;
+  }
+  .calc-result .est-num em{font-style:italic;color:var(--red);font-weight:400;}
+  .calc-result .est-range{font-family:var(--mono);font-size:11px;color:var(--paper-2);opacity:.7;margin-top:12px;letter-spacing:.1em;}
+  .calc-result .breakdown{margin-top:36px;border-top:1px solid rgba(244,239,230,.2);padding-top:24px;}
+  .breakdown-row{display:flex;justify-content:space-between;padding:10px 0;font-size:13px;border-bottom:1px dashed rgba(244,239,230,.15);}
+  .breakdown-row:last-child{border-bottom:none;}
+  .breakdown-row .v{font-family:var(--mono);}
+  .calc-result .cta-row{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap;}
+  .calc-result .btn{border-color:var(--paper);color:var(--paper);}
+  .calc-result .btn:hover{background:var(--paper);color:var(--ink);}
+  .calc-result .btn.primary{background:var(--red);border-color:var(--red);}
+  .calc-result .btn.primary:hover{background:var(--paper);border-color:var(--paper);color:var(--ink);}
+
+  /* ---------- Industries ---------- */
+  .industries{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+  .ind{
+    border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:36px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;cursor:pointer;transition:all .4s;overflow:hidden;
+  }
+  .ind:hover{background:var(--ink);color:var(--paper);}
+  .ind:hover .ind-num{color:var(--red);}
+  .ind-num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-2);transition:color .3s;}
+  .ind-name{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.05;letter-spacing:-.01em;}
+  .ind-name em{font-style:italic;}
+  .ind .ar{position:absolute;bottom:-20px;right:-10px;font-family:var(--arabic);font-size:80px;opacity:.06;transition:opacity .4s,color .4s;}
+  .ind:hover .ar{opacity:.15;color:var(--red);}
+
+  /* ---------- Quote ---------- */
+  .quote{
+    padding:160px 32px;text-align:center;background:var(--paper-2);
+    border-bottom:1px solid var(--rule);position:relative;
+  }
+  .quote .mark{font-family:var(--serif);font-size:200px;color:var(--red);line-height:.5;height:100px;font-style:italic;font-weight:400;}
+  .quote blockquote{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(32px,4.5vw,64px);line-height:1.1;letter-spacing:-.025em;
+    max-width:1100px;margin:0 auto;text-wrap:balance;
+    font-variation-settings:"opsz" 144,"SOFT" 50;
+  }
+  .quote blockquote em{color:var(--red);font-style:italic;font-weight:400;}
+  .quote cite{display:block;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:48px;color:var(--ink-2);}
+
+  /* ---------- Clients (logo wall) ---------- */
+  .clients{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+  .client{
+    border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    aspect-ratio:1.6/1;display:grid;place-items:center;
+    font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;color:var(--ink-2);
+    transition:all .3s;cursor:default;text-align:center;padding:16px;
+  }
+  .client:hover{background:var(--ink);color:var(--paper);}
+  .client small{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-style:normal;display:block;margin-top:6px;opacity:.5;}
+
+  /* ---------- Process timeline ---------- */
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--rule);}
+  .step{
+    padding:36px 28px;border-right:1px solid rgba(14,14,12,.2);position:relative;
+  }
+  .step:last-child{border-right:none;}
+  .step::before{
+    content:"";position:absolute;top:36px;left:28px;width:10px;height:10px;background:var(--red);border-radius:50%;
+  }
+  .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-2);margin-top:30px;}
+  .step h4{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-.01em;margin-top:8px;line-height:1.1;}
+  .step p{font-size:13px;line-height:1.55;color:var(--ink-2);margin-top:12px;}
+  .step .day{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-top:18px;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:0;border:1px solid var(--rule);background:var(--ink);color:var(--paper);
+  }
+  .contact-left{padding:64px 56px;border-right:1px solid rgba(244,239,230,.15);position:relative;overflow:hidden;}
+  .contact-left::before{
+    content:"اتصل";position:absolute;bottom:-30px;right:-30px;
+    font-family:var(--arabic);font-size:220px;color:var(--red);opacity:.1;line-height:1;
+  }
+  .contact-left h3{font-family:var(--serif);font-weight:300;font-size:64px;line-height:.95;letter-spacing:-.03em;}
+  .contact-left h3 em{color:var(--red);font-style:italic;}
+  .contact-detail{margin-top:36px;padding-top:24px;border-top:1px solid rgba(244,239,230,.18);}
+  .cd-row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;align-items:start;}
+  .cd-row .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-2);opacity:.6;padding-top:6px;}
+  .cd-row .v{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1.35;}
+  .cd-row .v small{font-family:var(--sans);font-size:13px;display:block;color:var(--paper-2);opacity:.7;margin-top:4px;line-height:1.45;}
+  .contact-right{padding:64px 56px;display:flex;flex-direction:column;gap:18px;}
+  .contact-right .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-2);opacity:.6;}
+  .contact-right input,.contact-right select,.contact-right textarea{
+    background:transparent;border:none;border-bottom:1px solid rgba(244,239,230,.3);
+    color:var(--paper);font-family:var(--serif);font-size:22px;padding:12px 0;outline:none;width:100%;
+    transition:border-color .3s;font-weight:400;
+  }
+  .contact-right input::placeholder,.contact-right textarea::placeholder{color:rgba(244,239,230,.4);font-style:italic;}
+  .contact-right input:focus,.contact-right select:focus,.contact-right textarea:focus{border-bottom-color:var(--red);}
+  .contact-right select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12'><polyline points='2,4 6,9 10,4' fill='none' stroke='%23F4EFE6' stroke-width='1.5'/></svg>");background-repeat:no-repeat;background-position:right 4px center;}
+  .contact-right select option{background:var(--ink);color:var(--paper);}
+  .contact-right textarea{resize:none;min-height:60px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:64px 32px 32px;background:var(--paper);}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid var(--rule);}
+  .foot-brand{font-family:var(--serif);font-size:48px;font-weight:300;letter-spacing:-.02em;line-height:1;}
+  .foot-brand em{color:var(--red);font-style:italic;}
+  .foot-tag{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink-2);margin-top:18px;max-width:340px;}
+  .foot-col h5{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-bottom:18px;}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .foot-col a{font-family:var(--serif);font-size:16px;}
+  .foot-col a:hover{color:var(--red);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:24px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);
+  }
+  .foot-bottom .links{display:flex;gap:24px;}
+
+  /* ---------- WhatsApp float ---------- */
+  .wa-float{
+    position:fixed;bottom:28px;right:28px;z-index:60;
+    background:var(--ink);color:var(--paper);
+    padding:14px 22px;display:flex;align-items:center;gap:12px;
+    border-radius:0;border:1px solid var(--ink);
+    font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;
+    cursor:pointer;transition:all .25s;box-shadow:6px 6px 0 var(--red);
+  }
+  .wa-float:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--red);}
+  .wa-float .ico{width:18px;height:18px;background:var(--red);border-radius:50%;display:grid;place-items:center;font-size:10px;color:var(--paper);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1100px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-left{border-right:none;border-bottom:1px solid var(--rule);padding:40px 0;}
+    .hero-right{padding:40px 0;}
+    .hero-meta{grid-template-columns:1fr;}
+    .ledger{grid-template-columns:repeat(2,1fr);}
+    .ledger > div:nth-child(2){border-right:none;}
+    .ledger > div:nth-child(-n+2){border-bottom:1px solid rgba(14,14,12,.15);}
+    .calc-wrap{grid-template-columns:1fr;}
+    .calc-form{border-right:none;border-bottom:1px solid var(--rule);}
+    .industries{grid-template-columns:repeat(2,1fr);}
+    .clients{grid-template-columns:repeat(3,1fr);}
+    .process{grid-template-columns:repeat(2,1fr);}
+    .step{border-bottom:1px solid rgba(14,14,12,.2);}
+    .contact-grid{grid-template-columns:1fr;}
+    .contact-left{border-right:none;border-bottom:1px solid rgba(244,239,230,.15);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .service{grid-template-columns:50px 1fr 50px;}
+    .service .svc-desc,.service .svc-tags{display:none;}
+    nav.primary{display:none;}
+  }
+  @media (max-width:640px){
+    section{padding:80px 20px;}
+    .hero{padding:0 20px;}
+    .util{padding:10px 20px;font-size:10px;}
+    .util .right .item:not(:last-child){display:none;}
+    .nav-inner{padding:14px 20px;gap:12px;}
+    .nav-cta .btn:not(.primary){display:none;}
+    .sec-head{grid-template-columns:1fr;gap:24px;}
+    .ledger{grid-template-columns:1fr;}
+    .ledger > div{border-right:none;border-bottom:1px solid rgba(14,14,12,.15);}
+    .industries,.clients{grid-template-columns:1fr 1fr;}
+    .process{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;gap:32px;}
+    .calc-form,.calc-result,.contact-left,.contact-right{padding:36px 24px;}
+    .svc-name{font-size:24px;}
+  }
+
+  /* Reveal animations — disabled, kept as no-op for content visibility */
+  .reveal{opacity:1;}
+</style>
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="util">
+  <div class="left">
+    <span class="pill"><span class="dot"></span>Dubai Office · Open 9:00 — 18:30 GST</span>
+  </div>
+  <div class="right">
+    <span class="item">EN <span style="opacity:.3;margin:0 6px;">/</span> <a href="#" style="opacity:.5;">عربي</a></span>
+    <a class="item" href="tel:+97142624023">+971 (04) 262 4023</a>
+    <a class="item" href="mailto:info@dmcdubai.com">info@dmcdubai.com</a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <img src="assets/dmc-logo.png" alt="Decision Management Consultants LLC" class="brand-logo" />
+    </a>
+    <nav class="primary">
+      <a href="#services">Services</a>
+      <a href="#calculator">Cost Calculator</a>
+      <a href="#industries">Industries</a>
+      <a href="#process">Process</a>
+      <a href="#about">Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="btn">Client Portal</button>
+      <button class="btn primary" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">
+        Get a Quote <span class="arrow">→</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="num">01 / Volume XXXV</span>
+        <span>Bulletin №&nbsp;<span id="bulletin-no">042</span></span>
+        <span>Dubai · UAE</span>
+      </div>
+      <h1>
+        Build a<br>
+        <em>company</em> in<br>
+        the <span class="strike">paperwork</span>&nbsp;city<br>
+        <em>without</em> the paperwork.
+      </h1>
+      <div class="hero-meta">
+        <div>
+          <p class="hero-lede">Decision Management Consultants has set up, structured, and quietly fixed companies across the UAE since 1990 — for founders who would rather build than file.</p>
+          <div class="hero-cta">
+            <button class="btn primary" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">
+              Estimate setup cost <span class="arrow">→</span>
+            </button>
+            <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Talk to a partner
+            </button>
+          </div>
+        </div>
+        <div class="hero-stamp">
+          <span class="big">35</span>
+          Years of<br>quiet excellence<br>1990 — 2025
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="spec">
+        <div class="k">Founded</div>
+        <div class="v">1990<small>Pre-internet, pre-VAT, pre-everyone-else.</small></div>
+      </div>
+      <div class="spec">
+        <div class="k">Clients</div>
+        <div class="v">900+<small>Active and historic across 7 industries.</small></div>
+      </div>
+      <div class="spec">
+        <div class="k">Office</div>
+        <div class="v">601, Hamid Bin Soughat Bldg<small>Salahuddin Road · Deira · Dubai</small></div>
+      </div>
+      <div class="spec">
+        <div class="k">Hours</div>
+        <div class="v">Mon — Fri<small>09:00 → 18:30 Gulf Standard Time</small></div>
+      </div>
+      <div class="spec">
+        <div class="k">Direct</div>
+        <div class="v">+971 4 262 4023<small>info@dmcdubai.com</small></div>
+      </div>
+      <div class="arabic-watermark">دبي</div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>
+      Mainland Setup <span class="star">✦</span>
+      Free Zone Formation <span class="star">✦</span>
+      Tax Advisory <span class="star">✦</span>
+      VAT &amp; Compliance <span class="star">✦</span>
+      Digital Marketing <span class="star">✦</span>
+      Trademark Registration <span class="star">✦</span>
+      Visa Services <span class="star">✦</span>
+      PRO Services <span class="star">✦</span>
+      Mainland Setup <span class="star">✦</span>
+      Free Zone Formation <span class="star">✦</span>
+      Tax Advisory <span class="star">✦</span>
+      VAT &amp; Compliance <span class="star">✦</span>
+      Digital Marketing <span class="star">✦</span>
+      Trademark Registration <span class="star">✦</span>
+      Visa Services <span class="star">✦</span>
+      PRO Services <span class="star">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- Services -->
+<section id="services">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">02 — Services</div>
+    </div>
+    <div>
+      <h2>Eight ways we<br>get you <em>operating</em>.</h2>
+      <p class="lead">No upsells, no surprise fees. We run a single, transparent engagement — formation, compliance, growth — coordinated by one partner who knows your file by name.</p>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="service reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-name"><em>Mainland</em> Company Formation</div>
+      <div class="svc-desc">Onshore licensing across DED jurisdictions — full UAE market access, government tenders, no agent required.</div>
+      <div class="svc-tags"><span class="svc-tag">DED</span><span class="svc-tag">Onshore</span><span class="svc-tag">100% Owner</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">02</div>
+      <div class="svc-name"><em>Free Zone</em> Setup</div>
+      <div class="svc-desc">DMCC, IFZA, Meydan, JAFZA, RAKEZ — placement matched to your activity, visa count, and capital plan.</div>
+      <div class="svc-tags"><span class="svc-tag">DMCC</span><span class="svc-tag">IFZA</span><span class="svc-tag">JAFZA</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">03</div>
+      <div class="svc-name">Offshore <em>Structures</em></div>
+      <div class="svc-desc">Asset holding, IP vehicles, and international trade structures with confidentiality and zero corporate tax exposure.</div>
+      <div class="svc-tags"><span class="svc-tag">RAK ICC</span><span class="svc-tag">JAFZA Offshore</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">04</div>
+      <div class="svc-name">Tax <em>Advisory</em> &amp; VAT</div>
+      <div class="svc-desc">Corporate tax registration, VAT filing, free-zone qualifying-income reviews, and FTA representation.</div>
+      <div class="svc-tags"><span class="svc-tag">FTA</span><span class="svc-tag">9% CT</span><span class="svc-tag">VAT 5%</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">05</div>
+      <div class="svc-name">Accounting &amp; <em>Bookkeeping</em></div>
+      <div class="svc-desc">Monthly close, IFRS-compliant statements, and payroll — outsourced to our sister practice, Mideast Accounting.</div>
+      <div class="svc-tags"><span class="svc-tag">IFRS</span><span class="svc-tag">Payroll</span><span class="svc-tag">WPS</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">06</div>
+      <div class="svc-name">PRO &amp; <em>Visa</em> Services</div>
+      <div class="svc-desc">Investor visas, employee residency, family sponsorship, Emirates ID — handled end to end by registered tasheel agents.</div>
+      <div class="svc-tags"><span class="svc-tag">GDRFA</span><span class="svc-tag">MOHRE</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">07</div>
+      <div class="svc-name">Trademark <em>Registration</em></div>
+      <div class="svc-desc">UAE Ministry of Economy filings, Madrid Protocol applications, and 10-year mark protection.</div>
+      <div class="svc-tags"><span class="svc-tag">MoE</span><span class="svc-tag">Madrid</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="service reveal">
+      <div class="svc-num">08</div>
+      <div class="svc-name">Digital <em>Marketing</em></div>
+      <div class="svc-desc">SEO, performance ads, and conversion design for UAE-licensed businesses ready to scale beyond formation.</div>
+      <div class="svc-tags"><span class="svc-tag">SEO</span><span class="svc-tag">Meta Ads</span><span class="svc-tag">Web</span></div>
+      <div class="svc-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats ledger -->
+<section style="padding:120px 32px;">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">03 — Receipts</div>
+    </div>
+    <div>
+      <h2>Thirty-five years<br>on a <em>single page</em>.</h2>
+      <p class="lead">A consultancy is the sum of files closed, deadlines met, and clients who returned. Here are ours, plainly stated.</p>
+    </div>
+  </div>
+
+  <div class="ledger reveal">
+    <div>
+      <div class="tick">FY 2025</div>
+      <div class="num" data-count="900">0<sup>+</sup></div>
+      <div class="lab">Active &amp; historic<br>clients served</div>
+    </div>
+    <div>
+      <div class="tick">SINCE 1990</div>
+      <div class="num" data-count="35">0<sup>+</sup></div>
+      <div class="lab">Years of UAE<br>licensing experience</div>
+    </div>
+    <div>
+      <div class="tick">CROSS-SECTOR</div>
+      <div class="num" data-count="7">0<sup>+</sup></div>
+      <div class="lab">Industries served<br>from FMCG to telecom</div>
+    </div>
+    <div>
+      <div class="tick">VERIFIED</div>
+      <div class="num" data-count="48">0<sup>★</sup></div>
+      <div class="lab">Google rating /5<br>across 200+ reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator -->
+<section id="calculator" style="background:var(--paper-2);">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">04 — Instant Estimate</div>
+    </div>
+    <div>
+      <h2>The cost of a<br>UAE company,<br><em>before</em> we meet.</h2>
+      <p class="lead">Most consultants make you book a call to learn the price. We don't. Pick your jurisdiction, visa count, and office plan — get a real estimate in seconds.</p>
+    </div>
+  </div>
+
+  <div class="calc-wrap reveal">
+    <div class="calc-form">
+
+      <div class="calc-step">
+        <div class="lbl"><span>Jurisdiction</span><span>Step 01 / 04</span></div>
+        <div class="seg" data-key="jurisdiction">
+          <button class="active" data-val="freezone" data-cost="12500">Free Zone</button>
+          <button data-val="mainland" data-cost="18500">Mainland</button>
+          <button data-val="offshore" data-cost="9500">Offshore</button>
+        </div>
+      </div>
+
+      <div class="calc-step">
+        <div class="lbl"><span>Activity</span><span>Step 02 / 04</span></div>
+        <div class="seg" data-key="activity">
+          <button class="active" data-val="trading" data-cost="0">Trading</button>
+          <button data-val="services" data-cost="500">Professional</button>
+          <button data-val="industrial" data-cost="3500">Industrial</button>
+        </div>
+      </div>
+
+      <div class="calc-step">
+        <div class="lbl"><span>Visas required</span><span class="visa-count">2</span></div>
+        <div class="slider-row">
+          <input type="range" min="0" max="10" value="2" id="visa-slider" />
+          <div class="slider-val" id="visa-val">2</div>
+        </div>
+      </div>
+
+      <div class="calc-step">
+        <div class="lbl"><span>Office plan</span><span>Step 04 / 04</span></div>
+        <div class="seg" data-key="office">
+          <button class="active" data-val="flexi" data-cost="0">Flexi-desk</button>
+          <button data-val="dedicated" data-cost="14000">Dedicated</button>
+          <button data-val="warehouse" data-cost="38000">Warehouse</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="calc-result">
+      <div>
+        <div class="stamp">— Estimate №&nbsp;<span id="quote-no">DMC-0000</span></div>
+        <div class="est-label">Total all-in cost</div>
+        <div class="est-num">AED <em id="est-num">22,800</em></div>
+        <div class="est-range" id="est-range">Range: AED 19,400 – 26,300 · Year-one all-in</div>
+
+        <div class="breakdown">
+          <div class="breakdown-row"><span>Government &amp; license fees</span><span class="v" id="b-license">AED 12,500</span></div>
+          <div class="breakdown-row"><span>Activity surcharge</span><span class="v" id="b-activity">AED 0</span></div>
+          <div class="breakdown-row"><span>Visa block (× 2)</span><span class="v" id="b-visa">AED 6,300</span></div>
+          <div class="breakdown-row"><span>Office / address</span><span class="v" id="b-office">AED 0</span></div>
+          <div class="breakdown-row"><span>DMC advisory fee</span><span class="v" id="b-dmc">AED 4,000</span></div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <button class="btn primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Lock this quote <span class="arrow">→</span>
+        </button>
+        <button class="btn" onclick="alert('A PDF estimate will be emailed once you fill the form.')">Email me the PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industries -->
+<section id="industries">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">05 — Industries</div>
+    </div>
+    <div>
+      <h2>Sectors we know<br>by <em>second nature</em>.</h2>
+      <p class="lead">Where we have set up dozens — sometimes hundreds — of companies, and where our partners hold direct relationships with regulators and free-zone authorities.</p>
+    </div>
+  </div>
+
+  <div class="industries reveal">
+    <div class="ind">
+      <div class="ind-num">01 / Hospitality</div>
+      <div class="ind-name">Tourism, Hospitality<br>&amp; <em>Leisure</em></div>
+      <div class="ar">سياحة</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">02 / Manufacturing</div>
+      <div class="ind-name"><em>Manufacturing</em><br>&amp; Industrial</div>
+      <div class="ar">صناعة</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">03 / Consumer</div>
+      <div class="ind-name">Consumer<br><em>Business</em></div>
+      <div class="ar">تجارة</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">04 / Tech</div>
+      <div class="ind-name">Technology, Media<br>&amp; <em>Telecom</em></div>
+      <div class="ar">تقنية</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">05 / IT</div>
+      <div class="ind-name">IT Software<br>&amp; <em>Hardware</em></div>
+      <div class="ar">برمجيات</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">06 / Property</div>
+      <div class="ind-name">Real Estate<br>&amp; <em>Construction</em></div>
+      <div class="ar">عقار</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">07 / FMCG</div>
+      <div class="ind-name">Retail, Distribution<br>&amp; <em>FMCG</em></div>
+      <div class="ar">توزيع</div>
+    </div>
+    <div class="ind">
+      <div class="ind-num">08 / Chemicals</div>
+      <div class="ind-name">Chemicals<br>&amp; <em>Trading</em></div>
+      <div class="ar">كيمياء</div>
+    </div>
+  </div>
+</section>
+
+<!-- Process timeline -->
+<section id="process" style="background:var(--paper-2);">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">06 — How it goes</div>
+    </div>
+    <div>
+      <h2>From first call<br>to first <em>invoice</em>.</h2>
+      <p class="lead">A typical mainland or free-zone setup runs 7 to 21 working days. Here is what each of those days actually look like — no vague "we handle everything."</p>
+    </div>
+  </div>
+
+  <div class="process reveal">
+    <div class="step">
+      <div class="n">Step 01</div>
+      <h4>Discovery call</h4>
+      <p>30-minute partner call — activity, structure, ownership, and tax exposure mapped on a single page.</p>
+      <div class="day">Day 0</div>
+    </div>
+    <div class="step">
+      <div class="n">Step 02</div>
+      <h4>Jurisdiction lock</h4>
+      <p>Free zone vs mainland decision, pricing locked, capital and visa quota confirmed.</p>
+      <div class="day">Day 1 — 2</div>
+    </div>
+    <div class="step">
+      <div class="n">Step 03</div>
+      <h4>Filings &amp; MOA</h4>
+      <p>Trade name reservation, initial approval, MOA drafting, notarisation. We sign on your behalf if you're abroad.</p>
+      <div class="day">Day 3 — 8</div>
+    </div>
+    <div class="step">
+      <div class="n">Step 04</div>
+      <h4>License &amp; bank</h4>
+      <p>License issuance, Establishment Card, corporate bank account introduction with 3 partner banks.</p>
+      <div class="day">Day 9 — 16</div>
+    </div>
+    <div class="step">
+      <div class="n">Step 05</div>
+      <h4>Visa &amp; live</h4>
+      <p>Investor visa, Emirates ID, VAT &amp; CT registration, payroll setup. You sign your first invoice.</p>
+      <div class="day">Day 17 — 21</div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<div class="quote">
+  <div class="mark">"</div>
+  <blockquote>
+    Each client is a unique business entity who must be offered not only professional services, but also <em>innovative management solutions</em>.
+  </blockquote>
+  <cite>— DMC Founding Philosophy, 1990</cite>
+</div>
+
+<!-- Clients -->
+<section id="about">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">07 — Global Clientele</div>
+    </div>
+    <div>
+      <h2>The people whose<br>files <em>we keep</em>.</h2>
+      <p class="lead">A representative cross-section. We don't publish a full client list — most of our work happens before our clients tell anyone about it.</p>
+    </div>
+  </div>
+
+  <div class="clients reveal">
+    <div class="client">Axess<small>Tech / 2014</small></div>
+    <div class="client">classic<i>trip</i><small>Travel / 2017</small></div>
+    <div class="client">Expolanka<small>Logistics / 2003</small></div>
+    <div class="client">Gepach<small>Pharma / 2011</small></div>
+    <div class="client">Inala<small>Trading / 2019</small></div>
+    <div class="client">ITX 360<small>IT / 2015</small></div>
+    <div class="client">Martindow<small>Industrial / 2008</small></div>
+    <div class="client">nVent<small>Mfg. / 2012</small></div>
+    <div class="client">Peri Logistics<small>Freight / 2016</small></div>
+    <div class="client">Profine<small>FMCG / 2010</small></div>
+    <div class="client">RA Engineering<small>Construction / 2009</small></div>
+    <div class="client">Tropikal<small>F&amp;B / 2018</small></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="padding:120px 32px;">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-num">08 — Get in touch</div>
+    </div>
+    <div>
+      <h2>Tell us what<br>you're <em>building</em>.</h2>
+      <p class="lead">A reply within one working day. If you're in Dubai, walk into our office on Salahuddin Road — coffee is on us.</p>
+    </div>
+  </div>
+
+  <div class="contact-grid reveal">
+    <div class="contact-left">
+      <img src="assets/dmc-logo.png" alt="DMC LLC" style="height:64px;width:auto;display:block;margin-bottom:32px;filter:brightness(0) invert(1);" />
+      <h3>Decision Mgmt.<br>Consultants <em>L.L.C</em></h3>
+      <div class="contact-detail">
+        <div class="cd-row">
+          <div class="k">Office</div>
+          <div class="v">601, Hamid Bin Soughat Building<small>Opposite Crowne Plaza Hotel · Salahuddin Road · Deira · Dubai · PO Box 82961 · United Arab Emirates</small></div>
+        </div>
+        <div class="cd-row">
+          <div class="k">Direct</div>
+          <div class="v">+971 (04) 262 4023<small>Mon — Fri · 09:00 → 18:30 GST</small></div>
+        </div>
+        <div class="cd-row">
+          <div class="k">Email</div>
+          <div class="v">info@dmcdubai.com<small>Replies within 1 working day, usually faster.</small></div>
+        </div>
+        <div class="cd-row">
+          <div class="k">Social</div>
+          <div class="v" style="font-size:14px;line-height:1.8;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;">
+            LinkedIn · Instagram<br>X / Twitter · Facebook
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div>
+        <div class="lbl">Your name</div>
+        <input type="text" placeholder="Sara Al Hashimi" />
+      </div>
+      <div class="form-row">
+        <div>
+          <div class="lbl">Email</div>
+          <input type="email" placeholder="sara@company.ae" />
+        </div>
+        <div>
+          <div class="lbl">Phone</div>
+          <input type="tel" placeholder="+971 50 ..." />
+        </div>
+      </div>
+      <div>
+        <div class="lbl">What can we help with?</div>
+        <select>
+          <option>Mainland company formation</option>
+          <option>Free zone setup</option>
+          <option>Offshore structure</option>
+          <option>Tax / VAT advisory</option>
+          <option>PRO &amp; visa services</option>
+          <option>Trademark registration</option>
+          <option>Digital marketing</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div>
+        <div class="lbl">Tell us a little more</div>
+        <textarea placeholder="A sentence or two — we'll take it from there."></textarea>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="btn primary" style="width:100%;justify-content:center;padding:18px;font-size:14px;">
+          Send your request <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <img src="assets/dmc-logo.png" alt="Decision Management Consultants LLC" style="height:64px;width:auto;display:block;margin-bottom:20px;" />
+      <p class="foot-tag">Decision Management Consultants — a Dubai consultancy founded in 1990 on a single idea: every client is a unique business entity, and deserves to be treated like one.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Mainland</a></li>
+        <li><a href="#services">Free Zone</a></li>
+        <li><a href="#services">Tax &amp; VAT</a></li>
+        <li><a href="#services">PRO Services</a></li>
+        <li><a href="#services">Trademark</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="#calculator">Cost Calculator</a></li>
+        <li><a href="#">Trade Name Check</a></li>
+        <li><a href="#">Business Plan AI</a></li>
+        <li><a href="#">Client Portal</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Network</h5>
+      <ul>
+        <li><a href="#">Mideast Accounting</a></li>
+        <li><a href="#">Fastlink Outsourcing</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 1990 — 2025 Decision Management Consultants L.L.C · All rights reserved</div>
+    <div class="links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/97142624023" class="wa-float">
+  <span class="ico">↗</span>
+  Chat on WhatsApp
+</a>
+
+<script>
+  /* ---------- Calculator ---------- */
+  const state = {
+    jurisdiction: { val: 'freezone', cost: 12500 },
+    activity:     { val: 'trading',  cost: 0 },
+    visas: 2,
+    office:       { val: 'flexi',    cost: 0 },
+  };
+
+  function fmt(n){ return 'AED ' + n.toLocaleString('en-AE'); }
+
+  function recalc(){
+    const license = state.jurisdiction.cost;
+    const activity = state.activity.cost;
+    const visaUnit = state.jurisdiction.val === 'mainland' ? 4200 : 3150;
+    const visa = state.visas * visaUnit;
+    const office = state.office.cost;
+    const dmc = 4000;
+    const total = license + activity + visa + office + dmc;
+    const min = Math.round(total * 0.85);
+    const max = Math.round(total * 1.15);
+
+    document.getElementById('b-license').textContent  = fmt(license);
+    document.getElementById('b-activity').textContent = fmt(activity);
+    document.getElementById('b-visa').textContent     = visa ? fmt(visa) + ' × ' + state.visas : 'AED 0';
+    document.getElementById('b-office').textContent   = fmt(office);
+    document.getElementById('b-dmc').textContent      = fmt(dmc);
+    animateNum('est-num', total);
+    document.getElementById('est-range').textContent  = 'Range: ' + fmt(min) + ' – ' + fmt(max) + ' · Year-one all-in';
+  }
+
+  function animateNum(id, target){
+    const el = document.getElementById(id);
+    const start = parseInt((el.textContent||'0').replace(/[^0-9]/g,''),10) || 0;
+    const dur = 600;
+    const t0 = performance.now();
+    function step(t){
+      const k = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - k, 3);
+      const v = Math.round(start + (target - start) * e);
+      el.textContent = v.toLocaleString('en-AE');
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('.seg').forEach(seg => {
+    const key = seg.dataset.key;
+    seg.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        seg.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state[key] = { val: btn.dataset.val, cost: parseInt(btn.dataset.cost,10) };
+        recalc();
+      });
+    });
+  });
+  const slider = document.getElementById('visa-slider');
+  slider.addEventListener('input', e => {
+    state.visas = parseInt(e.target.value,10);
+    document.getElementById('visa-val').textContent = state.visas;
+    document.querySelector('.visa-count').textContent = state.visas;
+    recalc();
+  });
+  recalc();
+
+  // Auto-print after fonts + layout settle
+  window.addEventListener('load', () => {
+    const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    ready.then(() => setTimeout(() => window.print(), 700));
+  });
+
+  /* Generate quote no */
+  document.getElementById('quote-no').textContent =
+    'DMC-' + String(Date.now()).slice(-4) + '-' + Math.floor(Math.random()*900+100);
+
+  /* Bulletin number — day of year */
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const day = Math.floor((now - start) / 86400000);
+  document.getElementById('bulletin-no').textContent = String(day).padStart(3,'0');
+
+  /* Reveal on scroll — opt in via .js, with fallback */
+  document.documentElement.classList.add('js');
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+  reveals.forEach(el => io.observe(el));
+  // Safety net: any reveal still hidden after 1.5s gets shown
+  setTimeout(() => {
+    reveals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight + 200) el.classList.add('in');
+    });
+  }, 800);
+  // And on any scroll, ensure visible ones get marked
+  window.addEventListener('scroll', () => {
+    reveals.forEach(el => {
+      if (el.classList.contains('in')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.95) el.classList.add('in');
+    });
+  }, { passive: true });
+
+  /* Animate stat numbers when ledger appears */
+  const statsIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll('.num[data-count]').forEach(n => {
+        const target = parseInt(n.dataset.count,10);
+        const sup = n.querySelector('sup')?.outerHTML || '';
+        let v = 0; const t0 = performance.now(); const dur = 1400;
+        function step(t){
+          const k = Math.min(1,(t-t0)/dur);
+          const eased = 1 - Math.pow(1-k,3);
+          const cur = Math.round(target * eased);
+          const display = (target === 48) ? (cur/10).toFixed(1) : cur;
+          n.innerHTML = display + sup;
+          if (k<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+      statsIO.unobserve(e.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.ledger').forEach(el => statsIO.observe(el));
+</script>
+
+</body>
+</html>
