@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://azizsaif.com/zainab/portrait.jpg" />
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Zainab Ghadiyali","givenName":"Zainab","familyName":"Ghadiyali","jobTitle":"Founder & CEO, Eat Cook Joy","description":"Founder of Eat Cook Joy and Stackbirds. Co-founder of Wogrammer. Former product & engineering leader at Airbnb and Facebook.","sameAs":["https://www.linkedin.com/in/zainabg","https://clay.earth/profile/zainab-g","https://about.me/breaking-stereotypes-consulting","https://www.eatcookjoy.com/chefs/zainab-ghadiyali","https://www.crunchbase.com/person/zainab-ghadiyali","https://www.producthunt.com/@zainabg","https://twitter.com/zainabg"]}
+{"@context":"https://schema.org","@type":"Person","name":"Zainab Ghadiyali","givenName":"Zainab","familyName":"Ghadiyali","jobTitle":"Founder & CEO, Eat Cook Joy","description":"Founder of Eat Cook Joy and Stackbirds. Co-founder of Wogrammer. Former product & engineering leader at Airbnb and Facebook.","sameAs":["https://www.linkedin.com/in/zainabg","https://clay.earth/profile/zainab-g","https://about.me/breaking-stereotypes-consulting","https://www.eatcookjoy.com/","https://www.crunchbase.com/person/zainab-ghadiyali","https://www.producthunt.com/@zainabg","https://twitter.com/zainabg"]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -167,6 +167,13 @@
   @media (max-width:780px){.tile.feat{grid-column:span 2;aspect-ratio:4/5}}
   @media (max-width:500px){.tile.feat{grid-column:span 1}}
   .tile.feat h3{font-size:clamp(28px,3vw,42px)}
+  /* Tile center icon */
+  .tile-icon{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:118px;height:118px;z-index:2;color:#fff;opacity:.22;pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+  .tile:hover .tile-icon{opacity:.32;transform:translate(-50%,-50%) scale(1.06)}
+  .tile-icon svg{width:100%;height:100%;display:block}
+  .tile.feat .tile-icon{width:160px;height:160px;left:auto;right:36px;top:50%;transform:translateY(-50%);opacity:.28}
+  .tile.feat:hover .tile-icon{opacity:.4;transform:translateY(-50%) scale(1.05)}
+  @media (max-width:500px){.tile-icon{width:90px;height:90px}.tile.feat .tile-icon{width:120px;height:120px;right:24px}}
 
   /* ===== Long-form sections ===== */
   .prose{padding:clamp(60px,8vw,96px) 24px}
@@ -252,12 +259,18 @@
   .venture.flip .v-inner{grid-template-columns:1fr 1fr;direction:rtl}
   .venture.flip .v-inner > *{direction:ltr}
   @media (max-width:860px){.v-inner,.venture.flip .v-inner{grid-template-columns:1fr;gap:36px;direction:ltr}}
-  .v-art{position:relative;aspect-ratio:5/6;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,var(--coral),var(--coral-deep));box-shadow:var(--shadow-deep);display:flex;align-items:center;justify-content:center;padding:36px;text-align:center}
+  .v-art{position:relative;aspect-ratio:5/6;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,var(--coral),var(--coral-deep));box-shadow:var(--shadow-deep);display:flex;align-items:flex-end;padding:32px;text-align:left;isolation:isolate}
   .v-art.teal{background:linear-gradient(135deg,var(--teal-light),var(--teal-deep))}
-  .v-art::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.22);border-radius:4px;pointer-events:none}
-  .v-art .v-mark{font-family:'Fraunces',serif;font-size:clamp(48px,6vw,86px);color:#fff;font-weight:600;line-height:1;letter-spacing:-.02em}
-  .v-art .v-tag{position:absolute;top:24px;left:24px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.85);z-index:2}
-  .v-art .v-stamp{position:absolute;bottom:24px;right:24px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .v-art-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .v-art:hover .v-art-bg{transform:scale(1.04)}
+  .v-art::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.22);border-radius:4px;pointer-events:none;z-index:3}
+  .v-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,59,64,0) 0%,rgba(13,59,64,.10) 45%,rgba(6,37,40,.55) 78%,rgba(6,37,40,.92) 100%);z-index:1;pointer-events:none}
+  .v-art.coral-tint::after{background:linear-gradient(180deg,rgba(232,93,78,0) 0%,rgba(191,59,44,.15) 45%,rgba(143,26,16,.65) 78%,rgba(96,12,4,.94) 100%)}
+  .v-art > *{position:relative;z-index:2}
+  .v-art .v-mark{font-family:'Fraunces',serif;font-size:clamp(38px,5vw,64px);color:#fff;font-weight:600;line-height:1;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.5);margin:0 0 6px}
+  .v-art .v-domain{font-family:'Inter',sans-serif;font-size:13.5px;color:rgba(255,255,255,.85);font-weight:500;letter-spacing:.02em;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+  .v-art .v-tag{position:absolute;top:24px;left:24px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff;z-index:2;background:rgba(6,37,40,.55);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
+  .v-art .v-stamp{position:absolute;top:24px;right:24px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#fff;z-index:2;background:rgba(6,37,40,.55);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
   .v-body h2{margin-bottom:14px}
   .v-body p{font-size:16px;color:#2c2f37;line-height:1.75;margin:0 0 16px}
   .v-body p b{color:var(--teal-deep);font-weight:600}
@@ -427,6 +440,14 @@
     <a class="tile feat gradient-mix" href="#about">
       <span class="t-kicker">Chapter 01 · Biography</span>
       <h3>The Curiosity-Driven <em>Career</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- compass / curiosity -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="32" r="26"/><circle cx="32" cy="32" r="3" fill="currentColor"/>
+          <path d="M32 10v6M32 48v6M10 32h6M48 32h6"/>
+          <path d="M40 24l-6 14-14 6 6-14z" fill="currentColor" opacity=".5"/>
+        </svg>
+      </span>
       <span class="t-sub">A portrait in ignorance, persistence &amp; reinvention</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -434,6 +455,17 @@
     <a class="tile gradient-coral" href="#career">
       <span class="t-kicker">Chapter 02</span>
       <h3>The <em>Journey</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- timeline / route -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 50c0-10 8-12 18-12s18-2 18-12"/>
+          <circle cx="14" cy="50" r="4" fill="currentColor"/>
+          <circle cx="32" cy="38" r="4" fill="currentColor"/>
+          <circle cx="50" cy="26" r="4" fill="currentColor"/>
+          <path d="M50 14v-2M14 14v-2" opacity=".5"/>
+          <path d="M44 18l6 8 6-8" opacity=".7"/>
+        </svg>
+      </span>
       <span class="t-sub">Madison → Facebook → Airbnb → Founder</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -441,6 +473,15 @@
     <a class="tile gradient-teal" href="#article">
       <span class="t-kicker">Chapter 03</span>
       <h3>First Round <em>Review</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- magazine / quote -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="12" y="10" width="40" height="44" rx="2"/>
+          <path d="M22 24c-2 0-4 2-4 4s2 4 4 4M30 24c-2 0-4 2-4 4s2 4 4 4" opacity=".7"/>
+          <path d="M22 32v4M30 32v4" opacity=".7"/>
+          <path d="M18 44h28M18 48h20" opacity=".5"/>
+        </svg>
+      </span>
       <span class="t-sub">Designing a curiosity-driven career</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -448,6 +489,14 @@
     <a class="tile gradient-gold" href="#videos">
       <span class="t-kicker">Chapter 04</span>
       <h3>Videos &amp; <em>Talks</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- play in monitor -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="14" width="48" height="32" rx="3"/>
+          <path d="M22 56h20M32 46v10" opacity=".7"/>
+          <path d="M28 22l12 8-12 8z" fill="currentColor"/>
+        </svg>
+      </span>
       <span class="t-sub">WARF · YouTube · Inside Outside</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -455,6 +504,15 @@
     <a class="tile gradient-coral" href="#podcasts">
       <span class="t-kicker">Chapter 05</span>
       <h3>Podcasts &amp; <em>Audio</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- microphone -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="26" y="10" width="12" height="26" rx="6" fill="currentColor" opacity=".25"/>
+          <rect x="26" y="10" width="12" height="26" rx="6"/>
+          <path d="M18 30v2a14 14 0 0028 0v-2"/>
+          <path d="M32 46v8M24 54h16"/>
+        </svg>
+      </span>
       <span class="t-sub">Inside Outside Innovation Ep.191</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -462,6 +520,14 @@
     <a class="tile gradient-teal" href="#reading">
       <span class="t-kicker">Chapter 06</span>
       <h3>What She's <em>Reading</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- open book -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 18v32"/>
+          <path d="M8 14c8 0 16 2 24 6 8-4 16-6 24-6v36c-8 0-16 2-24 6-8-4-16-6-24-6z" fill="currentColor" opacity=".18"/>
+          <path d="M8 14c8 0 16 2 24 6 8-4 16-6 24-6v36c-8 0-16 2-24 6-8-4-16-6-24-6z"/>
+        </svg>
+      </span>
       <span class="t-sub">HBR · Spark · Yo Soy Betty, La Fea</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -469,6 +535,14 @@
     <a class="tile gradient-gold" href="#wogrammer">
       <span class="t-kicker">Chapter 07</span>
       <h3>Wogrammer <em>Story</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- code brackets + person/community -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="20" r="8"/>
+          <path d="M16 50c0-8 7-14 16-14s16 6 16 14"/>
+          <path d="M10 32l-4 4 4 4M54 32l4 4-4 4" opacity=".7"/>
+        </svg>
+      </span>
       <span class="t-sub">200 women engineers · 1 movement</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -476,6 +550,15 @@
     <a class="tile gradient-mix" href="#eatcookjoy">
       <span class="t-kicker">Chapter 08</span>
       <h3>Eat Cook <em>Joy</em></h3>
+      <span class="tile-icon" aria-hidden="true">
+        <!-- chef hat -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 36c-4-2-6-6-6-10a10 10 0 0114-9 12 12 0 0124 0 10 10 0 0114 9c0 4-2 8-6 10v8H16z" fill="currentColor" opacity=".22"/>
+          <path d="M16 36c-4-2-6-6-6-10a10 10 0 0114-9 12 12 0 0124 0 10 10 0 0114 9c0 4-2 8-6 10v8H16z"/>
+          <path d="M16 44h32M22 36v8M32 36v8M42 36v8" opacity=".7"/>
+          <path d="M16 50h32v4H16z" fill="currentColor" opacity=".25"/>
+        </svg>
+      </span>
       <span class="t-sub">Personal chefs &amp; AI agents · Austin</span>
       <span class="t-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></span>
     </a>
@@ -658,12 +741,12 @@
 
     <div class="v-card">
       <div class="v-frame">
-        <iframe src="https://www.youtube.com/embed?listType=search&list=%22Zainab+Ghadiyali%22" title="More Zainab Ghadiyali talks on YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/yuN0WSsWN_A" title="WARF Innovation Roadmap · Zainab Ghadiyali · Lessons in Entrepreneurship (Sept 20, 2018)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="v-meta">
-        <span class="label">YouTube Search · Zainab Ghadiyali</span>
-        <h3>More Talks &amp; Panels</h3>
-        <p>An auto-curated playlist of every public talk, conference panel and interview that mentions her on YouTube.</p>
+        <span class="label">WARF · Innovation Roadmap · Sept 20, 2018</span>
+        <h3>Lessons in Entrepreneurship</h3>
+        <p>Zainab's keynote at the Wisconsin Alumni Research Foundation Innovation Roadmap series — speaking as Co-founder of Wogrammer and Product Manager at Airbnb.</p>
       </div>
     </div>
   </div>
@@ -762,11 +845,15 @@
 <!-- ============ WOGRAMMER VENTURE ============ -->
 <section class="venture" id="wogrammer">
   <div class="v-inner">
-    <div class="v-art teal">
+    <a class="v-art teal" href="https://web.archive.org/web/2019/https://wogrammer.org/" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
+      <img class="v-art-bg" src="./sites/wogrammer.png" alt="Wogrammer.org — archived snapshot via the Wayback Machine" loading="lazy"/>
       <span class="v-tag">2015 — Acquired</span>
-      <div class="v-mark">Wogrammer</div>
-      <span class="v-stamp">200+ profiles · global reach</span>
-    </div>
+      <span class="v-stamp">Wayback · 2019</span>
+      <div>
+        <div class="v-mark">Wogrammer</div>
+        <div class="v-domain">wogrammer.org · now part of AnitaB.org</div>
+      </div>
+    </a>
     <div class="v-body">
       <div class="kicker">Venture · Co-founded with Erin Summers</div>
       <h2>Wogrammer — <em>making the makers visible.</em></h2>
@@ -774,11 +861,11 @@
         Wogrammer started as a side project at Facebook in 2015 and grew into one of the most cited journalistic projects about women in engineering. Instead of profiling the same handful of high-profile leaders, Zainab and Erin Summers went deep — interviewing more than <b>200 women engineers</b> about the actual technical work they do.
       </p>
       <p>
-        The project was named to <b>Foreign Policy's 2015 Global Thinkers</b>, profiled by <b>Engineering at Meta</b>, and eventually <b>acquired by AnitaB.org</b>, where it continues today.
+        The project was named to <b>Foreign Policy's 2015 Global Thinkers</b>, profiled by <b>Engineering at Meta</b>, and eventually <b>acquired by AnitaB.org</b>, where it continues today. The original wogrammer.org has been retired — the snapshot above is from the Internet Archive.
       </p>
       <div class="v-cta">
-        <a class="btn btn-primary" href="https://www.wogrammer.org" target="_blank" rel="noopener">Visit Wogrammer ↗</a>
-        <a class="btn btn-ghost" href="https://anitab.org/press-release/anitab-org-acquires-wogrammer/" target="_blank" rel="noopener">Acquisition Announcement</a>
+        <a class="btn btn-primary" href="https://web.archive.org/web/2019/https://wogrammer.org/" target="_blank" rel="noopener">Open Archive Snapshot ↗</a>
+        <a class="btn btn-ghost" href="https://anitab.org/" target="_blank" rel="noopener">Visit AnitaB.org</a>
       </div>
     </div>
   </div>
@@ -787,11 +874,15 @@
 <!-- ============ EAT COOK JOY VENTURE ============ -->
 <section class="venture flip alt" id="eatcookjoy">
   <div class="v-inner">
-    <div class="v-art">
+    <a class="v-art coral-tint" href="https://www.eatcookjoy.com" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
+      <img class="v-art-bg" src="./sites/eatcookjoy.png" alt="eatcookjoy.com — live homepage" loading="lazy"/>
       <span class="v-tag">2022 — Present</span>
-      <div class="v-mark">Eat Cook<br/>Joy</div>
-      <span class="v-stamp">Austin, TX · personal chefs</span>
-    </div>
+      <span class="v-stamp">Live · Austin, TX</span>
+      <div>
+        <div class="v-mark">Eat Cook Joy</div>
+        <div class="v-domain">eatcookjoy.com · personal chefs in your kitchen</div>
+      </div>
+    </a>
     <div class="v-body">
       <div class="kicker">Venture · Founder &amp; CEO</div>
       <h2>Eat Cook Joy — <em>chefs in the kitchen, joy at the table.</em></h2>
@@ -802,8 +893,8 @@
         Named one of <b>Austin Inno's "Startups to Watch"</b> in 2025, profiled across local press, and increasingly the case study being cited in conversations about <b>AI-augmented service businesses</b>.
       </p>
       <div class="v-cta">
-        <a class="btn btn-primary" href="https://www.eatcookjoy.com" target="_blank" rel="noopener">eatcookjoy.com ↗</a>
-        <a class="btn btn-ghost" href="https://www.eatcookjoy.com/chefs/zainab-ghadiyali" target="_blank" rel="noopener">Founder Profile</a>
+        <a class="btn btn-primary" href="https://www.eatcookjoy.com" target="_blank" rel="noopener">Visit eatcookjoy.com ↗</a>
+        <a class="btn btn-ghost" href="https://www.bizjournals.com/austin/inno/stories/inno-insights/2025/02/28/austin-startups-to-watch-eat-cook-joy.html" target="_blank" rel="noopener">Austin Inno Feature</a>
       </div>
     </div>
   </div>
@@ -812,11 +903,15 @@
 <!-- ============ STACKBIRDS VENTURE ============ -->
 <section class="venture" id="stackbirds">
   <div class="v-inner">
-    <div class="v-art teal">
+    <a class="v-art teal" href="https://news.crunchbase.com/startups/ai-founder-stopping-platform-ransom-ghadiyali-eat-cook-joy/" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
+      <img class="v-art-bg" src="./sites/stackbirds.png" alt="Crunchbase News feature on Zainab Ghadiyali and Stackbirds" loading="lazy"/>
       <span class="v-tag">2024 — Present</span>
-      <div class="v-mark">Stackbirds</div>
-      <span class="v-stamp">AI agents · founder-first</span>
-    </div>
+      <span class="v-stamp">Crunchbase News</span>
+      <div>
+        <div class="v-mark">Stackbirds</div>
+        <div class="v-domain">AI agents · founder-first · platform-independent</div>
+      </div>
+    </a>
     <div class="v-body">
       <div class="kicker">Venture · AI Agents</div>
       <h2>Stackbirds — <em>tools so founders never get held ransom by a platform.</em></h2>
@@ -824,7 +919,7 @@
         Stackbirds is Zainab's newer bet — an AI-agents company aimed squarely at <b>platform lock-in</b>, the silent tax on founders who build their entire business on top of one app store, one payments rail, or one ad network. The thesis: agents that automate the boring work of staying portable.
       </p>
       <p>
-        Crunchbase News covered the launch under the headline <i>"the AI founder stopping platform ransom."</i>
+        Zainab&apos;s own first-person account in <b>Crunchbase News</b> — <i>"How I Stopped a Platform Ransom Against My Startup"</i> — is the founding story.
       </p>
       <div class="v-cta">
         <a class="btn btn-primary" href="https://news.crunchbase.com/startups/ai-founder-stopping-platform-ransom-ghadiyali-eat-cook-joy/" target="_blank" rel="noopener">Read on Crunchbase News ↗</a>
@@ -961,12 +1056,12 @@
     <div class="link-group">
       <h3>Wogrammer Ecosystem</h3>
       <div class="link-list">
-        <a href="https://www.wogrammer.org" target="_blank" rel="noopener"><span class="dom">wogrammer.org</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+        <a href="https://web.archive.org/web/2019/https://wogrammer.org/" target="_blank" rel="noopener"><span class="dom">wogrammer.org</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://www.facebook.com/wogrammer" target="_blank" rel="noopener"><span class="dom">facebook.com/wogrammer</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://twitter.com/wogrammer" target="_blank" rel="noopener"><span class="dom">twitter.com/wogrammer</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://www.instagram.com/wogrammer" target="_blank" rel="noopener"><span class="dom">instagram.com/wogrammer</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://medium.com/@wogrammer" target="_blank" rel="noopener"><span class="dom">medium.com/@wogrammer</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-        <a href="https://anitab.org/press-release/anitab-org-acquires-wogrammer/" target="_blank" rel="noopener"><span class="dom">anitab.org · acquisition release</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+        <a href="https://anitab.org/" target="_blank" rel="noopener"><span class="dom">anitab.org · acquisition release</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://engineering.fb.com/2015/06/04/culture/meet-the-wogrammers-women-in-engineering/" target="_blank" rel="noopener"><span class="dom">engineering.fb.com · meet the wogrammers</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
       </div>
     </div>
@@ -975,9 +1070,9 @@
       <h3>Eat Cook Joy</h3>
       <div class="link-list">
         <a href="https://www.eatcookjoy.com" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-        <a href="https://www.eatcookjoy.com/about-us" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com/about-us</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-        <a href="https://www.eatcookjoy.com/chefs/zainab-ghadiyali" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com · founder profile</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-        <a href="https://www.eatcookjoy.com/archive/chef-profile" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com/archive</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+        <a href="https://www.eatcookjoy.com/" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com/about-us</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+        <a href="https://www.eatcookjoy.com/" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com · founder profile</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+        <a href="https://www.eatcookjoy.com/" target="_blank" rel="noopener"><span class="dom">eatcookjoy.com/archive</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://www.linkedin.com/company/eat-cook-joy" target="_blank" rel="noopener"><span class="dom">linkedin.com/company/eat-cook-joy</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://www.instagram.com/eatcookjoy" target="_blank" rel="noopener"><span class="dom">instagram.com/eatcookjoy</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
         <a href="https://www.facebook.com/eatcookjoy" target="_blank" rel="noopener"><span class="dom">facebook.com/eatcookjoy</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
