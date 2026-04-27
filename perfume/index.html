@@ -4238,16 +4238,25 @@ let FULL_CATALOG=[];
 /* Replace placeholder image, sync displayed price/compare to real catalog data,
    wire data-product-id + data-add-id for clicks. Fixes "was<now" price bugs. */
 const wireLegacyCards=()=>{
-  const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG.concat(PRODUCTS):PRODUCTS;
-  if(!all.length)return;
+  /* Use ONLY the real Khadlaj catalog as match source — never fall back to the
+     small fictional PRODUCTS array, that produced wrong-brand bottle imagery */
+  const all=FULL_CATALOG&&FULL_CATALOG.length?FULL_CATALOG:[];
+  if(!all.length){console.warn('[Khadlaj] catalog not loaded yet — retry');setTimeout(wireLegacyCards,400);return}
+  let matched=0,hidden=0;
   $$('[data-add]').forEach(btn=>{
     const name=(btn.dataset.add||'').toLowerCase();
-    if(!name)return;
+    const card=btn.closest('article.product')||btn.closest('.rail-item');
+    if(!name){if(card){card.style.display='none';hidden++}return}
     const tokens=name.split(/\s+/).filter(t=>t.length>2);
     let best=null,bestScore=0;
     all.forEach(p=>{const pname=(p.name||'').toLowerCase();let score=0;tokens.forEach(t=>{if(pname.includes(t))score++});if(score>bestScore){bestScore=score;best=p}});
-    if(!best||bestScore<Math.min(2,tokens.length))return;
-    const card=btn.closest('article.product')||btn.closest('.rail-item');
+    /* Stricter threshold: at least 60% of tokens must match (or all if ≤2 tokens) */
+    const threshold=tokens.length<=2?tokens.length:Math.ceil(tokens.length*0.6);
+    if(!best||bestScore<threshold){
+      if(card){card.style.display='none';hidden++;console.log('[Khadlaj] hid card (no match):',name)}
+      return;
+    }
+    matched++;
     if(card){
       card.dataset.productId=best.id;
       const img=card.querySelector('img');
@@ -4267,6 +4276,16 @@ const wireLegacyCards=()=>{
     }
     btn.dataset.addId=best.id;
   });
+
+  /* Final sweep — hide any remaining card whose image is still a third-party stock URL.
+     This catches cards with no [data-add] attribute that would otherwise show non-Khadlaj imagery. */
+  $$('article.product img, .rail-item img').forEach(img=>{
+    if(/unsplash\.com|images\.pexels|cdn\.pixabay/.test(img.src)){
+      const card=img.closest('article.product')||img.closest('.rail-item');
+      if(card){card.style.display='none';hidden++}
+    }
+  });
+  console.log('[Khadlaj] wireLegacyCards: matched='+matched+' hidden='+hidden+' (total catalog='+all.length+')');
 
   /* Defensive sweep: every [data-product-id] card also gets the 25%-off treatment */
   $$('[data-product-id]').forEach(card=>{
