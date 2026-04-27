@@ -4217,8 +4217,8 @@ PRODUCTS.forEach(p=>{if(REAL_IMAGES[p.id])p.image=REAL_IMAGES[p.id]});
 
 /* ──────────────  LOAD FULL CATALOG (325+ real products from khadlaj-perfumes.com)  ────────────── */
 let FULL_CATALOG=[];
-/* Replace every Unsplash placeholder image (Flash Sale, Bestsellers, New Arrivals rails)
-   with the matching real Khadlaj product photo + wire data-product-id + data-add-id */
+/* Replace placeholder image, sync displayed price/compare to real catalog data,
+   wire data-product-id + data-add-id for clicks. Fixes "was<now" price bugs. */
 const wireLegacyCards=()=>{
   const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG.concat(PRODUCTS):PRODUCTS;
   if(!all.length)return;
@@ -4234,10 +4234,67 @@ const wireLegacyCards=()=>{
       card.dataset.productId=best.id;
       const img=card.querySelector('img');
       if(img&&best.image&&(/unsplash\.com/.test(img.src)||/photo-\d+/.test(img.src))){img.src=best.image;img.alt=best.name}
+      /* Sync prices to the real catalog so was>now is always honest */
+      const priceWrap=card.querySelector('.p-price');
+      if(priceWrap){
+        const now=Number(best.price)||0;
+        const compare=best.compare?Number(best.compare):null;
+        const showCompare=compare&&compare>now;
+        const off=showCompare?Math.round((1-now/compare)*100):0;
+        priceWrap.innerHTML=`<span class="now">${fmt(now)}</span>${showCompare?`<span class="was">${fmt(compare)}</span><span class="off">${off}% OFF</span>`:''}`;
+      }
+      /* Sync the deal tag if it exists */
+      const dealTag=card.querySelector('.p-tag.deal');
+      if(dealTag){
+        const compare=best.compare?Number(best.compare):null;
+        const now=Number(best.price)||0;
+        if(compare&&compare>now){dealTag.textContent='−'+Math.round((1-now/compare)*100)+'%'}
+        else{dealTag.remove()}
+      }
+      /* Sync BNPL display to real price */
+      const bnpl=card.querySelector('.p-bnpl');
+      if(bnpl){const q=(Number(best.price)||0)/4;bnpl.innerHTML=`4× ${fmt(q)} with <b>tabby</b>`}
+      /* Sync product name + brand if matched product is meaningfully different */
+      const nameEl=card.querySelector('.p-name');
+      if(nameEl)nameEl.textContent=best.name;
+      const brandEl=card.querySelector('.p-brand');
+      if(brandEl)brandEl.textContent=`${best.brand||'Khadlaj'} · ${best.gender||'Unisex'}`;
     }
     btn.dataset.addId=best.id;
   });
-  console.log('[Khadlaj] wired',$$('[data-add]').length,'legacy cards to real catalog');
+
+  /* Defensive sweep: every static card with data-product-id should also get
+     its visible price synced to the catalog so was/now stays honest */
+  $$('[data-product-id]').forEach(card=>{
+    const id=card.dataset.productId;const p=lookupP(id);if(!p)return;
+    const priceWrap=card.querySelector('.p-price');
+    if(priceWrap){
+      const now=Number(p.price)||0;
+      const compare=p.compare?Number(p.compare):null;
+      const showCompare=compare&&compare>now;
+      const off=showCompare?Math.round((1-now/compare)*100):0;
+      priceWrap.innerHTML=`<span class="now">${fmt(now)}</span>${showCompare?`<span class="was">${fmt(compare)}</span><span class="off">${off}% OFF</span>`:''}`;
+    }
+    const dealTag=card.querySelector('.p-tag.deal');
+    if(dealTag){
+      const compare=p.compare?Number(p.compare):null;
+      const now=Number(p.price)||0;
+      if(compare&&compare>now){dealTag.textContent='−'+Math.round((1-now/compare)*100)+'%'}
+      else{dealTag.remove()}
+    }
+    const bnpl=card.querySelector('.p-bnpl');
+    if(bnpl){const q=(Number(p.price)||0)/4;bnpl.innerHTML=`4× ${fmt(q)} with <b>tabby</b>`}
+  });
+
+  /* Final hard guard: walk every .p-price element. If .was <= .now strip .was + .off */
+  $$('.p-price').forEach(pw=>{
+    const nowEl=pw.querySelector('.now'),wasEl=pw.querySelector('.was'),offEl=pw.querySelector('.off');
+    if(!nowEl||!wasEl)return;
+    const n=parseFloat((nowEl.textContent||'').replace(/[^0-9.]/g,''))||0;
+    const w=parseFloat((wasEl.textContent||'').replace(/[^0-9.]/g,''))||0;
+    if(w<=n){wasEl.remove();if(offEl)offEl.remove()}
+  });
+  console.log('[Khadlaj] wired',$$('[data-add],[data-product-id]').length,'cards · prices synced to real catalog');
 };
 fetch('./catalog.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():[]).then(data=>{
   FULL_CATALOG=data.map(p=>({...p,sizes:[{ml:parseInt(p.size)||100,price:p.price}],rating:4.7+Math.random()*.2,reviews:Math.floor(Math.random()*2500+50),notes:{top:['Bergamot'],heart:['Floral'],base:['Musk','Amber']},description:p.name+' — authentic Khadlaj fragrance. Hand-blended in Sharjah, UAE.'}));
