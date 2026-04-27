@@ -3203,6 +3203,20 @@ const ls={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e)
 /* Resolve a product id from PRODUCTS first, then FULL_CATALOG (which loads async) — keeps Quick Add working even before the merge completes */
 const lookupP=id=>PRODUCTS.find(p=>p.id===id)||(FULL_CATALOG||[]).find(p=>p.id===id)||null;
 
+/* SITE-WIDE 25% PROMO — every product is displayed with its 25%-off price as "now"
+   and the original catalog price as "was". If a product has a genuine deeper compare
+   price already set, that wins (no double-discount). */
+const SITE_DISCOUNT_PCT=25;
+const dispPrice=p=>{
+  const price=Number(p&&p.price)||0;
+  const compare=p&&p.compare?Number(p.compare):null;
+  if(compare&&compare>price){
+    return{now:price,was:compare,off:Math.round((1-price/compare)*100),genuine:true};
+  }
+  const now=Math.round(price*(1-SITE_DISCOUNT_PCT/100));
+  return{now,was:price,off:SITE_DISCOUNT_PCT,genuine:false};
+};
+
 /* ──────────────  PRODUCT CATALOG (real Khadlaj products) ────────────── */
 const PRODUCTS=[
   {id:'cream-velvet',name:'Cream Velvet 100 ML Extrait de Parfum',brand:'Khadlaj',gender:'Women',family:'floral-gourmand',price:130,rating:4.9,reviews:1847,image:'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&auto=format&fit=crop&q=70',sizes:[{ml:100,price:130}],notes:{top:['Bergamot','Pear'],heart:['Vanilla cream','Iris','Jasmine'],base:['Sandalwood','Musk','Tonka']},description:'A creamy gourmand that wraps you in warm vanilla, soft iris and powdery musk. Long-lasting velvet trail.'},
@@ -3225,7 +3239,9 @@ const findP=id=>PRODUCTS.find(p=>p.id===id);
 let cart=ls.get('khadlaj_cart',[]);
 let wishlist=ls.get('khadlaj_wishlist',[]);
 let coupon=ls.get('khadlaj_coupon',null);
-const COUPONS={KHADLAJ25:{type:'pct',val:25,desc:'25% off'},ATTAR2ML:{type:'gift',val:0,desc:'Free 2ml attar sample'},APPFIRST50:{type:'fix',val:50,desc:'AED 50 off'},ATTAR3FOR2:{type:'pct',val:33,desc:'Buy 2 Get 1 free'}};
+/* KHADLAJ25 is the sitewide 25% promo and is already baked into every "now" price
+   (see dispPrice). At checkout it shows as "applied" but doesn't deduct again. */
+const COUPONS={KHADLAJ25:{type:'msg',val:0,desc:'25% off already applied to all products'},ATTAR2ML:{type:'gift',val:0,desc:'Free 2ml attar sample'},APPFIRST50:{type:'fix',val:50,desc:'AED 50 off'},ATTAR3FOR2:{type:'pct',val:33,desc:'Buy 2 Get 1 free'}};
 
 /* ──────────────  TOAST  ────────────── */
 const toast=$('#toast'),toastMsg=$('#toastMsg'),toastTitle=$('#toastTitle');let toastT;
@@ -3241,14 +3257,16 @@ const addToCart=(id,size,opts={})=>{
   const sizes=p.sizes&&p.sizes.length?p.sizes:[{ml:parseInt(p.size)||100,price:p.price}];
   const ml=size||sizes[0].ml;
   const sz=sizes.find(s=>s.ml===ml)||sizes[0];
+  /* Apply sitewide 25% promo to the cart-stored price so totals match what the customer sees */
+  const sizePriced={...p,price:sz.price};
+  const dp=dispPrice(sizePriced);
   const ex=cart.find(i=>i.id===id&&i.ml===sz.ml);
   if(ex)ex.qty++;
-  else cart.push({id,name:p.name,brand:p.brand||'Khadlaj',image:p.image,ml:sz.ml,price:sz.price,qty:1});
+  else cart.push({id,name:p.name,brand:p.brand||'Khadlaj',image:p.image,ml:sz.ml,price:dp.now,wasPrice:dp.was,qty:1});
   ls.set('khadlaj_cart',cart);
   renderCart();
-  showToast('Added to cart',p.name);
-  /* Auto-open cart drawer briefly so customer sees the item land in the cart */
-  if(!opts.silent){openCart();setTimeout(()=>{/* leave open — user closes manually */},2500)}
+  showToast('Added to cart',p.name+' · saved '+fmt(dp.was-dp.now));
+  if(!opts.silent){openCart();setTimeout(()=>{},2500)}
   return true;
 };
 const updateQty=(idx,d)=>{cart[idx].qty=Math.max(0,cart[idx].qty+d);if(cart[idx].qty===0)cart.splice(idx,1);ls.set('khadlaj_cart',cart);renderCart()};
@@ -3262,7 +3280,7 @@ const renderCart=()=>{
   const headerTotal=$$('.h-action b')[2];if(headerTotal)headerTotal.textContent=count?fmt(sub):'Empty';
   const items=$('.cart-items');if(items){
     if(!cart.length){items.innerHTML='<div style="padding:40px 20px;text-align:center;color:var(--txt-mute)"><p style="font-size:14px;margin:0 0 14px">Your cart is empty</p><button class="btn btn-red" data-modal-close>Browse fragrances</button></div>'}
-    else{items.innerHTML=cart.map((i,x)=>`<div class="cart-item"><img src="${i.image}" alt=""><div><h4>${i.name}</h4><small>${i.ml} ml · ${i.brand}</small><div class="qty"><button data-qty="${x}" data-d="-1" aria-label="Decrease">−</button><span>${i.qty}</span><button data-qty="${x}" data-d="1" aria-label="Increase">+</button></div></div><div><div class="ci-price">${fmt(i.price*i.qty)}</div><button class="ci-remove" data-rm="${x}">Remove</button></div></div>`).join('')}
+    else{items.innerHTML=cart.map((i,x)=>`<div class="cart-item"><img src="${i.image}" alt=""><div><h4>${i.name}</h4><small>${i.ml} ml · ${i.brand}</small><div class="qty"><button data-qty="${x}" data-d="-1" aria-label="Decrease">−</button><span>${i.qty}</span><button data-qty="${x}" data-d="1" aria-label="Increase">+</button></div></div><div><div class="ci-price">${fmt(i.price*i.qty)}${i.wasPrice&&i.wasPrice>i.price?`<br><small style="font-size:10px;color:var(--lux-gold,#a98842);text-decoration:line-through;font-weight:400">${fmt(i.wasPrice*i.qty)}</small>`:''}</div><button class="ci-remove" data-rm="${x}">Remove</button></div></div>`).join('')}
   }
   /* shipping bar */
   const sb=$('.shipping-bar');if(sb){const need=Math.max(0,FREE_SHIP-sub),pct=Math.min(100,(sub/FREE_SHIP)*100);sb.querySelector('div').innerHTML=need>0?`You're <b>${fmt(need)}</b> away from <b>FREE</b> UAE shipping ✨`:`🎉 You qualify for <b>FREE</b> UAE shipping!`;sb.querySelector('.bar-fill').style.width=pct+'%'}
@@ -3517,7 +3535,7 @@ searchIn.addEventListener('input',e=>renderSearch(e.target.value));
 searchRes.addEventListener('click',e=>{const a=e.target.closest('[data-search-pick]');if(a){closeModal(searchOv);openProduct(a.dataset.searchPick)}});
 
 /* ──────────────  PRODUCT DETAIL MODAL  ────────────── */
-const openProduct=id=>{const p=findP(id);if(!p)return;const off=p.compare?Math.round((1-p.price/p.compare)*100):0;const isWish=wishlist.includes(id);
+const openProduct=id=>{const p=lookupP(id);if(!p)return;const dp=dispPrice(p);const isWish=wishlist.includes(id);
   $('#productModalBody').innerHTML=`
     <button class="modal-close" data-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 6l12 12M6 18 18 6"/></svg></button>
     <div class="pd-grid">
@@ -3529,11 +3547,11 @@ const openProduct=id=>{const p=findP(id);if(!p)return;const off=p.compare?Math.r
         <a class="pd-brand-link">${p.brand} · ${p.gender}</a>
         <h1 id="pd-h">${p.name}</h1>
         <div class="pd-rating-row"><span class="p-rating">${p.rating} ★</span> <a href="#reviews">${p.reviews.toLocaleString()} verified reviews</a></div>
-        <div class="pd-price-row"><span class="now">${fmt(p.price)}</span>${p.compare?`<span class="was">${fmt(p.compare)}</span><span class="off">${off}% OFF</span>`:''}</div>
-        <div class="pd-bnpl">💜 or 4 interest-free of <b>${fmt(p.price/4)}</b> with tabby · tamara</div>
-        <div class="pd-section"><h4>Size · ${p.sizes.length} option${p.sizes.length>1?'s':''}</h4><div class="pd-sizes">${p.sizes.map((s,i)=>`<button class="pd-size${i===0?' active':''}" data-pd-size="${s.ml}">${s.ml} ml<small>${fmt(s.price)}</small></button>`).join('')}</div></div>
+        <div class="pd-price-row"><span class="now">${fmt(dp.now)}</span><span class="was">${fmt(dp.was)}</span><span class="off">${dp.off}% OFF</span><small style="font-size:11px;color:var(--green,#0a8a3f);font-weight:600;margin-left:8px">You save ${fmt(dp.was-dp.now)}</small></div>
+        <div class="pd-bnpl">💜 or 4 interest-free of <b>${fmt(dp.now/4)}</b> with tabby · tamara</div>
+        <div class="pd-section"><h4>Size · ${p.sizes.length} option${p.sizes.length>1?'s':''}</h4><div class="pd-sizes">${p.sizes.map((s,i)=>{const sd=dispPrice({price:s.price,compare:p.compare});return `<button class="pd-size${i===0?' active':''}" data-pd-size="${s.ml}">${s.ml} ml<small>${fmt(sd.now)}</small></button>`}).join('')}</div></div>
         <div class="pd-section"><h4>Quantity</h4><div class="pd-qty-row"><div class="pd-qty"><button data-pd-qty="-1">−</button><span id="pdQty">1</span><button data-pd-qty="1">+</button></div><span style="font-size:12px;color:var(--txt-mute)">In stock · Ships in 24 hrs</span></div></div>
-        <div class="pd-actions"><button class="btn btn-red btn-cart" id="pdAddCart">Add to Cart · <span id="pdTotal">${fmt(p.price)}</span></button><button class="pd-wish-btn ${isWish?'active':''}" id="pdWish" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button></div>
+        <div class="pd-actions"><button class="btn btn-red btn-cart" id="pdAddCart">Add to Cart · <span id="pdTotal">${fmt(dp.now)}</span></button><button class="pd-wish-btn ${isWish?'active':''}" id="pdWish" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button></div>
         <div class="pd-perks"><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Free UAE shipping over AED 150</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>100% authentic from atelier</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>24-hr cancellation policy</div><div class="pd-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Pay in 4 with Tabby/Tamara</div></div>
       </div>
     </div>
@@ -3546,7 +3564,7 @@ const openProduct=id=>{const p=findP(id);if(!p)return;const off=p.compare?Math.r
   openModal('productModal');
   /* Wire detail interactions */
   let qty=1,sz=p.sizes[0];
-  const refresh=()=>{$('#pdQty').textContent=qty;$('#pdTotal').textContent=fmt(sz.price*qty)};
+  const refresh=()=>{$('#pdQty').textContent=qty;const sd=dispPrice({price:sz.price,compare:p.compare});$('#pdTotal').textContent=fmt(sd.now*qty)};
   $$('[data-pd-size]').forEach(b=>b.addEventListener('click',e=>{$$('[data-pd-size]').forEach(x=>x.classList.remove('active'));b.classList.add('active');sz=p.sizes.find(s=>s.ml==b.dataset.pdSize);refresh()}));
   $$('[data-pd-qty]').forEach(b=>b.addEventListener('click',()=>{qty=Math.max(1,qty+(+b.dataset.pdQty));refresh()}));
   $('#pdAddCart').addEventListener('click',()=>{for(let i=0;i<qty;i++)addToCart(id,sz.ml);closeModal($('#productModal'));openCart()});
@@ -4234,27 +4252,14 @@ const wireLegacyCards=()=>{
       card.dataset.productId=best.id;
       const img=card.querySelector('img');
       if(img&&best.image&&(/unsplash\.com/.test(img.src)||/photo-\d+/.test(img.src))){img.src=best.image;img.alt=best.name}
-      /* Sync prices to the real catalog so was>now is always honest */
+      /* Show 25%-off display: now = discounted, was = catalog price */
+      const dp=dispPrice(best);
       const priceWrap=card.querySelector('.p-price');
-      if(priceWrap){
-        const now=Number(best.price)||0;
-        const compare=best.compare?Number(best.compare):null;
-        const showCompare=compare&&compare>now;
-        const off=showCompare?Math.round((1-now/compare)*100):0;
-        priceWrap.innerHTML=`<span class="now">${fmt(now)}</span>${showCompare?`<span class="was">${fmt(compare)}</span><span class="off">${off}% OFF</span>`:''}`;
-      }
-      /* Sync the deal tag if it exists */
+      if(priceWrap){priceWrap.innerHTML=`<span class="now">${fmt(dp.now)}</span><span class="was">${fmt(dp.was)}</span><span class="off">${dp.off}% OFF</span>`}
       const dealTag=card.querySelector('.p-tag.deal');
-      if(dealTag){
-        const compare=best.compare?Number(best.compare):null;
-        const now=Number(best.price)||0;
-        if(compare&&compare>now){dealTag.textContent='−'+Math.round((1-now/compare)*100)+'%'}
-        else{dealTag.remove()}
-      }
-      /* Sync BNPL display to real price */
+      if(dealTag)dealTag.textContent='−'+dp.off+'%';
       const bnpl=card.querySelector('.p-bnpl');
-      if(bnpl){const q=(Number(best.price)||0)/4;bnpl.innerHTML=`4× ${fmt(q)} with <b>tabby</b>`}
-      /* Sync product name + brand if matched product is meaningfully different */
+      if(bnpl)bnpl.innerHTML=`4× ${fmt(dp.now/4)} with <b>tabby</b>`;
       const nameEl=card.querySelector('.p-name');
       if(nameEl)nameEl.textContent=best.name;
       const brandEl=card.querySelector('.p-brand');
@@ -4263,27 +4268,16 @@ const wireLegacyCards=()=>{
     btn.dataset.addId=best.id;
   });
 
-  /* Defensive sweep: every static card with data-product-id should also get
-     its visible price synced to the catalog so was/now stays honest */
+  /* Defensive sweep: every [data-product-id] card also gets the 25%-off treatment */
   $$('[data-product-id]').forEach(card=>{
     const id=card.dataset.productId;const p=lookupP(id);if(!p)return;
+    const dp=dispPrice(p);
     const priceWrap=card.querySelector('.p-price');
-    if(priceWrap){
-      const now=Number(p.price)||0;
-      const compare=p.compare?Number(p.compare):null;
-      const showCompare=compare&&compare>now;
-      const off=showCompare?Math.round((1-now/compare)*100):0;
-      priceWrap.innerHTML=`<span class="now">${fmt(now)}</span>${showCompare?`<span class="was">${fmt(compare)}</span><span class="off">${off}% OFF</span>`:''}`;
-    }
+    if(priceWrap)priceWrap.innerHTML=`<span class="now">${fmt(dp.now)}</span><span class="was">${fmt(dp.was)}</span><span class="off">${dp.off}% OFF</span>`;
     const dealTag=card.querySelector('.p-tag.deal');
-    if(dealTag){
-      const compare=p.compare?Number(p.compare):null;
-      const now=Number(p.price)||0;
-      if(compare&&compare>now){dealTag.textContent='−'+Math.round((1-now/compare)*100)+'%'}
-      else{dealTag.remove()}
-    }
+    if(dealTag)dealTag.textContent='−'+dp.off+'%';
     const bnpl=card.querySelector('.p-bnpl');
-    if(bnpl){const q=(Number(p.price)||0)/4;bnpl.innerHTML=`4× ${fmt(q)} with <b>tabby</b>`}
+    if(bnpl)bnpl.innerHTML=`4× ${fmt(dp.now/4)} with <b>tabby</b>`;
   });
 
   /* Final hard guard: walk every .p-price element. If .was <= .now strip .was + .off */
@@ -4323,20 +4317,20 @@ if(settingsBox.length){
 
 /* ──────────────  CATEGORY FILTER (top nav) — re-renders the Top Sellers grid live  ────────────── */
 const productCard=p=>{
-  const off=p.compare?Math.round((1-p.price/p.compare)*100):0;
-  const tag=p.compare?`<span class="p-tag deal">−${off}%</span>`:p.gender==='Women'?`<span class="p-tag">For Her</span>`:p.gender==='Men'?`<span class="p-tag">For Him</span>`:'';
+  const dp=dispPrice(p);
+  const tag=`<span class="p-tag deal">−${dp.off}%</span>`;
   const isWish=wishlist.includes(p.id);
   return `<article class="product" data-product-id="${p.id}">
     ${tag}
     <button class="p-wishlist${isWish?' active':''}" aria-label="Add to wishlist" data-wish="${p.id}"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-12a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 7-8 12-8 12z"/></svg></button>
-    <div class="product-media"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=70'">
+    <div class="product-media"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.opacity=.3">
       <button class="p-quick" data-add-id="${p.id}">Add to Cart</button></div>
     <div class="p-body">
       <div class="p-brand">${p.brand} · ${p.gender}</div>
       <p class="p-name">${p.name}</p>
       <span class="p-rating">${(p.rating||4.7).toFixed(1)} ★ · ${(p.reviews||100).toLocaleString()}</span>
-      <div class="p-price"><span class="now">${fmt(p.price)}</span>${p.compare?`<span class="was">${fmt(p.compare)}</span><span class="off">${off}% OFF</span>`:''}</div>
-      <div class="p-bnpl">4× ${fmt(p.price/4)} with <b>tabby</b></div>
+      <div class="p-price"><span class="now">${fmt(dp.now)}</span><span class="was">${fmt(dp.was)}</span><span class="off">${dp.off}% OFF</span></div>
+      <div class="p-bnpl">4× ${fmt(dp.now/4)} with <b>tabby</b></div>
     </div>
   </article>`;
 };
@@ -4470,21 +4464,21 @@ const qoList=()=>{const all=(FULL_CATALOG&&FULL_CATALOG.length)?FULL_CATALOG:PRO
   if(QO.search){const q=QO.search.toLowerCase();l=l.filter(p=>(p.name+' '+(p.brand||'')+' '+(p.family||'')).toLowerCase().includes(q))}
   return l;
 };
-const qoTotals=()=>{let items=0,sub=0;Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=findP(id)||(FULL_CATALOG||[]).find(x=>x.id===id);if(!p)return;items+=q;sub+=Number(p.price)*q});const ship=sub>=FREE_SHIP||sub===0?0:25;const vat=Math.round(sub*VAT_RATE*100)/100;return{items,sub,ship,vat,total:sub+ship+vat}};
+const qoTotals=()=>{let items=0,sub=0;Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=lookupP(id);if(!p)return;items+=q;sub+=dispPrice(p).now*q});const ship=sub>=FREE_SHIP||sub===0?0:25;const vat=Math.round(sub*VAT_RATE*100)/100;return{items,sub,ship,vat,total:sub+ship+vat}};
 const qoRender=()=>{
   const list=qoList(),body=$('#qoTableBody');
   $('#qoTotal').textContent=((FULL_CATALOG&&FULL_CATALOG.length)||PRODUCTS.length).toLocaleString();
   $('#qoVisible').textContent=list.length;
   $('#qoEmpty').style.display=list.length?'none':'block';
   body.innerHTML=list.map(p=>{
-    const q=QO.qty[p.id]||0;const line=q*Number(p.price);
+    const q=QO.qty[p.id]||0;const dp=dispPrice(p);const line=q*dp.now;
     return `<tr class="${q>0?'has-qty':''}" data-qo-row="${p.id}">
       <td><img src="${p.image}" alt="" loading="lazy" onerror="this.style.opacity=.3"></td>
-      <td><div class="qo-name">${p.name}</div><div class="qo-meta">${p.brand||'Khadlaj'} · ${p.gender||'Unisex'}</div></td>
+      <td><div class="qo-name">${p.name}</div><div class="qo-meta">${p.brand||'Khadlaj'} · ${p.gender||'Unisex'} · ${dp.off}% off</div></td>
       <td style="text-align:center">${p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-')}</td>
-      <td class="qo-price">AED ${Number(p.price).toFixed(0)}</td>
+      <td class="qo-price">${fmt(dp.now)}<br><small style="font-weight:400;color:#a98842;text-decoration:line-through;font-size:10px">${fmt(dp.was)}</small></td>
       <td style="text-align:center"><div class="qo-qty"><button data-qo="-" data-id="${p.id}">−</button><input type="number" min="0" max="999" value="${q}" data-qo-input="${p.id}" inputmode="numeric"><button data-qo="+" data-id="${p.id}">+</button></div></td>
-      <td class="qo-line">${line>0?'AED '+line.toFixed(2):'—'}</td>
+      <td class="qo-line">${line>0?fmt(line):'—'}</td>
     </tr>`;
   }).join('');
   qoUpdateTotals();
@@ -4492,7 +4486,7 @@ const qoRender=()=>{
 const qoUpdateTotals=()=>{const t=qoTotals();$('#qoCount').textContent=t.items;$('#qoT_items').textContent=t.items;$('#qoT_sub').textContent=fmt(t.sub);$('#qoT_ship').textContent=t.sub===0?'Free above AED 150':(t.ship?fmt(t.ship):'FREE 🎉');$('#qoT_vat').textContent=fmt(t.vat);$('#qoT_total').textContent=fmt(t.total)};
 const qoSetQty=(id,q)=>{q=Math.max(0,Math.min(999,+q||0));if(q===0)delete QO.qty[id];else QO.qty[id]=q;ls.set('khadlaj_qo_qty',QO.qty);
   /* In-place row update without re-rendering whole table (preserves focus) */
-  const row=document.querySelector(`[data-qo-row="${id}"]`);if(row){const inp=row.querySelector('input');if(inp&&+inp.value!==q)inp.value=q;row.classList.toggle('has-qty',q>0);const p=(FULL_CATALOG||[]).find(x=>x.id===id)||findP(id);if(p){const line=q*Number(p.price);row.querySelector('.qo-line').textContent=line>0?'AED '+line.toFixed(2):'—'}}
+  const row=document.querySelector(`[data-qo-row="${id}"]`);if(row){const inp=row.querySelector('input');if(inp&&+inp.value!==q)inp.value=q;row.classList.toggle('has-qty',q>0);const p=lookupP(id);if(p){const line=q*dispPrice(p).now;row.querySelector('.qo-line').textContent=line>0?fmt(line):'—'}}
   qoUpdateTotals();
 };
 const openQuickOrder=()=>{qoRender();openModal('quickOrderModal')};
@@ -4505,7 +4499,7 @@ $('#qoSearch').addEventListener('input',e=>{QO.search=e.target.value;qoRender()}
 $('#qoFilter').addEventListener('change',e=>{QO.filter=e.target.value;qoRender()});
 $('#qoClear').addEventListener('click',()=>{QO.qty={};ls.set('khadlaj_qo_qty',QO.qty);qoRender();showToast('Cleared','Selection reset')});
 
-const qoBuildItems=()=>{const items=[];Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=findP(id)||(FULL_CATALOG||[]).find(x=>x.id===id);if(p)items.push({id:p.id,name:p.name,size:p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),price:p.price,qty:q,brand:p.brand,image:p.image})});return items};
+const qoBuildItems=()=>{const items=[];Object.entries(QO.qty).forEach(([id,q])=>{q=+q||0;if(q<=0)return;const p=lookupP(id);if(p){const dp=dispPrice(p);items.push({id:p.id,name:p.name,size:p.size||(p.sizes&&p.sizes[0]?p.sizes[0].ml+'ml':'-'),price:dp.now,wasPrice:dp.was,qty:q,brand:p.brand,image:p.image})}});return items};
 const qoCustomer=()=>{const f=$('#qoForm');const v={};new FormData(f).forEach((val,k)=>v[k]=val);return v};
 
 $('#qoProforma').addEventListener('click',async()=>{
@@ -4578,11 +4572,11 @@ const renderDirectory=()=>{
   $('#dirBody').innerHTML=sections.join('');
 };
 const dirRow=p=>{
-  const off=p.compare?Math.round((1-p.price/p.compare)*100):0;
+  const dp=dispPrice(p);
   return `<div class="dir-row" data-product-id="${p.id}">
     <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.opacity=.3">
-    <div class="info"><b>${p.name}</b><small>${p.brand||'Khadlaj'} · ${p.gender||'Unisex'}${p.size?' · '+p.size:''}</small></div>
-    <div class="price">${fmt(p.price)}${p.compare?`<span class="price-was">${fmt(p.compare)}</span>`:''}</div>
+    <div class="info"><b>${p.name}</b><small>${p.brand||'Khadlaj'} · ${p.gender||'Unisex'}${p.size?' · '+p.size:''} · ${dp.off}% off</small></div>
+    <div class="price">${fmt(dp.now)}<span class="price-was">${fmt(dp.was)}</span></div>
     <button class="add" data-add-id="${p.id}" type="button">Add</button>
   </div>`;
 };
